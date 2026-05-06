@@ -1,0 +1,28 @@
+plans/v3-practice-mode.md
+  s_d5e8c30b294ba2::t_395dd76789a449 1-3
+  s_d5e8c30b294ba2::t_5d97988bd7d16a 23
+  s_d5e8c30b294ba2::t_b165399f9687ba 244
+  s_d5e8c30b294ba2::t_f5bf823d1c6edd 20
+  s_d5e8c30b294ba2::t_cbb590c437346b 13
+plans/v2-primer.md
+  s_d5e8c30b294ba2::t_eb231aaf46f1b9 1-3
+  s_d5e8c30b294ba2::t_7e778073e8e00e 14
+  s_d5e8c30b294ba2::t_d04752a1115d87 105-108
+  s_d5e8c30b294ba2::t_79e7961cfa19b4 18-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "19ebdaabdfeb80318d2d76175cf70322c67a56ea",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
