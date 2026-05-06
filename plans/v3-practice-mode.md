@@ -1,4 +1,6 @@
-# Plan — Sanskrit Learning v2: Practice Mode (SRS + "+1")
+# Plan — Sanskrit Learning v3: Practice Mode (SRS + "+1")
+
+> **Renumbered v2 → v3.** The Primer (originally drafted as v3) ships first as v2 — re-entry safety should precede daily-practice machinery. See [v2-primer.md](v2-primer.md).
 
 ## Context
 
@@ -8,17 +10,17 @@ The Sanskrit Learning app currently *records* what's been learned (4 decoded ver
 - **The bvsiitm "+1" pedagogy** — *Known → +1 → Drill → Repeat* — so each session introduces exactly one new concept and drills everything earned so far.
 - **A persistent ledger** of what's been studied, when, and how well — surviving browser cache clears, syncing easily across the Mac mini and MacBook Pro.
 
-This v2 adds a **Practice** tab to the existing app, backed by a small Node + SQLite service running locally next to the Vite dev server.
+This v3 adds a **Practice** tab to the existing app, backed by a small Node + SQLite service running locally next to the Vite dev server.
 
 ## Decisions locked (from clarifying questions)
 
 | Decision | Choice |
 |---|---|
 | Database location | **Local Node backend + `data/sanskrit.db` file on disk** (gitignored, syncable via iCloud/Dropbox) |
-| MVP card types | **Form ID** + **Verse Anchor** (Pattern Recognition + Vibhakti Drill deferred to v3) |
+| MVP card types | **Form ID** + **Verse Anchor** (Pattern Recognition + Vibhakti Drill deferred to v4) |
 | Source of truth for verse content | **`src/data/*.js` stays canonical**; DB only stores progress. `npm run seed` regenerates cards idempotently. |
 
-Algorithm: **SM-2** (Anki classic) — simple, well-understood, ~50 lines, easy to test. FSRS deferred to v3 if needed.
+Algorithm: **SM-2** (Anki classic) — simple, well-understood, ~50 lines, easy to test. FSRS deferred to v4 if needed.
 
 ## High-level architecture
 
@@ -239,7 +241,7 @@ data/
 8. Refresh page; masthead badge shows `0 due today` (correct — that card is scheduled for tomorrow).
 9. Hand-test on second visit (or set system clock forward) — same card reappears, plus a NEW +1 card.
 
-## Open questions / future iterations (v3+)
+## Open questions / future iterations (v4+)
 
 - **Pattern Recognition + Vibhakti Drill cards** — schema already supports new types; just add a `type` value, a seed function, and a `CardPrompt` switch case.
 - **Backup script** — `npm run db:backup` copies `data/sanskrit.db` to `~/Documents/sanskrit-learning-backups/sanskrit-YYYY-MM-DD.db`.
