@@ -1,0 +1,14 @@
+patterns-won.md
+  h_d1cedce81d5e68 46-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "a706f4ec5a70023d4b1f042de3cf97cd42f0de70",
+  "prompts": {},
+  "humans": {
+    "h_d1cedce81d5e68": {
+      "author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
