@@ -32,6 +32,20 @@ export const VERSES = [
     sandhiNotes: [
       'पाण्डवाश्चैव = पाण्डवाः + च + एव (visarga + च → श्च)',
     ],
+    samasNotes: [
+      {
+        compound: 'धर्मक्षेत्रे',
+        vigraha: 'धर्मस्य क्षेत्रम्',
+        type: 'षष्ठी तत्पुरुष',
+        gloss: 'field of dharma',
+      },
+      {
+        compound: 'कुरुक्षेत्रे',
+        vigraha: 'कुरूणाम् क्षेत्रम्',
+        type: 'षष्ठी तत्पुरुष',
+        gloss: 'field of the Kurus',
+      },
+    ],
     finiteVerbs: [
       {
         form: 'अकुर्वत',
@@ -88,6 +102,20 @@ export const VERSES = [
       'नैतत् = न + एतत् (अ + ए → ऐ)',
       'त्वय्युपपद्यते = त्वयि + उपपद्यते (इ + उ → य्यु)',
       'त्यक्त्वोत्तिष्ठ = त्यक्त्वा + उत्तिष्ठ (आ + उ → ओ)',
+    ],
+    samasNotes: [
+      {
+        compound: 'हृदयदौर्बल्यम्',
+        vigraha: 'हृदयस्य दौर्बल्यम्',
+        type: 'षष्ठी तत्पुरुष',
+        gloss: 'weakness of the heart',
+      },
+      {
+        compound: 'परन्तप',
+        vigraha: 'परान् तापयति इति',
+        type: 'उपपद तत्पुरुष',
+        gloss: 'one who scorches enemies — epithet of Arjuna',
+      },
     ],
     finiteVerbs: [
       {
@@ -159,6 +187,26 @@ export const VERSES = [
       'अरिसूदन',
     ],
     sandhiNotes: [],
+    samasNotes: [
+      {
+        compound: 'मधुसूदन',
+        vigraha: 'मधुम् सूदयति इति',
+        type: 'उपपद तत्पुरुष',
+        gloss: 'slayer of Madhu — epithet of Krishna',
+      },
+      {
+        compound: 'अरिसूदन',
+        vigraha: 'अरीन् सूदयति इति',
+        type: 'उपपद तत्पुरुष',
+        gloss: 'slayer of enemies — epithet of Krishna',
+      },
+      {
+        compound: 'पूजार्हौ',
+        vigraha: 'पूजायाः अर्हौ',
+        type: 'षष्ठी तत्पुरुष',
+        gloss: 'worthy of worship (dual)',
+      },
+    ],
     finiteVerbs: [
       {
         form: 'प्रतियोत्स्यामि',
@@ -230,6 +278,26 @@ export const VERSES = [
       'हत्वार्थकामांस्तु = हत्वा + अर्थकामान् + तु',
       'गुरूनिहैव = गुरून् + इह + एव',
       'रुधिरप्रदिग्धान् = रुधिर + प्र + दिग्ध + आन्',
+    ],
+    samasNotes: [
+      {
+        compound: 'महानुभावान्',
+        vigraha: 'महान्तः अनुभावाः येषाम् ते',
+        type: 'बहुव्रीहि',
+        gloss: 'those of great spirit / dignity (qualifying गुरून्)',
+      },
+      {
+        compound: 'अर्थकामान्',
+        vigraha: 'अर्थः च कामः च',
+        type: 'इतरेतर द्वंद्व',
+        gloss: 'wealth and desire — used adjectivally: gurus driven by wealth and pleasure',
+      },
+      {
+        compound: 'रुधिरप्रदिग्धान्',
+        vigraha: 'रुधिरेण प्रदिग्धान्',
+        type: 'तृतीया तत्पुरुष',
+        gloss: 'smeared with blood (qualifying भोगान्)',
+      },
     ],
     finiteVerbs: [
       {

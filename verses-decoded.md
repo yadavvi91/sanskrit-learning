@@ -16,6 +16,10 @@
 **Sandhi notes:**
 - पाण्डवाश्चैव = पाण्डवाः + च + एव (visarga + च → श्च)
 
+**Samas notes:**
+- धर्मक्षेत्रे = धर्मस्य क्षेत्रम् → षष्ठी तत्पुरुष — "field of dharma"
+- कुरुक्षेत्रे = कुरूणाम् क्षेत्रम् → षष्ठी तत्पुरुष — "field of the Kurus"
+
 **Finite verb:** अकुर्वत → √कृ, लङ् लकार, प्रथम पुरुष, बहुवचन = "they did"
 
 **Key fight won here:** समवेताः looks like a verb ("gathered") but is a **past passive participle (कृदन्त)** agreeing with युयुत्सवः — both प्रथमा बहुवचन पुल्लिंग. It describes the warriors, it does not anchor the sentence. किमकुर्वत is the finite verb.
@@ -51,6 +55,10 @@
 - त्वय्युपपद्यते = त्वयि + उपपद्यते (इ + उ → य्यु)
 - त्यक्त्वोत्तिष्ठ = त्यक्त्वा + उत्तिष्ठ (आ + उ → ओ)
 
+**Samas notes:**
+- हृदयदौर्बल्यम् = हृदयस्य दौर्बल्यम् → षष्ठी तत्पुरुष — "weakness of the heart"
+- परन्तप = परान् तापयति इति → उपपद तत्पुरुष — "scorcher of enemies" (epithet of Arjuna)
+
 **Finite verbs — three this time:**
 - **गमः** → √गम्, लोट् लकार, मध्यम एकवचन = "go/yield" — negated by **मा स्म** = "do not yield"
 - **उपपद्यते** → उप + √पद्, लट् लकार, प्रथम एकवचन = "is fitting"
@@ -85,6 +93,11 @@
 
 **पदच्छेद:**
 > कथम् | भीष्मम् | अहम् | सङ्ख्ये | द्रोणम् | च | मधुसूदन | इषुभिः | प्रति-योत्स्यामि | पूजार्हौ | अरिसूदन
+
+**Samas notes:**
+- मधुसूदन = मधुम् सूदयति इति → उपपद तत्पुरुष — "slayer of Madhu" (epithet of Krishna)
+- अरिसूदन = अरीन् सूदयति इति → उपपद तत्पुरुष — "slayer of enemies" (epithet of Krishna)
+- पूजार्हौ = पूजायाः अर्हौ → षष्ठी तत्पुरुष — "worthy of worship" (dual)
 
 **Finite verb:** प्रतियोत्स्यामि → प्रति + √युध्, **लृट् लकार**, उत्तम पुरुष, एकवचन = "I shall fight against"
 
@@ -129,6 +142,11 @@
 | हत्वार्थकामांस्तु | हत्वा + अर्थकामान् + तु |
 | गुरूनिहैव | गुरून् + इह + एव |
 | रुधिरप्रदिग्धान् | रुधिर + प्र + दिग्ध + आन् |
+
+**Samas notes:**
+- महानुभावान् = महान्तः अनुभावाः येषाम् ते → बहुव्रीहि — "those of great spirit/dignity" (qualifying गुरून्)
+- अर्थकामान् = अर्थः च कामः च → इतरेतर द्वंद्व — "wealth and desire", used adjectivally ("gurus driven by wealth and pleasure")
+- रुधिरप्रदिग्धान् = रुधिरेण प्रदिग्धान् → तृतीया तत्पुरुष — "smeared with blood" (qualifying भोगान्)
 
 **Finite verb:** **भुञ्जीय** → √भुज्, **विधिलिङ्** (should/ought), प्रथम पुरुष, एकवचन = "should one enjoy"
 

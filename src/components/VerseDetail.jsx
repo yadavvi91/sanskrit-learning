@@ -42,6 +42,22 @@ export default function VerseDetail({ verse }) {
             </ul>
           </details>
         )}
+        {verse.samasNotes && verse.samasNotes.length > 0 && (
+          <details className="samas">
+            <summary>समास — {verse.samasNotes.length} compound{verse.samasNotes.length === 1 ? '' : 's'}</summary>
+            <ul>
+              {verse.samasNotes.map((s, i) => (
+                <li key={i} className="samas-row">
+                  <span className="samas-compound">{s.compound}</span>
+                  <span className="samas-eq">=</span>
+                  <span className="samas-vigraha">{s.vigraha}</span>
+                  <span className="samas-type">{s.type}</span>
+                  <span className="samas-gloss">{s.gloss}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </Section>
 
       <Section
