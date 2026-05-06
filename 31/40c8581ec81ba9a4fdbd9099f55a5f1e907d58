@@ -1,0 +1,33 @@
+verses-decoded.md
+  s_d5e8c30b294ba2::t_2fdac2fd8cb90e 19-22
+  s_d5e8c30b294ba2::t_cc3ad8d0b18d6d 58-61
+  s_d5e8c30b294ba2::t_bc0989854b8ded 97-101
+  s_d5e8c30b294ba2::t_f4228e2a11486a 146-150
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_bf06422cbba9e7 45-57
+src/data/verses.js
+  s_d5e8c30b294ba2::t_48e8bab525e5ea 190-209
+  s_d5e8c30b294ba2::t_84aa18fe54751b 282-301
+  s_d5e8c30b294ba2::t_3881adf9e7d645 106-119
+  s_d5e8c30b294ba2::t_6633d9bc2b3929 35-48
+src/styles.css
+  s_d5e8c30b294ba2::t_fd113ccc4d7251 501-502,508-509,529-598
+checkpoint-2.md
+  s_d5e8c30b294ba2::t_50cf6fc8d4b228 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "3140c8581ec81ba9a4fdbd9099f55a5f1e907d58",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
