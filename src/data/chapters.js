@@ -1,0 +1,21 @@
+// Bhagavad Gita verse counts per chapter (canonical Gita Press / holy-bhagavad-gita.org).
+export const CHAPTERS = [
+  { number: 1, name: 'अर्जुनविषादयोग', verseCount: 47 },
+  { number: 2, name: 'सांख्ययोग', verseCount: 72 },
+  { number: 3, name: 'कर्मयोग', verseCount: 43 },
+  { number: 4, name: 'ज्ञानकर्मसंन्यासयोग', verseCount: 42 },
+  { number: 5, name: 'कर्मसंन्यासयोग', verseCount: 29 },
+  { number: 6, name: 'आत्मसंयमयोग', verseCount: 47 },
+  { number: 7, name: 'ज्ञानविज्ञानयोग', verseCount: 30 },
+  { number: 8, name: 'अक्षरब्रह्मयोग', verseCount: 28 },
+  { number: 9, name: 'राजविद्याराजगुह्ययोग', verseCount: 34 },
+  { number: 10, name: 'विभूतियोग', verseCount: 42 },
+  { number: 11, name: 'विश्वरूपदर्शनयोग', verseCount: 55 },
+  { number: 12, name: 'भक्तियोग', verseCount: 20 },
+  { number: 13, name: 'क्षेत्रक्षेत्रज्ञविभागयोग', verseCount: 35 },
+  { number: 14, name: 'गुणत्रयविभागयोग', verseCount: 27 },
+  { number: 15, name: 'पुरुषोत्तमयोग', verseCount: 20 },
+  { number: 16, name: 'दैवासुरसम्पद्विभागयोग', verseCount: 24 },
+  { number: 17, name: 'श्रद्धात्रयविभागयोग', verseCount: 28 },
+  { number: 18, name: 'मोक्षसंन्यासयोग', verseCount: 78 },
+];
