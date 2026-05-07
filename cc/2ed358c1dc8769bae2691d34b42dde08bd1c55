@@ -1,0 +1,30 @@
+src/components/Verbs.jsx
+  s_d5e8c30b294ba2::t_7419227f9588e3 1-85
+src/styles.css
+  s_d5e8c30b294ba2::t_6f081f2c2363a5 905-1700
+src/components/DhatuPeriodicTable.jsx
+  s_d5e8c30b294ba2::t_b8bd25633b5116 1-72
+src/App.jsx
+  s_d5e8c30b294ba2::t_8185e2c22a38a3 4,9
+  s_d5e8c30b294ba2::t_56ec34302d37d9 43
+src/components/DhatuDetail.jsx
+  s_d5e8c30b294ba2::t_aaa8bbac5d7e3d 1-185
+src/components/StackBuilder.jsx
+  s_d5e8c30b294ba2::t_e5fd88f701e122 1-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "cc2ed358c1dc8769bae2691d34b42dde08bd1c55",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
