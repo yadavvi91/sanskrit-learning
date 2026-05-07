@@ -4032,3 +4032,112 @@ td.cell.is-suppletive {
   color: var(--ink-soft);
   font-size: 12px;
 }
+
+/* Word popover — click a पद chip to see grammar */
+.word-popover-wrap { position: relative; display: inline-block; }
+
+.pada.has-parsing {
+  cursor: pointer;
+  position: relative;
+}
+
+.pada.has-parsing::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 4px;
+  height: 4px;
+  background: var(--saffron);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.pada.is-finite.has-parsing::after { background: var(--parchment); opacity: 0.9; }
+
+.pada.is-open {
+  background: var(--saffron);
+  color: var(--parchment);
+  border-color: var(--saffron);
+}
+
+.word-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 25;
+  min-width: 280px;
+  max-width: 360px;
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 16px -6px rgba(80, 50, 10, 0.4);
+}
+
+.wp-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.wp-word {
+  font-family: var(--font-deva);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.wp-category {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  white-space: nowrap;
+}
+
+.wp-gloss {
+  font-style: italic;
+  font-family: var(--font-prose);
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.wp-fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 12px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.wp-fields dt {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  align-self: baseline;
+}
+
+.wp-fields dd {
+  margin: 0;
+  font-family: var(--font-deva);
+  color: var(--ink);
+}
+
+.wp-note {
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px dashed var(--rule);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-soft);
+}

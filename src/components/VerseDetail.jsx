@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Glossary from './Glossary.jsx';
+import WordPopover from './WordPopover.jsx';
 import { holyBhagavadGitaUrl } from '../utils/sources.js';
 import { getNote, setNote } from '../utils/notes.js';
 import { copyVerseMarkdown } from '../utils/markdownExport.js';
@@ -40,11 +41,12 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       <Section label="पदच्छेद" labelEn="Word-split" glossaryTerm="पदच्छेद" onOpenPrimer={onOpenPrimer}>
         <ol className="padaccheda">
           {verse.padaccheda.map((word, i) => (
-            <li
-              key={`${word}-${i}`}
-              className={`pada ${finiteForms.has(word) ? 'is-finite' : ''}`}
-            >
-              {word}
+            <li key={`${word}-${i}`}>
+              <WordPopover
+                word={word}
+                parsing={verse.wordParsings?.[word] ?? null}
+                isFinite={finiteForms.has(word)}
+              />
             </li>
           ))}
         </ol>
