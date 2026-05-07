@@ -1023,14 +1023,15 @@ button:disabled {
 }
 
 .dhatu-cell {
-  display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1px;
   width: 100%;
   border: 1px solid var(--rule);
   background: var(--parchment);
-  padding: 8px 6px 6px;
+  padding: 10px 6px 8px;
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -1046,40 +1047,84 @@ button:disabled {
   outline-offset: 1px;
 }
 
-.dhatu-cell.in-gita::before {
+.dhatu-cell.in-gita::after {
   content: '✦';
   position: absolute;
+  top: 3px;
+  right: 5px;
   color: var(--saffron);
-  font-size: 10px;
-  margin-left: 22px;
-  margin-top: -2px;
+  font-size: 9px;
+  line-height: 1;
 }
 
-.dhatu-rank {
-  grid-row: 1; grid-column: 1;
+.dhatu-cell .dhatu-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.dhatu-cell .dhatu-iast {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 1.1;
+}
+
+/* Search + tier row */
+.dhatu-search {
+  flex: 1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.dhatu-tier-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.tier-chip {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
   font-family: 'Cinzel', serif;
   font-size: 9px;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.tier-chip.is-active {
+  background: var(--gold);
+  color: var(--parchment);
+  border-color: var(--gold);
+}
+
+.dhatu-result-count {
+  margin-left: auto;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
   color: var(--ink-faint);
 }
 
-.dhatu-deva {
-  grid-row: 2; grid-column: 1 / span 2;
-  font-family: 'Noto Serif Devanagari', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--ink);
+.dhatu-empty {
+  font-style: italic;
+  color: var(--ink-faint);
   text-align: center;
-}
-
-.dhatu-gana-tag {
-  grid-row: 1; grid-column: 2;
-  font-family: 'Cinzel', serif;
-  font-size: 9px;
-  background: var(--ink);
-  color: var(--parchment);
-  padding: 1px 5px;
-  border-radius: 2px;
+  padding: 20px 0;
+  font-size: 13px;
 }
 
 /* Gana color tints — applied as cell backgrounds */
