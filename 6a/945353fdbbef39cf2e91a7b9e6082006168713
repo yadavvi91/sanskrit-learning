@@ -1,0 +1,27 @@
+src/data/upasargas.test.js
+  s_d5e8c30b294ba2::t_f009a752470c93 59-62,64-72
+  s_d5e8c30b294ba2::t_60111670ea3825 1-58,63,73-93
+src/components/StackBuilder.jsx
+  s_d5e8c30b294ba2::t_52e8e42b467756 145-146,154-159
+src/data/upasargas.js
+  s_d5e8c30b294ba2::t_4ab35e8549bb68 1-65
+src/utils/conjugator.js
+  s_d5e8c30b294ba2::t_e305fedd47a005 13
+  s_d5e8c30b294ba2::t_b6d739e41ed459 61-62,64-77,86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "6a945353fdbbef39cf2e91a7b9e6082006168713",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
