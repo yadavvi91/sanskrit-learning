@@ -3828,3 +3828,207 @@ td.cell.is-suppletive {
   color: var(--parchment);
   border-color: var(--gold);
 }
+
+/* Sandhi Lab */
+.sandhi-lab-input { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+
+.sandhi-lab-input label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.sandhi-input {
+  font-family: var(--font-deva);
+  font-size: 22px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 4px;
+  color: var(--ink);
+  width: 100%;
+  max-width: 480px;
+}
+
+.sandhi-lab-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.sandhi-preset {
+  font-family: var(--font-deva);
+  font-size: 14px;
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 4px 10px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.sandhi-preset:hover {
+  background: var(--saffron-soft);
+  color: var(--ink);
+}
+
+.sandhi-lab-result {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+}
+
+.sandhi-result-parts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.sandhi-result-part {
+  font-family: var(--font-deva);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--parchment);
+  border: 1px solid var(--saffron-soft);
+  border-radius: 3px;
+  padding: 4px 12px;
+}
+
+.sandhi-result-sep {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink-faint);
+}
+
+.sandhi-result-empty {
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 14px;
+  margin: 0;
+}
+
+.sandhi-result-rules {
+  border-top: 1px dashed var(--rule);
+  padding-top: 12px;
+}
+
+.sandhi-result-rules h4 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.sandhi-result-rules ol {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.sandhi-result-rules .rule-name {
+  font-family: var(--font-deva);
+  color: var(--ink);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.sandhi-result-rules .rule-cat {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-right: 8px;
+}
+
+.sandhi-result-rules .rule-desc {
+  color: var(--ink-soft);
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.sandhi-result-rules .rule-example {
+  font-family: var(--font-deva);
+  color: var(--ink-soft);
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+}
+
+.sandhi-rules-catalogue {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+
+.sandhi-rules-catalogue summary {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.sandhi-rules-catalogue ul {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+.sandhi-rules-catalogue li {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sandhi-rules-catalogue .rule-name {
+  font-family: var(--font-deva);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.sandhi-rules-catalogue .rule-cat {
+  font-family: var(--font-display);
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--saffron);
+}
+
+.sandhi-rules-catalogue .rule-example {
+  font-family: var(--font-deva);
+  color: var(--ink-soft);
+  font-size: 12px;
+}

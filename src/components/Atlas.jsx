@@ -4,10 +4,12 @@ import Samasa from './Samasa.jsx';
 import Karaka from './Karaka.jsx';
 import Avyaya from './Avyaya.jsx';
 import AdjAdv from './AdjAdv.jsx';
+import SandhiLab from './SandhiLab.jsx';
 
 const ATLAS_TABS = [
   { id: 'pronouns', deva: 'सर्वनाम',     en: 'Pronouns' },
   { id: 'samasa',   deva: 'समास',         en: 'Compounds' },
+  { id: 'sandhi',   deva: 'सन्धि',          en: 'Sandhi Lab' },
   { id: 'karaka',   deva: 'कारक',          en: 'Case-roles' },
   { id: 'avyaya',   deva: 'अव्यय',          en: 'Indeclinables' },
   { id: 'adjadv',   deva: 'विशेषण-क्रियाविशेषण', en: 'Adj. & Adv.' },
@@ -47,6 +49,7 @@ export default function Atlas() {
         <div className="atlas-content">
           {tab === 'pronouns' && <Pronouns />}
           {tab === 'samasa'   && <Samasa onOpenVerse={onOpenVerse} />}
+          {tab === 'sandhi'   && <SandhiLab />}
           {tab === 'karaka'   && <Karaka />}
           {tab === 'avyaya'   && <Avyaya />}
           {tab === 'adjadv'   && <AdjAdv />}
