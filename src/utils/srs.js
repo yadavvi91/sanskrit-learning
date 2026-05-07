@@ -8,6 +8,7 @@ import { PATTERN_CATEGORIES } from '../data/patterns.js';
 import { DHATUS_TOP25 } from '../data/dhatus.js';
 import { conjugate } from './conjugator.js';
 import { LAKARA_META } from './endings.js';
+import { buildVocabulary } from './vocabulary.js';
 
 const STORE_KEY = 'srs_v1';
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -70,7 +71,20 @@ export function seedCards() {
     });
   }
 
-  // 5. lakara_signal cards: spotting signal recognition
+  // 5. vocab_recall cards: every unique word with a gloss → "what does X mean?"
+  const vocab = buildVocabulary();
+  for (const v of vocab) {
+    if (!v.gloss) continue;
+    cards.push({
+      id: `vocab-${v.word}`,
+      type: 'vocab_recall',
+      prompt: `What does "${v.word}" mean?`,
+      answer: v.root ? `${v.gloss} (root: ${v.root})` : v.gloss,
+      meta: { word: v.word, firstMet: `${v.firstMet.chapter}.${v.firstMet.verse}` },
+    });
+  }
+
+  // 6. lakara_signal cards: spotting signal recognition
   for (const [lakara, meta] of Object.entries(LAKARA_META)) {
     cards.push({
       id: `lakara-${lakara}`,

@@ -82,13 +82,25 @@ describe('seedCards — card synthesis from data', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('includes form_id, verse_anchor, pattern_recall, dhatu_drill, and lakara_signal types', () => {
+  it('includes all 6 card types', () => {
     const types = new Set(cards.map((c) => c.type));
     expect(types.has('form_id')).toBe(true);
     expect(types.has('verse_anchor')).toBe(true);
     expect(types.has('pattern_recall')).toBe(true);
     expect(types.has('dhatu_drill')).toBe(true);
     expect(types.has('lakara_signal')).toBe(true);
+    expect(types.has('vocab_recall')).toBe(true);
+  });
+
+  it('seeds vocab_recall cards from the auto-grown vocabulary', () => {
+    const vocab = cards.filter((c) => c.type === 'vocab_recall');
+    expect(vocab.length).toBeGreaterThan(20); // 4 verses → ~40 unique words
+    for (const c of vocab) {
+      expect(c.prompt).toMatch(/What does/);
+      expect(c.answer).toBeTruthy();
+      expect(c.meta.word).toBeTruthy();
+      expect(c.meta.firstMet).toMatch(/^\d+\.\d+$/);
+    }
   });
 
   it('seeds at least one card for every decoded verse (verse_anchor)', () => {

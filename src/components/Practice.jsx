@@ -155,6 +155,7 @@ function cardTypeLabel(type) {
     pattern_recall: 'Pattern recall',
     dhatu_drill: 'Dhātu drill',
     lakara_signal: 'Lakāra signal',
+    vocab_recall: 'Vocabulary',
   };
   return labels[type] ?? type;
 }
