@@ -1,6 +1,6 @@
-# Plan — Sanskrit Verb Learning System
+# Plan v2 — Sanskrit Verb Learning System
 
-> This plan describes the verb-learning subsystem—the second half of Sanskrit grammar. After nouns (विभक्ति × वचन × लिंग tracked in Patterns Won), this system teaches verbs through a 5-layer generative stack (धातु → गण → लकार → पद → पुरुष × वचन). Phased build: 50 roots first, expand to 192 (Khoomeik's chart). Sits alongside v2 (Primer) and v3 (Practice SRS) — this plan is the verb pedagogy engine that both feed on.
+> This plan describes the verb-learning subsystem — the second half of Sanskrit grammar. After nouns (विभक्ति × वचन × लिंग tracked in Patterns Won — shipped in [v1](v1-app.md)), this system teaches verbs through a 5-layer generative stack (धातु → गण → लकार → पद → पुरुष × वचन). Phased build: 50 roots first, expand to 192 (Khoomeik's chart). Sequenced ahead of [v3 Grammar Atlas](v3-grammar-atlas.md), [v4 Primer](v4-primer.md), and [v5 Practice mode](v5-practice-mode.md) — this plan is the verb pedagogy engine that the later plans feed on.
 
 ## Context
 

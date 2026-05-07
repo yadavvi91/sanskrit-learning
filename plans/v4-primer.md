@@ -1,6 +1,6 @@
-# Plan — Sanskrit Learning v2: Primer (Cold-Start Safety Net)
+# Plan v4 — Primer (Cold-Start Safety Net)
 
-> **Promoted from v3 to v2.** Re-entry safety should precede daily-practice machinery (the [Practice plan](v3-practice-mode.md) is now v3).
+> **Renumbered to v4.** Earlier drafts numbered this v2, then v3. After v0/v1 retrospectives + v2 (Verb sub-app) + v3 (Grammar Atlas) were sequenced ahead, the Primer slots in as v4 — re-entry safety after the two content engines land. Practice mode follows as [v5](v5-practice-mode.md).
 
 ## Context
 
@@ -15,7 +15,7 @@ After a 2–3 month gap, even the user's own decoded verses become opaque withou
 
 **Design rule (non-negotiable):** the primer must not overwhelm the main content. Verse Journey and Patterns Won stay clean. The primer is a *margin note*, not a chapter — available when wanted, invisible when not.
 
-## Why this ships before Practice mode (v3)
+## Why this ships before Practice mode (v5)
 
 Practice without re-entry safety is fragile: if you do daily SRS reviews for two weeks, then break for a month, you'll come back to cards you can't even parse. Doing the Primer *first* makes Practice robust.
 
@@ -104,5 +104,5 @@ The primer should fit on roughly one full-page-scroll on a 13" laptop. If it gro
 
 ## Sequencing (locked)
 
-1. **v2 (this plan) first** — primer + last-visit banner.
-2. **v3 (practice mode) second** — SRS + +1, building on a foundation the user can re-orient to.
+1. **v4 (this plan)** — primer + last-visit banner. Ships *after* v2 (Verb sub-app) and v3 (Grammar atlas) so it can refresh a richer corpus.
+2. **v5 (practice mode)** — SRS + "+1", building on a foundation the user can re-orient to.

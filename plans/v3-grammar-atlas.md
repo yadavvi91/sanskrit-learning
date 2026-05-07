@@ -1,6 +1,6 @@
-# Plan — Sanskrit Grammar Atlas
+# Plan v3 — Sanskrit Grammar Atlas
 
-> The third leg of the Sanskrit learning project. Parent app teaches **nouns** + **decode pipeline**. Verb sub-app (`plans/verb-system.md`) teaches **verbs**. This Grammar Atlas covers **everything else**: pronouns, compounds (समास), verbal prefixes (उपसर्ग), case-roles (कारक), indeclinables (अव्यय), adjectives/adverbs, negation, numbers, discourse patterns. Source spec: `CLAUDE3.md`.
+> The third leg of the Sanskrit learning project. [v1 app](v1-app.md) teaches **nouns** + **decode pipeline**. [v2 verb sub-app](v2-verb-system.md) teaches **verbs**. This Grammar Atlas covers **everything else**: pronouns, compounds (समास), verbal prefixes (उपसर्ग), case-roles (कारक), indeclinables (अव्यय), adjectives/adverbs, negation, numbers, discourse patterns. Source spec: `CLAUDE3.md`.
 
 ## Context
 
@@ -118,7 +118,7 @@ Both pronouns agree in gender/number with their respective nouns; cases are inde
 
 **Why this lives in the verb sub-app, not the Atlas:** a verbal prefix is a verb's prefix. The verb sub-app's parser must recognize प्रतियोत्स्यामि → प्रति + √युध् + लृट् + उत्तम एक. Splitting that across two apps would be incoherent.
 
-**This phase is therefore a pointer, not a build target inside the Atlas.** It is listed here only because CLAUDE3.md groups it with "everything else." The actual implementation belongs in `plans/verb-system.md`.
+**This phase is therefore a pointer, not a build target inside the Atlas.** It is listed here only because CLAUDE3.md groups it with "everything else." The actual implementation belongs in `plans/v2-verb-system.md`.
 
 ### What needs to land in the verb sub-app
 
@@ -135,7 +135,7 @@ Both pronouns agree in gender/number with their respective nouns; cases are inde
 
 ### Action item for the verb-system plan
 
-Add a "उपसर्ग parser + reference table" sub-section to `plans/verb-system.md` Phase 1b. Document the 22-prefix table format. Wire the parser as a pre-processing step before dhātu lookup.
+Add a "उपसर्ग parser + reference table" sub-section to `plans/v2-verb-system.md` Phase 1b. Document the 22-prefix table format. Wire the parser as a pre-processing step before dhātu lookup.
 
 ---
 
@@ -417,7 +417,7 @@ The Atlas occupies one top-level tab in the masthead alongside Verse Journey, Pa
 
 ### Cross-linking taxonomy
 
-Every Gita reference in the Atlas is a click-through to Verse Journey. Every Atlas concept name in Verse Detail and Patterns Won (पदच्छेद, अन्वय, विभक्ति, लकार, कृदन्त, समास, कारक, अव्यय) is a `<Glossary>` trigger that opens the matching Atlas page. The glossary popover infrastructure is already specified in `plans/v2-primer.md` — reuse that component when v2 ships.
+Every Gita reference in the Atlas is a click-through to Verse Journey. Every Atlas concept name in Verse Detail and Patterns Won (पदच्छेद, अन्वय, विभक्ति, लकार, कृदन्त, समास, कारक, अव्यय) is a `<Glossary>` trigger that opens the matching Atlas page. The glossary popover infrastructure is also specified in `plans/v4-primer.md` — whichever plan ships first owns the component; the other reuses it.
 
 ### Auto-grown corpora
 
@@ -440,7 +440,7 @@ Both auto-grow as verses are decoded. No manual list-tending required.
 6. **Phase 7: Negation + Numbers + Discourse** — defer or short reference only.
 7. **Phase 2: उपसर्ग** — handed off to the verb sub-app's own plan; not built here.
 
-The verb sub-app (`plans/verb-system.md`) and this Atlas can be built in parallel after Phase 1 lands. They have one cross-cutting integration: उपसर्ग parsing must precede dhātu lookup in the verb sub-app, but Atlas Phase 1 (Pronouns) does not depend on the verb sub-app.
+The verb sub-app (`plans/v2-verb-system.md`) and this Atlas can be built in parallel after Phase 1 lands. They have one cross-cutting integration: उपसर्ग parsing must precede dhātu lookup in the verb sub-app, but Atlas Phase 1 (Pronouns) does not depend on the verb sub-app.
 
 ---
 
@@ -506,9 +506,9 @@ Inherits parent project + verb sub-app:
 
 | Plan | Relationship |
 |---|---|
-| `plans/verb-system.md` | Atlas Phase 2 (उपसर्ग) lives there, not here. Verb sub-app and Atlas otherwise independent. |
-| `plans/v2-primer.md` | Atlas glossary popovers should reuse the `<Glossary>` component the Primer plan specifies. The Primer's "what is समास?" callout deep-links into Atlas Phase 3. |
-| `plans/v3-practice-mode.md` | Atlas drill modes (समास type identifier, comparison-suffix drill, kāraka recognition) seed the SRS engine via the existing card-type schema. |
+| `plans/v2-verb-system.md` | Atlas Phase 2 (उपसर्ग) lives there, not here. Verb sub-app and Atlas otherwise independent. |
+| `plans/v4-primer.md` | Atlas glossary popovers should reuse the `<Glossary>` component the Primer plan specifies. The Primer's "what is समास?" callout deep-links into Atlas Phase 3. |
+| `plans/v5-practice-mode.md` | Atlas drill modes (समास type identifier, comparison-suffix drill, kāraka recognition) seed the SRS engine via the existing card-type schema. |
 | Parent app (v1, shipping) | Decode pipeline gains a विग्रह step. `samasNotes[]` becomes the seed corpus for the compound bank. Patterns Won gets new entries as Atlas concepts land (one pattern per कारक, one per major समास type, etc.). |
 
 ---

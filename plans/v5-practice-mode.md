@@ -1,6 +1,6 @@
-# Plan — Sanskrit Learning v3: Practice Mode (SRS + "+1")
+# Plan v5 — Practice Mode (SRS + "+1")
 
-> **Renumbered v2 → v3.** The Primer (originally drafted as v3) ships first as v2 — re-entry safety should precede daily-practice machinery. See [v2-primer.md](v2-primer.md).
+> **Renumbered to v5.** Earlier drafts numbered this v2, then v3. After v0/v1 retrospectives + v2 (Verb sub-app) + v3 (Grammar Atlas) + v4 (Primer) were sequenced ahead, Practice mode slots in as v5 — daily-drill machinery on top of a foundation the user can re-orient to. See [v4-primer.md](v4-primer.md) for the immediately-preceding plan.
 
 ## Context
 
@@ -10,7 +10,7 @@ The Sanskrit Learning app currently *records* what's been learned (4 decoded ver
 - **The bvsiitm "+1" pedagogy** — *Known → +1 → Drill → Repeat* — so each session introduces exactly one new concept and drills everything earned so far.
 - **A persistent ledger** of what's been studied, when, and how well — surviving browser cache clears, syncing easily across the Mac mini and MacBook Pro.
 
-This v3 adds a **Practice** tab to the existing app, backed by a small Node + SQLite service running locally next to the Vite dev server.
+This v5 adds a **Practice** tab to the existing app, backed by a small Node + SQLite service running locally next to the Vite dev server.
 
 ## Decisions locked (from clarifying questions)
 
