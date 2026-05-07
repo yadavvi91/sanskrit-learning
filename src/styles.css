@@ -3307,3 +3307,46 @@ td.cell.is-suppletive {
     radial-gradient(circle at 100% 100%, #f3dca6 0%, transparent 50%),
     var(--parchment);
 }
+
+/* Jump-to-verse input in the journey rail */
+.jump-form {
+  margin-bottom: 10px;
+}
+
+.jump-input {
+  width: 100%;
+  font-family: var(--font-prose);
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.jump-input::placeholder {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Per-chapter progress: tiny bar tucked beside the count */
+.chapter-progress {
+  display: inline-block;
+  width: 28px;
+  height: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.chapter-progress-fill {
+  display: block;
+  height: 100%;
+  background: var(--saffron);
+}

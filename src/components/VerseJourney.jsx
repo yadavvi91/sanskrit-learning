@@ -11,6 +11,7 @@ export default function VerseJourney() {
   const params = useParams();
   const navigate = useNavigate();
   const [showOnlyDecoded, setShowOnlyDecoded] = useState(false);
+  const [jumpInput, setJumpInput] = useState('');
 
   // Selection comes from the URL. Default = first decoded verse.
   const selected = useMemo(() => {
@@ -61,6 +62,29 @@ export default function VerseJourney() {
             );
           })}
         </div>
+
+        <form
+          className="jump-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const m = jumpInput.trim().match(/^(\d{1,2})[.\s/-](\d{1,3})$/);
+            if (!m) return;
+            const c = Number(m[1]);
+            const v = Number(m[2]);
+            if (!decodedKeys.has(`${c}.${v}`)) return;
+            setSelected({ chapter: c, verse: v });
+            setJumpInput('');
+          }}
+        >
+          <input
+            type="text"
+            className="jump-input"
+            placeholder="Go to e.g. 4.7"
+            value={jumpInput}
+            onChange={(e) => setJumpInput(e.target.value)}
+            aria-label="Jump to a verse"
+          />
+        </form>
 
         <button
           type="button"
@@ -117,9 +141,17 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
         <span className="chapter-num">अध्यायः {chapter.number}</span>
         <span className="chapter-name">{chapter.name}</span>
         <span className="chapter-count">
-          {showOnlyDecoded
-            ? `${decodedInChapter.length} decoded`
-            : `${chapter.verseCount} verses`}
+          {decodedInChapter.length > 0
+            ? `${decodedInChapter.length}/${chapter.verseCount}`
+            : `${chapter.verseCount}`}
+          {decodedInChapter.length > 0 && (
+            <span className="chapter-progress" title={`${decodedInChapter.length} of ${chapter.verseCount} verses decoded`}>
+              <span
+                className="chapter-progress-fill"
+                style={{ width: `${Math.min(100, (decodedInChapter.length / chapter.verseCount) * 100)}%` }}
+              />
+            </span>
+          )}
         </span>
       </summary>
       <div className="verse-grid">
