@@ -149,8 +149,10 @@ export const PRIMER_SECTIONS = [
   {
     id: 'compounds',
     title: 'समास — compound types',
+    linkToAtlas: 'samasa',
+    linkLabel: 'Open Atlas → Compounds',
     body: [
-      'See the dedicated <strong>Compounds</strong> section in the Atlas for the full table. Quick reference:',
+      'Quick reference:',
       '- **तत्पुरुष** — case-determined (षष्ठी inside: राजपुत्रः = "king\'s son")',
       '- **कर्मधारय** — adj + noun (नीलोत्पलम् = "blue lotus")',
       '- **द्वन्द्व** — list (रामलक्ष्मणौ = "Rāma and Lakṣmaṇa")',
@@ -161,28 +163,31 @@ export const PRIMER_SECTIONS = [
   },
   {
     id: 'pronouns',
-    title: 'Pronouns — see the Atlas',
+    title: 'Pronouns',
+    linkToAtlas: 'pronouns',
+    linkLabel: 'Open Atlas → Pronouns',
     body: [
       'Personal pronouns (अस्मद्, युष्मद्) are pure memorization — suppletive, no gender, with enclitic alternates.',
       'सर्वनाम pronouns (तद्, यद्, किम्, सर्व, अन्य, एक, एतद्) all share one template with four <strong>स्म-cells</strong> deviating from the राम pattern.',
-      'Open the Atlas → Pronouns for the full tables.',
     ],
   },
   {
     id: 'karaka',
-    title: 'कारक — see the Atlas',
+    title: 'कारक — semantic case-roles',
+    linkToAtlas: 'karaka',
+    linkLabel: 'Open Atlas → Case-roles',
     body: [
       'विभक्ति is morphological case. कारक is the semantic role. They usually align, but in passive constructions the विभक्ति assignments swap while the कारक roles do not.',
-      'Open the Atlas → Case-roles for the full table.',
     ],
   },
   {
     id: 'indeclinables',
-    title: 'अव्यय — see the Atlas',
+    title: 'अव्यय — indeclinables',
+    linkToAtlas: 'avyaya',
+    linkLabel: 'Open Atlas → Indeclinables',
     body: [
       'Pāṇini\'s third bin: words that don\'t change form. Particles (च, हि, तु, एव), postpositions (सह, विना, उपरि), most adverbs.',
       'Articles and prepositions don\'t exist as word classes — case endings do their work.',
-      'Open the Atlas → Indeclinables for the auto-grown frequency list and full reference.',
     ],
   },
 ];

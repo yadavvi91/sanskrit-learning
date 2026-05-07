@@ -10,7 +10,7 @@ function renderInline(s) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-export default function Primer({ jumpToSection }) {
+export default function Primer({ jumpToSection, onOpenAtlas }) {
   const sectionRefs = useRef({});
 
   useEffect(() => {
@@ -77,6 +77,16 @@ export default function Primer({ jumpToSection }) {
               )}
 
               {sec.aside && <p className="primer-aside">{renderInline(sec.aside)}</p>}
+
+              {sec.linkToAtlas && onOpenAtlas && (
+                <button
+                  type="button"
+                  className="primer-atlas-link"
+                  onClick={() => onOpenAtlas(sec.linkToAtlas)}
+                >
+                  {sec.linkLabel || `Open Atlas → ${sec.linkToAtlas}`} ↗
+                </button>
+              )}
             </section>
           ))}
         </div>

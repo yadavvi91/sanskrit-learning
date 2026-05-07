@@ -20,6 +20,7 @@ export default function App() {
   const [view, setView] = useState('journey');
   const [primerJumpTo, setPrimerJumpTo] = useState(null);
   const [verseJumpTo, setVerseJumpTo] = useState(null);
+  const [atlasJumpTo, setAtlasJumpTo] = useState(null);
 
   const openPrimer = useCallback((sectionId) => {
     setPrimerJumpTo(sectionId ?? null);
@@ -29,6 +30,11 @@ export default function App() {
   const openVerse = useCallback((chapter, verse) => {
     setVerseJumpTo({ chapter, verse });
     setView('journey');
+  }, []);
+
+  const openAtlas = useCallback((sectionId) => {
+    setAtlasJumpTo(sectionId ?? null);
+    setView('atlas');
   }, []);
 
   return (
@@ -62,8 +68,8 @@ export default function App() {
         {view === 'journey' && <VerseJourney onOpenPrimer={openPrimer} jumpTo={verseJumpTo} />}
         {view === 'patterns' && <PatternsWon onOpenPrimer={openPrimer} onOpenVerse={openVerse} />}
         {view === 'verbs' && <Verbs onOpenVerse={openVerse} />}
-        {view === 'atlas' && <Atlas onOpenVerse={openVerse} />}
-        {view === 'primer' && <Primer jumpToSection={primerJumpTo} />}
+        {view === 'atlas' && <Atlas onOpenVerse={openVerse} jumpToSection={atlasJumpTo} />}
+        {view === 'primer' && <Primer jumpToSection={primerJumpTo} onOpenAtlas={openAtlas} />}
         {view === 'practice' && <Practice />}
       </main>
 

@@ -2845,3 +2845,51 @@ td.cell.is-suppletive {
   text-decoration-color: var(--gold);
 }
 
+
+/* Primer → Atlas cross-link button */
+.primer-atlas-link {
+  margin-top: 12px;
+  align-self: flex-start;
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.primer-atlas-link:hover {
+  background: var(--gold);
+  color: var(--parchment);
+}
+
+/* Visual rule between TOC and content for stronger column connection */
+.primer-layout {
+  position: relative;
+}
+
+.primer-layout::before {
+  content: '';
+  position: absolute;
+  left: 252px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0,
+    var(--rule) 30px,
+    var(--rule) calc(100% - 30px),
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .primer-layout::before { display: none; }
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Pronouns from './Pronouns.jsx';
 import Samasa from './Samasa.jsx';
 import Karaka from './Karaka.jsx';
@@ -13,8 +13,15 @@ const ATLAS_TABS = [
   { id: 'adjadv',   deva: 'विशेषण-क्रियाविशेषण', en: 'Adj. & Adv.' },
 ];
 
-export default function Atlas({ onOpenVerse }) {
-  const [tab, setTab] = useState('pronouns');
+export default function Atlas({ onOpenVerse, jumpToSection }) {
+  const [tab, setTab] = useState(jumpToSection ?? 'pronouns');
+
+  // Cross-tab navigation: parent (App) updates jumpToSection; switch to it.
+  useEffect(() => {
+    if (jumpToSection && ATLAS_TABS.some((t) => t.id === jumpToSection)) {
+      setTab(jumpToSection);
+    }
+  }, [jumpToSection]);
 
   return (
     <div className="atlas">
