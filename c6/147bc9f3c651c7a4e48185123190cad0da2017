@@ -1,0 +1,28 @@
+src/utils/srs.test.js
+  s_d5e8c30b294ba2::t_5cfd6aef86d30c 1-136
+src/styles.css
+  s_d5e8c30b294ba2::t_b8f66e09c757ac 2492-2688
+src/utils/srs.js
+  s_d5e8c30b294ba2::t_9063d32733c2f2 1-216
+src/components/Practice.jsx
+  s_d5e8c30b294ba2::t_4b4f1e38949acd 1-160
+src/App.jsx
+  s_d5e8c30b294ba2::t_9bf7d483de7093 61
+  s_d5e8c30b294ba2::t_d79564ab2c1b47 8,16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "c6147bc9f3c651c7a4e48185123190cad0da2017",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
