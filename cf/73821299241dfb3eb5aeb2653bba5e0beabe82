@@ -1,0 +1,30 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_21aed4c5d1904f 426-455
+  s_d5e8c30b294ba2::t_f9a25edf2dfe2f 195-224
+  s_d5e8c30b294ba2::t_d2fa565511ccaf 74-103
+  s_d5e8c30b294ba2::t_6f282d4a25967f 299-328
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_29ff4021da6d37 144-149,154-192
+src/styles.css
+  s_d5e8c30b294ba2::t_210496542c06cd 3539-3653
+checkpoint-14.md
+  s_d5e8c30b294ba2::t_59f3983f9b69ee 1-45
+src/data/verses.refs.test.js
+  s_d5e8c30b294ba2::t_0af36ffeb36e55 1-58
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "cf73821299241dfb3eb5aeb2653bba5e0beabe82",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
