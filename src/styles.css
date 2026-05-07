@@ -2893,3 +2893,181 @@ td.cell.is-suppletive {
 @media (max-width: 900px) {
   .primer-layout::before { display: none; }
 }
+
+/* ==================== Patterns Won — sortable matrix ==================== */
+
+.patterns-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.patterns-search {
+  flex: 1;
+  min-width: 220px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  padding: 7px 10px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.patterns-cat-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cat-chip {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+.cat-chip.is-active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: var(--parchment);
+}
+
+.patterns-result-count {
+  margin-left: auto;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.patterns-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.patterns-matrix th, .patterns-matrix td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.patterns-matrix thead th {
+  background: var(--parchment-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  user-select: none;
+}
+
+.patterns-th {
+  cursor: pointer;
+}
+
+.patterns-th:hover {
+  background: var(--parchment-edge);
+}
+
+.patterns-th.is-sorted {
+  color: var(--saffron);
+}
+
+.th-arrow {
+  margin-left: 4px;
+  font-size: 8px;
+  color: var(--saffron);
+}
+
+.patterns-row:hover {
+  background: #f8f0d9;
+}
+
+.pattern-cell-name {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.pattern-cell-meaning {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.pattern-cell-category {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.pattern-cell-first {
+  white-space: nowrap;
+}
+
+.verse-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--saffron);
+  padding: 0;
+  text-decoration: underline dotted var(--saffron-soft);
+  text-underline-offset: 2px;
+}
+
+.verse-link:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold);
+}
+
+.verse-link-static {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+.pattern-cell-count {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.pattern-cell-example {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.patterns-empty {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-faint);
+  padding: 24px 0;
+}
