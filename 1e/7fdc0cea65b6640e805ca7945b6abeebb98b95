@@ -1,0 +1,32 @@
+src/utils/sandhi.js
+  s_d5e8c30b294ba2::t_3c30bbca69c5af 149,182
+  s_d5e8c30b294ba2::t_d05e841265b2ea 233-236
+  s_d5e8c30b294ba2::t_934db2e4155bb3 261-267,274,276-310,313,315
+  s_d5e8c30b294ba2::t_17fed9b3a5aa00 230
+  s_d5e8c30b294ba2::t_1310f53ea6a742 329-341
+  s_d5e8c30b294ba2::t_e53d5688254020 260,268-270,275,311-312
+  s_d5e8c30b294ba2::t_ff54ebd14b0787 351,355
+  s_d5e8c30b294ba2::t_4369bcf15f9e7c 364-365
+  s_d5e8c30b294ba2::t_d16a09b15aa4be 1-148,150-181,183-229,231-232,237-259,271-273,314,316-317,353,356-361,368-375
+  s_d5e8c30b294ba2::t_ae3cce0f75bdfd 318-328,342-350,352,354,362-363,366-367
+checkpoint-18.md
+  s_d5e8c30b294ba2::t_04a5c38da4fb8e 1-51
+src/utils/sandhi.test.js
+  s_d5e8c30b294ba2::t_f1cf17d7078a61 1-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "1e7fdc0cea65b6640e805ca7945b6abeebb98b95",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
