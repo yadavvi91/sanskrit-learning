@@ -1,18 +1,27 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
 import Verbs from './components/Verbs.jsx';
 import Atlas from './components/Atlas.jsx';
+import Primer from './components/Primer.jsx';
+import LastVisitBanner from './components/LastVisitBanner.jsx';
 
 const VIEWS = [
   { id: 'journey', label: 'Verse Journey' },
   { id: 'patterns', label: 'Patterns Won' },
   { id: 'verbs', label: 'Verbs' },
   { id: 'atlas', label: 'Atlas' },
+  { id: 'primer', label: 'Primer' },
 ];
 
 export default function App() {
   const [view, setView] = useState('journey');
+  const [primerJumpTo, setPrimerJumpTo] = useState(null);
+
+  const openPrimer = useCallback((sectionId) => {
+    setPrimerJumpTo(sectionId ?? null);
+    setView('primer');
+  }, []);
 
   return (
     <div className="app">
@@ -39,11 +48,14 @@ export default function App() {
         </div>
       </header>
 
+      <LastVisitBanner onOpenPrimer={openPrimer} />
+
       <main className="content">
         {view === 'journey' && <VerseJourney />}
         {view === 'patterns' && <PatternsWon />}
         {view === 'verbs' && <Verbs />}
         {view === 'atlas' && <Atlas />}
+        {view === 'primer' && <Primer jumpToSection={primerJumpTo} />}
       </main>
 
       <footer className="colophon">

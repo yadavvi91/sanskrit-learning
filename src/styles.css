@@ -2311,3 +2311,181 @@ td.cell.is-suppletive {
 .ex-en { font-style: italic; color: var(--ink-soft); }
 
 .adverb-pattern + .adverb-pattern { margin-top: 10px; }
+
+/* ==================== Last-visit banner ==================== */
+
+.last-visit-banner {
+  background: #f3e9d0;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.banner-icon { font-size: 20px; }
+.banner-msg { flex: 1; font-style: italic; color: var(--ink); }
+
+.banner-actions { display: inline-flex; gap: 6px; }
+
+.banner-btn-primary, .banner-btn-secondary {
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+}
+
+.banner-btn-primary { background: var(--gold); color: var(--parchment); }
+.banner-btn-secondary { background: transparent; color: var(--ink-soft); border-color: var(--rule); }
+
+/* ==================== Primer ==================== */
+
+.primer { display: flex; flex-direction: column; gap: 16px; }
+
+.primer-header { border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+.primer-title { font-family: 'Noto Serif Devanagari', serif; font-size: 28px; margin: 0; }
+.primer-sub { margin: 4px 0 0; font-style: italic; color: var(--ink-soft); }
+
+.primer-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .primer-layout { grid-template-columns: 1fr; }
+}
+
+.primer-toc {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 10px;
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: var(--shadow);
+}
+
+.primer-toc-item {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primer-toc-item:hover { background: var(--parchment); }
+
+.primer-content {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.primer-section { scroll-margin-top: 32px; }
+
+.primer-section-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.primer-section p { margin: 0 0 6px; line-height: 1.6; }
+
+.primer-aside {
+  background: #f1eed3;
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* ==================== Glossary popover ==================== */
+
+.glossary-wrap { position: relative; display: inline-flex; align-items: baseline; }
+
+.glossary-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+  border: 1px solid var(--gold);
+  background: var(--parchment-deep);
+  color: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: super;
+  line-height: 1;
+}
+
+.glossary-trigger:hover { background: var(--gold); color: var(--parchment); }
+
+.glossary-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 30;
+  min-width: 260px;
+  max-width: 360px;
+  margin-top: 6px;
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 14px -6px rgba(80, 50, 10, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-style: normal;
+}
+
+.glossary-popover-term {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.glossary-popover-def {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.glossary-popover-link {
+  align-self: flex-start;
+  margin-top: 4px;
+  background: transparent;
+  border: none;
+  color: var(--saffron);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 2px 0;
+}
