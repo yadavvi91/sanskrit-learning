@@ -3071,3 +3071,82 @@ td.cell.is-suppletive {
   color: var(--ink-faint);
   padding: 24px 0;
 }
+
+/* ==================== Decoded-so-far rail (compact) ==================== */
+
+.decoded-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0 8px;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 10px;
+}
+
+.decoded-count {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--saffron);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.decoded-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.recent-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.recent-chip {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  background: var(--parchment);
+  border: 1px solid var(--saffron-soft);
+  color: var(--saffron);
+  padding: 4px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+
+.recent-chip:hover {
+  background: var(--saffron-soft);
+}
+
+.recent-chip.is-active {
+  background: var(--saffron);
+  color: var(--parchment);
+  border-color: var(--saffron);
+}
+
+.decoded-only-toggle {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 6px 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-align: left;
+}
+
+.decoded-only-toggle.is-active {
+  background: var(--parchment);
+  border-color: var(--saffron);
+  color: var(--saffron);
+}

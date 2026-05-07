@@ -4,12 +4,14 @@ import { VERSES, getVerse, isDecoded } from '../data/verses.js';
 import VerseDetail from './VerseDetail.jsx';
 
 const orderedDecoded = [...VERSES].sort((a, b) => a.decodeIndex - b.decodeIndex);
+const RECENT_COUNT = 5;
 
 export default function VerseJourney({ onOpenPrimer, jumpTo }) {
   const [selected, setSelected] = useState(() => {
     const first = orderedDecoded[0];
     return first ? { chapter: first.chapter, verse: first.verse } : null;
   });
+  const [showOnlyDecoded, setShowOnlyDecoded] = useState(false);
 
   // Cross-tab navigation: when another tab requests a specific verse, jump to it.
   useEffect(() => {
@@ -27,39 +29,51 @@ export default function VerseJourney({ onOpenPrimer, jumpTo }) {
     []
   );
 
+  // Most-recent N decoded — sort by decodeIndex desc, take top N.
+  const recent = useMemo(
+    () => [...orderedDecoded].sort((a, b) => b.decodeIndex - a.decodeIndex).slice(0, RECENT_COUNT),
+    []
+  );
+
   return (
     <div className="journey">
       <aside className="journey-rail">
-        <h2 className="rail-heading">Decoded so far</h2>
-        <ol className="decode-order">
-          {orderedDecoded.map((v) => {
-            const key = `${v.chapter}.${v.verse}`;
-            const active =
-              selected && selected.chapter === v.chapter && selected.verse === v.verse;
+        <div className="decoded-summary">
+          <span className="decoded-count">{VERSES.length}</span>
+          <span className="decoded-label">decoded so far</span>
+        </div>
+
+        <div className="recent-chips">
+          {recent.map((v) => {
+            const active = selected?.chapter === v.chapter && selected?.verse === v.verse;
             return (
-              <li key={key}>
-                <button
-                  type="button"
-                  className={`decode-order-item ${active ? 'is-active' : ''}`}
-                  onClick={() => setSelected({ chapter: v.chapter, verse: v.verse })}
-                >
-                  <span className="decode-order-num">{v.decodeIndex}</span>
-                  <span className="decode-order-ref">
-                    Gītā {v.chapter}.{v.verse}
-                  </span>
-                  <span className="decode-order-title">{v.title}</span>
-                </button>
-              </li>
+              <button
+                key={`${v.chapter}.${v.verse}`}
+                type="button"
+                className={`recent-chip ${active ? 'is-active' : ''}`}
+                onClick={() => setSelected({ chapter: v.chapter, verse: v.verse })}
+                title={v.title}
+              >
+                {v.chapter}.{v.verse}
+              </button>
             );
           })}
-        </ol>
+        </div>
+
+        <button
+          type="button"
+          className={`decoded-only-toggle ${showOnlyDecoded ? 'is-active' : ''}`}
+          onClick={() => setShowOnlyDecoded(!showOnlyDecoded)}
+        >
+          {showOnlyDecoded ? '◉ Showing decoded only — click to see all' : '○ Show only decoded'}
+        </button>
 
         <div className="rail-divider" />
 
         <h2 className="rail-heading">All chapters</h2>
         <p className="rail-note">
           Decoded verses are <span className="legend-decoded">in saffron</span>.
-          Greyed cells await decoding.
+          {!showOnlyDecoded && ' Greyed cells await decoding.'}
         </p>
         <div className="chapter-list">
           {CHAPTERS.map((ch) => (
@@ -69,6 +83,7 @@ export default function VerseJourney({ onOpenPrimer, jumpTo }) {
               decodedKeys={decodedKeys}
               selected={selected}
               onSelect={setSelected}
+              showOnlyDecoded={showOnlyDecoded}
             />
           ))}
         </div>
@@ -87,19 +102,29 @@ export default function VerseJourney({ onOpenPrimer, jumpTo }) {
   );
 }
 
-function ChapterRow({ chapter, decodedKeys, selected, onSelect }) {
+function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded }) {
   const cells = Array.from({ length: chapter.verseCount }, (_, i) => i + 1);
+  const decodedInChapter = cells.filter((v) => decodedKeys.has(`${chapter.number}.${v}`));
+
+  // In "decoded only" mode, hide chapters with no decoded verses.
+  if (showOnlyDecoded && decodedInChapter.length === 0) return null;
+
   return (
-    <details className="chapter-row" open={chapter.number <= 2}>
+    <details className="chapter-row" open={chapter.number <= 2 || (showOnlyDecoded && decodedInChapter.length > 0)}>
       <summary className="chapter-summary">
         <span className="chapter-num">अध्यायः {chapter.number}</span>
         <span className="chapter-name">{chapter.name}</span>
-        <span className="chapter-count">{chapter.verseCount} verses</span>
+        <span className="chapter-count">
+          {showOnlyDecoded
+            ? `${decodedInChapter.length} decoded`
+            : `${chapter.verseCount} verses`}
+        </span>
       </summary>
       <div className="verse-grid">
         {cells.map((v) => {
           const key = `${chapter.number}.${v}`;
           const decoded = decodedKeys.has(key);
+          if (showOnlyDecoded && !decoded) return null;
           const active =
             selected && selected.chapter === chapter.number && selected.verse === v;
           return (
