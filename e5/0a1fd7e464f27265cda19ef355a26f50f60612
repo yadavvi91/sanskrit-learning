@@ -1,0 +1,26 @@
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_9202e98e4087df 49-63
+src/styles.css
+  s_d5e8c30b294ba2::t_aebecac03115fe 2726-2736
+checkpoint-3.md
+  s_d5e8c30b294ba2::t_3a40ec45a9667b 81-88,95-96
+  s_d5e8c30b294ba2::t_a52bf7200f753c 72
+  s_d5e8c30b294ba2::t_00901c7fbf265f 66
+  s_d5e8c30b294ba2::t_47415ff8033b1d 13-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e50a1fd7e464f27265cda19ef355a26f50f60612",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
