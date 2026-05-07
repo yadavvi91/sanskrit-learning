@@ -8,6 +8,7 @@ import Primer from './components/Primer.jsx';
 import LastVisitBanner from './components/LastVisitBanner.jsx';
 import Practice from './components/Practice.jsx';
 import Vocabulary from './components/Vocabulary.jsx';
+import DecodeHelper from './components/DecodeHelper.jsx';
 import ThemePicker from './components/ThemePicker.jsx';
 
 const VIEWS = [
@@ -16,6 +17,7 @@ const VIEWS = [
   { path: '/verbs',    label: 'Verbs' },
   { path: '/atlas',    label: 'Atlas' },
   { path: '/words',    label: 'Words' },
+  { path: '/decode',   label: 'Decode' },
   { path: '/primer',   label: 'Primer' },
   { path: '/practice', label: 'Practice' },
 ];
@@ -67,6 +69,7 @@ export default function App() {
           <Route path="/atlas" element={<Atlas />} />
           <Route path="/atlas/:section" element={<Atlas />} />
           <Route path="/words" element={<Vocabulary />} />
+          <Route path="/decode" element={<DecodeHelper />} />
           <Route path="/primer" element={<Primer />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="*" element={<NotFound />} />
