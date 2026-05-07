@@ -1,0 +1,22 @@
+src/components/PatternsWon.jsx
+  s_d5e8c30b294ba2::t_623a18e5885c02 3
+  s_d5e8c30b294ba2::t_a060de16bd0ca8 29-44
+src/styles.css
+  s_d5e8c30b294ba2::t_a2ccacc227c576 2708-2725
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e2743f53cad5b7ffb64578ee3a7823b13017f6e7",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
