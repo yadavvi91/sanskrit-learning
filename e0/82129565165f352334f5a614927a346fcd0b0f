@@ -1,0 +1,23 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_2cecad182b3cad 1026-1028,1030,1034,1050,1053-1054,1057,1060,1062,1065-1085,1088-1098,1101-1109,1111-1127
+src/components/DhatuPeriodicTable.jsx
+  s_d5e8c30b294ba2::t_8867ad7bd29379 4-13,16-31,39,43-65,82,85-111
+checkpoint-5.md
+  s_d5e8c30b294ba2::t_52c67e2cce379c 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e082129565165f352334f5a614927a346fcd0b0f",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
