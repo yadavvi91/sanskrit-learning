@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Glossary from './Glossary.jsx';
 import { holyBhagavadGitaUrl } from '../utils/sources.js';
 import { getNote, setNote } from '../utils/notes.js';
+import { copyVerseMarkdown } from '../utils/markdownExport.js';
 
 export default function VerseDetail({ verse, onOpenPrimer }) {
   const finiteForms = new Set(verse.finiteVerbs?.map((v) => v.form) || []);
@@ -21,6 +22,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
           >
             holy-bhagavad-gita.org ↗
           </a>
+          <CopyMarkdownButton verse={verse} />
         </div>
         {verse.title && <p className="verse-title">{verse.title}</p>}
       </header>
@@ -154,6 +156,34 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         <NotesPanel chapter={verse.chapter} verse={verse.verse} />
       </Section>
     </article>
+  );
+}
+
+function CopyMarkdownButton({ verse }) {
+  const [status, setStatus] = useState('idle'); // 'idle' | 'copied' | 'failed'
+
+  async function handleClick() {
+    try {
+      await copyVerseMarkdown(verse);
+      setStatus('copied');
+      setTimeout(() => setStatus('idle'), 2000);
+    } catch {
+      setStatus('failed');
+      setTimeout(() => setStatus('idle'), 2000);
+    }
+  }
+
+  const label = status === 'copied' ? '✓ Copied' : status === 'failed' ? '✗ Failed' : 'Copy as Markdown';
+
+  return (
+    <button
+      type="button"
+      className="verse-export-link"
+      onClick={handleClick}
+      title="Copy this verse as a self-contained Markdown block (paste into Obsidian, draft email, etc.)"
+    >
+      {label}
+    </button>
   );
 }
 
