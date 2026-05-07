@@ -902,3 +902,799 @@ button:disabled {
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+
+/* ==================== Verb sub-app ==================== */
+
+.verbs {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.verbs-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 14px;
+}
+
+.verbs-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 28px;
+  margin: 0;
+}
+
+.verbs-sub {
+  margin: 4px 0 0;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+
+.sub-tabs {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--parchment-deep);
+  padding: 3px;
+}
+
+.sub-tab {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  padding: 7px 14px;
+  border-radius: 3px;
+}
+
+.sub-tab.is-active {
+  background: var(--saffron);
+  color: var(--parchment);
+}
+
+.verbs-split {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .verbs-split { grid-template-columns: 1fr; }
+}
+
+/* ---- Periodic Table ---- */
+
+.dhatu-table {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 24px;
+}
+
+.dhatu-table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+.dhatu-toolbar-label {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+.order-btn {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.order-btn.is-active {
+  background: var(--saffron);
+  color: var(--parchment);
+  border-color: var(--saffron);
+}
+
+.dhatu-grid {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.dhatu-cell {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  padding: 8px 6px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.dhatu-cell:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px -3px rgba(80, 50, 10, 0.4);
+}
+
+.dhatu-cell.is-selected {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.dhatu-cell.in-gita::before {
+  content: '✦';
+  position: absolute;
+  color: var(--saffron);
+  font-size: 10px;
+  margin-left: 22px;
+  margin-top: -2px;
+}
+
+.dhatu-rank {
+  grid-row: 1; grid-column: 1;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+.dhatu-deva {
+  grid-row: 2; grid-column: 1 / span 2;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+
+.dhatu-gana-tag {
+  grid-row: 1; grid-column: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+/* Gana color tints — applied as cell backgrounds */
+.gana-1  { background: #f3eedd; }
+.gana-2  { background: #ecdac2; }
+.gana-3  { background: #e8d5b8; }
+.gana-4  { background: #e6dec8; }
+.gana-5  { background: #ebd9d3; }
+.gana-6  { background: #efe7c0; }
+.gana-7  { background: #ddd6e0; }
+.gana-8  { background: #f1e1bd; }
+.gana-9  { background: #d9e0ce; }
+.gana-10 { background: #efd9bf; }
+
+.dhatu-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-top: 1px dashed var(--rule);
+  padding-top: 10px;
+}
+
+.gana-chip {
+  font-size: 10px;
+  font-family: 'Cinzel', serif;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 2px 6px;
+}
+
+.gana-chip-num {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.gana-chip-name {
+  font-family: 'Noto Serif Devanagari', serif;
+  letter-spacing: 0;
+}
+
+/* ---- Dhātu Detail ---- */
+
+.dhatu-detail {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px 26px 26px;
+  box-shadow: var(--shadow);
+  min-height: 400px;
+}
+
+.dhatu-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 12px;
+}
+
+.dhatu-detail-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.dhatu-deva-large {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 36px;
+  margin: 0;
+  color: var(--ink);
+}
+
+.dhatu-iast {
+  margin: 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.dhatu-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+
+.meta-chip > span:first-child {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.meta-chip.is-warn {
+  background: #f6e4cc;
+  border-color: #d6b285;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dhatu-note {
+  margin: 12px 0 8px;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 14px;
+}
+
+.lakara-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 14px 0 8px;
+}
+
+.lakara-tab {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.lakara-tab.is-active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: var(--parchment);
+}
+
+.lakara-tab.is-active .lakara-tab-en { color: var(--parchment-deep); }
+
+.lakara-tab-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 16px;
+}
+
+.lakara-tab-en {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+
+.lakara-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.lakara-signal {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 14px;
+}
+
+.pada-toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--parchment);
+}
+
+.pada-btn {
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.pada-btn.is-active {
+  background: var(--sage);
+  color: var(--parchment);
+}
+
+/* Conjugation grid */
+.conj-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6px 0 12px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.conj-grid th, .conj-grid td {
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.conj-grid thead th {
+  background: var(--parchment-deep);
+}
+
+.conj-grid th[scope="row"] {
+  background: var(--parchment-deep);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.conj-grid .th-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.conj-grid .th-en {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+
+.conj-cell {
+  background: transparent;
+  border: none;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 17px;
+  color: var(--ink);
+  cursor: pointer;
+  width: 100%;
+  padding: 4px;
+}
+
+.conj-cell:hover { background: var(--parchment-deep); }
+
+.conj-cell.is-missing { color: var(--ink-faint); cursor: default; }
+
+td.is-picked { background: var(--saffron-soft); }
+
+/* Breakdown */
+.breakdown {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 14px 16px;
+  margin-top: 12px;
+}
+
+.breakdown-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.breakdown-title strong {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 18px;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-transform: none;
+}
+
+.breakdown-layers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.breakdown-layers > li > span:first-child {
+  display: inline-block;
+  width: 110px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+
+.breakdown-formula {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 18px;
+}
+
+.formula-piece {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 2px 7px;
+}
+
+.formula-aug { background: #f3e0c2; }
+.formula-stem { background: #e1ecdc; }
+.formula-end { background: #ecdfff; }
+.formula-result { background: var(--saffron); color: var(--parchment); border-color: var(--saffron); font-weight: 600; }
+
+.formula-eq, .formula-flag {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+
+.formula-flag {
+  color: #b06000;
+  background: #f6e4cc;
+  border: 1px solid #d6b285;
+  padding: 1px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.gita-occurrences {
+  margin-top: 16px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--saffron);
+  border-radius: 3px;
+  padding: 12px 14px;
+}
+
+.gita-occurrences h4 {
+  margin: 0 0 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.gita-occurrences ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gita-occurrences li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.gita-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--saffron);
+}
+
+.gita-form {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.gita-context {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* Stack Builder */
+.stack-builder {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+}
+
+.stack-mode-toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--parchment);
+  margin-bottom: 18px;
+}
+
+.stack-mode-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 8px 16px;
+}
+
+.stack-mode-btn.is-active {
+  background: var(--saffron);
+  color: var(--parchment);
+}
+
+.forward-pickers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+.picker-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.picker select {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 14px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 4px 6px;
+  color: var(--ink);
+}
+
+.picker-readonly {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.formula-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.reverse-input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.reverse-input-label > span {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.reverse-input {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 4px;
+  color: var(--ink);
+  max-width: 320px;
+}
+
+.reverse-empty {
+  color: var(--ink-faint);
+  font-style: italic;
+  font-size: 14px;
+}
+
+.reverse-empty code {
+  font-family: 'Noto Serif Devanagari', serif;
+  background: var(--parchment);
+  padding: 1px 5px;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+}
+
+.reverse-matches {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reverse-match {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--saffron);
+  border-radius: 3px;
+  padding: 12px 14px;
+}
+
+.match-form {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.match-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.layer-tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: 4px;
+}
+
+/* Coverage */
+.coverage {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+}
+
+.coverage-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+
+.coverage-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 460px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.coverage-table th, .coverage-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  text-align: left;
+}
+
+.coverage-table thead th {
+  background: var(--parchment-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.coverage-table tr.is-reached {
+  background: #e6f0d8;
+}
+
+.coverage-note {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 700px;
+}

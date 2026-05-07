@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
+import Verbs from './components/Verbs.jsx';
 
 const VIEWS = [
   { id: 'journey', label: 'Verse Journey' },
   { id: 'patterns', label: 'Patterns Won' },
+  { id: 'verbs', label: 'Verbs' },
 ];
 
 export default function App() {
@@ -38,6 +40,7 @@ export default function App() {
       <main className="content">
         {view === 'journey' && <VerseJourney />}
         {view === 'patterns' && <PatternsWon />}
+        {view === 'verbs' && <Verbs />}
       </main>
 
       <footer className="colophon">
