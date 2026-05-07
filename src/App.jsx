@@ -2,11 +2,13 @@ import { useState } from 'react';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
 import Verbs from './components/Verbs.jsx';
+import Atlas from './components/Atlas.jsx';
 
 const VIEWS = [
   { id: 'journey', label: 'Verse Journey' },
   { id: 'patterns', label: 'Patterns Won' },
   { id: 'verbs', label: 'Verbs' },
+  { id: 'atlas', label: 'Atlas' },
 ];
 
 export default function App() {
@@ -41,6 +43,7 @@ export default function App() {
         {view === 'journey' && <VerseJourney />}
         {view === 'patterns' && <PatternsWon />}
         {view === 'verbs' && <Verbs />}
+        {view === 'atlas' && <Atlas />}
       </main>
 
       <footer className="colophon">

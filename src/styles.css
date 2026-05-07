@@ -1698,3 +1698,616 @@ td.is-picked { background: var(--saffron-soft); }
   color: var(--ink-soft);
   max-width: 700px;
 }
+
+/* ==================== Grammar Atlas ==================== */
+
+.atlas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.atlas-header { border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+
+.atlas-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 28px;
+  margin: 0;
+}
+
+.atlas-sub {
+  margin: 4px 0 0;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.atlas-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .atlas-layout { grid-template-columns: 1fr; }
+  .atlas-toc { position: relative; top: auto; }
+}
+
+.atlas-toc {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 14px 12px;
+  position: sticky;
+  top: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.atlas-toc-item {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  text-align: left;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.atlas-toc-item:hover { background: var(--parchment); border-color: var(--rule); }
+
+.atlas-toc-item.is-active {
+  background: var(--saffron);
+  border-color: var(--saffron);
+}
+
+.atlas-toc-item.is-active .atlas-toc-deva,
+.atlas-toc-item.is-active .atlas-toc-en { color: var(--parchment); }
+
+.atlas-toc-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 14px;
+}
+
+.atlas-toc-en {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.atlas-content {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 28px 32px;
+  box-shadow: var(--shadow);
+  min-height: 500px;
+}
+
+.atlas-page { display: flex; flex-direction: column; gap: 18px; }
+
+.atlas-page-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  margin: 18px 0 4px;
+  color: var(--ink);
+}
+
+.atlas-sub-title {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 18px 0 6px;
+  color: var(--ink-soft);
+}
+
+.atlas-lede { margin: 0; font-size: 16px; color: var(--ink); line-height: 1.6; }
+
+.atlas-aside {
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 4px 0 12px;
+}
+
+.atlas-callout {
+  background: #f1eed3;
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 14px 0;
+}
+
+/* Pronouns */
+.pronoun-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 720px) { .pronoun-row { grid-template-columns: 1fr; } }
+
+.tad-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 1024px) { .tad-grid { grid-template-columns: 1fr; } }
+
+.pronoun-card {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pronoun-card-head {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--parchment-deep);
+}
+
+.pronoun-deva {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 18px;
+  margin: 0;
+}
+
+.pronoun-en {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.pronoun-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pronoun-table th, .pronoun-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+.pronoun-table thead th {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--parchment-deep);
+  text-align: center;
+}
+.pronoun-table tbody th {
+  font-weight: 500;
+  font-family: 'Noto Serif Devanagari', serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.case-deva { color: var(--ink); font-size: 13px; }
+.case-en { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
+
+.cell-form { font-family: 'Noto Serif Devanagari', serif; color: var(--ink); }
+.cell-enclitic {
+  display: inline-block;
+  margin-left: 6px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 12px;
+  color: var(--ink-faint);
+  background: var(--parchment-deep);
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  padding: 0 4px;
+}
+
+td.cell.is-sma {
+  background: #faedca;
+  outline: 1px solid var(--gold);
+}
+
+td.cell.is-suppletive {
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.sma-flag {
+  background: #faedca;
+  border: 1px solid var(--gold);
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 13px;
+}
+
+.transfer-table, .correlative-table, .karaka-table, .postposition-table, .irreg-comparison-table, .primer-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 6px 0 14px;
+  font-size: 14px;
+}
+
+.transfer-table th, .transfer-table td,
+.correlative-table th, .correlative-table td,
+.karaka-table th, .karaka-table td,
+.postposition-table th, .postposition-table td,
+.irreg-comparison-table th, .irreg-comparison-table td,
+.primer-table th, .primer-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.transfer-table thead th, .correlative-table thead th,
+.karaka-table thead th, .postposition-table thead th,
+.irreg-comparison-table thead th, .primer-table thead th {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--parchment-deep);
+}
+
+.transfer-deva, .correlative-pair, .karaka-deva, .post-word {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.transfer-en { font-style: italic; color: var(--ink-soft); }
+.correlative-gita { font-family: 'Noto Serif Devanagari', serif; font-size: 13px; color: var(--ink-soft); }
+
+.outliers, .reflexive-list {
+  list-style: disc;
+  padding-left: 22px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.outliers em { font-family: 'Noto Serif Devanagari', serif; font-style: normal; color: var(--ink); font-weight: 600; }
+.outlier-note { color: var(--ink-soft); }
+
+/* Samasa */
+.samasa-views {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--parchment);
+  margin-bottom: 14px;
+}
+
+.samasa-view {
+  background: transparent;
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 7px 14px;
+}
+
+.samasa-view.is-active {
+  background: var(--saffron);
+  color: var(--parchment);
+}
+
+.samasa-filters { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+
+.samasa-filter {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+.samasa-filter.is-active {
+  background: var(--gold);
+  color: var(--parchment);
+  border-color: var(--gold);
+}
+
+.samasa-bank-meta {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.samasa-bank {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.samasa-bank-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 8px;
+  row-gap: 2px;
+  align-items: baseline;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.bank-compound { font-family: 'Noto Serif Devanagari', serif; font-size: 16px; font-weight: 600; color: var(--ink); }
+.bank-eq { color: var(--ink-faint); }
+.bank-vigraha { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); }
+.bank-type {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  background: var(--parchment-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  white-space: nowrap;
+  justify-self: end;
+}
+.bank-gloss { grid-column: 1 / 4; font-style: italic; color: var(--ink); }
+.bank-ref {
+  grid-column: 4; grid-row: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  color: var(--saffron);
+  letter-spacing: 0.1em;
+}
+
+/* Drill */
+.samasa-drill { display: flex; flex-direction: column; gap: 14px; }
+
+.drill-prompt {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 18px;
+  text-align: center;
+}
+
+.drill-row {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 12px;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+}
+
+.drill-compound { font-weight: 600; color: var(--ink); }
+.drill-eq { color: var(--ink-faint); }
+.drill-vigraha { color: var(--ink-soft); }
+.drill-question { margin: 10px 0 0; color: var(--ink-soft); font-style: italic; }
+
+.drill-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+}
+
+.drill-option {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.drill-option:hover:not(:disabled) { background: var(--parchment-deep); }
+.drill-option.is-correct { background: #d6e9c5; border-color: #6c9c4a; }
+.drill-option.is-wrong { background: #f1d5cf; border-color: #b25e4a; }
+.opt-deva { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; color: var(--ink); }
+.opt-en { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
+
+.drill-feedback {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+.drill-feedback.is-correct { border-color: #6c9c4a; }
+.drill-feedback.is-wrong { border-color: #b25e4a; }
+
+.drill-next {
+  background: var(--saffron);
+  color: var(--parchment);
+  border: none;
+  border-radius: 3px;
+  padding: 6px 14px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.drill-score {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.drill-pct { color: var(--saffron); }
+
+.samasa-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.samasa-type-card {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+
+.samasa-type-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.type-deva { font-family: 'Noto Serif Devanagari', serif; font-size: 16px; color: var(--ink); margin: 0; }
+.type-family { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--saffron); }
+.type-en { margin: 0 0 4px; color: var(--ink-soft); font-style: italic; font-size: 13px; }
+.type-rule { margin: 0 0 6px; font-size: 14px; color: var(--ink); }
+.type-pattern { margin: 0; font-size: 13px; color: var(--ink-soft); }
+.type-examples { margin: 6px 0 0; padding-left: 16px; font-family: 'Noto Serif Devanagari', serif; font-size: 13px; }
+
+/* Karaka */
+.karaka-insight {
+  background: #ecdfff;
+  border: 1px solid #b9a3e0;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.karaka-vibhakti { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; color: var(--ink); white-space: nowrap; }
+.karaka-role { font-style: italic; color: var(--ink-soft); }
+.karaka-sense { font-size: 13px; color: var(--ink); }
+
+.karaka-examples {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.karaka-examples li {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--sage);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.karaka-ex-name { margin-bottom: 4px; }
+.karaka-ex-active, .karaka-ex-passive { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; }
+.karaka-ex-active span, .karaka-ex-passive span {
+  display: inline-block;
+  width: 60px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+
+/* Avyaya */
+.avyaya-tally {
+  background: #ecf2e3;
+  border: 1px solid #aabf85;
+  border-radius: 4px;
+  padding: 12px 16px;
+}
+
+.tally-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+
+.tally-row { display: grid; grid-template-columns: 60px auto 1fr; gap: 10px; align-items: baseline; font-size: 14px; }
+
+.tally-word { font-family: 'Noto Serif Devanagari', serif; font-weight: 600; color: var(--ink); }
+.tally-count { font-family: 'Cinzel', serif; font-size: 11px; color: var(--saffron); }
+.tally-verses { color: var(--ink-soft); font-size: 12px; }
+
+.avyaya-negative { display: flex; flex-direction: column; gap: 8px; }
+
+.negative-card {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 10px 14px;
+}
+
+.negative-card h5 {
+  margin: 0 0 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.negative-card p { margin: 0; font-size: 14px; color: var(--ink); }
+
+.post-case { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); font-size: 13px; }
+
+.particle-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.particle-group {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+
+.particle-group-title { margin: 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.particle-group-desc { margin: 4px 0 8px; font-size: 13px; font-style: italic; color: var(--ink-soft); }
+
+.particle-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+
+.particle-list li { display: flex; gap: 12px; font-size: 14px; }
+
+.particle-word { font-family: 'Noto Serif Devanagari', serif; min-width: 60px; color: var(--ink); }
+.particle-sense { color: var(--ink-soft); font-style: italic; }
+
+/* Adj/Adv */
+.comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 720px) { .comparison-grid { grid-template-columns: 1fr; } }
+
+.comparison-card, .adverb-pattern {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px 14px;
+}
+
+.comparison-card header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.comparison-card h5, .adverb-pattern h5 { margin: 0; font-family: 'Noto Serif Devanagari', serif; font-size: 18px; }
+.comparison-name { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; color: var(--saffron); }
+
+.comparison-note, .adverb-note { margin: 0 0 6px; font-size: 13px; color: var(--ink-soft); font-style: italic; }
+
+.comparison-card ul, .adverb-pattern ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; font-size: 14px; }
+
+.comparison-card li, .adverb-pattern li { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+
+.ex-base { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); }
+.ex-arrow { color: var(--ink-faint); }
+.ex-derived { font-family: 'Noto Serif Devanagari', serif; color: var(--ink); font-weight: 600; }
+.ex-en { font-style: italic; color: var(--ink-soft); }
+
+.adverb-pattern + .adverb-pattern { margin-top: 10px; }
