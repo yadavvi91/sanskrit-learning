@@ -1,6 +1,6 @@
 import { PATTERN_CATEGORIES } from '../data/patterns.js';
 
-export default function PatternsWon() {
+export default function PatternsWon({ onOpenPrimer, onOpenVerse }) {
   const total = PATTERN_CATEGORIES.reduce((n, c) => n + c.patterns.length, 0);
 
   return (
@@ -26,9 +26,22 @@ export default function PatternsWon() {
                   <div className="pattern-meaning">{p.meaning}</div>
                   <div className="pattern-trigger">
                     <span className="trigger-label">unlocked by</span>
-                    <span className="trigger-ref">
-                      {p.trigger.verse ? `Gītā ${p.trigger.verse}` : p.trigger.label}
-                    </span>
+                    {p.trigger.verse && onOpenVerse ? (
+                      <button
+                        type="button"
+                        className="trigger-ref trigger-ref-link"
+                        onClick={() => {
+                          const [c, v] = p.trigger.verse.split('.').map(Number);
+                          onOpenVerse(c, v);
+                        }}
+                      >
+                        Gītā {p.trigger.verse} ↗
+                      </button>
+                    ) : (
+                      <span className="trigger-ref">
+                        {p.trigger.verse ? `Gītā ${p.trigger.verse}` : p.trigger.label}
+                      </span>
+                    )}
                     {p.trigger.example && (
                       <span className="trigger-example">{p.trigger.example}</span>
                     )}

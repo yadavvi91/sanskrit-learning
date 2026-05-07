@@ -2705,3 +2705,21 @@ td.cell.is-suppletive {
   color: var(--gold);
   text-decoration-color: var(--gold);
 }
+
+.trigger-ref-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--saffron);
+  padding: 0;
+  text-decoration: underline dotted var(--saffron-soft);
+  text-underline-offset: 2px;
+}
+
+.trigger-ref-link:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold);
+}
