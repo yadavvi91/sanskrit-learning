@@ -1,0 +1,25 @@
+src/utils/conjugator.js
+  s_d5e8c30b294ba2::t_206142ebad7cd7 1-77
+src/utils/conjugator.test.js
+  s_d5e8c30b294ba2::t_4dc5b5e417a842 1-163
+src/data/dhatus.js
+  s_d5e8c30b294ba2::t_897e014669b8fa 1-666
+src/utils/endings.js
+  s_d5e8c30b294ba2::t_2c96e41c7b2281 1-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "d4e7400959b4eb429f71c02171b731f8cd30d331",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
