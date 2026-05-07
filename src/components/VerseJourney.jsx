@@ -1,26 +1,28 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CHAPTERS } from '../data/chapters.js';
-import { VERSES, getVerse, isDecoded } from '../data/verses.js';
+import { VERSES, getVerse } from '../data/verses.js';
 import VerseDetail from './VerseDetail.jsx';
 
 const orderedDecoded = [...VERSES].sort((a, b) => a.decodeIndex - b.decodeIndex);
 const RECENT_COUNT = 5;
 
-export default function VerseJourney({ onOpenPrimer, jumpTo }) {
-  const [selected, setSelected] = useState(() => {
-    const first = orderedDecoded[0];
-    return first ? { chapter: first.chapter, verse: first.verse } : null;
-  });
+export default function VerseJourney() {
+  const params = useParams();
+  const navigate = useNavigate();
   const [showOnlyDecoded, setShowOnlyDecoded] = useState(false);
 
-  // Cross-tab navigation: when another tab requests a specific verse, jump to it.
-  useEffect(() => {
-    if (jumpTo && (jumpTo.chapter !== selected?.chapter || jumpTo.verse !== selected?.verse)) {
-      setSelected({ chapter: jumpTo.chapter, verse: jumpTo.verse });
+  // Selection comes from the URL. Default = first decoded verse.
+  const selected = useMemo(() => {
+    if (params.chapter && params.verse) {
+      return { chapter: Number(params.chapter), verse: Number(params.verse) };
     }
-    // selected intentionally not in deps — we only respond to jumpTo changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [jumpTo]);
+    const first = orderedDecoded[0];
+    return first ? { chapter: first.chapter, verse: first.verse } : null;
+  }, [params.chapter, params.verse]);
+
+  const setSelected = ({ chapter, verse }) => navigate(`/journey/${chapter}/${verse}`);
+  const openPrimer = (sectionId) => navigate(sectionId ? `/primer#${sectionId}` : '/primer');
 
   const selectedVerse = selected ? getVerse(selected.chapter, selected.verse) : null;
 
@@ -91,7 +93,7 @@ export default function VerseJourney({ onOpenPrimer, jumpTo }) {
 
       <section className="journey-detail">
         {selectedVerse ? (
-          <VerseDetail verse={selectedVerse} onOpenPrimer={onOpenPrimer} />
+          <VerseDetail verse={selectedVerse} onOpenPrimer={openPrimer} />
         ) : (
           <div className="empty-state">
             <p>Pick a verse from the journey to read its decode.</p>

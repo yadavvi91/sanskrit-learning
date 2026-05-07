@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PRIMER_SECTIONS } from '../data/primer.js';
 
 // Tiny markdown-ish renderer: bold (**X**), italics (*X*), strong tags (<strong>) survive.
@@ -10,8 +11,14 @@ function renderInline(s) {
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-export default function Primer({ jumpToSection, onOpenAtlas }) {
+export default function Primer() {
   const sectionRefs = useRef({});
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onOpenAtlas = (section) => navigate(`/atlas/${section}`);
+
+  // Hash-based jump to section, e.g. /primer#sandhi.
+  const jumpToSection = location.hash ? location.hash.replace(/^#/, '') : null;
 
   useEffect(() => {
     if (jumpToSection && sectionRefs.current[jumpToSection]) {

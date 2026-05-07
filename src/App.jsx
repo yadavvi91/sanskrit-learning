@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+import { NavLink, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
 import Verbs from './components/Verbs.jsx';
@@ -8,34 +9,22 @@ import LastVisitBanner from './components/LastVisitBanner.jsx';
 import Practice from './components/Practice.jsx';
 
 const VIEWS = [
-  { id: 'journey', label: 'Verse Journey' },
-  { id: 'patterns', label: 'Patterns Won' },
-  { id: 'verbs', label: 'Verbs' },
-  { id: 'atlas', label: 'Atlas' },
-  { id: 'primer', label: 'Primer' },
-  { id: 'practice', label: 'Practice' },
+  { path: '/journey',  label: 'Verse Journey' },
+  { path: '/patterns', label: 'Patterns Won' },
+  { path: '/verbs',    label: 'Verbs' },
+  { path: '/atlas',    label: 'Atlas' },
+  { path: '/primer',   label: 'Primer' },
+  { path: '/practice', label: 'Practice' },
 ];
 
 export default function App() {
-  const [view, setView] = useState('journey');
-  const [primerJumpTo, setPrimerJumpTo] = useState(null);
-  const [verseJumpTo, setVerseJumpTo] = useState(null);
-  const [atlasJumpTo, setAtlasJumpTo] = useState(null);
+  const navigate = useNavigate();
 
+  // Banner-driven navigation: keep the existing API for the banner,
+  // implemented now by router navigation.
   const openPrimer = useCallback((sectionId) => {
-    setPrimerJumpTo(sectionId ?? null);
-    setView('primer');
-  }, []);
-
-  const openVerse = useCallback((chapter, verse) => {
-    setVerseJumpTo({ chapter, verse });
-    setView('journey');
-  }, []);
-
-  const openAtlas = useCallback((sectionId) => {
-    setAtlasJumpTo(sectionId ?? null);
-    setView('atlas');
-  }, []);
+    navigate(sectionId ? `/primer#${sectionId}` : '/primer');
+  }, [navigate]);
 
   return (
     <div className="app">
@@ -49,14 +38,13 @@ export default function App() {
           </div>
           <nav className="view-switcher" aria-label="Views">
             {VIEWS.map((v) => (
-              <button
-                key={v.id}
-                type="button"
-                className={`view-tab ${view === v.id ? 'is-active' : ''}`}
-                onClick={() => setView(v.id)}
+              <NavLink
+                key={v.path}
+                to={v.path}
+                className={({ isActive }) => `view-tab ${isActive ? 'is-active' : ''}`}
               >
                 {v.label}
-              </button>
+              </NavLink>
             ))}
           </nav>
         </div>
@@ -65,17 +53,32 @@ export default function App() {
       <LastVisitBanner onOpenPrimer={openPrimer} />
 
       <main className="content">
-        {view === 'journey' && <VerseJourney onOpenPrimer={openPrimer} jumpTo={verseJumpTo} />}
-        {view === 'patterns' && <PatternsWon onOpenPrimer={openPrimer} onOpenVerse={openVerse} />}
-        {view === 'verbs' && <Verbs onOpenVerse={openVerse} />}
-        {view === 'atlas' && <Atlas onOpenVerse={openVerse} jumpToSection={atlasJumpTo} />}
-        {view === 'primer' && <Primer jumpToSection={primerJumpTo} onOpenAtlas={openAtlas} />}
-        {view === 'practice' && <Practice />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/journey" replace />} />
+          <Route path="/journey" element={<VerseJourney />} />
+          <Route path="/journey/:chapter/:verse" element={<VerseJourney />} />
+          <Route path="/patterns" element={<PatternsWon />} />
+          <Route path="/verbs" element={<Verbs />} />
+          <Route path="/verbs/:dhatuId" element={<Verbs />} />
+          <Route path="/atlas" element={<Atlas />} />
+          <Route path="/atlas/:section" element={<Atlas />} />
+          <Route path="/primer" element={<Primer />} />
+          <Route path="/practice" element={<Practice />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
       <footer className="colophon">
         <span>SOV · पदच्छेद · अन्वय · हिंदी · English</span>
       </footer>
+    </div>
+  );
+}
+
+function NotFound() {
+  return (
+    <div className="empty-state">
+      <p>That tab doesn't exist. <a href="/journey">Back to Verse Journey →</a></p>
     </div>
   );
 }

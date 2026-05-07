@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Pronouns from './Pronouns.jsx';
 import Samasa from './Samasa.jsx';
 import Karaka from './Karaka.jsx';
@@ -13,15 +13,12 @@ const ATLAS_TABS = [
   { id: 'adjadv',   deva: 'विशेषण-क्रियाविशेषण', en: 'Adj. & Adv.' },
 ];
 
-export default function Atlas({ onOpenVerse, jumpToSection }) {
-  const [tab, setTab] = useState(jumpToSection ?? 'pronouns');
-
-  // Cross-tab navigation: parent (App) updates jumpToSection; switch to it.
-  useEffect(() => {
-    if (jumpToSection && ATLAS_TABS.some((t) => t.id === jumpToSection)) {
-      setTab(jumpToSection);
-    }
-  }, [jumpToSection]);
+export default function Atlas() {
+  const params = useParams();
+  const navigate = useNavigate();
+  const tab = ATLAS_TABS.some((t) => t.id === params.section) ? params.section : 'pronouns';
+  const setTab = (id) => navigate(`/atlas/${id}`);
+  const onOpenVerse = (chapter, verse) => navigate(`/journey/${chapter}/${verse}`);
 
   return (
     <div className="atlas">

@@ -1,9 +1,13 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PATTERN_CATEGORIES } from '../data/patterns.js';
 import { flattenPatterns, patternStats, COMPARATORS } from '../utils/patternStats.js';
 import { withGlossary } from '../utils/withGlossary.jsx';
 
-export default function PatternsWon({ onOpenPrimer, onOpenVerse }) {
+export default function PatternsWon() {
+  const navigate = useNavigate();
+  const onOpenVerse = (chapter, verse) => navigate(`/journey/${chapter}/${verse}`);
+  const onOpenPrimer = (sectionId) => navigate(sectionId ? `/primer#${sectionId}` : '/primer');
   const all = useMemo(() => flattenPatterns(), []);
   const [sortBy, setSortBy] = useState({ column: 'category', direction: 'asc' });
   const [categoryFilter, setCategoryFilter] = useState('all');

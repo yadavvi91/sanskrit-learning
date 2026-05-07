@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { DHATUS_TOP25, COVERAGE_CURVE } from '../data/dhatus.js';
+import { useNavigate, useParams } from 'react-router-dom';
+import { DHATUS_TOP25, COVERAGE_CURVE, getDhatuById } from '../data/dhatus.js';
 import DhatuPeriodicTable from './DhatuPeriodicTable.jsx';
 import DhatuDetail from './DhatuDetail.jsx';
 import StackBuilder from './StackBuilder.jsx';
@@ -10,9 +11,14 @@ const TABS = [
   { id: 'coverage', label: 'Coverage' },
 ];
 
-export default function Verbs({ onOpenVerse }) {
+export default function Verbs() {
+  const params = useParams();
+  const navigate = useNavigate();
   const [tab, setTab] = useState('periodic');
-  const [selectedDhatu, setSelectedDhatu] = useState(DHATUS_TOP25[0]);
+
+  const selectedDhatu = (params.dhatuId && getDhatuById(params.dhatuId)) || DHATUS_TOP25[0];
+  const setSelectedDhatu = (d) => navigate(`/verbs/${d.id}`);
+  const onOpenVerse = (chapter, verse) => navigate(`/journey/${chapter}/${verse}`);
 
   return (
     <div className="verbs">
