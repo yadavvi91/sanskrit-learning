@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { PATTERN_CATEGORIES } from '../data/patterns.js';
 import { flattenPatterns, patternStats, COMPARATORS } from '../utils/patternStats.js';
+import { withGlossary } from '../utils/withGlossary.jsx';
 
 export default function PatternsWon({ onOpenPrimer, onOpenVerse }) {
   const all = useMemo(() => flattenPatterns(), []);
@@ -85,7 +86,12 @@ export default function PatternsWon({ onOpenPrimer, onOpenVerse }) {
         </thead>
         <tbody>
           {visible.map((p) => (
-            <PatternRow key={`${p.categoryId}:${p.name}`} pattern={p} onOpenVerse={onOpenVerse} />
+            <PatternRow
+              key={`${p.categoryId}:${p.name}`}
+              pattern={p}
+              onOpenVerse={onOpenVerse}
+              onOpenPrimer={onOpenPrimer}
+            />
           ))}
           {visible.length === 0 && (
             <tr><td colSpan="5" className="patterns-empty">No patterns match.</td></tr>
@@ -112,14 +118,14 @@ function SortHeader({ column, sortBy, onClick, children }) {
   );
 }
 
-function PatternRow({ pattern, onOpenVerse }) {
+function PatternRow({ pattern, onOpenVerse, onOpenPrimer }) {
   const stats = patternStats(pattern);
   const exampleText = pattern.trigger?.example ?? '';
 
   return (
     <tr className="patterns-row">
       <td>
-        <div className="pattern-cell-name">{pattern.name}</div>
+        <div className="pattern-cell-name">{withGlossary(pattern.name, onOpenPrimer)}</div>
         <div className="pattern-cell-meaning">{pattern.meaning}</div>
       </td>
       <td className="pattern-cell-category">{pattern.categoryTitle}</td>
