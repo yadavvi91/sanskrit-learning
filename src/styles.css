@@ -1446,15 +1446,77 @@ td.is-picked { background: var(--saffron-soft); }
   padding: 2px 7px;
 }
 
-.formula-aug { background: #f3e0c2; }
+.formula-aug  { background: #f3e0c2; }
 .formula-stem { background: #e1ecdc; }
-.formula-end { background: #ecdfff; }
+.formula-end  { background: #ecdfff; }
+.formula-pre  { background: #fbe6c0; border-color: #d6a64a; }
 .formula-result { background: var(--saffron); color: var(--parchment); border-color: var(--saffron); font-weight: 600; }
+
+/* Free operators between formula chips: no border, no chip styling. */
+.formula-op {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--ink-faint);
+  padding: 0 2px;
+}
 
 .formula-eq, .formula-flag {
   font-family: 'Cinzel', serif;
   font-size: 11px;
   letter-spacing: 0.18em;
+  color: var(--ink-faint);
+}
+
+/* Color-key legend under the formula */
+.formula-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.formula-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+}
+
+.dot-aug  { background: #f3e0c2; }
+.dot-stem { background: #e1ecdc; }
+.dot-end  { background: #ecdfff; }
+.dot-pre  { background: #fbe6c0; border-color: #d6a64a; }
+
+/* Reverse-mode annotation row: smaller meta beneath the formula */
+.reverse-annotation {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.reverse-annotation em {
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+.ann-sep {
   color: var(--ink-faint);
 }
 

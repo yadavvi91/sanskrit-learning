@@ -106,11 +106,22 @@ function Forward({ dhatus }) {
 
       <div className="forward-result">
         <div className="formula-line">
-          {layers.augment && <span className="formula-piece formula-aug">{layers.augment}-</span>}
-          <span className="formula-piece formula-stem">{layers.stem}</span>
-          <span className="formula-piece formula-end">+ {layers.ending || '∅'}</span>
-          <span className="formula-eq">=</span>
+          {layers.augment && (
+            <>
+              <span className="formula-piece formula-aug" title="augment">{layers.augment}</span>
+              <span className="formula-op">+</span>
+            </>
+          )}
+          <span className="formula-piece formula-stem" title="stem">{layers.stem}</span>
+          <span className="formula-op">+</span>
+          <span className="formula-piece formula-end" title="ending">{layers.ending || '∅'}</span>
+          <span className="formula-op">=</span>
           <span className="formula-piece formula-result">{form ?? '—'}</span>
+        </div>
+        <div className="formula-legend">
+          {layers.augment && <span><span className="dot dot-aug" />augment</span>}
+          <span><span className="dot dot-stem" />stem</span>
+          <span><span className="dot dot-end" />ending</span>
         </div>
       </div>
     </div>
@@ -118,7 +129,7 @@ function Forward({ dhatus }) {
 }
 
 function Reverse({ dhatus }) {
-  const [input, setInput] = useState('अकुर्वत');
+  const [input, setInput] = useState('प्रतियोत्स्यामि');
   const matches = useMemo(() => {
     const trimmed = input.trim();
     if (!trimmed) return [];
@@ -128,13 +139,13 @@ function Reverse({ dhatus }) {
   return (
     <div className="reverse">
       <label className="reverse-input-label">
-        <span>Paste a finite verb form:</span>
+        <span>Paste a finite verb form to decompose:</span>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="reverse-input"
-          placeholder="e.g. अकुर्वत"
+          placeholder="e.g. प्रतियोत्स्यामि"
         />
       </label>
 
@@ -149,25 +160,50 @@ function Reverse({ dhatus }) {
         <ul className="reverse-matches">
           {matches.map((m, i) => (
             <li key={i} className="reverse-match">
-              <div className="match-form">{input.trim()}</div>
-              <div className="match-stack">
-                {m.prefixes && m.prefixes.length > 0 && (
-                  <span>
-                    <span className="layer-tag">उपसर्ग</span>
-                    {m.prefixes.map((u) => `${u.prefix} (${u.sense})`).join(' + ')}
-                  </span>
-                )}
-                <span><span className="layer-tag">धातु</span> √{m.dhatu.devanagari} ({m.dhatu.meanings[0]})</span>
-                <span><span className="layer-tag">गण</span> {m.dhatu.gana}</span>
-                <span><span className="layer-tag">लकार</span> {LAKARA_META[m.lakara].devanagari} ({LAKARA_META[m.lakara].label})</span>
-                <span><span className="layer-tag">पद</span> {m.pada === 'P' ? 'परस्मैपद' : 'आत्मनेपद'}</span>
-                <span><span className="layer-tag">पुरुष</span> {PURUSHAS.find((p) => p.id === m.purusha)?.devanagari}</span>
-                <span><span className="layer-tag">वचन</span> {VACHANAS.find((v) => v.id === m.vachana)?.devanagari}</span>
+              <ReverseFormula match={m} resultForm={input.trim()} />
+              <div className="reverse-annotation">
+                <span>{LAKARA_META[m.lakara].devanagari} <em>({LAKARA_META[m.lakara].label})</em></span>
+                <span className="ann-sep">·</span>
+                <span>{m.pada === 'P' ? 'परस्मैपद' : 'आत्मनेपद'}</span>
+                <span className="ann-sep">·</span>
+                <span>{PURUSHAS.find((p) => p.id === m.purusha)?.devanagari} {VACHANAS.find((v) => v.id === m.vachana)?.devanagari}</span>
+                <span className="ann-sep">·</span>
+                <span>गण {m.dhatu.gana}</span>
               </div>
             </li>
           ))}
         </ul>
       )}
+    </div>
+  );
+}
+
+// Mirrors the Forward formula visually: chips for each layer, free "+" / "=" operators.
+function ReverseFormula({ match, resultForm }) {
+  const layers = decompose(match.dhatu, match.lakara, match.pada, match.purusha, match.vachana);
+  return (
+    <div className="formula-line">
+      {match.prefixes && match.prefixes.map((u, i) => (
+        <span key={`p${i}`} style={{ display: 'contents' }}>
+          <span className="formula-piece formula-pre" title={`उपसर्ग — ${u.sense}`}>{u.prefix}</span>
+          <span className="formula-op">+</span>
+        </span>
+      ))}
+      {layers.augment && (
+        <>
+          <span className="formula-piece formula-aug" title="augment">{layers.augment}</span>
+          <span className="formula-op">+</span>
+        </>
+      )}
+      <span className="formula-piece formula-stem" title={`stem of √${match.dhatu.devanagari}`}>
+        {layers.stem}
+      </span>
+      <span className="formula-op">+</span>
+      <span className="formula-piece formula-end" title="ending">
+        {layers.ending || '∅'}
+      </span>
+      <span className="formula-op">=</span>
+      <span className="formula-piece formula-result">{resultForm}</span>
     </div>
   );
 }
