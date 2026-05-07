@@ -2489,3 +2489,200 @@ td.cell.is-suppletive {
   cursor: pointer;
   padding: 2px 0;
 }
+
+/* ==================== Practice ==================== */
+
+.practice { display: flex; flex-direction: column; gap: 18px; }
+
+.practice-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 12px;
+}
+
+.practice-title { font-family: 'Noto Serif Devanagari', serif; font-size: 28px; margin: 0; }
+.practice-sub { margin: 4px 0 0; font-style: italic; color: var(--ink-soft); max-width: 720px; }
+
+.practice-progress {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--saffron);
+}
+
+.practice-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.stat {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.stat.is-highlight { border-color: var(--saffron); border-left-width: 3px; }
+
+.stat-value {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.practice-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.practice-start {
+  background: var(--saffron);
+  color: var(--parchment);
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.practice-reset {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 4px;
+}
+
+.practice-aside {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 700px;
+}
+
+.practice-aside code {
+  font-family: 'Noto Serif Devanagari', serif;
+  background: var(--parchment-deep);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-style: normal;
+}
+
+.practice-card {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  min-height: 280px;
+}
+
+.practice-card-type {
+  align-self: flex-start;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 3px 8px;
+  color: var(--ink-faint);
+}
+
+.practice-prompt {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.practice-show {
+  align-self: flex-start;
+  background: var(--gold);
+  color: var(--parchment);
+  border: none;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.practice-answer {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 20px;
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 16px 20px;
+  color: var(--ink);
+}
+
+.practice-rating {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.rate-btn {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  cursor: pointer;
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+.rate-again { background: #f1d5cf; border-color: #b25e4a; color: #7a3622; }
+.rate-hard  { background: #f5e1c8; border-color: #c69767; color: #6a4520; }
+.rate-good  { background: #dde8c6; border-color: #809f5a; color: #41562a; }
+.rate-easy  { background: #cee0e4; border-color: #5e8a93; color: #2a4a51; }
+
+.practice-end {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-faint);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 3px;
+  cursor: pointer;
+}

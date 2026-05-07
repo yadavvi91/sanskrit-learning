@@ -5,6 +5,7 @@ import Verbs from './components/Verbs.jsx';
 import Atlas from './components/Atlas.jsx';
 import Primer from './components/Primer.jsx';
 import LastVisitBanner from './components/LastVisitBanner.jsx';
+import Practice from './components/Practice.jsx';
 
 const VIEWS = [
   { id: 'journey', label: 'Verse Journey' },
@@ -12,6 +13,7 @@ const VIEWS = [
   { id: 'verbs', label: 'Verbs' },
   { id: 'atlas', label: 'Atlas' },
   { id: 'primer', label: 'Primer' },
+  { id: 'practice', label: 'Practice' },
 ];
 
 export default function App() {
@@ -56,6 +58,7 @@ export default function App() {
         {view === 'verbs' && <Verbs />}
         {view === 'atlas' && <Atlas />}
         {view === 'primer' && <Primer jumpToSection={primerJumpTo} />}
+        {view === 'practice' && <Practice />}
       </main>
 
       <footer className="colophon">
