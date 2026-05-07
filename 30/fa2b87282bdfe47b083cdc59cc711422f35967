@@ -1,0 +1,24 @@
+checkpoint-6.md
+  s_d5e8c30b294ba2::t_8d397f217957cc 1-53
+src/components/StackBuilder.jsx
+  s_d5e8c30b294ba2::t_582ffb6102862d 109-118,121-124
+  s_d5e8c30b294ba2::t_9b9dfa93d439a0 132,142,148,163-171,181-206
+src/styles.css
+  s_d5e8c30b294ba2::t_b1e8c4e506a257 1449,1451-1452,1455-1462,1470-1519
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "30fa2b87282bdfe47b083cdc59cc711422f35967",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
