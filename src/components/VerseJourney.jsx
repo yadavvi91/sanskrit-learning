@@ -5,7 +5,7 @@ import VerseDetail from './VerseDetail.jsx';
 
 const orderedDecoded = [...VERSES].sort((a, b) => a.decodeIndex - b.decodeIndex);
 
-export default function VerseJourney() {
+export default function VerseJourney({ onOpenPrimer }) {
   const [selected, setSelected] = useState(() => {
     const first = orderedDecoded[0];
     return first ? { chapter: first.chapter, verse: first.verse } : null;
@@ -67,7 +67,7 @@ export default function VerseJourney() {
 
       <section className="journey-detail">
         {selectedVerse ? (
-          <VerseDetail verse={selectedVerse} />
+          <VerseDetail verse={selectedVerse} onOpenPrimer={onOpenPrimer} />
         ) : (
           <div className="empty-state">
             <p>Pick a verse from the journey to read its decode.</p>

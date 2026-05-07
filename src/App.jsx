@@ -53,7 +53,7 @@ export default function App() {
       <LastVisitBanner onOpenPrimer={openPrimer} />
 
       <main className="content">
-        {view === 'journey' && <VerseJourney />}
+        {view === 'journey' && <VerseJourney onOpenPrimer={openPrimer} />}
         {view === 'patterns' && <PatternsWon />}
         {view === 'verbs' && <Verbs />}
         {view === 'atlas' && <Atlas />}

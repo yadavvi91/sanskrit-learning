@@ -1,4 +1,6 @@
-export default function VerseDetail({ verse }) {
+import Glossary from './Glossary.jsx';
+
+export default function VerseDetail({ verse, onOpenPrimer }) {
   const finiteForms = new Set(verse.finiteVerbs?.map((v) => v.form) || []);
 
   return (
@@ -21,7 +23,7 @@ export default function VerseDetail({ verse }) {
         </div>
       </Section>
 
-      <Section label="पदच्छेद" labelEn="Word-split">
+      <Section label="पदच्छेद" labelEn="Word-split" glossaryTerm="पदच्छेद" onOpenPrimer={onOpenPrimer}>
         <ol className="padaccheda">
           {verse.padaccheda.map((word, i) => (
             <li
@@ -63,6 +65,8 @@ export default function VerseDetail({ verse }) {
       <Section
         label="क्रिया"
         labelEn={`Finite verb${(verse.finiteVerbs?.length || 0) > 1 ? 's' : ''} — sentence anchor${(verse.finiteVerbs?.length || 0) > 1 ? 's' : ''}`}
+        glossaryTerm="क्रिया"
+        onOpenPrimer={onOpenPrimer}
       >
         <ul className="finite-list">
           {(verse.finiteVerbs || []).map((fv, i) => (
@@ -96,7 +100,7 @@ export default function VerseDetail({ verse }) {
       </Section>
 
       {verse.vibhaktiNotes && verse.vibhaktiNotes.length > 0 && (
-        <Section label="विभक्ति" labelEn="Case roles">
+        <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer}>
           <ul className="vibhakti-notes">
             {verse.vibhaktiNotes.map((note, i) => (
               <li key={i}>{note}</li>
@@ -115,7 +119,7 @@ export default function VerseDetail({ verse }) {
         </Section>
       )}
 
-      <Section label="अन्वय" labelEn="Logical SOV ordering">
+      <Section label="अन्वय" labelEn="Logical SOV ordering" glossaryTerm="अन्वय" onOpenPrimer={onOpenPrimer}>
         <p className="anvaya">{verse.anvaya}</p>
       </Section>
 
@@ -130,11 +134,15 @@ export default function VerseDetail({ verse }) {
   );
 }
 
-function Section({ label, labelEn, children }) {
+function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children }) {
+  const labelNode = glossaryTerm
+    ? <Glossary term={glossaryTerm} onOpenPrimer={onOpenPrimer}><span className="section-label-sa">{label}</span></Glossary>
+    : <span className="section-label-sa">{label}</span>;
+
   return (
     <section className="verse-section">
       <h3 className="section-label">
-        <span className="section-label-sa">{label}</span>
+        {labelNode}
         {labelEn && <span className="section-label-en">{labelEn}</span>}
       </h3>
       <div className="section-body">{children}</div>
