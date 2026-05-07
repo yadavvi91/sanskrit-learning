@@ -1,0 +1,38 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_876ca291675c5b 2689-2707
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_86d40af11c8a8d 1,8,14-21
+src/App.jsx
+  s_d5e8c30b294ba2::t_668090ceea49ef 22,29-31
+  s_d5e8c30b294ba2::t_5a3b009631d6e2 62-65
+src/components/Verbs.jsx
+  s_d5e8c30b294ba2::t_0e302749896c7a 48
+  s_d5e8c30b294ba2::t_2032158e90ca9a 13
+src/components/Atlas.jsx
+  s_d5e8c30b294ba2::t_f53e7164d93d40 45
+  s_d5e8c30b294ba2::t_c851e67c44a366 16
+src/components/Samasa.jsx
+  s_d5e8c30b294ba2::t_f13379cef21a01 4
+  s_d5e8c30b294ba2::t_7d05f0cffd06e0 36
+  s_d5e8c30b294ba2::t_ed0e8f572a3f96 75-86
+  s_d5e8c30b294ba2::t_5f38f5550556eb 29
+src/components/DhatuDetail.jsx
+  s_d5e8c30b294ba2::t_a71cb22c4e590d 95-105
+  s_d5e8c30b294ba2::t_ef28e687526797 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "11861fb4e9342a86e260f7a7283dd8086bb114c1",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
