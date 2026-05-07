@@ -1,0 +1,47 @@
+src/App.jsx
+  s_d5e8c30b294ba2::t_814847ede6aa52 1-2,12-17,21,23-24,26-27,41-44,47,56-68,77-81
+package.json
+  s_d5e8c30b294ba2::t_eaaac5d3765744 14-15
+  s_d5e8c30b294ba2::t_b20c680a0e1f64 18,20
+src/__tests__/routing.test.jsx
+  s_d5e8c30b294ba2::t_876910d47df0b8 42
+  s_d5e8c30b294ba2::t_5f21383a603346 75
+  s_d5e8c30b294ba2::t_c33862763be7d0 1-41,43-64,66-74,76-91,93-94
+  s_d5e8c30b294ba2::t_230d66f8e8f813 65
+  s_d5e8c30b294ba2::t_da77f6e769916e 92
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_fa352385c7ecb0 96
+  s_d5e8c30b294ba2::t_394620c7e23057 1-2,4,10-12,15-18,20-25
+src/components/Verbs.jsx
+  s_d5e8c30b294ba2::t_41b3f6010960aa 2-3,14-16,18-21
+src/components/Atlas.jsx
+  s_d5e8c30b294ba2::t_e1c9142ef678dc 1,16-21
+src/components/PatternsWon.jsx
+  s_d5e8c30b294ba2::t_7c165600c121f0 2
+  s_d5e8c30b294ba2::t_aecb71f96f0b96 7-10
+src/components/Primer.jsx
+  s_d5e8c30b294ba2::t_50d7133e05c5d1 2
+  s_d5e8c30b294ba2::t_c9c267583bad7f 14,16-21
+vite.config.js
+  s_d5e8c30b294ba2::t_c36fd161177721 6-8
+src/main.jsx
+  s_d5e8c30b294ba2::t_0aa365fdd531e7 3,9-11
+checkpoint-12.md
+  s_d5e8c30b294ba2::t_ca7a5c5ec46999 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8637bfeca5558c7998a0cfb0a67ab41bee30ab9d",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
