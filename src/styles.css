@@ -3651,3 +3651,45 @@ td.cell.is-suppletive {
   font-style: italic !important;
   margin-top: 8px !important;
 }
+
+/* My notes panel — free-form per-verse */
+.notes-panel { display: flex; flex-direction: column; gap: 6px; }
+
+.notes-textarea {
+  width: 100%;
+  font-family: var(--font-prose);
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 4px;
+  color: var(--ink);
+  resize: vertical;
+  min-height: 90px;
+}
+
+.notes-textarea:focus {
+  outline: 2px solid var(--saffron-soft);
+  border-color: var(--saffron);
+}
+
+.notes-textarea::placeholder {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.notes-meta {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.notes-saved {
+  color: var(--sage);
+}

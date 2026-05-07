@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import Glossary from './Glossary.jsx';
 import { holyBhagavadGitaUrl } from '../utils/sources.js';
+import { getNote, setNote } from '../utils/notes.js';
 
 export default function VerseDetail({ verse, onOpenPrimer }) {
   const finiteForms = new Set(verse.finiteVerbs?.map((v) => v.form) || []);
@@ -147,7 +149,52 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
           <References references={verse.references} />
         </Section>
       )}
+
+      <Section label="स्वमतम्" labelEn="My notes — free-form, persisted on this device">
+        <NotesPanel chapter={verse.chapter} verse={verse.verse} />
+      </Section>
     </article>
+  );
+}
+
+function NotesPanel({ chapter, verse }) {
+  const [text, setText] = useState(() => getNote(chapter, verse));
+  const [savedAt, setSavedAt] = useState(null);
+
+  // Re-load when the verse changes (parent stays mounted across verses).
+  useEffect(() => {
+    setText(getNote(chapter, verse));
+    setSavedAt(null);
+  }, [chapter, verse]);
+
+  // Debounced save: 700ms after the last keystroke.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNote(chapter, verse, text);
+      if (text) setSavedAt(new Date());
+    }, 700);
+    return () => clearTimeout(timer);
+  }, [text, chapter, verse]);
+
+  return (
+    <div className="notes-panel">
+      <textarea
+        className="notes-textarea"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="What stuck with you in this verse? What to come back to? Anything that doesn't fit the structured fields above…"
+        rows={5}
+        spellCheck="true"
+      />
+      <div className="notes-meta">
+        {text.length > 0 && <span>{text.length} chars</span>}
+        {savedAt && (
+          <span className="notes-saved">
+            saved {savedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </span>
+        )}
+      </div>
+    </div>
   );
 }
 
