@@ -71,6 +71,36 @@ export const VERSES = [
       'हे सञ्जय, धर्मक्षेत्र कुरुक्षेत्र में एकत्र हुए युद्ध की इच्छा रखनेवाले मेरे और पाण्डु के पुत्रों ने क्या किया?',
     english:
       'O Sanjaya, gathered on the sacred field of Kurukshetra, eager to fight — what did my sons and the sons of Pandu do?',
+    references: {
+      translations: [
+        {
+          translator: 'Edwin Arnold',
+          year: 1885,
+          work: 'The Song Celestial',
+          license: 'public-domain',
+          text: 'Ranged thus for battle on the sacred plain — On Kurukshetra — say, Sanjaya! say what wrought my people, and the Pandavas?',
+        },
+        {
+          translator: 'Annie Besant',
+          year: 1895,
+          work: 'The Bhagavad-Gītā',
+          license: 'public-domain',
+          text: 'On the holy plain, on the field of the Kurus, gathered together, desirous to fight, what did my people and the Pāṇḍavas, O Saṅjaya?',
+        },
+      ],
+      commentaries: [
+        {
+          sage: 'Shankara',
+          school: 'अद्वैत (Advaita)',
+          summary: 'The word धर्मक्षेत्र is loaded — the field is itself a place of dharma. The question implicitly asks who upheld dharma. Sets the stage by foregrounding the moral terrain before any combat begins.',
+        },
+        {
+          sage: 'Ramanuja',
+          school: 'विशिष्टाद्वैत (Viśiṣṭādvaita)',
+          summary: 'Reads धर्मक्षेत्र-कुरुक्षेत्र as a single locus of cosmic significance — the field of the Kurus is the very field of dharma where the Lord will manifest. Dhṛtarāṣṭra\'s anxious question frames everything that follows.',
+        },
+      ],
+    },
   },
   {
     chapter: 2,
@@ -162,6 +192,36 @@ export const VERSES = [
       'हे पार्थ, नपुंसकता को प्राप्त मत हो — यह तुम्हें शोभा नहीं देता। हे परन्तप, हृदय की इस तुच्छ दुर्बलता को त्यागकर उठ खड़े हो।',
     english:
       'Do not yield to unmanliness, O Partha — this does not befit you. Having abandoned this petty weakness of heart, rise up, O scorcher of enemies.',
+    references: {
+      translations: [
+        {
+          translator: 'Edwin Arnold',
+          year: 1885,
+          work: 'The Song Celestial',
+          license: 'public-domain',
+          text: 'Yield not to unmanliness, O son of Pritha! It does not become thee. Cast off this petty faintheartedness; arise, O scourge of foes!',
+        },
+        {
+          translator: 'Annie Besant',
+          year: 1895,
+          work: 'The Bhagavad-Gītā',
+          license: 'public-domain',
+          text: 'Yield not to impotence, O Pārtha! it doth not befit thee. Shaking off this paltry faint-heartedness stand up, O Parantapa!',
+        },
+      ],
+      commentaries: [
+        {
+          sage: 'Shankara',
+          school: 'अद्वैत (Advaita)',
+          summary: 'क्लैब्य (cowardice) is identified with delusion (मोह) — the immediate target of the entire teaching that follows. Shankara reads मा स्म गमः as the Lord\'s first imperative: stop this. The whole Gītā unfolds as the medicine for this single ailment.',
+        },
+        {
+          sage: 'Ramanuja',
+          school: 'विशिष्टाद्वैत (Viśiṣṭādvaita)',
+          summary: 'The address पार्थ (son of Kuntī) and परन्तप (scorcher of foes) together remind Arjuna of his lineage and his vocation. The petty weakness of heart is unworthy of both. Krishna\'s tenderness here is as significant as his command.',
+        },
+      ],
+    },
   },
   {
     chapter: 2,
@@ -236,6 +296,36 @@ export const VERSES = [
       'हे मधुसूदन, हे अरिसूदन — मैं युद्ध में पूजा के योग्य भीष्म और द्रोण से बाणों द्वारा कैसे लड़ूँगा?',
     english:
       'O Madhusudana, O Arisudana — how shall I fight in battle against Bhishma and Drona, who are worthy of worship, with arrows?',
+    references: {
+      translations: [
+        {
+          translator: 'Edwin Arnold',
+          year: 1885,
+          work: 'The Song Celestial',
+          license: 'public-domain',
+          text: 'How can I, in the battle, shoot with shafts on Bhishma, or on Drona — O thou Chief! — both worshipful, both honourable men?',
+        },
+        {
+          translator: 'Annie Besant',
+          year: 1895,
+          work: 'The Bhagavad-Gītā',
+          license: 'public-domain',
+          text: 'How, O Madhusūdana, shall I in battle contend with arrows against Bhīṣma and Droṇa, who are worthy of reverence, O slayer of foes?',
+        },
+      ],
+      commentaries: [
+        {
+          sage: 'Shankara',
+          school: 'अद्वैत (Advaita)',
+          summary: 'Arjuna\'s objection is not strategic but ethical: how does one direct violence at the worthy-of-worship? Shankara notes the address of Krishna by two killing-epithets (मधुसूदन, अरिसूदन) is itself a plea — "you who slay enemies, surely you see why I cannot."',
+        },
+        {
+          sage: 'Ramanuja',
+          school: 'विशिष्टाद्वैत (Viśiṣṭādvaita)',
+          summary: 'पूजार्ह establishes that Bhīṣma and Droṇa are not merely teachers but the proper objects of veneration. The verse foregrounds dharmic duty toward elders — a tension only divine knowledge can resolve.',
+        },
+      ],
+    },
   },
   {
     chapter: 2,
@@ -333,6 +423,36 @@ export const VERSES = [
       'इन महानुभाव गुरुओं को बिना मारे, इस लोक में भिक्षा का अन्न भी खाना श्रेयस्कर है — अर्थ और काम में लिप्त इन गुरुओं को मारकर, रक्त से सने हुए भोगों को यहीं भोगना चाहिए क्या?',
     english:
       'Indeed, not killing these noble gurus, to eat even alms here in this world is better — having killed gurus who desire wealth and pleasure, should one enjoy pleasures smeared in blood right here?',
+    references: {
+      translations: [
+        {
+          translator: 'Edwin Arnold',
+          year: 1885,
+          work: 'The Song Celestial',
+          license: 'public-domain',
+          text: 'Better to live on beggar\'s bread with those we love alive, than taste their blood in rich feasts spread, and guiltily survive!',
+        },
+        {
+          translator: 'Annie Besant',
+          year: 1895,
+          work: 'The Bhagavad-Gītā',
+          license: 'public-domain',
+          text: 'Better in this world to eat even the beggar\'s crust, than to slay these most noble Gurus. Slaying these Gurus, our well-wishers, I should taste of blood-besprinkled feasts.',
+        },
+      ],
+      commentaries: [
+        {
+          sage: 'Shankara',
+          school: 'अद्वैत (Advaita)',
+          summary: 'The विधिलिङ् form भुञ्जीय ("should one enjoy?") is the rhetorical heart of the verse. Shankara reads Arjuna\'s horror as the proper response of an unenlightened mind — exactly the state the Lord must lift him out of. The verse names the problem the Gītā exists to solve.',
+        },
+        {
+          sage: 'Ramanuja',
+          school: 'विशिष्टाद्वैत (Viśiṣṭādvaita)',
+          summary: 'अर्थकामान् ("driven by wealth and pleasure") shows Arjuna trying to morally devalue the gurus to make killing them tractable — and immediately recoiling from the attempt. Ramanuja sees the contradiction Arjuna can\'t escape on his own as the precise opening for revealed knowledge.',
+        },
+      ],
+    },
   },
 ];
 

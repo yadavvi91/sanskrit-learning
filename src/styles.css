@@ -3536,3 +3536,118 @@ td.cell.is-suppletive {
   background: var(--saffron);
   color: var(--parchment);
 }
+
+/* References section — translations + commentary positions */
+.references { display: flex; flex-direction: column; gap: 14px; }
+
+.ref-group { display: flex; flex-direction: column; gap: 6px; }
+
+.ref-group-label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.ref-card {
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+
+.ref-card[open] { background: var(--parchment-deep); }
+
+.ref-translation { border-left: 3px solid var(--saffron); }
+.ref-commentary { border-left: 3px solid var(--sage); }
+
+.ref-card summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ref-card summary::-webkit-details-marker { display: none; }
+
+.ref-card summary::before {
+  content: '▸';
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-right: 4px;
+  transition: transform 0.15s ease;
+}
+
+.ref-card[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.ref-translator, .ref-sage {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.ref-year {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.ref-license {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--gold);
+}
+
+.ref-school {
+  font-family: var(--font-deva);
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.ref-card blockquote {
+  margin: 8px 0 4px;
+  padding: 6px 12px;
+  border-left: 2px solid var(--rule);
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.ref-card p {
+  margin: 8px 0 0;
+  font-family: var(--font-prose);
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.ref-work {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.ref-disclaimer {
+  font-size: 12px !important;
+  color: var(--ink-faint) !important;
+  font-style: italic !important;
+  margin-top: 8px !important;
+}

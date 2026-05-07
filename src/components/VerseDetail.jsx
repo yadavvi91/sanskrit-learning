@@ -141,7 +141,55 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       <Section label="English" labelEn="">
         <p className="translation english">{verse.english}</p>
       </Section>
+
+      {verse.references && (
+        <Section label="टिप्पणी" labelEn="References — translations & commentaries">
+          <References references={verse.references} />
+        </Section>
+      )}
     </article>
+  );
+}
+
+function References({ references }) {
+  const { translations = [], commentaries = [] } = references;
+  return (
+    <div className="references">
+      {translations.length > 0 && (
+        <div className="ref-group">
+          <div className="ref-group-label">Translations</div>
+          {translations.map((t, i) => (
+            <details key={i} className="ref-card ref-translation">
+              <summary>
+                <span className="ref-translator">{t.translator}</span>
+                <span className="ref-year">{t.year}</span>
+                {t.license === 'public-domain' && <span className="ref-license">PD</span>}
+              </summary>
+              <blockquote>"{t.text}"</blockquote>
+              {t.work && <cite className="ref-work">— {t.work}</cite>}
+            </details>
+          ))}
+        </div>
+      )}
+
+      {commentaries.length > 0 && (
+        <div className="ref-group">
+          <div className="ref-group-label">Commentary positions</div>
+          {commentaries.map((c, i) => (
+            <details key={i} className="ref-card ref-commentary">
+              <summary>
+                <span className="ref-sage">{c.sage}</span>
+                {c.school && <span className="ref-school">{c.school}</span>}
+              </summary>
+              <p>{c.summary}</p>
+              <p className="ref-disclaimer">
+                Summary based on the well-known {c.sage}-tradition reading; not a direct quotation.
+              </p>
+            </details>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
