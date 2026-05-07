@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CHAPTERS } from '../data/chapters.js';
 import { VERSES, getVerse } from '../data/verses.js';
+import { searchVerses } from '../utils/verseSearch.js';
 import VerseDetail from './VerseDetail.jsx';
 
 const orderedDecoded = [...VERSES].sort((a, b) => a.decodeIndex - b.decodeIndex);
@@ -12,6 +13,12 @@ export default function VerseJourney() {
   const navigate = useNavigate();
   const [showOnlyDecoded, setShowOnlyDecoded] = useState(false);
   const [jumpInput, setJumpInput] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  const searchResults = useMemo(
+    () => (searchInput.trim() ? searchVerses(searchInput) : []),
+    [searchInput]
+  );
 
   // Selection comes from the URL. Default = first decoded verse.
   const selected = useMemo(() => {
@@ -86,6 +93,22 @@ export default function VerseJourney() {
           />
         </form>
 
+        <input
+          type="search"
+          className="rail-search"
+          placeholder="Search decoded corpus…"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          aria-label="Search across decoded verses"
+        />
+
+        {searchInput.trim() && (
+          <SearchResults
+            results={searchResults}
+            onPick={(c, v) => { setSelected({ chapter: c, verse: v }); setSearchInput(''); }}
+          />
+        )}
+
         <button
           type="button"
           className={`decoded-only-toggle ${showOnlyDecoded ? 'is-active' : ''}`}
@@ -124,6 +147,41 @@ export default function VerseJourney() {
           </div>
         )}
       </section>
+    </div>
+  );
+}
+
+function SearchResults({ results, onPick }) {
+  if (results.length === 0) {
+    return <p className="rail-search-empty">No matches in the decoded corpus.</p>;
+  }
+  const total = results.reduce((sum, r) => sum + r.hits.length, 0);
+  return (
+    <div className="rail-search-results">
+      <div className="rail-search-meta">
+        {results.length} verse{results.length === 1 ? '' : 's'} · {total} hit{total === 1 ? '' : 's'}
+      </div>
+      <ul>
+        {results.map((r) => (
+          <li key={`${r.chapter}.${r.verse}`}>
+            <button
+              type="button"
+              className="rail-search-item"
+              onClick={() => onPick(r.chapter, r.verse)}
+              title={r.title || ''}
+            >
+              <span className="rail-search-ref">{r.chapter}.{r.verse}</span>
+              <span className="rail-search-snippet">
+                <span className="rail-search-field">{r.hits[0].label}</span>
+                <span className="rail-search-text">{r.hits[0].snippet}</span>
+                {r.hits.length > 1 && (
+                  <span className="rail-search-more">+{r.hits.length - 1}</span>
+                )}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
