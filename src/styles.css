@@ -2723,3 +2723,14 @@ td.cell.is-suppletive {
   color: var(--gold);
   text-decoration-color: var(--gold);
 }
+
+/* विग्रह pipeline section: was a collapsed details block under पदच्छेद;
+   now a first-class pipeline step between पदच्छेद and क्रिया. */
+.vigraha-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

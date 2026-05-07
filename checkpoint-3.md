@@ -10,13 +10,18 @@ A working v1 of every plan in `plans/v2-v5`. Six top-level tabs, working build a
 ## Commits on this branch
 
 ```
-7a1bd4c  v4 follow-up: wire Glossary popovers into VerseDetail section labels
-c6147bc  v5: Practice tab — SM-2 SRS + "+1" pedagogy + browser persistence
-f6f4fe5  v4: Primer tab + Glossary popover + last-visit banner
-921129a  v3 part 2/N: Atlas tab — pronouns + samāsa + kāraka + avyaya + adj/adv
-239247c  v3 part 1/N: grammar atlas data + scanners + tests
-cc2ed35  v2 part 2/N: Verbs tab — Periodic Table + Dhātu Detail + Stack Builder
-d4e7400  v2 part 1/N: verb conjugation engine + top-25 dhātu dataset + tests
+(latest)  viग्रह rename + checkpoint-3 update
+e2743f5   v1 follow-up: wire Patterns → Verse Journey cross-link
+6a94535   v2 follow-up: उपसर्ग parser for Stack Builder reverse mode (12 new tests)
+11861fb   cross-tab navigation: Atlas/Verbs → Verse Journey
+91fb352   checkpoint-3: branch summary
+7a1bd4c   v4 follow-up: wire Glossary popovers into VerseDetail section labels
+c6147bc   v5: Practice tab — SM-2 SRS + "+1" pedagogy + browser persistence
+f6f4fe5   v4: Primer tab + Glossary popover + last-visit banner
+921129a   v3 part 2/N: Atlas tab — pronouns + samāsa + kāraka + avyaya + adj/adv
+239247c   v3 part 1/N: grammar atlas data + scanners + tests
+cc2ed35   v2 part 2/N: Verbs tab — Periodic Table + Dhātu Detail + Stack Builder
+d4e7400   v2 part 1/N: verb conjugation engine + top-25 dhātu dataset + tests
 ```
 
 ## What works
@@ -58,12 +63,13 @@ Sticky-TOC sidebar with five sub-sections:
 
 ## Tests
 
-`npm test` — **59 passing** across 4 files:
+`npm test` — **71 passing** across 5 files:
 
 - `src/utils/conjugator.test.js` — 27 tests covering thematic regular paradigms (full √भू grid match), suppletive present stems (√गम् → गच्छ-, √दृश् → पश्य-, √स्था → तिष्ठ-), override priority over generation (√कृ, √अस्), the actual Gītā 2.5 form भुञ्जीय, decompose for "Why this form?" tooltips, and decompose_reverse for Stack Builder reverse mode.
 - `src/data/samasa.test.js` — 10 tests covering catalogue shape, type lookup, bank auto-projection from verses, family grouping.
 - `src/data/avyaya.test.js` — 7 tests covering tallyParticles (hyphen-stripping, frequency sort, repeat counting, inventory filtering), reference-data shape.
 - `src/utils/srs.test.js` — 15 tests covering SM-2 properties (initial intervals, ease updates, floor), card seeding (uniqueness, type coverage, per-verse + per-dhātu counts), and queue building (+1 cap, sessionLimit honored).
+- `src/data/upasargas.test.js` — 12 tests covering catalogue shape, lookup, greedy stripping (longer prefixes before shorter, refusal to strip whole-string), and the actual Gītā 2.4 form प्रतियोत्स्यामि decomposing to प्रति + √युध् + लृट् + P + उत्तम + एक.
 
 ## Verified
 
@@ -72,17 +78,23 @@ Sticky-TOC sidebar with five sub-sections:
 - Final bundle: 244 KB JS / 45 KB CSS (gzip: 79 / 7 KB).
 - All four already-decoded Gītā verses cross-link to dhātus and compounds correctly.
 
-## Deliberately deferred (not done in this checkpoint)
+## What landed in the follow-up commits (after checkpoint-3 first draft)
+
+- **Cross-tab navigation** (commit 11861fb): Samāsa Compound Bank rows and Verbs Dhātu-Detail "Met in Gītā" entries are now clickable buttons that jump to the cited verse in Verse Journey.
+- **उपसर्ग parser** (commit 6a94535): Stack Builder reverse mode now handles prefixed forms. प्रतियोत्स्यामि decomposes to प्रति + √युध् + लृट् + P + उत्तम + एक. 12 new tests, total 71.
+- **Patterns → Verse cross-link** (commit e2743f5): Closed a v1 deferred item; pattern cards' "unlocked by Gītā 2.4" now jumps to the cited verse.
+- **विग्रह pipeline rename** (this commit): The compound block in VerseDetail is now its own first-class pipeline section between पदच्छेद and क्रिया, labeled विग्रह per the v3 plan, with a Glossary popover for समास.
+
+## Deliberately deferred (still not done)
 
 - **Verb sub-app**: top 25 dhātus only, not the planned 192. Coverage view notes the curve. Adding more is a data-only commit (no engine change).
 - **Verb sub-app**: drill view (View 4 in the plan) is not built. Practice mode covers the equivalent for लट् 3sg via dhatu_drill cards.
 - **Atlas — Build-a-Compound view (View 4 of Samāsa sub-app)**: deferred. Compound Bank, Identifier drill, and Type Reference all ship.
-- **Atlas — pattern → verse cross-linking from Samāsa bank rows**: bank rows show the verse ref but don't switch view yet.
 - **Practice — SQLite + Node service**: localStorage instead. iCloud-syncs Safari localStorage automatically across the user's two Macs, which was the user's stated motivation. Plan v5's exact backend is reachable as a single storage-module swap.
 - **Practice — UI tests**: only engine has tests (SM-2 + seeding). Drill UI not yet exercised by automated tests.
-- **उपसर्ग reference table inside the verb sub-app**: Atlas plan (Phase 2) marked this as a verb-sub-app task; it isn't built yet. The Stack Builder reverse mode currently fails on prefixed forms like प्रतियोत्स्यामि because उपसर्ग stripping isn't implemented.
+- **उपसर्ग reference table inside the verb sub-app**: parser ships, but the 22-prefix reference page inside Dhātu Detail (per the v2 plan) isn't built yet.
+- **Sandhi between उपसर्ग and root**: e.g., उद् + त्था → उत्तिष्ठ requires sandhi rules the project hasn't tackled. The current parser only handles plain string prefixes.
 - **Glossary popovers in PatternsWon**: only VerseDetail wired. PatternsWon labels would need a similar pass.
-- **उपसर्ग parser** for Stack Builder reverse mode (so प्रतियोत्स्यामि → strip प्रति → look up √युध्).
 - **Browser eyeball check.** I couldn't render the page myself this session.
 
 ## How to extend
