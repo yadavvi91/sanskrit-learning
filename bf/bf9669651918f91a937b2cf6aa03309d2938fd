@@ -1,0 +1,30 @@
+src/App.jsx
+  s_d5e8c30b294ba2::t_4010aecd716b0e 11,20
+  s_d5e8c30b294ba2::t_6d21b37f2c4596 72
+src/utils/decodeHelper.test.js
+  s_d5e8c30b294ba2::t_a83b220da4ac33 1-120
+src/components/DecodeHelper.jsx
+  s_d5e8c30b294ba2::t_456f18fcd3ee27 1-138
+checkpoint-23.md
+  s_d5e8c30b294ba2::t_523dd4cfe32e6e 1-59
+src/styles.css
+  s_d5e8c30b294ba2::t_dfe13eb9910417 4251-4492
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_46beeea72cfa8f 1-190
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "bfbf9669651918f91a937b2cf6aa03309d2938fd",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
