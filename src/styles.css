@@ -3202,6 +3202,8 @@ td.cell.is-suppletive {
   right: 0;
   z-index: 30;
   min-width: 240px;
+  max-height: 70vh;
+  overflow-y: auto;
   background: var(--parchment);
   border: 1px solid var(--rule);
   border-radius: 4px;
@@ -3349,4 +3351,59 @@ td.cell.is-suppletive {
   display: block;
   height: 100%;
   background: var(--saffron);
+}
+
+/* New palette page-bg moods */
+:root[data-theme="indigo-birch"] html,
+:root[data-theme="indigo-birch"] body {
+  background:
+    radial-gradient(circle at 0% 0%, #efe7d2 0%, transparent 55%),
+    var(--parchment);
+}
+
+:root[data-theme="solarized-light"] html,
+:root[data-theme="solarized-light"] body {
+  background: var(--parchment);
+}
+
+:root[data-theme="solarized-dark"] html,
+:root[data-theme="solarized-dark"] body {
+  background:
+    radial-gradient(circle at 50% 0%, #073642 0%, transparent 60%),
+    var(--parchment);
+}
+
+:root[data-theme="midnight-sapphire"] html,
+:root[data-theme="midnight-sapphire"] body {
+  background:
+    radial-gradient(circle at 30% 20%, #182943 0%, transparent 55%),
+    var(--parchment);
+}
+
+:root[data-theme="tea-stained"] html,
+:root[data-theme="tea-stained"] body {
+  background:
+    radial-gradient(circle at 20% 10%, #e7d8ad 0%, transparent 55%),
+    radial-gradient(circle at 100% 100%, #d8c79a 0%, transparent 50%),
+    var(--parchment);
+}
+
+:root[data-theme="cobalt-cream"] html,
+:root[data-theme="cobalt-cream"] body {
+  background:
+    radial-gradient(circle at 100% 0%, #f0e1ad 0%, transparent 55%),
+    var(--parchment);
+}
+
+/* Tighter grain overlays on the dark themes */
+:root[data-theme="solarized-dark"] body::before,
+:root[data-theme="midnight-sapphire"] body::before {
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 240, 200, 0.012) 0,
+      rgba(255, 240, 200, 0.012) 1px,
+      transparent 1px,
+      transparent 6px
+    );
 }
