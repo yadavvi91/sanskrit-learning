@@ -4141,3 +4141,110 @@ td.cell.is-suppletive {
   font-size: 12px;
   color: var(--ink-soft);
 }
+
+/* Vocabulary tab — reuses patterns-matrix styles */
+.vocabulary { display: flex; flex-direction: column; gap: 16px; }
+
+.vocab-header { border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+
+.vocab-title { font-family: var(--font-deva); font-size: 28px; margin: 0; }
+.vocab-sub { margin: 4px 0 0; font-style: italic; color: var(--ink-soft); max-width: 720px; }
+.vocab-sub code {
+  font-family: var(--font-deva);
+  font-style: normal;
+  background: var(--parchment-deep);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.vocab-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.vocab-search {
+  flex: 1;
+  min-width: 220px;
+  font-family: var(--font-prose);
+  font-size: 14px;
+  padding: 7px 10px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.vocab-cat-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.vocab-result-count {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.vocab-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.vocab-matrix th, .vocab-matrix td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+
+.vocab-matrix thead th {
+  background: var(--parchment-deep);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  user-select: none;
+}
+
+.vocab-row:hover { background: #f8f0d9; }
+
+.vocab-word {
+  font-family: var(--font-deva);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.vocab-root {
+  font-family: var(--font-deva);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.vocab-gloss {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.vocab-count { font-variant-numeric: tabular-nums; }
+
+.vocab-occurrences {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-left: 4px;
+}
