@@ -10,7 +10,7 @@ const TABS = [
   { id: 'coverage', label: 'Coverage' },
 ];
 
-export default function Verbs() {
+export default function Verbs({ onOpenVerse }) {
   const [tab, setTab] = useState('periodic');
   const [selectedDhatu, setSelectedDhatu] = useState(DHATUS_TOP25[0]);
 
@@ -45,7 +45,7 @@ export default function Verbs() {
             selectedId={selectedDhatu?.id}
             onSelect={setSelectedDhatu}
           />
-          <DhatuDetail dhatu={selectedDhatu} />
+          <DhatuDetail dhatu={selectedDhatu} onOpenVerse={onOpenVerse} />
         </div>
       )}
 

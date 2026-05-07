@@ -1,15 +1,24 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CHAPTERS } from '../data/chapters.js';
 import { VERSES, getVerse, isDecoded } from '../data/verses.js';
 import VerseDetail from './VerseDetail.jsx';
 
 const orderedDecoded = [...VERSES].sort((a, b) => a.decodeIndex - b.decodeIndex);
 
-export default function VerseJourney({ onOpenPrimer }) {
+export default function VerseJourney({ onOpenPrimer, jumpTo }) {
   const [selected, setSelected] = useState(() => {
     const first = orderedDecoded[0];
     return first ? { chapter: first.chapter, verse: first.verse } : null;
   });
+
+  // Cross-tab navigation: when another tab requests a specific verse, jump to it.
+  useEffect(() => {
+    if (jumpTo && (jumpTo.chapter !== selected?.chapter || jumpTo.verse !== selected?.verse)) {
+      setSelected({ chapter: jumpTo.chapter, verse: jumpTo.verse });
+    }
+    // selected intentionally not in deps — we only respond to jumpTo changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jumpTo]);
 
   const selectedVerse = selected ? getVerse(selected.chapter, selected.verse) : null;
 

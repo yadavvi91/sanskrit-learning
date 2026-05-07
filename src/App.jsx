@@ -19,10 +19,16 @@ const VIEWS = [
 export default function App() {
   const [view, setView] = useState('journey');
   const [primerJumpTo, setPrimerJumpTo] = useState(null);
+  const [verseJumpTo, setVerseJumpTo] = useState(null);
 
   const openPrimer = useCallback((sectionId) => {
     setPrimerJumpTo(sectionId ?? null);
     setView('primer');
+  }, []);
+
+  const openVerse = useCallback((chapter, verse) => {
+    setVerseJumpTo({ chapter, verse });
+    setView('journey');
   }, []);
 
   return (
@@ -53,10 +59,10 @@ export default function App() {
       <LastVisitBanner onOpenPrimer={openPrimer} />
 
       <main className="content">
-        {view === 'journey' && <VerseJourney onOpenPrimer={openPrimer} />}
-        {view === 'patterns' && <PatternsWon />}
-        {view === 'verbs' && <Verbs />}
-        {view === 'atlas' && <Atlas />}
+        {view === 'journey' && <VerseJourney onOpenPrimer={openPrimer} jumpTo={verseJumpTo} />}
+        {view === 'patterns' && <PatternsWon onOpenPrimer={openPrimer} onOpenVerse={openVerse} />}
+        {view === 'verbs' && <Verbs onOpenVerse={openVerse} />}
+        {view === 'atlas' && <Atlas onOpenVerse={openVerse} />}
         {view === 'primer' && <Primer jumpToSection={primerJumpTo} />}
         {view === 'practice' && <Practice />}
       </main>

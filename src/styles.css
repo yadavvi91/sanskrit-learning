@@ -2686,3 +2686,22 @@ td.cell.is-suppletive {
   border-radius: 3px;
   cursor: pointer;
 }
+
+/* Cross-tab navigation links */
+.bank-ref-link, .gita-ref-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  color: var(--saffron);
+  font-size: inherit;
+  padding: 0;
+  text-decoration: underline dotted var(--saffron-soft);
+  text-underline-offset: 2px;
+}
+
+.bank-ref-link:hover, .gita-ref-link:hover {
+  color: var(--gold);
+  text-decoration-color: var(--gold);
+}

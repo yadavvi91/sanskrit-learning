@@ -6,7 +6,7 @@ import {
 
 const PADA_LABEL = { P: 'परस्मैपद', A: 'आत्मनेपद', U: 'उभयपदी' };
 
-export default function DhatuDetail({ dhatu }) {
+export default function DhatuDetail({ dhatu, onOpenVerse }) {
   const [lakara, setLakara] = useState('lat');
   const [pada, setPada] = useState(dhatu.pada === 'A' ? 'A' : 'P');
   const [picked, setPicked] = useState(null);
@@ -92,7 +92,17 @@ export default function DhatuDetail({ dhatu }) {
           <ul>
             {dhatu.gitaOccurrences.map((occ, i) => (
               <li key={i}>
-                <span className="gita-ref">Gītā {occ.chapter}.{occ.verse}</span>
+                {onOpenVerse ? (
+                  <button
+                    type="button"
+                    className="gita-ref gita-ref-link"
+                    onClick={() => onOpenVerse(occ.chapter, occ.verse)}
+                  >
+                    Gītā {occ.chapter}.{occ.verse} ↗
+                  </button>
+                ) : (
+                  <span className="gita-ref">Gītā {occ.chapter}.{occ.verse}</span>
+                )}
                 <span className="gita-form">{occ.form}</span>
                 <span className="gita-context">{occ.context}</span>
               </li>

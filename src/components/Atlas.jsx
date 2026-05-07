@@ -13,7 +13,7 @@ const ATLAS_TABS = [
   { id: 'adjadv',   deva: 'विशेषण-क्रियाविशेषण', en: 'Adj. & Adv.' },
 ];
 
-export default function Atlas() {
+export default function Atlas({ onOpenVerse }) {
   const [tab, setTab] = useState('pronouns');
 
   return (
@@ -42,7 +42,7 @@ export default function Atlas() {
 
         <div className="atlas-content">
           {tab === 'pronouns' && <Pronouns />}
-          {tab === 'samasa'   && <Samasa />}
+          {tab === 'samasa'   && <Samasa onOpenVerse={onOpenVerse} />}
           {tab === 'karaka'   && <Karaka />}
           {tab === 'avyaya'   && <Avyaya />}
           {tab === 'adjadv'   && <AdjAdv />}

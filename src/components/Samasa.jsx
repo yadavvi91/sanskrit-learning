@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { SAMASA_TYPES, buildSamasaBank, lookupSamasaType } from '../data/samasa.js';
 
-export default function Samasa() {
+export default function Samasa({ onOpenVerse }) {
   const [view, setView] = useState('bank'); // 'bank' | 'identifier'
 
   return (
@@ -26,14 +26,14 @@ export default function Samasa() {
         </button>
       </nav>
 
-      {view === 'bank'       && <CompoundBank />}
+      {view === 'bank'       && <CompoundBank onOpenVerse={onOpenVerse} />}
       {view === 'identifier' && <TypeIdentifier />}
       {view === 'types'      && <TypeReference />}
     </article>
   );
 }
 
-function CompoundBank() {
+function CompoundBank({ onOpenVerse }) {
   const bank = useMemo(() => buildSamasaBank(), []);
   const [filter, setFilter] = useState('all');
 
@@ -72,7 +72,18 @@ function CompoundBank() {
             <span className="bank-vigraha">{b.vigraha}</span>
             <span className="bank-type">{b.type}</span>
             <span className="bank-gloss">{b.gloss}</span>
-            <span className="bank-ref">Gītā {b.verseRef.chapter}.{b.verseRef.verse}</span>
+            {onOpenVerse ? (
+              <button
+                type="button"
+                className="bank-ref bank-ref-link"
+                onClick={() => onOpenVerse(b.verseRef.chapter, b.verseRef.verse)}
+                title="Open this verse in Verse Journey"
+              >
+                Gītā {b.verseRef.chapter}.{b.verseRef.verse} ↗
+              </button>
+            ) : (
+              <span className="bank-ref">Gītā {b.verseRef.chapter}.{b.verseRef.verse}</span>
+            )}
           </li>
         ))}
       </ul>
