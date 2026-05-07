@@ -1,0 +1,21 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_8c6aad8e4b4ae7 2007-2009,2012-2023,2033
+checkpoint-7.md
+  s_d5e8c30b294ba2::t_0d7a99e1d76808 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "296a3ea5c650a0a44675abc8b6615cb6bd6f0c91",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
