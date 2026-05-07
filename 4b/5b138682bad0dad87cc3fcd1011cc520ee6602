@@ -1,0 +1,33 @@
+src/components/Primer.jsx
+  s_d5e8c30b294ba2::t_0dda53ca09ae04 13
+  s_d5e8c30b294ba2::t_f3dc03ca26a571 80-89
+checkpoint-8.md
+  s_d5e8c30b294ba2::t_279c6516554bbf 1-42
+src/components/Atlas.jsx
+  s_d5e8c30b294ba2::t_3c769511b738c2 16-18
+  s_d5e8c30b294ba2::t_7668f30ff2f878 19-24
+  s_d5e8c30b294ba2::t_07508f6da529cd 1
+src/data/primer.js
+  s_d5e8c30b294ba2::t_ef20dcb06c5f1f 152-153,155,166-168,176-178,185-187
+src/App.jsx
+  s_d5e8c30b294ba2::t_239f1a872abbda 23,35-37
+  s_d5e8c30b294ba2::t_516a5d7fdc0d7e 71-72
+src/styles.css
+  s_d5e8c30b294ba2::t_328db017fe3900 2848-2895
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "4b5b138682bad0dad87cc3fcd1011cc520ee6602",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
