@@ -1,0 +1,31 @@
+src/data/pronouns.js
+  s_d5e8c30b294ba2::t_eb97e5fe0b76fc 1-117
+src/data/samasa.test.js
+  s_d5e8c30b294ba2::t_34448d58ec963c 1-81
+src/data/samasa.js
+  s_d5e8c30b294ba2::t_7dfa5a3e2cbc65 1-129
+src/data/avyaya.js
+  s_d5e8c30b294ba2::t_eeec60fa8bdc5d 1-121
+src/data/avyaya.test.js
+  s_d5e8c30b294ba2::t_7e6b4e85ef76f1 1-63
+src/data/adjAdv.js
+  s_d5e8c30b294ba2::t_37b0e6594989aa 1-70
+src/data/karaka.js
+  s_d5e8c30b294ba2::t_9c7bcfda464edc 1-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "239247c54f43e99ea0e04d0552a10169d3c35945",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
