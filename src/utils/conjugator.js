@@ -10,6 +10,7 @@
 // Athematic / suppletive / irregular roots fill in dhatu.forms[] tables.
 
 import { ENDINGS, AUGMENT_LAN } from './endings.js';
+import { stripUpasargas } from '../data/upasargas.js';
 
 export function conjugate(dhatu, lakara, pada, purusha, vachana) {
   const override = dhatu?.forms?.[lakara]?.[pada]?.[purusha]?.[vachana];
@@ -57,7 +58,23 @@ export function decompose(dhatu, lakara, pada, purusha, vachana) {
 
 // Reverse-mode helper: given a form, try to identify which dhatu + cell produced it.
 // Used by Stack Builder reverse mode. Quadratic but fine at our scale.
+// Also tries stripping उपसर्ग prefixes — so प्रतियोत्स्यामि decomposes to
+// प्रति + √युध् + लृट् + P + उत्तम + एक.
 export function decompose_reverse(form, dhatus) {
+  // 1. Direct match (no upasarga)
+  const direct = matchAgainstAllCells(form, dhatus, []);
+  if (direct.length > 0) return direct;
+
+  // 2. Try stripping upasargas (up to 2 stacked) and matching the residue
+  const { stripped, prefixes } = stripUpasargas(form);
+  if (prefixes.length > 0) {
+    return matchAgainstAllCells(stripped, dhatus, prefixes);
+  }
+
+  return [];
+}
+
+function matchAgainstAllCells(form, dhatus, prefixes) {
   const matches = [];
   for (const dhatu of dhatus) {
     for (const lakara of Object.keys(ENDINGS)) {
@@ -66,7 +83,7 @@ export function decompose_reverse(form, dhatus) {
           for (const vachana of ['eka', 'dvi', 'bahu']) {
             const generated = conjugate(dhatu, lakara, pada, purusha, vachana);
             if (generated === form) {
-              matches.push({ dhatu, lakara, pada, purusha, vachana });
+              matches.push({ dhatu, lakara, pada, purusha, vachana, prefixes });
             }
           }
         }

@@ -142,7 +142,8 @@ function Reverse({ dhatus }) {
         <p className="reverse-empty">
           No match in the current corpus of {dhatus.length} dhātus.{' '}
           (Try: <code>अकुर्वत</code>, <code>भवति</code>, <code>उत्तिष्ठ</code>,{' '}
-          <code>अस्ति</code>, <code>स्यात्</code>, <code>भुञ्जीय</code>.)
+          <code>अस्ति</code>, <code>स्यात्</code>, <code>भुञ्जीय</code>,{' '}
+          <code>प्रतियोत्स्यामि</code>.)
         </p>
       ) : (
         <ul className="reverse-matches">
@@ -150,6 +151,12 @@ function Reverse({ dhatus }) {
             <li key={i} className="reverse-match">
               <div className="match-form">{input.trim()}</div>
               <div className="match-stack">
+                {m.prefixes && m.prefixes.length > 0 && (
+                  <span>
+                    <span className="layer-tag">उपसर्ग</span>
+                    {m.prefixes.map((u) => `${u.prefix} (${u.sense})`).join(' + ')}
+                  </span>
+                )}
                 <span><span className="layer-tag">धातु</span> √{m.dhatu.devanagari} ({m.dhatu.meanings[0]})</span>
                 <span><span className="layer-tag">गण</span> {m.dhatu.gana}</span>
                 <span><span className="layer-tag">लकार</span> {LAKARA_META[m.lakara].devanagari} ({LAKARA_META[m.lakara].label})</span>
