@@ -1,14 +1,25 @@
-// Five candidate themes. Each is a CSS-variable bundle that overrides :root.
+// Theme catalogue. Each entry is a CSS-variable bundle that overrides :root.
 // Apply by setting `data-theme="<id>"` on <html>.
 //
-// All five are designed to be readable (WCAG AA contrast on body text against
-// the chosen background). Fonts are paired per palette to give each its own
-// voice without breaking the Devanāgarī typesetting.
+// Designed to be readable (≈ WCAG AA contrast on body text against chosen bg).
+// Fonts are paired per palette to give each its own voice without breaking
+// the Devanāgarī typesetting.
+//
+// Themes are tagged with a `group` for the picker UI:
+//   'warm-light' · 'cool-light' · 'solarized' · 'dark'
+
+export const PALETTE_GROUPS = [
+  { id: 'cool-light',  label: 'Cool / modern' },
+  { id: 'warm-light',  label: 'Warm manuscript' },
+  { id: 'solarized',   label: 'Solarized' },
+  { id: 'dark',        label: 'Dark' },
+];
 
 export const PALETTES = [
   {
     id: 'parchment',
-    name: 'Parchment (current)',
+    name: 'Parchment (default)',
+    group: 'warm-light',
     blurb: 'Warm manuscript aesthetic. Soft ivory page, ink-brown text, gold + saffron + sage accents. Cormorant Garamond for prose, Cinzel for small caps.',
     swatches: ['#faf4e8', '#1c1008', '#b5770d', '#c17f24', '#4a5e4a'],
     vars: {
@@ -33,6 +44,7 @@ export const PALETTES = [
   {
     id: 'ink-vermillion',
     name: 'Ink & Vermillion',
+    group: 'cool-light',
     blurb: 'High-contrast manuscript edition. Off-white page, deep ink, vermillion red as the rubrication accent (like the red headings in classical editions), indigo for secondary. Spectral + EB Garamond.',
     swatches: ['#fafaf7', '#0e0e0e', '#c1272d', '#1d3557', '#6b6b6b'],
     vars: {
@@ -57,6 +69,7 @@ export const PALETTES = [
   {
     id: 'sandalwood',
     name: 'Sandalwood & Saffron',
+    group: 'warm-light',
     blurb: 'Warm religious-manuscript palette. Sandalwood-yellow page, deep umber text, saffron and crimson accents, jade-green secondary. Crimson Pro + Marcellus for the display face.',
     swatches: ['#fdf6e3', '#3a2a1a', '#d97706', '#9a3324', '#3a6b58'],
     vars: {
@@ -81,6 +94,7 @@ export const PALETTES = [
   {
     id: 'slate',
     name: 'Slate Scholar',
+    group: 'cool-light',
     blurb: 'Cool modern academic edition. Near-white page, slate-gray text, single warm-amber accent. Source Serif 4 for prose, Source Sans 3 for small caps. Reads like a contemporary critical edition.',
     swatches: ['#f7f7f4', '#1f2937', '#475569', '#b45309', '#94a3b8'],
     vars: {
@@ -104,7 +118,8 @@ export const PALETTES = [
 
   {
     id: 'forest',
-    name: 'Forest & Bone (dark)',
+    name: 'Forest & Bone',
+    group: 'dark',
     blurb: 'Dark-mode option for low-strain reading. Deep forest charcoal panel, warm ivory text, brass accent, sage-olive secondary. Reads like reading by lamplight. Cormorant + Cinzel inverted.',
     swatches: ['#1a1a18', '#f5efde', '#d4a017', '#8d9b6f', '#7a7a72'],
     isDark: true,
@@ -130,6 +145,7 @@ export const PALETTES = [
   {
     id: 'indigo-birch',
     name: 'Indigo & Birch',
+    group: 'cool-light',
     blurb: 'Cool literary palette. Birch-pale page, deep indigo text, ochre accent, slate-blue secondary. EB Garamond + Cinzel.',
     swatches: ['#f5f0e6', '#1a2c4a', '#b87333', '#4a5878', '#8c8a82'],
     vars: {
@@ -154,6 +170,7 @@ export const PALETTES = [
   {
     id: 'solarized-light',
     name: 'Solarized Light',
+    group: 'solarized',
     blurb: 'Ethan Schoonover\'s Solarized — low-contrast cream-yellow base, dark cyan text, blue accent, olive secondary. Designed for long reading sessions; eye-strain-tested.',
     swatches: ['#fdf6e3', '#073642', '#b58900', '#268bd2', '#859900'],
     vars: {
@@ -178,6 +195,7 @@ export const PALETTES = [
   {
     id: 'solarized-dark',
     name: 'Solarized Dark',
+    group: 'solarized',
     blurb: 'Solarized\'s dark counterpart — deep base3 cyan panel, base2 cream text, same accent palette as Solarized Light. Same designed-for-long-reading feel, inverted.',
     swatches: ['#002b36', '#eee8d5', '#b58900', '#268bd2', '#859900'],
     isDark: true,
@@ -202,7 +220,8 @@ export const PALETTES = [
 
   {
     id: 'midnight-sapphire',
-    name: 'Midnight Sapphire (dark)',
+    name: 'Midnight Sapphire',
+    group: 'dark',
     blurb: 'Deep navy panel, warm ivory text, gold accent, sapphire-blue secondary. Different mood from Forest: less library-night, more royal-manuscript-by-candle.',
     swatches: ['#0e1a2e', '#f0e9d2', '#d4a651', '#6b8aaa', '#7c7464'],
     isDark: true,
@@ -228,6 +247,7 @@ export const PALETTES = [
   {
     id: 'tea-stained',
     name: 'Tea Stained',
+    group: 'warm-light',
     blurb: 'Aged-document palette. Tea-stained cream page, sepia text, tea-leaf-brown and umber accents. Reads like a hand-passed manuscript. Cormorant + Marcellus.',
     swatches: ['#f0e6cd', '#4a3220', '#8a4a2a', '#6b5a3e', '#a89a7c'],
     vars: {
@@ -250,8 +270,136 @@ export const PALETTES = [
   },
 
   {
+    id: 'newsprint',
+    name: 'Newsprint',
+    group: 'cool-light',
+    blurb: 'Pure white page, near-black ink, single red accent. Minimal journalist\'s-text feel, like a broadsheet column. Source Serif 4 + Source Sans 3.',
+    swatches: ['#fefefe', '#111111', '#c1272d', '#4d4d4d', '#999999'],
+    vars: {
+      '--parchment':       '#fefefe',
+      '--parchment-deep':  '#f3f3f3',
+      '--parchment-edge':  '#e6e6e6',
+      '--ink':             '#111111',
+      '--ink-soft':        '#4d4d4d',
+      '--ink-faint':       '#999999',
+      '--gold':            '#c1272d',
+      '--saffron':         '#a02123',
+      '--saffron-soft':    '#f3d4d5',
+      '--sage':            '#4d4d4d',
+      '--sage-soft':       '#d9d9d9',
+      '--rule':            '#dcdcdc',
+      '--font-prose':      "'Source Serif 4', 'Georgia', serif",
+      '--font-deva':       "'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif",
+      '--font-display':    "'Source Sans 3', 'Inter', sans-serif",
+    },
+  },
+
+  {
+    id: 'linotype',
+    name: 'Linotype',
+    group: 'cool-light',
+    blurb: 'Slight cream page, deep slate-ink text, teal accent, amber secondary. Reads like a 1960s typeset book. EB Garamond + Spectral.',
+    swatches: ['#f5f1e8', '#0c1f25', '#006d77', '#783f04', '#7c8a8e'],
+    vars: {
+      '--parchment':       '#f5f1e8',
+      '--parchment-deep':  '#ede7d6',
+      '--parchment-edge':  '#dfd8c1',
+      '--ink':             '#0c1f25',
+      '--ink-soft':        '#3a4a52',
+      '--ink-faint':       '#7c8a8e',
+      '--gold':            '#006d77',
+      '--saffron':         '#783f04',
+      '--saffron-soft':    '#e3cab2',
+      '--sage':            '#3a4a52',
+      '--sage-soft':       '#bccbd1',
+      '--rule':            '#cdc4ac',
+      '--font-prose':      "'EB Garamond', 'Georgia', serif",
+      '--font-deva':       "'Noto Serif Devanagari', serif",
+      '--font-display':    "'Spectral', 'Cinzel', serif",
+    },
+  },
+
+  {
+    id: 'editors-mark',
+    name: "Editor's Mark",
+    group: 'cool-light',
+    blurb: 'Bone-white page, deep ink, single bright cinnabar accent (the editor\'s pen). Source Serif 4 + Cinzel for display.',
+    swatches: ['#fafaf2', '#1a1a1a', '#b91c1c', '#4a4a4a', '#a8a89c'],
+    vars: {
+      '--parchment':       '#fafaf2',
+      '--parchment-deep':  '#f0f0e6',
+      '--parchment-edge':  '#dedeD2',
+      '--ink':             '#1a1a1a',
+      '--ink-soft':        '#4a4a4a',
+      '--ink-faint':       '#a8a89c',
+      '--gold':            '#b91c1c',
+      '--saffron':         '#dc2626',
+      '--saffron-soft':    '#f1c5c5',
+      '--sage':            '#4a4a4a',
+      '--sage-soft':       '#d4d4cc',
+      '--rule':            '#dadada',
+      '--font-prose':      "'Source Serif 4', 'Georgia', serif",
+      '--font-deva':       "'Tiro Devanagari Sanskrit', 'Noto Serif Devanagari', serif",
+      '--font-display':    "'Cinzel', serif",
+    },
+  },
+
+  {
+    id: 'charcoal-ember',
+    name: 'Charcoal & Ember',
+    group: 'dark',
+    blurb: 'Deep charcoal panel, warm ivory text, ember-orange accent, sage secondary. Different mood from Forest: warmer, more crackling-fire.',
+    swatches: ['#1a1a1a', '#ede4d3', '#e07a5f', '#81b29a', '#7d7872'],
+    isDark: true,
+    vars: {
+      '--parchment':       '#1a1a1a',
+      '--parchment-deep':  '#262624',
+      '--parchment-edge':  '#34332f',
+      '--ink':             '#ede4d3',
+      '--ink-soft':        '#bdb6a8',
+      '--ink-faint':       '#7d7872',
+      '--gold':            '#e07a5f',
+      '--saffron':         '#f0926a',
+      '--saffron-soft':    '#5a2d1d',
+      '--sage':            '#81b29a',
+      '--sage-soft':       '#2d4036',
+      '--rule':            '#3d3c38',
+      '--font-prose':      "'Cormorant Garamond', 'Georgia', serif",
+      '--font-deva':       "'Noto Serif Devanagari', serif",
+      '--font-display':    "'Cinzel', serif",
+    },
+  },
+
+  {
+    id: 'nord',
+    name: 'Nord',
+    group: 'dark',
+    blurb: 'The Nord palette: cool blue-greys (Polar Night), bright snow-white text, frost-cyan accent, aurora-orange secondary. Popular dev/IDE theme adapted for prose.',
+    swatches: ['#2e3440', '#eceff4', '#88c0d0', '#d08770', '#7b8398'],
+    isDark: true,
+    vars: {
+      '--parchment':       '#2e3440',
+      '--parchment-deep':  '#3b4252',
+      '--parchment-edge':  '#434c5e',
+      '--ink':             '#eceff4',
+      '--ink-soft':        '#d8dee9',
+      '--ink-faint':       '#7b8398',
+      '--gold':            '#88c0d0',
+      '--saffron':         '#d08770',
+      '--saffron-soft':    '#3b4452',
+      '--sage':            '#a3be8c',
+      '--sage-soft':       '#3d4a3c',
+      '--rule':            '#4c566a',
+      '--font-prose':      "'Source Serif 4', 'Georgia', serif",
+      '--font-deva':       "'Noto Serif Devanagari', serif",
+      '--font-display':    "'Source Sans 3', 'Inter', sans-serif",
+    },
+  },
+
+  {
     id: 'cobalt-cream',
     name: 'Cobalt & Cream',
+    group: 'warm-light',
     blurb: 'Vibrant miniature-painting palette. Cream page, deep cobalt text, vermillion accent, cobalt-blue secondary. Reminiscent of Pichwai / Mughal manuscript pigments.',
     swatches: ['#f5edd2', '#1d3557', '#c1272d', '#2a6f97', '#a08560'],
     vars: {

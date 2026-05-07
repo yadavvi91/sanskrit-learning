@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  PALETTES, applyPalette, getStoredPaletteId, savePaletteId,
+  PALETTES, PALETTE_GROUPS, applyPalette, getStoredPaletteId, savePaletteId,
 } from '../data/palettes.js';
 
 // Collapsed by default — single icon button in the masthead corner.
@@ -52,23 +52,57 @@ export default function ThemePicker() {
 
       {open && (
         <div className="theme-popover" role="dialog" aria-label="Pick a theme">
-          <div className="theme-popover-label">Theme</div>
-          {PALETTES.map((p) => (
-            <button
-              key={p.id}
-              type="button"
-              className={`theme-swatch ${paletteId === p.id ? 'is-active' : ''}`}
-              onClick={() => { setPaletteId(p.id); }}
-              title={p.blurb}
-            >
-              <span className="swatch-bg" style={{ background: p.swatches[0] }} />
-              <span className="swatch-fg" style={{ background: p.swatches[1] }} />
-              <span className="swatch-accent" style={{ background: p.swatches[2] }} />
-              <span className="swatch-name">{p.name}</span>
-            </button>
-          ))}
+          <div className="theme-popover-label">Theme · {PALETTES.length} options</div>
+          {PALETTE_GROUPS.map((g) => {
+            const inGroup = PALETTES.filter((p) => p.group === g.id);
+            if (inGroup.length === 0) return null;
+            return (
+              <ThemeGroup
+                key={g.id}
+                group={g}
+                palettes={inGroup}
+                activeId={paletteId}
+                onPick={setPaletteId}
+              />
+            );
+          })}
         </div>
       )}
     </div>
+  );
+}
+
+function ThemeGroup({ group, palettes, activeId, onPick }) {
+  const containsActive = useMemo(
+    () => palettes.some((p) => p.id === activeId),
+    [palettes, activeId]
+  );
+  // Default-expanded only for the group containing the active palette;
+  // all others collapsed so the popover stays short.
+  const [expanded, setExpanded] = useState(containsActive);
+
+  return (
+    <details className="theme-group" open={expanded} onToggle={(e) => setExpanded(e.target.open)}>
+      <summary className="theme-group-summary">
+        <span className="theme-group-label">{group.label}</span>
+        <span className="theme-group-count">{palettes.length}</span>
+      </summary>
+      <div className="theme-group-body">
+        {palettes.map((p) => (
+          <button
+            key={p.id}
+            type="button"
+            className={`theme-swatch ${activeId === p.id ? 'is-active' : ''}`}
+            onClick={() => onPick(p.id)}
+            title={p.blurb}
+          >
+            <span className="swatch-bg" style={{ background: p.swatches[0] }} />
+            <span className="swatch-fg" style={{ background: p.swatches[1] }} />
+            <span className="swatch-accent" style={{ background: p.swatches[2] }} />
+            <span className="swatch-name">{p.name}</span>
+          </button>
+        ))}
+      </div>
+    </details>
   );
 }
