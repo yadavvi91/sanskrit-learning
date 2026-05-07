@@ -1,4 +1,5 @@
 :root {
+  /* Defaults match the "parchment" palette in src/data/palettes.js. */
   --parchment: #faf4e8;
   --parchment-deep: #f3eada;
   --parchment-edge: #e8dcc1;
@@ -12,6 +13,11 @@
   --sage-soft: #cfd9c8;
   --rule: #d6c5a0;
   --shadow: 0 1px 0 #efe2c4 inset, 0 14px 28px -22px rgba(64, 40, 10, 0.35);
+
+  /* Font triple — palette-swappable. Overridden by applyPalette() at runtime. */
+  --font-prose:   'Cormorant Garamond', 'Georgia', serif;
+  --font-deva:    'Noto Serif Devanagari', serif;
+  --font-display: 'Cinzel', serif;
 }
 
 * {
@@ -27,7 +33,7 @@ body {
     radial-gradient(circle at 100% 100%, #f3e3c2 0%, transparent 50%),
     var(--parchment);
   color: var(--ink);
-  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-family: var(--font-prose);
   font-size: 18px;
   line-height: 1.55;
   min-height: 100vh;
@@ -86,7 +92,7 @@ button:disabled {
 }
 
 .masthead-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-weight: 600;
   font-size: 44px;
   margin: 0;
@@ -111,7 +117,7 @@ button:disabled {
 }
 
 .view-tab {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -161,7 +167,7 @@ button:disabled {
 }
 
 .rail-heading {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -222,7 +228,7 @@ button:disabled {
 .decode-order-num {
   grid-row: 1 / span 2;
   align-self: center;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 14px;
   color: var(--saffron);
   border: 1px solid var(--saffron-soft);
@@ -235,7 +241,7 @@ button:disabled {
 }
 
 .decode-order-ref {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -293,7 +299,7 @@ button:disabled {
 }
 
 .chapter-num {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -301,7 +307,7 @@ button:disabled {
 }
 
 .chapter-name {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   flex: 1;
   font-size: 15px;
@@ -391,7 +397,7 @@ button:disabled {
 }
 
 .verse-ref {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 13px;
@@ -399,7 +405,7 @@ button:disabled {
 }
 
 .verse-speaker {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   font-size: 18px;
 }
@@ -445,14 +451,14 @@ button:disabled {
 }
 
 .section-label-sa {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-weight: 600;
   font-size: 18px;
   color: var(--ink);
 }
 
 .section-label-en {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -466,7 +472,7 @@ button:disabled {
 /* ---------- Verse content ---------- */
 
 .mool {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   line-height: 1.85;
   color: var(--ink);
@@ -482,7 +488,7 @@ button:disabled {
 }
 
 .pada {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 17px;
   background: var(--parchment);
   border: 1px solid var(--rule);
@@ -508,7 +514,7 @@ button:disabled {
 .sandhi summary,
 .samas summary {
   cursor: pointer;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -518,7 +524,7 @@ button:disabled {
 .sandhi ul {
   margin: 8px 0 0;
   padding-left: 18px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 16px;
 }
 
@@ -550,7 +556,7 @@ button:disabled {
 }
 
 .samas-compound {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 17px;
   font-weight: 600;
   color: var(--ink);
@@ -558,17 +564,17 @@ button:disabled {
 
 .samas-eq {
   color: var(--ink-faint);
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
 }
 
 .samas-vigraha {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 16px;
   color: var(--ink-soft);
 }
 
 .samas-type {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -616,7 +622,7 @@ button:disabled {
 }
 
 .finite-form {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   font-weight: 600;
   color: var(--ink);
@@ -638,7 +644,7 @@ button:disabled {
 }
 
 .meta-pair > span:first-child {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -658,7 +664,7 @@ button:disabled {
 }
 
 .non-finite-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -685,14 +691,14 @@ button:disabled {
 }
 
 .nf-form {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   font-size: 17px;
   font-weight: 600;
 }
 
 .nf-kind {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -703,7 +709,7 @@ button:disabled {
 }
 
 .nf-root {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
 }
 
@@ -738,7 +744,7 @@ button:disabled {
 }
 
 .anvaya {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 19px;
   margin: 0;
   color: var(--ink);
@@ -757,7 +763,7 @@ button:disabled {
 }
 
 .translation.hindi {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 18px;
 }
 
@@ -779,7 +785,7 @@ button:disabled {
 }
 
 .patterns-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 28px;
   margin: 0;
 }
@@ -815,7 +821,7 @@ button:disabled {
 
 .category-title {
   margin: 0;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -823,7 +829,7 @@ button:disabled {
 }
 
 .category-count {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.18em;
   color: var(--saffron);
@@ -846,7 +852,7 @@ button:disabled {
 }
 
 .pattern-name {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-weight: 600;
   font-size: 17px;
   color: var(--ink);
@@ -869,7 +875,7 @@ button:disabled {
 }
 
 .trigger-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -877,14 +883,14 @@ button:disabled {
 }
 
 .trigger-ref {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--saffron);
 }
 
 .trigger-example {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   font-size: 14px;
 }
@@ -896,7 +902,7 @@ button:disabled {
   padding-top: 18px;
   border-top: 1px solid var(--rule);
   text-align: center;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -922,7 +928,7 @@ button:disabled {
 }
 
 .verbs-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 28px;
   margin: 0;
 }
@@ -943,7 +949,7 @@ button:disabled {
 }
 
 .sub-tab {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -991,7 +997,7 @@ button:disabled {
 }
 
 .dhatu-toolbar-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 10px;
@@ -1058,7 +1064,7 @@ button:disabled {
 }
 
 .dhatu-cell .dhatu-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   font-weight: 600;
   color: var(--ink);
@@ -1066,7 +1072,7 @@ button:disabled {
 }
 
 .dhatu-cell .dhatu-iast {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-prose);
   font-style: italic;
   font-size: 11px;
   color: var(--ink-faint);
@@ -1076,7 +1082,7 @@ button:disabled {
 /* Search + tier row */
 .dhatu-search {
   flex: 1;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-prose);
   font-size: 13px;
   padding: 6px 10px;
   border: 1px solid var(--rule);
@@ -1096,7 +1102,7 @@ button:disabled {
   background: var(--parchment);
   border: 1px solid var(--rule);
   border-radius: 3px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1113,7 +1119,7 @@ button:disabled {
 
 .dhatu-result-count {
   margin-left: auto;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -1149,7 +1155,7 @@ button:disabled {
 
 .gana-chip {
   font-size: 10px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   border: 1px solid var(--rule);
   border-radius: 2px;
   padding: 2px 6px;
@@ -1161,7 +1167,7 @@ button:disabled {
 }
 
 .gana-chip-name {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   letter-spacing: 0;
 }
 
@@ -1192,7 +1198,7 @@ button:disabled {
 }
 
 .dhatu-deva-large {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 36px;
   margin: 0;
   color: var(--ink);
@@ -1223,7 +1229,7 @@ button:disabled {
 }
 
 .meta-chip > span:first-child {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1233,7 +1239,7 @@ button:disabled {
 .meta-chip.is-warn {
   background: #f6e4cc;
   border-color: #d6b285;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1273,12 +1279,12 @@ button:disabled {
 .lakara-tab.is-active .lakara-tab-en { color: var(--parchment-deep); }
 
 .lakara-tab-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 16px;
 }
 
 .lakara-tab-en {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -1296,7 +1302,7 @@ button:disabled {
 }
 
 .lakara-signal {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 14px;
 }
 
@@ -1311,7 +1317,7 @@ button:disabled {
   background: transparent;
   border: none;
   color: var(--ink-soft);
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 13px;
   padding: 4px 10px;
 }
@@ -1352,13 +1358,13 @@ button:disabled {
 }
 
 .conj-grid .th-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 13px;
   color: var(--ink);
 }
 
 .conj-grid .th-en {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -1367,7 +1373,7 @@ button:disabled {
 .conj-cell {
   background: transparent;
   border: none;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 17px;
   color: var(--ink);
   cursor: pointer;
@@ -1394,14 +1400,14 @@ td.is-picked { background: var(--saffron-soft); }
 .breakdown-title {
   margin: 0 0 8px;
   font-size: 14px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
 
 .breakdown-title strong {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 18px;
   letter-spacing: 0;
   color: var(--ink);
@@ -1421,7 +1427,7 @@ td.is-picked { background: var(--saffron-soft); }
 .breakdown-layers > li > span:first-child {
   display: inline-block;
   width: 110px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -1435,7 +1441,7 @@ td.is-picked { background: var(--saffron-soft); }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 18px;
 }
 
@@ -1454,14 +1460,14 @@ td.is-picked { background: var(--saffron-soft); }
 
 /* Free operators between formula chips: no border, no chip styling. */
 .formula-op {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 16px;
   color: var(--ink-faint);
   padding: 0 2px;
 }
 
 .formula-eq, .formula-flag {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.18em;
   color: var(--ink-faint);
@@ -1473,7 +1479,7 @@ td.is-picked { background: var(--saffron-soft); }
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 10px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1506,7 +1512,7 @@ td.is-picked { background: var(--saffron-soft); }
   flex-wrap: wrap;
   gap: 6px;
   align-items: baseline;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-prose);
   font-size: 13px;
   color: var(--ink-soft);
 }
@@ -1540,7 +1546,7 @@ td.is-picked { background: var(--saffron-soft); }
 
 .gita-occurrences h4 {
   margin: 0 0 6px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1565,14 +1571,14 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .gita-ref {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--saffron);
 }
 
 .gita-form {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   font-size: 16px;
   font-weight: 600;
@@ -1603,7 +1609,7 @@ td.is-picked { background: var(--saffron-soft); }
 .stack-mode-btn {
   background: transparent;
   border: none;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1634,7 +1640,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .picker-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1642,7 +1648,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .picker select {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 14px;
   background: var(--parchment);
   border: 1px solid var(--rule);
@@ -1652,7 +1658,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .picker-readonly {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 14px;
   color: var(--ink-soft);
 }
@@ -1662,7 +1668,7 @@ td.is-picked { background: var(--saffron-soft); }
   flex-wrap: wrap;
   align-items: baseline;
   gap: 8px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   background: var(--parchment);
   border: 1px solid var(--rule);
@@ -1678,7 +1684,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .reverse-input-label > span {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1686,7 +1692,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .reverse-input {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   padding: 8px 12px;
   border: 1px solid var(--rule);
@@ -1703,7 +1709,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .reverse-empty code {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   background: var(--parchment);
   padding: 1px 5px;
   border-radius: 2px;
@@ -1728,7 +1734,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .match-form {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   font-weight: 600;
   color: var(--ink);
@@ -1745,7 +1751,7 @@ td.is-picked { background: var(--saffron-soft); }
 
 .layer-tag {
   display: inline-block;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1763,7 +1769,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .coverage-heading {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1789,7 +1795,7 @@ td.is-picked { background: var(--saffron-soft); }
 
 .coverage-table thead th {
   background: var(--parchment-deep);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1817,7 +1823,7 @@ td.is-picked { background: var(--saffron-soft); }
 .atlas-header { border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
 
 .atlas-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 28px;
   margin: 0;
 }
@@ -1877,12 +1883,12 @@ td.is-picked { background: var(--saffron-soft); }
 .atlas-toc-item.is-active .atlas-toc-en { color: var(--parchment); }
 
 .atlas-toc-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 14px;
 }
 
 .atlas-toc-en {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1901,14 +1907,14 @@ td.is-picked { background: var(--saffron-soft); }
 .atlas-page { display: flex; flex-direction: column; gap: 18px; }
 
 .atlas-page-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   margin: 18px 0 4px;
   color: var(--ink);
 }
 
 .atlas-sub-title {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1955,7 +1961,7 @@ td.is-picked { background: var(--saffron-soft); }
 }
 
 .pronoun-deva {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 18px;
   margin: 0;
 }
@@ -1973,7 +1979,7 @@ td.is-picked { background: var(--saffron-soft); }
   text-align: left;
 }
 .pronoun-table thead th {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1983,19 +1989,19 @@ td.is-picked { background: var(--saffron-soft); }
 }
 .pronoun-table tbody th {
   font-weight: 500;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
 .case-deva { color: var(--ink); font-size: 13px; }
-.case-en { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
+.case-en { font-family: var(--font-display); font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
 
-.cell-form { font-family: 'Noto Serif Devanagari', serif; color: var(--ink); }
+.cell-form { font-family: var(--font-deva); color: var(--ink); }
 .cell-enclitic {
   display: inline-block;
   margin-left: 6px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 12px;
   color: var(--ink-faint);
   background: var(--parchment-deep);
@@ -2033,7 +2039,7 @@ td.cell.is-suppletive {
   border-bottom: 2px solid var(--gold);
   padding: 1px 6px;
   border-radius: 2px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 13px;
 }
 
@@ -2063,7 +2069,7 @@ td.cell.is-suppletive {
 .transfer-table thead th, .correlative-table thead th,
 .karaka-table thead th, .postposition-table thead th,
 .irreg-comparison-table thead th, .primer-table thead th {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2071,13 +2077,13 @@ td.cell.is-suppletive {
 }
 
 .transfer-deva, .correlative-pair, .karaka-deva, .post-word {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 15px;
   color: var(--ink);
 }
 
 .transfer-en { font-style: italic; color: var(--ink-soft); }
-.correlative-gita { font-family: 'Noto Serif Devanagari', serif; font-size: 13px; color: var(--ink-soft); }
+.correlative-gita { font-family: var(--font-deva); font-size: 13px; color: var(--ink-soft); }
 
 .outliers, .reflexive-list {
   list-style: disc;
@@ -2089,7 +2095,7 @@ td.cell.is-suppletive {
   font-size: 14px;
 }
 
-.outliers em { font-family: 'Noto Serif Devanagari', serif; font-style: normal; color: var(--ink); font-weight: 600; }
+.outliers em { font-family: var(--font-deva); font-style: normal; color: var(--ink); font-weight: 600; }
 .outlier-note { color: var(--ink-soft); }
 
 /* Samasa */
@@ -2104,7 +2110,7 @@ td.cell.is-suppletive {
 .samasa-view {
   background: transparent;
   border: none;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2126,7 +2132,7 @@ td.cell.is-suppletive {
   border-radius: 3px;
   padding: 3px 10px;
   font-size: 12px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
 }
 
 .samasa-filter.is-active {
@@ -2166,11 +2172,11 @@ td.cell.is-suppletive {
   font-size: 14px;
 }
 
-.bank-compound { font-family: 'Noto Serif Devanagari', serif; font-size: 16px; font-weight: 600; color: var(--ink); }
+.bank-compound { font-family: var(--font-deva); font-size: 16px; font-weight: 600; color: var(--ink); }
 .bank-eq { color: var(--ink-faint); }
-.bank-vigraha { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); }
+.bank-vigraha { font-family: var(--font-deva); color: var(--ink-soft); }
 .bank-type {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--gold);
@@ -2183,7 +2189,7 @@ td.cell.is-suppletive {
 .bank-gloss { grid-column: 1 / 4; font-style: italic; color: var(--ink); }
 .bank-ref {
   grid-column: 4; grid-row: 2;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   color: var(--saffron);
   letter-spacing: 0.1em;
@@ -2205,7 +2211,7 @@ td.cell.is-suppletive {
   justify-content: center;
   align-items: baseline;
   gap: 12px;
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
 }
 
@@ -2234,8 +2240,8 @@ td.cell.is-suppletive {
 .drill-option:hover:not(:disabled) { background: var(--parchment-deep); }
 .drill-option.is-correct { background: #d6e9c5; border-color: #6c9c4a; }
 .drill-option.is-wrong { background: #f1d5cf; border-color: #b25e4a; }
-.opt-deva { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; color: var(--ink); }
-.opt-en { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
+.opt-deva { font-family: var(--font-deva); font-size: 14px; color: var(--ink); }
+.opt-en { font-family: var(--font-display); font-size: 9px; letter-spacing: 0.14em; color: var(--ink-faint); }
 
 .drill-feedback {
   display: flex;
@@ -2256,14 +2262,14 @@ td.cell.is-suppletive {
   border: none;
   border-radius: 3px;
   padding: 6px 14px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .drill-score {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2294,12 +2300,12 @@ td.cell.is-suppletive {
   margin-bottom: 8px;
 }
 
-.type-deva { font-family: 'Noto Serif Devanagari', serif; font-size: 16px; color: var(--ink); margin: 0; }
-.type-family { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.14em; color: var(--saffron); }
+.type-deva { font-family: var(--font-deva); font-size: 16px; color: var(--ink); margin: 0; }
+.type-family { font-family: var(--font-display); font-size: 9px; letter-spacing: 0.14em; color: var(--saffron); }
 .type-en { margin: 0 0 4px; color: var(--ink-soft); font-style: italic; font-size: 13px; }
 .type-rule { margin: 0 0 6px; font-size: 14px; color: var(--ink); }
 .type-pattern { margin: 0; font-size: 13px; color: var(--ink-soft); }
-.type-examples { margin: 6px 0 0; padding-left: 16px; font-family: 'Noto Serif Devanagari', serif; font-size: 13px; }
+.type-examples { margin: 6px 0 0; padding-left: 16px; font-family: var(--font-deva); font-size: 13px; }
 
 /* Karaka */
 .karaka-insight {
@@ -2311,7 +2317,7 @@ td.cell.is-suppletive {
   font-style: italic;
 }
 
-.karaka-vibhakti { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; color: var(--ink); white-space: nowrap; }
+.karaka-vibhakti { font-family: var(--font-deva); font-size: 14px; color: var(--ink); white-space: nowrap; }
 .karaka-role { font-style: italic; color: var(--ink-soft); }
 .karaka-sense { font-size: 13px; color: var(--ink); }
 
@@ -2334,11 +2340,11 @@ td.cell.is-suppletive {
 }
 
 .karaka-ex-name { margin-bottom: 4px; }
-.karaka-ex-active, .karaka-ex-passive { font-family: 'Noto Serif Devanagari', serif; font-size: 14px; }
+.karaka-ex-active, .karaka-ex-passive { font-family: var(--font-deva); font-size: 14px; }
 .karaka-ex-active span, .karaka-ex-passive span {
   display: inline-block;
   width: 60px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -2356,8 +2362,8 @@ td.cell.is-suppletive {
 
 .tally-row { display: grid; grid-template-columns: 60px auto 1fr; gap: 10px; align-items: baseline; font-size: 14px; }
 
-.tally-word { font-family: 'Noto Serif Devanagari', serif; font-weight: 600; color: var(--ink); }
-.tally-count { font-family: 'Cinzel', serif; font-size: 11px; color: var(--saffron); }
+.tally-word { font-family: var(--font-deva); font-weight: 600; color: var(--ink); }
+.tally-count { font-family: var(--font-display); font-size: 11px; color: var(--saffron); }
 .tally-verses { color: var(--ink-soft); font-size: 12px; }
 
 .avyaya-negative { display: flex; flex-direction: column; gap: 8px; }
@@ -2372,7 +2378,7 @@ td.cell.is-suppletive {
 
 .negative-card h5 {
   margin: 0 0 4px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2380,7 +2386,7 @@ td.cell.is-suppletive {
 
 .negative-card p { margin: 0; font-size: 14px; color: var(--ink); }
 
-.post-case { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); font-size: 13px; }
+.post-case { font-family: var(--font-deva); color: var(--ink-soft); font-size: 13px; }
 
 .particle-groups {
   display: grid;
@@ -2395,14 +2401,14 @@ td.cell.is-suppletive {
   padding: 12px 14px;
 }
 
-.particle-group-title { margin: 0; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.particle-group-title { margin: 0; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
 .particle-group-desc { margin: 4px 0 8px; font-size: 13px; font-style: italic; color: var(--ink-soft); }
 
 .particle-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
 
 .particle-list li { display: flex; gap: 12px; font-size: 14px; }
 
-.particle-word { font-family: 'Noto Serif Devanagari', serif; min-width: 60px; color: var(--ink); }
+.particle-word { font-family: var(--font-deva); min-width: 60px; color: var(--ink); }
 .particle-sense { color: var(--ink-soft); font-style: italic; }
 
 /* Adj/Adv */
@@ -2417,8 +2423,8 @@ td.cell.is-suppletive {
 }
 
 .comparison-card header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-.comparison-card h5, .adverb-pattern h5 { margin: 0; font-family: 'Noto Serif Devanagari', serif; font-size: 18px; }
-.comparison-name { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.14em; color: var(--saffron); }
+.comparison-card h5, .adverb-pattern h5 { margin: 0; font-family: var(--font-deva); font-size: 18px; }
+.comparison-name { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.14em; color: var(--saffron); }
 
 .comparison-note, .adverb-note { margin: 0 0 6px; font-size: 13px; color: var(--ink-soft); font-style: italic; }
 
@@ -2426,9 +2432,9 @@ td.cell.is-suppletive {
 
 .comparison-card li, .adverb-pattern li { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
 
-.ex-base { font-family: 'Noto Serif Devanagari', serif; color: var(--ink-soft); }
+.ex-base { font-family: var(--font-deva); color: var(--ink-soft); }
 .ex-arrow { color: var(--ink-faint); }
-.ex-derived { font-family: 'Noto Serif Devanagari', serif; color: var(--ink); font-weight: 600; }
+.ex-derived { font-family: var(--font-deva); color: var(--ink); font-weight: 600; }
 .ex-en { font-style: italic; color: var(--ink-soft); }
 
 .adverb-pattern + .adverb-pattern { margin-top: 10px; }
@@ -2455,7 +2461,7 @@ td.cell.is-suppletive {
 .banner-btn-primary, .banner-btn-secondary {
   border-radius: 3px;
   padding: 5px 12px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2471,7 +2477,7 @@ td.cell.is-suppletive {
 .primer { display: flex; flex-direction: column; gap: 16px; }
 
 .primer-header { border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
-.primer-title { font-family: 'Noto Serif Devanagari', serif; font-size: 28px; margin: 0; }
+.primer-title { font-family: var(--font-deva); font-size: 28px; margin: 0; }
 .primer-sub { margin: 4px 0 0; font-style: italic; color: var(--ink-soft); }
 
 .primer-layout {
@@ -2524,7 +2530,7 @@ td.cell.is-suppletive {
 .primer-section { scroll-margin-top: 32px; }
 
 .primer-section-title {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   margin: 0 0 8px;
   color: var(--ink);
@@ -2550,7 +2556,7 @@ td.cell.is-suppletive {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   width: 14px;
   height: 14px;
@@ -2586,7 +2592,7 @@ td.cell.is-suppletive {
 }
 
 .glossary-popover-term {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 16px;
   color: var(--ink);
 }
@@ -2603,7 +2609,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: none;
   color: var(--saffron);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2625,11 +2631,11 @@ td.cell.is-suppletive {
   padding-bottom: 12px;
 }
 
-.practice-title { font-family: 'Noto Serif Devanagari', serif; font-size: 28px; margin: 0; }
+.practice-title { font-family: var(--font-deva); font-size: 28px; margin: 0; }
 .practice-sub { margin: 4px 0 0; font-style: italic; color: var(--ink-soft); max-width: 720px; }
 
 .practice-progress {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.16em;
   color: var(--saffron);
@@ -2656,14 +2662,14 @@ td.cell.is-suppletive {
 .stat.is-highlight { border-color: var(--saffron); border-left-width: 3px; }
 
 .stat-value {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 24px;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
 .stat-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2676,7 +2682,7 @@ td.cell.is-suppletive {
   background: var(--saffron);
   color: var(--parchment);
   border: none;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2689,7 +2695,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: 1px solid var(--rule);
   color: var(--ink-faint);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2705,7 +2711,7 @@ td.cell.is-suppletive {
 }
 
 .practice-aside code {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   background: var(--parchment-deep);
   padding: 1px 5px;
   border-radius: 2px;
@@ -2726,7 +2732,7 @@ td.cell.is-suppletive {
 
 .practice-card-type {
   align-self: flex-start;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2738,7 +2744,7 @@ td.cell.is-suppletive {
 }
 
 .practice-prompt {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 22px;
   color: var(--ink);
   margin: 0;
@@ -2750,7 +2756,7 @@ td.cell.is-suppletive {
   background: var(--gold);
   color: var(--parchment);
   border: none;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2760,7 +2766,7 @@ td.cell.is-suppletive {
 }
 
 .practice-answer {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 20px;
   background: var(--parchment);
   border: 1px solid var(--gold);
@@ -2779,7 +2785,7 @@ td.cell.is-suppletive {
 .rate-btn {
   border: 1px solid var(--rule);
   border-radius: 4px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2799,7 +2805,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: 1px solid var(--rule);
   color: var(--ink-faint);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2813,7 +2819,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   letter-spacing: 0.1em;
   color: var(--saffron);
   font-size: inherit;
@@ -2831,7 +2837,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--saffron);
@@ -2853,7 +2859,7 @@ td.cell.is-suppletive {
   background: var(--parchment);
   border: 1px solid var(--gold);
   color: var(--gold);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2907,7 +2913,7 @@ td.cell.is-suppletive {
 .patterns-search {
   flex: 1;
   min-width: 220px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-prose);
   font-size: 14px;
   padding: 7px 10px;
   border: 1px solid var(--rule);
@@ -2926,7 +2932,7 @@ td.cell.is-suppletive {
   background: var(--parchment-deep);
   border: 1px solid var(--rule);
   border-radius: 3px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2943,7 +2949,7 @@ td.cell.is-suppletive {
 
 .patterns-result-count {
   margin-left: auto;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2969,7 +2975,7 @@ td.cell.is-suppletive {
 
 .patterns-matrix thead th {
   background: var(--parchment-deep);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3000,7 +3006,7 @@ td.cell.is-suppletive {
 }
 
 .pattern-cell-name {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   color: var(--ink);
   font-weight: 600;
   font-size: 15px;
@@ -3014,7 +3020,7 @@ td.cell.is-suppletive {
 }
 
 .pattern-cell-category {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3030,7 +3036,7 @@ td.cell.is-suppletive {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--saffron);
@@ -3045,7 +3051,7 @@ td.cell.is-suppletive {
 }
 
 .verse-link-static {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.12em;
   color: var(--ink-faint);
@@ -3053,14 +3059,14 @@ td.cell.is-suppletive {
 
 .pattern-cell-count {
   text-align: center;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 13px;
   font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
 
 .pattern-cell-example {
-  font-family: 'Noto Serif Devanagari', serif;
+  font-family: var(--font-deva);
   font-size: 13px;
   color: var(--ink-soft);
 }
@@ -3084,7 +3090,7 @@ td.cell.is-suppletive {
 }
 
 .decoded-count {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 700;
   color: var(--saffron);
@@ -3093,7 +3099,7 @@ td.cell.is-suppletive {
 }
 
 .decoded-label {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -3108,7 +3114,7 @@ td.cell.is-suppletive {
 }
 
 .recent-chip {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.1em;
   background: var(--parchment);
@@ -3136,7 +3142,7 @@ td.cell.is-suppletive {
   border: 1px solid var(--rule);
   border-radius: 3px;
   padding: 6px 10px;
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-display);
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3149,4 +3155,115 @@ td.cell.is-suppletive {
   background: var(--parchment);
   border-color: var(--saffron);
   color: var(--saffron);
+}
+
+/* ==================== Theme picker ==================== */
+
+.theme-picker {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.theme-picker-label {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.theme-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.theme-swatch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--rule);
+  background: var(--parchment-deep);
+  padding: 5px 10px 5px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.theme-swatch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px -3px rgba(0, 0, 0, 0.25);
+}
+
+.theme-swatch.is-active {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--saffron-soft);
+}
+
+.swatch-bg, .swatch-fg, .swatch-accent {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.swatch-bg { margin-right: -7px; z-index: 1; }
+.swatch-fg { margin-right: -7px; z-index: 2; }
+.swatch-accent { z-index: 3; }
+
+.swatch-name {
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+/* Dark-theme touch-ups: the page-grain overlay reads better with a tighter alpha. */
+:root[data-theme="forest"] body::before {
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 240, 200, 0.012) 0,
+      rgba(255, 240, 200, 0.012) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* Page background gradient mood per theme */
+:root[data-theme="ink-vermillion"] html,
+:root[data-theme="ink-vermillion"] body {
+  background:
+    radial-gradient(circle at 100% 0%, #f3eee8 0%, transparent 55%),
+    var(--parchment);
+}
+
+:root[data-theme="slate"] html,
+:root[data-theme="slate"] body {
+  background:
+    radial-gradient(circle at 0% 100%, #ebebe7 0%, transparent 50%),
+    var(--parchment);
+}
+
+:root[data-theme="forest"] html,
+:root[data-theme="forest"] body {
+  background:
+    radial-gradient(circle at 30% 20%, #25251f 0%, transparent 60%),
+    var(--parchment);
+}
+
+:root[data-theme="sandalwood"] html,
+:root[data-theme="sandalwood"] body {
+  background:
+    radial-gradient(circle at 20% 0%, #f7e9b8 0%, transparent 55%),
+    radial-gradient(circle at 100% 100%, #f3dca6 0%, transparent 50%),
+    var(--parchment);
 }

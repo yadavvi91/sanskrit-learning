@@ -7,6 +7,7 @@ import Atlas from './components/Atlas.jsx';
 import Primer from './components/Primer.jsx';
 import LastVisitBanner from './components/LastVisitBanner.jsx';
 import Practice from './components/Practice.jsx';
+import ThemePicker from './components/ThemePicker.jsx';
 
 const VIEWS = [
   { path: '/journey',  label: 'Verse Journey' },
@@ -48,6 +49,7 @@ export default function App() {
             ))}
           </nav>
         </div>
+        <ThemePicker />
       </header>
 
       <LastVisitBanner onOpenPrimer={openPrimer} />
