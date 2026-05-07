@@ -1,0 +1,29 @@
+src/utils/markdownExport.test.js
+  s_d5e8c30b294ba2::t_49c6be9390d698 1-86
+src/utils/markdownExport.js
+  s_d5e8c30b294ba2::t_411e9182198a73 1-147
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_7ce64da85de0d6 5
+  s_d5e8c30b294ba2::t_8f59c781c4dd83 162-189
+  s_d5e8c30b294ba2::t_c4a8351428c3df 25
+src/styles.css
+  s_d5e8c30b294ba2::t_18429f452deeec 3810-3830
+checkpoint-17.md
+  s_d5e8c30b294ba2::t_f96dade7eb1ca9 1-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8b414b12d483088cf5e97fba0a4a4b14e2640bfe",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
