@@ -1,4 +1,5 @@
 import Glossary from './Glossary.jsx';
+import { holyBhagavadGitaUrl } from '../utils/sources.js';
 
 export default function VerseDetail({ verse, onOpenPrimer }) {
   const finiteForms = new Set(verse.finiteVerbs?.map((v) => v.form) || []);
@@ -9,6 +10,15 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         <div className="verse-tagline">
           <span className="verse-ref">Gītā {verse.chapter}.{verse.verse}</span>
           {verse.speaker && <span className="verse-speaker">{verse.speaker}</span>}
+          <a
+            className="verse-source-link"
+            href={holyBhagavadGitaUrl(verse.chapter, verse.verse)}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`Open Gītā ${verse.chapter}.${verse.verse} on holy-bhagavad-gita.org`}
+          >
+            holy-bhagavad-gita.org ↗
+          </a>
         </div>
         {verse.title && <p className="verse-title">{verse.title}</p>}
       </header>

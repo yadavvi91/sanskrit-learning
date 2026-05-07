@@ -3516,3 +3516,23 @@ td.cell.is-suppletive {
       transparent 6px
     );
 }
+
+/* Verse → external source link in the verse header */
+.verse-source-link {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  text-decoration: none;
+  border: 1px solid var(--saffron-soft);
+  padding: 4px 10px;
+  border-radius: 3px;
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.verse-source-link:hover {
+  background: var(--saffron);
+  color: var(--parchment);
+}
