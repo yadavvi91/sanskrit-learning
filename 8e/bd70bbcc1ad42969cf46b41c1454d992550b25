@@ -1,0 +1,25 @@
+checkpoint-11.md
+  s_d5e8c30b294ba2::t_8386d18d5567df 1-31
+src/utils/withGlossary.jsx
+  ai_agent 1-35
+src/components/PatternsWon.jsx
+  s_d5e8c30b294ba2::t_c9d011443865ec 4
+  s_d5e8c30b294ba2::t_4152b0407db639 89-94
+  s_d5e8c30b294ba2::t_7a2834d7900716 121,128
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8ebd70bbcc1ad42969cf46b41c1454d992550b25",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
