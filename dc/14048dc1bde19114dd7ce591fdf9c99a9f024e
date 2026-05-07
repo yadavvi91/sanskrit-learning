@@ -1,0 +1,26 @@
+checkpoint-19.md
+  s_d5e8c30b294ba2::t_b2ebadddd37a44 1-37
+src/components/SandhiLab.jsx
+  s_d5e8c30b294ba2::t_34b1a8c7ea1dc3 1-110
+src/components/Atlas.jsx
+  s_d5e8c30b294ba2::t_fc8134fdd350f3 7,12
+  s_d5e8c30b294ba2::t_96bc0b063857f2 52
+src/styles.css
+  s_d5e8c30b294ba2::t_41de45cf966fb8 3831-4034
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "dc14048dc1bde19114dd7ce591fdf9c99a9f024e",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
