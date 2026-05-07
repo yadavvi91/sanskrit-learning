@@ -2004,9 +2004,23 @@ td.is-picked { background: var(--saffron-soft); }
   padding: 0 4px;
 }
 
+/* स्म-cells in the तद्-template — distinct but inline. The earlier outline
+   pulled the cell visually out of the table grid; this background + dot is
+   subtler and proportionate. */
 td.cell.is-sma {
   background: #faedca;
-  outline: 1px solid var(--gold);
+  position: relative;
+}
+
+td.cell.is-sma::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
 }
 
 td.cell.is-suppletive {
@@ -2016,7 +2030,7 @@ td.cell.is-suppletive {
 
 .sma-flag {
   background: #faedca;
-  border: 1px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
   padding: 1px 6px;
   border-radius: 2px;
   font-family: 'Noto Serif Devanagari', serif;
