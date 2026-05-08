@@ -1,0 +1,40 @@
+src/components/WordPopover.jsx
+  s_d5e8c30b294ba2::t_7dddf05958c330 2-3
+  s_d5e8c30b294ba2::t_4f2507613bdf4b 91-94,117-128
+src/data/declensions.test.js
+  s_d5e8c30b294ba2::t_cf25044c3f59fd 13
+  s_d5e8c30b294ba2::t_e05aff50451e55 99-181
+src/components/Declensions.jsx
+  s_d5e8c30b294ba2::t_862040b37dc129 1-2,9-19,22-44
+  s_d5e8c30b294ba2::t_437dc7942180f3 75-77
+src/styles.css
+  s_d5e8c30b294ba2::t_eed8a29512be65 4150-4184
+docs/workflows.md
+  s_d5e8c30b294ba2::t_f9c6fce7a3e4e0 513-514,519-522,524,533,539-541,543-545,547,549,552
+src/components/WordPopover.test.jsx
+  s_d5e8c30b294ba2::t_e59b88e5fb9f02 41,48,53,58,63,70,79,88,97,105,115,121,127,133
+  s_d5e8c30b294ba2::t_13925af2af6c1b 144,152,159-209
+  s_d5e8c30b294ba2::t_201bdab805cba3 5,7,12-18
+src/components/Declensions.test.jsx
+  s_d5e8c30b294ba2::t_15ca71251aa285 5,15
+  s_d5e8c30b294ba2::t_d523cf81514afd 6,12-14,16-18
+  s_d5e8c30b294ba2::t_dd5396485761b9 150-204
+src/data/declensions.js
+  s_d5e8c30b294ba2::t_52afdb517867eb 290-343
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "9423fda12201a49b1bca236dffd56c56a4ff36d4",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
