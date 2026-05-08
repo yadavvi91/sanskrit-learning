@@ -61,6 +61,9 @@ describe('VerseDetail — finite-verb chip highlighting', () => {
 
     let checked = 0;
     for (const verse of VERSES) {
+      // Skip auto-stub verses — they have no padaccheda or finiteVerbs yet.
+      if (!verse.padaccheda || verse.padaccheda.length === 0) continue;
+
       const finiteSet = new Set((verse.finiteVerbs || []).map((v) => stripHyphens(v.form)));
       const { container } = render(<VerseDetail verse={verse} />);
       const chips = Array.from(container.querySelectorAll('.padaccheda .pada'));

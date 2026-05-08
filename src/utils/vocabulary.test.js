@@ -3,10 +3,14 @@ import { buildVocabulary, VOCAB_COMPARATORS, vocabularyCategoryCounts } from './
 import { VERSES } from '../data/verses.js';
 
 describe('buildVocabulary', () => {
-  it('returns one entry per unique word across the corpus', () => {
+  it('returns one entry per unique word across the audited (full/browse) corpus', () => {
+    // auto-stub verses don't have padaccheda yet; vocabulary skips them.
     const vocab = buildVocabulary();
     const allWords = new Set();
-    for (const v of VERSES) for (const w of v.padaccheda) allWords.add(w);
+    for (const v of VERSES) {
+      if (!v.padaccheda) continue;
+      for (const w of v.padaccheda) allWords.add(w);
+    }
     expect(vocab.length).toBe(allWords.size);
   });
 

@@ -54,17 +54,23 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       </Section>
 
       <Section label="पदच्छेद" labelEn="Word-split" glossaryTerm="पदच्छेद" onOpenPrimer={onOpenPrimer}>
-        <ol className="padaccheda">
-          {verse.padaccheda.map((word, i) => (
-            <li key={`${word}-${i}`}>
-              <WordPopover
-                word={word}
-                parsing={verse.wordParsings?.[word] ?? null}
-                isFinite={finiteForms.has(stripHyphens(word))}
-              />
-            </li>
-          ))}
-        </ol>
+        {verse.padaccheda && verse.padaccheda.length > 0 ? (
+          <ol className="padaccheda">
+            {verse.padaccheda.map((word, i) => (
+              <li key={`${word}-${i}`}>
+                <WordPopover
+                  word={word}
+                  parsing={verse.wordParsings?.[word] ?? null}
+                  isFinite={finiteForms.has(stripHyphens(word))}
+                />
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="padaccheda-empty">
+            पदच्छेद not yet generated for this verse. Open in <strong>Decode Helper</strong> to produce a draft.
+          </p>
+        )}
         {/* सन्धि and समास are both "un-doing" operations and live together under पदच्छेद. */}
         {verse.sandhiNotes && verse.sandhiNotes.length > 0 && (
           <details className="sandhi">
@@ -94,42 +100,44 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         )}
       </Section>
 
-      <Section
-        label="क्रिया"
-        labelEn={`Finite verb${(verse.finiteVerbs?.length || 0) > 1 ? 's' : ''} — sentence anchor${(verse.finiteVerbs?.length || 0) > 1 ? 's' : ''}`}
-        glossaryTerm="क्रिया"
-        onOpenPrimer={onOpenPrimer}
-      >
-        <ul className="finite-list">
-          {(verse.finiteVerbs || []).map((fv, i) => (
-            <li key={i} className="finite-card">
-              <div className="finite-form">{fv.form}</div>
-              <div className="finite-meta">
-                <span className="meta-pair"><span>धातु</span> {fv.root}</span>
-                <span className="meta-pair"><span>लकार</span> {fv.lakara}</span>
-                <span className="meta-pair"><span>पुरुष</span> {fv.purusha}</span>
-                <span className="meta-pair"><span>वचन</span> {fv.vachana}</span>
-              </div>
-              <div className="finite-gloss">{fv.gloss}</div>
-            </li>
-          ))}
-        </ul>
-        {verse.nonFinite && verse.nonFinite.length > 0 && (
-          <div className="non-finite">
-            <div className="non-finite-label">कृदन्त — non-finite forms</div>
-            <ul>
-              {verse.nonFinite.map((nf, i) => (
-                <li key={i}>
-                  <span className="nf-form">{nf.form}</span>
-                  <span className="nf-kind">{nf.kind}</span>
-                  {nf.root && <span className="nf-root">{nf.root}</span>}
-                  <span className="nf-gloss">{nf.gloss}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </Section>
+      {verse.finiteVerbs && verse.finiteVerbs.length > 0 && (
+        <Section
+          label="क्रिया"
+          labelEn={`Finite verb${verse.finiteVerbs.length > 1 ? 's' : ''} — sentence anchor${verse.finiteVerbs.length > 1 ? 's' : ''}`}
+          glossaryTerm="क्रिया"
+          onOpenPrimer={onOpenPrimer}
+        >
+          <ul className="finite-list">
+            {verse.finiteVerbs.map((fv, i) => (
+              <li key={i} className="finite-card">
+                <div className="finite-form">{fv.form}</div>
+                <div className="finite-meta">
+                  <span className="meta-pair"><span>धातु</span> {fv.root}</span>
+                  <span className="meta-pair"><span>लकार</span> {fv.lakara}</span>
+                  <span className="meta-pair"><span>पुरुष</span> {fv.purusha}</span>
+                  <span className="meta-pair"><span>वचन</span> {fv.vachana}</span>
+                </div>
+                <div className="finite-gloss">{fv.gloss}</div>
+              </li>
+            ))}
+          </ul>
+          {verse.nonFinite && verse.nonFinite.length > 0 && (
+            <div className="non-finite">
+              <div className="non-finite-label">कृदन्त — non-finite forms</div>
+              <ul>
+                {verse.nonFinite.map((nf, i) => (
+                  <li key={i}>
+                    <span className="nf-form">{nf.form}</span>
+                    <span className="nf-kind">{nf.kind}</span>
+                    {nf.root && <span className="nf-root">{nf.root}</span>}
+                    <span className="nf-gloss">{nf.gloss}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </Section>
+      )}
 
       {verse.vibhaktiNotes && verse.vibhaktiNotes.length > 0 && (
         <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer}>
@@ -151,17 +159,23 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         </Section>
       )}
 
-      <Section label="अन्वय" labelEn="Logical SOV ordering" glossaryTerm="अन्वय" onOpenPrimer={onOpenPrimer}>
-        <p className="anvaya">{verse.anvaya}</p>
-      </Section>
+      {verse.anvaya && (
+        <Section label="अन्वय" labelEn="Logical default-SOV ordering" glossaryTerm="अन्वय" onOpenPrimer={onOpenPrimer}>
+          <p className="anvaya">{verse.anvaya}</p>
+        </Section>
+      )}
 
-      <Section label="हिंदी" labelEn="Hindi">
-        <p className="translation hindi">{verse.hindi}</p>
-      </Section>
+      {verse.hindi && (
+        <Section label="हिंदी" labelEn="Hindi">
+          <p className="translation hindi">{verse.hindi}</p>
+        </Section>
+      )}
 
-      <Section label="English" labelEn="">
-        <p className="translation english">{verse.english}</p>
-      </Section>
+      {verse.english && (
+        <Section label="English" labelEn="">
+          <p className="translation english">{verse.english}</p>
+        </Section>
+      )}
 
       {verse.vyakhya && verse.vyakhya.length > 0 && (
         <Section label="व्याख्या" labelEn="Structural commentary — what makes this verse tick">

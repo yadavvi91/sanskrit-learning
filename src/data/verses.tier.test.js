@@ -26,12 +26,19 @@ describe('verses.js — tier field on every entry', () => {
     }
   });
 
-  it('every other current entry is tier browse (the v10 backfill set)', () => {
-    const fullKeys = new Set(['1.1', '2.3', '2.4', '2.5']);
+  it('every entry has a recognised tier (full / browse / auto-stub)', () => {
+    const valid = new Set(['full', 'browse', 'auto-stub']);
     for (const v of VERSES) {
       const key = `${v.chapter}.${v.verse}`;
-      if (fullKeys.has(key)) continue;
-      expect(v.tier, `${key} should be browse`).toBe('browse');
+      expect(valid.has(v.tier), `${key} has unknown tier "${v.tier}"`).toBe(true);
+    }
+  });
+
+  it('the v10 backfill verses (e.g. 2.13, 2.62, 6.5) are still tier browse', () => {
+    const browseKeys = ['2.13', '2.62', '6.5', '4.8', '12.13', '18.66'];
+    for (const key of browseKeys) {
+      const [c, v] = key.split('.').map(Number);
+      expect(getVerseTier(c, v), `${key} should be browse`).toBe('browse');
     }
   });
 });

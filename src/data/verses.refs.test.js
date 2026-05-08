@@ -12,13 +12,28 @@ function isFullyDecoded(v) {
   return FULLY_DECODED_REFS.includes(`${v.chapter}.${v.verse}`);
 }
 
+// Tier gate: 'auto-stub' verses are bulk-imported with mool only.
+// References + grammar fields land via per-verse audit, so these
+// tests apply to full + browse only.
+function isAuditedTier(v) {
+  return v.tier === 'full' || v.tier === 'browse';
+}
+
 describe('verse references — seed data shape', () => {
-  it('every verse carries a references field (translations at minimum)', () => {
+  it('every audited (full/browse) verse carries a references field', () => {
     for (const v of VERSES) {
-      expect(v.references).toBeDefined();
+      if (!isAuditedTier(v)) continue;
+      expect(v.references, `${v.chapter}.${v.verse} should have references`).toBeDefined();
       expect(v.references.translations).toBeDefined();
       expect(v.references.translations.length).toBeGreaterThanOrEqual(1);
     }
+  });
+
+  it('auto-stub verses do NOT need references yet (audit will add them)', () => {
+    // Sanity: at least one auto-stub exists in the corpus.
+    const autoStubs = VERSES.filter((v) => v.tier === 'auto-stub');
+    expect(autoStubs.length).toBeGreaterThan(0);
+    // No assertion on references for these — the gate above is what we want.
   });
 
   it('fully-decoded verses (the original 4) have at least 2 translations', () => {
@@ -37,8 +52,9 @@ describe('verse references — seed data shape', () => {
     }
   });
 
-  it('every translation entry is well-formed', () => {
+  it('every translation entry on audited verses is well-formed', () => {
     for (const v of VERSES) {
+      if (!isAuditedTier(v)) continue;
       for (const t of v.references.translations) {
         expect(t.translator).toBeTruthy();
         expect(t.year).toBeGreaterThan(1700);
@@ -51,6 +67,7 @@ describe('verse references — seed data shape', () => {
 
   it('every commentary entry (where present) is well-formed', () => {
     for (const v of VERSES) {
+      if (!isAuditedTier(v)) continue;
       for (const c of v.references.commentaries || []) {
         expect(c.sage).toBeTruthy();
         expect(c.school).toBeTruthy();
@@ -61,6 +78,7 @@ describe('verse references — seed data shape', () => {
 
   it('only public-domain translations are seeded today', () => {
     for (const v of VERSES) {
+      if (!isAuditedTier(v)) continue;
       for (const t of v.references.translations) {
         expect(t.license).toBe('public-domain');
       }
