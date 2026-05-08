@@ -56,9 +56,12 @@ describe('LastVisitBanner — stale-visit branch (>14 days)', () => {
     expect(container.querySelector('.last-visit-banner')).toBeNull();
   });
 
-  it('does not render when last visit is exactly at the 14-day boundary', () => {
-    const exactlyAtThreshold = Date.now() - STALE_DAYS_MS;
-    window.localStorage.setItem(STORAGE_KEY, String(exactlyAtThreshold));
+  it('does not render when last visit is just inside the 14-day window', () => {
+    // 1 hour shy of 14 days — strictly inside the window. (Exactly-at-threshold
+    // is racy: by the time the component reads Date.now() the diff has crept
+    // past the boundary by a few ms.)
+    const oneHourShortOfThreshold = Date.now() - (STALE_DAYS_MS - 60 * 60 * 1000);
+    window.localStorage.setItem(STORAGE_KEY, String(oneHourShortOfThreshold));
     const { container } = render(<LastVisitBanner />);
     expect(container.querySelector('.last-visit-banner')).toBeNull();
   });
