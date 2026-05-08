@@ -8,7 +8,9 @@ We've shipped a working learning environment over [v0](v0-foundation.md) → [v1
 
 Target: **the full Bhagavad Gītā = 701 verses** (chapters.js confirmed: 47+72+43+42+29+47+30+28+34+42+55+20+35+27+20+24+28+78). That's a **28× scale factor** on the corpus.
 
-Naive math: at our current ~30-60 min per fully-decoded verse, 701 × 45 min ≈ 525 hours. Not realistic by hand. The plan needs to (a) tier the depth of decoding, (b) lean on the existing auto-decode engine, and (c) not block the user on translation rights.
+**Correction to an earlier draft of this plan:** an initial estimate said "45-90 min per fully-decoded verse" extrapolating to ~525 hours. That number was wrong. It costed the work as if a single human were writing all the Sanskrit grammar from scratch from a textbook. In practice we pair-decode — the AI proposes wordParsings / samasNotes / vyakhya with grammar accuracy, the user audits. Empirical rate from earlier in this same session: the 21-verse `wordParsings` backfill (~250 entries across 21 verses) took about 30-40 minutes — roughly **1.5-2 min/verse for browse-tier; 5-10 min/verse for full-tier (with samasNotes + vyakhya)**. The bottleneck is the user's audit attention, not raw transcription time.
+
+Implication: the realistic per-verse rate is what makes the 28× scale tractable in the first place. The plan still needs to tier the depth of decoding, lean on `autoDecode` for batch padaccheda, and avoid blocking on translation rights — but the gross effort number is **~10-15 hours of content work**, not 80-525.
 
 ## Scope realities
 
@@ -41,7 +43,7 @@ What's in `verses.js` for a single verse, fully decoded:
 | Translators in bulk | Edwin Arnold (1885) + Annie Besant (1895) for all 701; both PD | We already use them on the existing 25; consistent attribution |
 | Mool source | GRETIL or holy-bhagavad-gita.org or IIT Kanpur OCR — pick ONE and cite | Avoid mixing recensions silently |
 | Recension | "Vulgate" 700-verse Gītā as found on holy-bhagavad-gita.org (matches `chapters.js`) | The user's existing reading + reference site |
-| Bundle strategy | Lazy-load chapter chunks via dynamic `import()` | At ~28× the data, eager bundle goes 485KB → ~10MB; not acceptable |
+| Bundle strategy | **Single bundle, no lazy-load** initially. Re-evaluate when gzipped size exceeds ~3 MB | At realistic tiering, bundle is ~1.8 MB gzipped — manageable. Lazy-loading is over-engineering until we hit a concrete problem |
 | Auto-stub workflow | Run `autoDecode` over all verses, save result with `tier: 'auto-stub'` flag, surface "draft — audit me" banner in UI | Reuses existing `DecodeHelper` engine; engine produces stubs with confidence levels |
 | Per-tier UI | Tier badge on verse-cell + verse-detail header | User knows what to expect when clicking a cell |
 | Test suite changes | Relax "exactly 25 verses" assertions → "at least N" | 50+ tests currently assume verse count |
@@ -50,21 +52,21 @@ What's in `verses.js` for a single verse, fully decoded:
 
 | Tier | Field set | Target count | Effort/verse | When user sees this tier |
 |---|---|---|---|---|
-| **Tier 1 — full** | All fields including wordParsings, samasNotes, vyakhya, references | ~50 verses | 45-90 min, hand-curated | "Decoded" rail + Patterns Won + Vocabulary + drill prompts |
-| **Tier 2 — browse** | mool + padaccheda + finiteVerbs + nonFinite + anvaya + hindi + english + references; selective sandhi/samasa; selective wordParsings | ~150 verses | 10-15 min, autodecoded then audited | Verse Detail with full pipeline; verse cell shows "browse" badge |
-| **Tier 3 — auto-stub** | mool + auto-stub padaccheda + tentative finiteVerbs + 1-2 PD translations | ~501 verses (the rest) | 1-2 min, engine-only, NOT human-verified | "Draft — audit me" banner; sandhi/samasa/wordParsings absent; translations are PD bulk |
+| **Tier 1 — full** | All fields including wordParsings, samasNotes, vyakhya, references | ~50 verses | **5-10 min** pair-decoded (AI writes, user audits) | "Decoded" rail + Patterns Won + Vocabulary + drill prompts |
+| **Tier 2 — browse** | mool + padaccheda + finiteVerbs + nonFinite + anvaya + hindi + english + references; selective sandhi/samasa; selective wordParsings | ~150 verses | **1.5-2 min** pair-decoded (autodecoded then audited) | Verse Detail with full pipeline; verse cell shows "browse" badge |
+| **Tier 3 — auto-stub** | mool + auto-stub padaccheda + tentative finiteVerbs + 1-2 PD translations | ~501 verses (the rest) | **0 min** — bulk script output, NOT human-verified | "Draft — audit me" banner; sandhi/samasa/wordParsings absent; translations are PD bulk |
 | **Tier 4 — fallback** | mool + holy-bhagavad-gita.org link only | 0 — covers gaps | n/a | "Not yet decoded — open external" link |
 
 The current 25 verses become Tier 1 (the 4 originals 1.1, 2.3-5) + Tier 2 (the 21 newer browse-tier verses).
 
 ### Numbers
 
-- Tier 1: 50 verses → 50 × ~13 wordParsings = ~650 entries (hand-curated)
-- Tier 2: 150 verses → 150 × ~13 = ~1,950 entries (auto-decoded + audited; ~8 min/verse to audit)
-- Tier 3: 501 verses → no wordParsings; engine padaccheda only
+- Tier 1: 50 verses × ~13 wordParsings = ~650 entries (pair-decoded; ~5-10 min/verse) → **~6 hours**
+- Tier 2: 150 verses × ~13 = ~1,950 entries (auto-decoded + audited; ~1.5-2 min/verse) → **~4 hours**
+- Tier 3: 501 verses → no wordParsings; engine padaccheda only → **0 hours content**, ~6 hours scripting (one-time)
 - Translations: Arnold and Besant for all 701 verses = ~1,400 PD translation entries (one-time bulk import)
 
-Estimated bulk-ingest scripting + audit work: **~80 hours total** vs ~525 hours fully manual. The infra is the leverage.
+Estimated total: **~25-30 hours** (10-15h content + 10-15h infra), not the 80h the earlier draft claimed.
 
 ## Process rules (continued)
 
@@ -116,21 +118,27 @@ Substantial scope. Each slice is one or more commits.
 
 **Bundle impact:** estimate +6-9MB raw, ~1-1.5MB gzipped. **Not acceptable as one bundle.**
 
-### Slice E — Lazy-load by chapter
+### Slice E — Lazy-load by chapter (DEFERRED — likely unnecessary)
 
-**Files:**
-- `src/data/verses/` — split `verses.js` into 18 chapter files, e.g. `src/data/verses/01.js`, `02.js` ... `18.js`. Each exports a `CHAPTER_VERSES` array.
-- `src/data/verses.js` — becomes a thin orchestrator: provides `getVerse(c, v)` that does dynamic `import('./verses/' + cc + '.js')` and caches.
-- `getVerse` becomes async. Every consumer needs to handle Promise.
+**Updated assessment.** An earlier draft of this plan called Slice E "the biggest engineering risk" and assumed the bundle would balloon to ~10MB. Re-checking the math:
 
-**Async cascade:** every component that calls `getVerse(c, v)` synchronously becomes a hook with a useEffect. ~7 components affected (VerseJourney, VerseDetail, PatternsWon if it does verse lookup, Vocabulary, Vocabulary tests, etc.).
+- Today: 25 verses ≈ 153 KB gzipped (the full app)
+- 701 verses if EVERY verse were fully decoded: ~3-4 MB gzipped (substantial)
+- 701 verses with realistic tiering (50 full + 150 browse + 501 auto-stub): **~1.8 MB gzipped**
 
-**Migration path:**
-1. Keep `getVerse` synchronous-by-cache: on first call to chapter N, fire async load + return null; on the next render the cache is populated and the call returns the verse. Use a small cache hit indicator.
-2. OR: bulk-load chapter on first hit of any verse from that chapter — simpler for verse-detail (which already shows a single verse), trickier for vocabulary/patterns (which need ALL verses).
-3. OR: pre-load chapter 1 + 2 (most common) on app boot, lazy others.
+1.8 MB gzipped is fine for a personal-learning SPA on desktop. Modern apps routinely ship that. Mobile on slow connections would feel it; desktop won't notice. **This is over-engineering at this scale.**
 
-**This slice is the biggest engineering risk.** Likely 2-4 commits + extensive test changes.
+**Deferral conditions** — implement Slice E later if and only if one of these is hit:
+- Bundle gzipped size exceeds ~3 MB (would happen if Tier 1 grows past 200 verses, or Tier 2 past 400)
+- First-paint time on user's primary devices exceeds 2s on a typical 4G connection
+- Vite build emits warnings about chunk size
+
+**If we eventually do it** — sketch retained for reference:
+- `src/data/verses/01.js` … `18.js` per chapter; `src/data/verses.js` becomes a thin orchestrator with cached dynamic `import()`.
+- Three migration strategies: (1) sync-by-cache (return null first call, populate by next render), (2) bulk-load chapter on first hit, (3) pre-load chapters 1-2 + lazy others.
+- ~7 consumer components need to handle the async transition.
+
+For v13, assume single-bundle. Re-evaluate after the Tier 3 bulk import lands and we can measure actual gzipped size.
 
 ### Slice F — Vocabulary tab scaling
 
@@ -189,16 +197,16 @@ This becomes ongoing maintenance work; the plan ships the *capacity* to do it ef
 | `scripts/import-mool.mjs` (new) | B | One-shot importer |
 | `scripts/import-translations.mjs` (new) | B | One-shot importer |
 | `scripts/run-autodecode.mjs` (new) | B | Bulk auto-stub generation |
-| `src/data/verses/01.js` … `18.js` (new) | E | Per-chapter splits |
-| `src/data/verses.js` | C, D, E | Tier field + becomes orchestrator |
+| `src/data/verses.js` | C, D | Tier field + bulk-merged 676 new verses |
 | `src/data/chapters.js` | — | Unchanged |
-| `src/components/VerseDetail.jsx` | C, H | Tier badge + audit button + async-aware |
-| `src/components/VerseJourney.jsx` | E, H | Async verse load + tier-coloured cells |
+| `src/components/VerseDetail.jsx` | C, H | Tier badge + audit button |
+| `src/components/VerseJourney.jsx` | H | Tier-coloured cells |
 | `src/components/DecodeHelper.jsx` | H | Pre-populate from verse mool when invoked from "audit this verse" |
 | `src/utils/vocabulary.js` | F | Verify scaling |
 | `src/utils/verseSearch.js` | G | Verify scaling |
 | `src/data/{primer,patterns,glossary}.js` | C | "Decoded so far" counts derive from `tier in ['full', 'browse']` |
 | Test files (multiple) | J | Tier-gated assertions; relaxed counts |
+| `src/data/verses/01.js` … `18.js` (new) | E (deferred) | Per-chapter splits — only if bundle exceeds ~3 MB gzipped |
 
 ## Verification
 
@@ -226,14 +234,19 @@ This becomes ongoing maintenance work; the plan ships the *capacity* to do it ef
 
 ## Open questions for the user (before implementation)
 
+Three questions were resolved during this revision (pair-decoded rate makes the content work tractable; bundle math doesn't justify lazy-load yet; effort estimate corrected). The remaining open questions:
+
 1. **Source of mool text:** GRETIL (academic, well-attested) vs holy-bhagavad-gita.org (matches our reference link) vs IIT Kanpur OCR (matches the user's earlier IIT Kanpur Sundarkand work)?
-2. **Tier 1 target count:** 50 looks reasonable; could be 25 (just keep current) or 100 (more substantive). Trade-off is hand-curation hours.
-3. **Lazy-load strategy:** synchronous-by-cache, eager-on-chapter-hit, or pre-load-chapter-1+2 + lazy others?
-4. **Bundle ceiling:** What's the acceptable gzipped size? (Current 153KB; target ~250-300KB initial chunk + chapter chunks 50-100KB each?)
-5. **Additional translations:** stick to Arnold + Besant, or chase down a third PD translator (e.g. Sir Edwin Arnold has a competitor in J. Cockburn Thomson 1855)?
-6. **Auto-stub UI tone:** "auto-stub draft" feels engineering. Alternatives: "computer-aided", "preliminary", "audit-pending"?
-7. **External-link fallback:** Tier 4 just shows a holy-bhagavad-gita.org link; OK?
-8. **Promotion workflow:** Should "audit-this-verse" land in DecodeHelper, or open a new editor surface with the existing fields pre-populated?
+2. **Tier 1 target count:** 50 looks reasonable; could be 25 (just keep current) or 100 (more substantive). Trade-off is pair-decoding hours (~5-10 min × N).
+3. **Additional translations:** stick to Arnold + Besant, or chase down a third PD translator (e.g. J. Cockburn Thomson 1855)?
+4. **Auto-stub UI tone:** "auto-stub draft" feels engineering. Alternatives: "computer-aided", "preliminary", "audit-pending"?
+5. **External-link fallback:** Tier 4 just shows a holy-bhagavad-gita.org link; OK?
+6. **Promotion workflow:** Should "audit-this-verse" land in DecodeHelper, or open a new editor surface with the existing fields pre-populated?
+
+Resolved by the v13 revision (was Q3, Q4, and the effort question):
+- ~~Lazy-load strategy~~ → DEFERRED. Single bundle until measured size exceeds ~3 MB gzipped.
+- ~~Bundle ceiling~~ → ~3 MB gzipped is the alarm threshold. Initial bundle estimated at ~1.8 MB.
+- ~~"Are these effort numbers right?"~~ → No, they were costed as solo-from-textbook work. Pair-decoded numbers (1.5-10 min/verse depending on tier) are now reflected in the slice table.
 
 ## Relation to other plans
 
@@ -251,13 +264,14 @@ This becomes ongoing maintenance work; the plan ships the *capacity* to do it ef
 | B — importer scripts | 4-6 hours |
 | C — tier field + UI badge | 2-3 hours |
 | D — bulk merge into verses.js | 1 hour (after B) |
-| E — lazy-load by chapter | **8-12 hours** (riskiest) |
+| E — lazy-load by chapter | **DEFERRED** — only if bundle exceeds ~3 MB gzipped |
 | F — vocabulary scaling | 1-2 hours |
 | G — search scaling | 1 hour |
 | H — tier-aware UI affordances | 3-4 hours |
-| I — promote N verses | ongoing; ~10 min/verse for browse, 60 min/verse for full |
+| I — promote N verses (Tier 1: ~5-10 min/verse · Tier 2: ~1.5-2 min/verse · pair-decoded) | **~10-15 hours total content work** |
 | J — test-suite relaxation | 3-4 hours |
 | K — docs + checkpoints | 2 hours |
-| **Total infra (A-H + J + K)** | **~30-40 hours** |
+| **Total infra (A-D + F-H + J + K)** | **~15-20 hours** |
+| **Total infra + content (everything except deferred Slice E)** | **~25-30 hours** |
 
-The user does the Slice I content work over time; the plan provides infrastructure that makes it efficient.
+The plan provides infrastructure that makes content work efficient. The pair-decoded rate (us working together; AI proposes, user audits) is what keeps the per-verse cost low. The earlier "525 hours" / "80 hours" numbers were costed as solo-from-textbook work, which doesn't reflect how this project actually operates.
