@@ -4547,11 +4547,14 @@ td.cell.is-suppletive {
   color: var(--ink);
 }
 
-/* Making Software — warm-cream radial with a coral hint */
+/* Making Software — flat white, no chrome. The Vercel Geist aesthetic:
+   pure white background with no gradients. Suppress the page-grain too
+   — Hollick's site is intentionally clean. */
 :root[data-theme="makingsoftware"] html,
 :root[data-theme="makingsoftware"] body {
-  background:
-    radial-gradient(circle at 0% 100%, #f4ecd6 0%, transparent 55%),
-    radial-gradient(circle at 100% 0%, #f6e6d2 0%, transparent 50%),
-    var(--parchment);
+  background: var(--parchment);
+}
+
+:root[data-theme="makingsoftware"] body::before {
+  display: none;
 }
