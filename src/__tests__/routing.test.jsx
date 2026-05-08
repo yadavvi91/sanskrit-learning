@@ -65,9 +65,9 @@ describe('routing — every top-level route renders its component', () => {
     expect(screen.getAllByText(/√कृ/).length).toBeGreaterThan(0);
   });
 
-  it('/atlas defaults to the Pronouns sub-tab', () => {
+  it('/atlas defaults to the Declensions sub-tab', () => {
     renderAt('/atlas');
-    expect(screen.getByText(/Personal pronouns/)).toBeDefined();
+    expect(screen.getByText(/शब्दरूपावलिः/)).toBeDefined();
   });
 
   it('/atlas/karaka selects the कारक sub-tab', () => {

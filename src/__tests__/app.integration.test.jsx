@@ -53,11 +53,11 @@ describe('App — masthead navigation between top-level views', () => {
     expect(screen.getAllByText(/First met/i).length).toBeGreaterThan(0);
   });
 
-  it('clicking "Atlas" navigates to /atlas and shows Pronouns by default', () => {
+  it('clicking "Atlas" navigates to /atlas and shows Declensions by default', () => {
     mount('/journey');
     fireEvent.click(within(screen.getByLabelText('Views')).getByText('Atlas'));
-    // Default sub-tab is pronouns.
-    expect(screen.getByText(/Personal pronouns/i)).toBeDefined();
+    // Default sub-tab is declensions (was pronouns before the शब्दरूप tab landed).
+    expect(screen.getByText(/शब्दरूपावलिः/)).toBeDefined();
   });
 
   it('clicking "Verbs" navigates to /verbs and shows the periodic table', () => {

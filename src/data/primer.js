@@ -77,7 +77,9 @@ export const PRIMER_SECTIONS = [
     },
     aside: 'सम्बोधन is never part of the action. It addresses someone; it isn\'t a participant. ' +
       'पञ्चमी is the cause-of-arising case — Gītā 2.62-63 chains four ablatives in two verses (सङ्गात् → कामात् → क्रोधात् → सम्मोहात्). ' +
-      'चतुर्थी is the dative-of-purpose — परित्राणाय / विनाशाय / अर्थाय are the textbook -आय endings.',
+      'चतुर्थी is the dative-of-purpose — परित्राणाय / विनाशाय / अर्थाय are the textbook -आय endings. ' +
+      'Need the FULL declension table (8 cases × 3 numbers) for any paradigm — देव, सीता, फल, मति, गुरु, आत्मन्, कर्मन्, मनस्? See Atlas → शब्दरूप (Declensions).',
+    linkToAtlas: 'declensions',
   },
   {
     id: 'lakara',

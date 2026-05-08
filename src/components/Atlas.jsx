@@ -5,8 +5,10 @@ import Karaka from './Karaka.jsx';
 import Avyaya from './Avyaya.jsx';
 import AdjAdv from './AdjAdv.jsx';
 import SandhiLab from './SandhiLab.jsx';
+import Declensions from './Declensions.jsx';
 
 const ATLAS_TABS = [
+  { id: 'declensions', deva: 'शब्दरूप',  en: 'Declensions' },
   { id: 'pronouns', deva: 'सर्वनाम',     en: 'Pronouns' },
   { id: 'samasa',   deva: 'समास',         en: 'Compounds' },
   { id: 'sandhi',   deva: 'सन्धि',          en: 'Sandhi Lab' },
@@ -18,7 +20,7 @@ const ATLAS_TABS = [
 export default function Atlas() {
   const params = useParams();
   const navigate = useNavigate();
-  const tab = ATLAS_TABS.some((t) => t.id === params.section) ? params.section : 'pronouns';
+  const tab = ATLAS_TABS.some((t) => t.id === params.section) ? params.section : 'declensions';
   const setTab = (id) => navigate(`/atlas/${id}`);
   const onOpenVerse = (chapter, verse) => navigate(`/journey/${chapter}/${verse}`);
 
@@ -47,6 +49,7 @@ export default function Atlas() {
         </nav>
 
         <div className="atlas-content">
+          {tab === 'declensions' && <Declensions onOpenVerse={onOpenVerse} />}
           {tab === 'pronouns' && <Pronouns />}
           {tab === 'samasa'   && <Samasa onOpenVerse={onOpenVerse} />}
           {tab === 'sandhi'   && <SandhiLab />}

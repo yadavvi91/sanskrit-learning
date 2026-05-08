@@ -4705,3 +4705,261 @@ td.cell.is-suppletive {
   white-space: nowrap;
   align-self: start;
 }
+
+/* ─────────── Declensions tab (शब्दरूपावलिः) ─────────── */
+
+.declension-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.declension-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  color: var(--ink);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--font-prose);
+  transition: background 100ms ease;
+}
+
+.declension-chip:hover {
+  background: var(--parchment-deep);
+}
+
+.declension-chip.is-active {
+  background: var(--gold);
+  color: var(--parchment);
+  border-color: var(--gold);
+}
+
+.declension-chip-name {
+  font-family: var(--font-deva);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.declension-chip-meta {
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.declension-card {
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  padding: 16px 18px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.declension-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.declension-name {
+  font-family: var(--font-deva);
+  font-size: 28px;
+  margin: 0;
+  color: var(--ink);
+}
+
+.declension-sub {
+  font-family: var(--font-prose);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.declension-description {
+  font-family: var(--font-prose);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.declension-table-wrap {
+  overflow-x: auto;
+}
+
+.declension-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-deva);
+}
+
+.declension-table th,
+.declension-table td {
+  border: 1px solid var(--rule);
+  padding: 8px 10px;
+  vertical-align: middle;
+  background: var(--parchment);
+}
+
+.declension-table thead th {
+  background: var(--parchment-deep);
+  font-weight: normal;
+  text-align: center;
+  font-size: 13px;
+}
+
+.declension-table .vibhakti-col-head {
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.declension-table .vachana-deva {
+  display: block;
+  font-family: var(--font-deva);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.declension-table .vachana-en {
+  display: block;
+  font-family: var(--font-prose);
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 1px;
+}
+
+.declension-table .vibhakti-cell {
+  text-align: left;
+  background: var(--parchment-deep);
+  width: 28%;
+}
+
+.declension-table .vibhakti-deva {
+  display: block;
+  font-family: var(--font-deva);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.declension-table .vibhakti-en {
+  display: block;
+  font-family: var(--font-prose);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.declension-table .vibhakti-sense {
+  display: block;
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.declension-table .form-cell {
+  font-size: 16px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.declension-table .is-sam-row .vibhakti-cell,
+.declension-table .is-sam-row .form-cell {
+  background: var(--parchment-deep);
+  color: var(--ink-soft);
+}
+
+.declension-pedagogy {
+  font-family: var(--font-prose);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  background: var(--parchment-deep);
+  border-left: 3px solid var(--saffron);
+  padding: 10px 14px;
+  margin: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.declension-examples h5 {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 8px;
+}
+
+.declension-example-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.declension-example {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 2fr auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  background: var(--parchment);
+  border-radius: 2px;
+  font-family: var(--font-prose);
+  font-size: 13px;
+}
+
+.declension-example .example-word {
+  font-family: var(--font-deva);
+  font-size: 16px;
+  color: var(--ink);
+}
+
+.declension-example .example-parsing {
+  font-family: var(--font-deva);
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.declension-example .example-gloss {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.declension-example .example-ref {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.declension-example .example-ref-link {
+  background: none;
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.declension-example .example-ref-link:hover {
+  background: var(--parchment-deep);
+}

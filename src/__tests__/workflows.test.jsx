@@ -51,8 +51,8 @@ describe('workflows — cross-tab learning journeys', () => {
 
     // 2. Click Atlas in masthead.
     clickMasthead('Atlas');
-    // 3. Default Atlas sub-tab is Pronouns.
-    expect(screen.getByText(/Personal pronouns/i)).toBeDefined();
+    // 3. Default Atlas sub-tab is Declensions (the शब्दरूप paradigm reference).
+    expect(screen.getByText(/शब्दरूपावलिः/)).toBeDefined();
 
     // 4. Click Indeclinables sub-tab.
     const atlasToc = screen.getByLabelText('Atlas sections');
@@ -287,6 +287,28 @@ describe('workflows — cross-tab learning journeys', () => {
     const copied = writeText.mock.calls[0][0];
     expect(copied).toMatch(/chapter:\s*4/);
     expect(copied).toMatch(/verse:\s*8/);
+  });
+
+  it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse', () => {
+    const { container } = mount('/journey/2/4');
+    expect(screen.getAllByText(/Gītā 2\.4/).length).toBeGreaterThan(0);
+
+    // 1. Cross to Atlas → Declensions.
+    clickMasthead('Atlas');
+    fireEvent.click(within(screen.getByLabelText('Atlas sections')).getByText('Declensions'));
+    expect(screen.getByText(/शब्दरूपावलिः/)).toBeDefined();
+
+    // 2. देव paradigm is active by default; pedagogy note mentions भीष्मम्.
+    const note = container.querySelector('.declension-pedagogy');
+    expect(note?.textContent).toContain('भीष्मम्');
+
+    // 3. Click the भीष्मम् corpus-example verse-ref → land back on 2.4.
+    const refButtons = Array.from(container.querySelectorAll('.example-ref-link'));
+    const bhishmaRef = refButtons.find((b) => b.textContent.includes('2.4'));
+    expect(bhishmaRef).toBeDefined();
+    fireEvent.click(bhishmaRef);
+
+    expect(screen.getAllByText(/Gītā 2\.4/).length).toBeGreaterThan(0);
   });
 
   it('W10 — Practice fail → study verse → return to Practice with updated SRS', () => {

@@ -18,6 +18,7 @@ The companion test file [`src/__tests__/workflows.test.jsx`](../src/__tests__/wo
 | W8 | [Type Identifier drill → Type Reference → drill again](#w8--type-identifier-drill--type-reference--drill-again) | Atlas/Samasa (intra) |
 | W9 | [Decode Helper → paste new verse → copy stub](#w9--decode-helper--paste-new-verse--copy-stub) | Decode (intra) |
 | W10 | [Practice session → study source → return](#w10--practice-session--study-source--return) | Practice → Journey → Practice |
+| W11 | [Recognize a noun's case → look up its full paradigm](#w11--recognize-a-nouns-case--look-up-its-full-paradigm) | Journey → Atlas/Declensions → Journey |
 
 How to read each entry:
 
@@ -502,3 +503,49 @@ sequenceDiagram
 ```
 
 **Tested by** `it('W10 — Practice fail → study verse → return to Practice with updated SRS')`
+
+---
+
+## W11 — Recognize a noun's case → look up its full paradigm
+
+The user is reading a verse, clicks a noun, sees its parsing in the popover (e.g. **भीष्मम्** is `द्वितीया एकवचन पुल्लिङ्ग`). They already know the देव paradigm from school but want to see ALL the forms — and check whether other words in the verse follow the same paradigm or a different one.
+
+**Steps**
+
+1. Open `/journey/2/4` — Gītā 2.4 (कथं भीष्ममहं सङ्ख्ये…).
+2. Click the **भीष्मम्** chip in पदच्छेद. Popover shows: category=noun, root=भीष्म, gender=पुं., number=एक, case=द्वितीया.
+3. Realize: this is exactly देवम् structurally. Want to see the full देव paradigm.
+4. Navigate to `/atlas/declensions`.
+5. देव paradigm is selected by default; see all 24 forms.
+6. Verify the pedagogy note: it explicitly mentions भीष्मम् in 2.4 as the trigger word.
+7. Click the corpus example "Gītā 2.4 ↗" for भीष्मम् — return to verse 2.4.
+
+**Why this matters.** The whole point of recognizing case is to apply known declension knowledge to unknown words. The Atlas → Declensions tab makes that bridge explicit: pick a paradigm, see all 24 forms, see which corpus words follow it.
+
+**Sequence diagram**
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Journey as VerseJourney
+    participant Popover as WordPopover
+    participant Masthead
+    participant Atlas
+    participant Declensions
+
+    User->>Journey: GET /journey/2/4
+    Journey-->>User: render Gītā 2.4
+    User->>Popover: click भीष्मम् chip
+    Popover-->>User: द्वितीया एकवचन पुल्लिङ्ग — root भीष्म
+
+    User->>Masthead: click "Atlas"
+    User->>Atlas: click "Declensions" sub-tab
+    Atlas->>Declensions: render
+    Declensions-->>User: देव paradigm — 24 forms
+
+    User->>Declensions: click corpus example "Gītā 2.4 ↗" for भीष्मम्
+    Declensions->>Journey: navigate /journey/2/4
+    Journey-->>User: back on Gītā 2.4 with closed loop
+```
+
+**Tested by** `it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse')`
