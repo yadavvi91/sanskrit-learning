@@ -80,6 +80,43 @@ describe('primer — lakara table', () => {
   });
 });
 
+describe('primer — SOV section captures both word-order freedom and the default', () => {
+  // The framing must hold both halves: word order is FREE (case endings
+  // disambiguate, per Debroy) AND the default unmarked order is SOV
+  // (which अन्वय restores). Dropping either half makes the explanation
+  // misleading — which is what the original "Sanskrit is SOV" wording did.
+  const sov = PRIMER.find((s) => s.id === 'sov-svo');
+  const allText = (sov?.body || []).join('\n') + '\n' + (sov?.aside || '');
+
+  it('exists', () => {
+    expect(sov).toBeDefined();
+  });
+
+  it('explicitly says word order is free / not required', () => {
+    expect(allText).toMatch(/free|freedom|reordering doesn't change|case endings|विभक्ति/i);
+  });
+
+  it('explicitly says SOV is the default / unmarked order (not the only option)', () => {
+    expect(allText).toMatch(/default|unmarked|typological/i);
+  });
+
+  it('explains that अन्वय restores the default order', () => {
+    expect(allText).toMatch(/अन्वय/);
+    expect(allText).toMatch(/restore|untangle|unscramble/i);
+  });
+
+  it('credits Debroy\'s framing in the aside', () => {
+    expect(allText).toMatch(/Debroy/);
+  });
+
+  it('does NOT make the bald claim "Sanskrit is SOV" without nuance', () => {
+    // Catch the regression: a future edit collapses both halves back
+    // into "Sanskrit and Hindi are SOV" without the freedom qualifier.
+    const baldClaim = /Sanskrit and Hindi are \*\*SOV\*\*\s*:/;
+    expect(allText).not.toMatch(baldClaim);
+  });
+});
+
 describe('primer — case coverage from the wordParsings backfill', () => {
   // After the 21-verse wordParsings backfill, the corpus should now have
   // at least one wordParsing for every case — including चतुर्थी and पञ्चमी

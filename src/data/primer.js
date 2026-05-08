@@ -15,12 +15,14 @@ export const PRIMER_SECTIONS = [
   },
   {
     id: 'sov-svo',
-    title: 'SOV vs SVO — the most important sentence',
+    title: 'Word order — free, but with a default',
     body: [
-      'Sanskrit and Hindi are **SOV**: Subject + Object + Verb. *मैं एक सेब खाता हूँ* / *अहं सेबं खादामि*.',
-      'English is **SVO**: Subject + Verb + Object. *I eat an apple*.',
-      '**अन्वय always reorders to SOV.** The original verse may scramble the words for metre; अन्वय untangles them into the SOV order Sanskrit prefers.',
+      'Sanskrit\'s word order is **free**: case endings (विभक्ति) mark who-did-what-to-whom, so reordering doesn\'t change meaning. *रामः रावणं हन्ति*, *रावणं रामः हन्ति*, and *हन्ति रामः रावणम्* all mean "Rāma kills Rāvaṇa." The `-ः` (nom.) on रामः and the `-म्` (acc.) on रावणम् carry the grammar; their position doesn\'t. **Poets exploit this freedom for metre.**',
+      'But Sanskrit also has a **default / unmarked order: SOV** (Subject + Object + Verb). It\'s not a *rule*; it\'s the order Sanskrit reaches for when nothing rhetorical or metrical is forcing a different choice. Hindi inherits the default and is much stricter about it: *मैं एक सेब खाता हूँ* / *अहं सेबं खादामि*.',
+      'English by contrast is **SVO** and *needs* that order — *I eat an apple* and *an apple eats I* are different sentences in English. Sanskrit doesn\'t have that constraint.',
+      '**अन्वय restores the default SOV order.** The verse may scramble words for metre; अन्वय untangles them back to "Subject + qualifiers, Object + qualifiers, Verb." That\'s why अन्वय is a teaching tool, not a translation tool — it shows you the unmarked sentence the metre hid.',
     ],
+    aside: 'Bibek Debroy, in *Bhagavad Gita for Millennials*, emphasises the freedom side: "word order doesn\'t matter, the endings do the work." That\'s correct about *grammar* (the case endings disambiguate). But there is still a *typological* default — SOV — which अन्वय reveals. Both halves are true; they\'re answering different questions.',
   },
   {
     id: 'decode-sequence',

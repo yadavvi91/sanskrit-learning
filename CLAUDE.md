@@ -41,15 +41,18 @@ The WhatsApp message (क्लैब्यं मा स्म गमः पा
 
 From the February 2023 reading, User made handwritten notes covering:
 
-**SOV vs SVO — the core structural insight:**
-- Sanskrit and Hindi are **SOV** (Subject-Object-Verb) languages: मैं एक सेब खाता हूँ
-- English is **SVO** (Subject-Verb-Object): I eat an apple
-- This is why अन्वय (logical reordering) always produces SOV — that's Sanskrit's natural order
-- Word order in Sanskrit is *free* for poetic/metrical reasons, but the underlying logic is always SOV
+**SOV vs SVO — the core structural insight (with the key qualification):**
+- Sanskrit's word order is **free** — case endings (विभक्ति) carry grammatical role, so reordering doesn't change meaning. *रामः रावणं हन्ति* = *रावणं रामः हन्ति* = *हन्ति रामः रावणम्*. Poets exploit this for metre.
+- But Sanskrit has a **default / unmarked order: SOV** (Subject-Object-Verb). Not a rule — the order Sanskrit reaches for when nothing rhetorical or metrical is forcing a different choice.
+- Hindi inherits the default and is much stricter SOV: *मैं एक सेब खाता हूँ* / *अहं सेबं खादामि*.
+- English is **SVO** and *needs* that order — *I eat an apple* and *an apple eats I* mean different things in English. Sanskrit doesn't have that constraint.
+- अन्वय (logical reordering) restores the default SOV — it's a teaching tool that shows the unmarked sentence the metre hid.
+
+Both halves matter: Debroy's "word order doesn't matter" is correct about *grammar* (endings disambiguate); the "Sanskrit is SOV" framing is correct about *typological default* (the order अन्वय restores). Don't drop either half when explaining this.
 
 **पदच्छेद** — word splitting. Undoing sandhi and समास to get individual words back. The notes covered how Sanskrit aggressively compounds and joins words, and पदच्छेद is the act of reversing that.
 
-**अन्वय** — logical ordering. After पदच्छेद, reorder into the parseable SOV sequence: Subject + qualifiers + Object + qualifiers + Verb.
+**अन्वय** — logical ordering. After पदच्छेद, reorder into the parseable default-SOV sequence: Subject + qualifiers + Object + qualifiers + Verb. Note: this is reordering to *the unmarked default*, not "the only correct order" — the original verse is grammatically fine, just metrically scrambled.
 
 **छंद / metre** — the notes covered this in detail:
 - अनुष्टुभ metre (the Gita's primary metre) — 8 syllables × 4 pādas = 32 syllables per verse
