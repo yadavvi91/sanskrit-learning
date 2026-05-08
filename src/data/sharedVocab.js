@@ -262,6 +262,24 @@ export const SHARED_VOCAB = {
   'स्मृतिभ्रंशात्':        { category: 'noun', root: 'स्मृतिभ्रंश', gender: 'm', number: 'eka', case: 'pan', gloss: 'from collapse of memory' },
   'बुद्धिनाशः':            { category: 'noun', root: 'बुद्धिनाश', gender: 'm', number: 'eka', case: 'pra', gloss: 'destruction of intellect' },
   'बुद्धिनाशात्':          { category: 'noun', root: 'बुद्धिनाश', gender: 'm', number: 'eka', case: 'pan', gloss: 'from destruction of intellect' },
+
+  // ───── Pre-sandhi alternate keys ─────
+  // padaccheda often shows the un-fused form (e.g. "देह-अन्तर-प्राप्तिः")
+  // while the dictionary key above carries the post-sandhi joined form
+  // ("देहान्तरप्राप्तिः", अ+अ → आ). The lookup helper strips hyphens but
+  // doesn't apply sandhi. Aliases here close that gap so both surfaces hit.
+  'देहअन्तरप्राप्तिः':     { category: 'noun', root: 'देहान्तरप्राप्ति', gender: 'f', number: 'eka', case: 'pra', gloss: 'attainment of another body' },
+  'शीतउष्णसुखदुःखदाः':  { category: 'adjective', root: 'शीतोष्णसुखदुःखद', gender: 'm', number: 'bahu', case: 'pra', gloss: 'giving cold/heat/pleasure/pain' },
+  'आगमअपायिनः':           { category: 'adjective', root: 'आगमापायिन्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'coming-and-going (transient)' },
+  'सिद्धिअसिद्ध्योः':      { category: 'noun', root: 'सिद्ध्यसिद्धि', gender: 'f', number: 'dvi', case: 'sap', gloss: 'in success and failure' },
+  'सुअनुष्ठितात्':           { category: 'adjective', root: 'स्वनुष्ठित', gender: 'm', number: 'eka', case: 'pan', gloss: 'well-performed (abl.)' },
+  'भयआवहः':                { category: 'adjective', root: 'भयावह', gender: 'm', number: 'eka', case: 'pra', gloss: 'fraught with fear / dangerous' },
+  'धर्मसंस्थापनअर्थाय':  { category: 'noun', root: 'धर्मसंस्थापनार्थ', gender: 'm', number: 'eka', case: 'cha', gloss: 'for the firm establishment of dharma' },
+  'नित्यअभियुक्तानाम्':   { category: 'adjective', root: 'नित्याभियुक्त', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of the constantly devoted (ones)' },
+  'मत्अर्पणम्':              { category: 'noun', root: 'मदर्पण', gender: 'n', number: 'eka', case: 'dvi', gloss: 'as an offering to Me' },
+
+  // The one entry that was simply missing — not a sandhi issue.
+  'अद्वेष्टा':              { category: 'noun', root: 'अद्वेष्टृ', gender: 'm', number: 'eka', case: 'pra', gloss: 'one who hates no being / non-hater' },
 };
 
 // Helper: lookup with both exact match and a small fall-through for hyphenated

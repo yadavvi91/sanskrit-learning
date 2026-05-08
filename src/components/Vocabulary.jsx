@@ -19,8 +19,12 @@ export default function Vocabulary() {
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
+    // Explicit category pick wins over the catch-all "Hide particles" toggle.
+    // Without this, clicking the "particle (20)" chip while hideParticles
+    // is true filters everything out.
+    const explicitlyShowingParticles = categoryFilter === 'particle';
     let arr = vocab.filter((e) => {
-      if (hideParticles && e.category === 'particle') return false;
+      if (hideParticles && e.category === 'particle' && !explicitlyShowingParticles) return false;
       if (onlyMissingGloss && e.gloss) return false;
       if (categoryFilter !== 'all' && (e.category ?? 'unknown') !== categoryFilter) return false;
       if (q) {
