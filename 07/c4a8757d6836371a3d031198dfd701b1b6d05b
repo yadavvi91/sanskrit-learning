@@ -1,0 +1,37 @@
+src/data/verses.tier.test.js
+  s_d5e8c30b294ba2::t_7e3115ecb9afb1 1-79
+src/data/verses.js
+  s_d5e8c30b294ba2::t_9a882ee79db779 610,670,713,775,819,880,925,965,1017,1070,1108,1148,1200,1238,1288,1328,1368,1406,1449,1509,1565
+  s_d5e8c30b294ba2::t_54ebe4050201dd 1632-1651
+  s_d5e8c30b294ba2::t_a3e397471ecd44 443
+  s_d5e8c30b294ba2::t_b7eca2cbce2d03 7-27
+  s_d5e8c30b294ba2::t_1d9809683cf922 36
+  s_d5e8c30b294ba2::t_a5d05a3bc9d075 160
+  s_d5e8c30b294ba2::t_8740bdc4559e34 312
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_7bff0d0d5a68d3 24,37-43
+  s_d5e8c30b294ba2::t_1f3e826c72d0da 7
+  s_d5e8c30b294ba2::t_358f79f2d9f590 185-193
+src/styles.css
+  s_d5e8c30b294ba2::t_688b56e7ee88c7 5001-5058,5060-5065
+  s_d5e8c30b294ba2::t_6a605176e6b3c6 5059
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_de25eb4c2adb93 4
+  s_d5e8c30b294ba2::t_a9a7e3caf08d23 222-228,237,245
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "07c4a8757d6836371a3d031198dfd701b1b6d05b",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
