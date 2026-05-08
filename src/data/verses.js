@@ -1010,6 +1010,7 @@ export const VERSES = [
     samasNotes: [
       { compound: 'धर्मसंस्थापनार्थाय', vigraha: 'धर्मस्य संस्थापनम् — तस्य अर्थः — तस्मै', type: 'षष्ठी तत्पुरुष (multi-tier)', gloss: 'for the firm establishment of dharma (purpose-dative)' },
       { compound: 'धर्मसंस्थापन', vigraha: 'धर्मस्य संस्थापनम्', type: 'षष्ठी तत्पुरुष', gloss: 'establishment of dharma (an inner constituent)' },
+      { compound: 'युगे युगे', vigraha: 'प्रतियुगम् / यस्मिन् यस्मिन् युगे', type: 'अव्ययीभाव', gloss: 'in each age (distributive vipsa); the repetition is the compound, classed under अव्ययीभाव per Pāṇini 2.1.5 ff.' },
     ],
     finiteVerbs: [
       { form: 'सम्भवामि', root: 'सम् + √भू', lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I come into being / I manifest' },

@@ -130,7 +130,22 @@ function CompoundBank({ onOpenVerse }) {
 }
 
 function TypeIdentifier() {
-  const bank = useMemo(() => buildSamasaBank(), []);
+  // Draw from BOTH the verse-grown bank and the reference catalogue, so
+  // every type (including अव्ययीभाव — absent from our 25-verse Gītā corpus)
+  // can come up as a drill prompt.
+  const bank = useMemo(() => {
+    const verseBank = buildSamasaBank().map((b) => ({ ...b, fromBank: 'verses' }));
+    const refBank = SAMASA_REF_BANK.map((b) => ({ ...b, fromBank: 'reference' }));
+    // Shuffle pseudo-randomly but deterministically so order doesn't surprise
+    // mid-drill. Interleave reference + verse so types stay diverse.
+    const merged = [];
+    const max = Math.max(verseBank.length, refBank.length);
+    for (let i = 0; i < max; i++) {
+      if (i < refBank.length) merged.push(refBank[i]);
+      if (i < verseBank.length) merged.push(verseBank[i]);
+    }
+    return merged;
+  }, []);
   const [idx, setIdx] = useState(0);
   const [picked, setPicked] = useState(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
