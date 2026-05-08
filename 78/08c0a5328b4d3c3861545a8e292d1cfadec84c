@@ -1,0 +1,45 @@
+src/data/primer.js
+  s_d5e8c30b294ba2::t_484a32ded29677 68-75,78-80
+  s_d5e8c30b294ba2::t_c6e6c542f5c683 91,93-95
+src/data/verses.js
+  s_d5e8c30b294ba2::t_b205fd5b3b3e33 946-959
+  s_d5e8c30b294ba2::t_bdd56c7065a8d9 1179-1188
+  s_d5e8c30b294ba2::t_89f2b3476d2f1e 1263-1277
+  s_d5e8c30b294ba2::t_f0e03824ed7eab 1001-1011
+  s_d5e8c30b294ba2::t_9d5e8136e3ba80 1338-1353
+  s_d5e8c30b294ba2::t_db2d616928aaa0 1383-1395
+  s_d5e8c30b294ba2::t_6a4611c04f0274 604-618
+  s_d5e8c30b294ba2::t_042a01971e0acc 870-883
+  s_d5e8c30b294ba2::t_9b4a0de5e26460 1484-1495
+  s_d5e8c30b294ba2::t_9d60019cb5ed4a 1049-1062
+  s_d5e8c30b294ba2::t_715b183d812334 707-721
+  s_d5e8c30b294ba2::t_3a2dbf25b37e65 1540-1553
+  s_d5e8c30b294ba2::t_2f88ae96815c97 1212-1224
+  s_d5e8c30b294ba2::t_54bb276052d2dc 1425-1436
+  s_d5e8c30b294ba2::t_11c53d44921f77 910-922
+  s_d5e8c30b294ba2::t_2c86a1d82349ff 811-824
+  s_d5e8c30b294ba2::t_9f3b1b87c41970 1124-1137
+  s_d5e8c30b294ba2::t_d22a5ed96c2c1b 665-675
+  s_d5e8c30b294ba2::t_24336b875f3cdc 766-778
+  s_d5e8c30b294ba2::t_2da2b0d34df7f3 1090-1101
+  s_d5e8c30b294ba2::t_d84f4c481889f7 1301-1316
+src/data/primer.test.js
+  s_d5e8c30b294ba2::t_e5de996908bef6 13
+  s_d5e8c30b294ba2::t_899720d7b5e837 1-12,14-100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "7808c0a5328b4d3c3861545a8e292d1cfadec84c",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
