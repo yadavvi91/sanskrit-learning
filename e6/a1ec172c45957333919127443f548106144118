@@ -1,0 +1,34 @@
+src/data/samasa.test.js
+  s_d5e8c30b294ba2::t_a8c652a6304048 38,40-47
+src/components/SandhiLab.jsx
+  s_d5e8c30b294ba2::t_053716b30cc2d8 21-33
+src/data/verses.js
+  s_d5e8c30b294ba2::t_23752e5d6bf6a6 859-863
+  s_d5e8c30b294ba2::t_b6487ab3fb3f67 766-769
+  s_d5e8c30b294ba2::t_e219ceb93823f8 1146-1148
+  s_d5e8c30b294ba2::t_067211eba9c937 987-990
+  s_d5e8c30b294ba2::t_7e6fa2a20f7a17 725-728
+  s_d5e8c30b294ba2::t_62cd038294d731 1236-1239
+  s_d5e8c30b294ba2::t_abf9cdd1b7858a 923-927
+  s_d5e8c30b294ba2::t_6b3e8f7911a5ea 592-595
+  s_d5e8c30b294ba2::t_b13b86124ccf1a 1193-1199
+  s_d5e8c30b294ba2::t_381a6d494e0c05 632-636
+  s_d5e8c30b294ba2::t_8324971f432867 1117-1120
+  s_d5e8c30b294ba2::t_1707543f50bbc6 796-799
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e6a1ec172c45957333919127443f548106144118",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
