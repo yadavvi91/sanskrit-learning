@@ -83,16 +83,15 @@ describe('VerseJourney — jump-to-verse form', () => {
     expect(input.value).toBe('bogus');
   });
 
-  it('referencing an undecoded verse silently no-ops', () => {
+  it('referencing an out-of-range verse silently no-ops', () => {
     const { container } = renderAt('/journey');
     const input = container.querySelector('.jump-input');
-    // A verse far outside the decoded set, e.g. 18.78
-    fireEvent.change(input, { target: { value: '18.78' } });
-    const beforeUrl = container.querySelector('.decoded-count').textContent; // proxy for "page didn't change"
+    // A verse outside any chapter range — chapter 1 only has 47.
+    fireEvent.change(input, { target: { value: '1.99' } });
+    const beforeUrl = container.querySelector('.decoded-count').textContent;
     fireEvent.submit(input.closest('form'));
     expect(container.querySelector('.decoded-count').textContent).toBe(beforeUrl);
-    // Input retained — it didn't pass the decodedKeys check, so .submit handler did not call setSelected/clear.
-    expect(input.value).toBe('18.78');
+    expect(input.value).toBe('1.99');
   });
 });
 
@@ -162,17 +161,17 @@ describe('VerseJourney — Show only decoded toggle', () => {
 });
 
 describe('VerseJourney — chapter grid + verse-cell clicks', () => {
-  it('verse-cells for decoded verses are enabled; locked ones are disabled', () => {
+  it('verse-cells for decoded verses are enabled (the entire 701-verse corpus is now decoded at some tier)', () => {
     const { container } = renderAt('/journey');
     const decoded = container.querySelectorAll('.verse-cell.is-decoded');
-    const locked = container.querySelectorAll('.verse-cell.is-locked');
     expect(decoded.length).toBeGreaterThan(0);
-    expect(locked.length).toBeGreaterThan(0);
-
-    // Decoded cells aren't disabled
     expect(decoded[0].disabled).toBe(false);
-    // Locked cells ARE disabled (the button has the `disabled` attribute)
-    expect(locked[0].disabled).toBe(true);
+    // Locked cells (.is-locked) only appear when there are valid Gītā
+    // chapter:verse pairs without an entry. Post-v13 stage 2, every valid
+    // pair is covered, so locked cells should be 0. (Out-of-range cells
+    // simply aren't rendered.)
+    const locked = container.querySelectorAll('.verse-cell.is-locked');
+    expect(locked.length).toBe(0);
   });
 
   it('clicking a decoded verse-cell navigates to that verse', () => {

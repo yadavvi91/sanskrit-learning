@@ -49,10 +49,12 @@ describe('getVerseTier', () => {
     expect(getVerseTier(2, 13)).toBe('browse');
   });
 
-  it('returns "fallback" for any chapter:verse without an entry', () => {
-    expect(getVerseTier(1, 2)).toBe('fallback');
-    expect(getVerseTier(11, 50)).toBe('fallback');
+  it('returns "fallback" for chapter:verse pairs outside the Gītā', () => {
+    // The corpus now covers all 701 valid Gītā verses; only out-of-range
+    // pairs are 'fallback'.
     expect(getVerseTier(99, 99)).toBe('fallback');
+    expect(getVerseTier(1, 99)).toBe('fallback'); // chapter 1 has 47 verses
+    expect(getVerseTier(19, 1)).toBe('fallback'); // there is no chapter 19
   });
 });
 
