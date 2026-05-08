@@ -185,12 +185,51 @@ describe('WordPopover — paradigm link (popover → Atlas/Declensions)', () => 
     expect(container.querySelector('.wp-paradigm-link').textContent).toMatch(/कर्मन्/);
   });
 
-  it('does NOT show paradigm link for pronouns', () => {
+  it('shows सर्वनाम link for pronoun तान् → /atlas/pronouns#tad (the user-flagged gap)', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="तान्" parsing={{ category: 'pronoun', root: 'तद्', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'them' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    const links = container.querySelectorAll('.wp-paradigm-link');
+    expect(links.length).toBe(1);
+    expect(links[0].textContent).toMatch(/सर्वनाम/);
+    expect(links[0].textContent).toMatch(/तद्-template/);
+  });
+
+  it('shows सर्वनाम link for अहम् → personal section', () => {
     const { container } = renderInRouter(
       <WordPopover word="अहम्" parsing={{ category: 'pronoun', root: 'अस्मद्', gender: '-', number: 'eka', case: 'pra', gloss: 'I' }} />
     );
     fireEvent.click(container.querySelector('.pada'));
-    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
+    const link = container.querySelector('.wp-paradigm-link');
+    expect(link).toBeDefined();
+    expect(link.textContent).toMatch(/personal/);
+  });
+
+  it('shows सर्वनाम link for यः (relative) → transfers section', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="यः" parsing={{ category: 'pronoun', root: 'यद्', gender: 'm', number: 'eka', case: 'pra', gloss: 'who' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link').textContent).toMatch(/transfer/);
+  });
+
+  it('shows सर्वनाम link for एनम् → tad section', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="एनम्" parsing={{ category: 'pronoun', root: 'एनद्', gender: 'm', number: 'eka', case: 'dvi', gloss: 'this one' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link').textContent).toMatch(/तद्-template/);
+  });
+
+  it('shows ONLY the noun-paradigm link for nouns (does not double-render a pronoun link)', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="भीष्मम्" parsing={{ category: 'noun', root: 'भीष्म', gender: 'm', number: 'eka', case: 'dvi', gloss: 'Bhīṣma' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    const links = container.querySelectorAll('.wp-paradigm-link');
+    expect(links.length).toBe(1);
+    expect(links[0].textContent).toMatch(/देव/);
   });
 
   it('does NOT show paradigm link for verbs', () => {

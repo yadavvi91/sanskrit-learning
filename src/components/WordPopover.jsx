@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.js';
+import { getPronounAnchor } from '../data/pronouns.js';
 
 const CASE_LABELS = {
   pra: 'प्रथमा (Nom.)',
@@ -91,6 +92,8 @@ function Popover({ word, parsing }) {
   const navigate = useNavigate();
   const paradigmId = getDeclensionForParsing(parsing);
   const paradigm = paradigmId ? getDeclensionById(paradigmId) : null;
+  // For pronouns, the link points to /atlas/pronouns#<section> instead.
+  const pronounAnchor = !paradigm ? getPronounAnchor(parsing) : null;
 
   return (
     <div className="word-popover" role="dialog">
@@ -123,6 +126,18 @@ function Popover({ word, parsing }) {
           title={`Open ${paradigm.name}-class full paradigm (24 forms) in Atlas`}
         >
           <span>follows <strong>{paradigm.name}</strong>-class — see all 24 forms</span>
+          <span className="wp-paradigm-arrow">↗</span>
+        </button>
+      )}
+
+      {pronounAnchor && (
+        <button
+          type="button"
+          className="wp-paradigm-link"
+          onClick={() => navigate(`/atlas/pronouns#${pronounAnchor.anchor}`)}
+          title={`Open ${pronounAnchor.label} in Atlas → सर्वनाम`}
+        >
+          <span>see in <strong>सर्वनाम</strong> — {pronounAnchor.label}</span>
           <span className="wp-paradigm-arrow">↗</span>
         </button>
       )}

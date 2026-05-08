@@ -1,12 +1,28 @@
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import {
   CASES, NUMBERS, ASMAD, YUSHMAD, TAD_M, TAD_F, TAD_N,
   TAD_TRANSFERS, OUTLIERS, CORRELATIVES, REFLEXIVES,
+  PRONOUN_SECTION_IDS,
 } from '../data/pronouns.js';
 
 export default function Pronouns() {
+  // Hash-driven section scroll, parallel to Declensions.jsx. Used by the
+  // WordPopover's pronoun deep-link: clicking तान् in 2.14 navigates to
+  // /atlas/pronouns#tad, which lands the user at the तद्-template section.
+  const location = useLocation();
+  useEffect(() => {
+    const hashId = (location.hash || '').replace(/^#/, '');
+    if (!hashId || !PRONOUN_SECTION_IDS.includes(hashId)) return;
+    requestAnimationFrame(() => {
+      const target = document.getElementById(hashId);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [location.hash]);
+
   return (
     <article className="atlas-page">
-      <h3 className="atlas-page-title">Personal pronouns — pure memorization</h3>
+      <h3 className="atlas-page-title" id="personal">Personal pronouns — pure memorization</h3>
       <p className="atlas-lede">
         अस्मद् ("I/we") and युष्मद् ("you") are <strong>suppletive</strong>: different stems per case.
         No gender. Enclitic short forms (मा, मे, नौ, नः, ते, वः) cannot begin a sentence and
@@ -17,7 +33,7 @@ export default function Pronouns() {
         <PersonalTable pronoun={YUSHMAD} />
       </div>
 
-      <h3 className="atlas-page-title">तद्-template — once memorized, six more pronouns are free</h3>
+      <h3 className="atlas-page-title" id="tad">तद्-template — once memorized, six more pronouns are free</h3>
       <p className="atlas-lede">
         तद् is the master सर्वनाम template. Four <span className="sma-flag">स्म-cells</span>{' '}
         deviate from the राम pattern (gold border). These four cells propagate to <em>every</em>{' '}
@@ -30,7 +46,7 @@ export default function Pronouns() {
         <SarvanamaTable card={TAD_N} />
       </div>
 
-      <h4 className="atlas-sub-title">Six "free" pronouns — same template, prefix swapped</h4>
+      <h4 className="atlas-sub-title" id="transfers">Six "free" pronouns — same template, prefix swapped</h4>
       <table className="transfer-table">
         <thead>
           <tr>
@@ -49,7 +65,7 @@ export default function Pronouns() {
         </tbody>
       </table>
 
-      <h4 className="atlas-sub-title">Outliers — recognition only</h4>
+      <h4 className="atlas-sub-title" id="outliers">Outliers — recognition only</h4>
       <ul className="outliers">
         {OUTLIERS.map((o) => (
           <li key={o.id}>
@@ -59,7 +75,7 @@ export default function Pronouns() {
         ))}
       </ul>
 
-      <h3 className="atlas-page-title">Correlative pairs — the structural backbone of Krishna's teachings</h3>
+      <h3 className="atlas-page-title" id="correlatives">Correlative pairs — the structural backbone of Krishna's teachings</h3>
       <p className="atlas-lede">
         Sanskrit has no relative-pronoun + complementizer like English "who/that." It uses
         <strong> paired clauses</strong>: a यद्-clause sets up a referent, a तद्-clause picks it up.
@@ -80,7 +96,7 @@ export default function Pronouns() {
         </tbody>
       </table>
 
-      <h3 className="atlas-page-title">Reflexives</h3>
+      <h3 className="atlas-page-title" id="reflexives">Reflexives</h3>
       <ul className="reflexive-list">
         {REFLEXIVES.map((r) => (
           <li key={r.id}>

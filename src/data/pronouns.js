@@ -115,3 +115,35 @@ export const REFLEXIVES = [
   { id: 'sva',    deva: 'स्व',     en: '"own"',         note: 'Declines like सर्व. Possessive — स्वकीय / svakīya.' },
   { id: 'atman', deva: 'आत्मन्', en: '"self / Self"', note: 'Masculine -न् stem. Doubles as reflexive ("oneself") and philosophical Self. Gita exploits this ambiguity, e.g. आत्मना आत्मानम् उद्धरेत् (6.5).' },
 ];
+
+// Maps a pronoun's `root` (as it appears in wordParsings) to the section
+// of /atlas/pronouns that documents it. Used by the WordPopover to render
+// a deep-link from any pronoun chip back to its paradigm — the parallel
+// of the noun-popover → /atlas/declensions#<paradigmId> link.
+const PRONOUN_ANCHORS = {
+  'अस्मद्':  { anchor: 'personal',     label: 'अस्मद्/युष्मद् personal pronouns' },
+  'युष्मद्': { anchor: 'personal',     label: 'अस्मद्/युष्मद् personal pronouns' },
+  'तद्':      { anchor: 'tad',           label: 'तद्-template (master सर्वनाम)' },
+  'एनद्':    { anchor: 'tad',           label: 'तद्-template (एनद् is the anaphoric variant)' },
+  'यद्':      { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'किम्':    { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'सर्व':    { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'अन्य':    { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'एक':       { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'एतद्':    { anchor: 'transfers',    label: 'तद्-transfer pronouns' },
+  'इदम्':    { anchor: 'outliers',      label: 'इदम्/अदस् outliers' },
+  'अदस्':    { anchor: 'outliers',      label: 'इदम्/अदस् outliers' },
+  'स्व':      { anchor: 'reflexives',   label: 'reflexives' },
+};
+
+export function getPronounAnchor(parsing) {
+  if (!parsing) return null;
+  if (parsing.category !== 'pronoun') return null;
+  return PRONOUN_ANCHORS[parsing.root] || null;
+}
+
+// All section ids registered above — exported so Pronouns.jsx can attach
+// id attributes consistently and tests can assert the id set.
+export const PRONOUN_SECTION_IDS = Array.from(
+  new Set(Object.values(PRONOUN_ANCHORS).map((e) => e.anchor))
+).concat(['correlatives']); // correlatives is reachable too even if no pronoun root maps to it
