@@ -1,0 +1,29 @@
+src/data/_hindi_part2.js
+  s_d5e8c30b294ba2::t_ef047f81b74aa1 1-219
+src/data/translations-arnold.js
+  s_d5e8c30b294ba2::t_0018521e76651d 1-19
+src/data/_arnold_part2.js
+  s_d5e8c30b294ba2::t_d7420e7aaf89e8 1-225
+src/data/_arnold_part3.js
+  s_d5e8c30b294ba2::t_96a6633d098c0c 1-228
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_962d202824f18e 14-15,25,42,45-64
+src/data/translations-hindi.js
+  s_d5e8c30b294ba2::t_c7e819aefe48a9 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d22bf3ecffff5df9536742691483b2e1ea83ae26",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
