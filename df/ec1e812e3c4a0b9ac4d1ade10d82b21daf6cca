@@ -1,0 +1,26 @@
+plans/v13-corpus-scale.md
+  s_d5e8c30b294ba2::t_e18d32950ea62f 200,202-203,209
+  s_d5e8c30b294ba2::t_c5e874b05a6741 64-66,69
+  s_d5e8c30b294ba2::t_04d5cfc301db53 267,271,274-275,277
+  s_d5e8c30b294ba2::t_7f5fd8a43f0f9e 55-57
+  s_d5e8c30b294ba2::t_da13919edc48b6 237-238,240-249
+  s_d5e8c30b294ba2::t_1b2be27f0b3a8d 11-13
+  s_d5e8c30b294ba2::t_c15c96fd72e07c 46
+  s_d5e8c30b294ba2::t_cd9c848a10a8fd 121,123-127,129,131-134,136-141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "dfec1e812e3c4a0b9ac4d1ade10d82b21daf6cca",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
