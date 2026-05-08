@@ -1,0 +1,20 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_9481bf746da144 1907-1963
+  s_d5e8c30b294ba2::t_3a2fa011d582f0 1964-2026
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e1cd9ef3e1eb287e2136f3c15597dcdd60e650ef",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
