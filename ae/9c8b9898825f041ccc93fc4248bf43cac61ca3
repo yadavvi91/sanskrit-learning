@@ -1,0 +1,41 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_c24dcbcc29bbe8 168-172
+src/data/verses.js
+  s_d5e8c30b294ba2::t_31670f8e4c2359 703-708
+  s_d5e8c30b294ba2::t_8bb618f65ba56c 655-663
+  s_d5e8c30b294ba2::t_0591df7d5a235c 793-797
+  s_d5e8c30b294ba2::t_4b86e67b146694 607-613
+  s_d5e8c30b294ba2::t_3e93a168613265 860-866
+  s_d5e8c30b294ba2::t_de8241f994d5ac 632-636
+  s_d5e8c30b294ba2::t_3af19aa8edb861 884-889
+  s_d5e8c30b294ba2::t_242cfbfe786b9f 907-910
+  s_d5e8c30b294ba2::t_48837f8225276f 979-983
+  s_d5e8c30b294ba2::t_a1e94881b79dab 581-588
+  s_d5e8c30b294ba2::t_badb40f52f23ce 726-730
+  s_d5e8c30b294ba2::t_cc771700dcc47f 1001-1009
+  s_d5e8c30b294ba2::t_d3a705e17552ef 536-539
+  s_d5e8c30b294ba2::t_bb49c458f4db0b 928-935
+  s_d5e8c30b294ba2::t_d35afb7e706ddb 953-961
+  s_d5e8c30b294ba2::t_d78e91ec5c73cc 838-842
+  s_d5e8c30b294ba2::t_15ee7018f320df 816-819
+  s_d5e8c30b294ba2::t_f2af26e274f2bb 748-753
+  s_d5e8c30b294ba2::t_385b1a8d7d8d05 681-685
+  s_d5e8c30b294ba2::t_d0462eefcf15a6 771-775
+  s_d5e8c30b294ba2::t_d6dd8262ec8fce 558-561
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "ae9c8b9898825f041ccc93fc4248bf43cac61ca3",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
