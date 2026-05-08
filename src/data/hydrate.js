@@ -13,6 +13,7 @@ import { autoDecode } from '../utils/decodeHelper.js';
 import { BESANT_TRANSLATIONS } from './translations-besant.js';
 import { ARNOLD_TRANSLATIONS } from './translations-arnold.js';
 import { HINDI_TRANSLATIONS } from './translations-hindi.js';
+import { INTERP_NOTES } from './interpretive.js';
 
 let done = false;
 
@@ -61,6 +62,20 @@ export function hydrateAutoStubVerses() {
           work: 'The Song Celestial',
           text: arnold,
         });
+      }
+    }
+
+    const interp = INTERP_NOTES[key];
+    if (interp) {
+      if (interp.anvaya && !v.anvaya) v.anvaya = interp.anvaya;
+      if (Array.isArray(interp.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+        v.vibhaktiNotes = interp.vibhaktiNotes;
+      }
+      if (Array.isArray(interp.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+        v.keyFights = interp.keyFights;
+      }
+      if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+        v.vyakhya = interp.vyakhya;
       }
     }
   }
