@@ -589,6 +589,10 @@ export const VERSES = [
       'तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति॥',
     ],
     padaccheda: ['देहिनः', 'अस्मिन्', 'यथा', 'देहे', 'कौमारम्', 'यौवनम्', 'जरा', 'तथा', 'देह-अन्तर-प्राप्तिः', 'धीरः', 'तत्र', 'न', 'मुह्यति'],
+    samasNotes: [
+      { compound: 'देहान्तरप्राप्तिः', vigraha: 'देहान्तरस्य प्राप्तिः', type: 'षष्ठी तत्पुरुष', gloss: 'attainment of another body' },
+      { compound: 'देहान्तर', vigraha: 'अन्यः देहः / अन्यो देहः', type: 'कर्मधारय', gloss: 'another body (an inner constituent of the larger compound)' },
+    ],
     finiteVerbs: [
       { form: 'मुह्यति', root: '√मुह्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is deluded' },
     ],
@@ -625,6 +629,11 @@ export const VERSES = [
       'आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥',
     ],
     padaccheda: ['मात्रा-स्पर्शाः', 'तु', 'कौन्तेय', 'शीत-उष्ण-सुख-दुःख-दाः', 'आगम-अपायिनः', 'अनित्याः', 'तान्', 'तितिक्षस्व', 'भारत'],
+    samasNotes: [
+      { compound: 'मात्रास्पर्शाः', vigraha: 'मात्राणाम् स्पर्शाः', type: 'षष्ठी तत्पुरुष', gloss: 'sense-contacts (touches of matter)' },
+      { compound: 'शीतोष्णसुखदुःखदाः', vigraha: 'शीतम् च उष्णम् च सुखम् च दुःखम् च — तानि ददति इति', type: 'उपपद तत्पुरुष (with द्वन्द्व inside)', gloss: 'givers of cold/heat/pleasure/pain' },
+      { compound: 'आगमापायिनः', vigraha: 'आगमः च अपायः च — तौ शीलयन्ति इति', type: 'उपपद तत्पुरुष (with द्वन्द्व inside)', gloss: 'coming-and-going (transient)' },
+    ],
     finiteVerbs: [
       { form: 'तितिक्षस्व', root: '√तिज् (desid.)', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'endure!' },
     ],
@@ -713,6 +722,10 @@ export const VERSES = [
       'मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
     ],
     padaccheda: ['कर्मणि', 'एव', 'अधिकारः', 'ते', 'मा', 'फलेषु', 'कदाचन', 'मा', 'कर्म-फल-हेतुः', 'भूः', 'मा', 'ते', 'सङ्गः', 'अस्तु', 'अकर्मणि'],
+    samasNotes: [
+      { compound: 'कर्मफलहेतुः', vigraha: 'कर्मणः फलस्य हेतुः', type: 'षष्ठी तत्पुरुष', gloss: 'cause of the fruit-of-action (i.e., motive)' },
+      { compound: 'कर्मफल', vigraha: 'कर्मणः फलम्', type: 'षष्ठी तत्पुरुष', gloss: 'fruit of action (an inner constituent)' },
+    ],
     finiteVerbs: [
       { form: 'भूः',   root: '√भू',   lakara: 'लोट् (negated by मा)', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'be — negated: "do not be"' },
       { form: 'अस्तु', root: '√अस्', lakara: 'लोट्',                  purusha: 'प्रथम',  vachana: 'एकवचन', gloss: 'let it be — negated: "let there not be"' },
@@ -750,6 +763,10 @@ export const VERSES = [
       'सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥',
     ],
     padaccheda: ['योग-स्थः', 'कुरु', 'कर्माणि', 'सङ्गम्', 'त्यक्त्वा', 'धनञ्जय', 'सिद्धि-असिद्ध्योः', 'समः', 'भूत्वा', 'समत्वम्', 'योगः', 'उच्यते'],
+    samasNotes: [
+      { compound: 'योगस्थः', vigraha: 'योगे स्थितः', type: 'सप्तमी तत्पुरुष', gloss: 'established in yoga' },
+      { compound: 'सिद्ध्यसिद्ध्योः', vigraha: 'सिद्धिः च असिद्धिः च — तयोः', type: 'इतरेतर द्वन्द्व', gloss: 'in success and non-success (the two)' },
+    ],
     finiteVerbs: [
       { form: 'कुरु',     root: '√कृ',  lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'do!' },
       { form: 'उच्यते', root: '√वच्', lakara: 'लट् (passive)', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is called' },
@@ -776,6 +793,10 @@ export const VERSES = [
       'तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्॥',
     ],
     padaccheda: ['बुद्धि-युक्तः', 'जहाति', 'इह', 'उभे', 'सुकृत-दुष्कृते', 'तस्मात्', 'योगाय', 'युज्यस्व', 'योगः', 'कर्मसु', 'कौशलम्'],
+    samasNotes: [
+      { compound: 'बुद्धियुक्तः', vigraha: 'बुद्ध्या युक्तः', type: 'तृतीया तत्पुरुष', gloss: 'one yoked-with discriminating reason' },
+      { compound: 'सुकृतदुष्कृते', vigraha: 'सुकृतम् च दुष्कृतम् च — ते', type: 'इतरेतर द्वन्द्व', gloss: 'good deeds and bad deeds (the two)' },
+    ],
     finiteVerbs: [
       { form: 'जहाति',     root: '√हा',     lakara: 'लट्',  purusha: 'प्रथम',  vachana: 'एकवचन', gloss: 'casts off' },
       { form: 'युज्यस्व', root: '√युज्', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'yoke yourself!' },
@@ -835,6 +856,11 @@ export const VERSES = [
       'स्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति॥',
     ],
     padaccheda: ['क्रोधात्', 'भवति', 'सम्मोहः', 'सम्मोहात्', 'स्मृति-विभ्रमः', 'स्मृति-भ्रंशात्', 'बुद्धि-नाशः', 'बुद्धि-नाशात्', 'प्रणश्यति'],
+    samasNotes: [
+      { compound: 'स्मृतिविभ्रमः', vigraha: 'स्मृतेः विभ्रमः', type: 'षष्ठी तत्पुरुष', gloss: 'wandering / confusion of memory' },
+      { compound: 'स्मृतिभ्रंशात्', vigraha: 'स्मृतेः भ्रंशः — तस्मात्', type: 'षष्ठी तत्पुरुष', gloss: 'from collapse of memory' },
+      { compound: 'बुद्धिनाशः', vigraha: 'बुद्धेः नाशः', type: 'षष्ठी तत्पुरुष', gloss: 'destruction of intellect' },
+    ],
     finiteVerbs: [
       { form: 'भवति',     root: '√भू',         lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'arises / is' },
       { form: 'प्रणश्यति', root: 'प्र + √नश्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'perishes' },
@@ -894,6 +920,11 @@ export const VERSES = [
       'स्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥',
     ],
     padaccheda: ['श्रेयान्', 'स्व-धर्मः', 'विगुणः', 'पर-धर्मात्', 'सु-अनुष्ठितात्', 'स्व-धर्मे', 'निधनम्', 'श्रेयः', 'पर-धर्मः', 'भय-आवहः'],
+    samasNotes: [
+      { compound: 'स्वधर्मः', vigraha: 'स्वस्य धर्मः', type: 'षष्ठी तत्पुरुष', gloss: "one's own dharma" },
+      { compound: 'परधर्मः', vigraha: 'परस्य धर्मः', type: 'षष्ठी तत्पुरुष', gloss: "another's dharma" },
+      { compound: 'भयावहः', vigraha: 'भयम् आवहति इति', type: 'उपपद तत्पुरुष', gloss: 'fraught with fear / fear-bringing' },
+    ],
     finiteVerbs: [],
     keyFights: [
       'No overt finite verb — the verse is a chain of predicate-adjective copular constructions with implied अस्ति (X is श्रेयान्, Y is श्रेयः, Z is भय-आवहः).',
@@ -953,6 +984,10 @@ export const VERSES = [
       'धर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥',
     ],
     padaccheda: ['परित्राणाय', 'साधूनाम्', 'विनाशाय', 'च', 'दुष्कृताम्', 'धर्म-संस्थापन-अर्थाय', 'सम्भवामि', 'युगे', 'युगे'],
+    samasNotes: [
+      { compound: 'धर्मसंस्थापनार्थाय', vigraha: 'धर्मस्य संस्थापनम् — तस्य अर्थः — तस्मै', type: 'षष्ठी तत्पुरुष (multi-tier)', gloss: 'for the firm establishment of dharma (purpose-dative)' },
+      { compound: 'धर्मसंस्थापन', vigraha: 'धर्मस्य संस्थापनम्', type: 'षष्ठी तत्पुरुष', gloss: 'establishment of dharma (an inner constituent)' },
+    ],
     finiteVerbs: [
       { form: 'सम्भवामि', root: 'सम् + √भू', lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I come into being / I manifest' },
     ],
@@ -1079,6 +1114,10 @@ export const VERSES = [
       'तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',
     ],
     padaccheda: ['अनन्याः', 'चिन्तयन्तः', 'माम्', 'ये', 'जनाः', 'पर्युपासते', 'तेषाम्', 'नित्य-अभियुक्तानाम्', 'योग-क्षेमम्', 'वहामि', 'अहम्'],
+    samasNotes: [
+      { compound: 'योगक्षेमम्', vigraha: 'योगः च क्षेमः च — तौ', type: 'इतरेतर द्वन्द्व', gloss: '(material) acquisition and (its) preservation — together: welfare' },
+      { compound: 'नित्याभियुक्तानाम्', vigraha: 'नित्यम् अभियुक्तानाम् / नित्यम् अभियुक्ताः — तेषाम्', type: 'कर्मधारय (with adverbial नित्यम्)', gloss: 'of those constantly devoted' },
+    ],
     finiteVerbs: [
       { form: 'पर्युपासते', root: 'परि + उप + √आस्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: 'they worship' },
       { form: 'वहामि',        root: '√वह्',                   lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I bear, I provide' },
@@ -1104,6 +1143,9 @@ export const VERSES = [
       'यत्तपस्यसि कौन्तेय तत्कुरुष्व मदर्पणम्॥',
     ],
     padaccheda: ['यत्', 'करोषि', 'यत्', 'अश्नासि', 'यत्', 'जुहोषि', 'ददासि', 'यत्', 'यत्', 'तपस्यसि', 'कौन्तेय', 'तत्', 'कुरुष्व', 'मत्-अर्पणम्'],
+    samasNotes: [
+      { compound: 'मदर्पणम्', vigraha: 'मह्यम् अर्पणम्', type: 'चतुर्थी तत्पुरुष', gloss: 'an offering to me' },
+    ],
     finiteVerbs: [
       { form: 'करोषि',     root: '√कृ',     lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you do' },
       { form: 'अश्नासि',  root: '√अश्',    lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you eat' },
@@ -1148,6 +1190,13 @@ export const VERSES = [
       'निर्ममो निरहङ्कारः समदुःखसुखः क्षमी॥',
     ],
     padaccheda: ['अद्वेष्टा', 'सर्व-भूतानाम्', 'मैत्रः', 'करुणः', 'एव', 'च', 'निर्ममः', 'निरहङ्कारः', 'सम-दुःख-सुखः', 'क्षमी'],
+    samasNotes: [
+      { compound: 'सर्वभूतानाम्', vigraha: 'सर्वाणि भूतानि — तेषाम्', type: 'कर्मधारय', gloss: 'of all beings' },
+      { compound: 'अद्वेष्टा', vigraha: 'न द्वेष्टा', type: 'नञ्-तत्पुरुष', gloss: 'non-hater (one who hates no one)' },
+      { compound: 'निर्ममः', vigraha: 'निर्गता ममता यस्मात् सः', type: 'बहुव्रीहि', gloss: '[one] from whom "mine"-ness has departed — non-possessive' },
+      { compound: 'निरहङ्कारः', vigraha: 'निर्गतः अहङ्कारः यस्मात् सः', type: 'बहुव्रीहि', gloss: '[one] from whom ego has departed — egoless' },
+      { compound: 'समदुःखसुखः', vigraha: 'समे दुःख-सुखे यस्य सः', type: 'बहुव्रीहि (with द्वन्द्व inside)', gloss: '[one] whose sorrow and joy are equal' },
+    ],
     finiteVerbs: [],
     keyFights: [
       'No overt finite verb — the verse is a list of qualities (predicate adjectives) of the ideal devotee. The predicate "is dear to Me" is supplied by the next verse (12.14): यो मद्भक्तः स मे प्रियः.',
@@ -1184,6 +1233,10 @@ export const VERSES = [
       'अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥',
     ],
     padaccheda: ['सर्व-धर्मान्', 'परित्यज्य', 'माम्', 'एकम्', 'शरणम्', 'व्रज', 'अहम्', 'त्वा', 'सर्व-पापेभ्यः', 'मोक्षयिष्यामि', 'मा', 'शुचः'],
+    samasNotes: [
+      { compound: 'सर्वधर्मान्', vigraha: 'सर्वान् धर्मान्', type: 'कर्मधारय', gloss: 'all dharmas (treated as one bundle)' },
+      { compound: 'सर्वपापेभ्यः', vigraha: 'सर्वेभ्यः पापेभ्यः', type: 'कर्मधारय', gloss: 'from all sins' },
+    ],
     finiteVerbs: [
       { form: 'व्रज',                  root: '√व्रज्',   lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'go!' },
       { form: 'मोक्षयिष्यामि', root: '√मुच् (caus.)', lakara: 'लृट्', purusha: 'उत्तम',  vachana: 'एकवचन', gloss: 'I will liberate' },

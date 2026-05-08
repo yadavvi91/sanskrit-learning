@@ -35,9 +35,16 @@ describe('lookupSamasaType — devanāgarī label → catalogue entry', () => {
 });
 
 describe('buildSamasaBank — auto-projection from verses.js → samasNotes[]', () => {
-  it('returns the 10 seed compounds from the four decoded verses', () => {
+  it('returns at least the 10 seed compounds from the original 4 decoded verses', () => {
     const bank = buildSamasaBank();
-    expect(bank.length).toBe(10);
+    expect(bank.length).toBeGreaterThanOrEqual(10);
+  });
+
+  it('includes compounds contributed by the browse-tier verses too', () => {
+    const bank = buildSamasaBank();
+    // Browse-tier verses 2.47, 2.48, 12.13, 18.66, etc. now contribute samāsa
+    // analyses. Total should be substantially more than the original 10.
+    expect(bank.length).toBeGreaterThan(20);
   });
 
   it('every entry carries verse provenance', () => {

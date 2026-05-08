@@ -18,11 +18,19 @@ export default function SandhiLab() {
     <article className="atlas-page">
       <h3 className="atlas-page-title">Sandhi Lab</h3>
       <p className="atlas-lede">
-        Paste a sandhi-joined string. The engine recognises {SANDHI_RULES.length} rules
-        across visarga, consonant, vowel, and yaṇ categories and tries to reconstruct
-        the original parts. Without a lexicon the engine can't disambiguate every
-        case — when a result looks wrong, the original input was probably already
-        unjoined or the sandhi happens at a position that needs the lexical cue.
+        <strong>This is a tool, not a reference.</strong> Paste any sandhi-joined string —
+        the engine runs {SANDHI_RULES.length} Pāṇinian rules (visarga, consonant, vowel, yaṇ)
+        and tries to reconstruct the original parts.
+      </p>
+      <p className="atlas-aside">
+        Two surfaces in the app handle sandhi, by design:
+      </p>
+      <ul className="atlas-aside" style={{ paddingLeft: '20px', marginTop: '0' }}>
+        <li><strong>Verse Detail → सन्धि block</strong> — hand-curated notes for a specific decoded verse. Read-only. The "what splits where" answer for the verse you're looking at.</li>
+        <li><strong>This Sandhi Lab</strong> — interactive engine. Paste arbitrary input from anywhere (a verse you're decoding by hand, a quote from a commentary, etc.) and see the engine's analysis with the rule names. Use it when you hit a junction the verse's own notes don't cover.</li>
+      </ul>
+      <p className="atlas-aside">
+        Lexical limits: without a Sanskrit dictionary the engine can't disambiguate every case (e.g. internal matras vs sandhi junctions). When the result looks wrong, your input was probably already unjoined — or the sandhi happens at a position that needs lexical cue. Try the presets below for known-good inputs.
       </p>
 
       <div className="sandhi-lab-input">
