@@ -1,0 +1,29 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_3f35fcb846c350 4668-4707
+src/utils/sandhi.js
+  s_d5e8c30b294ba2::t_36a6f630ea0d03 38-42,51-55,64-68,77-81,90-93,104-107,118-122,131-134,143-147,156,165-168,177,186-191,202-207,216-220,229-232,241,250-254,263-266
+src/components/Samasa.jsx
+  s_d5e8c30b294ba2::t_ef44310bb6d4cf 3
+  s_d5e8c30b294ba2::t_6fecc7a8f2c3c5 38-40,43-52,58-74,88-99,109-124
+src/data/samasaRefBank.js
+  s_d5e8c30b294ba2::t_3b73af28b82907 57
+  s_d5e8c30b294ba2::t_c740c12c061b57 1-56,58-116
+src/components/SandhiLab.jsx
+  s_d5e8c30b294ba2::t_ea3935eb4df9ba 104,109-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "ff93aea70c872349cab5187875b34c96f08da353",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
