@@ -10,6 +10,7 @@ import {
   validateParadigm,
   validateCorpusRefs,
   getDeclensionById,
+  getDeclensionForParsing,
 } from './declensions.js';
 import { VERSES } from './verses.js';
 
@@ -93,5 +94,88 @@ describe('declensions — pedagogical sanity checks', () => {
   it('कर्मन् paradigm has कर्मणि as सप्तमी एकवचन (matching Gītā 2.47)', () => {
     const karman = getDeclensionById('karman');
     expect(karman.forms.sap.eka).toBe('कर्मणि');
+  });
+});
+
+describe('declensions — getDeclensionForParsing classifier', () => {
+  // The bridge from a verse-popover to the right Atlas paradigm.
+  // Cases are derived from the actual roots in the 25-verse corpus.
+
+  it('m. -अ stem (भीष्म) → देव', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'भीष्म', gender: 'm' })).toBe('deva');
+  });
+
+  it('m. -अ stem (सङ्ग) → देव', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'सङ्ग', gender: 'm' })).toBe('deva');
+  });
+
+  it('n. -अ stem (कौमार) → फल', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'कौमार', gender: 'n' })).toBe('phala');
+  });
+
+  it('f. -आ stem (जरा) → सीता', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'जरा', gender: 'f' })).toBe('sita');
+  });
+
+  it('f. -इ stem (ग्लानि) → मति', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'ग्लानि', gender: 'f' })).toBe('mati');
+  });
+
+  it('m. -उ stem (वायु) → गुरु', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'वायु', gender: 'm' })).toBe('guru');
+  });
+
+  it('m. -न् stem (आत्मन्) → आत्मन्', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'आत्मन्', gender: 'm' })).toBe('atman');
+  });
+
+  it('n. -न् stem (कर्मन्) → कर्मन्', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'कर्मन्', gender: 'n' })).toBe('karman');
+  });
+
+  it('n. -स् stem (मनस्) → मनस्', () => {
+    expect(getDeclensionForParsing({ category: 'noun', root: 'मनस्', gender: 'n' })).toBe('manas');
+  });
+
+  it('adjective in m. -अ context → देव (अधिकार-class adjectives use noun paradigm)', () => {
+    expect(getDeclensionForParsing({ category: 'adjective', root: 'धीर', gender: 'm' })).toBe('deva');
+  });
+
+  it('returns null for pronouns (they have their own Atlas tab)', () => {
+    expect(getDeclensionForParsing({ category: 'pronoun', root: 'इदम्', gender: 'm' })).toBeNull();
+    expect(getDeclensionForParsing({ category: 'pronoun', root: 'तद्', gender: 'm' })).toBeNull();
+    expect(getDeclensionForParsing({ category: 'pronoun', root: 'अस्मद्', gender: '-' })).toBeNull();
+  });
+
+  it('returns null for verbs', () => {
+    expect(getDeclensionForParsing({ category: 'verb', root: '√भू' })).toBeNull();
+  });
+
+  it('returns null for particles (no declension)', () => {
+    expect(getDeclensionForParsing({ category: 'particle', root: 'च' })).toBeNull();
+  });
+
+  it('returns null for absolutives (indeclinable)', () => {
+    expect(getDeclensionForParsing({ category: 'krdanta', root: '√त्यज्', kind: 'absolutive' })).toBeNull();
+  });
+
+  it('returns null when root or gender is missing', () => {
+    expect(getDeclensionForParsing({ category: 'noun', gender: 'm' })).toBeNull();
+    expect(getDeclensionForParsing({ category: 'noun', root: 'भीष्म' })).toBeNull();
+    expect(getDeclensionForParsing(null)).toBeNull();
+    expect(getDeclensionForParsing()).toBeNull();
+  });
+
+  it('returns null for stems we don\'t yet have a paradigm for', () => {
+    // f. -ई (नदी-class) — not in the 8.
+    expect(getDeclensionForParsing({ category: 'noun', root: 'नदी', gender: 'f' })).toBeNull();
+    // m. -इ (मुनि-class) — not in the 8.
+    expect(getDeclensionForParsing({ category: 'noun', root: 'मुनि', gender: 'm' })).toBeNull();
+  });
+
+  it('classifies भीष्मम्\'s actual parsing from verses.js correctly', () => {
+    // The exact parsing the user clicked on in the verse.
+    const parsing = { category: 'noun', root: 'भीष्म', gender: 'm', number: 'eka', case: 'dvi', gloss: 'Bhīṣma' };
+    expect(getDeclensionForParsing(parsing)).toBe('deva');
   });
 });

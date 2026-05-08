@@ -510,17 +510,18 @@ sequenceDiagram
 
 The user is reading a verse, clicks a noun, sees its parsing in the popover (e.g. **भीष्मम्** is `द्वितीया एकवचन पुल्लिङ्ग`). They already know the देव paradigm from school but want to see ALL the forms — and check whether other words in the verse follow the same paradigm or a different one.
 
+The popover surfaces a **"follows देव-class — see all 24 forms ↗"** link as a footer when the parsing can be classified. One click jumps to the right paradigm in Atlas with no intermediate clicks (was 4 clicks before — masthead Atlas → TOC Declensions → chip देव → done).
+
 **Steps**
 
 1. Open `/journey/2/4` — Gītā 2.4 (कथं भीष्ममहं सङ्ख्ये…).
 2. Click the **भीष्मम्** chip in पदच्छेद. Popover shows: category=noun, root=भीष्म, gender=पुं., number=एक, case=द्वितीया.
-3. Realize: this is exactly देवम् structurally. Want to see the full देव paradigm.
-4. Navigate to `/atlas/declensions`.
-5. देव paradigm is selected by default; see all 24 forms.
-6. Verify the pedagogy note: it explicitly mentions भीष्मम् in 2.4 as the trigger word.
-7. Click the corpus example "Gītā 2.4 ↗" for भीष्मम् — return to verse 2.4.
+3. At the bottom of the popover, see "**follows देव-class — see all 24 forms ↗**".
+4. Click it → navigate to `/atlas/declensions#deva` with the देव paradigm pre-selected.
+5. Read the full 24-form table + the pedagogy note (which explicitly cites भीष्मम् as the example).
+6. Click the corpus-example button "Gītā 2.4 ↗" for भीष्मम् — return to verse 2.4.
 
-**Why this matters.** The whole point of recognizing case is to apply known declension knowledge to unknown words. The Atlas → Declensions tab makes that bridge explicit: pick a paradigm, see all 24 forms, see which corpus words follow it.
+**Why this matters.** The bridge from "I see this word's case" to "I see the whole paradigm it belongs to" is the central recognition→reference loop. Without the in-popover link, the user has to mentally classify (m. -अ → देव-class) then navigate manually. With the link, the classification step is shown explicitly, teaching the student WHICH paradigm matches WHICH stem-pattern.
 
 **Sequence diagram**
 
@@ -529,23 +530,23 @@ sequenceDiagram
     actor User
     participant Journey as VerseJourney
     participant Popover as WordPopover
-    participant Masthead
-    participant Atlas
+    participant Classifier as getDeclensionForParsing()
     participant Declensions
 
     User->>Journey: GET /journey/2/4
     Journey-->>User: render Gītā 2.4
     User->>Popover: click भीष्मम् chip
-    Popover-->>User: द्वितीया एकवचन पुल्लिङ्ग — root भीष्म
+    Popover->>Classifier: classify(parsing)
+    Classifier-->>Popover: 'deva' (m. -अ + gender m)
+    Popover-->>User: parsing fields + "follows देव-class ↗"
 
-    User->>Masthead: click "Atlas"
-    User->>Atlas: click "Declensions" sub-tab
-    Atlas->>Declensions: render
-    Declensions-->>User: देव paradigm — 24 forms
+    User->>Popover: click "follows देव-class ↗"
+    Popover->>Declensions: navigate /atlas/declensions#deva
+    Declensions-->>User: देव paradigm pre-selected, 24 forms
 
-    User->>Declensions: click corpus example "Gītā 2.4 ↗" for भीष्मम्
+    User->>Declensions: click corpus ref "Gītā 2.4 ↗"
     Declensions->>Journey: navigate /journey/2/4
-    Journey-->>User: back on Gītā 2.4 with closed loop
+    Journey-->>User: back on 2.4 — loop closed
 ```
 
-**Tested by** `it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse')`
+**Tested by** `it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse')` and a new direct-link test asserting the popover footer renders + navigates correctly.

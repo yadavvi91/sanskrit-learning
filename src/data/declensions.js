@@ -287,3 +287,57 @@ export function validateCorpusRefs(decl) {
   }
   return bad;
 }
+
+// Devanagari codepoint guards for the paradigm classifier.
+const VOWEL_AA  = 0x093E; // ा
+const VOWEL_I   = 0x093F; // ि
+const VOWEL_II  = 0x0940; // ी
+const VOWEL_U   = 0x0941; // ु
+const VOWEL_UU  = 0x0942; // ू
+const VIRAMA    = 0x094D; // ्  (halant)
+const NA        = 0x0928; // न
+const SA        = 0x0938; // स
+
+const isConsonant = (cp) => cp >= 0x0915 && cp <= 0x0939;
+
+// Classify a wordParsing into one of the 8 paradigms by inspecting
+// `root` (the lexical stem) and `gender`. Returns null when the parsing
+// can't be classified — pronouns / verbs / particles, missing fields,
+// or stems we don't yet have a paradigm for (e.g. मुनि m.-इ, नदी f.-ई).
+//
+// This is the ONE bridge from a verse-popover to the corresponding
+// declension reference. Used by WordPopover to render its
+// "→ X-class paradigm in Atlas" link.
+export function getDeclensionForParsing(parsing) {
+  if (!parsing) return null;
+  const { category, root, gender } = parsing;
+  if (!root || !gender) return null;
+
+  // These categories aren't noun-paradigms.
+  if (category === 'pronoun')  return null; // see Atlas → Pronouns instead
+  if (category === 'verb')     return null;
+  if (category === 'particle') return null;
+  if (category === 'krdanta' && parsing.kind && /absolutive|infinitive/i.test(parsing.kind)) return null;
+
+  const last = root.codePointAt(root.length - 1);
+
+  if (last === VIRAMA) {
+    // Consonant-final stem — look at the consonant before the halant.
+    const prev = root.codePointAt(root.length - 2);
+    if (prev === NA) return gender === 'm' ? 'atman' : gender === 'n' ? 'karman' : null;
+    if (prev === SA) return gender === 'n' ? 'manas' : null;
+    return null;
+  }
+  if (last === VOWEL_AA)  return gender === 'f' ? 'sita' : null;
+  if (last === VOWEL_I)   return gender === 'f' ? 'mati' : null; // m. -इ (मुनि-class) not in 8
+  if (last === VOWEL_II)  return null;                            // f. -ई (नदी-class) not in 8
+  if (last === VOWEL_U)   return gender === 'm' ? 'guru' : null;
+  if (last === VOWEL_UU)  return null;
+  if (isConsonant(last)) {
+    // No vowel sign means implicit -अ.
+    if (gender === 'm') return 'deva';
+    if (gender === 'n') return 'phala';
+    return null;
+  }
+  return null;
+}

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.js';
 
 const CASE_LABELS = {
   pra: 'प्रथमा (Nom.)',
@@ -86,6 +88,10 @@ export default function WordPopover({ word, parsing, isFinite }) {
 }
 
 function Popover({ word, parsing }) {
+  const navigate = useNavigate();
+  const paradigmId = getDeclensionForParsing(parsing);
+  const paradigm = paradigmId ? getDeclensionById(paradigmId) : null;
+
   return (
     <div className="word-popover" role="dialog">
       <div className="wp-header">
@@ -108,6 +114,18 @@ function Popover({ word, parsing }) {
       </dl>
 
       {parsing.note && <p className="wp-note">{parsing.note}</p>}
+
+      {paradigm && (
+        <button
+          type="button"
+          className="wp-paradigm-link"
+          onClick={() => navigate(`/atlas/declensions#${paradigm.id}`)}
+          title={`Open ${paradigm.name}-class full paradigm (24 forms) in Atlas`}
+        >
+          <span>follows <strong>{paradigm.name}</strong>-class — see all 24 forms</span>
+          <span className="wp-paradigm-arrow">↗</span>
+        </button>
+      )}
     </div>
   );
 }

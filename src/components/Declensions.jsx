@@ -1,15 +1,47 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { DECLENSIONS, VIBHAKTI_ORDER, VACHANA_ORDER } from '../data/declensions.js';
 
 // शब्दरूपावलिः — full noun-declension reference. The Atlas tab that
 // fills the gap left by the Primer's "vibhakti in 1 minute" summary:
 // here every paradigm gets its full 8 × 3 = 24 form table, with
 // corpus examples that actually appear in the decoded verses.
+//
+// Deep-linkable: /atlas/declensions#deva preselects the देव paradigm.
+// Used by WordPopover's "→ X-class" link to land on the relevant
+// paradigm directly from any verse-detail popover.
+
+const DEFAULT_PARADIGM = 'deva';
+
+function paradigmFromHash(hash) {
+  const id = (hash || '').replace(/^#/, '');
+  return DECLENSIONS.some((d) => d.id === id) ? id : null;
+}
 
 export default function Declensions({ onOpenVerse }) {
-  // Default: देव paradigm expanded (the one most students already know
-  // from SSC); others collapsed but easily reachable via the chip row.
-  const [activeId, setActiveId] = useState('deva');
+  const location = useLocation();
+  const cardRef = useRef(null);
+
+  // Initial state honors the URL hash so deep-links land on the right
+  // paradigm without a flicker.
+  const [activeId, setActiveId] = useState(
+    () => paradigmFromHash(location.hash) || DEFAULT_PARADIGM
+  );
+
+  // Re-sync when the hash changes mid-session (e.g. user clicks another
+  // popover link without leaving the Declensions tab).
+  useEffect(() => {
+    const fromHash = paradigmFromHash(location.hash);
+    if (fromHash && fromHash !== activeId) {
+      setActiveId(fromHash);
+      // Scroll the active card into view so the user lands on the
+      // table, not the chip row.
+      requestAnimationFrame(() => {
+        cardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, [location.hash]);
+
   const active = DECLENSIONS.find((d) => d.id === activeId) ?? DECLENSIONS[0];
 
   return (
@@ -40,7 +72,9 @@ export default function Declensions({ onOpenVerse }) {
         ))}
       </nav>
 
-      <ParadigmCard paradigm={active} onOpenVerse={onOpenVerse} />
+      <div ref={cardRef}>
+        <ParadigmCard paradigm={active} onOpenVerse={onOpenVerse} />
+      </div>
     </article>
   );
 }

@@ -2,11 +2,20 @@
 // table rendering (all 24 cells), corpus example verse-ref clicks.
 
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { render, screen, fireEvent, cleanup } from '@testing-library/react';
+import { render as rtlRender, screen, fireEvent, cleanup } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import Declensions from './Declensions.jsx';
 import { DECLENSIONS } from '../data/declensions.js';
 
 afterEach(() => cleanup());
+
+// Declensions now reads `useLocation().hash` to deep-link from the
+// WordPopover paradigm link; every render needs a router.
+function render(ui, { hash = '' } = {}) {
+  return rtlRender(
+    <MemoryRouter initialEntries={[`/atlas/declensions${hash}`]}>{ui}</MemoryRouter>
+  );
+}
 
 describe('Declensions — initial render', () => {
   it('mounts with the शब्दरूपावलिः title', () => {
@@ -136,5 +145,60 @@ describe('Declensions — bridges to user knowledge', () => {
     const { container } = render(<Declensions />);
     const note = container.querySelector('.declension-pedagogy');
     expect(note?.textContent).toContain('भीष्मम्');
+  });
+});
+
+describe('Declensions — URL hash deep-links to a specific paradigm', () => {
+  // Used by WordPopover: clicking "follows आत्मन्-class" navigates to
+  // /atlas/declensions#atman, which should land with the आत्मन्
+  // paradigm already active (no extra click needed).
+
+  it('mounts with #atman → आत्मन् paradigm active', () => {
+    const { container } = render(<Declensions />, { hash: '#atman' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('आत्मन्');
+    // Table shows आत्मा (the strong-stem nom.sg.)
+    expect(container.textContent).toContain('आत्मा');
+  });
+
+  it('mounts with #karman → कर्मन् paradigm active', () => {
+    const { container } = render(<Declensions />, { hash: '#karman' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('कर्मन्');
+    expect(container.textContent).toContain('कर्मणि');
+  });
+
+  it('mounts with #manas → मनस् paradigm active', () => {
+    const { container } = render(<Declensions />, { hash: '#manas' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('मनस्');
+  });
+
+  it('mounts with #mati → मति paradigm active', () => {
+    const { container } = render(<Declensions />, { hash: '#mati' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('मति');
+  });
+
+  it('falls back to देव when the hash is unknown', () => {
+    const { container } = render(<Declensions />, { hash: '#nonsense' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('देव');
+  });
+
+  it('falls back to देव when there is no hash', () => {
+    const { container } = render(<Declensions />, { hash: '' });
+    const active = container.querySelector('.declension-chip.is-active');
+    expect(active.textContent).toContain('देव');
+  });
+
+  it('clicking a different chip overrides the hash-derived selection', () => {
+    const { container } = render(<Declensions />, { hash: '#atman' });
+    expect(container.querySelector('.declension-chip.is-active').textContent).toContain('आत्मन्');
+
+    const sitaChip = Array.from(container.querySelectorAll('.declension-chip'))
+      .find((c) => c.textContent.includes('सीता'));
+    fireEvent.click(sitaChip);
+    expect(container.querySelector('.declension-chip.is-active').textContent).toContain('सीता');
   });
 });

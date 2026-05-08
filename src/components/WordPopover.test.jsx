@@ -2,11 +2,20 @@
 // grammar fields. Cover open/close, outside-click, Escape, finite-verb
 // styling, fields rendering for each grammar facet.
 
-import { describe, it, expect, afterEach } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { render, fireEvent, cleanup } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import WordPopover from './WordPopover.jsx';
 
 afterEach(() => cleanup());
+
+// WordPopover now uses useNavigate (for the paradigm link), so every
+// render needs a router. Wrap helper:
+function renderInRouter(ui, initialEntries = ['/journey/2/4']) {
+  return render(
+    <MemoryRouter initialEntries={initialEntries}>{ui}</MemoryRouter>
+  );
+}
 
 const NOUN_PARSING = {
   category: 'noun',
@@ -29,36 +38,36 @@ const VERB_PARSING = {
 
 describe('WordPopover — render states', () => {
   it('renders the chip with the given word', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     const chip = container.querySelector('.pada');
     expect(chip).toBeDefined();
     expect(chip.textContent).toBe('ईश्वरः');
   });
 
   it('chip carries has-parsing class when parsing is provided', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     expect(container.querySelector('.pada').className).toMatch(/has-parsing/);
   });
 
   it('chip has no has-parsing class when parsing is null', () => {
-    const { container } = render(<WordPopover word="अज्ञातम्" parsing={null} />);
+    const { container } = renderInRouter(<WordPopover word="अज्ञातम्" parsing={null} />);
     expect(container.querySelector('.pada').className).not.toMatch(/has-parsing/);
   });
 
   it('isFinite=true adds is-finite class', () => {
-    const { container } = render(<WordPopover word="भवति" parsing={VERB_PARSING} isFinite />);
+    const { container } = renderInRouter(<WordPopover word="भवति" parsing={VERB_PARSING} isFinite />);
     expect(container.querySelector('.pada').className).toMatch(/is-finite/);
   });
 
   it('the chip is initially closed (no popover dialog)', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     expect(container.querySelector('.word-popover')).toBeNull();
   });
 });
 
 describe('WordPopover — open / close', () => {
   it('clicking the chip opens the popover and sets aria-expanded=true', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     const chip = container.querySelector('.pada');
     fireEvent.click(chip);
     expect(container.querySelector('.word-popover')).toBeDefined();
@@ -67,7 +76,7 @@ describe('WordPopover — open / close', () => {
   });
 
   it('clicking the chip again closes the popover', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     const chip = container.querySelector('.pada');
     fireEvent.click(chip);
     fireEvent.click(chip);
@@ -76,7 +85,7 @@ describe('WordPopover — open / close', () => {
   });
 
   it('Escape closes an open popover', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     const chip = container.querySelector('.pada');
     fireEvent.click(chip);
     expect(container.querySelector('.word-popover')).not.toBeNull();
@@ -85,7 +94,7 @@ describe('WordPopover — open / close', () => {
   });
 
   it('mousedown outside the wrapper closes the popover', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     fireEvent.click(container.querySelector('.pada'));
     expect(container.querySelector('.word-popover')).not.toBeNull();
     fireEvent.mouseDown(document.body);
@@ -93,7 +102,7 @@ describe('WordPopover — open / close', () => {
   });
 
   it('with parsing=null, clicking opens but the popover dialog is suppressed', () => {
-    const { container } = render(<WordPopover word="अज्ञातम्" parsing={null} />);
+    const { container } = renderInRouter(<WordPopover word="अज्ञातम्" parsing={null} />);
     const chip = container.querySelector('.pada');
     fireEvent.click(chip);
     // open=true but {parsing} is falsy → <Popover /> not rendered.
@@ -103,25 +112,25 @@ describe('WordPopover — open / close', () => {
 
 describe('WordPopover — popover content', () => {
   it('renders gloss in the wp-gloss line', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     fireEvent.click(container.querySelector('.pada'));
     expect(container.querySelector('.wp-gloss').textContent).toContain('lord');
   });
 
   it('renders the human-readable विभक्ति label for case=pra', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     fireEvent.click(container.querySelector('.pada'));
     expect(container.querySelector('.word-popover').textContent).toMatch(/प्रथमा/);
   });
 
   it('renders the human-readable वचन label for number=eka', () => {
-    const { container } = render(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="ईश्वरः" parsing={NOUN_PARSING} />);
     fireEvent.click(container.querySelector('.pada'));
     expect(container.querySelector('.word-popover').textContent).toMatch(/एकवचन/);
   });
 
   it('renders verb-specific fields (root, गण, पद, लकार, पुरुष)', () => {
-    const { container } = render(<WordPopover word="करोति" parsing={VERB_PARSING} />);
+    const { container } = renderInRouter(<WordPopover word="करोति" parsing={VERB_PARSING} />);
     fireEvent.click(container.querySelector('.pada'));
     const text = container.querySelector('.word-popover').textContent;
     expect(text).toContain('√कृ');         // root
@@ -132,7 +141,7 @@ describe('WordPopover — popover content', () => {
   });
 
   it('shows the category label "अव्यय (particle)" for category=particle', () => {
-    const { container } = render(
+    const { container } = renderInRouter(
       <WordPopover word="हि" parsing={{ category: 'particle', gloss: 'indeed' }} />
     );
     fireEvent.click(container.querySelector('.pada'));
@@ -140,10 +149,63 @@ describe('WordPopover — popover content', () => {
   });
 
   it('renders parsing.note when present', () => {
-    const { container } = render(
+    const { container } = renderInRouter(
       <WordPopover word="ईश्वरः" parsing={{ ...NOUN_PARSING, note: 'a note about the form' }} />
     );
     fireEvent.click(container.querySelector('.pada'));
     expect(container.querySelector('.wp-note').textContent).toBe('a note about the form');
+  });
+});
+
+describe('WordPopover — paradigm link (popover → Atlas/Declensions)', () => {
+  it('shows "follows देव-class" link for भीष्मम् (m. -अ noun)', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="भीष्मम्" parsing={{ category: 'noun', root: 'भीष्म', gender: 'm', number: 'eka', case: 'dvi', gloss: 'Bhīṣma' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    const link = container.querySelector('.wp-paradigm-link');
+    expect(link).toBeDefined();
+    expect(link.textContent).toMatch(/देव/);
+    expect(link.textContent).toMatch(/24 forms/);
+  });
+
+  it('shows "follows आत्मन्-class" link for आत्मना (m. -न् noun)', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="आत्मना" parsing={{ category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka', case: 'tri', gloss: 'by the self' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link').textContent).toMatch(/आत्मन्/);
+  });
+
+  it('shows "follows कर्मन्-class" link for कर्मणि (n. -न् noun)', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="कर्मणि" parsing={{ category: 'noun', root: 'कर्मन्', gender: 'n', number: 'eka', case: 'sap', gloss: 'in action' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link').textContent).toMatch(/कर्मन्/);
+  });
+
+  it('does NOT show paradigm link for pronouns', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="अहम्" parsing={{ category: 'pronoun', root: 'अस्मद्', gender: '-', number: 'eka', case: 'pra', gloss: 'I' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
+  });
+
+  it('does NOT show paradigm link for verbs', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="भवति" parsing={{ category: 'verb', root: '√भू', gana: 1, lakara: 'lat' }} isFinite />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
+  });
+
+  it('does NOT show paradigm link for particles', () => {
+    const { container } = renderInRouter(
+      <WordPopover word="हि" parsing={{ category: 'particle', gloss: 'indeed' }} />
+    );
+    fireEvent.click(container.querySelector('.pada'));
+    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
   });
 });

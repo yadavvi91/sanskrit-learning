@@ -4147,6 +4147,41 @@ td.cell.is-suppletive {
   color: var(--ink-soft);
 }
 
+.wp-paradigm-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: var(--font-prose);
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: left;
+  transition: background 100ms ease, color 100ms ease;
+}
+
+.wp-paradigm-link strong {
+  font-family: var(--font-deva);
+  font-size: 14px;
+  color: var(--gold);
+}
+
+.wp-paradigm-link:hover {
+  background: var(--parchment);
+  color: var(--ink);
+}
+
+.wp-paradigm-link .wp-paradigm-arrow {
+  font-size: 13px;
+  color: var(--gold);
+}
+
 /* Vocabulary tab — reuses patterns-matrix styles */
 .vocabulary { display: flex; flex-direction: column; gap: 16px; }
 
