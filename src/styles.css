@@ -4569,3 +4569,99 @@ td.cell.is-suppletive {
 :root[data-theme="press"] body::before {
   display: none;
 }
+
+/* Vocab toolbar — secondary row + toggles */
+.vocab-toolbar-secondary {
+  margin-top: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.vocab-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  user-select: none;
+}
+
+.vocab-toggle input[type="checkbox"] {
+  accent-color: var(--saffron);
+  cursor: pointer;
+}
+
+/* "from shared dictionary" badge */
+.vocab-source-badge {
+  display: inline-block;
+  margin-top: 3px;
+  font-family: var(--font-display);
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.vocab-gloss-missing {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* Pagination */
+.vocab-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.vocab-show-more,
+.vocab-show-all {
+  background: var(--parchment-deep);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.vocab-show-more:hover,
+.vocab-show-all:hover {
+  background: var(--saffron-soft);
+  color: var(--ink);
+}
+
+.vocab-show-more {
+  background: var(--saffron);
+  color: var(--parchment);
+  border-color: var(--saffron);
+}
+
+.vocab-show-more:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--parchment);
+}
+
+.vocab-show-more-meta {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  text-transform: none;
+}

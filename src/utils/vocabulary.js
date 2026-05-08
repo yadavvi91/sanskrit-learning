@@ -2,8 +2,15 @@
 // Mirrors the auto-projection style of buildSamasaBank (samasa.js) and
 // tallyParticles (avyaya.js): walk every verse's padaccheda + wordParsings,
 // flatten into a vocabulary list with frequency, occurrences, and parsing.
+//
+// Fallback layering: when a verse doesn't carry per-word parsing for a
+// given पद, the builder reaches into SHARED_VOCAB (a hand-curated
+// dictionary of common Sanskrit words). Browse-tier verses gain meaningful
+// entries via the dictionary; fully-decoded verses' own wordParsings still
+// take precedence.
 
 import { VERSES } from '../data/verses.js';
+import { lookupSharedVocab } from '../data/sharedVocab.js';
 
 // Returns: array of vocabulary entries, sorted alphabetically by default.
 //   [{ word, count, firstMet, occurrences[], category, root, gloss, ... }, ...]
@@ -28,7 +35,9 @@ export function buildVocabulary() {
       seenInThisVerse.add(key);
 
       if (!map.has(key)) {
-        const parsing = verse.wordParsings?.[word] ?? null;
+        // Verse-local parsing wins; fall back to the shared dictionary
+        // for browse-tier verses that don't carry their own wordParsings.
+        const parsing = verse.wordParsings?.[word] ?? lookupSharedVocab(word) ?? null;
         map.set(key, {
           word: key,
           count: 1,
@@ -38,6 +47,7 @@ export function buildVocabulary() {
           root: parsing?.root ?? null,
           gloss: parsing?.gloss ?? null,
           parsing,
+          fromSharedDict: !verse.wordParsings?.[word] && !!parsing,
         });
       } else {
         const e = map.get(key);
@@ -47,12 +57,25 @@ export function buildVocabulary() {
         if (verse.decodeIndex < e.firstMet.decodeIndex) {
           e.firstMet = { ...ref, decodeIndex: verse.decodeIndex };
         }
-        // Fill in parsing if we previously had none
-        if (!e.parsing && verse.wordParsings?.[word]) {
-          e.parsing = verse.wordParsings[word];
-          e.category = e.parsing.category;
-          e.root = e.parsing.root;
-          e.gloss = e.parsing.gloss;
+        // Upgrade: if verse has a richer parsing than what we have, take it.
+        // Verse-local parsings beat shared-dict parsings.
+        const verseLocal = verse.wordParsings?.[word];
+        if (verseLocal && (e.fromSharedDict || !e.parsing)) {
+          e.parsing = verseLocal;
+          e.category = verseLocal.category;
+          e.root = verseLocal.root;
+          e.gloss = verseLocal.gloss;
+          e.fromSharedDict = false;
+        } else if (!e.parsing) {
+          // Try the shared dict as a last resort
+          const shared = lookupSharedVocab(word);
+          if (shared) {
+            e.parsing = shared;
+            e.category = shared.category;
+            e.root = shared.root;
+            e.gloss = shared.gloss;
+            e.fromSharedDict = true;
+          }
         }
       }
     }
