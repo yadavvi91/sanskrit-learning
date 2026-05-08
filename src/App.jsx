@@ -22,18 +22,46 @@ const VIEWS = [
   { path: '/practice', label: 'Practice' },
 ];
 
-// Reset window scroll on every pathname change. useLayoutEffect runs
-// SYNCHRONOUSLY before the browser paints — without this, the new page
-// renders briefly at the old scroll Y, then scrolls (visible jump).
-// With useLayoutEffect, the scroll happens before paint so it's invisible.
-// Hash changes inside the same path (e.g. /primer#sandhi) are intentionally
-// NOT scrolled — those scroll-into-view to the section already.
+// Reset window scroll on every pathname change.
+//
+// Tried (in order):
+//   1. useEffect — fires AFTER paint; visible jump.
+//   2. useLayoutEffect — fires before paint, but browser was still
+//      auto-restoring scrollY from its history stack, overriding us.
+//   3. Below: useLayoutEffect + manual history.scrollRestoration +
+//      scrollingElement (modern API) + a rAF fallback after paint.
+//
+// One-time setup at module load: tell the browser "I'll handle scroll
+// restoration, you stay out of it."
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useLayoutEffect(() => {
+    // Bypass any inherited CSS scroll-behavior that might smooth-scroll us.
+    const html = document.documentElement;
+    const prevBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+
+    // Try every scroll target known to current browsers.
+    const target = document.scrollingElement || html;
+    target.scrollTop = 0;
+    target.scrollLeft = 0;
+    if (target !== html) html.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
     window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+
+    // Some browsers re-apply scroll *after* layout (e.g. async layout).
+    // Belt-and-suspenders: do it again on the next animation frame.
+    const raf = requestAnimationFrame(() => {
+      target.scrollTop = 0;
+      window.scrollTo(0, 0);
+      html.style.scrollBehavior = prevBehavior;
+    });
+
+    return () => cancelAnimationFrame(raf);
   }, [pathname]);
   return null;
 }
