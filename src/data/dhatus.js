@@ -31,6 +31,12 @@ const DHATUS = [
     perfect3sg: 'बभूव',
     isSuppletive: false,
     notes: 'Most-frequent Sanskrit dhātu. Fully regular गण १. Same root supplies the future of √अस्.',
+    gitaOccurrences: [
+      { chapter: 2, verse: 47, form: 'भूः',          context: 'मा कर्म-फल-हेतुर्भूः — "do not be the cause of the fruit-of-action" (लोट् negated by मा)' },
+      { chapter: 2, verse: 63, form: 'भवति',         context: 'क्रोधाद्भवति सम्मोहः — "from anger, delusion arises" (लट् प्रथम एक)' },
+      { chapter: 4, verse: 7,  form: 'भवति',         context: 'धर्मस्य ग्लानिर्भवति — "decline of dharma arises" (लट् प्रथम एक)' },
+      { chapter: 4, verse: 8,  form: 'सम्भवामि',  context: 'सम् + √भू — "I come into being / I manifest" (लट् उत्तम एक)' },
+    ],
   },
 
   // ────────────── 2. कृ (do / make) — गण ८, उभयपदी, irregular ──────────────
@@ -85,7 +91,11 @@ const DHATUS = [
       },
     },
     gitaOccurrences: [
-      { chapter: 1, verse: 1, form: 'अकुर्वत', context: 'किमकुर्वत — "what did they do?"' },
+      { chapter: 1, verse: 1,  form: 'अकुर्वत', context: 'किमकुर्वत — "what did they do?" (लङ् प्रथम बहु, A)' },
+      { chapter: 2, verse: 48, form: 'कुरु',     context: 'योगस्थः कुरु कर्माणि — "perform actions established in yoga" (लोट् मध्यम एक)' },
+      { chapter: 3, verse: 21, form: 'कुरुते',  context: 'सः यत् प्रमाणं कुरुते — "what standard he sets" (लट् प्रथम एक, A)' },
+      { chapter: 9, verse: 27, form: 'करोषि',   context: 'यत् करोषि — "whatever you do" (लट् मध्यम एक)' },
+      { chapter: 9, verse: 27, form: 'कुरुष्व', context: 'तत् कुरुष्व मदर्पणम् — "do that as an offering to Me" (लोट् मध्यम एक, A)' },
     ],
   },
 
@@ -285,6 +295,9 @@ const DHATUS = [
     perfect3sg: 'ददर्श',
     isSuppletive: true,
     notes: 'Suppletive: present pres पश्य- replaces root. लृट् uses bare root + suffix.',
+    gitaOccurrences: [
+      { chapter: 6, verse: 30, form: 'पश्यति', context: 'यो मां पश्यति सर्वत्र — "who sees Me everywhere" (लट् प्रथम एक) — pattern repeats twice in this verse' },
+    ],
   },
 
   // ────────────── 9. श्रु (hear) — गण ५, परस्मैपद, athematic ──────────────
@@ -607,6 +620,9 @@ const DHATUS = [
     perfect3sg: 'ददौ',
     isSuppletive: true,
     notes: 'Reduplicated present (गण ३). Strong stem ददा-, weak stem दद्-.',
+    gitaOccurrences: [
+      { chapter: 9, verse: 27, form: 'ददासि', context: 'यत् ददासि — "whatever you give" (लट् मध्यम एक)' },
+    ],
     forms: {
       lat: {
         P: {
