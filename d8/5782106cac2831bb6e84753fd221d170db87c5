@@ -1,0 +1,21 @@
+src/App.jsx
+  s_d5e8c30b294ba2::t_f5aa98d1968a37 1-2
+  s_d5e8c30b294ba2::t_29f2b68a7d67ed 25-37
+  s_d5e8c30b294ba2::t_3f71b574c86018 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "d85782106cac2831bb6e84753fd221d170db87c5",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
