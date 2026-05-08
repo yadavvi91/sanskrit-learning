@@ -515,6 +515,381 @@ export const VERSES = [
       'रुधिर-प्रदिग्धान्': { category: 'adjective', root: 'रुधिरप्रदिग्ध', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'smeared with blood', note: 'तृतीया तत्पुरुष; agrees with भोगान्' },
     },
   },
+
+  // ──────────────────────────────────────────────────────────────────────────
+  // BROWSE-TIER VERSES (21 popular Gītā verses, decodeIndex 5+).
+  // These ship with mool + padaccheda + Edwin Arnold + Annie Besant
+  // translations + brief Hindi gloss. wordParsings, samasNotes,
+  // vibhaktiNotes, keyFights, anvaya are intentionally not seeded —
+  // they are the user's hand-decoding work, layered on later.
+  // ──────────────────────────────────────────────────────────────────────────
+
+  {
+    chapter: 2, verse: 13,
+    title: 'Childhood, youth, age — and the passing to another body',
+    decodeIndex: 5,
+    mool: [
+      'देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा।',
+      'तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति॥',
+    ],
+    padaccheda: ['देहिनः', 'अस्मिन्', 'यथा', 'देहे', 'कौमारम्', 'यौवनम्', 'जरा', 'तथा', 'देह-अन्तर-प्राप्तिः', 'धीरः', 'तत्र', 'न', 'मुह्यति'],
+    hindi: 'जैसे जीव के इस शरीर में बालपन, जवानी और बुढ़ापा होते हैं, वैसे ही दूसरे शरीर की प्राप्ति भी होती है। धीर पुरुष इस विषय में मोहित नहीं होता।',
+    english: 'As, in this body, the embodied soul passes through childhood, youth, and age — so too is the passing to another body. The wise are not deluded by it.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Nay, but as when one layeth His worn-out robes away, And, taking new ones, sayeth, "These will I wear to-day!" So putteth by the spirit Lightly its garb of flesh, And passeth to inherit A residence afresh.' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'As the dweller in the body experienceth, in the body, childhood, youth, old age, so passeth he on to another body; the steadfast one grieveth not thereat.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 14,
+    title: 'Sense-contacts come and go — endure them',
+    decodeIndex: 6,
+    mool: [
+      'मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।',
+      'आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥',
+    ],
+    padaccheda: ['मात्रा-स्पर्शाः', 'तु', 'कौन्तेय', 'शीत-उष्ण-सुख-दुःख-दाः', 'आगम-अपायिनः', 'अनित्याः', 'तान्', 'तितिक्षस्व', 'भारत'],
+    hindi: 'हे कुन्तीपुत्र, इन्द्रिय-विषयों के स्पर्श सर्दी-गर्मी और सुख-दुःख देनेवाले हैं। ये आते-जाते हैं, अनित्य हैं — हे भारत, इन्हें सहन करो।',
+    english: 'The contacts of the senses with their objects, O son of Kuntī, give rise to cold and heat, pleasure and pain. They come and go, are impermanent — endure them, O Bhārata.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'The contacts of matter, O son of Kuntī, giving cold and heat, pleasure and pain, they come and go, impermanent; endure them bravely, O Bhārata.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 22,
+    title: 'Changing clothes — the soul changes bodies',
+    decodeIndex: 7,
+    mool: [
+      'वासांसि जीर्णानि यथा विहाय',
+      'नवानि गृह्णाति नरोऽपराणि।',
+      'तथा शरीराणि विहाय जीर्णा-',
+      'न्यन्यानि संयाति नवानि देही॥',
+    ],
+    padaccheda: ['वासांसि', 'जीर्णानि', 'यथा', 'विहाय', 'नवानि', 'गृह्णाति', 'नरः', 'अपराणि', 'तथा', 'शरीराणि', 'विहाय', 'जीर्णानि', 'अन्यानि', 'संयाति', 'नवानि', 'देही'],
+    hindi: 'जैसे मनुष्य पुराने वस्त्रों को त्याग कर नए वस्त्र धारण करता है, वैसे ही जीवात्मा पुराने शरीरों को त्याग कर नए शरीरों को प्राप्त होता है।',
+    english: 'As a man, casting off worn-out garments, takes new ones, so the embodied soul, casting off worn-out bodies, enters into other new ones.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Nay, but as when one layeth His worn-out robes away, And, taking new ones, sayeth, "These will I wear to-day!" So putteth by the spirit Lightly its garb of flesh, And passeth to inherit A residence afresh.' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'As a man, casting off worn-out garments, taketh new ones, so the dweller in the body, casting off worn-out bodies, entereth into others that are new.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 23,
+    title: 'The soul cannot be cut, burnt, drowned, or dried',
+    decodeIndex: 8,
+    mool: [
+      'नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः।',
+      'न चैनं क्लेदयन्त्यापो न शोषयति मारुतः॥',
+    ],
+    padaccheda: ['न', 'एनम्', 'छिन्दन्ति', 'शस्त्राणि', 'न', 'एनम्', 'दहति', 'पावकः', 'न', 'च', 'एनम्', 'क्लेदयन्ति', 'आपः', 'न', 'शोषयति', 'मारुतः'],
+    hindi: 'इस आत्मा को शस्त्र काट नहीं सकते, अग्नि जला नहीं सकती, जल भिगो नहीं सकता, और वायु सुखा नहीं सकती।',
+    english: 'Weapons cannot cleave it, fire cannot burn it, waters cannot wet it, nor can the wind dry it.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Never the spirit was born; the spirit shall cease to be never; / Never was time it was not; End and Beginning are dreams! / Birthless and deathless and changeless remaineth the spirit for ever; / Death hath not touched it at all, dead though the house of it seems!' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Weapons cleave it not, nor fire burneth it, nor waters wet it, nor wind drieth it away.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 47,
+    title: 'कर्मण्येवाधिकारस्ते — the most-quoted verse of the Gītā',
+    decodeIndex: 9,
+    mool: [
+      'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।',
+      'मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
+    ],
+    padaccheda: ['कर्मणि', 'एव', 'अधिकारः', 'ते', 'मा', 'फलेषु', 'कदाचन', 'मा', 'कर्म-फल-हेतुः', 'भूः', 'मा', 'ते', 'सङ्गः', 'अस्तु', 'अकर्मणि'],
+    hindi: 'तेरा अधिकार केवल कर्म पर है, फलों पर कभी नहीं। तू कर्म के फल का कारण मत बन; और न ही अकर्म में आसक्ति रखे।',
+    english: 'Your right is only to action, never to its fruits. Do not be motivated by the fruits of action — yet do not be attached to inaction either.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Let right deeds be Thy motive, not the fruit which comes from them. / And live in action! Labour! Make thine acts thy piety, casting all self aside, contemning gain and merit; / Equable in good or evil; equability is Yog, is piety!' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Thy business is with the action only, never with its fruits; so let not the fruit of action be thy motive, nor be thou to inaction attached.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 48,
+    title: 'समत्वं योग उच्यते — equanimity is yoga',
+    decodeIndex: 10,
+    mool: [
+      'योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।',
+      'सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥',
+    ],
+    padaccheda: ['योग-स्थः', 'कुरु', 'कर्माणि', 'सङ्गम्', 'त्यक्त्वा', 'धनञ्जय', 'सिद्धि-असिद्ध्योः', 'समः', 'भूत्वा', 'समत्वम्', 'योगः', 'उच्यते'],
+    hindi: 'हे धनञ्जय, आसक्ति त्यागकर, सिद्धि-असिद्धि में समान रहकर, योग में स्थित हुआ कर्म कर। समत्व ही योग कहा जाता है।',
+    english: 'Established in yoga, abandon attachment, O Dhanañjaya, perform action being even-minded in success and failure. Equanimity is called yoga.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Perform action, O Dhanañjaya, dwelling in union with the divine, renouncing attachments, and balanced evenly in success and failure: equilibrium is called yoga.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 50,
+    title: 'योग: कर्मसु कौशलम् — skill in action is yoga',
+    decodeIndex: 11,
+    mool: [
+      'बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते।',
+      'तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्॥',
+    ],
+    padaccheda: ['बुद्धि-युक्तः', 'जहाति', 'इह', 'उभे', 'सुकृत-दुष्कृते', 'तस्मात्', 'योगाय', 'युज्यस्व', 'योगः', 'कर्मसु', 'कौशलम्'],
+    hindi: 'बुद्धि से युक्त पुरुष इस लोक में सुकृत और दुष्कृत — दोनों को त्याग देता है। इसलिए योग में लग जा। योग ही कर्मों में कुशलता है।',
+    english: 'United with the discriminating mind, one casts off in this world both good and evil deeds. Therefore yoke yourself to yoga. Yoga is skill in action.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'United to the pure reason one renounceth alike successful and unsuccessful results. Cleave thou to yoga; yoga is skill in action.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 62,
+    title: 'Dwelling on objects → attachment → desire (the chain begins)',
+    decodeIndex: 12,
+    mool: [
+      'ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।',
+      'सङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते॥',
+    ],
+    padaccheda: ['ध्यायतः', 'विषयान्', 'पुंसः', 'सङ्गः', 'तेषु', 'उपजायते', 'सङ्गात्', 'सञ्जायते', 'कामः', 'कामात्', 'क्रोधः', 'अभिजायते'],
+    hindi: 'विषयों का चिन्तन करनेवाले पुरुष की उन विषयों में आसक्ति उत्पन्न होती है। आसक्ति से कामना उत्पन्न होती है, और कामना से क्रोध।',
+    english: 'In a man dwelling on the objects of the senses, attachment to them is produced. From attachment springs desire; from desire, anger.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Man, musing on the objects of sense, conceiveth an attachment to these; from attachment ariseth desire; from desire anger cometh forth.' },
+      ],
+    },
+  },
+  {
+    chapter: 2, verse: 63,
+    title: 'Anger → delusion → memory-loss → ruin (the chain continues)',
+    decodeIndex: 13,
+    mool: [
+      'क्रोधाद्भवति सम्मोहः सम्मोहात्स्मृतिविभ्रमः।',
+      'स्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति॥',
+    ],
+    padaccheda: ['क्रोधात्', 'भवति', 'सम्मोहः', 'सम्मोहात्', 'स्मृति-विभ्रमः', 'स्मृति-भ्रंशात्', 'बुद्धि-नाशः', 'बुद्धि-नाशात्', 'प्रणश्यति'],
+    hindi: 'क्रोध से सम्मोह होता है, सम्मोह से स्मृति का विभ्रम; स्मृति-नाश से बुद्धि का नाश और बुद्धि-नाश से प्राणी का विनाश।',
+    english: 'From anger comes delusion; from delusion, confusion of memory; from confusion of memory, the destruction of intellect; from destruction of intellect — one perishes.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'From anger ariseth bewilderment, from bewilderment wandering of memory; from wandering of memory destruction of reason; from destruction of reason he perishes.' },
+      ],
+    },
+  },
+  {
+    chapter: 3, verse: 21,
+    title: 'The leader sets the standard',
+    decodeIndex: 14,
+    mool: [
+      'यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।',
+      'स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते॥',
+    ],
+    padaccheda: ['यत्', 'यत्', 'आचरति', 'श्रेष्ठः', 'तत्', 'तत्', 'एव', 'इतरः', 'जनः', 'सः', 'यत्', 'प्रमाणम्', 'कुरुते', 'लोकः', 'तत्', 'अनुवर्तते'],
+    hindi: 'जो-जो श्रेष्ठ पुरुष आचरण करता है, वही-वही आचरण साधारण लोग भी करते हैं। वह जो प्रमाण कर देता है, लोक उसी का अनुसरण करता है।',
+    english: 'Whatever the great do, others follow. Whatever standard one sets, the world conforms to it.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Whatsoever a great man doeth, that other men also do; the standard he setteth up, by that the people go.' },
+      ],
+    },
+  },
+  {
+    chapter: 3, verse: 35,
+    title: "Better one's own dharma",
+    decodeIndex: 15,
+    mool: [
+      'श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।',
+      'स्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥',
+    ],
+    padaccheda: ['श्रेयान्', 'स्व-धर्मः', 'विगुणः', 'पर-धर्मात्', 'सु-अनुष्ठितात्', 'स्व-धर्मे', 'निधनम्', 'श्रेयः', 'पर-धर्मः', 'भय-आवहः'],
+    hindi: "अपना धर्म, गुणरहित ही क्यों न हो, दूसरे के अच्छी प्रकार से किए धर्म से श्रेष्ठ है। अपने धर्म में मरना श्रेष्ठ है; पराया धर्म भयावह है।",
+    english: "Better one's own dharma, even if imperfect, than another's well-performed. Better to die in one's own dharma; another's dharma is fraught with fear.",
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: "Better one's own duty, though destitute of merits, than the duty of another well discharged. Better death in the discharge of one's own duty; the duty of another is full of danger." },
+      ],
+    },
+  },
+  {
+    chapter: 4, verse: 7,
+    title: 'Whenever dharma declines — I manifest',
+    decodeIndex: 16,
+    mool: [
+      'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।',
+      'अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥',
+    ],
+    padaccheda: ['यदा', 'यदा', 'हि', 'धर्मस्य', 'ग्लानिः', 'भवति', 'भारत', 'अभ्युत्थानम्', 'अधर्मस्य', 'तदा', 'आत्मानम्', 'सृजामि', 'अहम्'],
+    hindi: 'हे भारत, जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।',
+    english: 'Whenever there is a decline of dharma, O Bhārata, and a rising of adharma — at that time I manifest Myself.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'When Righteousness Declines, O Bhārata! when Wickedness Is strong, I rise, from age to age, and take Visible shape, and move a man with men.' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Whenever there is decay of righteousness, O Bhārata, and there is exaltation of unrighteousness, then I Myself come forth.' },
+      ],
+    },
+  },
+  {
+    chapter: 4, verse: 8,
+    title: 'To protect the good, destroy the evil — age after age',
+    decodeIndex: 17,
+    mool: [
+      'परित्राणाय साधूनां विनाशाय च दुष्कृताम्।',
+      'धर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥',
+    ],
+    padaccheda: ['परित्राणाय', 'साधूनाम्', 'विनाशाय', 'च', 'दुष्कृताम्', 'धर्म-संस्थापन-अर्थाय', 'सम्भवामि', 'युगे', 'युगे'],
+    hindi: 'साधुओं की रक्षा के लिए, दुष्टों के विनाश के लिए और धर्म की पुनः स्थापना के लिए मैं युग-युग में प्रकट होता हूँ।',
+    english: 'For the protection of the good, for the destruction of evildoers, and for the re-establishment of dharma, I come into being from age to age.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'For rescue of the righteous, and for crushing the wicked\'s strength, And for re-stablishing of duty, age after age I come.' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'For the protection of the good, for the destruction of evildoers, for the firm establishing of the law, I come forth in age after age.' },
+      ],
+    },
+  },
+  {
+    chapter: 6, verse: 5,
+    title: 'Lift yourself by yourself — आत्मना आत्मानम् उद्धरेत्',
+    decodeIndex: 18,
+    mool: [
+      'उद्धरेदात्मनाऽऽत्मानं नात्मानमवसादयेत्।',
+      'आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥',
+    ],
+    padaccheda: ['उद्धरेत्', 'आत्मना', 'आत्मानम्', 'न', 'आत्मानम्', 'अवसादयेत्', 'आत्मा', 'एव', 'हि', 'आत्मनः', 'बन्धुः', 'आत्मा', 'एव', 'रिपुः', 'आत्मनः'],
+    hindi: 'अपने ही द्वारा अपना उद्धार करे; अपने आप को नीचे न गिराए। आत्मा ही अपना मित्र है, और आत्मा ही अपना शत्रु।',
+    english: 'Lift yourself by yourself; let not the self sink. The self alone is one\'s friend; the self alone is one\'s enemy.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Let him raise the self by the Self, and not let the self become depressed; for verily is the Self the friend of the self, and also the Self the self\'s enemy.' },
+      ],
+    },
+  },
+  {
+    chapter: 6, verse: 6,
+    title: 'The self as friend or as enemy — depends on its conquest',
+    decodeIndex: 19,
+    mool: [
+      'बन्धुरात्मात्मनस्तस्य येनात्मैवात्मना जितः।',
+      'अनात्मनस्तु शत्रुत्वे वर्तेतात्मैव शत्रुवत्॥',
+    ],
+    padaccheda: ['बन्धुः', 'आत्मा', 'आत्मनः', 'तस्य', 'येन', 'आत्मा', 'एव', 'आत्मना', 'जितः', 'अनात्मनः', 'तु', 'शत्रुत्वे', 'वर्तेत', 'आत्मा', 'एव', 'शत्रुवत्'],
+    hindi: 'जिसने अपने आप को अपने द्वारा जीत लिया है, उसके लिए आत्मा ही मित्र है। पर जिसने स्वयं को नहीं जीता, उसके लिए वह आत्मा ही शत्रुवत् रहता है।',
+    english: 'For one who has conquered the self by the Self, the self is a friend; for one who has not, the self remains hostile, like an enemy.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'The Self is the friend of the self of him in whom the self by the Self is vanquished; but to the unsubdued self the Self verily becometh hostile as an enemy.' },
+      ],
+    },
+  },
+  {
+    chapter: 6, verse: 30,
+    title: 'Who sees Me everywhere',
+    decodeIndex: 20,
+    mool: [
+      'यो मां पश्यति सर्वत्र सर्वं च मयि पश्यति।',
+      'तस्याहं न प्रणश्यामि स च मे न प्रणश्यति॥',
+    ],
+    padaccheda: ['यः', 'माम्', 'पश्यति', 'सर्वत्र', 'सर्वम्', 'च', 'मयि', 'पश्यति', 'तस्य', 'अहम्', 'न', 'प्रणश्यामि', 'सः', 'च', 'मे', 'न', 'प्रणश्यति'],
+    hindi: 'जो मुझे सर्वत्र देखता है और सबको मुझ में देखता है, उसके लिए मैं कभी अदृश्य नहीं होता; और वह भी मेरे लिए अदृश्य नहीं होता।',
+    english: 'One who sees Me everywhere and sees all in Me — I am never lost to him, nor is he lost to Me.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'He who seeth Me everywhere, and seeth everything in Me, of him will I never lose hold, and he shall never lose hold of Me.' },
+      ],
+    },
+  },
+  {
+    chapter: 6, verse: 34,
+    title: 'The mind is restless — Arjuna\'s honest difficulty',
+    decodeIndex: 21,
+    mool: [
+      'चञ्चलं हि मनः कृष्ण प्रमाथि बलवद्दृढम्।',
+      'तस्याहं निग्रहं मन्ये वायोरिव सुदुष्करम्॥',
+    ],
+    padaccheda: ['चञ्चलम्', 'हि', 'मनः', 'कृष्ण', 'प्रमाथि', 'बलवत्', 'दृढम्', 'तस्य', 'अहम्', 'निग्रहम्', 'मन्ये', 'वायोः', 'इव', 'सुदुष्करम्'],
+    hindi: 'हे कृष्ण, मन तो बड़ा चञ्चल, उद्रेक करनेवाला, बलवान् और दृढ़ है। उसका निग्रह मैं वायु को रोकने जैसा अति कठिन मानता हूँ।',
+    english: 'The mind is restless, turbulent, powerful, obstinate, O Krishna. To control it is, I think, as difficult as controlling the wind.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'For the mind is verily restless, O Krishna; it is impetuous, strong, and difficult to bend. I deem it as hard to curb as the wind.' },
+      ],
+    },
+  },
+  {
+    chapter: 9, verse: 22,
+    title: 'योगक्षेम — for those who are constantly devoted',
+    decodeIndex: 22,
+    mool: [
+      'अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।',
+      'तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',
+    ],
+    padaccheda: ['अनन्याः', 'चिन्तयन्तः', 'माम्', 'ये', 'जनाः', 'पर्युपासते', 'तेषाम्', 'नित्य-अभियुक्तानाम्', 'योग-क्षेमम्', 'वहामि', 'अहम्'],
+    hindi: 'जो लोग अनन्य भाव से मेरा चिन्तन करते हुए मेरी उपासना करते हैं — उन नित्य-युक्त भक्तों का योग और क्षेम मैं स्वयं वहन करता हूँ।',
+    english: 'Those who, with single-minded devotion, meditate on Me and worship Me — I personally bear their welfare and provide what they need.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'The men who, meditating on Me as non-separate, worship Me everywhere, to these, ever harmonised, I bring full security.' },
+      ],
+    },
+  },
+  {
+    chapter: 9, verse: 27,
+    title: 'Whatever you do — offer it to Me',
+    decodeIndex: 23,
+    mool: [
+      'यत्करोषि यदश्नासि यज्जुहोषि ददासि यत्।',
+      'यत्तपस्यसि कौन्तेय तत्कुरुष्व मदर्पणम्॥',
+    ],
+    padaccheda: ['यत्', 'करोषि', 'यत्', 'अश्नासि', 'यत्', 'जुहोषि', 'ददासि', 'यत्', 'यत्', 'तपस्यसि', 'कौन्तेय', 'तत्', 'कुरुष्व', 'मत्-अर्पणम्'],
+    hindi: 'हे कौन्तेय, तू जो भी करता है, खाता है, हवन करता है, दान देता है, और जो तप करता है — वह सब मुझे अर्पण कर के कर।',
+    english: 'Whatever you do, whatever you eat, whatever you offer in sacrifice, whatever you give, whatever austerity you practice, O son of Kuntī — do it as an offering to Me.',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Whatsoever thou doest, whatsoever thou eatest, whatsoever thou offerest, whatsoever thou givest, whatsoever thou doest of austerity, O Kaunteya, do thou that as an offering unto Me.' },
+      ],
+    },
+  },
+  {
+    chapter: 12, verse: 13,
+    title: "Qualities of a devotee — friend to all beings",
+    decodeIndex: 24,
+    mool: [
+      'अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च।',
+      'निर्ममो निरहङ्कारः समदुःखसुखः क्षमी॥',
+    ],
+    padaccheda: ['अद्वेष्टा', 'सर्व-भूतानाम्', 'मैत्रः', 'करुणः', 'एव', 'च', 'निर्ममः', 'निरहङ्कारः', 'सम-दुःख-सुखः', 'क्षमी'],
+    hindi: 'जो किसी प्राणी से द्वेष नहीं करता, सबसे मित्रता और करुणा रखता है, ममता और अहङ्कार से रहित है, सुख-दुःख में समान है, और क्षमाशील है।',
+    english: 'One who hates no being, friendly and compassionate to all, free from "mine"-ness and ego, equal in pleasure and pain, forgiving — [is dear to Me].',
+    references: {
+      translations: [
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'He who beareth no ill-will to any being, friendly and compassionate, without attachment and egoism, balanced in pleasure and pain, and forgiving...' },
+      ],
+    },
+  },
+  {
+    chapter: 18, verse: 66,
+    title: 'चरम-श्लोक — abandon all dharmas, take refuge in Me alone',
+    decodeIndex: 25,
+    mool: [
+      'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।',
+      'अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥',
+    ],
+    padaccheda: ['सर्व-धर्मान्', 'परित्यज्य', 'माम्', 'एकम्', 'शरणम्', 'व्रज', 'अहम्', 'त्वा', 'सर्व-पापेभ्यः', 'मोक्षयिष्यामि', 'मा', 'शुचः'],
+    hindi: 'सब धर्मों को त्याग कर केवल मेरी ही शरण में आ। मैं तुझे सब पापों से मुक्त कर दूँगा। शोक मत कर।',
+    english: 'Abandoning all dharmas, take refuge in Me alone. I will liberate you from all sins. Do not grieve.',
+    references: {
+      translations: [
+        { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Cast off all duties — come to Me, the One Refuge! I will release thee from all sins; / Be not afraid!' },
+        { translator: 'Annie Besant', year: 1895, work: 'The Bhagavad-Gītā', license: 'public-domain', text: 'Abandoning all duties, come unto Me alone for shelter; sorrow not, I will liberate thee from all sins.' },
+      ],
+    },
+  },
 ];
 
 const verseKey = (ch, v) => `${ch}.${v}`;

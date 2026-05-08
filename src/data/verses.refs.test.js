@@ -4,23 +4,34 @@
 import { describe, it, expect } from 'vitest';
 import { VERSES } from './verses.js';
 
+// "Fully decoded" = original 4 hand-decoded verses (1.1, 2.3, 2.4, 2.5).
+// They carry both translations AND commentaries. Browse-tier verses (popular
+// ones loaded for browsing/reading) carry translations only.
+const FULLY_DECODED_REFS = ['1.1', '2.3', '2.4', '2.5'];
+function isFullyDecoded(v) {
+  return FULLY_DECODED_REFS.includes(`${v.chapter}.${v.verse}`);
+}
+
 describe('verse references — seed data shape', () => {
-  it('all 4 currently-decoded verses carry a references field', () => {
-    expect(VERSES.length).toBe(4);
+  it('every verse carries a references field (translations at minimum)', () => {
     for (const v of VERSES) {
       expect(v.references).toBeDefined();
+      expect(v.references.translations).toBeDefined();
+      expect(v.references.translations.length).toBeGreaterThanOrEqual(1);
     }
   });
 
-  it('each verse has at least 2 translations', () => {
+  it('fully-decoded verses (the original 4) have at least 2 translations', () => {
     for (const v of VERSES) {
+      if (!isFullyDecoded(v)) continue;
       expect(v.references.translations.length).toBeGreaterThanOrEqual(2);
     }
   });
 
-  it('each verse has commentary positions for at least Shankara and Ramanuja', () => {
+  it('fully-decoded verses have commentary positions for Shankara + Ramanuja', () => {
     for (const v of VERSES) {
-      const sages = new Set(v.references.commentaries.map((c) => c.sage));
+      if (!isFullyDecoded(v)) continue;
+      const sages = new Set((v.references.commentaries || []).map((c) => c.sage));
       expect(sages.has('Shankara')).toBe(true);
       expect(sages.has('Ramanuja')).toBe(true);
     }
@@ -38,9 +49,9 @@ describe('verse references — seed data shape', () => {
     }
   });
 
-  it('every commentary entry is well-formed', () => {
+  it('every commentary entry (where present) is well-formed', () => {
     for (const v of VERSES) {
-      for (const c of v.references.commentaries) {
+      for (const c of v.references.commentaries || []) {
         expect(c.sage).toBeTruthy();
         expect(c.school).toBeTruthy();
         expect(c.summary.length).toBeGreaterThan(20);

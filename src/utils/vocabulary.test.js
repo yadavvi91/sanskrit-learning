@@ -35,10 +35,13 @@ describe('buildVocabulary', () => {
     expect(ca.firstMet.verse).toBe(1);
   });
 
-  it('every vocab entry that has wordParsings carries parsing data', () => {
+  it('vocabulary entries with parsings carry gloss + category', () => {
     const vocab = buildVocabulary();
     const withParsing = vocab.filter((e) => e.parsing != null);
-    expect(withParsing.length).toBe(vocab.length); // all 4 verses fully parsed
+    // Browse-tier verses ship with no wordParsings, so not every vocab entry
+    // has parsing data — but the original 4 hand-decoded verses do, so the
+    // count must be substantial.
+    expect(withParsing.length).toBeGreaterThan(20);
     for (const e of withParsing) {
       expect(e.gloss).toBeTruthy();
       expect(e.category).toBeTruthy();
