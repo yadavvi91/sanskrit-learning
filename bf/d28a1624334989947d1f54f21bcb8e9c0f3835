@@ -1,0 +1,23 @@
+checkpoint-33.md
+  s_d5e8c30b294ba2::t_1c61ba6b1d2a11 1-68
+src/data/_hindi_part1.js
+  s_d5e8c30b294ba2::t_c447c2154fdcce 1-297
+src/data/translations-hindi.js
+  s_d5e8c30b294ba2::t_ae210fb409e0d8 6,10,15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "bfd28a1624334989947d1f54f21bcb8e9c0f3835",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
