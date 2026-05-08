@@ -320,6 +320,31 @@ export const PALETTES = [
   },
 
   {
+    id: 'makingsoftware',
+    name: 'Making Software',
+    group: 'cool-light',
+    blurb: 'Inspired by Dan Hollick\'s makingsoftware.com — warm cream paper, near-black ink with brown undertone, signature coral accent, cool slate-blue secondary. Editorial-newsletter aesthetic: long-form, deliberate, illustration-friendly. Source Serif 4 + Inter.',
+    swatches: ['#faf4ec', '#1a1814', '#d97757', '#5a7a8a', '#888577'],
+    vars: {
+      '--parchment':       '#faf4ec',
+      '--parchment-deep':  '#f1e9d8',
+      '--parchment-edge':  '#e3d8be',
+      '--ink':             '#1a1814',
+      '--ink-soft':        '#3d362a',
+      '--ink-faint':       '#888577',
+      '--gold':            '#d97757',
+      '--saffron':         '#e8916a',
+      '--saffron-soft':    '#f1d4c4',
+      '--sage':            '#5a7a8a',
+      '--sage-soft':       '#c5d2da',
+      '--rule':            '#d8ccb1',
+      '--font-prose':      "'Source Serif 4', 'Georgia', serif",
+      '--font-deva':       "'Noto Serif Devanagari', serif",
+      '--font-display':    "'Inter', 'Source Sans 3', sans-serif",
+    },
+  },
+
+  {
     id: 'editors-mark',
     name: "Editor's Mark",
     group: 'cool-light',
