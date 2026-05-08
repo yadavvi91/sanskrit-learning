@@ -110,16 +110,11 @@ button:disabled {
 
 .view-switcher {
   display: inline-flex;
-  flex-wrap: wrap;
   border: 1px solid var(--rule);
   border-radius: 999px;
   background: var(--parchment-deep);
   padding: 4px;
   box-shadow: var(--shadow);
-  /* Stay right-aligned even when the masthead row wraps (8 tabs can wrap on
-     narrower viewports). margin-left: auto pushes the switcher to the right
-     of its row regardless of whether it shares the row with the title. */
-  margin-left: auto;
 }
 
 .view-tab {
@@ -170,6 +165,11 @@ button:disabled {
   top: 24px;
   max-height: calc(100vh - 56px);
   overflow-y: auto;
+  /* Disable browser scroll-anchoring inside the rail. Without this, when
+     the right pane (verse detail) reflows on <details> open/close, the
+     browser tries to keep visible content stable by adjusting the rail's
+     internal scroll. The rail then shifts on its own — visible jump. */
+  overflow-anchor: none;
 }
 
 .rail-heading {

@@ -533,6 +533,10 @@ export const VERSES = [
       'तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति॥',
     ],
     padaccheda: ['देहिनः', 'अस्मिन्', 'यथा', 'देहे', 'कौमारम्', 'यौवनम्', 'जरा', 'तथा', 'देह-अन्तर-प्राप्तिः', 'धीरः', 'तत्र', 'न', 'मुह्यति'],
+    finiteVerbs: [
+      { form: 'मुह्यति', root: '√मुह्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is deluded' },
+    ],
+    anvaya: 'यथा अस्मिन् देहे देहिनः कौमारम् यौवनम् जरा (भवति), तथा देह-अन्तर-प्राप्तिः (भवति) | धीरः तत्र न मुह्यति',
     hindi: 'जैसे जीव के इस शरीर में बालपन, जवानी और बुढ़ापा होते हैं, वैसे ही दूसरे शरीर की प्राप्ति भी होती है। धीर पुरुष इस विषय में मोहित नहीं होता।',
     english: 'As, in this body, the embodied soul passes through childhood, youth, and age — so too is the passing to another body. The wise are not deluded by it.',
     references: {
@@ -551,6 +555,10 @@ export const VERSES = [
       'आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥',
     ],
     padaccheda: ['मात्रा-स्पर्शाः', 'तु', 'कौन्तेय', 'शीत-उष्ण-सुख-दुःख-दाः', 'आगम-अपायिनः', 'अनित्याः', 'तान्', 'तितिक्षस्व', 'भारत'],
+    finiteVerbs: [
+      { form: 'तितिक्षस्व', root: '√तिज् (desid.)', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'endure!' },
+    ],
+    anvaya: 'कौन्तेय भारत, मात्रा-स्पर्शाः तु शीत-उष्ण-सुख-दुःख-दाः, आगम-अपायिनः, अनित्याः (सन्ति) | तान् तितिक्षस्व',
     hindi: 'हे कुन्तीपुत्र, इन्द्रिय-विषयों के स्पर्श सर्दी-गर्मी और सुख-दुःख देनेवाले हैं। ये आते-जाते हैं, अनित्य हैं — हे भारत, इन्हें सहन करो।',
     english: 'The contacts of the senses with their objects, O son of Kuntī, give rise to cold and heat, pleasure and pain. They come and go, are impermanent — endure them, O Bhārata.',
     references: {
@@ -570,6 +578,14 @@ export const VERSES = [
       'न्यन्यानि संयाति नवानि देही॥',
     ],
     padaccheda: ['वासांसि', 'जीर्णानि', 'यथा', 'विहाय', 'नवानि', 'गृह्णाति', 'नरः', 'अपराणि', 'तथा', 'शरीराणि', 'विहाय', 'जीर्णानि', 'अन्यानि', 'संयाति', 'नवानि', 'देही'],
+    finiteVerbs: [
+      { form: 'गृह्णाति', root: '√ग्रह्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'takes' },
+      { form: 'संयाति',   root: 'सम् + √या', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'goes / passes into' },
+    ],
+    nonFinite: [
+      { form: 'विहाय', kind: 'absolutive', root: 'वि + √हा', gloss: 'having cast off' },
+    ],
+    anvaya: 'यथा नरः जीर्णानि वासांसि विहाय अपराणि नवानि गृह्णाति, तथा देही जीर्णानि शरीराणि विहाय अन्यानि नवानि संयाति',
     hindi: 'जैसे मनुष्य पुराने वस्त्रों को त्याग कर नए वस्त्र धारण करता है, वैसे ही जीवात्मा पुराने शरीरों को त्याग कर नए शरीरों को प्राप्त होता है।',
     english: 'As a man, casting off worn-out garments, takes new ones, so the embodied soul, casting off worn-out bodies, enters into other new ones.',
     references: {
@@ -588,6 +604,13 @@ export const VERSES = [
       'न चैनं क्लेदयन्त्यापो न शोषयति मारुतः॥',
     ],
     padaccheda: ['न', 'एनम्', 'छिन्दन्ति', 'शस्त्राणि', 'न', 'एनम्', 'दहति', 'पावकः', 'न', 'च', 'एनम्', 'क्लेदयन्ति', 'आपः', 'न', 'शोषयति', 'मारुतः'],
+    finiteVerbs: [
+      { form: 'छिन्दन्ति',   root: '√छिद्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: 'cleave / cut' },
+      { form: 'दहति',         root: '√दह्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'burns' },
+      { form: 'क्लेदयन्ति',  root: '√क्लिद् (caus.)', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: 'wet' },
+      { form: 'शोषयति',      root: '√शुष् (caus.)',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'dries' },
+    ],
+    anvaya: 'एनम् न शस्त्राणि छिन्दन्ति | एनम् न पावकः दहति | एनम् न च आपः क्लेदयन्ति | (एनम्) न मारुतः शोषयति',
     hindi: 'इस आत्मा को शस्त्र काट नहीं सकते, अग्नि जला नहीं सकती, जल भिगो नहीं सकता, और वायु सुखा नहीं सकती।',
     english: 'Weapons cannot cleave it, fire cannot burn it, waters cannot wet it, nor can the wind dry it.',
     references: {
@@ -606,6 +629,11 @@ export const VERSES = [
       'मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
     ],
     padaccheda: ['कर्मणि', 'एव', 'अधिकारः', 'ते', 'मा', 'फलेषु', 'कदाचन', 'मा', 'कर्म-फल-हेतुः', 'भूः', 'मा', 'ते', 'सङ्गः', 'अस्तु', 'अकर्मणि'],
+    finiteVerbs: [
+      { form: 'भूः',   root: '√भू',   lakara: 'लोट् (negated by मा)', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'be — negated: "do not be"' },
+      { form: 'अस्तु', root: '√अस्', lakara: 'लोट्',                  purusha: 'प्रथम',  vachana: 'एकवचन', gloss: 'let it be — negated: "let there not be"' },
+    ],
+    anvaya: 'ते कर्मणि एव अधिकारः (अस्ति), फलेषु कदाचन मा (अधिकारः) | (त्वम्) कर्म-फल-हेतुः मा भूः | ते अकर्मणि सङ्गः मा अस्तु',
     hindi: 'तेरा अधिकार केवल कर्म पर है, फलों पर कभी नहीं। तू कर्म के फल का कारण मत बन; और न ही अकर्म में आसक्ति रखे।',
     english: 'Your right is only to action, never to its fruits. Do not be motivated by the fruits of action — yet do not be attached to inaction either.',
     references: {
@@ -624,6 +652,15 @@ export const VERSES = [
       'सिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥',
     ],
     padaccheda: ['योग-स्थः', 'कुरु', 'कर्माणि', 'सङ्गम्', 'त्यक्त्वा', 'धनञ्जय', 'सिद्धि-असिद्ध्योः', 'समः', 'भूत्वा', 'समत्वम्', 'योगः', 'उच्यते'],
+    finiteVerbs: [
+      { form: 'कुरु',     root: '√कृ',  lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'do!' },
+      { form: 'उच्यते', root: '√वच्', lakara: 'लट् (passive)', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is called' },
+    ],
+    nonFinite: [
+      { form: 'त्यक्त्वा', kind: 'absolutive', root: '√त्यज्', gloss: 'having abandoned' },
+      { form: 'भूत्वा',    kind: 'absolutive', root: '√भू',    gloss: 'having become' },
+    ],
+    anvaya: 'धनञ्जय, सङ्गम् त्यक्त्वा सिद्धि-असिद्ध्योः समः भूत्वा योग-स्थः (सन्) कर्माणि कुरु | समत्वम् योगः उच्यते',
     hindi: 'हे धनञ्जय, आसक्ति त्यागकर, सिद्धि-असिद्धि में समान रहकर, योग में स्थित हुआ कर्म कर। समत्व ही योग कहा जाता है।',
     english: 'Established in yoga, abandon attachment, O Dhanañjaya, perform action being even-minded in success and failure. Equanimity is called yoga.',
     references: {
@@ -641,6 +678,11 @@ export const VERSES = [
       'तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्॥',
     ],
     padaccheda: ['बुद्धि-युक्तः', 'जहाति', 'इह', 'उभे', 'सुकृत-दुष्कृते', 'तस्मात्', 'योगाय', 'युज्यस्व', 'योगः', 'कर्मसु', 'कौशलम्'],
+    finiteVerbs: [
+      { form: 'जहाति',     root: '√हा',     lakara: 'लट्',  purusha: 'प्रथम',  vachana: 'एकवचन', gloss: 'casts off' },
+      { form: 'युज्यस्व', root: '√युज्', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'yoke yourself!' },
+    ],
+    anvaya: 'बुद्धि-युक्तः इह उभे सुकृत-दुष्कृते जहाति | तस्मात् योगाय युज्यस्व | योगः कर्मसु कौशलम् (अस्ति)',
     hindi: 'बुद्धि से युक्त पुरुष इस लोक में सुकृत और दुष्कृत — दोनों को त्याग देता है। इसलिए योग में लग जा। योग ही कर्मों में कुशलता है।',
     english: 'United with the discriminating mind, one casts off in this world both good and evil deeds. Therefore yoke yourself to yoga. Yoga is skill in action.',
     references: {
@@ -658,6 +700,12 @@ export const VERSES = [
       'सङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते॥',
     ],
     padaccheda: ['ध्यायतः', 'विषयान्', 'पुंसः', 'सङ्गः', 'तेषु', 'उपजायते', 'सङ्गात्', 'सञ्जायते', 'कामः', 'कामात्', 'क्रोधः', 'अभिजायते'],
+    finiteVerbs: [
+      { form: 'उपजायते',  root: 'उप + √जन्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'arises' },
+      { form: 'सञ्जायते', root: 'सम् + √जन्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is born' },
+      { form: 'अभिजायते', root: 'अभि + √जन्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'arises forth' },
+    ],
+    anvaya: 'विषयान् ध्यायतः पुंसः तेषु सङ्गः उपजायते | सङ्गात् कामः सञ्जायते | कामात् क्रोधः अभिजायते',
     hindi: 'विषयों का चिन्तन करनेवाले पुरुष की उन विषयों में आसक्ति उत्पन्न होती है। आसक्ति से कामना उत्पन्न होती है, और कामना से क्रोध।',
     english: 'In a man dwelling on the objects of the senses, attachment to them is produced. From attachment springs desire; from desire, anger.',
     references: {
@@ -675,6 +723,11 @@ export const VERSES = [
       'स्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति॥',
     ],
     padaccheda: ['क्रोधात्', 'भवति', 'सम्मोहः', 'सम्मोहात्', 'स्मृति-विभ्रमः', 'स्मृति-भ्रंशात्', 'बुद्धि-नाशः', 'बुद्धि-नाशात्', 'प्रणश्यति'],
+    finiteVerbs: [
+      { form: 'भवति',     root: '√भू',         lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'arises / is' },
+      { form: 'प्रणश्यति', root: 'प्र + √नश्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'perishes' },
+    ],
+    anvaya: 'क्रोधात् सम्मोहः भवति | सम्मोहात् स्मृति-विभ्रमः (भवति) | स्मृति-भ्रंशात् बुद्धि-नाशः (भवति) | बुद्धि-नाशात् प्रणश्यति',
     hindi: 'क्रोध से सम्मोह होता है, सम्मोह से स्मृति का विभ्रम; स्मृति-नाश से बुद्धि का नाश और बुद्धि-नाश से प्राणी का विनाश।',
     english: 'From anger comes delusion; from delusion, confusion of memory; from confusion of memory, the destruction of intellect; from destruction of intellect — one perishes.',
     references: {
@@ -692,6 +745,12 @@ export const VERSES = [
       'स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते॥',
     ],
     padaccheda: ['यत्', 'यत्', 'आचरति', 'श्रेष्ठः', 'तत्', 'तत्', 'एव', 'इतरः', 'जनः', 'सः', 'यत्', 'प्रमाणम्', 'कुरुते', 'लोकः', 'तत्', 'अनुवर्तते'],
+    finiteVerbs: [
+      { form: 'आचरति',     root: 'आ + √चर्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'practices, does' },
+      { form: 'कुरुते',     root: '√कृ',        lakara: 'लट् (Ā)', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'sets, makes (for himself)' },
+      { form: 'अनुवर्तते', root: 'अनु + √वृत्',  lakara: 'लट् (Ā)', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'follows' },
+    ],
+    anvaya: 'यत् यत् श्रेष्ठः आचरति, तत् तत् एव इतरः जनः (आचरति) | सः यत् प्रमाणम् कुरुते, लोकः तत् अनुवर्तते',
     hindi: 'जो-जो श्रेष्ठ पुरुष आचरण करता है, वही-वही आचरण साधारण लोग भी करते हैं। वह जो प्रमाण कर देता है, लोक उसी का अनुसरण करता है।',
     english: 'Whatever the great do, others follow. Whatever standard one sets, the world conforms to it.',
     references: {
@@ -709,6 +768,11 @@ export const VERSES = [
       'स्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥',
     ],
     padaccheda: ['श्रेयान्', 'स्व-धर्मः', 'विगुणः', 'पर-धर्मात्', 'सु-अनुष्ठितात्', 'स्व-धर्मे', 'निधनम्', 'श्रेयः', 'पर-धर्मः', 'भय-आवहः'],
+    finiteVerbs: [],
+    keyFights: [
+      'No overt finite verb — the verse is a chain of predicate-adjective copular constructions with implied अस्ति (X is श्रेयान्, Y is श्रेयः, Z is भय-आवहः).',
+    ],
+    anvaya: 'सु-अनुष्ठितात् पर-धर्मात् विगुणः स्व-धर्मः श्रेयान् (अस्ति) | स्व-धर्मे निधनम् श्रेयः (अस्ति) | पर-धर्मः भय-आवहः (अस्ति)',
     hindi: "अपना धर्म, गुणरहित ही क्यों न हो, दूसरे के अच्छी प्रकार से किए धर्म से श्रेष्ठ है। अपने धर्म में मरना श्रेष्ठ है; पराया धर्म भयावह है।",
     english: "Better one's own dharma, even if imperfect, than another's well-performed. Better to die in one's own dharma; another's dharma is fraught with fear.",
     references: {
@@ -726,6 +790,11 @@ export const VERSES = [
       'अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥',
     ],
     padaccheda: ['यदा', 'यदा', 'हि', 'धर्मस्य', 'ग्लानिः', 'भवति', 'भारत', 'अभ्युत्थानम्', 'अधर्मस्य', 'तदा', 'आत्मानम्', 'सृजामि', 'अहम्'],
+    finiteVerbs: [
+      { form: 'भवति',  root: '√भू', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'arises' },
+      { form: 'सृजामि', root: '√सृज्', lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I send forth / I manifest' },
+    ],
+    anvaya: 'भारत, यदा यदा हि धर्मस्य ग्लानिः, अधर्मस्य अभ्युत्थानम् भवति, तदा अहम् आत्मानम् सृजामि',
     hindi: 'हे भारत, जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।',
     english: 'Whenever there is a decline of dharma, O Bhārata, and a rising of adharma — at that time I manifest Myself.',
     references: {
@@ -744,6 +813,10 @@ export const VERSES = [
       'धर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥',
     ],
     padaccheda: ['परित्राणाय', 'साधूनाम्', 'विनाशाय', 'च', 'दुष्कृताम्', 'धर्म-संस्थापन-अर्थाय', 'सम्भवामि', 'युगे', 'युगे'],
+    finiteVerbs: [
+      { form: 'सम्भवामि', root: 'सम् + √भू', lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I come into being / I manifest' },
+    ],
+    anvaya: 'साधूनाम् परित्राणाय, दुष्कृताम् विनाशाय च, धर्म-संस्थापन-अर्थाय (अहम्) युगे युगे सम्भवामि',
     hindi: 'साधुओं की रक्षा के लिए, दुष्टों के विनाश के लिए और धर्म की पुनः स्थापना के लिए मैं युग-युग में प्रकट होता हूँ।',
     english: 'For the protection of the good, for the destruction of evildoers, and for the re-establishment of dharma, I come into being from age to age.',
     references: {
@@ -762,6 +835,11 @@ export const VERSES = [
       'आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥',
     ],
     padaccheda: ['उद्धरेत्', 'आत्मना', 'आत्मानम्', 'न', 'आत्मानम्', 'अवसादयेत्', 'आत्मा', 'एव', 'हि', 'आत्मनः', 'बन्धुः', 'आत्मा', 'एव', 'रिपुः', 'आत्मनः'],
+    finiteVerbs: [
+      { form: 'उद्धरेत्',     root: 'उद् + √हृ', lakara: 'विधिलिङ्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'should lift up' },
+      { form: 'अवसादयेत्', root: 'अव + √सद् (caus.)', lakara: 'विधिलिङ्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'should let sink' },
+    ],
+    anvaya: 'आत्मना आत्मानम् उद्धरेत् | आत्मानम् न अवसादयेत् | हि आत्मा एव आत्मनः बन्धुः (अस्ति), आत्मा एव आत्मनः रिपुः (अस्ति)',
     hindi: 'अपने ही द्वारा अपना उद्धार करे; अपने आप को नीचे न गिराए। आत्मा ही अपना मित्र है, और आत्मा ही अपना शत्रु।',
     english: 'Lift yourself by yourself; let not the self sink. The self alone is one\'s friend; the self alone is one\'s enemy.',
     references: {
@@ -779,6 +857,13 @@ export const VERSES = [
       'अनात्मनस्तु शत्रुत्वे वर्तेतात्मैव शत्रुवत्॥',
     ],
     padaccheda: ['बन्धुः', 'आत्मा', 'आत्मनः', 'तस्य', 'येन', 'आत्मा', 'एव', 'आत्मना', 'जितः', 'अनात्मनः', 'तु', 'शत्रुत्वे', 'वर्तेत', 'आत्मा', 'एव', 'शत्रुवत्'],
+    finiteVerbs: [
+      { form: 'वर्तेत', root: '√वृत्', lakara: 'विधिलिङ् (Ā)', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'would behave' },
+    ],
+    nonFinite: [
+      { form: 'जितः', kind: 'past passive participle', root: '√जि', gloss: 'has been conquered (predicate adjective)' },
+    ],
+    anvaya: 'येन आत्मा एव आत्मना जितः, तस्य आत्मनः आत्मा बन्धुः (अस्ति) | अनात्मनः तु आत्मा एव शत्रुवत् शत्रुत्वे वर्तेत',
     hindi: 'जिसने अपने आप को अपने द्वारा जीत लिया है, उसके लिए आत्मा ही मित्र है। पर जिसने स्वयं को नहीं जीता, उसके लिए वह आत्मा ही शत्रुवत् रहता है।',
     english: 'For one who has conquered the self by the Self, the self is a friend; for one who has not, the self remains hostile, like an enemy.',
     references: {
@@ -796,6 +881,12 @@ export const VERSES = [
       'तस्याहं न प्रणश्यामि स च मे न प्रणश्यति॥',
     ],
     padaccheda: ['यः', 'माम्', 'पश्यति', 'सर्वत्र', 'सर्वम्', 'च', 'मयि', 'पश्यति', 'तस्य', 'अहम्', 'न', 'प्रणश्यामि', 'सः', 'च', 'मे', 'न', 'प्रणश्यति'],
+    finiteVerbs: [
+      { form: 'पश्यति',      root: '√दृश् (suppl. पश्य-)', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'sees' },
+      { form: 'प्रणश्यामि', root: 'प्र + √नश्',  lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I am lost' },
+      { form: 'प्रणश्यति',  root: 'प्र + √नश्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'is lost' },
+    ],
+    anvaya: 'यः माम् सर्वत्र पश्यति, सर्वम् च मयि पश्यति, तस्य अहम् न प्रणश्यामि, सः च मे न प्रणश्यति',
     hindi: 'जो मुझे सर्वत्र देखता है और सबको मुझ में देखता है, उसके लिए मैं कभी अदृश्य नहीं होता; और वह भी मेरे लिए अदृश्य नहीं होता।',
     english: 'One who sees Me everywhere and sees all in Me — I am never lost to him, nor is he lost to Me.',
     references: {
@@ -813,6 +904,10 @@ export const VERSES = [
       'तस्याहं निग्रहं मन्ये वायोरिव सुदुष्करम्॥',
     ],
     padaccheda: ['चञ्चलम्', 'हि', 'मनः', 'कृष्ण', 'प्रमाथि', 'बलवत्', 'दृढम्', 'तस्य', 'अहम्', 'निग्रहम्', 'मन्ये', 'वायोः', 'इव', 'सुदुष्करम्'],
+    finiteVerbs: [
+      { form: 'मन्ये', root: '√मन्', lakara: 'लट् (Ā)', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I think, I deem' },
+    ],
+    anvaya: 'कृष्ण, मनः हि चञ्चलम् प्रमाथि बलवत् दृढम् (अस्ति) | तस्य निग्रहम् अहम् वायोः इव सुदुष्करम् मन्ये',
     hindi: 'हे कृष्ण, मन तो बड़ा चञ्चल, उद्रेक करनेवाला, बलवान् और दृढ़ है। उसका निग्रह मैं वायु को रोकने जैसा अति कठिन मानता हूँ।',
     english: 'The mind is restless, turbulent, powerful, obstinate, O Krishna. To control it is, I think, as difficult as controlling the wind.',
     references: {
@@ -830,6 +925,14 @@ export const VERSES = [
       'तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥',
     ],
     padaccheda: ['अनन्याः', 'चिन्तयन्तः', 'माम्', 'ये', 'जनाः', 'पर्युपासते', 'तेषाम्', 'नित्य-अभियुक्तानाम्', 'योग-क्षेमम्', 'वहामि', 'अहम्'],
+    finiteVerbs: [
+      { form: 'पर्युपासते', root: 'परि + उप + √आस्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: 'they worship' },
+      { form: 'वहामि',        root: '√वह्',                   lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: 'I bear, I provide' },
+    ],
+    nonFinite: [
+      { form: 'चिन्तयन्तः', kind: 'present participle', root: '√चिन्त्',  gloss: 'thinking, meditating' },
+    ],
+    anvaya: 'ये जनाः अनन्याः (सन्तः) माम् चिन्तयन्तः पर्युपासते, तेषाम् नित्य-अभियुक्तानाम् योग-क्षेमम् अहम् वहामि',
     hindi: 'जो लोग अनन्य भाव से मेरा चिन्तन करते हुए मेरी उपासना करते हैं — उन नित्य-युक्त भक्तों का योग और क्षेम मैं स्वयं वहन करता हूँ।',
     english: 'Those who, with single-minded devotion, meditate on Me and worship Me — I personally bear their welfare and provide what they need.',
     references: {
@@ -847,6 +950,15 @@ export const VERSES = [
       'यत्तपस्यसि कौन्तेय तत्कुरुष्व मदर्पणम्॥',
     ],
     padaccheda: ['यत्', 'करोषि', 'यत्', 'अश्नासि', 'यत्', 'जुहोषि', 'ददासि', 'यत्', 'यत्', 'तपस्यसि', 'कौन्तेय', 'तत्', 'कुरुष्व', 'मत्-अर्पणम्'],
+    finiteVerbs: [
+      { form: 'करोषि',     root: '√कृ',     lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you do' },
+      { form: 'अश्नासि',  root: '√अश्',    lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you eat' },
+      { form: 'जुहोषि',    root: '√हु',     lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you offer in sacrifice' },
+      { form: 'ददासि',    root: '√दा',     lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you give' },
+      { form: 'तपस्यसि', root: '√तप्',  lakara: 'लट्',  purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'you perform austerity' },
+      { form: 'कुरुष्व',  root: '√कृ',    lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'do (it) — for yourself!' },
+    ],
+    anvaya: 'कौन्तेय, यत् करोषि, यत् अश्नासि, यत् जुहोषि, यत् ददासि, यत् तपस्यसि — तत् मत्-अर्पणम् कुरुष्व',
     hindi: 'हे कौन्तेय, तू जो भी करता है, खाता है, हवन करता है, दान देता है, और जो तप करता है — वह सब मुझे अर्पण कर के कर।',
     english: 'Whatever you do, whatever you eat, whatever you offer in sacrifice, whatever you give, whatever austerity you practice, O son of Kuntī — do it as an offering to Me.',
     references: {
@@ -864,6 +976,11 @@ export const VERSES = [
       'निर्ममो निरहङ्कारः समदुःखसुखः क्षमी॥',
     ],
     padaccheda: ['अद्वेष्टा', 'सर्व-भूतानाम्', 'मैत्रः', 'करुणः', 'एव', 'च', 'निर्ममः', 'निरहङ्कारः', 'सम-दुःख-सुखः', 'क्षमी'],
+    finiteVerbs: [],
+    keyFights: [
+      'No overt finite verb — the verse is a list of qualities (predicate adjectives) of the ideal devotee. The predicate "is dear to Me" is supplied by the next verse (12.14): यो मद्भक्तः स मे प्रियः.',
+    ],
+    anvaya: 'सर्व-भूतानाम् अद्वेष्टा मैत्रः करुणः एव च निर्ममः निरहङ्कारः सम-दुःख-सुखः क्षमी (मे प्रियः — see 12.14)',
     hindi: 'जो किसी प्राणी से द्वेष नहीं करता, सबसे मित्रता और करुणा रखता है, ममता और अहङ्कार से रहित है, सुख-दुःख में समान है, और क्षमाशील है।',
     english: 'One who hates no being, friendly and compassionate to all, free from "mine"-ness and ego, equal in pleasure and pain, forgiving — [is dear to Me].',
     references: {
@@ -881,6 +998,15 @@ export const VERSES = [
       'अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥',
     ],
     padaccheda: ['सर्व-धर्मान्', 'परित्यज्य', 'माम्', 'एकम्', 'शरणम्', 'व्रज', 'अहम्', 'त्वा', 'सर्व-पापेभ्यः', 'मोक्षयिष्यामि', 'मा', 'शुचः'],
+    finiteVerbs: [
+      { form: 'व्रज',                  root: '√व्रज्',   lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'go!' },
+      { form: 'मोक्षयिष्यामि', root: '√मुच् (caus.)', lakara: 'लृट्', purusha: 'उत्तम',  vachana: 'एकवचन', gloss: 'I will liberate' },
+      { form: 'शुचः',                root: '√शुच्',     lakara: 'लुङ् (negated by मा)', purusha: 'मध्यम', vachana: 'एकवचन', gloss: 'grieve — negated: "do not grieve"' },
+    ],
+    nonFinite: [
+      { form: 'परित्यज्य', kind: 'absolutive', root: 'परि + √त्यज्', gloss: 'having abandoned' },
+    ],
+    anvaya: 'सर्व-धर्मान् परित्यज्य माम् एकम् शरणम् व्रज | अहम् त्वा सर्व-पापेभ्यः मोक्षयिष्यामि | मा शुचः',
     hindi: 'सब धर्मों को त्याग कर केवल मेरी ही शरण में आ। मैं तुझे सब पापों से मुक्त कर दूँगा। शोक मत कर।',
     english: 'Abandoning all dharmas, take refuge in Me alone. I will liberate you from all sins. Do not grieve.',
     references: {
