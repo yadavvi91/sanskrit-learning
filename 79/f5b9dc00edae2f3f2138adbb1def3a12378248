@@ -1,0 +1,27 @@
+plans/v11-quality-and-workflows.md
+  s_d5e8c30b294ba2::t_99f50e7f8cfeca 1-163
+plans/v12-noun-declension-reference.md
+  s_d5e8c30b294ba2::t_dcab888b62304c 1-231
+checkpoint-31.md
+  s_d5e8c30b294ba2::t_fbfff361fbab90 1-63
+checkpoint-32.md
+  s_d5e8c30b294ba2::t_eab06cc9d20163 1-86
+checkpoint-30.md
+  s_d5e8c30b294ba2::t_3e7021fc0b7e09 1-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "79f5b9dc00edae2f3f2138adbb1def3a12378248",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
