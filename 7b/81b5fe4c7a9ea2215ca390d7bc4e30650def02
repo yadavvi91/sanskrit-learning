@@ -1,0 +1,43 @@
+src/data/primer.js
+  s_d5e8c30b294ba2::t_b5c5505868d5ed 80-82
+src/components/Atlas.jsx
+  s_d5e8c30b294ba2::t_1a127b721138b9 23
+  s_d5e8c30b294ba2::t_7c5c92a600ff43 52
+  s_d5e8c30b294ba2::t_6a3e86a39ffab6 8,11
+src/__tests__/app.integration.test.jsx
+  s_d5e8c30b294ba2::t_c12f77ab80e224 56,59-60
+src/components/Declensions.jsx
+  s_d5e8c30b294ba2::t_9c82c3a7ae9a4c 1-129
+src/__tests__/workflows.test.jsx
+  s_d5e8c30b294ba2::t_bce8cc7a4b28eb 54-55
+  s_d5e8c30b294ba2::t_94c8e5fd28907a 292-313
+src/__tests__/routing.test.jsx
+  s_d5e8c30b294ba2::t_be1046812dea48 68,70
+src/data/declensions.test.js
+  s_d5e8c30b294ba2::t_0bbbd7b01e6636 1-97
+docs/workflows.md
+  s_d5e8c30b294ba2::t_2fe4feeca4bef9 21
+  s_d5e8c30b294ba2::t_01e1ae5191c856 506-551
+src/components/Declensions.test.jsx
+  s_d5e8c30b294ba2::t_30a604f1ff99a9 1-140
+src/styles.css
+  s_d5e8c30b294ba2::t_2d8fe315378861 4708-4965
+src/data/declensions.js
+  s_d5e8c30b294ba2::t_329a7367455877 1-289
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "7b81b5fe4c7a9ea2215ca390d7bc4e30650def02",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
