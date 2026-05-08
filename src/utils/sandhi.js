@@ -35,7 +35,11 @@ export const SANDHI_RULES = [
     description: 'Two short अ\'s combine to one long आ',
     pattern: /ा/,
     example: 'गत + अहम् → गताहम्',
-    // Splitting "X+ा+Y" → "X+अ + अ+Y": handled by trySplitVowel below.
+    examples: [
+      'गत + अहम् → गताहम्',
+      'अति + अधिक → अत्यधिक (with yaṇ first, then this rule on residue)',
+      'तदा + अपि → तदापि',
+    ],
   },
   {
     id: 'aa-ee',
@@ -44,6 +48,11 @@ export const SANDHI_RULES = [
     description: 'Short अ + short इ becomes ए',
     pattern: /े/,
     example: 'न + इति → नेति',
+    examples: [
+      'न + इति → नेति',
+      'उप + इन्द्र → उपेन्द्र',
+      'सुर + इन्द्र → सुरेन्द्र',
+    ],
   },
   {
     id: 'aa-uu',
@@ -52,6 +61,11 @@ export const SANDHI_RULES = [
     description: 'Short अ + short उ becomes ओ',
     pattern: /ो/,
     example: 'त्यक्त्वा + उत्तिष्ठ → त्यक्त्वोत्तिष्ठ',
+    examples: [
+      'त्यक्त्वा + उत्तिष्ठ → त्यक्त्वोत्तिष्ठ (Gītā 2.3)',
+      'तदा + उक्तम् → तदोक्तम्',
+      'चन्द्र + उदय → चन्द्रोदय',
+    ],
   },
   {
     id: 'aa-e',
@@ -60,6 +74,11 @@ export const SANDHI_RULES = [
     description: 'Short अ + ए becomes ऐ',
     pattern: /ै/,
     example: 'न + एतत् → नैतत्',
+    examples: [
+      'न + एतत् → नैतत् (Gītā 2.3)',
+      'च + एव → चैव',
+      'तत् + एव → तदेव (with prior consonant sandhi changing context)',
+    ],
   },
   {
     id: 'aa-o',
@@ -68,6 +87,10 @@ export const SANDHI_RULES = [
     description: 'Short अ + ओ becomes औ',
     pattern: /ौ/,
     example: 'अद्य + ओदनम् → अद्यौदनम्',
+    examples: [
+      'अद्य + ओदनम् → अद्यौदनम्',
+      'दिव्य + ओषधि → दिव्यौषधि',
+    ],
   },
 
   // ─────── Yaṇ sandhi (इ/उ/ऋ + dissimilar vowel → semivowel) ───────
@@ -78,6 +101,10 @@ export const SANDHI_RULES = [
     description: 'इ + उ becomes य्यु at the junction',
     pattern: /य्यु/,
     example: 'त्वयि + उपपद्यते → त्वय्युपपद्यते',
+    examples: [
+      'त्वयि + उपपद्यते → त्वय्युपपद्यते (Gītā 2.3)',
+      'अति + उत्तम → अत्युत्तम',
+    ],
   },
 
   // ─────── Visarga sandhi ───────
@@ -88,6 +115,11 @@ export const SANDHI_RULES = [
     description: 'Visarga before च becomes श्',
     pattern: /श्च/,
     example: 'पाण्डवाः + च → पाण्डवाश्च',
+    examples: [
+      'पाण्डवाः + च → पाण्डवाश्च (Gītā 1.1)',
+      'अनन्याः + चिन्तयन्तः → अनन्याश्चिन्तयन्तः (Gītā 9.22)',
+      'देवाः + च → देवाश्च',
+    ],
   },
   {
     id: 'visarga-cha',
@@ -96,6 +128,10 @@ export const SANDHI_RULES = [
     description: 'Visarga before छ becomes श्',
     pattern: /श्छ/,
     example: 'अधः + छाया → अधश्छाया',
+    examples: [
+      'अधः + छाया → अधश्छाया',
+      'पुनः + छिन्द्धि → पुनश्छिन्द्धि',
+    ],
   },
   {
     id: 'visarga-ta',
@@ -104,6 +140,11 @@ export const SANDHI_RULES = [
     description: 'Visarga before त becomes स्',
     pattern: /स्त/,
     example: 'पुत्रः + तस्य → पुत्रस्तस्य',
+    examples: [
+      'पुत्रः + तस्य → पुत्रस्तस्य',
+      'मात्रास्पर्शाः + तु → मात्रास्पर्शास्तु (Gītā 2.14)',
+      'सङ्गः + तेषु → सङ्गस्तेषु (Gītā 2.62)',
+    ],
   },
   {
     id: 'visarga-tha',
@@ -112,6 +153,7 @@ export const SANDHI_RULES = [
     description: 'Visarga before थ becomes स्',
     pattern: /स्थ/,
     example: 'सः + थः → सस्थः',
+    examples: ['सः + थः → सस्थः'],
   },
   {
     id: 'visarga-ka',
@@ -120,6 +162,10 @@ export const SANDHI_RULES = [
     description: 'Visarga before क becomes ष्',
     pattern: /ष्क/,
     example: 'सर्वतः + कालः → सर्वतष्कालः',
+    examples: [
+      'सर्वतः + कालः → सर्वतष्कालः',
+      'अन्तः + करण → अन्तष्करण (alt. spelling अन्तःकरण)',
+    ],
   },
   {
     id: 'visarga-pa',
@@ -128,6 +174,7 @@ export const SANDHI_RULES = [
     description: 'Visarga before प becomes ष्',
     pattern: /ष्प/,
     example: 'सर्वतः + पठति → सर्वतष्पठति',
+    examples: ['सर्वतः + पठति → सर्वतष्पठति'],
   },
   {
     id: 'visarga-aa-vowel',
@@ -136,6 +183,12 @@ export const SANDHI_RULES = [
     description: 'अ-stem visarga before voiced consonant becomes ओ',
     pattern: /ो /,
     example: 'देवः + अपि → देवोऽपि',
+    examples: [
+      'देवः + अपि → देवोऽपि (note avagraha for elided अ)',
+      'श्रेयः + भविष्यति → श्रेयो भविष्यति (Gītā 2.31, similar)',
+      'सङ्गः + अस्तु → सङ्गोऽस्तु (Gītā 2.47)',
+      'देहिनः + अस्मिन् → देहिनोऽस्मिन् (Gītā 2.13)',
+    ],
   },
 
   // ─────── Consonant sandhi ───────
@@ -146,7 +199,12 @@ export const SANDHI_RULES = [
     description: 'Final म् before any consonant becomes anusvāra',
     pattern: /ं/,
     example: 'क्लैब्यम् + मा → क्लैब्यंमा',
-    auto: false, // anusvāra appears internally too often to fire automatically
+    examples: [
+      'क्लैब्यम् + मा → क्लैब्यंमा',
+      'कर्म + क्षेत्र → कर्मक्षेत्र (the same म् behavior internal to compounds)',
+      'चञ्चलम् + हि → चञ्चलं हि (Gītā 6.34)',
+    ],
+    auto: false,
   },
   {
     id: 't-cha',
@@ -155,6 +213,11 @@ export const SANDHI_RULES = [
     description: 'Final त् before च doubles to च्च',
     pattern: /च्च/,
     example: 'तत् + च → तच्च',
+    examples: [
+      'तत् + च → तच्च',
+      'सन् + च → सच्च (informal)',
+      'यत् + च → यच्च',
+    ],
   },
   {
     id: 't-ja',
@@ -163,6 +226,10 @@ export const SANDHI_RULES = [
     description: 'Final त् before ज doubles to ज्ज',
     pattern: /ज्ज/,
     example: 'तत् + जयति → तज्जयति',
+    examples: [
+      'तत् + जयति → तज्जयति',
+      'यत् + जुहोषि → यज्जुहोषि (Gītā 9.27)',
+    ],
   },
   {
     id: 't-la',
@@ -171,6 +238,7 @@ export const SANDHI_RULES = [
     description: 'Final त् before ल doubles to ल्ल',
     pattern: /ल्ल/,
     example: 'तत् + लभते → तल्लभते',
+    examples: ['तत् + लभते → तल्लभते'],
   },
   {
     id: 't-ta',
@@ -179,7 +247,11 @@ export const SANDHI_RULES = [
     description: 'Final त् + त stays as त्त (gemination)',
     pattern: /त्त/,
     example: 'तत् + ते → तत्ते',
-    auto: false, // त्त appears in many internal positions (उत्त-, etc.)
+    examples: [
+      'तत् + ते → तत्ते',
+      'यत् + तत् → यत्तत्',
+    ],
+    auto: false,
   },
   {
     id: 't-da',
@@ -188,6 +260,10 @@ export const SANDHI_RULES = [
     description: 'Final त् voices before द',
     pattern: /द्द/,
     example: 'तत् + दानम् → तद्दानम्',
+    examples: [
+      'तत् + दानम् → तद्दानम्',
+      'तत् + द्रष्टव्यम् → तद्द्रष्टव्यम्',
+    ],
   },
 
   // Pre-vowel consonant doubling not handled (less common; tail rules)

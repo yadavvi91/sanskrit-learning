@@ -101,14 +101,19 @@ export default function SandhiLab() {
         </div>
       )}
 
-      <details className="sandhi-rules-catalogue">
+      <details className="sandhi-rules-catalogue" open>
         <summary>Full rule catalogue ({SANDHI_RULES.length} rules)</summary>
         <ul>
           {SANDHI_RULES.map((r) => (
             <li key={r.id}>
-              <span className="rule-name">{r.name}</span>
-              <span className="rule-cat">[{r.category}{r.auto === false ? ' · opt-in' : ''}]</span>
-              <span className="rule-example">{r.example}</span>
+              <div>
+                <span className="rule-name">{r.name}</span>
+                <span className="rule-cat">[{r.category}{r.auto === false ? ' · opt-in' : ''}]</span>
+              </div>
+              <div className="rule-desc">{r.description}</div>
+              {(r.examples || [r.example]).map((ex, i) => (
+                <div key={i} className="rule-example">{ex}</div>
+              ))}
             </li>
           ))}
         </ul>

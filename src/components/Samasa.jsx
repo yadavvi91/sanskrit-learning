@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { SAMASA_TYPES, buildSamasaBank, lookupSamasaType } from '../data/samasa.js';
+import { SAMASA_REF_BANK } from '../data/samasaRefBank.js';
 
 export default function Samasa({ onOpenVerse }) {
   const [view, setView] = useState('bank'); // 'bank' | 'identifier'
@@ -34,18 +35,43 @@ export default function Samasa({ onOpenVerse }) {
 }
 
 function CompoundBank({ onOpenVerse }) {
-  const bank = useMemo(() => buildSamasaBank(), []);
+  // Two layers: a reference catalogue (Atlas-as-reference) and the
+  // auto-grown bank from decoded verses ("from your reading").
+  const [mode, setMode] = useState('reference'); // 'reference' | 'verses'
   const [filter, setFilter] = useState('all');
 
-  const filtered = filter === 'all' ? bank : bank.filter((b) => {
-    const t = lookupSamasaType(b.type);
-    return t && t.family === filter;
-  });
+  const fromVerses = useMemo(() => buildSamasaBank(), []);
+  const reference = SAMASA_REF_BANK;
+
+  const baseBank = mode === 'reference' ? reference : fromVerses;
+  const filtered = filter === 'all'
+    ? baseBank
+    : baseBank.filter((b) => {
+        const t = lookupSamasaType(b.type);
+        return t && t.family === filter;
+      });
 
   const families = ['all', ...new Set(SAMASA_TYPES.map((t) => t.family))];
 
   return (
     <>
+      <div className="samasa-mode-toggle">
+        <button
+          type="button"
+          className={`samasa-mode-btn ${mode === 'reference' ? 'is-active' : ''}`}
+          onClick={() => setMode('reference')}
+        >
+          Reference catalogue ({reference.length})
+        </button>
+        <button
+          type="button"
+          className={`samasa-mode-btn ${mode === 'verses' ? 'is-active' : ''}`}
+          onClick={() => setMode('verses')}
+        >
+          From your verses ({fromVerses.length})
+        </button>
+      </div>
+
       <div className="samasa-filters">
         {families.map((f) => (
           <button
@@ -59,10 +85,18 @@ function CompoundBank({ onOpenVerse }) {
         ))}
       </div>
 
-      <p className="samasa-bank-meta">
-        {filtered.length} compound{filtered.length === 1 ? '' : 's'} from {new Set(filtered.map((b) => `${b.verseRef.chapter}.${b.verseRef.verse}`)).size}{' '}
-        decoded verse(s). Auto-grown from <code>verses.js → samasNotes[]</code>.
-      </p>
+      {mode === 'reference' ? (
+        <p className="samasa-bank-meta">
+          {filtered.length} canonical compound{filtered.length === 1 ? '' : 's'} from a curated reference catalogue —
+          examples a student would meet in any introductory grammar.
+          Independent of the project's verse corpus.
+        </p>
+      ) : (
+        <p className="samasa-bank-meta">
+          {filtered.length} compound{filtered.length === 1 ? '' : 's'} auto-grown from <code>verses.js → samasNotes[]</code> across {new Set(filtered.map((b) => `${b.verseRef.chapter}.${b.verseRef.verse}`)).size}{' '}
+          decoded verse(s).
+        </p>
+      )}
 
       <ul className="samasa-bank">
         {filtered.map((b, i) => (
@@ -72,18 +106,22 @@ function CompoundBank({ onOpenVerse }) {
             <span className="bank-vigraha">{b.vigraha}</span>
             <span className="bank-type">{b.type}</span>
             <span className="bank-gloss">{b.gloss}</span>
-            {onOpenVerse ? (
-              <button
-                type="button"
-                className="bank-ref bank-ref-link"
-                onClick={() => onOpenVerse(b.verseRef.chapter, b.verseRef.verse)}
-                title="Open this verse in Verse Journey"
-              >
-                Gītā {b.verseRef.chapter}.{b.verseRef.verse} ↗
-              </button>
-            ) : (
-              <span className="bank-ref">Gītā {b.verseRef.chapter}.{b.verseRef.verse}</span>
-            )}
+            {b.verseRef ? (
+              onOpenVerse ? (
+                <button
+                  type="button"
+                  className="bank-ref bank-ref-link"
+                  onClick={() => onOpenVerse(b.verseRef.chapter, b.verseRef.verse)}
+                  title="Open this verse in Verse Journey"
+                >
+                  Gītā {b.verseRef.chapter}.{b.verseRef.verse} ↗
+                </button>
+              ) : (
+                <span className="bank-ref">Gītā {b.verseRef.chapter}.{b.verseRef.verse}</span>
+              )
+            ) : b.source ? (
+              <span className="bank-ref bank-ref-source">{b.source}</span>
+            ) : null}
           </li>
         ))}
       </ul>
