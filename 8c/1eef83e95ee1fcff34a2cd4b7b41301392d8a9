@@ -1,0 +1,29 @@
+checkpoint-24.md
+  s_d5e8c30b294ba2::t_895f68b6dd4cd8 1-62
+plans/v10-reference-and-expansion.md
+  s_d5e8c30b294ba2::t_02263a70c64536 143-144
+  s_d5e8c30b294ba2::t_7320ec854bc6c3 111
+  s_d5e8c30b294ba2::t_a3a117d888067f 1-3
+checkpoint-27.md
+  s_d5e8c30b294ba2::t_220b82cfe79fa0 1-37
+checkpoint-26.md
+  s_d5e8c30b294ba2::t_6ee562f79f6a8c 1-88
+checkpoint-25.md
+  s_d5e8c30b294ba2::t_1fe1ac6dc46957 1-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8c1eef83e95ee1fcff34a2cd4b7b41301392d8a9",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
