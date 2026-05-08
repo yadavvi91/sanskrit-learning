@@ -1,0 +1,26 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_99b238f4a5ce63 518-892
+src/utils/vocabulary.test.js
+  s_d5e8c30b294ba2::t_98b076773f0ffa 38,41-44
+src/data/verses.refs.test.js
+  s_d5e8c30b294ba2::t_891e92b017004f 7-14,16,19-20,24,26,31,33-34,52,54
+src/data/verses.parsings.test.js
+  s_d5e8c30b294ba2::t_652d59f1fddb32 7-23,27,29,38,48
+  s_d5e8c30b294ba2::t_dcef0f0dbedddf 59,74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "bb914887bb4c130173fc65f900cafc70527fcd07",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
