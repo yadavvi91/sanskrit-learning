@@ -110,8 +110,8 @@ Three distinct negation mechanisms — each for a different grammatical context.
 | Pattern | What it means | Where learned |
 |---------|--------------|---------------|
 | पदच्छेद → अन्वय → हिंदी → English | The full decode sequence | Conversation |
-| अन्वय follows SOV | Reorder into Subject → Object → Verb (not SVO) | Conversation |
-| Hindi before English | Stays in SOV mode, doesn't force English SVO on Sanskrit structure | Conversation |
+| अन्वय restores the *default* SOV order | Sanskrit word order is free (case endings disambiguate), but the unmarked default is SOV — अन्वय restores that default after the verse scrambles for metre | Conversation |
+| Hindi before English | Hindi is also default-SOV, so the order carries through; English flips to SVO. Translating Sanskrit → Hindi is a closer structural step than Sanskrit → English | Conversation |
 | Giveaway test | Remove word X — does the sentence still work? If yes, X is not the finite verb | 2.5 (removing भोक्तुम् vs removing भुञ्जीय) |
 | Endings narrow, meaning picks | विभक्ति matching gives candidates; context selects the right pairing | 1.1 (समवेताः — which noun does it describe?) |
 | Sandhi comes last | Understand the expected form first; then the change makes sense | bvsiitm explainer |

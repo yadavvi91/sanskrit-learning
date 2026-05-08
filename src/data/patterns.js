@@ -123,13 +123,13 @@ export const PATTERN_CATEGORIES = [
         trigger: { label: 'Conversation' },
       },
       {
-        name: 'अन्वय follows SOV',
-        meaning: 'Reorder into Subject → Object → Verb (not SVO)',
+        name: 'अन्वय restores the default SOV order',
+        meaning: 'Word order is free (case endings disambiguate); the unmarked default is SOV. अन्वय restores that default after the verse scrambles for metre — it does NOT mean "Sanskrit IS SOV"',
         trigger: { label: 'Conversation' },
       },
       {
         name: 'Hindi before English',
-        meaning: "Stays in SOV mode, doesn't force English SVO on Sanskrit structure",
+        meaning: 'Hindi is also default-SOV, so the order carries through; English flips to SVO. Sanskrit → Hindi is a closer structural step than Sanskrit → English',
         trigger: { label: 'Conversation' },
       },
       {

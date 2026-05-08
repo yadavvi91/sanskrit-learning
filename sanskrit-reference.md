@@ -8,8 +8,10 @@
 Sanskrit sentences are decoded in three steps:
 
 **पदच्छेद** → split sandhi/compounds into individual words  
-**अन्वय** → reorder into Subject → Object → Verb  
-**Translation** → Hindi first (stays SOV), then English
+**अन्वय** → reorder into the *default* Subject → Object → Verb sequence  
+**Translation** → Hindi first (Hindi keeps that default order; English flips to SVO)
+
+> **Important nuance.** Sanskrit's word order is **free** — case endings (विभक्ति) carry the grammatical role, so the verse can scramble freely without ambiguity. *रामः रावणं हन्ति* = *रावणं रामः हन्ति* = *हन्ति रामः रावणम्*. But Sanskrit *also* has a default unmarked order — SOV — and that's what अन्वय restores. Don't read "अन्वय → SOV" as "Sanskrit IS SOV"; read it as "अन्वय restores the *default* the metre scrambled." Bibek Debroy's *Bhagavad Gita for Millennials* emphasises the freedom; both halves are true.
 
 The whole system rests on two parallel pillars:
 
@@ -245,8 +247,8 @@ When you encounter any verse:
 2. **Identify विभक्ति endings** → who is subject (प्रथमा), who is object (द्वितीया), vocatives (सम्बोधन)
 3. **Match adjectives to nouns** → same लिंग + वचन + विभक्ति = they belong together
 4. **Do पदच्छेद** → undo sandhi and समास
-5. **Do अन्वय** → reorder: Subject + (qualifiers) + Object + (qualifiers) + Verb
-6. **Translate** → Hindi first (stays SOV), then English
+5. **Do अन्वय** → reorder to the default unmarked sequence: Subject + (qualifiers) + Object + (qualifiers) + Verb. (The original verse is grammatically fine — अन्वय just shows the unmarked sentence the metre hid.)
+6. **Translate** → Hindi first (Hindi is also default-SOV, so the order carries through); English second (flips to SVO)
 
 ---
 

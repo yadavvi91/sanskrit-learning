@@ -2,7 +2,7 @@
 
 export const GLOSSARY = {
   पदच्छेद:    { shortDef: 'Word-splitting — undoing sandhi and समास to recover individual पद (words).',          section: 'decode-sequence' },
-  अन्वय:      { shortDef: 'Logical reordering into the natural SOV sequence after poetic scrambling.',           section: 'sov-svo' },
+  अन्वय:      { shortDef: 'Reordering into Sanskrit\'s default-unmarked SOV sequence after metrical scrambling. Word order itself is free (case endings disambiguate); अन्वय restores the default.', section: 'sov-svo' },
   सन्धि:       { shortDef: 'Phonetic fusion at word boundaries — joins sounds to ease pronunciation.',           section: 'sandhi' },
   समास:      { shortDef: 'Compound — two or more words fused into one. Six classical types (तत्पुरुष, etc.).', section: 'compounds' },
   क्रिया:       { shortDef: 'Finite verb — the sentence anchor, conjugated for person and number.',              section: 'finite-verb' },
