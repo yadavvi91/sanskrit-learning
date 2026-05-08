@@ -10,6 +10,11 @@ import Practice from './components/Practice.jsx';
 import Vocabulary from './components/Vocabulary.jsx';
 import DecodeHelper from './components/DecodeHelper.jsx';
 import ThemePicker from './components/ThemePicker.jsx';
+import { hydrateAutoStubVerses } from './data/hydrate.js';
+
+// Hydrate auto-stub verses with engine-generated padaccheda on first
+// load. Runs once at module init, after all imports resolve.
+hydrateAutoStubVerses();
 
 const VIEWS = [
   { path: '/journey',  label: 'Verse Journey' },

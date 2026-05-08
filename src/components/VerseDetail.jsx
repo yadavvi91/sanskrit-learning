@@ -34,13 +34,6 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
           <CopyMarkdownButton verse={verse} />
         </div>
         {verse.title && <p className="verse-title">{verse.title}</p>}
-        {verse.tier === 'auto-stub' && (
-          <p className="verse-tier-banner">
-            ⚠ This is an <strong>auto-stub draft</strong> — engine-generated padaccheda + public-domain
-            translations only. Grammar fields (wordParsings, samasNotes, vyakhya) are absent. Audit and
-            promote in the Decode Helper.
-          </p>
-        )}
       </header>
 
       <Section label="मूल" labelEn="The verse">
