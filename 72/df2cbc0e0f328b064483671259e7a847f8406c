@@ -1,0 +1,22 @@
+src/data/dhatus.js
+  s_d5e8c30b294ba2::t_28d1ae2038a677 298-300
+  s_d5e8c30b294ba2::t_7a166c4a235428 34-39
+  s_d5e8c30b294ba2::t_ce1ae462b2dcff 623-625
+  s_d5e8c30b294ba2::t_6be2e548c136f6 94-98
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "72df2cbc0e0f328b064483671259e7a847f8406c",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
