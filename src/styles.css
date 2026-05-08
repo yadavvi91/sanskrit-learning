@@ -4495,3 +4495,54 @@ td.cell.is-suppletive {
   max-height: 480px;
   overflow-y: auto;
 }
+
+/* व्याख्या — structural commentary on a verse */
+.vyakhya-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: vyakhya;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vyakhya-card {
+  counter-increment: vyakhya;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 3px;
+  padding: 12px 16px 14px 44px;
+  position: relative;
+}
+
+.vyakhya-card::before {
+  content: counter(vyakhya);
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.vyakhya-title {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.vyakhya-body {
+  margin: 0;
+  font-family: var(--font-prose);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink);
+}

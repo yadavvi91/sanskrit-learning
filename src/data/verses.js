@@ -114,6 +114,20 @@ export const VERSES = [
       'अकुर्वत':        { category: 'verb', root: '√कृ', gana: 8, pada: 'A', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'they did', note: 'sentence anchor — the only finite verb' },
       'सञ्जय':           { category: 'noun', root: 'सञ्जय', gender: 'm', number: 'eka', case: 'sam', gloss: 'O Sanjaya', note: 'सम्बोधन — vocative; not in the action' },
     },
+    vyakhya: [
+      {
+        title: 'The participle trap (समवेताः looks like a verb — it isn\'t)',
+        body: 'समवेताः is a past passive participle (कृदन्त) of सम् + अव + √इ. The -ाः ending is प्रथमा बहुवचन पुल्लिंग — same as युयुत्सवः, मामकाः, पाण्डवाः. Adjective-noun agreement (सामानाधिकरण्य) confirms it modifies युयुत्सवः, not anchors the sentence. The actual finite verb is अकुर्वत, buried at the end of the second pāda.',
+      },
+      {
+        title: 'Vocative as frame, not participant',
+        body: 'सञ्जय (सम्बोधन) addresses the listener but takes no role in the action. The participant cast is मामकाः + पाण्डवाः (subjects), and किम् (object). Recognising vocatives early kills the most common decode error.',
+      },
+      {
+        title: 'The verse is a question — मूल structure',
+        body: 'किम् + अकुर्वत = "what did they do?" The whole verse is a single Wh-question, scaffolded by locatives (where) + adjectives (in what state) + subjects + the interrogative pronoun + the finite verb. Reading the verse means finding the question.',
+      },
+    ],
   },
   {
     chapter: 2,
@@ -251,6 +265,20 @@ export const VERSES = [
       'उत्तिष्ठ':        { category: 'verb', root: 'उद् + √स्था', gana: 1, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka', gloss: 'rise up!', note: 'imperative; finite verb' },
       'परन्तप':           { category: 'noun', root: 'परन्तप', gender: 'm', number: 'eka', case: 'sam', gloss: 'O scorcher of enemies', note: 'सम्बोधन; उपपद तत्पुरुष' },
     },
+    vyakhya: [
+      {
+        title: 'Three finite verbs, three different jobs',
+        body: 'गमः (negated by मा स्म — prohibitive aorist: "do not yield"), उपपद्यते (लट् — descriptive: "is fitting"), उत्तिष्ठ (लोट् — direct command: "rise!"). The verse moves prohibition → judgment → command. Each मूड marks Krishna\'s tone shift across the three pādas.',
+      },
+      {
+        title: 'त्यक्त्वा is absolutive — not a finite verb',
+        body: 'The -त्वा ending marks an absolutive (gerund): "having abandoned." It bridges to the imperative उत्तिष्ठ but anchors nothing on its own. If you read त्यक्त्वा as a verb, you miss that the whole second pāda is one connected action: "abandon-and-rise."',
+      },
+      {
+        title: 'मा स्म + लुङ् is the prohibitive construction',
+        body: 'गमः is technically a लुङ् (aorist) form. It would be a past tense — but with मा स्म preceding it, the aorist becomes a prohibition ("do not go"). Pāṇini\'s rule: मा-particle + लुङ् augment-stripped = imperative-of-negation. Common Vedic pattern, retained in classical poetry.',
+      },
+    ],
   },
   {
     chapter: 2,
@@ -368,6 +396,20 @@ export const VERSES = [
       'पूजार्हौ':         { category: 'adjective', root: 'पूजार्ह', gender: 'm', number: 'dvi', case: 'dvi', gloss: 'worthy of worship (the two)', note: 'षष्ठी तत्पुरुष; agrees with भीष्मम् + द्रोणम्' },
       'अरिसूदन':           { category: 'noun', root: 'अरिसूदन', gender: 'm', number: 'eka', case: 'sam', gloss: 'O slayer of foes (epithet of Krishna)', note: 'सम्बोधन; उपपद तत्पुरुष' },
     },
+    vyakhya: [
+      {
+        title: 'Two epithets of Krishna — both vocatives, both dripping with irony',
+        body: 'मधुसूदन ("slayer of Madhu") and अरिसूदन ("slayer of foes") are उपपद-तत्पुरुष compounds. They both LOOK like accusative objects of the future verb प्रतियोत्स्यामि — but the -अ ending and the स्तेम tell you they\'re सम्बोधन (vocatives). Arjuna is addressing Krishna by his most violent epithets while pleading inability to fight. Choosing those epithets here is the rhetorical knife.',
+      },
+      {
+        title: 'पूजार्हौ — the दlitt that locks two objects together',
+        body: 'पूजार्हौ is द्वितीया द्विवचन ("worthy of worship — these two"). Same विभक्ति, वचन, लिंग as भीष्मम् + द्रोणम् (taken together). सामानाधिकरण्य locks the adjective onto both objects in parallel — Bhīṣma AND Droṇa, both worthy. The dual is precise: not "the two of them and others" but exactly these two.',
+      },
+      {
+        title: 'लृट् spotted by -ष्य- infix',
+        body: 'प्रति-योत्स्यामि = प्रति + √युध् + future-marker -स्य- (after a sandhi-converted dental) + लट्-style ending -आमि (उत्तम एकवचन). The -ष्य- in the middle is the dead giveaway. Once you see लृट्, you know the verb is future, the speaker is uncertain about the action, and the question carries weight.',
+      },
+    ],
   },
   {
     chapter: 2,
@@ -514,6 +556,20 @@ export const VERSES = [
       'भोगान्':             { category: 'noun', root: 'भोग', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'pleasures, enjoyments' },
       'रुधिर-प्रदिग्धान्': { category: 'adjective', root: 'रुधिरप्रदिग्ध', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'smeared with blood', note: 'तृतीया तत्पुरुष; agrees with भोगान्' },
     },
+    vyakhya: [
+      {
+        title: 'Three verb-looking words, ONE finite verb',
+        body: 'भोक्तुम् = infinitive (-तुम् ending: "to eat"). हत्वा / अहत्वा = absolutives (-त्वा ending: "having killed" / "without killing"). श्रेयः = predicate adjective with implied अस्ति. Only भुञ्जीय is conjugated for person × number — और it carries the entire verse\'s mood.',
+      },
+      {
+        title: 'विधिलिङ् as rhetorical horror',
+        body: 'भुञ्जीय = √भुज् + विधिलिङ् + आत्मनेपद + उत्तम एकवचन = "should one enjoy." The optative मूड encodes Arjuna\'s recoil — he\'s not asking "will I enjoy" or "do I enjoy"; he\'s asking "*should* one even contemplate enjoying?" The horror is grammatically baked into the verb form.',
+      },
+      {
+        title: 'महानुभावान् गुरून् — adjective shadowing noun',
+        body: 'Both द्वितीया बहुवचन पुल्लिंग — adjective + noun लोcked by सामानाधिकरण्य. Without the agreement, you might read महानुभावान् as a separate noun ("noble ones"). With it, the verse says: "[these gurus, who are] noble-souled." Same lock applies to रुधिरप्रदिग्धान् भोगान् in the second half.',
+      },
+    ],
   },
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -539,6 +595,20 @@ export const VERSES = [
     anvaya: 'यथा अस्मिन् देहे देहिनः कौमारम् यौवनम् जरा (भवति), तथा देह-अन्तर-प्राप्तिः (भवति) | धीरः तत्र न मुह्यति',
     hindi: 'जैसे जीव के इस शरीर में बालपन, जवानी और बुढ़ापा होते हैं, वैसे ही दूसरे शरीर की प्राप्ति भी होती है। धीर पुरुष इस विषय में मोहित नहीं होता।',
     english: 'As, in this body, the embodied soul passes through childhood, youth, and age — so too is the passing to another body. The wise are not deluded by it.',
+    vyakhya: [
+      {
+        title: 'यथा / तथा — the bridge construction',
+        body: 'Sanskrit has no relative pronoun like English "that." It uses paired clauses: यथा-clause sets up the analogy, तथा-clause completes it. Krishna teaches abstract metaphysics (rebirth) by yoking it to concrete experience (aging). Grammar carries pedagogy.',
+      },
+      {
+        title: 'Three nominatives, no overt verb in the यथा-clause',
+        body: 'कौमारम् + यौवनम् + जरा are all प्रथमा एकवचन — three subjects sharing an implied भवति. The यथा-clause doesn\'t need a finite verb because the तथा-clause supplies the predication and the parallel does the rest.',
+      },
+      {
+        title: 'मुह्यति — the only finite anchor',
+        body: 'धीरः तत्र न मुह्यति — the entire verse hinges on this single लट् verb. The yathā/tathā pair is *setup*; the wise person\'s non-delusion is the *point*. The structure tracks the meaning.',
+      },
+    ],
     references: {
       translations: [
         { translator: 'Edwin Arnold', year: 1885, work: 'The Song Celestial', license: 'public-domain', text: 'Nay, but as when one layeth His worn-out robes away, And, taking new ones, sayeth, "These will I wear to-day!" So putteth by the spirit Lightly its garb of flesh, And passeth to inherit A residence afresh.' },
@@ -587,6 +657,20 @@ export const VERSES = [
     ],
     anvaya: 'यथा नरः जीर्णानि वासांसि विहाय अपराणि नवानि गृह्णाति, तथा देही जीर्णानि शरीराणि विहाय अन्यानि नवानि संयाति',
     hindi: 'जैसे मनुष्य पुराने वस्त्रों को त्याग कर नए वस्त्र धारण करता है, वैसे ही जीवात्मा पुराने शरीरों को त्याग कर नए शरीरों को प्राप्त होता है।',
+    vyakhya: [
+      {
+        title: 'Perfect यथा / तथा symmetry',
+        body: 'Both clauses share the SAME structure: subject (नरः / देही) + objects (जीर्णानि वासांसि / जीर्णानि शरीराणि) + विहाय (absolutive — "having cast off") + new objects (अपराणि नवानि / अन्यानि नवानि) + finite verb (गृह्णाति / संयाति). The metaphor is structural, not just lexical — Sanskrit lets you BUILD the analogy in the grammar itself.',
+      },
+      {
+        title: 'विहाय appears twice — once per clause',
+        body: 'Same absolutive in both halves. The repetition isn\'t accidental: it\'s the hinge that makes the analogy land. The man casts off worn clothes (विहाय) → the soul casts off worn bodies (विहाय). Word-for-word parallelism is a Sanskrit poetic technique with theological weight.',
+      },
+      {
+        title: 'Two verbs of motion, two scales',
+        body: 'गृह्णाति = "takes" (the everyday action — picking up a fresh shirt). संयाति = "passes into" (the cosmic action — the soul transmigrating). Same grammatical role (लट् प्रथम एकवचन) but different scales. The verse zooms out from kitchen-table to metaphysics in one step.',
+      },
+    ],
     english: 'As a man, casting off worn-out garments, takes new ones, so the embodied soul, casting off worn-out bodies, enters into other new ones.',
     references: {
       translations: [
@@ -635,6 +719,20 @@ export const VERSES = [
     ],
     anvaya: 'ते कर्मणि एव अधिकारः (अस्ति), फलेषु कदाचन मा (अधिकारः) | (त्वम्) कर्म-फल-हेतुः मा भूः | ते अकर्मणि सङ्गः मा अस्तु',
     hindi: 'तेरा अधिकार केवल कर्म पर है, फलों पर कभी नहीं। तू कर्म के फल का कारण मत बन; और न ही अकर्म में आसक्ति रखे।',
+    vyakhya: [
+      {
+        title: 'Three मा prohibitions, escalating in target',
+        body: '(1) मा फलेषु — implicit: don\'t (claim entitlement) over fruits. (2) मा कर्म-फल-हेतुर्भूः — direct command: don\'t BE the cause-of-fruit. (3) मा ते सङ्गोऽस्त्वकर्मणि — impersonal: let there not be attachment to inaction. The target moves from object (फलेषु) → agent (you) → an abstract state (सङ्ग). Three prohibitions, three grammatical depths.',
+      },
+      {
+        title: 'Two finite verbs, both in लोट्',
+        body: 'भूः (मा भूः — "do not be" — direct 2sg imperative) and अस्तु (मा अस्तु — "let it not be" — 3sg imperative, impersonal). The shift from 2nd to 3rd person is a register shift: Krishna moves from commanding Arjuna directly to commanding the world-state around him.',
+      },
+      {
+        title: 'अधिकारः is supplied, not stated',
+        body: 'The first half has no overt finite verb — कर्मणि एव अधिकारः ते (the implied verb is अस्ति). Then मा फलेषु कदाचन — same elision: मा फलेषु अधिकारः कदाचन (अस्तु). One predicate, structurally repeated with an implicit अस्ति/अस्तु, the way Sanskrit poetry compresses by ellipsis.',
+      },
+    ],
     english: 'Your right is only to action, never to its fruits. Do not be motivated by the fruits of action — yet do not be attached to inaction either.',
     references: {
       translations: [
@@ -707,6 +805,20 @@ export const VERSES = [
     ],
     anvaya: 'विषयान् ध्यायतः पुंसः तेषु सङ्गः उपजायते | सङ्गात् कामः सञ्जायते | कामात् क्रोधः अभिजायते',
     hindi: 'विषयों का चिन्तन करनेवाले पुरुष की उन विषयों में आसक्ति उत्पन्न होती है। आसक्ति से कामना उत्पन्न होती है, और कामना से क्रोध।',
+    vyakhya: [
+      {
+        title: 'The विभक्ति cascade IS the philosophy',
+        body: 'Each ablative (पञ्चमी) names the cause of the next nominative. विषयान्-attention → सङ्गः; सङ्गात् (from attachment) → कामः; कामात् (from desire) → क्रोधः. The grammar is a chain: each step grammatically generates the next. Sanskrit makes causation visible at the case-ending level.',
+      },
+      {
+        title: 'Three verbs of "arising" — graded by उपसर्ग',
+        body: 'उप-जायते (arises near, secondary), सम्-जायते (is born together, fully), अभि-जायते (arises forth, climactically). Same root (√जन्), same आत्मनेपद ending — but each उपसर्ग shifts the intensity. The verse spirals upward in violence: contact → attachment → desire → anger.',
+      },
+      {
+        title: 'ध्यायतः — the genitive participle',
+        body: 'ध्यायतः is genitive singular of the present participle of √ध्यै. "Of (the man) dwelling on..." It modifies पुंसः (also genitive). The construction "for the man who dwells on objects, attachment arises" — the experiencer is in the genitive, not the nominative. The agent is grammatically passive in Sanskrit, the way mental states feel in English.',
+      },
+    ],
     english: 'In a man dwelling on the objects of the senses, attachment to them is produced. From attachment springs desire; from desire, anger.',
     references: {
       translations: [
@@ -729,6 +841,20 @@ export const VERSES = [
     ],
     anvaya: 'क्रोधात् सम्मोहः भवति | सम्मोहात् स्मृति-विभ्रमः (भवति) | स्मृति-भ्रंशात् बुद्धि-नाशः (भवति) | बुद्धि-नाशात् प्रणश्यति',
     hindi: 'क्रोध से सम्मोह होता है, सम्मोह से स्मृति का विभ्रम; स्मृति-नाश से बुद्धि का नाश और बुद्धि-नाश से प्राणी का विनाश।',
+    vyakhya: [
+      {
+        title: 'Continues the cascade from 2.62 — but now four steps',
+        body: '2.62 ended at क्रोधः. 2.63 starts at क्रोधात् and continues: anger → delusion → memory-loss → intellect-destruction → person-destruction. Five nodes, four ablative-driven transitions. Read together, 2.62 + 2.63 are a seven-step ruin sequence.',
+      },
+      {
+        title: 'Only one overt verb — the rest is implied',
+        body: 'Only भवति is stated (line 1). Lines 2-3 omit it: "from delusion (comes) memory-loss; from memory-collapse (comes) intellect-destruction." The reader supplies भवति from context — Sanskrit poetry routinely elides repeated verbs. The chain is so strong it doesn\'t need to be spelled out.',
+      },
+      {
+        title: 'प्रणश्यति breaks the pattern — and that\'s the point',
+        body: 'The first three steps end in nouns (सम्मोहः, स्मृति-विभ्रमः, बुद्धि-नाशः — all प्रथमा एकवचन subjects). The final step is a finite verb: प्रणश्यति ("perishes"). The chain goes from "X arises" to "the person perishes" — verb category itself shifts as the destruction completes.',
+      },
+    ],
     english: 'From anger comes delusion; from delusion, confusion of memory; from confusion of memory, the destruction of intellect; from destruction of intellect — one perishes.',
     references: {
       translations: [
@@ -796,6 +922,20 @@ export const VERSES = [
     ],
     anvaya: 'भारत, यदा यदा हि धर्मस्य ग्लानिः, अधर्मस्य अभ्युत्थानम् भवति, तदा अहम् आत्मानम् सृजामि',
     hindi: 'हे भारत, जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब मैं स्वयं को प्रकट करता हूँ।',
+    vyakhya: [
+      {
+        title: 'यदा … तदा — the cosmic conditional',
+        body: 'यदा-clause sets the condition (whenever); तदा-clause states the consequence (then). This is the same correlative structure as यद्/तद् pronouns, but for time. The यदा is doubled (यदा यदा) for repeated/recurring conditions: "whenever, again and again, dharma declines."',
+      },
+      {
+        title: 'Two finite verbs, one in each clause',
+        body: 'भवति in the यदा-clause (the world\'s condition: "decline of dharma arises") and सृजामि in the तदा-clause (Krishna\'s response: "I send forth"). Two clauses, two verbs — both लट्. The grammar mirrors the cosmology: the condition triggers the response in the same temporal frame.',
+      },
+      {
+        title: 'सृजामि is reflexive in effect, not in form',
+        body: '"I send forth आत्मानम्" — but आत्मानम् here is "Myself," meaning Krishna\'s own self-manifestation. The verb is परस्मैपद (active form) but the meaning is reflexive ("I send Myself forth"). Sanskrit doesn\'t need a separate reflexive voice when the object pronoun (आत्मानम्) does the work.',
+      },
+    ],
     english: 'Whenever there is a decline of dharma, O Bhārata, and a rising of adharma — at that time I manifest Myself.',
     references: {
       translations: [
@@ -841,6 +981,20 @@ export const VERSES = [
     ],
     anvaya: 'आत्मना आत्मानम् उद्धरेत् | आत्मानम् न अवसादयेत् | हि आत्मा एव आत्मनः बन्धुः (अस्ति), आत्मा एव आत्मनः रिपुः (अस्ति)',
     hindi: 'अपने ही द्वारा अपना उद्धार करे; अपने आप को नीचे न गिराए। आत्मा ही अपना मित्र है, और आत्मा ही अपना शत्रु।',
+    vyakhya: [
+      {
+        title: 'आत्मन् in FOUR cases in two lines',
+        body: 'आत्मना (तृतीया — by the self) · आत्मानम् (द्वितीया — the self) · आत्मा (प्रथमा — the self) · आत्मनः (षष्ठी — of the self). Same word, four functions, two lines. The verse is a विभक्ति textbook for आत्मन् — and that\'s not coincidence. The philosophy IS that one self plays all the roles.',
+      },
+      {
+        title: 'Two विधिलिङ् verbs of opposite directions',
+        body: 'उद्धरेत् ("should lift up" — उद् + √हृ) and अवसादयेत् ("should let sink" — अव + √सद्). Both optatives, both 3sg. The उद् and अव prefixes are spatially opposite — up vs down. Krishna\'s instruction: lift, never let sink.',
+      },
+      {
+        title: 'The reflexive grammar of self-effort',
+        body: 'In English we\'d need a reflexive pronoun: "lift YOURSELF by YOURSELF, don\'t let YOURSELF sink." Sanskrit just uses आत्मन् in different cases — no separate reflexive needed. The verse exploits the ambiguity: आत्मन् as "self" (everyday) is also आत्मन् as "Self" (philosophical). Both readings are simultaneously alive.',
+      },
+    ],
     english: 'Lift yourself by yourself; let not the self sink. The self alone is one\'s friend; the self alone is one\'s enemy.',
     references: {
       translations: [
@@ -960,6 +1114,24 @@ export const VERSES = [
     ],
     anvaya: 'कौन्तेय, यत् करोषि, यत् अश्नासि, यत् जुहोषि, यत् ददासि, यत् तपस्यसि — तत् मत्-अर्पणम् कुरुष्व',
     hindi: 'हे कौन्तेय, तू जो भी करता है, खाता है, हवन करता है, दान देता है, और जो तप करता है — वह सब मुझे अर्पण कर के कर।',
+    vyakhya: [
+      {
+        title: 'The यद् … तद् correlative — five subordinate clauses, one main clause',
+        body: 'Five यत्-clauses set up referents: यत् करोषि, यत् अश्नासि, यत् जुहोषि, यत् ददासि, यत् तपस्यसि — "whatever you (do/eat/offer/give/perform-austerity)." The single तद्-clause picks them all up: तत् कुरुष्व मदर्पणम् — "*that*, do as an offering to Me." Among six finite verbs, exactly one sits in the main clause — कुरुष्व.',
+      },
+      {
+        title: 'Mood marks the hierarchy: लट् vs लोट्',
+        body: 'Five verbs are लट् (present indicative — descriptions of what Arjuna already does). कुरुष्व alone is लोट् (imperative — Krishna\'s actual command). The यत्-clauses are *what already happens*; कुरुष्व is *what to do with it*. Mood marks which clause is the operator.',
+      },
+      {
+        title: '√कृ is the meta-verb',
+        body: 'Krishna picks √कृ for the imperative deliberately. Eat, offer, give, perform austerity — all reduce to "doing things." √कृ is general enough to encompass all five. The same root that appears in the first यत्-clause (करोषि) also serves as the cover-imperative (कुरुष्व) for all of them. The verse is self-referential: "whatever you *do*… do *that* as an offering."',
+      },
+      {
+        title: 'On कुरुष्व vs कुरु',
+        body: 'कुरु would be परस्मैपद; कुरुष्व is आत्मनेपद. Meter forces कुरुष्व — अनुष्टुभ् needs the syllable count, कुरु would leave the pāda short. But traditional commentators read the आत्मनेपद as semantically apt: the offering returns to the agent — bhakti benefits the bhakta. Whether the choice is metrical or doctrinal is debatable; both readings are grammatically present.',
+      },
+    ],
     english: 'Whatever you do, whatever you eat, whatever you offer in sacrifice, whatever you give, whatever austerity you practice, O son of Kuntī — do it as an offering to Me.',
     references: {
       translations: [
@@ -982,6 +1154,20 @@ export const VERSES = [
     ],
     anvaya: 'सर्व-भूतानाम् अद्वेष्टा मैत्रः करुणः एव च निर्ममः निरहङ्कारः सम-दुःख-सुखः क्षमी (मे प्रियः — see 12.14)',
     hindi: 'जो किसी प्राणी से द्वेष नहीं करता, सबसे मित्रता और करुणा रखता है, ममता और अहङ्कार से रहित है, सुख-दुःख में समान है, और क्षमाशील है।',
+    vyakhya: [
+      {
+        title: 'NO finite verb in the entire verse',
+        body: 'Eight predicate adjectives in a row, no overt verb anywhere. This is grammatically possible because the actual predicate ("is dear to Me") is supplied by the NEXT verse: यो मद्भक्तः स मे प्रियः (12.14). Sanskrit allows verb-less verses when the predication continues across the शlokas — the sentence spans the verse-boundary.',
+      },
+      {
+        title: 'नञ्-समास compounds describe absences',
+        body: 'अद्वेष्टा (a-dveṣṭā — "non-hater"), निर्ममः (nir-mama — "without mine"), निरहङ्कारः (nir-ahaṅkāra — "without ego"). All formed by negative prefix (अ-, निर्-) on a positive concept. The devotee is described as much by what they lack as by what they possess. Three of the eight qualities are negative — and the negation is *grammatical*, not adverbial.',
+      },
+      {
+        title: 'Compound adjectives capture pairs',
+        body: 'सम-दुःख-सुखः ("equal-in-sorrow-and-joy") is a single बहुव्रीहि compound — three words fused into one possessive adjective. "He whose sorrow and joy are equal." Sanskrit lets you build a personality trait into a single word.',
+      },
+    ],
     english: 'One who hates no being, friendly and compassionate to all, free from "mine"-ness and ego, equal in pleasure and pain, forgiving — [is dear to Me].',
     references: {
       translations: [
@@ -1008,6 +1194,20 @@ export const VERSES = [
     ],
     anvaya: 'सर्व-धर्मान् परित्यज्य माम् एकम् शरणम् व्रज | अहम् त्वा सर्व-पापेभ्यः मोक्षयिष्यामि | मा शुचः',
     hindi: 'सब धर्मों को त्याग कर केवल मेरी ही शरण में आ। मैं तुझे सब पापों से मुक्त कर दूँगा। शोक मत कर।',
+    vyakhya: [
+      {
+        title: 'Three commands + one promise',
+        body: 'परित्यज्य (absolutive — "having abandoned"; sets up the action), व्रज (लोट् — "go!"), मा शुचः (लुङ् negated — "do not grieve!"). Then the promise: मोक्षयिष्यामि (लृट् — "I will liberate"). Three imperatives in one half, one future in the other. The single लृट् is the only verb that\'s NOT a command — and it\'s the verse\'s reassurance.',
+      },
+      {
+        title: 'सर्वधर्मान् as one tatpurusha',
+        body: 'सर्व-धर्मान् ("all dharmas") is treated as a single object — one तत्पुरुष in द्वितीया बहुवचन. The verse doesn\'t list dharmas one by one; it bundles them. Krishna isn\'t saying "abandon ritual dharma, social dharma, varna dharma separately"; he\'s saying abandon-the-whole-class. The grammar collapses many duties into one objective.',
+      },
+      {
+        title: 'मा शुचः — the prohibitive aorist',
+        body: 'शुचः is technically a लुङ् (aorist) form of √शुच्. With मा preceding it, the aorist becomes a prohibition: "do not grieve." Same construction as 2.3 (मा स्म गमः). Compare: मा शुचः ends a verse — and ends the entire Bhagavad Gītā\'s structured teaching. The Lord\'s last directive to Arjuna is grammatically a prohibition: don\'t.',
+      },
+    ],
     english: 'Abandoning all dharmas, take refuge in Me alone. I will liberate you from all sins. Do not grieve.',
     references: {
       translations: [

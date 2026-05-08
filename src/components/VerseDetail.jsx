@@ -148,6 +148,12 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         <p className="translation english">{verse.english}</p>
       </Section>
 
+      {verse.vyakhya && verse.vyakhya.length > 0 && (
+        <Section label="व्याख्या" labelEn="Structural commentary — what makes this verse tick">
+          <Vyakhya entries={verse.vyakhya} />
+        </Section>
+      )}
+
       {verse.references && (
         <Section label="टिप्पणी" labelEn="References — translations & commentaries">
           <References references={verse.references} />
@@ -227,6 +233,19 @@ function NotesPanel({ chapter, verse }) {
         )}
       </div>
     </div>
+  );
+}
+
+function Vyakhya({ entries }) {
+  return (
+    <ol className="vyakhya-list">
+      {entries.map((e, i) => (
+        <li key={i} className="vyakhya-card">
+          {e.title && <h4 className="vyakhya-title">{e.title}</h4>}
+          <p className="vyakhya-body">{e.body}</p>
+        </li>
+      ))}
+    </ol>
   );
 }
 
