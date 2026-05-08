@@ -11,6 +11,8 @@
 import { VERSES } from './verses.js';
 import { autoDecode } from '../utils/decodeHelper.js';
 import { BESANT_TRANSLATIONS } from './translations-besant.js';
+import { ARNOLD_TRANSLATIONS } from './translations-arnold.js';
+import { HINDI_TRANSLATIONS } from './translations-hindi.js';
 
 let done = false;
 
@@ -20,6 +22,7 @@ export function hydrateAutoStubVerses() {
 
   for (const v of VERSES) {
     if (v.tier !== 'auto-stub') continue;
+    const key = `${v.chapter}.${v.verse}`;
 
     if (!v.padaccheda || v.padaccheda.length === 0) {
       try {
@@ -36,8 +39,29 @@ export function hydrateAutoStubVerses() {
     }
 
     if (!v.english) {
-      const t = BESANT_TRANSLATIONS[`${v.chapter}.${v.verse}`];
+      const t = BESANT_TRANSLATIONS[key];
       if (t) v.english = t;
+    }
+
+    if (!v.hindi) {
+      const t = HINDI_TRANSLATIONS[key];
+      if (t) v.hindi = t;
+    }
+
+    const arnold = ARNOLD_TRANSLATIONS[key];
+    if (arnold) {
+      if (!v.references) v.references = { translations: [], commentaries: [] };
+      if (!Array.isArray(v.references.translations)) v.references.translations = [];
+      const already = v.references.translations.some((t) => t.translator === 'Edwin Arnold');
+      if (!already) {
+        v.references.translations.push({
+          translator: 'Edwin Arnold',
+          year: 1885,
+          license: 'public-domain',
+          work: 'The Song Celestial',
+          text: arnold,
+        });
+      }
     }
   }
 }
