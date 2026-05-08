@@ -589,6 +589,10 @@ export const VERSES = [
       'तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति॥',
     ],
     padaccheda: ['देहिनः', 'अस्मिन्', 'यथा', 'देहे', 'कौमारम्', 'यौवनम्', 'जरा', 'तथा', 'देह-अन्तर-प्राप्तिः', 'धीरः', 'तत्र', 'न', 'मुह्यति'],
+    sandhiNotes: [
+      'देहिनोऽस्मिन् = देहिनः + अस्मिन् (visarga + अ → ओ; अवग्रह marks elided अ)',
+      'देहान्तरप्राप्तिर्धीरस्तत्र = देहान्तरप्राप्तिः + धीरः + तत्र (visarga + voiced → र्; visarga + त → स्त)',
+    ],
     samasNotes: [
       { compound: 'देहान्तरप्राप्तिः', vigraha: 'देहान्तरस्य प्राप्तिः', type: 'षष्ठी तत्पुरुष', gloss: 'attainment of another body' },
       { compound: 'देहान्तर', vigraha: 'अन्यः देहः / अन्यो देहः', type: 'कर्मधारय', gloss: 'another body (an inner constituent of the larger compound)' },
@@ -629,6 +633,11 @@ export const VERSES = [
       'आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥',
     ],
     padaccheda: ['मात्रा-स्पर्शाः', 'तु', 'कौन्तेय', 'शीत-उष्ण-सुख-दुःख-दाः', 'आगम-अपायिनः', 'अनित्याः', 'तान्', 'तितिक्षस्व', 'भारत'],
+    sandhiNotes: [
+      'मात्रास्पर्शास्तु = मात्रास्पर्शाः + तु (visarga + त → स्त)',
+      'आगमापायिनोऽनित्यास्तां = आगमापायिनः + अनित्याः + तान् (visarga + अ → ओ + avagraha; visarga + त → स्त)',
+      'तितिक्षस्व is a desiderative form of √तिज् + लोट् ending — no sandhi at the word boundary, but the desiderative shape itself is a derivational sandhi from तिज् + स (and reduplication).',
+    ],
     samasNotes: [
       { compound: 'मात्रास्पर्शाः', vigraha: 'मात्राणाम् स्पर्शाः', type: 'षष्ठी तत्पुरुष', gloss: 'sense-contacts (touches of matter)' },
       { compound: 'शीतोष्णसुखदुःखदाः', vigraha: 'शीतम् च उष्णम् च सुखम् च दुःखम् च — तानि ददति इति', type: 'उपपद तत्पुरुष (with द्वन्द्व inside)', gloss: 'givers of cold/heat/pleasure/pain' },
@@ -657,6 +666,10 @@ export const VERSES = [
       'न्यन्यानि संयाति नवानि देही॥',
     ],
     padaccheda: ['वासांसि', 'जीर्णानि', 'यथा', 'विहाय', 'नवानि', 'गृह्णाति', 'नरः', 'अपराणि', 'तथा', 'शरीराणि', 'विहाय', 'जीर्णानि', 'अन्यानि', 'संयाति', 'नवानि', 'देही'],
+    sandhiNotes: [
+      'नरोऽपराणि = नरः + अपराणि (visarga + अ → ओ + avagraha)',
+      'जीर्णान्यन्यानि = जीर्णानि + अन्यानि (इ + अ → य + अ; "y-junction" within a compound surface)',
+    ],
     finiteVerbs: [
       { form: 'गृह्णाति', root: '√ग्रह्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'takes' },
       { form: 'संयाति',   root: 'सम् + √या', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'goes / passes into' },
@@ -697,6 +710,11 @@ export const VERSES = [
       'न चैनं क्लेदयन्त्यापो न शोषयति मारुतः॥',
     ],
     padaccheda: ['न', 'एनम्', 'छिन्दन्ति', 'शस्त्राणि', 'न', 'एनम्', 'दहति', 'पावकः', 'न', 'च', 'एनम्', 'क्लेदयन्ति', 'आपः', 'न', 'शोषयति', 'मारुतः'],
+    sandhiNotes: [
+      'नैनं छिन्दन्ति = न + एनम् + छिन्दन्ति (अ + ए → ऐ; final म् → ं anusvāra before consonant). Same pattern repeats for नैनं दहति, च नैनं क्लेदयन्ति.',
+      'चैनं = च + एनम् (अ + ए → ऐ)',
+      'क्लेदयन्त्यापः = क्लेदयन्ति + आपः (इ + आ → य + आ → "त्या-")',
+    ],
     finiteVerbs: [
       { form: 'छिन्दन्ति',   root: '√छिद्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: 'cleave / cut' },
       { form: 'दहति',         root: '√दह्',  lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: 'burns' },
@@ -722,6 +740,11 @@ export const VERSES = [
       'मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥',
     ],
     padaccheda: ['कर्मणि', 'एव', 'अधिकारः', 'ते', 'मा', 'फलेषु', 'कदाचन', 'मा', 'कर्म-फल-हेतुः', 'भूः', 'मा', 'ते', 'सङ्गः', 'अस्तु', 'अकर्मणि'],
+    sandhiNotes: [
+      'कर्मण्येवाधिकारस्ते = कर्मणि + एव + अधिकारः + ते (इ + ए → य + ए; visarga + त → स्त)',
+      'कर्मफलहेतुर्भूर्मा = कर्म-फल-हेतुः + भूः + मा (visarga + voiced → र्; final विसर्ग+म adjusts)',
+      'सङ्गोऽस्त्वकर्मणि = सङ्गः + अस्तु + अकर्मणि (visarga + अ → ओ + avagraha; उ + अ → व + अ)',
+    ],
     samasNotes: [
       { compound: 'कर्मफलहेतुः', vigraha: 'कर्मणः फलस्य हेतुः', type: 'षष्ठी तत्पुरुष', gloss: 'cause of the fruit-of-action (i.e., motive)' },
       { compound: 'कर्मफल', vigraha: 'कर्मणः फलम्', type: 'षष्ठी तत्पुरुष', gloss: 'fruit of action (an inner constituent)' },
