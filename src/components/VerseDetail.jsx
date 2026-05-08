@@ -5,8 +5,14 @@ import { holyBhagavadGitaUrl } from '../utils/sources.js';
 import { getNote, setNote } from '../utils/notes.js';
 import { copyVerseMarkdown } from '../utils/markdownExport.js';
 
+// Padaccheda entries sometimes carry a pedagogical hyphen on the upasarga
+// or samāsa boundary (e.g. प्रति-योत्स्यामि, देह-अन्तर-प्राप्तिः) while
+// finiteVerbs[].form mirrors the unhyphenated textual form. Compare with
+// hyphens stripped on both sides so the क्रिया chip lights up regardless.
+const stripHyphens = (s) => (s ?? '').replace(/-/g, '');
+
 export default function VerseDetail({ verse, onOpenPrimer }) {
-  const finiteForms = new Set(verse.finiteVerbs?.map((v) => v.form) || []);
+  const finiteForms = new Set((verse.finiteVerbs || []).map((v) => stripHyphens(v.form)));
 
   return (
     <article className="verse-detail">
@@ -45,7 +51,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
               <WordPopover
                 word={word}
                 parsing={verse.wordParsings?.[word] ?? null}
-                isFinite={finiteForms.has(word)}
+                isFinite={finiteForms.has(stripHyphens(word))}
               />
             </li>
           ))}
