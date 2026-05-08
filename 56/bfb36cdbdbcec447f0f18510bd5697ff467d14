@@ -1,0 +1,36 @@
+src/data/pronouns.js
+  s_d5e8c30b294ba2::t_19d77d18ceb432 118-149
+src/components/WordPopover.jsx
+  s_d5e8c30b294ba2::t_7928ca3e6a2f82 95-96
+  s_d5e8c30b294ba2::t_ddf1480232b55f 132-143
+  s_d5e8c30b294ba2::t_6e4be8935aa59e 4
+src/data/pronouns.test.js
+  s_d5e8c30b294ba2::t_4a582b13d79a20 1-61
+src/components/Pronouns.test.jsx
+  s_d5e8c30b294ba2::t_9257d11be3f300 1-98
+src/components/WordPopover.test.jsx
+  s_d5e8c30b294ba2::t_943ee3aaa94629 188-199,204-232
+src/components/Pronouns.jsx
+  s_d5e8c30b294ba2::t_415f54e66f8cfa 1-2,6,10-22,25
+  s_d5e8c30b294ba2::t_89867e5469baed 49
+  s_d5e8c30b294ba2::t_bc1124596708ba 99
+  s_d5e8c30b294ba2::t_d59f7e41f2b939 36
+  s_d5e8c30b294ba2::t_638c016be3c164 68
+  s_d5e8c30b294ba2::t_010c794676c1b5 78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "56bfb36cdbdbcec447f0f18510bd5697ff467d14",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
