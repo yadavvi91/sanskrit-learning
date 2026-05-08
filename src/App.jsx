@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useLayoutEffect } from 'react';
 import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
@@ -22,15 +22,18 @@ const VIEWS = [
   { path: '/practice', label: 'Practice' },
 ];
 
-// Reset window scroll on every pathname change. Without this, navigating
-// between tabs of different heights (e.g. Primer → Practice) leaves you
-// at the previous scroll Y and feels like a jump. Hash changes inside the
-// same path (e.g. /primer#sandhi) are intentionally NOT scrolled — those
-// scroll-into-view to the section already.
+// Reset window scroll on every pathname change. useLayoutEffect runs
+// SYNCHRONOUSLY before the browser paints — without this, the new page
+// renders briefly at the old scroll Y, then scrolls (visible jump).
+// With useLayoutEffect, the scroll happens before paint so it's invisible.
+// Hash changes inside the same path (e.g. /primer#sandhi) are intentionally
+// NOT scrolled — those scroll-into-view to the section already.
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [pathname]);
   return null;
 }
