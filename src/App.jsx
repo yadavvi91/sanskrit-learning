@@ -1,5 +1,5 @@
-import { useCallback } from 'react';
-import { NavLink, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { useCallback, useEffect } from 'react';
+import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
 import Verbs from './components/Verbs.jsx';
@@ -22,6 +22,19 @@ const VIEWS = [
   { path: '/practice', label: 'Practice' },
 ];
 
+// Reset window scroll on every pathname change. Without this, navigating
+// between tabs of different heights (e.g. Primer → Practice) leaves you
+// at the previous scroll Y and feels like a jump. Hash changes inside the
+// same path (e.g. /primer#sandhi) are intentionally NOT scrolled — those
+// scroll-into-view to the section already.
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   const navigate = useNavigate();
 
@@ -33,6 +46,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <ScrollToTop />
       <header className="masthead">
         <div className="masthead-inner">
           <div className="masthead-text">
