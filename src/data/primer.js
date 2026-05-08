@@ -65,17 +65,19 @@ export const PRIMER_SECTIONS = [
     table: {
       headers: ['विभक्ति', 'Case', 'Sense', 'As seen in'],
       rows: [
-        ['प्रथमा',   'Nominative',     'subject',          'युयुत्सवः (1.1)'],
-        ['द्वितीया',  'Accusative',     'object',           'भीष्मम् (2.4)'],
-        ['तृतीया',   'Instrumental',   'by / with',        'इषुभिः (2.4)'],
-        ['चतुर्थी',   'Dative',         'for / to',         '— (not yet decoded)'],
-        ['पञ्चमी',   'Ablative',       'from',             '— (not yet decoded)'],
-        ['षष्ठी',     'Genitive',       'of / belonging to', 'धर्मस्य (in धर्मक्षेत्रे)'],
-        ['सप्तमी',   'Locative',       'in / at / on',     'सङ्ख्ये (2.4)'],
-        ['सम्बोधन', 'Vocative',       'O!',               'पार्थ (2.3)'],
+        ['प्रथमा',   'Nominative',     'subject',          'युयुत्सवः (1.1), सङ्गः (2.62)'],
+        ['द्वितीया',  'Accusative',     'object',           'भीष्मम् (2.4), विषयान् (2.62)'],
+        ['तृतीया',   'Instrumental',   'by / with',        'इषुभिः (2.4), आत्मना (6.5 — by the self)'],
+        ['चतुर्थी',   'Dative',         'for / to',         'परित्राणाय (4.8 — for the protection), योगाय (2.50 — for yoga)'],
+        ['पञ्चमी',   'Ablative',       'from',             'सङ्गात् (2.62 — from attachment), क्रोधात् (2.63 — from anger), पर-धर्मात् (3.35), सर्व-पापेभ्यः (18.66)'],
+        ['षष्ठी',     'Genitive',       'of / belonging to', 'धर्मस्य (4.7), साधूनाम् (4.8), आत्मनः (6.5)'],
+        ['सप्तमी',   'Locative',       'in / at / on',     'सङ्ख्ये (2.4), कर्मणि (2.47), स्व-धर्मे (3.35)'],
+        ['सम्बोधन', 'Vocative',       'O!',               'पार्थ (2.3), कौन्तेय (2.14), धनञ्जय (2.48)'],
       ],
     },
-    aside: 'सम्बोधन is never part of the action. It addresses someone; it isn\'t a participant.',
+    aside: 'सम्बोधन is never part of the action. It addresses someone; it isn\'t a participant. ' +
+      'पञ्चमी is the cause-of-arising case — Gītā 2.62-63 chains four ablatives in two verses (सङ्गात् → कामात् → क्रोधात् → सम्मोहात्). ' +
+      'चतुर्थी is the dative-of-purpose — परित्राणाय / विनाशाय / अर्थाय are the textbook -आय endings.',
   },
   {
     id: 'lakara',
@@ -86,11 +88,11 @@ export const PRIMER_SECTIONS = [
     table: {
       headers: ['लकार', 'Function', 'Signal', 'Example'],
       rows: [
-        ['लट्',     'Present',     '-ति / -मि',        'उपपद्यते (2.3)'],
+        ['लट्',     'Present',     '-ति / -मि',        'उपपद्यते (2.3), भवति (2.63), पश्यति (6.30)'],
         ['लङ्',     'Past',        'अ- prefix + -त्',  'अकुर्वत (1.1)'],
-        ['लृट्',    'Future',      '-ष्य- infix',       'प्रतियोत्स्यामि (2.4)'],
-        ['लोट्',    'Imperative',  '-तु / -हि / bare',  'उत्तिष्ठ (2.3)'],
-        ['विधिलिङ्', 'Optative',   '-ेत् / -ेयुः',       'भुञ्जीय (2.5)'],
+        ['लृट्',    'Future',      '-ष्य- infix',       'प्रतियोत्स्यामि (2.4), मोक्षयिष्यामि (18.66)'],
+        ['लोट्',    'Imperative',  '-तु / -हि / bare',  'उत्तिष्ठ (2.3), कुरु (2.48), तितिक्षस्व (2.14), व्रज (18.66)'],
+        ['विधिलिङ्', 'Optative',   '-ेत् / -ेयुः',       'भुञ्जीय (2.5), उद्धरेत् (6.5), वर्तेत (6.6)'],
       ],
     },
     aside:
