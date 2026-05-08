@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CHAPTERS } from '../data/chapters.js';
-import { VERSES, getVerse } from '../data/verses.js';
+import { VERSES, getVerse, getVerseTier } from '../data/verses.js';
 import { searchVerses } from '../utils/verseSearch.js';
 import VerseDetail from './VerseDetail.jsx';
 
@@ -219,6 +219,13 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
           if (showOnlyDecoded && !decoded) return null;
           const active =
             selected && selected.chapter === chapter.number && selected.verse === v;
+          const tier = decoded ? getVerseTier(chapter.number, v) : 'fallback';
+          const titleByTier = {
+            full:        `Gītā ${chapter.number}.${v} — fully decoded`,
+            browse:      `Gītā ${chapter.number}.${v} — browse-tier`,
+            'auto-stub': `Gītā ${chapter.number}.${v} — auto-stub draft (please audit)`,
+            fallback:    `Gītā ${chapter.number}.${v} — not yet decoded`,
+          };
           return (
             <button
               key={key}
@@ -227,6 +234,7 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
               className={[
                 'verse-cell',
                 decoded ? 'is-decoded' : 'is-locked',
+                `tier-${tier}`,
                 active ? 'is-active' : '',
               ]
                 .filter(Boolean)
@@ -234,11 +242,7 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
               onClick={() =>
                 decoded && onSelect({ chapter: chapter.number, verse: v })
               }
-              title={
-                decoded
-                  ? `Gītā ${chapter.number}.${v} — decoded`
-                  : `Gītā ${chapter.number}.${v} — not yet decoded`
-              }
+              title={titleByTier[tier]}
             >
               {v}
             </button>

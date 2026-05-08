@@ -4,6 +4,7 @@ import WordPopover from './WordPopover.jsx';
 import { holyBhagavadGitaUrl } from '../utils/sources.js';
 import { getNote, setNote } from '../utils/notes.js';
 import { copyVerseMarkdown } from '../utils/markdownExport.js';
+import { TIER_META } from '../data/verses.js';
 
 // Padaccheda entries sometimes carry a pedagogical hyphen on the upasarga
 // or samāsa boundary (e.g. प्रति-योत्स्यामि, देह-अन्तर-प्राप्तिः) while
@@ -20,6 +21,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         <div className="verse-tagline">
           <span className="verse-ref">Gītā {verse.chapter}.{verse.verse}</span>
           {verse.speaker && <span className="verse-speaker">{verse.speaker}</span>}
+          <TierBadge tier={verse.tier || 'browse'} />
           <a
             className="verse-source-link"
             href={holyBhagavadGitaUrl(verse.chapter, verse.verse)}
@@ -32,6 +34,13 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
           <CopyMarkdownButton verse={verse} />
         </div>
         {verse.title && <p className="verse-title">{verse.title}</p>}
+        {verse.tier === 'auto-stub' && (
+          <p className="verse-tier-banner">
+            ⚠ This is an <strong>auto-stub draft</strong> — engine-generated padaccheda + public-domain
+            translations only. Grammar fields (wordParsings, samasNotes, vyakhya) are absent. Audit and
+            promote in the Decode Helper.
+          </p>
+        )}
       </header>
 
       <Section label="मूल" labelEn="The verse">
@@ -170,6 +179,15 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         <NotesPanel chapter={verse.chapter} verse={verse.verse} />
       </Section>
     </article>
+  );
+}
+
+function TierBadge({ tier }) {
+  const meta = TIER_META[tier] || TIER_META.browse;
+  return (
+    <span className={`tier-badge ${meta.badgeClass}`} title={meta.en}>
+      {meta.label}
+    </span>
   );
 }
 

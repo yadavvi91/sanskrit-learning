@@ -4,6 +4,27 @@
 // Each verse has the full decode pipeline so VerseDetail can render every step:
 //   मूल → पदच्छेद → sandhi notes → finite verb(s) → विभक्ति notes → अन्वय → हिंदी → English
 // `keyFights` captures the realisations that landed for User on this verse.
+//
+// `tier` field (per v13 plan):
+//   'full'      — wordParsings, samasNotes, vyakhya — the deepest decode (the original 4)
+//   'browse'    — padaccheda + finiteVerbs + anvaya + translations + selective wordParsings (the 21 added during v10)
+//   'auto-stub' — engine-generated padaccheda + tentative finiteVerbs + PD translations only; not human-audited
+//   'fallback'  — mool + external link only; defaults if no entry exists for (chapter, verse)
+// Verses absent from the array fall through to 'fallback' tier in the chapter grid.
+
+export const TIER = {
+  FULL:     'full',
+  BROWSE:   'browse',
+  AUTOSTUB: 'auto-stub',
+  FALLBACK: 'fallback',
+};
+
+export const TIER_META = {
+  full:        { label: 'fully decoded',     en: 'Full pipeline + grammar fights + commentary',                         badgeClass: 'tier-full' },
+  browse:      { label: 'browse-tier',       en: 'Padaccheda · finite verbs · अन्वय · translations',                     badgeClass: 'tier-browse' },
+  'auto-stub': { label: 'auto-stub draft',   en: 'Engine-generated stub + PD translations — please audit',              badgeClass: 'tier-autostub' },
+  fallback:    { label: 'not yet decoded',   en: 'External reference only',                                              badgeClass: 'tier-fallback' },
+};
 
 export const VERSES = [
   {
@@ -12,6 +33,7 @@ export const VERSES = [
     speaker: 'धृतराष्ट्र उवाच',
     title: 'The anchor verse',
     decodeIndex: 1,
+    tier: 'full',
     mool: [
       'धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः।',
       'मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय॥',
@@ -135,6 +157,7 @@ export const VERSES = [
     speaker: 'श्रीभगवानुवाच',
     title: 'The WhatsApp verse — where this whole journey started',
     decodeIndex: 2,
+    tier: 'full',
     mool: [
       'क्लैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते।',
       'क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप॥',
@@ -286,6 +309,7 @@ export const VERSES = [
     speaker: 'अर्जुन उवाच',
     title: 'The "how can I fight?" verse',
     decodeIndex: 3,
+    tier: 'full',
     mool: [
       'कथं भीष्ममहं सङ्ख्ये द्रोणं च मधुसूदन।',
       'इषुभिः प्रतियोत्स्यामि पूजार्हावरिसूदन॥',
@@ -416,6 +440,7 @@ export const VERSES = [
     verse: 5,
     speaker: 'अर्जुन उवाच',
     title: 'The hardest verse so far',
+    tier: 'full',
     decodeIndex: 4,
     mool: [
       'गुरूनहत्वा हि महानुभावान्',
@@ -582,6 +607,7 @@ export const VERSES = [
 
   {
     chapter: 2, verse: 13,
+    tier: 'browse',
     title: 'Childhood, youth, age — and the passing to another body',
     decodeIndex: 5,
     mool: [
@@ -641,6 +667,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 14,
+    tier: 'browse',
     title: 'Sense-contacts come and go — endure them',
     decodeIndex: 6,
     mool: [
@@ -683,6 +710,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 22,
+    tier: 'browse',
     title: 'Changing clothes — the soul changes bodies',
     decodeIndex: 7,
     mool: [
@@ -744,6 +772,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 23,
+    tier: 'browse',
     title: 'The soul cannot be cut, burnt, drowned, or dried',
     decodeIndex: 8,
     mool: [
@@ -787,6 +816,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 47,
+    tier: 'browse',
     title: 'कर्मण्येवाधिकारस्ते — the most-quoted verse of the Gītā',
     decodeIndex: 9,
     mool: [
@@ -847,6 +877,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 48,
+    tier: 'browse',
     title: 'समत्वं योग उच्यते — equanimity is yoga',
     decodeIndex: 10,
     mool: [
@@ -891,6 +922,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 50,
+    tier: 'browse',
     title: 'योग: कर्मसु कौशलम् — skill in action is yoga',
     decodeIndex: 11,
     mool: [
@@ -930,6 +962,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 62,
+    tier: 'browse',
     title: 'Dwelling on objects → attachment → desire (the chain begins)',
     decodeIndex: 12,
     mool: [
@@ -981,6 +1014,7 @@ export const VERSES = [
   },
   {
     chapter: 2, verse: 63,
+    tier: 'browse',
     title: 'Anger → delusion → memory-loss → ruin (the chain continues)',
     decodeIndex: 13,
     mool: [
@@ -1033,6 +1067,7 @@ export const VERSES = [
   },
   {
     chapter: 3, verse: 21,
+    tier: 'browse',
     title: 'The leader sets the standard',
     decodeIndex: 14,
     mool: [
@@ -1070,6 +1105,7 @@ export const VERSES = [
   },
   {
     chapter: 3, verse: 35,
+    tier: 'browse',
     title: "Better one's own dharma",
     decodeIndex: 15,
     mool: [
@@ -1109,6 +1145,7 @@ export const VERSES = [
   },
   {
     chapter: 4, verse: 7,
+    tier: 'browse',
     title: 'Whenever dharma declines — I manifest',
     decodeIndex: 16,
     mool: [
@@ -1160,6 +1197,7 @@ export const VERSES = [
   },
   {
     chapter: 4, verse: 8,
+    tier: 'browse',
     title: 'To protect the good, destroy the evil — age after age',
     decodeIndex: 17,
     mool: [
@@ -1197,6 +1235,7 @@ export const VERSES = [
   },
   {
     chapter: 6, verse: 5,
+    tier: 'browse',
     title: 'Lift yourself by yourself — आत्मना आत्मानम् उद्धरेत्',
     decodeIndex: 18,
     mool: [
@@ -1246,6 +1285,7 @@ export const VERSES = [
   },
   {
     chapter: 6, verse: 6,
+    tier: 'browse',
     title: 'The self as friend or as enemy — depends on its conquest',
     decodeIndex: 19,
     mool: [
@@ -1285,6 +1325,7 @@ export const VERSES = [
   },
   {
     chapter: 6, verse: 30,
+    tier: 'browse',
     title: 'Who sees Me everywhere',
     decodeIndex: 20,
     mool: [
@@ -1324,6 +1365,7 @@ export const VERSES = [
   },
   {
     chapter: 6, verse: 34,
+    tier: 'browse',
     title: 'The mind is restless — Arjuna\'s honest difficulty',
     decodeIndex: 21,
     mool: [
@@ -1361,6 +1403,7 @@ export const VERSES = [
   },
   {
     chapter: 9, verse: 22,
+    tier: 'browse',
     title: 'योगक्षेम — for those who are constantly devoted',
     decodeIndex: 22,
     mool: [
@@ -1403,6 +1446,7 @@ export const VERSES = [
   },
   {
     chapter: 9, verse: 27,
+    tier: 'browse',
     title: 'Whatever you do — offer it to Me',
     decodeIndex: 23,
     mool: [
@@ -1462,6 +1506,7 @@ export const VERSES = [
   },
   {
     chapter: 12, verse: 13,
+    tier: 'browse',
     title: "Qualities of a devotee — friend to all beings",
     decodeIndex: 24,
     mool: [
@@ -1517,6 +1562,7 @@ export const VERSES = [
   },
   {
     chapter: 18, verse: 66,
+    tier: 'browse',
     title: 'चरम-श्लोक — abandon all dharmas, take refuge in Me alone',
     decodeIndex: 25,
     mool: [
@@ -1583,3 +1629,23 @@ export const VERSE_MAP = new Map(VERSES.map((v) => [verseKey(v.chapter, v.verse)
 export const getVerse = (chapter, verse) => VERSE_MAP.get(verseKey(chapter, verse)) || null;
 
 export const isDecoded = (chapter, verse) => VERSE_MAP.has(verseKey(chapter, verse));
+
+// Tier resolution: an entry's `tier` field if set; 'browse' as backward-
+// compat default for entries without explicit tier; 'fallback' for
+// chapter:verse pairs that have no entry at all.
+export function getVerseTier(chapter, verse) {
+  const v = VERSE_MAP.get(verseKey(chapter, verse));
+  if (!v) return TIER.FALLBACK;
+  return v.tier || TIER.BROWSE;
+}
+
+// Counts grouped by tier — used by Verse Journey rail to display
+// "N fully decoded · M browse · K auto-stub drafts".
+export function tierCounts() {
+  const counts = { full: 0, browse: 0, 'auto-stub': 0 };
+  for (const v of VERSES) {
+    const t = v.tier || TIER.BROWSE;
+    if (counts[t] != null) counts[t]++;
+  }
+  return counts;
+}
