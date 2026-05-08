@@ -1,0 +1,31 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_103171760280ba 1623-1716
+src/components/VerseDetail.test.jsx
+  s_d5e8c30b294ba2::t_fbfe5ec10a8a20 64-66
+src/data/verses.refs.test.js
+  s_d5e8c30b294ba2::t_211df611581e24 15-21,23,25-26,32-38,55,57,70,81
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_cd22671fc232b0 103-140
+  s_d5e8c30b294ba2::t_563760cdb7a802 162-166,168-172,174-178
+  s_d5e8c30b294ba2::t_68d696980d84c2 57-73
+src/utils/vocabulary.test.js
+  s_d5e8c30b294ba2::t_1714b4d347b96c 6-7,10-13
+src/data/verses.tier.test.js
+  s_d5e8c30b294ba2::t_13236037e43999 29-30,33-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "02916be9c5adaa0ef1b09a5ab9d2f6ba81171628",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
