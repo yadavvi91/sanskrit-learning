@@ -4558,3 +4558,14 @@ td.cell.is-suppletive {
 :root[data-theme="makingsoftware"] body::before {
   display: none;
 }
+
+/* Press — flat white, no gradients, suppress page-grain. Inherits the
+   clean-page treatment from Newsprint and Making Software. */
+:root[data-theme="press"] html,
+:root[data-theme="press"] body {
+  background: var(--parchment);
+}
+
+:root[data-theme="press"] body::before {
+  display: none;
+}

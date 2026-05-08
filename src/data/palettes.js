@@ -320,6 +320,31 @@ export const PALETTES = [
   },
 
   {
+    id: 'press',
+    name: 'Press',
+    group: 'cool-light',
+    blurb: 'Newsprint × Making Software. Pure white page (both share it), near-black ink. Source Serif 4 body for long-form reading (newsprint), system sans for display labels (Geist). NYT red as the primary accent, Vercel blue as secondary. Reads like a long-form tech essay — newspaper typography with software-engineering accents.',
+    swatches: ['#ffffff', '#0a0a0a', '#c1272d', '#0070f3', '#666666'],
+    vars: {
+      '--parchment':       '#ffffff',
+      '--parchment-deep':  '#fafafa',
+      '--parchment-edge':  '#eaeaea',
+      '--ink':             '#0a0a0a',
+      '--ink-soft':        '#4d4d4d',
+      '--ink-faint':       '#999999',
+      '--gold':            '#c1272d',
+      '--saffron':         '#c1272d',
+      '--saffron-soft':    '#f3d4d5',
+      '--sage':            '#0070f3',
+      '--sage-soft':       '#cce4ff',
+      '--rule':            '#eaeaea',
+      '--font-prose':      "'Source Serif 4', 'Georgia', serif",
+      '--font-deva':       "'Noto Serif Devanagari', serif",
+      '--font-display':    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, 'Noto Sans', sans-serif",
+    },
+  },
+
+  {
     id: 'makingsoftware',
     name: 'Making Software',
     group: 'cool-light',
