@@ -1,0 +1,21 @@
+src/data/translations-besant.js
+  s_d5e8c30b294ba2::t_237c58d4feabd4 1-724
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_c600532fa3d84d 13,23-31,33-34,36-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "9a32a647f08cfb7296e75bc1b887f00c9a7da98b",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
