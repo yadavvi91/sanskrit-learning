@@ -1,0 +1,26 @@
+sanskrit-reference.md
+  s_d5e8c30b294ba2::t_3e772501c2d3d8 250-251
+  s_d5e8c30b294ba2::t_d949e0be928882 11-14
+src/data/glossary.js
+  s_d5e8c30b294ba2::t_90d2217780e33a 5
+patterns-won.md
+  s_d5e8c30b294ba2::t_9a337d437fd25b 113-114
+src/data/patterns.js
+  s_d5e8c30b294ba2::t_5487ac0abe4b8f 126-127,132
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "0093b8b53b1a3dcc2dbf78fe2bde49098b5d8c28",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
