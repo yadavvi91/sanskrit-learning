@@ -1,0 +1,26 @@
+src/__tests__/workflows.test.jsx
+  s_d5e8c30b294ba2::t_de15f5b7d3b1d9 68-73
+  s_d5e8c30b294ba2::t_fe5b12a390e8b8 46
+  s_d5e8c30b294ba2::t_7713460f1fb29f 1-45,47-67,74-327
+docs/workflows.md
+  s_d5e8c30b294ba2::t_09c7b0c22ebb98 1-44,46-71,73-75,77-504
+  s_d5e8c30b294ba2::t_fa0b2b77029f8f 45
+  s_d5e8c30b294ba2::t_50da69c68abbf9 76
+  s_d5e8c30b294ba2::t_7f0dc74d520ca1 72
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "f60e7cd4cb2adc4cdcbe3bbf1c82840e8b6d3b5c",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
