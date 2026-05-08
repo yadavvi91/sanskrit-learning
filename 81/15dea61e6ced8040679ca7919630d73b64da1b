@@ -1,0 +1,22 @@
+src/App.jsx
+  s_d5e8c30b294ba2::t_310c2d0757163f 1
+  s_d5e8c30b294ba2::t_1f5b26dc2e2a92 25-30,33-36
+src/styles.css
+  s_d5e8c30b294ba2::t_59dab1b5852bad 113,119-122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "8115dea61e6ced8040679ca7919630d73b64da1b",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
