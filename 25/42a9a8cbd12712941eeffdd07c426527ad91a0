@@ -1,0 +1,43 @@
+package.json
+  s_d5e8c30b294ba2::t_b2afd0269109ce 21
+  s_d5e8c30b294ba2::t_a4e39e57073fd4 18
+src/components/SandhiLab.test.jsx
+  s_d5e8c30b294ba2::t_ad37831d035193 1-148
+src/components/LastVisitBanner.test.jsx
+  s_d5e8c30b294ba2::t_470f82f3dcab7f 1-103
+.gitignore
+  s_d5e8c30b294ba2::t_0108e08e87f90c 7
+src/__tests__/app.integration.test.jsx
+  s_d5e8c30b294ba2::t_fc52736bea8591 1-48,54-118,123-181,183,189-220
+  s_d5e8c30b294ba2::t_2898222fa908ed 182,184-188
+  s_d5e8c30b294ba2::t_301b7330360c07 49-53
+  s_d5e8c30b294ba2::t_46d90caa9d275e 119-122
+src/components/ThemePicker.test.jsx
+  s_d5e8c30b294ba2::t_75b0b80442036b 1-119
+src/components/Samasa.test.jsx
+  s_d5e8c30b294ba2::t_341d37e76eb78e 7,9,11-30
+  s_d5e8c30b294ba2::t_c6d494b938b634 147,152,164,183
+  s_d5e8c30b294ba2::t_f833d279a331f2 1-6,8,10,31-146,148-151,153-163,165-182,184-207,212-238
+  s_d5e8c30b294ba2::t_347841ee89d203 208-211
+src/components/StackBuilder.test.jsx
+  s_d5e8c30b294ba2::t_aa3ce2654d5a65 135-136,140-141
+  s_d5e8c30b294ba2::t_ed1810d01ea929 1-134,137-139,142-154
+checkpoint-28.md
+  s_d5e8c30b294ba2::t_913a2c142bf06f 1-66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "2542a9a8cbd12712941eeffdd07c426527ad91a0",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
