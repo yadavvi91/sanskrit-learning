@@ -289,6 +289,40 @@ describe('workflows — cross-tab learning journeys', () => {
     expect(copied).toMatch(/verse:\s*8/);
   });
 
+  it('W12 — verse 2.14 → click तान् → Atlas/pronouns#tad → तद्-template visible', () => {
+    // Stub scrollIntoView (jsdom doesn't implement it) and rAF so the
+    // hash-driven scroll fires synchronously.
+    const scrollSpy = vi.fn();
+    Element.prototype.scrollIntoView = scrollSpy;
+    const origRaf = global.requestAnimationFrame;
+    global.requestAnimationFrame = (cb) => { cb(); return 0; };
+
+    const { container } = mount('/journey/2/14');
+    expect(screen.getAllByText(/Gītā 2\.14/).length).toBeGreaterThan(0);
+
+    // 1. Click the तान् chip in पदच्छेद.
+    const taanChip = Array.from(container.querySelectorAll('.padaccheda .pada'))
+      .find((c) => c.textContent === 'तान्');
+    expect(taanChip).toBeDefined();
+    fireEvent.click(taanChip);
+
+    // 2. Popover footer shows "see in सर्वनाम" link.
+    const link = container.querySelector('.wp-paradigm-link');
+    expect(link).toBeDefined();
+    expect(link.textContent).toMatch(/सर्वनाम/);
+    expect(link.textContent).toMatch(/तद्-template/);
+
+    // 3. Click the link → navigate to /atlas/pronouns#tad.
+    fireEvent.click(link);
+
+    // 4. Pronouns page renders with #tad section in the DOM and
+    //    scrollIntoView fired on it.
+    expect(container.querySelector('#tad')).not.toBeNull();
+    expect(scrollSpy).toHaveBeenCalled();
+
+    global.requestAnimationFrame = origRaf;
+  });
+
   it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse', () => {
     const { container } = mount('/journey/2/4');
     expect(screen.getAllByText(/Gītā 2\.4/).length).toBeGreaterThan(0);

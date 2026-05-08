@@ -19,6 +19,7 @@ The companion test file [`src/__tests__/workflows.test.jsx`](../src/__tests__/wo
 | W9 | [Decode Helper → paste new verse → copy stub](#w9--decode-helper--paste-new-verse--copy-stub) | Decode (intra) |
 | W10 | [Practice session → study source → return](#w10--practice-session--study-source--return) | Practice → Journey → Practice |
 | W11 | [Recognize a noun's case → look up its full paradigm](#w11--recognize-a-nouns-case--look-up-its-full-paradigm) | Journey → Atlas/Declensions → Journey |
+| W12 | [Recognize a pronoun → land on the right सर्वनाम section](#w12--recognize-a-pronoun--land-on-the-right-सर्वनाम-section) | Journey → Atlas/Pronouns |
 
 How to read each entry:
 
@@ -550,3 +551,55 @@ sequenceDiagram
 ```
 
 **Tested by** `it('W11 — verse 2.4 → Atlas/declensions → corpus example back to verse')` and a new direct-link test asserting the popover footer renders + navigates correctly.
+
+---
+
+## W12 — Recognize a pronoun → land on the right सर्वनाम section
+
+The parallel of W11 for pronouns. The user is reading a verse, clicks a pronoun, sees its parsing in the popover (e.g. **तान्** in 2.14 is `द्वितीया बहुवचन पुल्लिङ्ग` of root तद्). Pronouns don't follow the noun paradigms — they have their own Atlas tab. The popover footer surfaces a **"see in सर्वनाम — तद्-template ↗"** link that lands the user at the right section of `/atlas/pronouns`.
+
+The mapping covers every pronoun root in the corpus:
+
+| Roots | Section anchor | Why grouped |
+|---|---|---|
+| अस्मद् · युष्मद् | `#personal` | Suppletive personal pronouns (no gender) |
+| तद् · एनद् | `#tad` | The master सर्वनाम template (TAD_M / F / N) |
+| यद् · किम् · सर्व · अन्य · एक · एतद् | `#transfers` | Six derived pronouns sharing the तद् template with prefix swap |
+| इदम् · अदस् | `#outliers` | Suppletive nominatives, recognition-only |
+| स्व | `#reflexives` | Reflexive स्व- |
+
+**Steps**
+
+1. Open `/journey/2/14` — Gītā 2.14 (मात्रा-स्पर्शाः…तान् तितिक्षस्व भारत).
+2. Click the **तान्** chip in पदच्छेद. Popover shows: category=pronoun, root=तद्, gender=पुं., number=बहुवचन, case=द्वितीया.
+3. Read the popover footer: "**see in सर्वनाम — तद्-template (master सर्वनाम) ↗**".
+4. Click → navigate to `/atlas/pronouns#tad`. The page scrolls to the तद्-template section (TAD_M / TAD_F / TAD_N tables).
+5. Verify तान् is in TAD_M's द्वितीया बहुवचन cell.
+6. Click any pronoun chip elsewhere in the app and the same loop closes.
+
+**Why this matters.** Without the link, the user has to know that तान् belongs to the तद्-paradigm AND scroll to find it inside the long Pronouns page. The deep-link teaches the classification (तद् = anaphoric demonstrative, distinct from अस्मद्/युष्मद् personal pronouns) and lands directly at the section.
+
+**Sequence diagram**
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Journey as VerseJourney
+    participant Popover as WordPopover
+    participant Anchor as getPronounAnchor()
+    participant Pronouns
+
+    User->>Journey: GET /journey/2/14
+    Journey-->>User: render Gītā 2.14
+    User->>Popover: click तान् chip
+    Popover->>Anchor: classify(parsing)
+    Anchor-->>Popover: { anchor: 'tad', label: 'तद्-template' }
+    Popover-->>User: parsing fields + "see in सर्वनाम — तद्-template ↗"
+
+    User->>Popover: click "see in सर्वनाम ↗"
+    Popover->>Pronouns: navigate /atlas/pronouns#tad
+    Pronouns->>Pronouns: scrollIntoView(#tad)
+    Pronouns-->>User: तद्-template section visible (TAD_M / TAD_F / TAD_N)
+```
+
+**Tested by** `it('W12 — verse 2.14 → click तान् → Atlas/pronouns#tad → तद्-template visible')` plus the popover-link unit tests in `WordPopover.test.jsx` and the hash-scroll tests in `Pronouns.test.jsx`.
