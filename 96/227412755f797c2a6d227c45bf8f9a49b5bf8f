@@ -1,0 +1,24 @@
+CLAUDE.md
+  s_d5e8c30b294ba2::t_7b1dc51977dcaa 55
+  s_d5e8c30b294ba2::t_77cc87015cfb01 44-51
+src/data/primer.test.js
+  s_d5e8c30b294ba2::t_0fc8ad874c2c9c 83-119
+src/data/primer.js
+  s_d5e8c30b294ba2::t_9626da4be66b73 18,20-23,25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "96227412755f797c2a6d227c45bf8f9a49b5bf8f",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
