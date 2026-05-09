@@ -99,4 +99,23 @@ describe('hydrateAutoStubVerses — coverage', () => {
     const missing = VERSES.filter((v) => v.tier === 'auto-stub' && !v.hindi);
     expect(missing.length, `verses missing hindi: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
   });
+
+  it('every auto-stub verse has anvaya after hydration', () => {
+    const missing = VERSES.filter((v) => v.tier === 'auto-stub' && !v.anvaya);
+    expect(missing.length, `verses missing anvaya: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
+  });
+
+  it('every auto-stub verse has keyFights after hydration', () => {
+    const missing = VERSES.filter(
+      (v) => v.tier === 'auto-stub' && (!v.keyFights || v.keyFights.length === 0)
+    );
+    expect(missing.length, `verses missing keyFights: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
+  });
+
+  it('every auto-stub verse has vyakhya after hydration', () => {
+    const missing = VERSES.filter(
+      (v) => v.tier === 'auto-stub' && (!v.vyakhya || v.vyakhya.length === 0)
+    );
+    expect(missing.length, `verses missing vyakhya: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
+  });
 });

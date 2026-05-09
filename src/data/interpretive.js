@@ -14,17 +14,22 @@
 //     // ...
 //   };
 //
-// Coverage status (parts arrive as the parallel agent batch completes):
-//   - _interp_part1.js: chapters 1–6   (loaded)
-//   - _interp_part2.js: chapters 7–12  (pending)
-//   - _interp_part3.js: chapters 13–18 (pending)
+// Coverage status:
+//   - _interp_part1.js: chapters 1–6   (loaded — 280 entries)
+//   - _interp_part2.js: chapters 7–12  (loaded — 209 entries)
+//   - _interp_part3.js: chapters 13–18 (loaded — 212 entries)
+// Total: 701 verses covered.
 //
 // All entries are paraphrase-quality and may be wrong. AUDIT before relying on
 // them as canonical. The Decode Helper UI is the path to promote a verse from
 // auto-stub → browse → full once content has been reviewed.
 
 import { INTERP_PART_1 } from './_interp_part1.js';
+import { INTERP_PART_2 } from './_interp_part2.js';
+import { INTERP_PART_3 } from './_interp_part3.js';
 
 export const INTERP_NOTES = {
   ...INTERP_PART_1,
+  ...INTERP_PART_2,
+  ...INTERP_PART_3,
 };
