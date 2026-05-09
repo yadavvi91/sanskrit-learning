@@ -1,0 +1,23 @@
+src/data/sharedVocab.test.js
+  s_d5e8c30b294ba2::t_bc8b1153f8e85c 69-73,81-88
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_3dc345bbee1fa5 299-300,304-308,312,316
+src/data/vocabulary-extended.js
+  s_d5e8c30b294ba2::t_04c84e824a175e 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "f4def7c9aff11250e895bea597a94c123e70c5ac",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
