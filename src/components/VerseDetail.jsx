@@ -93,27 +93,33 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         )}
       </Section>
 
-      {verse.finiteVerbs && verse.finiteVerbs.length > 0 && (
+      {(verse.finiteVerbs && verse.finiteVerbs.length > 0) || verse.tier === 'auto-stub' ? (
         <Section
           label="क्रिया"
-          labelEn={`Finite verb${verse.finiteVerbs.length > 1 ? 's' : ''} — sentence anchor${verse.finiteVerbs.length > 1 ? 's' : ''}`}
+          labelEn={`Finite verb${(verse.finiteVerbs?.length ?? 0) > 1 ? 's' : ''} — sentence anchor${(verse.finiteVerbs?.length ?? 0) > 1 ? 's' : ''}`}
           glossaryTerm="क्रिया"
           onOpenPrimer={onOpenPrimer}
         >
-          <ul className="finite-list">
-            {verse.finiteVerbs.map((fv, i) => (
-              <li key={i} className="finite-card">
-                <div className="finite-form">{fv.form}</div>
-                <div className="finite-meta">
-                  <span className="meta-pair"><span>धातु</span> {fv.root}</span>
-                  <span className="meta-pair"><span>लकार</span> {fv.lakara}</span>
-                  <span className="meta-pair"><span>पुरुष</span> {fv.purusha}</span>
-                  <span className="meta-pair"><span>वचन</span> {fv.vachana}</span>
-                </div>
-                <div className="finite-gloss">{fv.gloss}</div>
-              </li>
-            ))}
-          </ul>
+          {verse.finiteVerbs && verse.finiteVerbs.length > 0 ? (
+            <ul className="finite-list">
+              {verse.finiteVerbs.map((fv, i) => (
+                <li key={i} className="finite-card">
+                  <div className="finite-form">{fv.form}</div>
+                  <div className="finite-meta">
+                    <span className="meta-pair"><span>धातु</span> {fv.root}</span>
+                    <span className="meta-pair"><span>लकार</span> {fv.lakara}</span>
+                    <span className="meta-pair"><span>पुरुष</span> {fv.purusha}</span>
+                    <span className="meta-pair"><span>वचन</span> {fv.vachana}</span>
+                  </div>
+                  <div className="finite-gloss">{fv.gloss}</div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="finite-missing">
+              ⚠ The engine couldn't identify a finite verb in this verse — likely an आत्मनेपद उत्तम-एकवचन (-ए, -से, -महे) or another less-common ending the regex-based detector misses. The verb may also span multiple verses (एक-वाक्यता). This needs a hand-audit. Open in <strong>Decode Helper</strong> to draft a correction.
+            </p>
+          )}
           {verse.nonFinite && verse.nonFinite.length > 0 && (
             <div className="non-finite">
               <div className="non-finite-label">कृदन्त — non-finite forms</div>
@@ -130,7 +136,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
             </div>
           )}
         </Section>
-      )}
+      ) : null}
 
       {verse.vibhaktiNotes && verse.vibhaktiNotes.length > 0 && (
         <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer}>

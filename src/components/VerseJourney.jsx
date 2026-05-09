@@ -12,8 +12,22 @@ export default function VerseJourney() {
   const params = useParams();
   const navigate = useNavigate();
   const [showOnlyDecoded, setShowOnlyDecoded] = useState(false);
+  const [showOnlyAuditNeeded, setShowOnlyAuditNeeded] = useState(false);
   const [jumpInput, setJumpInput] = useState('');
   const [searchInput, setSearchInput] = useState('');
+
+  // Audit set: auto-stub verses where the engine produced no finite verb
+  // candidate. These are the highest-priority verses to hand-decode.
+  const auditNeeded = useMemo(
+    () => VERSES.filter(
+      (v) => v.tier === 'auto-stub' && (!v.finiteVerbs || v.finiteVerbs.length === 0)
+    ),
+    []
+  );
+  const auditKeys = useMemo(
+    () => new Set(auditNeeded.map((v) => `${v.chapter}.${v.verse}`)),
+    [auditNeeded]
+  );
 
   const searchResults = useMemo(
     () => (searchInput.trim() ? searchVerses(searchInput) : []),
@@ -117,6 +131,18 @@ export default function VerseJourney() {
           {showOnlyDecoded ? '◉ Showing decoded only — click to see all' : '○ Show only decoded'}
         </button>
 
+        <div className="audit-summary" title="Auto-stub verses where the autoDecode engine returned no finite-verb candidate. These are the highest-priority verses to hand-decode in the Decode Helper.">
+          <span className="audit-count">⚠ {auditNeeded.length}</span>
+          <span className="audit-label">verses need क्रिया audit</span>
+        </div>
+        <button
+          type="button"
+          className={`audit-only-toggle ${showOnlyAuditNeeded ? 'is-active' : ''}`}
+          onClick={() => setShowOnlyAuditNeeded(!showOnlyAuditNeeded)}
+        >
+          {showOnlyAuditNeeded ? '◉ Showing audit-needed — click to see all' : '○ Show only audit-needed'}
+        </button>
+
         <div className="rail-divider" />
 
         <h2 className="rail-heading">All chapters</h2>
@@ -130,9 +156,11 @@ export default function VerseJourney() {
               key={ch.number}
               chapter={ch}
               decodedKeys={decodedKeys}
+              auditKeys={auditKeys}
               selected={selected}
               onSelect={setSelected}
               showOnlyDecoded={showOnlyDecoded}
+              showOnlyAuditNeeded={showOnlyAuditNeeded}
             />
           ))}
         </div>
@@ -186,12 +214,15 @@ function SearchResults({ results, onPick }) {
   );
 }
 
-function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded }) {
+function ChapterRow({ chapter, decodedKeys, auditKeys, selected, onSelect, showOnlyDecoded, showOnlyAuditNeeded }) {
   const cells = Array.from({ length: chapter.verseCount }, (_, i) => i + 1);
   const decodedInChapter = cells.filter((v) => decodedKeys.has(`${chapter.number}.${v}`));
+  const auditInChapter = cells.filter((v) => auditKeys?.has(`${chapter.number}.${v}`));
 
   // In "decoded only" mode, hide chapters with no decoded verses.
   if (showOnlyDecoded && decodedInChapter.length === 0) return null;
+  // In "audit only" mode, hide chapters with no audit-needed verses.
+  if (showOnlyAuditNeeded && auditInChapter.length === 0) return null;
 
   return (
     <details className="chapter-row" open={chapter.number <= 2 || (showOnlyDecoded && decodedInChapter.length > 0)}>
@@ -217,6 +248,8 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
           const key = `${chapter.number}.${v}`;
           const decoded = decodedKeys.has(key);
           if (showOnlyDecoded && !decoded) return null;
+          if (showOnlyAuditNeeded && !auditKeys?.has(key)) return null;
+          const needsAudit = auditKeys?.has(key);
           const active =
             selected && selected.chapter === chapter.number && selected.verse === v;
           const tier = decoded ? getVerseTier(chapter.number, v) : 'fallback';
@@ -226,6 +259,9 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
             'auto-stub': `Gītā ${chapter.number}.${v} — auto-stub draft (please audit)`,
             fallback:    `Gītā ${chapter.number}.${v} — not yet decoded`,
           };
+          const title = needsAudit
+            ? `${titleByTier[tier]} — ⚠ engine missed क्रिया, needs audit`
+            : titleByTier[tier];
           return (
             <button
               key={key}
@@ -235,6 +271,7 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
                 'verse-cell',
                 decoded ? 'is-decoded' : 'is-locked',
                 `tier-${tier}`,
+                needsAudit ? 'needs-audit' : '',
                 active ? 'is-active' : '',
               ]
                 .filter(Boolean)
@@ -242,7 +279,7 @@ function ChapterRow({ chapter, decodedKeys, selected, onSelect, showOnlyDecoded 
               onClick={() =>
                 decoded && onSelect({ chapter: chapter.number, verse: v })
               }
-              title={titleByTier[tier]}
+              title={title}
             >
               {v}
             </button>

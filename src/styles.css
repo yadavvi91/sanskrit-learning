@@ -3163,6 +3163,73 @@ td.cell.is-suppletive {
   color: var(--saffron);
 }
 
+/* Audit summary: surfaces engine-failure verses in the rail. */
+.audit-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-left: 2px solid var(--gold, #b5770d);
+  font-family: var(--font-display);
+}
+.audit-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold, #b5770d);
+}
+.audit-label {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.audit-only-toggle {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 6px 10px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-align: left;
+  margin-top: 4px;
+}
+.audit-only-toggle.is-active {
+  background: var(--parchment);
+  border-color: var(--gold, #b5770d);
+  color: var(--gold, #b5770d);
+}
+
+/* Tiny audit indicator on individual verse-cells. */
+.verse-cell.needs-audit::after {
+  content: '⚠';
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  font-size: 9px;
+  color: var(--gold, #b5770d);
+  pointer-events: none;
+}
+.verse-cell {
+  position: relative;
+}
+
+/* "क्रिया not detected" warning rendered inline in VerseDetail. */
+.finite-missing {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  background: rgba(181, 119, 13, 0.06);
+  border-left: 2px solid var(--gold, #b5770d);
+  padding: 8px 12px;
+  margin: 0;
+}
+
 /* ==================== Theme picker — collapsed icon + popover ==================== */
 
 .theme-picker {
