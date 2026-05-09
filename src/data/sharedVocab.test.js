@@ -112,4 +112,13 @@ describe('buildVocabulary — every padaccheda word now has a gloss', () => {
     expect(e).toBeDefined();
     expect(e.gloss).toBeTruthy();
   });
+
+  it('कुरून् (the user-flagged word from 1.25 popover bug) now carries a gloss', () => {
+    // After the bulk-vocab fill (commit 28392a9), the previously-silent
+    // "no grammar data yet" popover for कुरून् in Gītā 1.25 should now
+    // resolve to a real entry from VOCAB_EXTENDED or SHARED_VOCAB.
+    const r = lookupSharedVocab('कुरून्');
+    expect(r).toBeTruthy();
+    expect(r.gloss).toBeTruthy();
+  });
 });
