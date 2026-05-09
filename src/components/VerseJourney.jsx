@@ -17,10 +17,15 @@ export default function VerseJourney() {
   const [searchInput, setSearchInput] = useState('');
 
   // Audit set: auto-stub verses where the engine produced no finite verb
-  // candidate. These are the highest-priority verses to hand-decode.
+  // AND the verse hasn't been hand-classified as nominal (noFiniteVerb).
+  // These are the only verses that genuinely need hand-audit; nominal
+  // sentences (descriptive lists, all-participles) are correctly empty
+  // and shouldn't show up in the audit count.
   const auditNeeded = useMemo(
     () => VERSES.filter(
-      (v) => v.tier === 'auto-stub' && (!v.finiteVerbs || v.finiteVerbs.length === 0)
+      (v) => v.tier === 'auto-stub'
+        && (!v.finiteVerbs || v.finiteVerbs.length === 0)
+        && !v.noFiniteVerb
     ),
     []
   );

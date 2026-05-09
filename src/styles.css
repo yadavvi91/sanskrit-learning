@@ -3230,6 +3230,13 @@ td.cell.is-suppletive {
   margin: 0;
 }
 
+/* Nominal-by-design variant — hand-classified, no warning. */
+.finite-missing.finite-nominal {
+  background: transparent;
+  border-left-color: var(--rule);
+  color: var(--ink-soft);
+}
+
 /* ==================== Theme picker — collapsed icon + popover ==================== */
 
 .theme-picker {

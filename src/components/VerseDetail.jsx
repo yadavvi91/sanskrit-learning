@@ -115,6 +115,10 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
                 </li>
               ))}
             </ul>
+          ) : verse.noFiniteVerb ? (
+            <p className="finite-missing finite-nominal">
+              This verse is a nominal sentence — there is no overt finite verb. The predicate is implied <strong>अस्ति</strong> ("is"), or the verse is a descriptive list of qualities / participles. Hand-classified; no audit needed.
+            </p>
           ) : (
             <p className="finite-missing">
               ⚠ The engine couldn't identify a finite verb in this verse — likely an आत्मनेपद उत्तम-एकवचन (-ए, -से, -महे) or another less-common ending the regex-based detector misses. The verb may also span multiple verses (एक-वाक्यता). This needs a hand-audit. Open in <strong>Decode Helper</strong> to draft a correction.

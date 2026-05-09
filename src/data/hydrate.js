@@ -15,6 +15,7 @@ import { ARNOLD_TRANSLATIONS } from './translations-arnold.js';
 import { HINDI_TRANSLATIONS } from './translations-hindi.js';
 import { INTERP_NOTES } from './interpretive.js';
 import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
+import { FINITE_OVERRIDES } from './finite-overrides.js';
 
 let done = false;
 
@@ -37,6 +38,21 @@ export function hydrateAutoStubVerses() {
         }
       } catch {
         // Skip — the verse just renders without padaccheda.
+      }
+    }
+
+    // Hand-decoded finite-verb overrides: either populate the array
+    // with the actual verb(s) the engine missed, or mark the verse as
+    // genuinely lacking a finite verb (nominal sentence) so the audit
+    // UI doesn't flag it as a failure. Override only fires when the
+    // engine produced nothing (so hand-decoded full-tier entries
+    // aren't disturbed).
+    if (!v.finiteVerbs || v.finiteVerbs.length === 0) {
+      const override = FINITE_OVERRIDES[key];
+      if (override === null) {
+        v.noFiniteVerb = true; // nominal sentence — implied अस्ति
+      } else if (Array.isArray(override) && override.length > 0) {
+        v.finiteVerbs = override;
       }
     }
 
