@@ -1,0 +1,33 @@
+plans/v0-foundation.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 112
+plans/v11-quality-and-workflows.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 37,55,69,90,98,160-163
+plans/v8-reading-workbench.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 155
+article.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 495
+plans/v7-reading-reference.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 114
+plans/v9-decode-helper.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 93
+plans/v1-app.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 3,125,146,175,188,194,202
+plans/v12-noun-declension-reference.md
+  s_d5e8c30b294ba2::t_36a2561daaec8e 54,119,231
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b77d4074d88c5226408077214e46f2d985c7f67a",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
