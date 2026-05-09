@@ -20,6 +20,45 @@ import { DHATUS_EXTENDED } from './dhatus-extended.js';
 import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 import { VERSE_OVERRIDES } from './verse-overrides.js';
 
+// Compound-type names recognised in vibhaktiNotes. Longest-first so
+// "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
+const COMPOUND_TYPES_LONGEST_FIRST = [
+  'इतरेतर द्वंद्व', 'इतरेतर द्वन्द्व', 'समाहार द्वंद्व', 'समाहार द्वन्द्व',
+  'उपपद तत्पुरुष', 'षष्ठी तत्पुरुष', 'तृतीया तत्पुरुष', 'चतुर्थी तत्पुरुष',
+  'पञ्चमी तत्पुरुष', 'सप्तमी तत्पुरुष', 'द्वितीया तत्पुरुष',
+  'तत्पुरुष', 'बहुव्रीहि', 'द्वंद्व', 'द्वन्द्व', 'कर्मधारय', 'अव्ययीभाव',
+];
+
+// Parse vibhaktiNotes for compound type-tagged entries. Returns a list
+// of { compound, type, gloss } extracted from notes like:
+//   "अश्रुपूर्णाकुलेक्षणम् → द्वितीया एकवचन — बहुव्रीहि "(him) whose eyes…""
+//   "महानुभावान् गुरून् → ... ; both बहुव्रीहि"
+function parseSamasaFromVibhakti(notes) {
+  const result = [];
+  for (const note of notes || []) {
+    let type = null;
+    for (const t of COMPOUND_TYPES_LONGEST_FIRST) {
+      if (note.includes(t)) { type = t; break; }
+    }
+    if (!type) continue;
+    const arrowIdx = note.indexOf('→');
+    if (arrowIdx === -1) continue;
+    const before = note.slice(0, arrowIdx).trim();
+    // Compound names — comma-separated; strip parenthetical annotations.
+    const compounds = before.split(/,\s*/)
+      .map((c) => c.replace(/\s*\([^()]*\)\s*/g, '').trim())
+      .filter(Boolean);
+    if (compounds.length === 0) continue;
+    // Gloss — first quoted span (curly or straight quotes).
+    const glossMatch = note.match(/[“"„]([^”"]+)[”"]/) || note.match(/'([^']+)'/);
+    const gloss = glossMatch ? glossMatch[1] : '';
+    for (const c of compounds) {
+      result.push({ compound: c, type, gloss });
+    }
+  }
+  return result;
+}
+
 let done = false;
 
 export function hydrateAutoStubVerses() {
@@ -114,22 +153,34 @@ export function hydrateAutoStubVerses() {
     // verse doesn't have explicit samasNotes. The Ch1/Ch2 batch agents
     // hyphenate light compounds in padaccheda (काम-आत्मानः, स्वर्ग-पराः,
     // जन्म-कर्म-फल-प्रदाम्) but rarely emit a structured samasNotes block.
-    // Surfacing the hyphens as a typeless "compound (vigraha)" entry
-    // gives the user something useful below पदच्छेद on every auto-stub
-    // verse — no compound type or gloss, just the structural split.
+    //
+    // Two-tier derivation:
+    //   1. Parse vibhaktiNotes for "<compound> → <vibhakti> ... <type>
+    //      "<gloss>"" patterns. Many ch1/ch2 vibhakti notes already tag
+    //      the compound type (बहुव्रीहि, तत्पुरुष, द्वंद्व, etc.) and
+    //      give a paraphrase — that's the proper समासविग्रह, not just
+    //      a sandhi split. Match the parsed compound to the hyphenated
+    //      padaccheda entry by prefix (sandhi may modify the visible
+    //      form: सम्प्लुत-उदके in padaccheda ↔ सम्प्लुतोदके in vibhakti).
+    //   2. Fallback for any hyphenated pada with no vibhakti match: a
+    //      bare compound-vigraha entry (just the structural split,
+    //      empty type and gloss, source='derived-from-padaccheda').
     if ((!v.samasNotes || v.samasNotes.length === 0)
         && Array.isArray(v.padaccheda)) {
+      const vibhaktiSamasa = parseSamasaFromVibhakti(v.vibhaktiNotes);
       const derived = [];
       for (const pada of v.padaccheda) {
         if (typeof pada !== 'string' || !pada.includes('-')) continue;
         const parts = pada.split('-').filter(Boolean);
         if (parts.length < 2) continue;
+        const firstPart = parts[0];
+        const match = vibhaktiSamasa.find((s) => s.compound.startsWith(firstPart));
         derived.push({
           compound: pada,
           vigraha: parts.join(' + '),
-          type: '',
-          gloss: '',
-          source: 'derived-from-padaccheda',
+          type: match ? match.type : '',
+          gloss: match ? match.gloss : '',
+          source: match ? 'derived-from-vibhakti' : 'derived-from-padaccheda',
         });
       }
       if (derived.length > 0) v.samasNotes = derived;

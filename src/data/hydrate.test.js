@@ -54,6 +54,21 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(kamatma.source).toBe('derived-from-padaccheda');
   });
 
+  it('samasNotes pick up type + gloss from vibhaktiNotes (samāsa-vigraha, not just sandhi-split)', () => {
+    // 2.46's vibhakti note tags सम्प्लुतोदके as a बहुव्रीहि with the
+    // gloss "(in that) whose-water-is-flooded-(everywhere)". The
+    // padaccheda has the hyphenated form `सम्प्लुत-उदके` — prefix
+    // matching against the parsed vibhakti compound enriches the
+    // derived samasNotes entry with type + gloss.
+    const v = find(2, 46);
+    expect(Array.isArray(v.samasNotes)).toBe(true);
+    const samp = v.samasNotes.find((s) => s.compound === 'सम्प्लुत-उदके');
+    expect(samp).toBeDefined();
+    expect(samp.type).toBe('बहुव्रीहि');
+    expect(samp.gloss.length).toBeGreaterThan(0);
+    expect(samp.source).toBe('derived-from-vibhakti');
+  });
+
   it('hand-decoded samasNotes (Gītā 2.5) are NOT overwritten by derivation', () => {
     const v = find(2, 5);
     expect(Array.isArray(v.samasNotes)).toBe(true);
