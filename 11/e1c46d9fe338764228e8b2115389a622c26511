@@ -1,0 +1,31 @@
+src/App.jsx
+  s_d5e8c30b294ba2::t_e5653e50656b0f 29
+  s_d5e8c30b294ba2::t_bea9a684925fe1 127,134-136
+  s_d5e8c30b294ba2::t_e9cce9feec0b88 12
+package-lock.json
+  ai_agent 13-15,123,493,542,1408,1503-1511,1518-1572,1783-1792,1859,1905-1914,1932-1971,2002-2011,2061-2066,2105-2117,2137-2149,2247-2268,2289-2294,2402-2441,2462-2511,2522-2543,2711-2720,2740-3561,3563-3564,3567-3580,3583,3586-3599,3602-3604,3607-3620,3623-3626,3629-3643,3645-3659,3726-3750,3866-3875,3891,3904,3920-3946,3995-4060,4207-4216,4285-4298,4342-4359,4485-4504,4515-4601,4633-4660,4667,4751,5017-5026
+src/components/Origin.jsx
+  s_d5e8c30b294ba2::t_6d4724cda5faee 1-46
+src/styles.css
+  s_d5e8c30b294ba2::t_179f723731ffee 916-1075
+src/__tests__/app.integration.test.jsx
+  s_d5e8c30b294ba2::t_27726618cb3d5e 34,41
+package.json
+  s_d5e8c30b294ba2::t_8c03629f2dd7d5 15-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "11e1c46d9fe338764228e8b2115389a622c26511",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
