@@ -203,7 +203,11 @@ describe('App — cross-tab navigation flows (the user-flagged gap)', () => {
 
     // Switch to Coverage.
     fireEvent.click(screen.getByText('Coverage'));
-    expect(screen.getByText(/Coverage of all Sanskrit verb tokens/i)).toBeDefined();
+    // The unique element to the Coverage pane is the .coverage-heading h3
+    // and the .coverage-table; the verbs-sub paragraph now also mentions
+    // "Sanskrit verb tokens" (Khoomeik citation), so don't pin on text.
+    expect(document.querySelector('.coverage-heading')).toBeTruthy();
+    expect(document.querySelector('.coverage-table')).toBeTruthy();
   });
 });
 

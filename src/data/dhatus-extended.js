@@ -82,10 +82,32 @@ const DHATUS_PATCH = [
   },
 ];
 
-export const DHATUS_EXTENDED = [
-  ...DHATUS_TOP25,
-  ...DHATUS_PART_2,
-  ...DHATUS_PART_3,
-  ...DHATUS_PART_4,
-  ...DHATUS_PATCH,
-];
+// Dedup on merge — the 8 agents that wrote the part files independently
+// re-listed many common dhātus (33 duplicate ids, 44 duplicate devanagari
+// forms across parts). Top-25 (rich data: futureStem, gitaOccurrences,
+// etc.) wins on collision; among parts 2-4 the first occurrence wins
+// (lower frequencyRank). Final list is ~192 unique dhātus + the PATCH
+// additions for high-frequency verbs the agents missed.
+function mergeDhatus(...lists) {
+  const seenById = new Set();
+  const seenByForm = new Set(); // dedupes by devanagari + gana + pada
+  const merged = [];
+  for (const list of lists) {
+    for (const d of list) {
+      const formKey = `${d.devanagari}|${d.gana}|${d.pada}`;
+      if (seenById.has(d.id) || seenByForm.has(formKey)) continue;
+      seenById.add(d.id);
+      seenByForm.add(formKey);
+      merged.push(d);
+    }
+  }
+  return merged;
+}
+
+export const DHATUS_EXTENDED = mergeDhatus(
+  DHATUS_TOP25,
+  DHATUS_PART_2,
+  DHATUS_PART_3,
+  DHATUS_PART_4,
+  DHATUS_PATCH,
+);

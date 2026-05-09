@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { DHATUS_TOP25, COVERAGE_CURVE, getDhatuById } from '../data/dhatus.js';
+import { COVERAGE_CURVE } from '../data/dhatus.js';
+import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
+
+const getDhatuById = (id) => DHATUS.find((d) => d.id === id) ?? null;
 import DhatuPeriodicTable from './DhatuPeriodicTable.jsx';
 import DhatuDetail from './DhatuDetail.jsx';
 import StackBuilder from './StackBuilder.jsx';
@@ -16,7 +19,7 @@ export default function Verbs() {
   const navigate = useNavigate();
   const [tab, setTab] = useState('periodic');
 
-  const selectedDhatu = (params.dhatuId && getDhatuById(params.dhatuId)) || DHATUS_TOP25[0];
+  const selectedDhatu = (params.dhatuId && getDhatuById(params.dhatuId)) || DHATUS[0];
   const setSelectedDhatu = (d) => navigate(`/verbs/${d.id}`);
   const onOpenVerse = (chapter, verse) => navigate(`/journey/${chapter}/${verse}`);
 
@@ -26,8 +29,8 @@ export default function Verbs() {
         <div>
           <h2 className="verbs-title">धातुसङ्ग्रहः</h2>
           <p className="verbs-sub">
-            The 5-layer verb stack — धातु → गण → लकार → पद → पुरुष × वचन — across {DHATUS_TOP25.length} top dhātus
-            (Khoomeik frequency).
+            The 5-layer verb stack — धातु → गण → लकार → पद → पुरुष × वचन — across all {DHATUS.length} dhātus
+            of the Khoomeik top-192 list (~86.1% coverage of all Sanskrit verb tokens).
           </p>
         </div>
         <nav className="sub-tabs" aria-label="Verb views">
@@ -47,7 +50,7 @@ export default function Verbs() {
       {tab === 'periodic' && (
         <div className="verbs-split">
           <DhatuPeriodicTable
-            dhatus={DHATUS_TOP25}
+            dhatus={DHATUS}
             selectedId={selectedDhatu?.id}
             onSelect={setSelectedDhatu}
           />
@@ -55,9 +58,9 @@ export default function Verbs() {
         </div>
       )}
 
-      {tab === 'stack' && <StackBuilder dhatus={DHATUS_TOP25} />}
+      {tab === 'stack' && <StackBuilder dhatus={DHATUS} />}
 
-      {tab === 'coverage' && <Coverage dhatus={DHATUS_TOP25} curve={COVERAGE_CURVE} />}
+      {tab === 'coverage' && <Coverage dhatus={DHATUS} curve={COVERAGE_CURVE} />}
     </div>
   );
 }
@@ -82,9 +85,11 @@ function Coverage({ dhatus, curve }) {
         </tbody>
       </table>
       <div className="coverage-note">
-        This app currently includes <strong>{knownInThisApp}</strong> dhātus, of which <strong>{inGita}</strong>{' '}
-        appear in already-decoded Gītā verses. Top-25 covers about <strong>45%</strong> of all classical
-        Sanskrit verb tokens — a steep payoff curve.
+        This app currently includes <strong>{knownInThisApp}</strong> dhātus (the Khoomeik top-192
+        frequency-ranked list), of which <strong>{inGita}</strong> appear in already-decoded Gītā
+        verses. The top-192 list covers <strong>~86.1%</strong> of all classical Sanskrit verb tokens
+        (Digital Corpus of Sanskrit, ~988k tokens analyzed via vidyut). The top 25 alone hit ~45% — a
+        steep payoff curve that's the reason the Periodic Table prioritises frequency on the x-axis.
       </div>
     </section>
   );
