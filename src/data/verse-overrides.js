@@ -8,10 +8,12 @@
 // Coverage as it grows:
 //   - _ch1_overrides.js: 38 entries — Ch 1's remaining verses (the
 //     9 already in verses.js inline are: 1.1, 1.2, 1.3, 1.4, 1.5,
-//     1.11, 1.13, 1.22, 1.32). Pending — agent in flight.
+//     1.11, 1.13, 1.22, 1.32).
 //
 // Future chapters land here the same way as agents work through them.
 
-// Empty until the chapter-1 agent lands `_ch1_overrides.js`. Wired this
-// way so test files can resolve the import even before the agent writes.
-export const VERSE_OVERRIDES = {};
+import { CH1_VERSE_OVERRIDES } from './_ch1_overrides.js';
+
+export const VERSE_OVERRIDES = {
+  ...CH1_VERSE_OVERRIDES,
+};
