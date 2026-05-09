@@ -1,0 +1,26 @@
+src/data/coreVocab.js
+  s_d5e8c30b294ba2::t_ae2bda5dbb06e7 1-260,283-300
+  s_d5e8c30b294ba2::t_f03d4eb61a8bd5 261-282
+src/data/coreVocab.test.js
+  s_d5e8c30b294ba2::t_8d8d090f3343e3 35
+  s_d5e8c30b294ba2::t_f43fd81ca2d1e8 1-17,19-34,36-62
+  s_d5e8c30b294ba2::t_95e5edb89c8c8b 18
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_99be827fef0b25 340,348-351,355,360
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d41c757f24ca26d4be6753b867c36ebd01e9c702",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
