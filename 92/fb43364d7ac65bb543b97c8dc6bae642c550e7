@@ -1,0 +1,30 @@
+src/styles.css
+  s_d5e8c30b294ba2::t_7c4d974f895d91 3166-3232
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_521ca096a862fb 103-122
+  s_d5e8c30b294ba2::t_e16d1d09d86461 96,99
+  s_d5e8c30b294ba2::t_9eecf30b9d47bc 139
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_a5ac1e58008d21 15,19-30
+  s_d5e8c30b294ba2::t_bd9a36f67894f3 217,220,224-225
+  s_d5e8c30b294ba2::t_2f9228a5f1c23f 159,163
+  s_d5e8c30b294ba2::t_627b02d046b040 134-145
+  s_d5e8c30b294ba2::t_05ca9f981f9520 251-252,262-264,274
+  s_d5e8c30b294ba2::t_5df5060c4a7831 282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "92fb43364d7ac65bb543b97c8dc6bae642c550e7",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
