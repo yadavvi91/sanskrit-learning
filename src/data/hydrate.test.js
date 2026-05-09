@@ -59,6 +59,19 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
       expect(typeof e.body).toBe('string');
     }
   });
+
+  it('auto-stub verses in covered ranges get a Śaṅkara commentary card', () => {
+    // Gītā 7.5 is auto-stub and inside the ch 7–12 range covered by
+    // _shankara_part2.js. After hydration its references.commentaries
+    // should have one entry from Śaṅkara (Advaita Vedānta).
+    const v = find(7, 5);
+    expect(v.tier).toBe('auto-stub');
+    const shankara = v.references?.commentaries?.find((c) => c.sage === 'Śaṅkara');
+    expect(shankara).toBeDefined();
+    expect(shankara.school).toBe('Advaita Vedānta');
+    expect(typeof shankara.summary).toBe('string');
+    expect(shankara.summary.length).toBeGreaterThan(10);
+  });
 });
 
 describe('hydrateAutoStubVerses — does not overwrite hand-decoded verses', () => {
