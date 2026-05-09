@@ -105,6 +105,25 @@ describe('क्रिया classification — agent-vocab catches embedded ver
   }
 });
 
+describe('splitter — vocab-hint pre-pass for implicit-virama-drop joins', () => {
+  // The agent-built vocab encodes "(X + Y)" hints in glosses for chunks
+  // joined via implicit-virama-drop (e.g., आचार्यम् + उपसङ्गम्य →
+  // आचार्यमुपसङ्गम्य). Regular sandhi rules don't model this writing
+  // convention. The pre-pass uses the hint when canonical-form join
+  // equality validates it as ground truth.
+  it('1.2: आचार्यमुपसङ्गम्य → आचार्यम् + उपसङ्गम्य', () => {
+    const out = autoDecode('आचार्यमुपसङ्गम्य राजा वचनमब्रवीत्');
+    expect(out.padaccheda).toContain('आचार्यम्');
+    expect(out.padaccheda).toContain('उपसङ्गम्य');
+    expect(out.padaccheda).not.toContain('आचार्यमुपसङ्गम्य');
+  });
+
+  it('1.2: वचनमब्रवीत् → वचनम् + अब्रवीत् (verb freed)', () => {
+    const out = autoDecode('आचार्यमुपसङ्गम्य राजा वचनमब्रवीत्');
+    expect(out.padaccheda).toContain('अब्रवीत्');
+  });
+});
+
 describe('splitter — LEFT-conjunct guard on Pattern B', () => {
   it('धर्मक्षेत्रे (1.1) still does NOT split (samāsa, not sandhi)', () => {
     const out = autoDecode('धर्मक्षेत्रे कुरुक्षेत्रे');

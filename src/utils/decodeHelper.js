@@ -13,6 +13,7 @@ import { undoSandhi } from './sandhi.js';
 import { buildVocabulary } from './vocabulary.js';
 import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
 import { lookupSharedVocab } from '../data/sharedVocab.js';
+import { VOCAB_EXTENDED } from '../data/vocabulary-extended.js';
 
 // Stem → dhātu lookup table. Used by classifyByStem (below) to confirm a
 // candidate verb form by checking whether its stripped stem matches a
@@ -784,6 +785,41 @@ function recursiveYanSplit(pada, notes) {
   return [...split.parts.slice(0, -1), ...restRecursed];
 }
 
+// Vocab-hint splits: agent-built vocab glosses sometimes contain a
+// "(X + Y + ...)" parenthetical naming the underlying padas. Many of
+// these encode an *implicit-virama-drop* join — the kind the regular
+// sandhi rules don't catch (e.g., आचार्यम् + उपसङ्गम्य → आचार्यमुपसङ्गम्य,
+// where the virama on -म् drops in continuous writing). When the hint
+// validates structurally — that is, joining the parts and comparing
+// under a canonical form (viramas + avagraha removed, matras mapped
+// to vowel-letters) reproduces the chunk — we trust it as a ground-
+// truth split. Cases where vowel sandhi or yan-rule modifications
+// reshape the join (e.g., सखा + इति → सखेति) fail the equality test
+// and fall through to the existing sandhi rules.
+const MATRA_TO_VOWEL = {
+  'ा': 'अ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ',
+  'ृ': 'ऋ', 'ॄ': 'ॠ', 'े': 'ए', 'ै': 'ऐ', 'ो': 'ओ', 'ौ': 'औ',
+};
+function devaCanonical(s) {
+  return Array.from(s)
+    .filter((c) => c !== '्' && c !== 'ऽ')
+    .map((c) => MATRA_TO_VOWEL[c] || c)
+    .join('');
+}
+const VOCAB_HINT_SPLITS = new Map();
+for (const [key, v] of Object.entries(VOCAB_EXTENDED)) {
+  if (!v || !v.gloss) continue;
+  const m = v.gloss.match(/\(([^()]*\+[^()]*)\)/);
+  if (!m) continue;
+  const parts = m[1].split('+').map((s) => s.trim());
+  if (parts.length < 2) continue;
+  // Each part must be pure Devanagari (no Latin, no parenthetical noise).
+  if (parts.some((p) => !/^[ऀ-ॿ]+$/.test(p))) continue;
+  // Structural validation: canonical join must equal canonical chunk.
+  if (devaCanonical(parts.join('')) !== devaCanonical(key)) continue;
+  VOCAB_HINT_SPLITS.set(key, parts);
+}
+
 // Extract individual padas from a (multi-line) mool string by splitting on
 // whitespace and running each chunk through the sandhi engine.
 function extractPadas(mool) {
@@ -796,6 +832,16 @@ function extractPadas(mool) {
   const padas = [];
   const sandhiNotes = [];
   for (const chunk of chunks) {
+    // Pre-pass: vocab-hint split. If the agent-built vocab has a
+    // structurally-validated "(X + Y)" hint for this chunk, use it
+    // verbatim — it's ground truth for implicit-virama-drop joins
+    // that the regular sandhi rules don't model.
+    const hintParts = VOCAB_HINT_SPLITS.get(chunk);
+    if (hintParts) {
+      sandhiNotes.push(`${chunk} = ${hintParts.join(' + ')} (vocab-hint split)`);
+      padas.push(...hintParts);
+      continue;
+    }
     const r = undoSandhi(chunk);
     let firstPassPadas;
     if (!r || r.length === 0) {
