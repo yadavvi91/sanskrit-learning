@@ -141,3 +141,36 @@ describe('hydrateAutoStubVerses — coverage', () => {
     expect(missing.length, `verses missing Śaṅkara: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
   });
 });
+
+describe('hydrate — dhātu enrichment passes (gitaOccurrences + futureStem)', () => {
+  it('back-populates gitaOccurrences on dhātus from the corpus (the user-flagged "9 → 80" fix)', async () => {
+    const { DHATUS_EXTENDED } = await import('./dhatus-extended.js');
+    const inGita = DHATUS_EXTENDED.filter((d) => (d.gitaOccurrences || []).length > 0);
+    // Was 9 before the back-fill (only the original hand-curated 25 had any).
+    // Now should be ~80 (every dhātu whose root appears in any verse's
+    // finiteVerbs after the corpus-wide hydration). Pin a strict floor so
+    // accidental regressions are caught.
+    expect(inGita.length).toBeGreaterThanOrEqual(70);
+  });
+
+  it('top dhātus (विद्, अस्, भू, इ, दृश्) have a meaningful Gītā-occurrence count', async () => {
+    const { DHATUS_EXTENDED } = await import('./dhatus-extended.js');
+    const find = (deva) => DHATUS_EXTENDED.find((d) => d.devanagari === deva);
+    expect((find('विद्')?.gitaOccurrences || []).length).toBeGreaterThan(20);
+    expect((find('अस्')?.gitaOccurrences || []).length).toBeGreaterThan(20);
+    expect((find('भू')?.gitaOccurrences || []).length).toBeGreaterThan(15);
+    expect((find('दृश्')?.gitaOccurrences || []).length).toBeGreaterThan(15);
+  });
+
+  it('futureStem fill produces लृट् conjugations on bulk-extended dhātus', async () => {
+    const { conjugate } = await import('../utils/conjugator.js');
+    const { DHATUS_EXTENDED } = await import('./dhatus-extended.js');
+    const withFuture = DHATUS_EXTENDED.filter((d) => d.futureStem);
+    // 25 hand-curated + ~54 from the agent batch = ~79 (was 25 pre-fill).
+    expect(withFuture.length).toBeGreaterThanOrEqual(70);
+    // Spot-check a known agent-filled dhātu — √नी (gana 1, anit, futureStem नेष्य).
+    const ni = DHATUS_EXTENDED.find((d) => d.devanagari === 'नी');
+    expect(ni?.futureStem).toBe('नेष्य');
+    expect(conjugate(ni, 'lrt', 'P', 'prathama', 'eka')).toMatch(/नेष्य/);
+  });
+});
