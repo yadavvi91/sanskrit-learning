@@ -1,0 +1,27 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_c42ae829e3fca1 3234-3265
+src/data/patterns.js
+  s_d5e8c30b294ba2::t_919bdbed8b75ee 167-178
+  s_d5e8c30b294ba2::t_61b08876350d6c 87-98
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_11ae558cfe90bd 265-276
+patterns-won.md
+  s_d5e8c30b294ba2::t_2eb621d70e0c1d 32-34
+  s_d5e8c30b294ba2::t_f07bc08108f124 120-122
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "831716142ae4ca51a25b2629c2e7db792db50ff3",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
