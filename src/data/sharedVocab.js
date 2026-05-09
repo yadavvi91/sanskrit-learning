@@ -348,7 +348,7 @@ import { CORE_VOCAB } from './coreVocab.js';
 //
 // Returns null if no pattern matches.
 function inferFromSuffix(word) {
-  if (!word || word.length < 3) return null;
+  if (!word || word.length < 2) return null;
   const synth = (extra) => ({ source: 'suffix-inferred', ...extra });
   // ── Verb forms ──
   if (word.endsWith('न्तु')) return synth({ category: 'verb', lakara: 'lot', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'imperative 3pl — "let them X"' });
@@ -393,6 +393,27 @@ function inferFromSuffix(word) {
   if (word.endsWith('स्मिन्')) return synth({ category: 'pronoun', number: 'eka', case: 'sap', gloss: 'pronominal locative — "in X"' });
   // ── Indeclinable yathā-/sarva- compounds ──
   if (word.startsWith('यथा'))   return synth({ category: 'particle', gloss: 'yathā-compound — "according to / as / in the manner of"' });
+  // ── Present tense verb forms (broad) ──
+  if (word.endsWith('न्ति') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'present 3pl — "they X"' });
+  if (word.endsWith('न्ते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'A', gloss: 'present ātmanepada 3pl — "they X (for self)"' });
+  if (word.endsWith('यते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'Kr', gloss: 'passive present 3sg — "is X-ed"' });
+  if (word.endsWith('ते') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'present ātmanepada 3sg — "X-s (for self)"' });
+  if (word.endsWith('ति') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'P', gloss: 'present 3sg — "X-s"' });
+  if (word.endsWith('मि') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'uttama',  number: 'eka', pada: 'P', gloss: 'present 1sg — "I X"' });
+  if (word.endsWith('से') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'A', gloss: 'present ātmanepada 2sg — "you X (for self)"' });
+  if (word.endsWith('सि') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'P', gloss: 'present 2sg — "you X"' });
+  // Present active participles (शतृ) — -अन्/-अन्तम्/-अन्तः ending after consonant.
+  // Devanagari surface: -न्, -न्तम्, -न्तः, -न्तौ, -न्तः
+  if (word.endsWith('न्तौ')) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. dual) — "X-ing two"' });
+  if (word.endsWith('न्तः') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. pl, nom)' });
+  if (word.endsWith('न्तम्') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. sg, acc)' });
+  if (word.endsWith('न्') && word.length >= 4) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. sg, nom) — "the one who X-s"' });
+  // Absolutive -य ending (अव्ययीभाव style — for prefix+verb forms like आसाद्य, उद्यम्य, आपूर्य)
+  if (word.endsWith('य') && word.length >= 4) return synth({ category: 'krdanta', kind: 'absolutive', gloss: 'absolutive — "having X-ed" (-य suffix)' });
+  // Vocative -न् forms (राजन्, भगवन्)
+  if (/[कगचजटडतदपबमरलवशसह]न्$/.test(word)) {
+    return synth({ category: 'noun', case: 'sambodhana', gloss: '-अन् stem vocative — "O X!"' });
+  }
   // ── Broad fallbacks (run last) ──
   // -आत् (matra-ा + त्) → a-stem ablative singular ("from X")
   if (word.endsWith('ात्') && word.length >= 4) {
