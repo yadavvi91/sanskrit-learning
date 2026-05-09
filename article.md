@@ -6,7 +6,11 @@
 
 ## The shape of a frustration
 
-Maharashtra's SSC Sanskrit curriculum hands you a small book called **शब्द धातु रूपावलिः**. Inside is the राम declension table. देवः, देवौ, देवाः. नरः, नरौ, नराः. Page after page of forms, memorized by rote for an exam, repeated until they're a kind of muscle memory disconnected from anything that means anything.
+My opening line in the conversation that started this project, March 2026:
+
+> *I remember learning Sanskrit in Maharashtra board 8–10th standard textbooks back in ~2006. The way it was taught was very weird, we had to do a* **ratta** *(rote learning) of nouns like देवः देवौ देवाः (and I think) these were only nouns and not verbs. Heck I don't think I remember anything about the verbs. I do remember about the* **समास** *(like बहुव्रीहि समास) but nothing about the verbs.*
+
+The book was **Navneet's शब्द धातु रूपावलिः** — the famous Mumbai-published lookup-and-drill booklet that every Maharashtra SSC Sanskrit student gets. *नवनीत* literally means *butter* — fresh, soft — a slightly charming name for a book that was, for most students, anything but. Inside: the राम declension table. देवः, देवौ, देवाः. नरः, नरौ, नराः. Page after page of forms, memorized by rote for an exam, repeated until they're a kind of muscle memory disconnected from anything that means anything.
 
 What that book never tells you is *where the table comes from*. It is the compiled binary. The source code — Pāṇini's अष्टाध्यायी, one of the most sophisticated formal generative grammars ever written, two-and-a-half thousand years old — is a generative system that **derives** these forms. Apply rule, apply sandhi, get form. The table is the output.
 
@@ -48,6 +52,10 @@ When I started building this app, I inherited everything from the Awadhi visuali
 
 ## The WhatsApp trigger
 
+What I told Claude when explaining how this whole thing started:
+
+> *Some background: in one of my group chats, someone shared something depressing to which I responded with* **क्लैब्यं मा स्म गमः पार्थ** *…to which they asked for the meaning and I looked up anything online and I got [holy-bhagavad-gita.org/chapter/2/verse/3], which piqued my interest because I could see the verses laid out in a grid (attached screenshot) and I thought maybe I should read a couple more and so on and so forth, and then I read 2:5, and then 2:4, and so on and so forth.*
+
 Someone in a group chat posted something depressing. I responded with Gītā 2.3:
 
 > क्लैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते।
@@ -63,7 +71,11 @@ The WhatsApp message wasn't the *origin*. The origin was February 2023 — the D
 
 ## The four verses I fought for every word
 
-The phrase that carried me through the first conversation, and that became the cognitive grain of the whole project: **"It is like I am fighting for every single word."** That's how I retain things. Not by memorizing tables, but by getting stuck on a word and having to grind out *why it has the form it has*, in context, against the rest of the verse. Each verse below is a fight that landed.
+The phrase that carried me through the first conversation, and that became the cognitive grain of the whole project: **"It is like I am fighting for every single word."** That sentence wasn't planned. It came out as Claude was walking me through Gītā 1.1's `समवेताः` and I'd just realized it wasn't the verb I thought it was. The reply at the time:
+
+> *Every word you fight for becomes permanent. You will never forget that समवेताः is a participle, not a finite verb, because you worked for that realization yourself. Contrast this with your school* रूपावलि *experience — you memorized देवः देवौ देवाः without ever fighting for anything, and it evaporated.*
+
+That sentence is the cognitive grain of the whole project. Not memorization, but getting stuck on a word and having to grind out *why it has the form it has*, in context, against the rest of the verse. Each verse below is a fight that landed.
 
 ### Gītā 1.1 — the anchor
 
@@ -174,6 +186,14 @@ Three clarifications that matter:
 **Thematic vs athematic** is the practical split: gaṇa 1, 4, 6, 10 are **thematic** (stem ends in -अ-), endings attach uniformly, easy. Gaṇa 2, 3, 7 are **athematic** — endings attach to consonants, triggering sandhi, with strong/weak stem alternation. For Gītā reading, the six athematic roots that cannot be avoided: **√अस्** (be, 2), **√इ** (go, 2), **√हन्** (kill, 2), **√ज्ञा** (know, 9), **√शृ/शृणु** (hear, 5), **√कृ** (do, 8). Drill these harder than the rest.
 
 ### Khoomeik's data, and what it doesn't give us
+
+When I first showed Claude the source of the dhātu data, I pasted Rohan Pandey's three-tweet thread directly:
+
+> *Sanskrit has >2000 verb roots (dhātus). But do you really need to learn them all? I had Claude analyze 270 Sanskrit texts, and it found that with just the 192 most common dhātus, you can understand ~90% of verbs in literature.*
+>
+> *With the 10 most common dhātus, you can understand 30% of verbs. With 50, 60%. With 192, 90%. With 500, 99%. The rarest ~1000 dhātus are virtually never attested in Classical Sanskrit literature. Btw I used Vidyut to identify each verb's dhātu because of gaṇa ambiguity.*
+>
+> *Thanks to Arun (Vidyut), Neelesh (Ashtadhyayi), Oliver (Digital Corpus of Sanskrit), and Claude for enabling this. I also created a frequency list grouped by gaṇa.*
 
 Rohan Pandey ([@khoomeik](https://x.com/khoomeik)) used **vidyut** (ambuda-org/vidyut) to identify dhātus across the Digital Corpus of Sanskrit (~988 thousand verb tokens). The frequency curve:
 
@@ -373,6 +393,25 @@ Three things, in order of importance:
 **Be a re-entry surface.** I don't read Sanskrit every day. I'll be away from this for three weeks and come back. The Primer view and the Last Visit Banner exist for that re-entry — they surface what I knew last time, where I was, what's next. The whole project has to be designed so that someone returning after a month can pick up the thread without having to re-derive it.
 
 **Stay honest about what's auto-generated versus what's hand-decoded.** The tier system (full / browse / auto-stub) is the project's commitment to honesty about confidence levels. Full-tier verses (the original four — 1.1, 2.3, 2.4, 2.5) are the ones I personally fought through, every word. Browse-tier (twenty-one more) are popular verses I've worked through with help. Auto-stub (the remaining 676) are bulk-imported with engine + agent-generated content, audit-flagged where the agents weren't sure. The tier badge appears on every verse in the journey grid. Clicking a chip surfaces whether the parsing came from hand-curation, the shared dictionary, or the bulk-vocab fill. The audit UI shows exactly which verses still need human attention. The project would rather show a clear "this is paraphrase quality, audit before relying on it" than dress up agent output as scholarship.
+
+---
+
+## A note on pedagogy — examples first, theory second
+
+Mid-way through the second conversation (the one that became `CLAUDE2.md`'s verb sub-app spec), Claude had front-loaded a long theoretical answer before getting to examples, and I pushed back:
+
+> *Do you not know how to ease into a difficult question or a difficult answer? You could have started with examples and then they will do a theory, but instead you produce a lot of text.*
+
+That correction crystallized something I'd been doing intuitively in the project's design but hadn't named. The whole app is structured as **examples first, theory second**:
+
+- Every grammar pattern in *Patterns Won* names the specific verse that triggered it. You meet the pattern in the wild before you meet it as a rule.
+- The Verse Detail page leads with मूल (the verse), then पदच्छेद (split words), then क्रिया (one specific verb identified). Theoretical commentary (व्याख्या) is the *last* section, not the first.
+- The Decode Helper takes the user's pasted मूल and produces a candidate decode immediately. You see the form-shape before you see the rules that would have generated it.
+- The Periodic Table opens with the dhātus colour-coded by gaṇa. Click any cell, see actual conjugated forms. The 5-layer stack diagram (धातु → गण → लकार → पद → पुरुष×वचन) is in the Primer, available for anyone who wants the theory — but the default surface is the worked example.
+
+This is the deliberate inverse of how Maharashtra SSC taught Sanskrit. Maharashtra SSC handed you the table (the worked output) without ever showing the rule. The project's instinct goes the other way: it hands you the *encounter* — a real Gītā verse, a real chip you can click — and lets the rule emerge as you fight your way through. The fight is the curriculum.
+
+The Pāṇinian tradition itself works this way at a much deeper level. The Aṣṭādhyāyī is a generative system, but it's also famously example-driven: rules are stated as compactly as possible, with worked derivations doing the explanatory work. Rule, then derivation, then form. Examples are not illustration; they are the substance.
 
 ---
 
