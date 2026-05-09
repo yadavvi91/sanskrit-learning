@@ -111,41 +111,54 @@ button:disabled {
   font-size: 17px;
 }
 
+/* Horizontal nav bar — distributes tabs evenly across the masthead-inner
+ * width with clean underline-active styling. Replaces the earlier
+ * pill-inside-pill design that looked cramped at full width with 9 tabs. */
 .view-switcher {
   display: flex;
   width: 100%;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--parchment-deep);
-  padding: 4px;
-  box-shadow: var(--shadow);
-  gap: 4px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  margin-top: 4px;
 }
 
 .view-tab {
   font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   background: transparent;
   border: none;
   color: var(--ink-soft);
-  padding: 9px 18px;
-  border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+  padding: 14px 8px;
+  border-radius: 0;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   flex: 1 1 0;
   text-align: center;
   white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.view-tab + .view-tab {
+  border-left: 1px solid var(--rule);
 }
 
 .view-tab:hover {
   color: var(--ink);
+  background: rgba(193, 127, 36, 0.04);
 }
 
 .view-tab.is-active {
-  background: var(--saffron);
-  color: var(--parchment);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), 0 4px 10px -6px rgba(140, 90, 30, 0.7);
+  color: var(--saffron);
+  border-bottom-color: var(--saffron);
+  background: transparent;
+  box-shadow: none;
+  font-weight: 500;
 }
 
 /* ---------- Journey layout ---------- */
