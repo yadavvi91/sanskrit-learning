@@ -54,9 +54,17 @@ That project was the first form the obsession took. The Sanskrit project is the 
 
 ## bvsiitm.github.io — the pedagogy that made this seem possible
 
-Mid-conversation, I sent Claude a few links: [`gita-sanskrit-teacher.netlify.app`](https://gita-sanskrit-teacher.netlify.app/) and [`bvsiitm.github.io/sanskrit-gita-learn`](https://bvsiitm.github.io/sanskrit-gita-learn/) (and its [Lesson 2](https://bvsiitm.github.io/sanskrit-gita-learn/lesson/2) and [interlude](https://bvsiitm.github.io/sanskrit-gita-learn/interlude)). These weren't decorative references. The bvsiitm site is the project that convinced me the thing I wanted was actually buildable.
+Mid-conversation I sent Claude a few links: [`gita-sanskrit-teacher.netlify.app`](https://gita-sanskrit-teacher.netlify.app/) and [`bvsiitm.github.io/sanskrit-gita-learn`](https://bvsiitm.github.io/sanskrit-gita-learn/) (with its [Interlude](https://bvsiitm.github.io/sanskrit-gita-learn/interlude) and [Lesson 2](https://bvsiitm.github.io/sanskrit-gita-learn/lesson/2)). These weren't decorative references. **B. V. Srinivasan**'s site is the project that convinced me the thing I wanted was actually buildable, and the way he structured it taught me how.
 
-**B. V. Srinivasan**, the author, framed the project's thesis publicly in three tweets — and the framing maps almost exactly onto what I was trying to do:
+The framing on his landing page is the cleanest statement of the problem I've seen anywhere:
+
+> **Sanskrit is not hard. The way it is taught is.**
+>
+> Most students encounter Sanskrit in one of three ways: rote-learning of shlokas in school with no understanding, an intimidating grammar textbook with thousands of rules before a single sentence, or a translation they can read but cannot parse.
+>
+> *The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it.*
+
+He framed the same project thesis publicly in three tweets:
 
 > *I always thought that Sanskrit can be taught more "naturally" than it is. The attached post also indicates that it can be done more parsimoniously than I thought.* — [@BVSrinivasan, citing Khoomeik's 192-dhātu post](https://x.com/BVSrinivasan/status/2031768975391207750)
 
@@ -64,17 +72,79 @@ Mid-conversation, I sent Claude a few links: [`gita-sanskrit-teacher.netlify.app
 
 > *Interlude: bvsiitm.github.io/sanskrit-gita-learn/interlude — Lesson 2: bvsiitm.github.io/sanskrit-gita-learn/lesson/2* — [@BVSrinivasan](https://x.com/BVSrinivasan/status/2032516518957953409)
 
-Three things in that framing landed for me. First, **"taught more naturally than it is"** — the same Maharashtra SSC complaint, named precisely. Sanskrit *can* be taught naturally; the existing pipelines don't. Second, **"more parsimoniously than I thought"** — the Khoomeik insight that 192 verb roots cover 90% of all Sanskrit verb tokens means the curriculum doesn't have to be infinite to be useful. Third, **"these tools will lead to a boom in educational apps"** — Srinivasan was explicit that AI-tools-plus-personal-itch was a viable shape of project, not a hobbyist indulgence. He'd just shipped his version. I could ship mine.
+Three things in that framing landed. First, **"taught more naturally than it is"** — the same Maharashtra SSC complaint, named precisely. Second, **"more parsimoniously than I thought"** — the Khoomeik 192-dhātu insight as the enabling parsimony. Third, **"boom in educational apps"** — Srinivasan was explicit that AI-tools-plus-personal-itch was a viable shape, not a hobbyist indulgence. He'd shipped his version. I could ship mine.
 
-The pedagogy I borrowed directly from bvsiitm:
+But it's the *structure* of his lessons that did the convincing. I'll walk through what each one actually does.
 
-- **Known → +1 → Drill → SRS.** Always start from what the student already knows, add exactly *one* new idea, drill on it, then space it. Lesson 2 was where I personally encountered सप्तमी (locative) and प्रथमा (nominative) as concepts, with the राम declension table being filled in *one case at a time* across pages, not all at once.
-- **Sandhi comes last.** Understand what the unjoined form looked like first. *Then* learn why it changed. Reverse this order — the way schools tend to — and you spend a year on phonology before you ever read a sentence.
-- **The Gītā as the corpus.** Not because the Gītā is sacred; because it's a closed text with a known vocabulary distribution and famous chapter 2 verses that are a high-density grammar lab. (The fact that it also opens with **धृतराष्ट्र उवाच** — *Dhṛtarāṣṭra said* — is the perfect first sentence: two words encoding vibhakti + lakāra + dhātu + sandhi simultaneously.)
+### Lesson 1 — one two-word phrase, four grammar concepts
 
-The two pieces — **Khoomeik's parsimony data** (192 dhātus = 86% coverage) and **Srinivasan's pedagogy** (Known → +1 → Drill, sandhi last, Gītā as corpus) — are the dual thesis this project rests on. Without the parsimony, Sanskrit looks infinite and the project is hopeless. Without the pedagogy, you have data with no on-ramp and the user gives up by lesson 3. Together, they make the thing buildable.
+The whole of Lesson 1 (~20 MCQ cards across four "sets") is built around the opening two words of the Gītā: **धृतराष्ट्र उवाच** (*Dhṛtarāṣṭra said*).
 
-What I added on top: the *fight every word* discipline, the verse-by-verse journal as the durable artefact, and the honesty-about-confidence tier system.
+Inside those two words sit four complete grammar concepts:
+
+| Set | Concept | What you learn from धृतराष्ट्र उवाच |
+|---|---|---|
+| 1 | **Prathamā Vibhakti** (nominative case) | The surface form `धृतराष्ट्र` is the sandhi'd form of the underlying nominative `धृतराष्ट्रः`. The case marks the speaker as the subject. |
+| 2 | **Sandhi** (specifically Visarga Lopa) | The visarga `ः` *disappears* before `उ`. Pāṇini 8.3.17. This is why the text shows `धृतराष्ट्र` with no visible visarga — the rule erased it. |
+| 3 | **Dhātu** (root) and **Lakāra** (tense) | `उवाच` is the perfect-tense (लिट्) third-person-singular form of `√वच्` (to speak). One root, many forms — once you know the root you can predict उवाच, अवोचत्, वक्ष्यति, ऊचुः. |
+| 4 | **Review** — all four concepts integrated | Five questions that demand you spot Prathamā + Sandhi + Dhātu + Lakāra simultaneously in the same two-word phrase. |
+
+Twenty cards. Two words. Every set introduces *exactly one* new concept, drills it through five variants (`सञ्जय उवाच`, `अर्जुन उवाच`, `मधुसूदन उवाच`, etc.), then layers on the next concept. By the end of Lesson 1 you've internalized four concepts so deeply that the very first two words of the Gītā are completely transparent.
+
+### The Interlude — a meta-lesson on how to learn
+
+Between Lesson 1 and Lesson 2 sits an interlude that does no grammar at all. It's an essay-form page on the *epistemology of language learning*. Karl Popper drop-quoted at the top:
+
+> "All observation is theory-laden."
+
+Then a thesis I find genuinely well-articulated:
+
+> *Every act of learning happens inside a context — a background of hunches, half-formed theories, and borrowed intuitions that the learner brings to the table before a single new fact arrives. The brain does not receive the world passively; it projects a model onto it, then corrects. Learning is not filling an empty vessel. It is the ongoing refinement of a guess.*
+>
+> *You already know something about how languages work — from Hindi, Tamil, English, or wherever you come from. You have instincts about what a verb is, what a subject does, what it means for a word to 'belong' to another. Sanskrit will feel strange in places and eerily familiar in others. Both feelings are data. Trust them. Guess freely.*
+>
+> *Wrong answers are not failures here. They are the system working exactly as intended.*
+
+Two MCQ cards demonstrate the philosophy. *What does `उलूकः` mean?* — answer: owl, cognate with English *owl* via Proto-Indo-European `*ul-`. *What does `दुहितृ` mean?* — daughter, cognate with English *daughter* via PIE `*dʰugh₂tḗr`. The point: a Hindi/English speaker can *guess* these from cross-linguistic resonance. They don't need to be told. They just need permission to try.
+
+The interlude closes with three principle cards:
+
+- **I — Guess freely.** Use whatever language you know. Intuition is data.
+- **II — Wrong = Learning.** The SRS brings missed cards back. Every wrong answer is the system doing its job.
+- **III — Don't memorise.** You do not need to remember everything now. The programme is designed for forgetting.
+
+That third one is the one I keep coming back to — *the programme is designed for forgetting*. Memorization is not the unit of progress. Re-encounter is.
+
+### Lesson 2 — same verse, four new concepts
+
+Lesson 2 stays inside Gītā 1.1 (`धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः। मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय॥`) and walks four more concepts out of it:
+
+| Set | Concept | Where in 1.1 |
+|---|---|---|
+| 1 | **Saptamī Vibhakti** (locative case, `-े` ending) | `धर्मक्षेत्रे` and `कुरुक्षेत्रे` — "in the field of dharma, in the field of the Kurus" |
+| 2 | **Word Order** | The free-order insight: `कुरुक्षेत्रे कृष्णः` and `कृष्णः कुरुक्षेत्रे` mean the same thing because the endings carry the meaning. The position is for emphasis. |
+| 3 | **Sambodhana** (vocative) | `सञ्जय` at the end of the verse — calling out to Sanjaya. Distinguished from the visarga-lopa'd nominative form by *reason*: the case ends in -अ; the lopa form ends in -अ for a different reason. |
+| 4 | **Śatva Sandhi** | `पाण्डवाश्चैव = पाण्डवाः + च + एव` — visarga before `च` becomes `श्`, then `च + एव → चैव` by the existing अ + ए → ऐ rule. Two sandhi operations stacked. |
+
+The progression matters. After Lesson 1 you have four concepts (`उवाच`-shaped). After Lesson 2 you have eight (now the locative, word-order theory, vocative, and a second sandhi class). The राम declension table at this point has *two cells filled in* (Prathamā singular, Saptamī singular) — and Srinivasan explicitly says the table will be filled *one cell at a time*. Eight cases × three numbers = 24 cells. At one or two cells per lesson, the full table emerges over the course of the curriculum, never as a wall of forms to memorize.
+
+### What I borrowed, and what I diverged from
+
+The pedagogy I took directly:
+
+- **Known → +1 → Drill → SRS** — start where the student is, add exactly one idea, drill it, space it. The Practice mode in this app implements that loop.
+- **Sandhi comes last.** Understand what the unjoined form looks like first; *then* learn why it changed. The Decode Helper enforces this — पदच्छेद is shown before sandhi notes.
+- **One Gītā verse → many concepts.** The four-verse decode notes (1.1, 2.3, 2.4, 2.5) follow this principle: each verse is mined for as many concepts as it can yield. Verse 2.5 alone produced six patterns.
+- **The राम declension table fills slowly.** The Atlas → Declensions tab in this app has the full 24-cell राम table, but Verse Detail popovers only surface the case that the verse you're reading actually uses.
+- **Trust intuition.** The popovers in Verse Journey present the parsing as data, not as gospel — the user is meant to look at it and form a model, not to memorize.
+
+Where I diverged:
+
+- **bvsiitm is a curriculum; this is a journal.** Srinivasan's site is structured pedagogy with a planned arc (Lesson 1 → Lesson 2 → ...). This app is a working journal: every verse I personally fight through gets recorded, and the structure emerges from what I happened to read, not from a predetermined sequence.
+- **bvsiitm is for any beginner; this is for one specific learner with an existing background.** The Maharashtra SSC training I had retains some scaffolding (बहुव्रीहि समास, the राम declension table, the प्रथम-पुरुष flip). I didn't start from zero. The app's *Patterns Won* view tracks where I am specifically, not where a generic learner is.
+- **bvsiitm has 700 Gītā verses as a planned distant target; this app starts with all 700 already in the corpus, tier-tagged by how decoded they are.** The user can navigate to any verse at any time. The bulk-imported `auto-stub` tier is honest about what hasn't been hand-decoded.
+
+The two enabling theses — **Khoomeik's parsimony** (192 dhātus = 86% coverage) and **Srinivasan's pedagogy** (Known → +1, sandhi last, one verse → many concepts) — are what make this project tractable. Without the parsimony, Sanskrit looks infinite. Without the pedagogy, you have data with no on-ramp and the user gives up by lesson 3. Together they make the project buildable. What I added on top: the *fight every word* discipline, the verse-by-verse journal as the durable artefact, and the tier system that's honest about confidence levels.
 
 ---
 
