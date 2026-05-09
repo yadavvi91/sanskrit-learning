@@ -167,6 +167,14 @@ export function hydrateAutoStubVerses() {
           if (!v.finiteVerbs || v.finiteVerbs.length === 0) {
             v.finiteVerbs = stub.finiteVerbs;
           }
+          // Plumb sandhiNotes from the engine — these are the structural
+          // splits the engine made (visarga sandhi, yan, makara, vocab-hint
+          // splits, etc.). Without this the सन्धि section was empty for
+          // every Ch 3+ verse even when the engine clearly did the work.
+          if ((!v.sandhiNotes || v.sandhiNotes.length === 0)
+              && Array.isArray(stub.sandhiNotes) && stub.sandhiNotes.length > 0) {
+            v.sandhiNotes = stub.sandhiNotes;
+          }
         }
       } catch {
         // Skip — the verse just renders without padaccheda.
