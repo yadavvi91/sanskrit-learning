@@ -1,0 +1,27 @@
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_796328898203b8 149-165
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_a89b45f779e191 198-208
+  s_d5e8c30b294ba2::t_2b7b6064cc59b9 32-58
+  s_d5e8c30b294ba2::t_ebd99e6f98acdb 139-141
+src/data/hydrate.test.js
+  s_d5e8c30b294ba2::t_9636adff3e6daf 72-84
+src/styles.css
+  s_d5e8c30b294ba2::t_3cc79bf2631b1d 3455-3487
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "7e9077e9a7cef645811d6d8b0e7cdcdce82d9c06",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
