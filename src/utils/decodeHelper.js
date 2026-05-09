@@ -875,8 +875,16 @@ const MATRA_TO_VOWEL = {
 };
 function devaCanonical(s) {
   return Array.from(s)
-    .filter((c) => c !== '्' && c !== 'ऽ')
-    .map((c) => MATRA_TO_VOWEL[c] || c)
+    // Drop viramas, avagrahas, candrabindu (nasal-vowel marker).
+    .filter((c) => c !== '्' && c !== 'ऽ' && c !== 'ँ')
+    .map((c) => {
+      // Anusvara ↔ -म्: visually distinct but phonologically the same
+      // word-final nasal. हृदं ↔ हृदम्, इदं ↔ इदम्, विष्टभ्याहमिदं ↔
+      // विष्टभ्याहमिदम्. Without this, vocab-hint splits like
+      // "विष्टभ्य + अहम् + इदम्" don't match the chunk विष्टभ्याहमिदं.
+      if (c === 'ं') return 'म';
+      return MATRA_TO_VOWEL[c] || c;
+    })
     .join('');
 }
 const VOCAB_HINT_SPLITS = new Map();
