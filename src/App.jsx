@@ -9,6 +9,7 @@ import LastVisitBanner from './components/LastVisitBanner.jsx';
 import Practice from './components/Practice.jsx';
 import Vocabulary from './components/Vocabulary.jsx';
 import DecodeHelper from './components/DecodeHelper.jsx';
+import Origin from './components/Origin.jsx';
 import ThemePicker from './components/ThemePicker.jsx';
 import { hydrateAutoStubVerses } from './data/hydrate.js';
 
@@ -25,6 +26,7 @@ const VIEWS = [
   { path: '/decode',   label: 'Decode' },
   { path: '/primer',   label: 'Primer' },
   { path: '/practice', label: 'Practice' },
+  { path: '/origin',   label: 'Origin' },
 ];
 
 // Reset window scroll on every pathname change.
@@ -122,12 +124,16 @@ export default function App() {
           <Route path="/decode" element={<DecodeHelper />} />
           <Route path="/primer" element={<Primer />} />
           <Route path="/practice" element={<Practice />} />
+          <Route path="/origin" element={<Origin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
       <footer className="colophon">
         <span>SOV · पदच्छेद · अन्वय · हिंदी · English</span>
+        <NavLink to="/origin" className="colophon-link" title="How this project came to be">
+          How this began →
+        </NavLink>
       </footer>
     </div>
   );

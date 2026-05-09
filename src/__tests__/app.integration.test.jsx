@@ -31,14 +31,14 @@ function mount(initialUrl = '/') {
 }
 
 describe('App — masthead navigation between top-level views', () => {
-  it('renders the masthead with all 8 view tabs', () => {
+  it('renders the masthead with all 9 view tabs (Origin lands last)', () => {
     mount('/journey');
     const nav = screen.getByLabelText('Views');
     const tabs = within(nav).getAllByRole('link');
     const labels = tabs.map((t) => t.textContent);
     expect(labels).toEqual([
       'Verse Journey', 'Patterns Won', 'Verbs', 'Atlas',
-      'Words', 'Decode', 'Primer', 'Practice',
+      'Words', 'Decode', 'Primer', 'Practice', 'Origin',
     ]);
   });
 
