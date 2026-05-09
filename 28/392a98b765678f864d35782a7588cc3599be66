@@ -1,0 +1,43 @@
+src/data/_vocab_extended_part6.js
+  s_d5e8c30b294ba2::t_16f01ae576a22a 1-509
+src/data/_vocab_extended_part7.js
+  s_d5e8c30b294ba2::t_ecc1ea20fb9c10 1-306,308-516
+  s_d5e8c30b294ba2::t_ab9b4ef08f980e 307
+src/data/vocabulary-extended.js
+  s_d5e8c30b294ba2::t_8363a3e27cc448 12-20,23-41
+src/data/_vocab_extended_part4.js
+  s_d5e8c30b294ba2::t_2c1e7d06940320 1-45,47-103,105-127,129-142,144-350,352-500,502-512
+  s_d5e8c30b294ba2::t_76a43ed015ce41 501
+  s_d5e8c30b294ba2::t_2508e02b4063d8 46
+  s_d5e8c30b294ba2::t_9fe38209ae1c37 128
+  s_d5e8c30b294ba2::t_d8338a94449a0e 143
+  s_d5e8c30b294ba2::t_914f99eb1c1b8d 104
+  s_d5e8c30b294ba2::t_3ab7c52080a834 351
+src/data/_vocab_extended_part3.js
+  s_d5e8c30b294ba2::t_77ce826c62b4d5 1-515
+src/data/_vocab_extended_part1.js
+  s_d5e8c30b294ba2::t_e8381eb0b485f4 1-515
+src/data/_vocab_extended_part2.js
+  s_d5e8c30b294ba2::t_a6f9b0445affdf 1-505,507-514
+  s_d5e8c30b294ba2::t_1e0cd84675ee24 506
+src/data/_vocab_extended_part5.js
+  s_d5e8c30b294ba2::t_684d72ba59071e 1-515
+src/data/_vocab_extended_part8.js
+  s_d5e8c30b294ba2::t_ab393cbd4024e7 1-505
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "28392a98b765678f864d35782a7588cc3599be66",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
