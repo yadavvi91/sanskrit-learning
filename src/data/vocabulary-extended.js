@@ -9,15 +9,33 @@
 // have an inline `// AUDIT` comment.
 //
 // Coverage status:
-//   - _vocab_extended_part1.js: 504 entries  (pending — round-robin chunk 1)
-//   - _vocab_extended_part2.js: 504 entries  (pending)
-//   - _vocab_extended_part3.js: 504 entries  (pending)
-//   - _vocab_extended_part4.js: 503 entries  (pending)
-//   - _vocab_extended_part5.js: 503 entries  (pending)
-//   - _vocab_extended_part6.js: 503 entries  (pending)
-//   - _vocab_extended_part7.js: 503 entries  (pending)
-//   - _vocab_extended_part8.js: 503 entries  (pending)
-// Total: 4027 entries — every unique unknown padaccheda word found
+//   - _vocab_extended_part1.js: 504 entries  (loaded)
+//   - _vocab_extended_part2.js: 504 entries  (loaded)
+//   - _vocab_extended_part3.js: 504 entries  (loaded)
+//   - _vocab_extended_part4.js: 503 entries  (loaded)
+//   - _vocab_extended_part5.js: 503 entries  (loaded)
+//   - _vocab_extended_part6.js: 503 entries  (loaded)
+//   - _vocab_extended_part7.js: 504 entries  (loaded)
+//   - _vocab_extended_part8.js: 503 entries  (loaded)
+// Total: 4028 entries — every unique unknown padaccheda word found
 // in the 676 auto-stub verses, hand-classified by agent.
 
-export const VOCAB_EXTENDED = {};
+import { VOCAB_EXTENDED_PART_1 } from './_vocab_extended_part1.js';
+import { VOCAB_EXTENDED_PART_2 } from './_vocab_extended_part2.js';
+import { VOCAB_EXTENDED_PART_3 } from './_vocab_extended_part3.js';
+import { VOCAB_EXTENDED_PART_4 } from './_vocab_extended_part4.js';
+import { VOCAB_EXTENDED_PART_5 } from './_vocab_extended_part5.js';
+import { VOCAB_EXTENDED_PART_6 } from './_vocab_extended_part6.js';
+import { VOCAB_EXTENDED_PART_7 } from './_vocab_extended_part7.js';
+import { VOCAB_EXTENDED_PART_8 } from './_vocab_extended_part8.js';
+
+export const VOCAB_EXTENDED = {
+  ...VOCAB_EXTENDED_PART_1,
+  ...VOCAB_EXTENDED_PART_2,
+  ...VOCAB_EXTENDED_PART_3,
+  ...VOCAB_EXTENDED_PART_4,
+  ...VOCAB_EXTENDED_PART_5,
+  ...VOCAB_EXTENDED_PART_6,
+  ...VOCAB_EXTENDED_PART_7,
+  ...VOCAB_EXTENDED_PART_8,
+};
