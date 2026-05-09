@@ -19,6 +19,7 @@ import { FINITE_OVERRIDES } from './finite-overrides.js';
 import { DHATUS_EXTENDED } from './dhatus-extended.js';
 import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 import { VERSE_OVERRIDES } from './verse-overrides.js';
+import { lookupSharedVocab } from './sharedVocab.js';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -234,11 +235,24 @@ export function hydrateAutoStubVerses() {
         if (parts.length < 2) continue;
         const firstPart = parts[0];
         const match = vibhaktiSamasa.find((s) => s.compound.startsWith(firstPart));
+        let derivedGloss = match ? match.gloss : '';
+        // Fallback: when no vibhakti type-tag is available, look up each
+        // component in the shared dictionary and synthesise a gloss like
+        // "twice-born (द्विज) + best (उत्तम)" so the user at least sees
+        // what each part means — this is samāsa-vigraha lite, until a
+        // human annotates the full type+gloss.
+        if (!match) {
+          const componentGlosses = parts.map((part) => {
+            const v0 = lookupSharedVocab(part);
+            return v0?.gloss ? part + ' (' + v0.gloss.split(/[—,;(]/)[0].trim() + ')' : part;
+          });
+          derivedGloss = componentGlosses.join(' + ');
+        }
         derived.push({
           compound: pada,
           vigraha: parts.join(' + '),
           type: match ? match.type : '',
-          gloss: match ? match.gloss : '',
+          gloss: derivedGloss,
           source: match ? 'derived-from-vibhakti' : 'derived-from-padaccheda',
         });
       }
