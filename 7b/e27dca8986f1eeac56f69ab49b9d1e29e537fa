@@ -1,0 +1,23 @@
+src/data/commentaries-shankara.js
+  s_d5e8c30b294ba2::t_803bf98331a1d2 13,15-16,23-29
+src/data/_shankara_part2.js
+  s_d5e8c30b294ba2::t_60c4aea53d4b8e 1-225
+src/data/_shankara_part3.js
+  s_d5e8c30b294ba2::t_ff970454885471 1-228
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "7be27dca8986f1eeac56f69ab49b9d1e29e537fa",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
