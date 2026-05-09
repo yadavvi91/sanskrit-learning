@@ -339,6 +339,83 @@ export const SHARED_VOCAB = {
 import { VOCAB_EXTENDED } from './vocabulary-extended.js';
 import { CORE_VOCAB } from './coreVocab.js';
 
+// Suffix-pattern fallback: when a form isn't in any dictionary, try to
+// infer its category + grammatical signal from its ending. Best-effort,
+// not authoritative — but better than "no grammar data yet" on every
+// inflected form the agent vocab missed. Each pattern is conservative
+// (multi-character suffix where possible) to avoid false positives on
+// short tokens.
+//
+// Returns null if no pattern matches.
+function inferFromSuffix(word) {
+  if (!word || word.length < 3) return null;
+  const synth = (extra) => ({ source: 'suffix-inferred', ...extra });
+  // ── Verb forms ──
+  if (word.endsWith('न्तु')) return synth({ category: 'verb', lakara: 'lot', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'imperative 3pl — "let them X"' });
+  if (word.endsWith('न्ताम्')) return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'prathama', number: 'bahu', gloss: 'imperative ātmanepada 3pl' });
+  if (word.endsWith('ध्वम्')) return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'bahu', gloss: 'imperative ātmanepada 2pl — "you all do!"' });
+  if (word.endsWith('स्व'))  return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'eka', gloss: 'imperative ātmanepada 2sg — "do (for yourself)!"' });
+  if (word.endsWith('ष्यति') || word.endsWith('स्यति')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'P', gloss: 'future 3sg — "will X"' });
+  if (word.endsWith('ष्यन्ति') || word.endsWith('स्यन्ति')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'future 3pl — "they will X"' });
+  if (word.endsWith('ष्यसि') || word.endsWith('स्यसि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'madhyama', number: 'eka', pada: 'P', gloss: 'future 2sg — "you will X"' });
+  if (word.endsWith('ष्यामि') || word.endsWith('स्यामि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'uttama', number: 'eka', pada: 'P', gloss: 'future 1sg — "I will X"' });
+  if (word.endsWith('ष्यते') || word.endsWith('स्यते')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'future ātmanepada 3sg' });
+  // ── Optative (विधिलिङ्) ──
+  if (word.endsWith('ेयुः')) return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'bahu', gloss: 'optative 3pl — "they should X"' });
+  if (word.endsWith('ेम'))    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'uttama', number: 'bahu', gloss: 'optative 1pl — "we should X"' });
+  if (word.endsWith('ेताम्')) return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'dvi', gloss: 'optative 3du — "the two should X"' });
+  if (word.endsWith('यात्'))  return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: 'optative 3sg (irregular -यात्)' });
+  // ── Krdanta endings ──
+  if (word.endsWith('त्वा'))  return synth({ category: 'krdanta', kind: 'absolutive', gloss: 'absolutive — "having X-ed"' });
+  if (word.endsWith('तुम्'))  return synth({ category: 'krdanta', kind: 'infinitive', gloss: 'infinitive — "to X"' });
+  if (word.endsWith('इतव्यम्') || word.endsWith('तव्यम्')) return synth({ category: 'krdanta', kind: 'gerundive', gloss: 'gerundive — "to be X-ed / ought to be X-ed"', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('अनीयम्') || word.endsWith('नीयम्'))  return synth({ category: 'krdanta', kind: 'gerundive', gloss: 'gerundive — "to be X-ed"', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('इतम्'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('इतः'))   return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
+  if (word.endsWith('िताः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl)', gender: 'm', number: 'bahu', case: 'pra' });
+  if (word.endsWith('ितान्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl, object)', gender: 'm', number: 'bahu', case: 'dvi' });
+  // -त-suffix PPP catches verbs whose stem already ends in vowel:
+  // गत/जात/स्थित — caught above. But ष्ट (कृष्ट, हृष्ट) and ष्ट्र-class also count.
+  if (word.endsWith('ष्टाः')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl)', gender: 'm', number: 'bahu', case: 'pra' });
+  if (word.endsWith('ष्टम्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('ष्टः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
+  // ── A-stem nominal endings (broad fallback) ──
+  if (word.endsWith('ानाम्')) return synth({ category: 'noun', number: 'bahu', case: 'sha', gloss: 'a-stem genitive plural — "of (the) X-s"' });
+  if (word.endsWith('एभ्यः')) return synth({ category: 'noun', number: 'bahu', case: 'cha', gloss: 'a-stem dative/ablative plural' });
+  if (word.endsWith('ेभ्यः')) return synth({ category: 'noun', number: 'bahu', case: 'cha', gloss: 'a-stem dative/ablative plural' });
+  if (word.endsWith('ैः'))    return synth({ category: 'noun', number: 'bahu', case: 'tri', gloss: 'a-stem instrumental plural — "by/with X-s"' });
+  if (word.endsWith('ान्'))   return synth({ category: 'noun', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'a-stem accusative plural (m)' });
+  if (word.endsWith('आभ्याम्')) return synth({ category: 'noun', number: 'dvi', case: 'tri', gloss: 'a-stem dual instrumental/dative/ablative' });
+  if (word.endsWith('ाभिः'))   return synth({ category: 'noun', gender: 'f', number: 'bahu', case: 'tri', gloss: 'ā-stem feminine instrumental plural' });
+  if (word.endsWith('एण'))    return synth({ category: 'noun', number: 'eka', case: 'tri', gloss: 'a-stem instrumental singular — "by X"' });
+  if (word.endsWith('स्य'))   return synth({ category: 'noun', number: 'eka', case: 'sha', gloss: 'a-stem genitive singular — "of X"' });
+  if (word.endsWith('स्मात्')) return synth({ category: 'pronoun', number: 'eka', case: 'pan', gloss: 'pronominal ablative — "from X / for that reason"' });
+  if (word.endsWith('स्मिन्')) return synth({ category: 'pronoun', number: 'eka', case: 'sap', gloss: 'pronominal locative — "in X"' });
+  // ── Indeclinable yathā-/sarva- compounds ──
+  if (word.startsWith('यथा'))   return synth({ category: 'particle', gloss: 'yathā-compound — "according to / as / in the manner of"' });
+  // ── Broad fallbacks (run last) ──
+  // -आत् (matra-ा + त्) → a-stem ablative singular ("from X")
+  if (word.endsWith('ात्') && word.length >= 4) {
+    return synth({ category: 'noun', number: 'eka', case: 'pan', gloss: 'a-stem ablative singular — "from X"' });
+  }
+  // Vocative endings — broad
+  if (word.endsWith('हो'))    return synth({ category: 'noun', case: 'sambodhana', gloss: 'vocative (compound) — "O X!"' });
+  // Word-final -ः with reasonable stem length → m. nom. sg. (a-stem)
+  if (word.endsWith('ः') && word.length >= 4 && !word.endsWith('ुः') && !word.endsWith('ोः')) {
+    return synth({ category: 'noun', gender: 'm', number: 'eka', case: 'pra', gloss: 'a-stem nominative singular (m) — likely subject form' });
+  }
+  // Word-final -म् with reasonable stem length → ambiguous (n. nom or
+  // m. acc); flag both.
+  if (word.endsWith('म्') && word.length >= 4) {
+    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', gloss: 'a-stem -म् ending — neuter nominative or masculine accusative singular (ambiguous)' });
+  }
+  // Word-final -अं (anusvara) → equivalent to -म्
+  if (word.endsWith('ं') && word.length >= 4) {
+    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', gloss: 'a-stem -ं ending (anusvara form of -म्) — neuter nom or masc acc singular' });
+  }
+  return null;
+}
+
 // Helper: lookup with both exact match and a small fall-through for hyphenated
 // surface forms (e.g., padaccheda may use "आगम-अपायिनः" while the dictionary
 // keys the unhyphenated form). Returns null if not found.
@@ -349,6 +426,11 @@ import { CORE_VOCAB } from './coreVocab.js';
 //                                 (covers येषाम्, अयम्, राज्यम्, …)
 //   3. VOCAB_EXTENDED[word]     — bulk agent-generated, audit-flagged
 //   4. de-hyphenated retries on each
+//   5. Suffix-pattern fallback — best-effort grammatical signal from
+//                                 the word's ending (lat/lot/krdanta/
+//                                 case-class). Ensures every form has
+//                                 *some* grammar info instead of "no
+//                                 grammar data yet".
 export function lookupSharedVocab(word) {
   if (!word) return null;
   if (SHARED_VOCAB[word]) return SHARED_VOCAB[word];
@@ -359,5 +441,8 @@ export function lookupSharedVocab(word) {
   if (SHARED_VOCAB[dehyphenated]) return SHARED_VOCAB[dehyphenated];
   if (CORE_VOCAB[dehyphenated]) return CORE_VOCAB[dehyphenated];
   if (VOCAB_EXTENDED[dehyphenated]) return VOCAB_EXTENDED[dehyphenated];
+  // Suffix-inferred fallback (best-effort).
+  const inferred = inferFromSuffix(word);
+  if (inferred) return inferred;
   return null;
 }

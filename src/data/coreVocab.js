@@ -486,6 +486,15 @@ const COMMON_NOUNS = {
   'अपोहनम्':        { category: 'noun', root: 'अपोहन', gender: 'n', number: 'eka', case: 'pra', gloss: 'driving away / removal' },
   'परिमार्गितव्यम्': { category: 'krdanta', kind: 'gerundive', root: 'परि + √मार्ग्', gender: 'n', number: 'eka', case: 'pra', gloss: 'is to be sought after' },
   'लोकत्रयम्':      { category: 'noun', root: 'लोकत्रय', gender: 'n', number: 'eka', case: 'pra', gloss: 'the three worlds' },
+  // Specific user-flagged misses
+  'विशिष्ट':         { category: 'krdanta', kind: 'past-passive', root: 'वि + √शिष्', gloss: 'distinguished / pre-eminent (compound stem)' },
+  'विशिष्टाः':       { category: 'krdanta', kind: 'past-passive', root: 'वि + √शिष्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'the distinguished ones / those who are pre-eminent' },
+  'विशिष्टान्':      { category: 'krdanta', kind: 'past-passive', root: 'वि + √शिष्', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'distinguished ones (object)' },
+  'यथाभागम्':        { category: 'particle', root: 'यथा+भाग', gloss: 'according to one\'s post / share — adverbial यथा-compound (अव्ययीभाव)' },
+  'अभिरक्षन्तु':     { category: 'verb', root: 'अभि + √रक्ष्', gana: 1, pada: 'P', lakara: 'lot', purusha: 'prathama', number: 'bahu', gloss: 'let them protect (imperative 3pl)' },
+  'अभिरक्षेत्':      { category: 'verb', root: 'अभि + √रक्ष्', gana: 1, pada: 'P', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: 'should protect' },
+  'रक्षन्तु':        { category: 'verb', root: '√रक्ष्', gana: 1, pada: 'P', lakara: 'lot', purusha: 'prathama', number: 'bahu', gloss: 'let them protect' },
+  'रक्षति':          { category: 'verb', root: '√रक्ष्', gana: 1, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'protects' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across

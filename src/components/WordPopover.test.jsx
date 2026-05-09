@@ -49,8 +49,10 @@ describe('WordPopover — render states', () => {
     expect(container.querySelector('.pada').className).toMatch(/has-parsing/);
   });
 
-  it('chip has no has-parsing class when parsing is null', () => {
-    const { container } = renderInRouter(<WordPopover word="अज्ञातम्" parsing={null} />);
+  it('chip has no has-parsing class when parsing is null AND no fallback matches', () => {
+    // Use a 2-char input that's below the suffix-inferrer's minimum
+    // length (it requires length >= 3) so no fallback fires.
+    const { container } = renderInRouter(<WordPopover word="अज" parsing={null} />);
     expect(container.querySelector('.pada').className).not.toMatch(/has-parsing/);
   });
 
