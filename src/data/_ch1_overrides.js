@@ -651,6 +651,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.24': {
     speaker: 'सञ्जय उवाच',
+    anuvrtti: { from: '1.25', verb: 'उवाच', meaning: 'said / spoke', note: 'this verse is the absolutive set-up (एवम् उक्तः ... स्थापयित्वा); Sanjaya\'s finite उवाच ("said") arrives in 1.25 to introduce Krishna\'s reply' },
     padaccheda: [
       'एवम्',
       'उक्तः',
@@ -784,6 +785,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.27': {
     speaker: 'सञ्जय उवाच',
+    anuvrtti: { from: '1.28', verb: 'अब्रवीत्', meaning: 'said / spoke (imperfect 3sg of √ब्रू)', note: 'this verse is a participial set-up (तान् समीक्ष्य ... विषीदन्); Arjuna\'s finite अब्रवीत् ("said") arrives in 1.28 — the verse where his despondency speech begins' },
     padaccheda: [
       'श्वशुरान्',
       'सुहृदः',
