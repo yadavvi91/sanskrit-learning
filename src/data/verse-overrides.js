@@ -17,8 +17,10 @@
 
 import { CH1_VERSE_OVERRIDES } from './_ch1_overrides.js';
 import { CH2_VERSE_OVERRIDES } from './_ch2_overrides.js';
+import { CH10_VERSE_OVERRIDES } from './_ch10_overrides.js';
 
 export const VERSE_OVERRIDES = {
   ...CH1_VERSE_OVERRIDES,
   ...CH2_VERSE_OVERRIDES,
+  ...CH10_VERSE_OVERRIDES,
 };
