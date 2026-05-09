@@ -44,6 +44,10 @@ function isThematicStem(stem) {
 }
 
 const KNOWN_VERB_FORMS = new Set();
+// Past-tense (लङ्) forms — augmented with अ-, used by tryPastTenseSplit
+// to lexicon-validate -त्+consonant compound boundaries like
+// अपश्यत्स्थितान् → अपश्यत् + स्थितान्.
+const KNOWN_PAST_FORMS = new Set();
 for (const d of DHATUS) {
   if (!d.presentStem) continue;
   const stem = d.presentStem;
@@ -62,6 +66,40 @@ for (const d of DHATUS) {
     if (d.pada !== 'A') for (const e of utEndingsP) KNOWN_VERB_FORMS.add(lengthened + e);
     if (d.pada !== 'P') for (const e of utEndingsA) KNOWN_VERB_FORMS.add(lengthened + e);
   }
+  // लङ् (augmented past) forms: अ + presentStem + ending.
+  // Most common: 3sg P -त् (अकरोत्, अपश्यत्), 3pl P -न् (अकुर्वन्),
+  // 3sg A -त (अपश्यत = "he/she A-saw"; bare-final-अ form), and 1sg P
+  // -अम् (अहम् + verb-stem + अम् → no virama, ends in अम्).
+  KNOWN_PAST_FORMS.add('अ' + stem + 'त्');
+  KNOWN_PAST_FORMS.add('अ' + stem + 'न्');
+  if (d.pada !== 'P') KNOWN_PAST_FORMS.add('अ' + stem + 'त');
+}
+
+// Lexicon-validated -त्+C splitter for augmented-past compound boundaries.
+// Looks for "्" followed by a consonant inside a chunk and tries to split
+// there; accepts the split only if some SUFFIX of the LEFT side is a
+// known past-tense form (अ + stem + त्/न्). Recovers Gītā 1.26's
+// अपश्यत्स्थितान् → [अपश्यत्, स्थितान्] without false-positive on
+// internal consonant clusters in compound nouns.
+function tryPastTenseSplit(chunk) {
+  for (let i = 1; i < chunk.length - 2; i++) {
+    if (chunk[i] !== '्') continue;
+    const next = chunk[i + 1];
+    if (!/[क-ह]/.test(next)) continue;
+    const left = chunk.slice(0, i + 1); // includes the virama
+    const right = chunk.slice(i + 1);
+    if (right.length < 3) continue;
+    // Look for the longest verb-form suffix of `left`.
+    for (let j = 0; j < left.length - 3; j++) {
+      const candidate = left.slice(j);
+      if (!KNOWN_PAST_FORMS.has(candidate)) continue;
+      const prefix = left.slice(0, j);
+      if (prefix && prefix.length < 2) continue; // implausibly short prefix
+      const parts = prefix ? [prefix, candidate, right] : [candidate, right];
+      return { parts, rule: { id: 'past-tense-lexicon', name: 'लङ् compound boundary (lexicon-validated)' } };
+    }
+  }
+  return null;
 }
 
 // Yan-sandhi unjoin with lexicon validation. Looks for "्य" inside a
@@ -412,18 +450,28 @@ function extractPadas(mool) {
     // Second pass: yan-sandhi unjoin first (lexicon-validated; catches
     // पश्यन्त्यात्मन्यवस्थितम् → पश्यन्ति + आत्मनि + अवस्थितम्), THEN
     // nasal-compound split on accusative-plural lists (आचार्यान्मातुलान्…
-    // → आचार्यान् + मातुलान् + …). Yan must run first because some
-    // chunks like यान्त्यधमां look like both a nasal-list and a
-    // yan-junction; the lexicon-validated yan path is the right one.
+    // → आचार्यान् + मातुलान् + …), THEN past-tense -त्+C compound split
+    // (अपश्यत्स्थितान् → अपश्यत् + स्थितान्). Each is lexicon-aware in
+    // its own way; ordering matters when patterns overlap (e.g.,
+    // यान्त्यधमां needs the यन् path, not nasal).
     for (const p of firstPassPadas) {
       const afterYan = recursiveYanSplit(p, sandhiNotes);
       for (const piece of afterYan) {
-        const nasalSplit = splitNasalCompound(piece);
-        if (nasalSplit) {
-          sandhiNotes.push(`${piece} = ${nasalSplit.join(' + ')} (compound -न् boundary)`);
-          padas.push(...nasalSplit);
-        } else {
-          padas.push(piece);
+        // Try past-tense split first within each yan-piece (so an
+        // augmented past-tense form is isolated before nasal split).
+        const pastSplit = tryPastTenseSplit(piece);
+        const afterPast = pastSplit ? pastSplit.parts : [piece];
+        if (pastSplit) {
+          sandhiNotes.push(`${piece} = ${pastSplit.parts.join(' + ')} (${pastSplit.rule.name})`);
+        }
+        for (const piece2 of afterPast) {
+          const nasalSplit = splitNasalCompound(piece2);
+          if (nasalSplit) {
+            sandhiNotes.push(`${piece2} = ${nasalSplit.join(' + ')} (compound -न् boundary)`);
+            padas.push(...nasalSplit);
+          } else {
+            padas.push(piece2);
+          }
         }
       }
     }
