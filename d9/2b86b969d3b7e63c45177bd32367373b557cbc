@@ -1,0 +1,28 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_96f1a4e3d53416 14
+src/data/dhatus-extended.js
+  s_d5e8c30b294ba2::t_21327ddc756e2e 15-19,21,24-26,28-33
+  s_d5e8c30b294ba2::t_cd3975d3f85f25 1-14,20,22-23,27
+src/data/_dhatus_part2.js
+  s_d5e8c30b294ba2::t_cc042732e2deec 1-905
+src/data/_dhatus_part4.js
+  s_d5e8c30b294ba2::t_10333b2a28b13c 1-509
+src/data/_dhatus_part3.js
+  s_d5e8c30b294ba2::t_a1f950bcc7fb9d 1-605
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d92b86b969d3b7e63c45177bd32367373b557cbc",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
