@@ -18,6 +18,7 @@ import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
 import { FINITE_OVERRIDES } from './finite-overrides.js';
 import { DHATUS_EXTENDED } from './dhatus-extended.js';
 import { FUTURE_STEMS } from './_dhatu_future_stems.js';
+import { VERSE_OVERRIDES } from './verse-overrides.js';
 
 let done = false;
 
@@ -28,6 +29,41 @@ export function hydrateAutoStubVerses() {
   for (const v of VERSES) {
     if (v.tier !== 'auto-stub') continue;
     const key = `${v.chapter}.${v.verse}`;
+
+    // Verse-level overrides — hand-decoded padaccheda / finiteVerbs /
+    // notes / anvaya / hindi / english for verses where the engine
+    // produces sub-quality results. Each field is filled only if the
+    // verse doesn't already have it (so an in-place verses.js override
+    // takes priority over a chapter-level batch override). The verse
+    // remains tier='auto-stub' for tier-test compatibility, but with
+    // floor-quality content it cannot regress below.
+    const vOverride = VERSE_OVERRIDES[key];
+    if (vOverride) {
+      if (vOverride.speaker && !v.speaker) v.speaker = vOverride.speaker;
+      if (Array.isArray(vOverride.padaccheda) && (!v.padaccheda || v.padaccheda.length === 0)) {
+        v.padaccheda = vOverride.padaccheda;
+      }
+      if (Array.isArray(vOverride.sandhiNotes) && (!v.sandhiNotes || v.sandhiNotes.length === 0)) {
+        v.sandhiNotes = vOverride.sandhiNotes;
+      }
+      if (Array.isArray(vOverride.finiteVerbs) && (!v.finiteVerbs || v.finiteVerbs.length === 0)) {
+        v.finiteVerbs = vOverride.finiteVerbs;
+      } else if (vOverride.finiteVerbs === null) {
+        v.noFiniteVerb = true;
+      }
+      if (Array.isArray(vOverride.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+        v.vibhaktiNotes = vOverride.vibhaktiNotes;
+      }
+      if (Array.isArray(vOverride.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+        v.keyFights = vOverride.keyFights;
+      }
+      if (vOverride.anvaya && !v.anvaya) v.anvaya = vOverride.anvaya;
+      if (vOverride.hindi && !v.hindi) v.hindi = vOverride.hindi;
+      if (vOverride.english && !v.english) v.english = vOverride.english;
+      if (Array.isArray(vOverride.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+        v.vyakhya = vOverride.vyakhya;
+      }
+    }
 
     if (!v.padaccheda || v.padaccheda.length === 0) {
       try {
