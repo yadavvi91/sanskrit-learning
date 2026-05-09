@@ -16,6 +16,7 @@ import { HINDI_TRANSLATIONS } from './translations-hindi.js';
 import { INTERP_NOTES } from './interpretive.js';
 import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
 import { FINITE_OVERRIDES } from './finite-overrides.js';
+import { DHATUS_EXTENDED } from './dhatus-extended.js';
 
 let done = false;
 
@@ -132,6 +133,47 @@ export function hydrateAutoStubVerses() {
     }
     if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
       v.vyakhya = interp.vyakhya;
+    }
+  }
+
+  // Third pass: back-populate gitaOccurrences on each dhātu by scanning
+  // every verse's finiteVerbs across the whole corpus. The original 25
+  // top-frequency dhātus were hand-curated with gitaOccurrences (and
+  // those entries are preserved); the other ~167 dhātus from the
+  // bulk-extended list previously had nothing. Catches "In Gītā" filter
+  // dhātus across all 18 chapters automatically.
+  const rootKeyMap = new Map();
+  for (const d of DHATUS_EXTENDED) {
+    // Index by every plausible key the finiteVerbs root field might
+    // use: bare devanagari, devanagari without trailing virama, with √
+    // prefix, etc.
+    const bareDeva = d.devanagari.replace(/्$/, '');
+    rootKeyMap.set(d.devanagari, d);
+    rootKeyMap.set(bareDeva, d);
+    rootKeyMap.set('√' + d.devanagari, d);
+    rootKeyMap.set('√' + bareDeva, d);
+    if (d.id) rootKeyMap.set(d.id, d);
+  }
+  for (const v of VERSES) {
+    for (const fv of v.finiteVerbs || []) {
+      if (!fv.root) continue;
+      const dhatu = rootKeyMap.get(fv.root) || rootKeyMap.get(fv.root.replace(/^√/, ''));
+      if (!dhatu) continue;
+      if (!Array.isArray(dhatu.gitaOccurrences)) dhatu.gitaOccurrences = [];
+      // Skip if this exact (chapter, verse, form) is already recorded —
+      // top-25 entries have curated examples we don't want to dupe.
+      const already = dhatu.gitaOccurrences.some(
+        (o) => o.chapter === v.chapter && o.verse === v.verse && o.form === fv.form
+      );
+      if (already) continue;
+      dhatu.gitaOccurrences.push({
+        chapter: v.chapter,
+        verse: v.verse,
+        form: fv.form,
+        context: fv.gloss
+          ? `${fv.form} — ${fv.gloss}`
+          : `${fv.form} (${fv.lakara || '?'} ${fv.purusha || '?'} ${fv.vachana || '?'})`,
+      });
     }
   }
 }
