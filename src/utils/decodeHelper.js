@@ -24,6 +24,54 @@ for (const d of DHATUS) {
   if (d.futureStem) STEM_TO_DHATU.set(d.futureStem, { ...d, viaStem: 'future' });
 }
 
+// Pre-generated set of plausible finite-verb forms across the 192 dhātus.
+// Used by tryYanSandhiSplit (below) to lexicon-validate internal-sandhi
+// splits — only accept a split if the LEFT side is a known verb form.
+// Avoids false-positives on words like संख्या / विद्या where "्या" is
+// part of the root, not a sandhi junction.
+const PRES_ENDINGS_P = ['ति', 'न्ति', 'सि', 'थः', 'थ', 'मि', 'वः', 'मः'];
+const PRES_ENDINGS_A = ['ते', 'न्ते', 'से', 'एथे', 'ध्वे', 'ए', 'वहे', 'महे'];
+const KNOWN_VERB_FORMS = new Set();
+for (const d of DHATUS) {
+  if (!d.presentStem) continue;
+  const endings = d.pada === 'A' ? PRES_ENDINGS_A
+                : d.pada === 'P' ? PRES_ENDINGS_P
+                : [...PRES_ENDINGS_P, ...PRES_ENDINGS_A]; // 'U' = ubhayapadī
+  for (const e of endings) KNOWN_VERB_FORMS.add(d.presentStem + e);
+}
+
+// Yan-sandhi unjoin with lexicon validation.
+// Pattern: a chunk contains "्य" (virama+य) somewhere. If we replace
+// "्य" with "ि" (matra) on the LEFT and start a new word with the
+// vowel that followed, AND the resulting LEFT is a known verb form,
+// accept the split. The right side starts with: आ if "्या", ए if "्ये",
+// ओ if "्यो", उ if "्यु", ई if "्यी", or अ (implicit) otherwise.
+//
+// This catches the most common Gītā internal-sandhi pattern:
+//   पश्यन्त्यात्मनि → पश्यन्ति + आत्मनि (left पश्यन्ति is a known
+//   verb form: presentStem पश्य + ending न्ति)
+function tryYanSandhiSplit(chunk) {
+  for (let i = 1; i < chunk.length - 1; i++) {
+    if (chunk[i] !== '्' || chunk[i + 1] !== 'य') continue;
+    // Candidate left: everything before ्य, plus ि matra on the previous akṣara.
+    const left = chunk.slice(0, i) + 'ि';
+    if (!KNOWN_VERB_FORMS.has(left)) continue;
+    // Right: vowel after ्य determines what the original word started with.
+    const next = chunk[i + 2];
+    let right;
+    if (next === 'ा') right = 'आ' + chunk.slice(i + 3);
+    else if (next === 'े') right = 'ए' + chunk.slice(i + 3);
+    else if (next === 'ो') right = 'ओ' + chunk.slice(i + 3);
+    else if (next === 'ु') right = 'उ' + chunk.slice(i + 3);
+    else if (next === 'ी') right = 'ई' + chunk.slice(i + 3);
+    else if (next === 'ू') right = 'ऊ' + chunk.slice(i + 3);
+    else right = 'अ' + chunk.slice(i + 2); // implicit अ on bare consonant
+    if (!right) continue;
+    return { left, right, rule: { id: 'yan-lexicon', name: 'यण् सन्धि (lexicon-validated)' } };
+  }
+  return null;
+}
+
 // Verbal endings the engine recognises by stripping. Order doesn't matter
 // here because we try every ending and accept the first whose stripped
 // stem hits STEM_TO_DHATU. Sorted by length (descending) implicitly via
@@ -155,6 +203,18 @@ function isPlausibleSplit(parts) {
   return true;
 }
 
+// Recursively try yan-sandhi splits on a pada — keeps splitting as long
+// as the left side keeps validating against KNOWN_VERB_FORMS. Returns
+// the final list of padas after all yan-splits applied, plus a list of
+// human-readable notes for the sandhiNotes panel.
+function recursiveYanSplit(pada, notes) {
+  const split = tryYanSandhiSplit(pada);
+  if (!split) return [pada];
+  notes.push(`${pada} = ${split.left} + ${split.right} (${split.rule.name})`);
+  // The right side may itself contain another yan junction.
+  return [split.left, ...recursiveYanSplit(split.right, notes)];
+}
+
 // Extract individual padas from a (multi-line) mool string by splitting on
 // whitespace and running each chunk through the sandhi engine.
 function extractPadas(mool) {
@@ -168,20 +228,27 @@ function extractPadas(mool) {
   const sandhiNotes = [];
   for (const chunk of chunks) {
     const r = undoSandhi(chunk);
+    let firstPassPadas;
     if (!r || r.length === 0) {
-      padas.push(chunk);
-      continue;
-    }
-    // Pick the first sandhi candidate whose parts pass the plausibility
-    // filter. Falls back to keeping the chunk whole if every candidate
-    // produces an implausible split.
-    const candidate = r.find((c) => c.parts.length === 1 || isPlausibleSplit(c.parts));
-    if (!candidate || candidate.parts.length === 1) {
-      padas.push(chunk);
+      firstPassPadas = [chunk];
     } else {
-      padas.push(...candidate.parts);
-      const ruleNames = candidate.rules.map((rule) => rule.name).join(' + ');
-      sandhiNotes.push(`${chunk} = ${candidate.parts.join(' + ')} (${ruleNames})`);
+      // Pick the first sandhi candidate whose parts pass the plausibility
+      // filter. Falls back to keeping the chunk whole if every candidate
+      // produces an implausible split.
+      const candidate = r.find((c) => c.parts.length === 1 || isPlausibleSplit(c.parts));
+      if (!candidate || candidate.parts.length === 1) {
+        firstPassPadas = [chunk];
+      } else {
+        firstPassPadas = candidate.parts;
+        const ruleNames = candidate.rules.map((rule) => rule.name).join(' + ');
+        sandhiNotes.push(`${chunk} = ${candidate.parts.join(' + ')} (${ruleNames})`);
+      }
+    }
+    // Second pass: try lexicon-validated yan-sandhi unjoin on each pada.
+    // Catches internal junctions like पश्यन्त्यात्मन्यवस्थितम् →
+    // पश्यन्ति + आत्मनि + अवस्थितम् (validated against KNOWN_VERB_FORMS).
+    for (const p of firstPassPadas) {
+      padas.push(...recursiveYanSplit(p, sandhiNotes));
     }
   }
   return { padas, sandhiNotes, lines };
