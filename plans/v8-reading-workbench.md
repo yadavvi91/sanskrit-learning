@@ -152,7 +152,7 @@ End-to-end after slice 5:
 | `src/App.jsx` | 4 | Add /words route + masthead tab |
 | `src/utils/srs.js` | 5 | New `vocab_recall` card type |
 | `src/styles.css` | 1, 2, 3, 4 | New section styles |
-| `checkpoint-18.md` … `checkpoint-22.md` | per slice | Narrative |
+| `checkpoints/checkpoint-18.md` … `checkpoints/checkpoint-22.md` | per slice | Narrative |
 
 ## Out of scope (v9+)
 

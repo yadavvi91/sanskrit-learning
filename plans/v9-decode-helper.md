@@ -90,7 +90,7 @@ Add `/decode` route in App.jsx. Add **Decode** tab between Words and Primer. Don
 | `src/components/DecodeHelper.jsx` (new) | 2 | The UI |
 | `src/App.jsx` | 3 | New tab + route |
 | `src/styles.css` | 2 | Decode-helper styling |
-| `checkpoint-23.md` ... `checkpoint-25.md` | per slice | Narrative |
+| `checkpoints/checkpoint-23.md` ... `checkpoints/checkpoint-25.md` | per slice | Narrative |
 
 ## Verification
 

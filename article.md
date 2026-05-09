@@ -492,7 +492,7 @@ The numbers tell the closing arc:
 - Cross-tier interpretive-field coverage (anvaya, vibhaktiNotes, keyFights, vyakhya): **100% across full / browse / auto-stub** after the hydrator was extended to fill missing fields on hand-decoded verses too
 - क्रिया cards lacking gloss/root: **984 of 1059 (93%) → 0 of 929 (0%)**, with confidence levels and source tags throughout
 
-The lesson, written into checkpoint-37 and lived through the audit pass: *for every aggregate-level "100%", drill into the next level of granularity*. क्रिया is filled means nothing if the cards don't carry meaning. Words page is populated means nothing if half are unglosseable fragments. Verse fields are present means nothing if browse-tier verses are missing fields auto-stub verses have. The discipline isn't tracking completion at one level — it's tracking it at every level, all the way down.
+The lesson, written into checkpoints/checkpoint-37 and lived through the audit pass: *for every aggregate-level "100%", drill into the next level of granularity*. क्रिया is filled means nothing if the cards don't carry meaning. Words page is populated means nothing if half are unglosseable fragments. Verse fields are present means nothing if browse-tier verses are missing fields auto-stub verses have. The discipline isn't tracking completion at one level — it's tracking it at every level, all the way down.
 
 ---
 

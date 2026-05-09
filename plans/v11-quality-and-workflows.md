@@ -34,7 +34,7 @@ Three different surfaces, one shared theme: **the data is correct, but the wirin
 
 ## Implementation slices
 
-### Slice A — Workflow coverage round 1 (`2542a9a`, checkpoint-28)
+### Slice A — Workflow coverage round 1 (`2542a9a`, checkpoints/checkpoint-28)
 
 Coverage push for the highest-value gaps. New test files:
 
@@ -52,7 +52,7 @@ Coverage delta after Slice A:
 - Function coverage: 49.7% → 63.3%
 - Per-component: App 0→93.5%, Samasa 0.5→98.4%, StackBuilder 0.5→97.8%, SandhiLab 7.8→100%, ThemePicker 0→100%, LastVisitBanner 0→89.5%
 
-### Slice B — Workflow coverage round 2 (`47caa71`, checkpoint-29)
+### Slice B — Workflow coverage round 2 (`47caa71`, checkpoints/checkpoint-29)
 
 Filling the remaining workflow holes flagged in Slice A's checkpoint:
 
@@ -66,7 +66,7 @@ Coverage delta after Slice B:
 - DecodeHelper 1.7→100%, Practice 42→96%, VerseJourney 76.5→98.5%, WordPopover 60→100%
 - Test count: 288 → 339
 
-### Slice C — Cross-tab workflows: doc + integration tests (`f60e7cd`, checkpoint-30)
+### Slice C — Cross-tab workflows: doc + integration tests (`f60e7cd`, checkpoints/checkpoint-30)
 
 The user explicitly asked for "a markdown file noting all these workflows, enhanced with sequence diagrams in Mermaid JS, and finally test those workflows." Two artifacts:
 
@@ -87,7 +87,7 @@ Workflows W1-W10 (see `docs/workflows.md` for full doc):
 
 Test count: 339 → 349.
 
-### Slice D — Hyphen-insensitive क्रिया matching (`f75cf92`, part of checkpoint-31)
+### Slice D — Hyphen-insensitive क्रिया matching (`f75cf92`, part of checkpoints/checkpoint-31)
 
 Bug fix: in 2.4 the padaccheda has `प्रति-योत्स्यामि` but `finiteVerbs[].form` is `प्रतियोत्स्यामि`. Strict-equality match in `VerseDetail.jsx` failed → no `is-finite` class → user couldn't see which word was the verb.
 
@@ -95,7 +95,7 @@ Fix: `stripHyphens()` helper, applied on both sides of the comparison. Same patt
 
 Regression test: `src/components/VerseDetail.test.jsx` walks every decoded verse and asserts that each padaccheda chip's `is-finite` class equals what the hyphen-stripped finite-verb match says. Catches future verses that introduce a similar prefix-hyphen + finite-verb pairing.
 
-### Slice E — wordParsings backfill on 21 verses + Primer with real examples (`7808c0a`, part of checkpoint-31)
+### Slice E — wordParsings backfill on 21 verses + Primer with real examples (`7808c0a`, part of checkpoints/checkpoint-31)
 
 The Primer's vibhakti table had `'— (not yet decoded)'` placeholders for चतुर्थी and पञ्चमी even though the corpus was full of both — they just weren't tagged because the 21 newer verses had no `wordParsings` at all (only 4 of 25 verses had them).
 
@@ -157,7 +157,7 @@ Test count: 353 → 360.
 
 ## Checkpoints in this plan
 
-- `checkpoint-28.md` — Slice A (workflow coverage round 1)
-- `checkpoint-29.md` — Slice B (workflow coverage round 2)
-- `checkpoint-30.md` — Slice C (cross-tab workflows doc + tests)
-- `checkpoint-31.md` — Slices D + E (hyphen fix + wordParsings backfill + Primer)
+- `checkpoints/checkpoint-28.md` — Slice A (workflow coverage round 1)
+- `checkpoints/checkpoint-29.md` — Slice B (workflow coverage round 2)
+- `checkpoints/checkpoint-30.md` — Slice C (cross-tab workflows doc + tests)
+- `checkpoints/checkpoint-31.md` — Slices D + E (hyphen fix + wordParsings backfill + Primer)

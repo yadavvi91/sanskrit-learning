@@ -51,7 +51,7 @@ A follow-up message asked for an in-popover **link** that takes the user directl
 
 ## Implementation slices
 
-### Slice A — Atlas → Declensions tab (`7b81b5f`, part of checkpoint-32)
+### Slice A — Atlas → Declensions tab (`7b81b5f`, part of checkpoints/checkpoint-32)
 
 #### Data: `src/data/declensions.js`
 
@@ -116,7 +116,7 @@ Also updated existing tests asserting Atlas default sub-tab was `pronouns` to ex
 
 Test count: 360 → 402 (+42).
 
-### Slice B — WordPopover → Declensions deep link (`9423fda`, part of checkpoint-32)
+### Slice B — WordPopover → Declensions deep link (`9423fda`, part of checkpoints/checkpoint-32)
 
 User follow-up: "Can I click directly to the शब्दरूप section from the popover?"
 
@@ -228,4 +228,4 @@ Test count: 402 → 432 (+30).
 
 ## Checkpoints in this plan
 
-- `checkpoint-32.md` — Slice A + B (Declensions tab + popover deep-link)
+- `checkpoints/checkpoint-32.md` — Slice A + B (Declensions tab + popover deep-link)

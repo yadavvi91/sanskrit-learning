@@ -111,7 +111,7 @@ End-to-end after slice 5:
 | `src/utils/markdownExport.js` (new) | 5 | verseToMarkdown |
 | `src/utils/markdownExport.test.js` (new) | 5 | Snapshot tests |
 | `src/styles.css` | 1–5 | Section styles for references, notes, search results, export button |
-| `checkpoint-13.md` … `checkpoint-17.md` | per slice | Narrative per slice |
+| `checkpoints/checkpoint-13.md` … `checkpoints/checkpoint-17.md` | per slice | Narrative per slice |
 
 ---
 

@@ -109,7 +109,7 @@ The data files are the **source of truth**; the app is a **rendering** of them. 
 ## What was deliberately deferred from v0
 
 - **Verb conjugation engine** — the data was there (192-dhātu chart noted), the implementation was not. → v2.
-- **समास analysis** — sandhi was decoded per verse, samas was not. The 4 verses' compounds were noted but not classified. → added in v1's lifetime (checkpoint-2), to be expanded in v3.
+- **समास analysis** — sandhi was decoded per verse, samas was not. The 4 verses' compounds were noted but not classified. → added in v1's lifetime (checkpoints/checkpoint-2), to be expanded in v3.
 - **Pronouns, कारक, अव्यय** — only briefly touched in `sanskrit-reference.md`. → v3 (Grammar Atlas).
 - **SRS / spaced repetition** — bvsiitm pedagogy was acknowledged but not yet built. → v5.
 

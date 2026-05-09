@@ -1,6 +1,6 @@
 # Plan v1 — React app: Verse Journey + Patterns Won (retrospective)
 
-> **Retrospective.** Written after-the-fact to document what was built on the fly without a forward-looking plan. The actual implementation shipped in commit `52644f1` and was incrementally extended through commits `3140c85` (समास annotations) and `a706f4e` (expanded patterns) over the v1 lifetime. checkpoint-1.md and checkpoint-2.md are the contemporaneous change-log entries; this document is the would-be-plan that should have preceded them.
+> **Retrospective.** Written after-the-fact to document what was built on the fly without a forward-looking plan. The actual implementation shipped in commit `52644f1` and was incrementally extended through commits `3140c85` (समास annotations) and `a706f4e` (expanded patterns) over the v1 lifetime. checkpoints/checkpoint-1.md and checkpoints/checkpoint-2.md are the contemporaneous change-log entries; this document is the would-be-plan that should have preceded them.
 
 **Date drafted retrospectively:** 2026-05-08
 **Dates the work itself happened:** 2026-05-07 (initial app + samas) → 2026-05-08 (patterns expansion)
@@ -122,7 +122,7 @@ CLAUDE.md                       (v0 framing)
 verses-decoded.md               (v0 data)
 patterns-won.md                 (v0 data)
 sanskrit-reference.md           (v0 data)
-checkpoint-1.md
+checkpoints/checkpoint-1.md
 src/
 ├── main.jsx
 ├── App.jsx                     (view switcher + masthead + colophon)
@@ -143,7 +143,7 @@ src/
 
 Two enhancements landed after the initial commit but before v2 began. They were small enough not to warrant their own version, large enough to checkpoint.
 
-### Extension 1: समास annotations on all 4 verses (commit `3140c85`, checkpoint-2.md)
+### Extension 1: समास annotations on all 4 verses (commit `3140c85`, checkpoints/checkpoint-2.md)
 
 10 compounds across 4 verses, classified by type, rendered as a collapsible `<details>` block right under पदच्छेद, mirroring how sandhi notes already work.
 
@@ -172,7 +172,7 @@ Added 6 new sections to Patterns Won — adjectives, adverbs, articles, pronouns
 
 ## What v1 deliberately deferred
 
-From checkpoint-1.md, restated here as the formal v1 deferral list:
+From checkpoints/checkpoint-1.md, restated here as the formal v1 deferral list:
 
 1. **Browser eyeball check** — computer-use + Claude Preview MCPs were disconnected during v1; UI tuning waits for human eyes.
 2. **Pattern → verse jump** — clicking a pattern's "unlocked by Gītā 2.4" should switch to Verse Journey and select that verse. Not wired.
@@ -185,13 +185,13 @@ From checkpoint-1.md, restated here as the formal v1 deferral list:
 
 ## Verification (retrospective)
 
-Per checkpoint-1.md:
+Per checkpoints/checkpoint-1.md:
 
 - `npm install` clean, 92 packages
 - `npm run build` clean, 37 modules, 447ms
 - `npm run dev` Vite ready in 189ms; localhost:5173 returned HTTP 200
 
-Per checkpoint-2.md (samas extension):
+Per checkpoints/checkpoint-2.md (samas extension):
 - `npm run build` clean, 37 modules, 444ms
 - Bundle deltas: CSS +1.1 KB, JS +1.8 KB
 
@@ -199,7 +199,7 @@ Per checkpoint-2.md (samas extension):
 
 ## How to extend v1 (if more work lands as v1.x)
 
-Documented in checkpoint-1.md, restated here:
+Documented in checkpoints/checkpoint-1.md, restated here:
 
 - **Add the next decoded verse:** one new entry in `src/data/verses.js` with `decodeIndex: 5`. The journey rail and chapter grid pick it up automatically. Mirror in `verses-decoded.md`.
 - **Add a new pattern:** one new entry in the right category in `src/data/patterns.js`. Mirror in `patterns-won.md`.
