@@ -81,7 +81,12 @@ export function buildVocabulary() {
     }
   }
 
-  return [...map.values()];
+  // Filter out agent-tagged sandhi-residue fragments — words with no
+  // parsing AND no shared-dict gloss are engine artifacts (the agents
+  // explicitly marked these as null in VOCAB_EXTENDED). They'd otherwise
+  // clutter the Words page as misleading "— no gloss yet —" entries
+  // that can never be glossed because they aren't standalone words.
+  return [...map.values()].filter((e) => e.gloss || e.category || e.parsing);
 }
 
 // Comparators keyed by sort-column.
