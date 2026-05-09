@@ -1,0 +1,23 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_191e7ce7df3c32 2709-2710,2715-2736
+  s_d5e8c30b294ba2::t_a45a36f35c307a 2711-2714
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_561a8b045c65f2 39-43
+  s_d5e8c30b294ba2::t_11bcf5e56482fd 67-78,96-100,103-105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "0f4e55232211539579c79c899f4d2c2278655d29",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
