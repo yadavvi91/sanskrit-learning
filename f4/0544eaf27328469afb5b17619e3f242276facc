@@ -1,0 +1,25 @@
+src/data/patterns.js
+  s_d5e8c30b294ba2::t_61661db54b8994 99-128
+patterns-won.md
+  s_d5e8c30b294ba2::t_2e00144f31b468 35-39
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_e6bb65be806953 259-261
+  s_d5e8c30b294ba2::t_3c189b7b4b9716 320-331,340-354
+  s_d5e8c30b294ba2::t_f8e293eb49f1dc 284-289
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "f40544eaf27328469afb5b17619e3f242276facc",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
