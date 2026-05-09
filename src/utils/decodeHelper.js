@@ -11,6 +11,77 @@
 
 import { undoSandhi } from './sandhi.js';
 import { buildVocabulary } from './vocabulary.js';
+import { DHATUS_TOP25 as DHATUS } from '../data/dhatus.js';
+
+// Stem → dhātu lookup table. Used by classifyByStem (below) to confirm a
+// candidate verb form by checking whether its stripped stem matches a
+// known root. This catches forms where the regex-only LAKARA_SIGNALS
+// would either miss (e.g., आत्मनेपद उत्तम-एकवचन -ए on मन्ये, लभे) or
+// false-positive (every सप्तमी-एकवचन noun also ends in -ए).
+const STEM_TO_DHATU = new Map();
+for (const d of DHATUS) {
+  if (d.presentStem) STEM_TO_DHATU.set(d.presentStem, { ...d, viaStem: 'present' });
+  if (d.futureStem) STEM_TO_DHATU.set(d.futureStem, { ...d, viaStem: 'future' });
+}
+
+// Verbal endings the engine recognises by stripping. Order doesn't matter
+// here because we try every ending and accept the first whose stripped
+// stem hits STEM_TO_DHATU. Sorted by length (descending) implicitly via
+// individual entries — we'll iterate longest-first to avoid partial matches.
+const STEM_BACKED_ENDINGS = [
+  // आत्मनेपद present
+  { suffix: 'महे', lakara: 'lat', pada: 'A', purusha: 'uttama',  vachana: 'bahu', hint: 'present Ā उत्तम बहु -महे' },
+  { suffix: 'वहे', lakara: 'lat', pada: 'A', purusha: 'uttama',  vachana: 'dvi',  hint: 'present Ā उत्तम द्वि -वहे' },
+  { suffix: 'ध्वे', lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'bahu', hint: 'present Ā मध्यम बहु -ध्वे' },
+  { suffix: 'न्ते', lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'bahu', hint: 'present Ā प्रथम बहु -न्ते' },
+  { suffix: 'एते', lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'dvi',  hint: 'present Ā प्रथम द्वि -एते' },
+  { suffix: 'एथे', lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'dvi',  hint: 'present Ā मध्यम द्वि -एथे' },
+  { suffix: 'से',  lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'eka',  hint: 'present Ā मध्यम एक -से' },
+  { suffix: 'ते',  lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'eka',  hint: 'present Ā प्रथम एक -ते' },
+  { suffix: 'ए',   lakara: 'lat', pada: 'A', purusha: 'uttama',  vachana: 'eka',  hint: 'present Ā उत्तम एक -ए' },
+  // परस्मैपद present
+  { suffix: 'न्ति', lakara: 'lat', pada: 'P', purusha: 'prathama', vachana: 'bahu', hint: 'present P प्रथम बहु -न्ति' },
+  { suffix: 'थः',  lakara: 'lat', pada: 'P', purusha: 'madhyama', vachana: 'dvi',  hint: 'present P मध्यम द्वि -थः' },
+  { suffix: 'मः',  lakara: 'lat', pada: 'P', purusha: 'uttama',  vachana: 'bahu', hint: 'present P उत्तम बहु -मः' },
+  { suffix: 'वः',  lakara: 'lat', pada: 'P', purusha: 'uttama',  vachana: 'dvi',  hint: 'present P उत्तम द्वि -वः' },
+  { suffix: 'थ',   lakara: 'lat', pada: 'P', purusha: 'madhyama', vachana: 'bahu', hint: 'present P मध्यम बहु -थ' },
+  { suffix: 'सि',  lakara: 'lat', pada: 'P', purusha: 'madhyama', vachana: 'eka',  hint: 'present P मध्यम एक -सि' },
+  { suffix: 'ति',  lakara: 'lat', pada: 'P', purusha: 'prathama', vachana: 'eka',  hint: 'present P प्रथम एक -ति' },
+  { suffix: 'मि',  lakara: 'lat', pada: 'P', purusha: 'uttama',  vachana: 'eka',  hint: 'present P उत्तम एक -मि' },
+];
+// Sort longest-first so multi-char endings match before their suffixes.
+STEM_BACKED_ENDINGS.sort((a, b) => b.suffix.length - a.suffix.length);
+
+// Try to classify a form by stripping a known verbal ending and confirming
+// the residue is a known dhātu present-stem. High-precision: only fires
+// when the stem matches DHATUS, so it never false-positives on noun forms
+// that happen to end in -ए, -ते, -ति, etc.
+function classifyByStem(form) {
+  for (const ending of STEM_BACKED_ENDINGS) {
+    if (!form.endsWith(ending.suffix)) continue;
+    const stem = form.slice(0, form.length - ending.suffix.length);
+    if (!stem) continue;
+    const dhatu = STEM_TO_DHATU.get(stem);
+    if (!dhatu) continue;
+    // pada compatibility: A-only endings must be on Ā or उभयपदी roots;
+    // P-only endings on P or उभयपदी.
+    const dpada = dhatu.pada; // 'P' | 'A' | 'U'
+    const epada = ending.pada;
+    if (dpada !== 'U' && dpada !== epada) continue;
+    return {
+      form,
+      lakara: ending.lakara,
+      purusha: ending.purusha,
+      vachana: ending.vachana,
+      pada: ending.pada,
+      root: dhatu.devanagari,
+      gana: dhatu.gana,
+      confidence: 'medium',
+      signal: `${ending.hint} on √${dhatu.devanagari}`,
+    };
+  }
+  return null;
+}
 
 // Strip shloka punctuation and normalise whitespace.
 function cleanMoolLine(s) {
@@ -48,6 +119,8 @@ const LAKARA_SIGNALS = [
 ];
 
 function classifyFiniteVerb(form) {
+  // First pass: regex-based signals — high recall, may include some
+  // false positives on shared noun/verb endings (e.g., -ति, -ते).
   for (const sig of LAKARA_SIGNALS) {
     if (sig.match.test(form)) {
       return {
@@ -61,6 +134,12 @@ function classifyFiniteVerb(form) {
       };
     }
   }
+  // Second pass: vocabulary-backed stem cross-check — high precision.
+  // Catches forms the regex misses (मन्ये, लभे, भवसि, …) when the root
+  // is in DHATUS. Won't catch verbs whose root isn't yet in the list;
+  // those still need hand-decoding.
+  const byStem = classifyByStem(form);
+  if (byStem) return byStem;
   return null;
 }
 

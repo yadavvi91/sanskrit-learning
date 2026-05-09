@@ -395,11 +395,19 @@ export function undoSandhi(s) {
 // internal matras (e.g., "पाण्डवाः" has an internal -ा- matra that
 // looks identical to a sandhi-junction -ा-). Pragmatic compromise:
 // vowel sandhi rules fire only when the *left context* matches a
-// small whitelist of common particles + endings — the cases where
-// vowel sandhi typically happens in the Gītā corpus.
+// small whitelist of REAL multi-character particles. Single-consonant
+// entries like 'य', 'क', 'ह', 'स', 'व' were previously here but they
+// occur inside thousands of words (योगिनः, काङ्क्षे, …) and produced
+// massive bogus splits. Restricting to genuine particle words fixes
+// 100+ verses with mis-split padaccheda.
 const VOWEL_LEFT_WHITELIST = new Set([
-  'न', 'च', 'स', 'व', 'त', 'य', 'अ', 'क', 'ह', 'मा', 'हि', 'तु', 'सु',
-  'या', 'ये', 'ने', 'ते', 'मे', 'अति', 'अपि', 'इति',
+  // Indeclinable particles ending in अ that legitimately sandhi with
+  // a following vowel-initial word.
+  'न', 'च', 'मा', 'हि', 'तु', 'सु', 'वा', 'इव',
+  // Pronominal forms ending in ए or अ that sandhi with following vowel.
+  'या', 'ये', 'ने', 'ते', 'मे', 'से', 'सा', 'सः', 'एते', 'एव',
+  // Common avyaya prefixes that act as full preverbs.
+  'अति', 'अपि', 'इति', 'यथा', 'तथा', 'सदा',
 ]);
 
 // Vowel sandhi can also happen at characteristic word-endings —
