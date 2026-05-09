@@ -280,6 +280,37 @@ const COMMON_NOUNS = {
   'सर्वत्र':       { category: 'particle', gloss: 'everywhere' },
   'उभयोः':         { category: 'noun', root: 'उभ', gender: 'm', number: 'dvi', case: 'sha', gloss: 'of both' },
   'सेनयोः':        { category: 'noun', root: 'सेना', gender: 'f', number: 'dvi', case: 'sha', gloss: 'of (the two) armies' },
+  // More common krdantas user audit surfaced in Ch 1-3
+  'अवस्थितः':       { category: 'krdanta', kind: 'past-passive', root: 'अव + √स्था', gender: 'm', number: 'eka', case: 'pra', gloss: 'stationed / standing' },
+  'अवस्थिताः':      { category: 'krdanta', kind: 'past-passive', root: 'अव + √स्था', gender: 'm', number: 'bahu', case: 'pra', gloss: 'stationed (pl)' },
+  'अवस्थितान्':     { category: 'krdanta', kind: 'past-passive', root: 'अव + √स्था', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'stationed (pl, object)' },
+  'अवस्थितम्':      { category: 'krdanta', kind: 'past-passive', root: 'अव + √स्था', gender: 'n', number: 'eka', case: 'pra', gloss: 'stationed' },
+  'समवेताः':        { category: 'krdanta', kind: 'past-passive', root: 'सम् + अव + √इ', gender: 'm', number: 'bahu', case: 'pra', gloss: 'assembled / gathered (pl)' },
+  'विषीदन्तम्':     { category: 'krdanta', kind: 'present-active', root: 'वि + √सद्', gender: 'm', number: 'eka', case: 'dvi', gloss: 'despondent (m. sg, object)' },
+  'विषीदन्तः':      { category: 'krdanta', kind: 'present-active', root: 'वि + √सद्', gender: 'm', number: 'eka', case: 'pra', gloss: 'despondent' },
+  'उपसङ्गम्य':      { category: 'krdanta', kind: 'absolutive',     root: 'उप + सम् + √गम्', gloss: 'having approached' },
+  'उपगम्य':         { category: 'krdanta', kind: 'absolutive',     root: 'उप + √गम्', gloss: 'having approached' },
+  'समीक्ष्य':        { category: 'krdanta', kind: 'absolutive',     root: 'सम् + √ईक्ष्', gloss: 'having beheld / looked over' },
+  'दृष्ट्वा':        { category: 'krdanta', kind: 'absolutive',     root: '√दृश्', gloss: 'having seen' },
+  'श्रुत्वा':        { category: 'krdanta', kind: 'absolutive',     root: '√श्रु', gloss: 'having heard' },
+  'त्यक्त्वा':       { category: 'krdanta', kind: 'absolutive',     root: '√त्यज्', gloss: 'having abandoned' },
+  'हत्वा':          { category: 'krdanta', kind: 'absolutive',     root: '√हन्', gloss: 'having killed' },
+  // Common verb forms
+  'आप्नोति':        { category: 'verb', root: '√आप्',   gana: 5, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka',  gloss: 'obtains' },
+  'अनुवर्तते':      { category: 'verb', root: 'अनु + √वृत्', gana: 1, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'eka',  gloss: 'follows' },
+  'अनुवर्तन्ते':    { category: 'verb', root: 'अनु + √वृत्', gana: 1, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'bahu', gloss: 'follow (pl)' },
+  'उत्तिष्ठ':        { category: 'verb', root: 'उद् + √स्था', gana: 1, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka',  gloss: 'rise up! / stand up!' },
+  'गच्छति':         { category: 'verb', root: '√गम्',  gana: 1, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka',  gloss: 'goes' },
+  'गच्छामि':        { category: 'verb', root: '√गम्',  gana: 1, pada: 'P', lakara: 'lat', purusha: 'uttama',   number: 'eka',  gloss: 'I go' },
+  'जानाति':         { category: 'verb', root: '√ज्ञा', gana: 9, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka',  gloss: 'knows' },
+  'जानन्ति':        { category: 'verb', root: '√ज्ञा', gana: 9, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'bahu', gloss: 'they know' },
+  // Common compounds appearing whole in padaccheda
+  'क्षेत्रक्षेत्रज्ञयोः': { category: 'noun', root: 'क्षेत्र+क्षेत्रज्ञ', gender: 'm', number: 'dvi', case: 'sha', gloss: 'of the field and the field-knower' },
+  'लोकसङ्ग्रहम्':    { category: 'noun', root: 'लोकसङ्ग्रह', gender: 'm', number: 'eka', case: 'dvi', gloss: 'world-welfare (object)' },
+  'लोकसङ्ग्रहः':     { category: 'noun', root: 'लोकसङ्ग्रह', gender: 'm', number: 'eka', case: 'pra', gloss: 'world-welfare' },
+  // Indeclinables / adverbs
+  'यावत्':          { category: 'particle', gloss: 'as much as / while' },
+  'तावत्':          { category: 'particle', gloss: 'so much as / so long as' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
@@ -320,6 +351,72 @@ const I_STEM_NOUNS = {
   ...buildIStemMasculine('ऋष', 'seer'),
 };
 
+// Build i-stem feminine declension (मति-style) — for स्त्रीलिंग nouns.
+function buildIStemFeminine(stem, gloss) {
+  return {
+    [stem + 'िः']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'pra', gloss },
+    [stem + 'िम्']:    { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'dvi', gloss: `${gloss} (object)` },
+    [stem + 'या']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'tri', gloss: `by ${gloss}` },
+    [stem + 'ये']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'cha', gloss: `for ${gloss}` },
+    [stem + 'ेः']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'sha', gloss: `of ${gloss}` },
+    [stem + 'ौ']:      { category: 'noun', root: stem + 'ि', gender: 'f', number: 'eka',  case: 'sap', gloss: `in ${gloss}` },
+    [stem + 'यः']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'bahu', case: 'pra', gloss: `${gloss} (pl)` },
+    [stem + 'ीः']:     { category: 'noun', root: stem + 'ि', gender: 'f', number: 'bahu', case: 'dvi', gloss: `${gloss} (pl, object)` },
+    [stem + 'िभिः']:   { category: 'noun', root: stem + 'ि', gender: 'f', number: 'bahu', case: 'tri', gloss: `by ${gloss} (pl)` },
+    [stem + 'ीनाम्']:  { category: 'noun', root: stem + 'ि', gender: 'f', number: 'bahu', case: 'sha', gloss: `of ${gloss} (pl)` },
+    [stem + 'िषु']:    { category: 'noun', root: stem + 'ि', gender: 'f', number: 'bahu', case: 'sap', gloss: `in ${gloss} (pl)` },
+  };
+}
+const I_STEM_FEMININES = {
+  ...buildIStemFeminine('शान्त', 'peace'),
+  ...buildIStemFeminine('बुद्ध', 'intellect'),
+  ...buildIStemFeminine('व्यक्त', 'manifestation'),
+  ...buildIStemFeminine('कीर्त', 'fame'),
+  ...buildIStemFeminine('गत', 'gait / path'),  // -इ stem गति (overlaps with PPP गत — that's OK, vocab keys different)
+  ...buildIStemFeminine('स्मृत', 'memory'),
+};
+
+// Extra high-frequency a-stem masculines & neuters.
+const MORE_NOUNS = {
+  // Names + epithets (a-stem masculines treated as proper nouns).
+  ...buildAStemMasculine('आचार्य', 'teacher'),
+  ...buildAStemMasculine('भीष्म', 'Bhīṣma'),
+  ...buildAStemMasculine('द्रोण', 'Drona'),
+  ...buildAStemMasculine('अर्जुन', 'Arjuna'),
+  ...buildAStemMasculine('कृष्ण', 'Krishna'),
+  ...buildAStemMasculine('हृषीकेश', 'Hṛṣīkeśa (Krishna)'),
+  ...buildAStemMasculine('केशव', 'Keśava (Krishna)'),
+  ...buildAStemMasculine('गोविन्द', 'Govinda (Krishna)'),
+  ...buildAStemMasculine('मधुसूदन', 'Madhusūdana (Krishna)'),
+  ...buildAStemMasculine('पार्थ', 'Pārtha (Arjuna)'),
+  ...buildAStemMasculine('शूर', 'hero'),
+  ...buildAStemMasculine('देव', 'god'),
+  ...buildAStemMasculine('दैत्य', 'demon'),
+  ...buildAStemMasculine('मानव', 'human'),
+  ...buildAStemMasculine('विष', 'enemy / poison-like'),
+  // High-frequency a-stem neuters
+  ...buildAStemNeuter('वचन', 'word'),
+  ...buildAStemNeuter('विश्व', 'universe'),
+  ...buildAStemNeuter('कारण', 'cause'),
+  ...buildAStemNeuter('बल', 'strength / army'),
+  ...buildAStemNeuter('वाक्य', 'speech / sentence'),
+  ...buildAStemNeuter('रूप', 'form'),
+  ...buildAStemNeuter('इन्द्रिय', 'sense organ'),
+  ...buildAStemNeuter('युद्ध', 'battle'),
+  ...buildAStemNeuter('रथ', 'chariot'),
+  ...buildAStemNeuter('शास्त्र', 'scripture / treatise'),
+  ...buildAStemNeuter('फल', 'fruit'),
+  ...buildAStemNeuter('धन', 'wealth'),
+  ...buildAStemNeuter('गुण', 'quality'),
+  ...buildAStemNeuter('यज्ञ', 'sacrifice'),
+  ...buildAStemNeuter('दान', 'gift'),
+  ...buildAStemNeuter('तप', 'austerity'),
+  ...buildAStemNeuter('अमृत', 'nectar / immortality'),
+  ...buildAStemNeuter('समुद्र', 'ocean'),
+  ...buildAStemNeuter('सङ्ग्राम', 'battle'),
+  ...buildAStemNeuter('अहंकार', 'ego / I-maker'),
+};
+
 // More common forms — krdantas, indeclinables, infrequent verbs.
 const MORE_COMMON = {
   // Indefinite pronoun
@@ -354,6 +451,8 @@ const MORE_COMMON = {
 export const CORE_VOCAB = {
   ...ATMAN,
   ...I_STEM_NOUNS,
+  ...I_STEM_FEMININES,
+  ...MORE_NOUNS,
   ...MORE_COMMON,
   ...YAD,
   ...TAD,
