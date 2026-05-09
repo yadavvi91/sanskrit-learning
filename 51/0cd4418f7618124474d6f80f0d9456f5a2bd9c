@@ -1,0 +1,26 @@
+src/data/dhatus-extended.js
+  s_d5e8c30b294ba2::t_c65601df51136d 85-113
+src/__tests__/app.integration.test.jsx
+  s_d5e8c30b294ba2::t_783073bedba59f 206-210
+src/components/Verbs.jsx
+  s_d5e8c30b294ba2::t_9ce65d5ad22969 32-33
+  s_d5e8c30b294ba2::t_473d402adba983 22,53,61,63
+  s_d5e8c30b294ba2::t_4cded39c4f450f 88-92
+  s_d5e8c30b294ba2::t_8236c0e34ef7fa 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "510cd4418f7618124474d6f80f0d9456f5a2bd9c",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
