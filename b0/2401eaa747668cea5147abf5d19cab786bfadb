@@ -1,0 +1,19 @@
+article.md
+  s_d5e8c30b294ba2::t_8e55bf515ef30d 57,59-67,75-133,135-139,141,143-145,147
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b02401eaa747668cea5147abf5d19cab786bfadb",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
