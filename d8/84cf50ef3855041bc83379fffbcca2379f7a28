@@ -1,0 +1,24 @@
+src/utils/splitter-bugs.test.js
+  s_d5e8c30b294ba2::t_85f44ed0cbef45 108-126
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_2469d844bd000f 809-810
+  s_d5e8c30b294ba2::t_4a447b9ca42d34 835-844
+  s_d5e8c30b294ba2::t_d79ffcbabed83a 788-808,811-822
+  s_d5e8c30b294ba2::t_f4738b26bb8f6e 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d884cf50ef3855041bc83379fffbcca2379f7a28",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
