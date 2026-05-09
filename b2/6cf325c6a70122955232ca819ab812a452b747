@@ -1,0 +1,25 @@
+src/data/verse-overrides.js
+  s_d5e8c30b294ba2::t_0a4144f73aea41 12-15,20,24
+src/data/_ch2_overrides.js
+  s_d5e8c30b294ba2::t_a37681cc57392e 2187
+  s_d5e8c30b294ba2::t_395740b1cfc779 1-507,509-517,1020-1021
+  s_d5e8c30b294ba2::t_976a70a33f933d 1022-1667
+  s_d5e8c30b294ba2::t_9d05ddf3c9c047 1668-2186
+  s_d5e8c30b294ba2::t_87b32533970af0 508,518-1019
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b26cf325c6a70122955232ca819ab812a452b747",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
