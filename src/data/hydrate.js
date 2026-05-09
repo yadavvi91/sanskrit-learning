@@ -17,6 +17,7 @@ import { INTERP_NOTES } from './interpretive.js';
 import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
 import { FINITE_OVERRIDES } from './finite-overrides.js';
 import { DHATUS_EXTENDED } from './dhatus-extended.js';
+import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 
 let done = false;
 
@@ -134,6 +135,16 @@ export function hydrateAutoStubVerses() {
     if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
       v.vyakhya = interp.vyakhya;
     }
+  }
+
+  // Fill futureStem on bulk-extended dhātus that lack it. Top-25
+  // entries already have hand-curated futureStem and won't be touched.
+  // This unblocks the लृट् column in DhatuDetail's conjugation grid
+  // for the ~80 in-Gītā dhātus that were previously blank.
+  for (const d of DHATUS_EXTENDED) {
+    if (d.futureStem) continue;
+    const stem = FUTURE_STEMS[d.id];
+    if (stem) d.futureStem = stem;
   }
 
   // Third pass: back-populate gitaOccurrences on each dhātu by scanning
