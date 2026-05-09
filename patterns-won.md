@@ -29,6 +29,9 @@
 | विधिलिङ् identification | -ीय/-यात् endings = "should/ought to" — the mood of rhetorical anguish | 2.5 (भुञ्जीय) |
 | मा स्म + लोट् | "Do not [verb]" — negated imperative | 2.3 (मा स्म गमः) |
 | प्रथम पुरुष flip | Sanskrit प्रथम = English 3rd person (he/she/it). Counted from outside in. | 1.1 (अकुर्वत — they did) |
+| आत्मनेपद imperative — -स्व ending | लोट् मध्यम-एकवचन **आत्मनेपद** ending. Not -हि (परस्मैपद) but -स्व (आत्मनेपद). The form looks plain — verb-stem + -स्व directly. Two voice paradigms exist; you've now met both. | 2.18 (युध्यस्व — "fight!", from √युध् gaṇa 4 आत्मनेपद) |
+| आत्मनेपद imperative — -ध्वम् / -न्ताम् / -ताम् | -ध्वम् = 2pl ("you all do!"), -न्ताम् = 3pl ("let them do"), -ताम् = 3sg ("let him do"). All आत्मनेपद. The परस्मैपद equivalents are -त (2pl), -न्तु (3pl), -तु (3sg). | 2.18 (the -स्व paradigm; -ध्वम् etc. land in later verses) |
+| परस्मैपद vs आत्मनेपद — voice paradigms | Sanskrit verbs come in two voice classes. परस्मैपद = "active for another" (most verbs); आत्मनेपद = "active for oneself" (a smaller class, including √युध्, √लभ्, √सेव्). The endings differ in EVERY लकार × पुरुष × वचन cell. The -स्व ending is the first taste of आत्मनेपद. | 2.18 (युध्यस्व) |
 
 ---
 
@@ -115,3 +118,5 @@ Three distinct negation mechanisms — each for a different grammatical context.
 | Giveaway test | Remove word X — does the sentence still work? If yes, X is not the finite verb | 2.5 (removing भोक्तुम् vs removing भुञ्जीय) |
 | Endings narrow, meaning picks | विभक्ति matching gives candidates; context selects the right pairing | 1.1 (समवेताः — which noun does it describe?) |
 | Sandhi comes last | Understand the expected form first; then the change makes sense | bvsiitm explainer |
+| **अनुवृत्ति** — verb carry-over across verses | When a verse has no overt finite verb, the verb is often *gapped* from a neighbouring stanza. Example: 1.15 has दध्मौ ("blew the conch"), 1.16 and 1.17 list more warriors with no verb — the दध्मौ is mentally supplied for each. Same with bridge verses (1.20 → 1.21 आह; 1.24 → 1.25 उवाच; 1.27 → 1.28 अब्रवीत्). Distinct from "implied अस्ति" — the carried verb is specific, recoverable, and pedagogically named. | 1.16, 1.17 (←1.15 दध्मौ), 1.20 (→1.21 आह), 1.24 (→1.25 उवाच), 1.27 (→1.28 अब्रवीत्) |
+| एक-वाक्यता vs अनुवृत्ति | एक-वाक्यता = single sentence spanning multiple verses (one syntactic unit broken across stanzas by metre). अनुवृत्ति = the supply rule that lets you continue a verb/word implicitly. Both produce "verbless" verses; अनुवृत्ति specifically names which verb is being supplied. | 1.20 (एक-वाक्यता with 1.21; the अनुवृत्ति verb is आह) |

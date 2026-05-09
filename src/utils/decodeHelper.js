@@ -262,6 +262,18 @@ const LAKARA_SIGNALS = [
   { match: /तु$/, lakara: 'lot', purusha: 'prathama', hint: 'imperative -तु' },
   // लोट् 2sg -हि — also matches the particle हि, untrusted.
   { match: /हि$/, lakara: 'lot', purusha: 'madhyama', vachana: 'eka', hint: 'imperative -हि' },
+  // लोट् आत्मनेपद endings. Highly verb-specific — these patterns don't
+  // collide with common nominal endings, so they're trusted.
+  // -स्व (2sg ātmane., e.g., युध्यस्व, कुरुष्व): "[you] do (it for yourself)!"
+  { match: /स्व$/, lakara: 'lot', pada: 'A', purusha: 'madhyama', vachana: 'eka', hint: 'imperative आत्मनेपद -स्व (2sg)', trusted: true },
+  // -ध्वम् (2pl ātmane., e.g., प्रहसध्वम् "rejoice!", युध्यध्वम्)
+  { match: /ध्वम्$/, lakara: 'lot', pada: 'A', purusha: 'madhyama', vachana: 'bahu', hint: 'imperative आत्मनेपद -ध्वम् (2pl)', trusted: true },
+  // -न्ताम् (3pl ātmane., e.g., युध्यन्ताम्)
+  { match: /न्ताम्$/, lakara: 'lot', pada: 'A', purusha: 'prathama', vachana: 'bahu', hint: 'imperative आत्मनेपद -न्ताम् (3pl)', trusted: true },
+  // -ताम् alone (3sg ātmane., e.g., युध्यताम्). Trickier — also appears
+  // in certain compound endings, but the verb-form pattern is distinctive
+  // enough to be net-positive.
+  { match: /ताम्$/, lakara: 'lot', pada: 'A', purusha: 'prathama', vachana: 'eka', hint: 'imperative आत्मनेपद -ताम् (3sg)' },
   // लट् (present). Multi-character endings like -न्ति / -न्ते are
   // distinctive enough to trust; bare -ति / -ते match many nouns.
   { match: /न्ति$/, lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present -न्ति', trusted: true },

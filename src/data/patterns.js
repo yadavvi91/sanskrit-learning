@@ -84,6 +84,18 @@ export const PATTERN_CATEGORIES = [
           'Sanskrit प्रथम = English 3rd person (he/she/it). Counted from outside in.',
         trigger: { label: '1.1', verse: '1.1', example: 'अकुर्वत — they did' },
       },
+      {
+        name: 'आत्मनेपद imperative — -स्व ending',
+        meaning:
+          'लोट् मध्यम-एकवचन आत्मनेपद ending. Not -हि (परस्मैपद) but -स्व. Two voice paradigms exist; this is the first आत्मनेपद form you meet.',
+        trigger: { label: '2.18', verse: '2.18', example: 'युध्यस्व — "fight!"' },
+      },
+      {
+        name: 'परस्मैपद vs आत्मनेपद — voice paradigms',
+        meaning:
+          'Sanskrit verbs come in two voice classes. परस्मैपद = "active for another" (most verbs); आत्मनेपद = "active for oneself" (e.g. √युध्, √लभ्, √सेव्). The endings differ in EVERY लकार × पुरुष × वचन cell.',
+        trigger: { label: '2.18', verse: '2.18', example: 'युध्यस्व — आत्मनेपद flag' },
+      },
     ],
   },
   {
@@ -151,6 +163,18 @@ export const PATTERN_CATEGORIES = [
         name: 'Sandhi comes last',
         meaning: 'Understand the expected form first; then the change makes sense',
         trigger: { label: 'bvsiitm explainer' },
+      },
+      {
+        name: 'अनुवृत्ति — verb carry-over across verses',
+        meaning:
+          'When a verse has no overt finite verb, the verb is often gapped from a neighbouring stanza. Distinct from "implied अस्ति" — the carried verb is specific, recoverable, and pedagogically named.',
+        trigger: { label: '1.16, 1.17', verse: '1.16', example: '←1.15 दध्मौ "blew the conch"' },
+      },
+      {
+        name: 'एक-वाक्यता vs अनुवृत्ति',
+        meaning:
+          'एक-वाक्यता = single sentence spanning multiple verses (one syntactic unit broken across stanzas by metre). अनुवृत्ति = the supply rule that lets you continue a verb implicitly. Both produce "verbless" verses; अनुवृत्ति specifically names which verb is being supplied.',
+        trigger: { label: '1.20', verse: '1.20', example: '→1.21 आह — bridge verse with the verb arriving in the next stanza' },
       },
     ],
   },
