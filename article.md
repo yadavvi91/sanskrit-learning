@@ -46,11 +46,39 @@ These four ideas are the reason I could later read a verse at all. They were the
 
 ## The Awadhi visualizer — the same idea, sideways
 
-Before any of this, there was the **Awadhi Meter Visualizer**. A separate React + Vite app for Sundarkand and Ramcharitmanas. It breaks Awadhi verse lines into laghu/guru syllables and shows the यति (singing pause) in a four-step animated widget. All sixty Sundarkand sections from the IIT Kanpur corpus. A Devanagari syllabification engine with Awadhi-specific mātrā rules. Vitest tests, golden-master accuracy around 71.7% chaupai. Parchment aesthetic — Noto Serif Devanagari, Cormorant Garamond, Cinzel.
+Before any of this, there was the **[Awadhi Meter Visualizer](https://github.com/yadavvi91/awadhi-meter-identifier)** ("memphis" in the local workspace). A separate React + Vite app, content-different but architecturally a sibling of this one. The problem it solves: when reciting or singing Sundarkand from Ramcharitmanas, people consistently get the **यति (pause)** wrong. Each metre has specific pause points — a चौपाई pauses at the 8th mātrā, a दोहा at different positions per pāda — but without a visual breakdown the rhythm slips. No tool existed for Awadhi meter prior to this; Sanskrit has vidyut and the bvsiitm widgets, Awadhi/Prakrit had nothing.
+
+The widget interaction is four steps, animated:
+
+| Step | What's shown |
+|---|---|
+| 1 — Full line | The complete Devanagari line as-is |
+| 2 — Syllables | Line split into individual akṣaras |
+| 3 — Laghu / Guru | Each syllable marked as लघु (1 mātrā) or गुरु (2 mātrās), color-coded |
+| 4 — Mātrā count + यति | Running mātrā total accumulates left-to-right; pause position highlighted with a vertical divider |
+
+For example, a चौपाई line "जामवंत के बचन सुहाए" decomposes as `जा(2) म(1) वं(2) त(1) के(2) | ब(1) च(1) न(1) सु(1) हा(2) ए(2)` with the यति at mātrā 8 (after `के`).
+
+Under the hood, that engine had real Sanskrit-vs-Awadhi divergence to handle. The headline rule difference: **in Sanskrit, a लघु syllable before a conjunct consonant is always treated as गुरु (position makes weight); in Awadhi this only applies within the same word**. A लघु at the end of one word stays लघु even if the next word starts with a conjunct. Encoding that cross-word rule correctly was the first big engineering payoff.
+
+Three other engine-shaping discoveries surfaced during the golden-master accuracy push (running the engine across all 676 Sundarkand verse lines from the IITK corpus and chasing every miscount):
+
+1. **Diphthong absorption** — standalone इ/उ after vowel-ending syllables merge into the preceding syllable. "चलेउ" had been splitting into `[च, ले, उ]` (3 akṣaras) when it should be `[च, लेउ]` (2 akṣaras with a diphthong). These glide vowels form diphthongs and don't get their own syllable count.
+2. **Aspirated conjunct exclusion** — Awadhi's aspiration spellings like `म्ह`, `न्ह` (consonant + virama + ह) used to trigger position-based heaviness on the preceding syllable. They shouldn't — the conjunct is just an aspiration mark, not a "real" cluster for prosodic purposes.
+3. **Chandrabindu treatment** — `ँ` is vowel nasalization, not consonantal weight. Treating it like अनुस्वार `ं` (which DOES add weight) was producing systematic over-counts. Distinguishing the two is critical for chaupai metre.
+
+After fixing those three, accuracy went **chaupai 58.8% → 71.7%** (754 of 1052 half-lines hitting the canonical 16 mātrās exactly). The remaining mismatches are mostly +1 cases, likely text-edition differences from the IITK corpus rather than engine bugs. दोहा is harder (38.1%) — those have a systematic -1 undercount that points at edition-level spelling drift in the long-syllable conventions.
 
 It's a different language and a different prosodic tradition, but the shape of the obsession is identical: take a vernacular Indian verse tradition, build a tool that lets you *see* the structural skeleton you can't see when you just read the line. The Awadhi project was the first form the underlying interest took. The Sanskrit project is the same interest taking a more direct form.
 
-When I started building this app, I inherited everything from the Awadhi visualizer: the stack (Vite + React 18, no TypeScript), the colour palette (parchment `#faf4e8`, ink `#1c1008`, gold `#b5770d`, saffron `#c17f24`, sage `#4a5e4a`), the typography stack, the test infrastructure shape. The aesthetic decision had been made. The project just had to be content-different.
+When I started building this app, I inherited everything from the Awadhi visualizer:
+
+- **Stack** — Vite + React 18, no TypeScript, Vitest for testing.
+- **Aesthetic** — parchment `#faf4e8`, ink `#1c1008`, gold `#b5770d`, saffron `#c17f24`, sage `#4a5e4a`. Typography: Noto Serif Devanagari for Devanagari, Cormorant Garamond for prose, Cinzel for the small-caps labels.
+- **Engineering shape** — A pure-function engine + a thin React render layer. A `golden-master` test that runs the engine over the full corpus and reports accuracy. The discipline of "every commit builds and tests green; checkpoint after meaningful work."
+- **Widget interaction model** — Four-step animated breakdowns inspired by [bvsiitm.github.io](https://bvsiitm.github.io/sanskrit-gita-learn/)'s SandhiWidget and VicchhedaWidget. The Sanskrit project's *Decode Helper* and *Stack Builder* both descend from this pattern.
+
+The aesthetic decision was already made. The project just had to be content-different.
 
 ---
 
@@ -495,7 +523,7 @@ That's the whole project. A garden, not a textbook. A journal, not a graveyard.
 - Śaṅkara's commentary positions, Advaita-tradition summaries — agent-paraphrased, attached to every verse's References panel for grounding.
 
 **The sister project that donated the design language:**
-- *Awadhi Meter Visualizer* (my prior project) — Sundarkand syllabification engine, parchment palette, font stack. The Sanskrit project inherited stack + aesthetic from it directly.
+- *Awadhi Meter Visualizer* — [github.com/yadavvi91/awadhi-meter-identifier](https://github.com/yadavvi91/awadhi-meter-identifier). My prior React + Vite app for Sundarkand. All 60 sections from the IIT Kanpur Ramcharitmanas corpus (676 verse lines), Devanagari syllabification engine with Awadhi-specific cross-word rules, four-step animated mātrā widget, golden-master accuracy ~71.7% on chaupai. Donor of stack, aesthetic, engineering discipline, and widget-interaction pattern to the Sanskrit project.
 
 **The grammar tradition itself:**
 - Pāṇini, *Aṣṭādhyāyī* (~5th–4th century BCE). The four-thousand-rule generative grammar that Maharashtra SSC quietly used to compile its tables without ever telling its students it was the source.
