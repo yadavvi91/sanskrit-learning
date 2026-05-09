@@ -14,6 +14,7 @@ import { buildVocabulary } from './vocabulary.js';
 import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
 import { lookupSharedVocab } from '../data/sharedVocab.js';
 import { VOCAB_EXTENDED } from '../data/vocabulary-extended.js';
+import { stripUpasargas } from '../data/upasargas.js';
 
 // Stem → dhātu lookup table. Used by classifyByStem (below) to confirm a
 // candidate verb form by checking whether its stripped stem matches a
@@ -367,7 +368,23 @@ function classifyFiniteVerb(form) {
   // at all on verses where visarga-r / yan-chain undo isn't yet wired.
   // Forms beyond 25 chars are almost always bulk-vocab tagging errors
   // and stay rejected.
-  const v0 = lookupSharedVocab(form);
+  // Try the form directly, then with उपसर्ग prefixes stripped — many
+  // upasarga-prefixed verb forms (उपसेवते = उप + सेवते, अधिगच्छति =
+  // अधि + गच्छति) aren't individually catalogued, but the bare verb
+  // form usually is. When the stripped form classifies as a verb, we
+  // re-attach the prefix label to the root for display.
+  let v0 = lookupSharedVocab(form);
+  let v0PrefixLabel = '';
+  if (!v0 || v0.category !== 'verb') {
+    const stripped = stripUpasargas(form);
+    if (stripped.prefixes.length > 0) {
+      const v0s = lookupSharedVocab(stripped.stripped);
+      if (v0s && v0s.category === 'verb') {
+        v0 = v0s;
+        v0PrefixLabel = stripped.prefixes.map((p) => p.prefix).join(' + ') + ' + ';
+      }
+    }
+  }
   if (v0 && v0.category === 'verb' && v0.lakara && VALID_LAKARAS.has(v0.lakara)
       && form.length <= 25) {
     return {
@@ -376,11 +393,11 @@ function classifyFiniteVerb(form) {
       purusha: v0.purusha || '?',
       vachana: v0.number || '?',
       pada: v0.pada || 'P',
-      root: v0.root || '',
+      root: v0PrefixLabel + (v0.root || ''),
       gana: v0.gana,
       gloss: v0.gloss || '',
       confidence: 'medium',
-      signal: 'vocab-direct',
+      signal: v0PrefixLabel ? 'vocab-direct (upasarga-stripped)' : 'vocab-direct',
     };
   }
 
@@ -760,6 +777,62 @@ function splitMakaraCompound(chunk) {
   return null;
 }
 
+// Visarga-र् sandhi: the visarga at the end of a word becomes -र् when
+// the next word starts with a voiced consonant or vowel. Surface form
+// in Devanagari script differs by what follows:
+//   - Before voiced consonant: `र + ् + C` (virama explicitly written).
+//     E.g., मरीचिर्मरुताम् ← मरीचिः + मरुताम्.
+//   - Before vowel-letter: `र + <V-matra>` (no virama; the next word's
+//     initial vowel attaches to the joining र as a matra).
+//     E.g., पराण्याहुरिन्द्रियेभ्यः ← पराण्याहुः + इन्द्रियेभ्यः
+//     (the इ from इन्द्रियेभ्यः became the ि matra on र).
+//
+// Both surface patterns get visited. To avoid false positives on internal
+// -र-<matra> (कुरुते, मरुत्, पुरुष — endless internal occurrences) the
+// matra-form path requires lexicon-validation of at least one half.
+const MATRA_TO_LETTER = {
+  'ा': 'आ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ',
+  'ृ': 'ऋ', 'ॄ': 'ॠ', 'े': 'ए', 'ै': 'ऐ', 'ो': 'ओ', 'ौ': 'औ',
+};
+function splitVisargaR(chunk) {
+  if (!chunk || chunk.length < 6) return null;
+  const VOICED_CONSONANTS = /[गघङजझञडढणदधनबभयलवहळ]/; // exclude र itself
+  for (let i = 1; i < chunk.length - 2; i++) {
+    if (chunk[i] !== 'र') continue;
+    // LEFT-conjunct guard: this र is internal to a conjunct (-्र-, like
+    // द्र, ब्र, ग्र); not a sandhi junction.
+    if (chunk[i - 1] === '्') continue;
+    const after = chunk[i + 1];
+    let left, right;
+    if (after === '्') {
+      // Pattern A: र + ् + voiced-consonant.
+      const cons = chunk[i + 2];
+      if (!VOICED_CONSONANTS.test(cons)) continue;
+      left = chunk.slice(0, i) + 'ः';
+      right = chunk.slice(i + 2);
+    } else if (MATRA_TO_LETTER[after]) {
+      // Pattern B: र + V-matra → restored as left-with-visarga + V-letter.
+      left = chunk.slice(0, i) + 'ः';
+      right = MATRA_TO_LETTER[after] + chunk.slice(i + 2);
+    } else {
+      continue;
+    }
+    if (left.length < 5 || right.length < 4) continue;
+    const leftVocab = lookupSharedVocab(left);
+    const rightVocab = lookupSharedVocab(right);
+    // Either half vocab-validated → strong evidence; accept.
+    if (leftVocab || rightVocab) return [left, right];
+    // Length heuristic: both halves substantial (≥5 chars) on a long
+    // chunk (≥15 chars). The internal -र-<matra> false-positive cases
+    // (कुरुते, मरुत्, पुरुष, ब्रह्मनिर्वाणम्, अन्तर्यामी, etc.) all
+    // produce one half <5 chars, so they're filtered out by length alone.
+    if (left.length >= 5 && right.length >= 5 && chunk.length >= 15) {
+      return [left, right];
+    }
+  }
+  return null;
+}
+
 // Recursively apply splitMakaraCompound to a chunk. Each split reduces
 // length, so recursion terminates. Notes are appended for each successful
 // split for the sandhiNotes panel.
@@ -889,14 +962,25 @@ function extractPadas(mool) {
           // -म् + V junctions gets fully decomposed (e.g., 15.1's
           // ऊर्ध्वमूलमधःशाखमश्वत्थं → ऊर्ध्वमूलम् + अधःशाखम् + अश्वत्थम्).
           for (const piece3 of afterNasal) {
-            const fullySplit = recursiveMakaraSplit(piece3, sandhiNotes);
-            padas.push(...fullySplit);
+            const afterMakara = recursiveMakaraSplit(piece3, sandhiNotes);
+            // Visarga-र् pass on each makara-piece. Catches the
+            // -र्<vowel-letter> and -र्<voiced-cons> junctions
+            // (पराण्याहुरिन्द्रियेभ्यः → पराण्याहुः + इन्द्रियेभ्यः).
+            for (const piece4 of afterMakara) {
+              const visargaSplit = splitVisargaR(piece4);
+              if (visargaSplit) {
+                sandhiNotes.push(`${piece4} = ${visargaSplit.join(' + ')} (visarga-र् sandhi)`);
+                padas.push(...visargaSplit);
+              } else {
+                padas.push(piece4);
+              }
+            }
           }
         }
       }
     }
   }
-  return { padas, sandhiNotes, lines };
+  return { padas, sandhiNotes, lines, chunks };
 }
 
 // Look up each pada against the vocabulary library built from the existing
@@ -929,14 +1013,32 @@ export function autoDecode(mool) {
   const moolStr = Array.isArray(mool) ? mool.join('\n') : mool;
   if (!moolStr.trim()) return null;
 
-  const { padas, sandhiNotes, lines } = extractPadas(mool);
+  const { padas, sandhiNotes, lines, chunks } = extractPadas(mool);
   const { wordParsings, confidence } = lookupParsings(padas);
 
-  // Detect candidate finite verbs by ending signal.
+  // Detect candidate finite verbs by ending signal. Two passes:
+  // 1. Try each split pada — catches cleanly-split verbs.
+  // 2. Try each ORIGINAL whitespace chunk that wasn't surfaced as a pada
+  //    — catches forms where vocab-direct lookup classifies the still-
+  //    joined sandhi blob (e.g., स्यात्त्रिभिर्गुणैः → √अस् विधिलिङ्)
+  //    even though the padaccheda has further decomposed the chunk.
   const finiteVerbs = [];
+  const seenForms = new Set();
   for (const word of padas) {
     const fv = classifyFiniteVerb(word);
-    if (fv) finiteVerbs.push(fv);
+    if (fv && !seenForms.has(fv.form)) {
+      finiteVerbs.push(fv);
+      seenForms.add(fv.form);
+    }
+  }
+  const padaSet = new Set(padas);
+  for (const chunk of chunks || []) {
+    if (padaSet.has(chunk) || seenForms.has(chunk)) continue;
+    const fv = classifyFiniteVerb(chunk);
+    if (fv && !seenForms.has(fv.form)) {
+      finiteVerbs.push(fv);
+      seenForms.add(fv.form);
+    }
   }
 
   return {
