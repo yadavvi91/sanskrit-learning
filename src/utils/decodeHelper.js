@@ -357,15 +357,18 @@ function classifyFiniteVerb(form) {
   // (a sandhi-joined verb where neither stem nor regex match — only
   // the agent-curated vocab knows it's a verb).
   //
-  // Length guard: real Sanskrit finite-verb forms rarely exceed 14 chars.
-  // Multi-word sandhi compounds the bulk-vocab agents wrongly tagged as
-  // single verbs (e.g., भीष्ममेवाभिरक्षन्तु = भीष्मम् + एव + अभिरक्षन्तु,
-  // 21 chars) get rejected here so the chunk falls through to the splitter
-  // passes instead. Genuine long verbs that exceed the threshold can be
-  // re-allowed via per-verse overrides in verses.js or finite-overrides.js.
+  // Length guard: longer sandhi blobs (length > 25) are usually multi-
+  // word junctions the splitter should have caught (e.g., the original
+  // भीष्ममेवाभिरक्षन्तु at 21 chars now splits cleanly via Pattern A).
+  // For genuinely-unsplit blobs at 15-25 chars, the agent-built vocab
+  // typically has the embedded finite verb correctly identified — we
+  // trust that approximation, since the alternative is showing no क्रिया
+  // at all on verses where visarga-r / yan-chain undo isn't yet wired.
+  // Forms beyond 25 chars are almost always bulk-vocab tagging errors
+  // and stay rejected.
   const v0 = lookupSharedVocab(form);
   if (v0 && v0.category === 'verb' && v0.lakara && VALID_LAKARAS.has(v0.lakara)
-      && form.length <= 14) {
+      && form.length <= 25) {
     return {
       form,
       lakara: v0.lakara,
@@ -456,9 +459,25 @@ function classifyFiniteVerb(form) {
 // a bogus over-eager savarna-dirgha undo (e.g., काङ्क्षे → क + अङ्क्षे).
 const REAL_ONECHAR_PADAS = new Set(['न', 'च', 'तु', 'हि', 'वा', 'सः', 'या', 'अ', 'उ']);
 
+// Two-character verbal-ending fragments that are NEVER standalone padas.
+// These appear when visarga-* sandhi rules misfire root-internally:
+// e.g., तदस्ति → तदः + ति (the स्त is internal to अस्ति, not a junction).
+// All the strings below are finite-verb endings that real Sanskrit words
+// only carry as suffixes — they're never written as separate words. If a
+// candidate split produces one of these as a part, the split is bogus.
+// (Distinct from REAL_SHORT_TAILS like ते / च / तु, which ARE real words.)
+const BOGUS_SHORT_FRAGMENTS = new Set([
+  'ति', // present 3sg P (verbal ending, never standalone)
+  'सि', // present 2sg P
+  'मि', // present 1sg P
+  'ष्य', 'स्य', // future-stem fragments / genitive matra
+  'त्व',  // absolutive fragment / abstract-noun suffix
+]);
+
 function isPlausibleSplit(parts) {
   for (const p of parts) {
     if (p.length === 1 && !REAL_ONECHAR_PADAS.has(p)) return false;
+    if (BOGUS_SHORT_FRAGMENTS.has(p)) return false;
   }
   return true;
 }
@@ -660,20 +679,47 @@ function splitMakaraCompound(chunk) {
     if (matraSet.has(chunk[i + 1])) continue;
     const next = chunk[i + 1];
     if (!/[क-ह]/.test(next)) continue;
-    // Conjunct-detection guard: if the next consonant is itself followed
-    // by a virama (i.e., it starts a conjunct cluster like क्ष, त्र, ष्व),
-    // the boundary is almost certainly internal to a समास compound, NOT
-    // a -м् + अ- sandhi junction. धर्मक्षेत्रे, कर्मक्षेत्रे — both fit
-    // this shape; both must NOT split.
-    if (chunk[i + 2] === '्') continue;
+    // LEFT-conjunct guard: if this म is internal to a conjunct cluster
+    // (र्म, श्म, ष्म, ग्म…), the prefix `slice(0,i+1) + '्'` would be
+    // junk like `मरीचिर्म्` or `अग्निर्भस्म्` — never a real pada. Real
+    // -म् pada-endings come from a vowel-or-matra immediately before म,
+    // not from a virama. This catches the र्+म mis-split class
+    // (मरीचिर्मरुतामस्मि, प्राहुर्मनीषिणः, अग्निर्भस्मसात्...).
+    if (chunk[i - 1] === '्') continue;
+    const isRightConjunct = chunk[i + 2] === '्';
     // chunk.slice(0, i+1) already includes the م itself; append the
     // virama (्) — NOT an extra 'म्' which would double the consonant.
     const prefix = chunk.slice(0, i + 1) + '्';
     const suffix = 'अ' + chunk.slice(i + 1);
     if (prefix.length < 4 || suffix.length < 5) continue;
-    // Tier 1: lexicon-validated split
+    // Tier 1: BOTH prefix AND suffix lexicon-validated. This case can
+    // override the right-conjunct guard — if both pieces are known
+    // words, the conjunct is internal to the suffix word (e.g.,
+    // मरुतामस्मि → मरुताम् + अस्मि, where स्म is internal to अस्मि),
+    // not a samāsa internal cluster.
+    if (lookupSharedVocab(prefix) && lookupSharedVocab(suffix)) return [prefix, suffix];
+    // Tier 1b: suffix is a known *verb* form. The right-conjunct guard
+    // exists to prevent splitting inside samāsa clusters, but the
+    // suffix being a recognized verb is strong evidence the boundary
+    // is real (verb forms don't appear as samāsa-internal substrings).
+    // This catches cases where the prefix is a longer sandhi blob that
+    // hasn't yet been further decomposed (e.g., मरीचिर्मरुतामस्मि →
+    // मरीचिर्मरुताम् + अस्मि — the prefix needs visarga-r undo to
+    // become a real word, but अस्मि alone is enough to justify the cut).
+    {
+      const sufVocab = lookupSharedVocab(suffix);
+      if (sufVocab && sufVocab.category === 'verb') return [prefix, suffix];
+    }
+    // Right-conjunct guard for the remaining tiers: if the next consonant
+    // starts a conjunct cluster (क्ष, त्र, ष्व), the boundary is almost
+    // certainly internal to a समास compound, NOT a -м् + अ- sandhi
+    // junction. धर्मक्षेत्रे, कर्मक्षेत्रे — both fit this shape and
+    // must NOT split unless lexicon validation cleared them above.
+    if (isRightConjunct) continue;
+    // Tier 2: lexicon-validated split on prefix only (suffix often
+    // unlexicalized but the prefix being a known word is strong signal).
     if (lookupSharedVocab(prefix)) return [prefix, suffix];
-    // Tier 2: length-and-shape heuristic for unlexicalized -м् + अ- forms
+    // Tier 3: length-and-shape heuristic for unlexicalized -м् + अ- forms
     if (chunk.length >= 12) return [prefix, suffix];
   }
 
@@ -690,6 +736,9 @@ function splitMakaraCompound(chunk) {
     if (chunk[i + 1] !== 'ा') continue;
     const afterMatra = chunk[i + 2];
     if (!afterMatra || matraSet.has(afterMatra)) continue;
+    // LEFT-conjunct guard (same rationale as Pattern B): a м internal
+    // to a conjunct (र्म, श्म, ष्म…) cannot be a real -म् pada-ending.
+    if (chunk[i - 1] === '्') continue;
     // (a) -м् + आ- restoration
     const prefixA = chunk.slice(0, i + 1) + '्';
     const suffixA = 'आ' + chunk.slice(i + 2);
