@@ -2706,7 +2706,34 @@ export const VERSES = [
   { chapter: 1, verse: 31, decodeIndex: 493, tier: 'auto-stub',
     mool: ['निमित्तानि च पश्यामि विपरीतानि केशव।', 'न च श्रेयोऽनुपश्यामि हत्वा स्वजनमाहवे॥'] },
   { chapter: 1, verse: 32, decodeIndex: 494, tier: 'auto-stub',
-    mool: ['न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च।', 'किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा॥'] },
+    speaker: 'अर्जुन उवाच',
+    mool: ['न काङ्क्षे विजयं कृष्ण न च राज्यं सुखानि च।', 'किं नो राज्येन गोविन्द किं भोगैर्जीवितेन वा॥'],
+    // padaccheda + sandhiNotes deliberately omitted — autoDecode (with the
+    // post-fix split-rejection) keeps काङ्क्षे whole and produces a clean
+    // padaccheda at hydration time. Override below covers what autoDecode
+    // can't yet detect.
+    finiteVerbs: [
+      { form: 'काङ्क्षे', root: 'काङ्क्ष्', lakara: 'लट्', purusha: 'उत्तम', vachana: 'एकवचन', gloss: '"I desire" — Ātmanepada cl. 1' },
+    ],
+    vibhaktiNotes: [
+      'विजयं, राज्यं, सुखानि — द्वितीया: objects of काङ्क्षे (under negation न).',
+      'कृष्ण, गोविन्द — सम्बोधन: vocatives, NOT participants in the action.',
+      'नो — चतुर्थी/षष्ठी बहुवचन of अस्मद् (= नः) — "for us / of us".',
+      'राज्येन, भोगैः, जीवितेन — तृतीया: instrumental "by means of …", predicate complement of the elliptical nominal question.',
+    ],
+    keyFights: [
+      'काङ्क्षे is the ONLY finite verb in the verse — anchors 9 padas. The second line is a nominal question with implied अस्ति.',
+      'काङ्क्षे ends in -ए (Ātmanepada उत्तम-एकवचन) — easy to miss because every सप्तमी-एकवचन noun (कुरुक्षेत्रे, गृहे) also ends in -ए. Endings alone are not enough — context matters.',
+      'नो is contracted नः (अस्मद् gen./dat. pl.) — easy to confuse with the negative न.',
+    ],
+    anvaya: 'हे कृष्ण, (अहं) विजयं न काङ्क्षे, राज्यं सुखानि च न (काङ्क्षे)। हे गोविन्द, नः राज्येन किं (प्रयोजनम्)? भोगैः जीवितेन वा किं?',
+    hindi: 'हे कृष्ण! मैं न विजय चाहता हूँ, न राज्य, न सुख। हे गोविन्द! हमें राज्य से क्या? भोगों से या इस जीवन से ही क्या लाभ?',
+    english: 'I do not desire victory, O Krishna, nor kingdom, nor pleasures. What use is kingdom to us, O Govinda — what use are enjoyments, or even life itself?',
+    vyakhya: [
+      { title: 'One finite verb, two clauses', body: 'काङ्क्षे (√काङ्क्ष्, लट्, ātmanepada उत्तम-एकवचन — "I desire") is the lone finite verb covering the first line\'s three द्वितीया objects under negation. The second line is a nominal question with implied अस्ति — Sanskrit happily drops the copula in rhetorical questions.' },
+      { title: 'Why this verse matters', body: 'Arjuna\'s protest crystallises into a refusal — not "I cannot fight" but "I do not want what fighting wins." This shifts the dialogue\'s axis: Krishna will now have to argue that the question of want is itself the problem.' },
+    ],
+  },
   { chapter: 1, verse: 33, decodeIndex: 495, tier: 'auto-stub',
     mool: ['येषामर्थे काङ्क्षितं नो राज्यं भोगाः सुखानि च।', 'त इमेऽवस्थिता युद्धे प्राणांस्त्यक्त्वा धनानि च॥'] },
   { chapter: 1, verse: 34, decodeIndex: 496, tier: 'auto-stub',

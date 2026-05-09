@@ -36,6 +36,11 @@ const LAKARA_SIGNALS = [
   { match: /ति$/,    lakara: 'lat', purusha: 'prathama', vachana: 'eka', hint: 'present -ति' },
   { match: /ते$/,    lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'eka', hint: 'present आत्मनेपद -ते' },
   { match: /मि$/,    lakara: 'lat', purusha: 'uttama', vachana: 'eka', hint: 'present -मि' },
+  // NOTE: आत्मनेपद उत्तम-एकवचन ending -ए (काङ्क्षे, लभे, मन्ये) is intentionally
+  // NOT a blanket signal — every सप्तमी-एकवचन noun also ends in -ए
+  // (कुरुक्षेत्रे, गृहे), so a regex catches massive false positives. Verses
+  // like 1.32 where the finite verb takes this ending need vocabulary-backed
+  // verification (planned) or hand-decoded data (current path).
   // लङ् (past, augmented)
   { match: /^अ.+त्$/, lakara: 'lan', hint: 'past with अ- augment + -त्' },
   { match: /^अ.+न्$/, lakara: 'lan', purusha: 'prathama', vachana: 'bahu', hint: 'past plural -न्' },
@@ -59,6 +64,18 @@ function classifyFiniteVerb(form) {
   return null;
 }
 
+// One-character padas that are real Sanskrit words (mostly avyayas / particles).
+// Anything else of length 1 emerging from a sandhi split is almost certainly
+// a bogus over-eager savarna-dirgha undo (e.g., काङ्क्षे → क + अङ्क्षे).
+const REAL_ONECHAR_PADAS = new Set(['न', 'च', 'तु', 'हि', 'वा', 'सः', 'या', 'अ', 'उ']);
+
+function isPlausibleSplit(parts) {
+  for (const p of parts) {
+    if (p.length === 1 && !REAL_ONECHAR_PADAS.has(p)) return false;
+  }
+  return true;
+}
+
 // Extract individual padas from a (multi-line) mool string by splitting on
 // whitespace and running each chunk through the sandhi engine.
 function extractPadas(mool) {
@@ -76,13 +93,16 @@ function extractPadas(mool) {
       padas.push(chunk);
       continue;
     }
-    const parts = r[0].parts;
-    if (parts.length === 1) {
+    // Pick the first sandhi candidate whose parts pass the plausibility
+    // filter. Falls back to keeping the chunk whole if every candidate
+    // produces an implausible split.
+    const candidate = r.find((c) => c.parts.length === 1 || isPlausibleSplit(c.parts));
+    if (!candidate || candidate.parts.length === 1) {
       padas.push(chunk);
     } else {
-      padas.push(...parts);
-      const ruleNames = r[0].rules.map((rule) => rule.name).join(' + ');
-      sandhiNotes.push(`${chunk} = ${parts.join(' + ')} (${ruleNames})`);
+      padas.push(...candidate.parts);
+      const ruleNames = candidate.rules.map((rule) => rule.name).join(' + ');
+      sandhiNotes.push(`${chunk} = ${candidate.parts.join(' + ')} (${ruleNames})`);
     }
   }
   return { padas, sandhiNotes, lines };
