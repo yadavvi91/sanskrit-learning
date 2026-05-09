@@ -1,0 +1,42 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_adf6a78f933bdc 124-131
+  s_d5e8c30b294ba2::t_bf9618c650fa4c 253,255,257-263,265-267,275-279
+  s_d5e8c30b294ba2::t_e36a4c9911cc85 286-289
+  s_d5e8c30b294ba2::t_97c338f4cd8d12 385-393
+  s_d5e8c30b294ba2::t_5b7a3c26338c18 15
+  s_d5e8c30b294ba2::t_624de171853a82 327-336,338-339,348-359,361-368,371-374,376-384
+  s_d5e8c30b294ba2::t_c853bb93f4dfc4 295-298,307-326
+  s_d5e8c30b294ba2::t_23f61eb3f3c76e 215-218,221,227,229
+  s_d5e8c30b294ba2::t_3d6a54aec5f6d3 375
+  s_d5e8c30b294ba2::t_bed8cbd53a7aef 214
+  s_d5e8c30b294ba2::t_a149db933b6585 245-247
+  s_d5e8c30b294ba2::t_b0acee2d26bb17 340-347
+  s_d5e8c30b294ba2::t_3768e58292c1c3 300-306
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_94d1dfeb4d8407 44-51,57-58
+  s_d5e8c30b294ba2::t_da2d2a342eb765 52-56
+src/data/_finite_overrides_part4.js
+  s_d5e8c30b294ba2::t_38e9cee2bf2794 1-20,55-81
+  s_d5e8c30b294ba2::t_bca50ff351dc80 43-54
+  s_d5e8c30b294ba2::t_8b20403b675f0c 21-42
+src/utils/decodeHelper.test.js
+  s_d5e8c30b294ba2::t_2203aa44cb71de 95-98,101
+src/data/finite-overrides.js
+  s_d5e8c30b294ba2::t_c9e0c14017992b 23,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "0c4b3e8d53a74ab4af18b1afa3660c779cfb63ae",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
