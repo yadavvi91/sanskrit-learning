@@ -1,0 +1,25 @@
+src/data/_finite_overrides_part2.js
+  s_d5e8c30b294ba2::t_0b4b460146cfc1 1-163
+src/data/finite-overrides.js
+  s_d5e8c30b294ba2::t_c4ccf44ae98b40 11-18,20-28
+src/data/_finite_overrides_part3.js
+  s_d5e8c30b294ba2::t_a19aae229b08de 1-188
+src/data/_finite_overrides_part1.js
+  s_d5e8c30b294ba2::t_567b3879ce6f25 1-98
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "51f22bbd3c23a4ab6a48f7ad5d140d9d24cf5a67",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
