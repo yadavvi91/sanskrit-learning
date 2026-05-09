@@ -132,6 +132,9 @@ export const SANDHI_RULES = [
       'अधः + छाया → अधश्छाया',
       'पुनः + छिन्द्धि → पुनश्छिन्द्धि',
     ],
+    // Disabled by default — श्छ is internal in compounds like पश्छिद्र,
+    // and छ-initial words after a visarga are rare. Opt-in only.
+    auto: false,
   },
   {
     id: 'visarga-ta',
@@ -154,6 +157,11 @@ export const SANDHI_RULES = [
     pattern: /स्थ/,
     example: 'सः + थः → सस्थः',
     examples: ['सः + थः → सस्थः'],
+    // Disabled by default — स्थ is a hugely common ROOT-INTERNAL cluster
+    // (√स्था, स्थित, स्थिर, अवस्थितम्…). Firing this rule produces 100+
+    // bogus splits in the Gītā corpus. Real visarga-थ junctions are
+    // extremely rare since few Sanskrit words begin with थ-. Opt-in only.
+    auto: false,
   },
   {
     id: 'visarga-ka',
@@ -166,6 +174,9 @@ export const SANDHI_RULES = [
       'सर्वतः + कालः → सर्वतष्कालः',
       'अन्तः + करण → अन्तष्करण (alt. spelling अन्तःकरण)',
     ],
+    // Disabled by default — same reason as visarga-tha: ष्क appears
+    // root-internally far more often than at sandhi junction.
+    auto: false,
   },
   {
     id: 'visarga-pa',
@@ -175,6 +186,8 @@ export const SANDHI_RULES = [
     pattern: /ष्प/,
     example: 'सर्वतः + पठति → सर्वतष्पठति',
     examples: ['सर्वतः + पठति → सर्वतष्पठति'],
+    // Disabled by default — same reason. Opt-in only.
+    auto: false,
   },
   {
     id: 'visarga-aa-vowel',
@@ -188,6 +201,24 @@ export const SANDHI_RULES = [
       'श्रेयः + भविष्यति → श्रेयो भविष्यति (Gītā 2.31, similar)',
       'सङ्गः + अस्तु → सङ्गोऽस्तु (Gītā 2.47)',
       'देहिनः + अस्मिन् → देहिनोऽस्मिन् (Gītā 2.13)',
+    ],
+  },
+  {
+    // Avagraha-marked elision: -ः + अ- joined with avagraha. Distinct
+    // from visarga-aa-vowel (which expects a literal space). The
+    // pattern ोऽ appears ONLY at sandhi junctions — no Sanskrit root
+    // contains it internally — so this rule can fire safely without
+    // a whitelist. Catches 164 verses' worth of junctions in the Gītā.
+    id: 'visarga-avagraha',
+    category: 'visarga',
+    name: 'अः + अ- → ोऽ (avagraha)',
+    description: 'Visarga + initial अ joined with avagraha marker',
+    pattern: /ोऽ/,
+    example: 'देवः + अपि → देवोऽपि',
+    examples: [
+      'देवः + अपि → देवोऽपि',
+      'सङ्गः + अस्तु → सङ्गोऽस्तु (Gītā 2.47)',
+      'त्यक्त्वा + उत्तिष्ठ → त्यक्त्वोत्तिष्ठ (different rule, no avagraha)',
     ],
   },
 
@@ -318,6 +349,7 @@ const UNJOIN = {
   'visarga-ka':         { joined: 'ष्क', parts: ['ः', 'क'] },
   'visarga-pa':         { joined: 'ष्प', parts: ['ः', 'प'] },
   'visarga-aa-vowel':   { joined: 'ो ',  parts: ['ः', 'अ'] }, // simplistic
+  'visarga-avagraha':   { joined: 'ोऽ',  parts: ['ः', 'अ'] }, // avagraha marker
   // Consonant
   'm-anusvara':         { joined: 'ं',   parts: ['म्', ''] },
   't-cha':              { joined: 'च्च', parts: ['त्', 'च'] },

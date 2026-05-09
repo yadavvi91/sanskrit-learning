@@ -29,45 +29,91 @@ for (const d of DHATUS) {
 // splits — only accept a split if the LEFT side is a known verb form.
 // Avoids false-positives on words like संख्या / विद्या where "्या" is
 // part of the root, not a sandhi junction.
-const PRES_ENDINGS_P = ['ति', 'न्ति', 'सि', 'थः', 'थ', 'मि', 'वः', 'मः'];
-const PRES_ENDINGS_A = ['ते', 'न्ते', 'से', 'एथे', 'ध्वे', 'ए', 'वहे', 'महे'];
+//
+// Endings include retroflex variants (-षि for -सि after specific
+// contexts) and the irregular plural परस्मैपद -ुः (प्राहुः, चकुः, etc.).
+const PRES_ENDINGS_P = ['ति', 'न्ति', 'सि', 'षि', 'थः', 'थ', 'मि', 'वः', 'मः', 'ुः'];
+const PRES_ENDINGS_A = ['ते', 'न्ते', 'से', 'षे', 'एथे', 'ध्वे', 'ए', 'वहे', 'महे'];
+
+// Devanagari matras + virama — characters that can NOT carry an implicit
+// अ. A presentStem ending in any of these is athematic / vowel-final.
+const MATRA_AND_VIRAMA = new Set(['ा', 'ि', 'ी', 'ु', 'ू', 'ृ', 'ॄ', 'े', 'ै', 'ो', 'ौ', '्']);
+function isThematicStem(stem) {
+  if (!stem) return false;
+  return !MATRA_AND_VIRAMA.has(stem.slice(-1));
+}
+
 const KNOWN_VERB_FORMS = new Set();
 for (const d of DHATUS) {
   if (!d.presentStem) continue;
+  const stem = d.presentStem;
   const endings = d.pada === 'A' ? PRES_ENDINGS_A
                 : d.pada === 'P' ? PRES_ENDINGS_P
                 : [...PRES_ENDINGS_P, ...PRES_ENDINGS_A]; // 'U' = ubhayapadī
-  for (const e of endings) KNOWN_VERB_FORMS.add(d.presentStem + e);
+  for (const e of endings) KNOWN_VERB_FORMS.add(stem + e);
+  // Vowel-lengthening rule: for thematic stems ending in implicit -अ
+  // (i.e., bare consonant), the stem-final अ lengthens to आ before the
+  // उत्तम-पुरुष endings -मि, -वः, -मः (परस्मैपद) and -वहे, -महे
+  // (आत्मनेपद). पच + मि → पचामि, not पचमि.
+  if (isThematicStem(stem)) {
+    const lengthened = stem + 'ा';
+    const utEndingsP = ['मि', 'वः', 'मः'];
+    const utEndingsA = ['वहे', 'महे'];
+    if (d.pada !== 'A') for (const e of utEndingsP) KNOWN_VERB_FORMS.add(lengthened + e);
+    if (d.pada !== 'P') for (const e of utEndingsA) KNOWN_VERB_FORMS.add(lengthened + e);
+  }
 }
 
-// Yan-sandhi unjoin with lexicon validation.
-// Pattern: a chunk contains "्य" (virama+य) somewhere. If we replace
-// "्य" with "ि" (matra) on the LEFT and start a new word with the
-// vowel that followed, AND the resulting LEFT is a known verb form,
-// accept the split. The right side starts with: आ if "्या", ए if "्ये",
-// ओ if "्यो", उ if "्यु", ई if "्यी", or अ (implicit) otherwise.
+// Yan-sandhi unjoin with lexicon validation. Looks for "्य" inside a
+// chunk and, if the LEFT side (with ि restored) ends in a known verb
+// form, accepts the split. Returns {parts: [...]} or null.
 //
-// This catches the most common Gītā internal-sandhi pattern:
-//   पश्यन्त्यात्मनि → पश्यन्ति + आत्मनि (left पश्यन्ति is a known
-//   verb form: presentStem पश्य + ending न्ति)
+// Two paths handled:
+//   1. The whole left prefix IS a known verb form. Returns 2 parts.
+//        पश्यन्त्यात्मनि → [पश्यन्ति, आत्मनि]
+//   2. A SUFFIX of the left prefix is a known verb form, and what
+//      precedes is a sandhi-residue (notably र् from visarga + voiced
+//      consonant). Returns 3 parts. Common in compound-line endings:
+//        सुखदुःखसंज्ञैर्गच्छन्त्यमूढाः →
+//          [सुखदुःखसंज्ञैः, गच्छन्ति, अमूढाः]
+//      (र् restored to ः at the prefix boundary)
+//
+// Avoids false-positives on words like संख्या / विद्या / मध्या where
+// "्या" is part of the root, not a sandhi junction — those have no
+// suffix that matches a verb form.
 function tryYanSandhiSplit(chunk) {
   for (let i = 1; i < chunk.length - 1; i++) {
     if (chunk[i] !== '्' || chunk[i + 1] !== 'य') continue;
-    // Candidate left: everything before ्य, plus ि matra on the previous akṣara.
-    const left = chunk.slice(0, i) + 'ि';
-    if (!KNOWN_VERB_FORMS.has(left)) continue;
-    // Right: vowel after ्य determines what the original word started with.
-    const next = chunk[i + 2];
-    let right;
-    if (next === 'ा') right = 'आ' + chunk.slice(i + 3);
-    else if (next === 'े') right = 'ए' + chunk.slice(i + 3);
-    else if (next === 'ो') right = 'ओ' + chunk.slice(i + 3);
-    else if (next === 'ु') right = 'उ' + chunk.slice(i + 3);
-    else if (next === 'ी') right = 'ई' + chunk.slice(i + 3);
-    else if (next === 'ू') right = 'ऊ' + chunk.slice(i + 3);
-    else right = 'अ' + chunk.slice(i + 2); // implicit अ on bare consonant
-    if (!right) continue;
-    return { left, right, rule: { id: 'yan-lexicon', name: 'यण् सन्धि (lexicon-validated)' } };
+    const leftPrefixed = chunk.slice(0, i) + 'ि';
+    // Find the longest VERB-FORM suffix of the left prefix, scanning
+    // from the start (so j=0 = full prefix, j=1 = drop one char, etc.).
+    for (let j = 0; j < leftPrefixed.length; j++) {
+      const verbCandidate = leftPrefixed.slice(j);
+      if (!KNOWN_VERB_FORMS.has(verbCandidate)) continue;
+      const prefix = leftPrefixed.slice(0, j); // possibly empty
+      // Determine right side from the vowel after ्य.
+      const next = chunk[i + 2];
+      let right;
+      if (next === 'ा') right = 'आ' + chunk.slice(i + 3);
+      else if (next === 'े') right = 'ए' + chunk.slice(i + 3);
+      else if (next === 'ो') right = 'ओ' + chunk.slice(i + 3);
+      else if (next === 'ु') right = 'उ' + chunk.slice(i + 3);
+      else if (next === 'ी') right = 'ई' + chunk.slice(i + 3);
+      else if (next === 'ू') right = 'ऊ' + chunk.slice(i + 3);
+      else right = 'अ' + chunk.slice(i + 2); // implicit अ on bare consonant
+      if (!right) continue;
+      // Restore visarga from र् sandhi-residue at the prefix boundary
+      // (visarga + voiced consonant → र् + voiced consonant).
+      let cleanedPrefix = prefix;
+      if (prefix.endsWith('र्')) cleanedPrefix = prefix.slice(0, -2) + 'ः';
+      const parts = prefix
+        ? [cleanedPrefix, verbCandidate, right]
+        : [verbCandidate, right];
+      return {
+        parts,
+        rule: { id: 'yan-lexicon', name: 'यण् सन्धि (lexicon-validated)' },
+      };
+    }
   }
   return null;
 }
@@ -155,6 +201,9 @@ const LAKARA_SIGNALS = [
   { match: /ति$/,    lakara: 'lat', purusha: 'prathama', vachana: 'eka', hint: 'present -ति' },
   { match: /ते$/,    lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'eka', hint: 'present आत्मनेपद -ते' },
   { match: /मि$/,    lakara: 'lat', purusha: 'uttama', vachana: 'eka', hint: 'present -मि' },
+  // Plural परस्मैपद -ुः (प्राहुः, चकुः, …). Distinct enough from any
+  // common nominal ending that a regex match is safe.
+  { match: /ुः$/,    lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present परस्मैपद -ुः (irregular plural)' },
   // NOTE: आत्मनेपद उत्तम-एकवचन ending -ए (काङ्क्षे, लभे, मन्ये) is intentionally
   // NOT a blanket signal — every सप्तमी-एकवचन noun also ends in -ए
   // (कुरुक्षेत्रे, गृहे), so a regex catches massive false positives. Verses
@@ -204,15 +253,18 @@ function isPlausibleSplit(parts) {
 }
 
 // Recursively try yan-sandhi splits on a pada — keeps splitting as long
-// as the left side keeps validating against KNOWN_VERB_FORMS. Returns
-// the final list of padas after all yan-splits applied, plus a list of
-// human-readable notes for the sandhiNotes panel.
+// as a part keeps validating against KNOWN_VERB_FORMS. Returns the final
+// list of padas after all yan-splits applied, plus human-readable notes.
 function recursiveYanSplit(pada, notes) {
   const split = tryYanSandhiSplit(pada);
   if (!split) return [pada];
-  notes.push(`${pada} = ${split.left} + ${split.right} (${split.rule.name})`);
-  // The right side may itself contain another yan junction.
-  return [split.left, ...recursiveYanSplit(split.right, notes)];
+  notes.push(`${pada} = ${split.parts.join(' + ')} (${split.rule.name})`);
+  // The LAST part (right side) may itself contain another yan junction.
+  // Earlier parts are kept as-is; they're either prefix residues or the
+  // matched verb form, which shouldn't yan-split again.
+  const last = split.parts[split.parts.length - 1];
+  const restRecursed = recursiveYanSplit(last, notes);
+  return [...split.parts.slice(0, -1), ...restRecursed];
 }
 
 // Extract individual padas from a (multi-line) mool string by splitting on
