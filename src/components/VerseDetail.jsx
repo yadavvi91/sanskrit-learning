@@ -93,6 +93,24 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
         )}
       </Section>
 
+      {verse.anvaya && (
+        <Section label="अन्वय" labelEn="Logical default-SOV ordering" glossaryTerm="अन्वय" onOpenPrimer={onOpenPrimer}>
+          <p className="anvaya">{verse.anvaya}</p>
+        </Section>
+      )}
+
+      {verse.hindi && (
+        <Section label="हिंदी" labelEn="Hindi">
+          <p className="translation hindi">{verse.hindi}</p>
+        </Section>
+      )}
+
+      {verse.english && (
+        <Section label="English" labelEn="">
+          <p className="translation english">{verse.english}</p>
+        </Section>
+      )}
+
       {(verse.finiteVerbs && verse.finiteVerbs.length > 0) || verse.tier === 'auto-stub' ? (
         <Section
           label="क्रिया"
@@ -177,24 +195,6 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
               <li key={i}>{fight}</li>
             ))}
           </ul>
-        </Section>
-      )}
-
-      {verse.anvaya && (
-        <Section label="अन्वय" labelEn="Logical default-SOV ordering" glossaryTerm="अन्वय" onOpenPrimer={onOpenPrimer}>
-          <p className="anvaya">{verse.anvaya}</p>
-        </Section>
-      )}
-
-      {verse.hindi && (
-        <Section label="हिंदी" labelEn="Hindi">
-          <p className="translation hindi">{verse.hindi}</p>
-        </Section>
-      )}
-
-      {verse.english && (
-        <Section label="English" labelEn="">
-          <p className="translation english">{verse.english}</p>
         </Section>
       )}
 
