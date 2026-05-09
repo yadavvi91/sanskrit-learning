@@ -25,9 +25,67 @@ import { DHATUS_PART_2 } from './_dhatus_part2.js';
 import { DHATUS_PART_3 } from './_dhatus_part3.js';
 import { DHATUS_PART_4 } from './_dhatus_part4.js';
 
+// Hand-added dhātus the bulk-generated parts missed but appear in the
+// Gītā corpus. √या ("go") is a particularly egregious miss — it's one
+// of the most common verbs in the text (यान्ति, यासि, यान्ति, etc.).
+const DHATUS_PATCH = [
+  {
+    id: 'ya',
+    devanagari: 'या',
+    iast: 'yā',
+    meanings: ['go', 'reach'],
+    gana: 2,
+    pada: 'P',
+    thematic: false,
+    frequencyRank: null,
+    presentStem: 'या',
+    isSuppletive: false,
+  },
+  {
+    id: 'arh',
+    devanagari: 'अर्ह्',
+    iast: 'arh',
+    meanings: ['be able', 'deserve', 'ought'],
+    gana: 1,
+    pada: 'P',
+    thematic: true,
+    frequencyRank: null,
+    presentStem: 'अर्ह',
+    isSuppletive: false,
+  },
+  {
+    id: 'shru',
+    devanagari: 'श्रु',
+    iast: 'śru',
+    meanings: ['hear', 'listen'],
+    gana: 5,
+    pada: 'P',
+    thematic: false,
+    frequencyRank: null,
+    presentStem: 'शृणु',
+    isSuppletive: true,
+  },
+  {
+    id: 'as',
+    devanagari: 'अस्',
+    iast: 'as',
+    meanings: ['be'],
+    gana: 2,
+    pada: 'P',
+    thematic: false,
+    frequencyRank: null,
+    presentStem: 'अस्',
+    isSuppletive: true,
+    // The 2sg of √अस् is irregular: असि (just stem + i, not stem + सि).
+    // Conjugator overrides handle the full paradigm; here we just expose
+    // the stem so classifyByStem at least sees the root exists.
+  },
+];
+
 export const DHATUS_EXTENDED = [
   ...DHATUS_TOP25,
   ...DHATUS_PART_2,
   ...DHATUS_PART_3,
   ...DHATUS_PART_4,
+  ...DHATUS_PATCH,
 ];

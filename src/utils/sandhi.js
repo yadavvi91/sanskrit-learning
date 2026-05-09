@@ -221,6 +221,22 @@ export const SANDHI_RULES = [
       'त्यक्त्वा + उत्तिष्ठ → त्यक्त्वोत्तिष्ठ (different rule, no avagraha)',
     ],
   },
+  {
+    // Generic avagraha — covers ेऽ, ाऽ, ीऽ, ुऽ etc. (anything that
+    // isn't ोऽ, which has its own visarga rule above). The ऽ marker
+    // means "an अ was elided here"; restore it. Sanskrit never uses ऽ
+    // root-internally so this rule is safe to fire anywhere.
+    id: 'avagraha-elision',
+    category: 'visarga',
+    name: 'ऽ → अ (avagraha elision)',
+    description: 'Avagraha marker → restore elided अ on the right side',
+    pattern: /ऽ/,
+    example: 'प्रवर्तन्ते + अशुचिव्रताः → प्रवर्तन्तेऽशुचिव्रताः',
+    examples: [
+      'प्रवर्तन्ते + अशुचिव्रताः → प्रवर्तन्तेऽशुचिव्रताः (Gītā 16.10)',
+      'यतन्तः + अपि + अकृतात्मानः → यतन्तोऽप्यकृतात्मानः (Gītā 15.11; combined with -ः+ vowel rule)',
+    ],
+  },
 
   // ─────── Consonant sandhi ───────
   {
@@ -350,6 +366,7 @@ const UNJOIN = {
   'visarga-pa':         { joined: 'ष्प', parts: ['ः', 'प'] },
   'visarga-aa-vowel':   { joined: 'ो ',  parts: ['ः', 'अ'] }, // simplistic
   'visarga-avagraha':   { joined: 'ोऽ',  parts: ['ः', 'अ'] }, // avagraha marker
+  'avagraha-elision':   { joined: 'ऽ',   parts: ['', 'अ'] },  // generic avagraha → restore अ
   // Consonant
   'm-anusvara':         { joined: 'ं',   parts: ['म्', ''] },
   't-cha':              { joined: 'च्च', parts: ['त्', 'च'] },
