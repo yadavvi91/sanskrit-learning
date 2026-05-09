@@ -1,0 +1,25 @@
+src/data/_shankara_part1.js
+  s_d5e8c30b294ba2::t_bfda7a4b375dab 1-296
+src/data/commentaries-shankara.js
+  s_d5e8c30b294ba2::t_b76388174732c7 14,17,24,29
+checkpoint-35.md
+  s_d5e8c30b294ba2::t_9474fcf3b759c3 1-70
+src/data/hydrate.test.js
+  s_d5e8c30b294ba2::t_5385de4b9c6cd5 134-142
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "7e4467c966d1f81fbe9e0494fd8a4acac7f33abc",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
