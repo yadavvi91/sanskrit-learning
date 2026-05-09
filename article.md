@@ -26,6 +26,10 @@ So when the project started, the hole was real and I knew it was real. The quest
 
 Two years before any code was written, I started Bibek Debroy's *Bhagavad Gita for Millennials*. Made serious handwritten notes. Then ran out of time and shelved the book.
 
+![Vishal's handwritten Debroy notes — page 1: SOV/SVO, पदच्छेद, अन्वय, the सिक्स वेदांग](article-images/debroy-notes-1.jpg)
+
+![Vishal's handwritten Debroy notes — page 2: अनुष्टुभ metre, the 5th-light/6th-heavy rule, स्वर vs व्यञ्जन, त्रिष्टुभ as the Gītā's secondary metre](article-images/debroy-notes-2.jpg)
+
 The notes covered four things, and they're worth listing because every later decision in this project flows from them:
 
 1. **SOV vs SVO — with the qualification.** Sanskrit has free word order: the case endings (विभक्ति) carry the grammatical role, so you can shuffle the words around without changing the meaning. *रामः रावणं हन्ति* = *रावणं रामः हन्ति* = *हन्ति रामः रावणम्* — Rāma kills Rāvaṇa, in all three. Poets exploit this for metre. **But Sanskrit also has a default order, and that default is SOV** — Subject, Object, Verb. Hindi inherits the default (and is much stricter about it). English is SVO and *needs* the order: "I eat an apple" and "an apple eats I" mean different things. अन्वय is a teaching tool that restores the default — it shows you the unmarked sentence the metre hid. Both halves of the story matter. Most people get told one or the other.
@@ -51,6 +55,8 @@ When I started building this app, I inherited everything from the Awadhi visuali
 ---
 
 ## The WhatsApp trigger
+
+![The holy-bhagavad-gita.org grid that started the spillover — chapter 2, verse 3 highlighted, with the full chapter laid out as a 12×6 grid of clickable verse-numbers](article-images/holy-bhagavad-gita-grid.jpg)
 
 What I told Claude when explaining how this whole thing started:
 
@@ -187,6 +193,8 @@ Three clarifications that matter:
 
 ### Khoomeik's data, and what it doesn't give us
 
+![Khoomeik's "Top 192 Sanskrit Dhātus by Frequency" chart — Digital Corpus of Sanskrit, color-coded by gaṇa, frequency-ordered with भू at top-left](article-images/khoomeik-chart-frequency.jpg)
+
 When I first showed Claude the source of the dhātu data, I pasted Rohan Pandey's three-tweet thread directly:
 
 > *Sanskrit has >2000 verb roots (dhātus). But do you really need to learn them all? I had Claude analyze 270 Sanskrit texts, and it found that with just the 192 most common dhātus, you can understand ~90% of verbs in literature.*
@@ -208,6 +216,12 @@ Rohan Pandey ([@khoomeik](https://x.com/khoomeik)) used **vidyut** (ambuda-org/v
 The chart gives Devanagari root, gaṇa (color-coded), English meaning(s), and 3sg present (which implicitly encodes पद since -ति = P, -ते = Ā). It does *not* give: explicit P/Ā/उभयपदी tag, suppletive present stems (दृश् → पश्य-, गम् → गच्छ-, स्था → तिष्ठ-), लिट् 3sg forms, irregular sandhi quirks. Those are the per-root metadata we have to add as we go.
 
 Pandey also published a second ordering — same 192 grouped by गण — which is more pedagogically useful (one stem-rule unlocks all roots in that color). Both orderings live in the app's Periodic Table.
+
+![Khoomeik's second variant — the same 192 dhātus, this time grouped by gaṇa so all gaṇa-1 roots cluster together, all gaṇa-2 roots cluster together, etc. One stem-rule per band.](article-images/khoomeik-chart-gana.jpg)
+
+The corresponding **Dhātu Coverage Curve** — what 10 / 50 / 100 / 192 / 500 dhātus actually buy you in real text — is the single most motivating data visualization in the entire project. It says: you do not need 2,000 verb roots. You need 192. The reading curriculum is finite.
+
+![Dhātu Coverage Curve — Digital Corpus of Sanskrit (~988k matched verb tokens via vidyut). Top 10 = 27.7%; top 50 = 58.8%; top 100 = 73%; top 192 = 86.1%; top 500 = 98.5%.](article-images/khoomeik-coverage-curve.jpg)
 
 ### सर्वनाम — तद् as master template
 
@@ -453,3 +467,46 @@ The Maharashtra SSC failure that started this — handing me a compiled binary a
 Two-and-a-half years from the abandoned Debroy book to the WhatsApp moment to the first verse decoded to 701 verses with full structural analysis and clickable grammar at every चिप. That's not a fast arc. But it's an arc that didn't dissolve, and it's an arc that — if I keep adding to it — will still be there for whoever opens this app in five years and starts fighting for their own words.
 
 That's the whole project. A garden, not a textbook. A journal, not a graveyard.
+
+---
+
+## References
+
+**The pedagogical model:**
+- [bvsiitm.github.io/sanskrit-gita-learn](https://bvsiitm.github.io/sanskrit-gita-learn/) — the Gītā-through-Sanskrit course that established the Known → +1 → Drill → SRS loop. Lesson 2 ([bvsiitm.github.io/sanskrit-gita-learn/lesson/2](https://bvsiitm.github.io/sanskrit-gita-learn/lesson/2)) was where I first formally encountered सप्तमी (locative) and प्रथमा (nominative) and the राम declension table being filled one case at a time.
+- [bvsiitm.github.io/sanskrit-gita-learn/interlude](https://bvsiitm.github.io/sanskrit-gita-learn/interlude) — the bridge interludes between lessons.
+- [gita-sanskrit-teacher.netlify.app](https://gita-sanskrit-teacher.netlify.app/) — a related Gītā-Sanskrit teaching app that I'd been exploring alongside.
+
+**Khoomeik's data foundation (the seed of the Verbs sub-app):**
+- [@khoomeik (Rohan Pandey) on X](https://x.com/khoomeik) — his three-tweet thread on the Top 192 Dhātus + the Coverage Curve:
+  - [Tweet 1: the chart, "you can understand ~90% of verbs"](https://x.com/khoomeik/status/2031291242160828676/photo/1) (frequency-ordered chart shown above)
+  - [Tweet 2: the curve numbers (10 = 30%, 50 = 60%, 192 = 90%, 500 = 99%)](https://x.com/khoomeik/status/2031291246468280426/photo/1) (Coverage Curve shown above)
+  - [Tweet 3: credits to Vidyut, Aṣṭādhyāyī, Digital Corpus of Sanskrit, and the gaṇa-grouped variant](https://x.com/khoomeik/status/2031291248783536400/photo/1) (gaṇa-grouped chart shown above)
+
+**The text source for verses, used as the project's reading scaffold:**
+- [holy-bhagavad-gita.org](https://www.holy-bhagavad-gita.org/) — the chapter/verse grid I stumbled into via Gītā 2.3, screenshot above. Every verse in the app's *Verse Journey* has a "↗ holy-bhagavad-gita.org" link back to its corresponding page there.
+
+**The reading that started it all:**
+- Bibek Debroy, *Bhagavad Gita for Millennials* (HarperCollins India, 2020). The handwritten notes embedded above are mine, made in February 2023, covering SOV/SVO, पदच्छेद, अन्वय, the six वेदांग, अनुष्टुभ metre, and the स्वर/व्यञ्जन distinction. They were the latent capital that made every later step possible.
+
+**The translation lanes the bulk corpus uses:**
+- Annie Besant, *Bhagavad-Gita* (1895), public domain — the project's primary English translation lane for auto-stub verses.
+- Edwin Arnold, *The Song Celestial* (1885), public domain — the secondary English voice in the per-verse References panel.
+- Śaṅkara's commentary positions, Advaita-tradition summaries — agent-paraphrased, attached to every verse's References panel for grounding.
+
+**The sister project that donated the design language:**
+- *Awadhi Meter Visualizer* (my prior project) — Sundarkand syllabification engine, parchment palette, font stack. The Sanskrit project inherited stack + aesthetic from it directly.
+
+**The grammar tradition itself:**
+- Pāṇini, *Aṣṭādhyāyī* (~5th–4th century BCE). The four-thousand-rule generative grammar that Maharashtra SSC quietly used to compile its tables without ever telling its students it was the source.
+
+---
+
+## Appendix: the conversation transcripts
+
+Both source conversations with Claude that produced this project's framing are preserved in the [`conversation/`](conversation/) directory at the repo root, exported as full HTML pages:
+
+- `Learning Sanskrit verbs through Bhagavad Gita - Claude.html` — the long origin conversation (March → May 2026) that produced `CLAUDE.md`, the four foundational verses, and the project's data scaffolding.
+- `Sanskrit verb conjugation_ person and number grid - Claude.html` — the follow-on conversation that produced `CLAUDE2.md` (verb sub-app spec) and `CLAUDE3.md` (grammar atlas spec).
+
+These exist as durable references that can be read offline, will not rot when the Claude.ai share URLs eventually expire, and carry every verbatim exchange the project's framing rests on.
