@@ -1,0 +1,24 @@
+src/data/coreVocab.js
+  s_d5e8c30b294ba2::t_df6f7270c65837 207
+  s_d5e8c30b294ba2::t_a6f526c7800b3c 181-183,186
+  s_d5e8c30b294ba2::t_3dea0be61707d5 316-374
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_2433ff4daddd6b 22
+  s_d5e8c30b294ba2::t_e8072798b41fa9 238-250,255
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "20bded61d0a78e918cc4ca751680b6c03f64c459",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
