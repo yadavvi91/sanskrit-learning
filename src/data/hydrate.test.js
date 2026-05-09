@@ -69,6 +69,19 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(samp.source).toBe('derived-from-vibhakti');
   });
 
+  it('1.33 surfaces predicate-PPPs (काङ्क्षितम्, अवस्थिताः) instead of generic "implied अस्ति"', () => {
+    const v = find(1, 33);
+    expect(v.noFiniteVerb).toBe(true);
+    expect(Array.isArray(v.predicatePPPs)).toBe(true);
+    expect(v.predicatePPPs.length).toBeGreaterThanOrEqual(2);
+    const forms = v.predicatePPPs.map((p) => p.form);
+    expect(forms).toContain('काङ्क्षितम्');
+    expect(forms).toContain('अवस्थिताः');
+    // Each PPP should carry the gloss extracted from its vibhakti note.
+    const kanksh = v.predicatePPPs.find((p) => p.form === 'काङ्क्षितम्');
+    expect(kanksh.gloss.length).toBeGreaterThan(0);
+  });
+
   it('hand-decoded samasNotes (Gītā 2.5) are NOT overwritten by derivation', () => {
     const v = find(2, 5);
     expect(Array.isArray(v.samasNotes)).toBe(true);

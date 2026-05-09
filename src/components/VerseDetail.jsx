@@ -146,6 +146,23 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
                   Each subject in this verse takes the same verb. Supply <em>{verse.anuvrtti.verb}</em> mentally before reading.
                 </p>
               </div>
+            ) : verse.predicatePPPs && verse.predicatePPPs.length > 0 ? (
+              <div className="finite-missing finite-ppp">
+                <p>
+                  This verse has no finite verb. The action is carried by past-passive participles (<strong>कृदन्त</strong>) acting as predicate adjectives, each taking implicit <strong>अस्ति</strong>:
+                </p>
+                <ul className="predicate-ppps">
+                  {verse.predicatePPPs.map((p, i) => (
+                    <li key={i}>
+                      <span className="ppp-form">{p.form}</span>
+                      {p.gloss && <span className="ppp-gloss"> — "{p.gloss}"</span>}
+                    </li>
+                  ))}
+                </ul>
+                <p className="ppp-explainer">
+                  English translations spell these out as full verbs ("was desired", "are stationed") because English requires finite verbs; Sanskrit lets a PPP carry the predicate force directly.
+                </p>
+              </div>
             ) : (
               <p className="finite-missing finite-nominal">
                 This verse is a nominal sentence — there is no overt finite verb.

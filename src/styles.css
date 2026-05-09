@@ -3452,6 +3452,39 @@ td.cell.is-suppletive {
   font-style: italic;
 }
 
+/* कृदन्त-as-predicate variant — PPPs carrying the verbal force in a
+   nominal sentence (1.33-style verses). Sage left-border like अनुवृत्ति. */
+.finite-missing.finite-ppp {
+  background: rgba(74, 94, 74, 0.04);
+  border-left: 2px solid var(--sage, #4a5e4a);
+  padding: 8px 12px;
+  color: var(--ink);
+}
+.finite-missing.finite-ppp p {
+  margin: 0;
+  line-height: 1.6;
+}
+.finite-missing.finite-ppp ul.predicate-ppps {
+  margin: 8px 0;
+  padding-left: 16px;
+}
+.finite-missing.finite-ppp .ppp-form {
+  font-family: var(--font-deva);
+  font-size: 1.05em;
+  color: var(--gold);
+  font-weight: 500;
+}
+.finite-missing.finite-ppp .ppp-gloss {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.ppp-explainer {
+  margin-top: 8px !important;
+  font-size: 0.95em;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
 /* ==================== Theme picker — collapsed icon + popover ==================== */
 
 .theme-picker {

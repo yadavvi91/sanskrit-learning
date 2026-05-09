@@ -29,6 +29,33 @@ const COMPOUND_TYPES_LONGEST_FIRST = [
   'तत्पुरुष', 'बहुव्रीहि', 'द्वंद्व', 'द्वन्द्व', 'कर्मधारय', 'अव्ययीभाव',
 ];
 
+// Parse vibhaktiNotes for predicate-PPPs: words tagged as PPP / past
+// passive participle that "serve as predicate" or are explicitly called
+// predicate adjectives. These are the "verb" of nominal sentences —
+// e.g., 1.33's काङ्क्षितम् ("was desired") and अवस्थिताः ("are stationed").
+// Returns [{ form, gloss }, ...] so VerseDetail can surface them
+// instead of the generic "implied अस्ति" line.
+function parsePredicatePPPsFromVibhakti(notes) {
+  const result = [];
+  for (const note of notes || []) {
+    if (!/PPP|past[- ]passive/i.test(note)) continue;
+    if (!/predicate|serves as/i.test(note)) continue;
+    const arrowIdx = note.indexOf('→');
+    if (arrowIdx === -1) continue;
+    const before = note.slice(0, arrowIdx).trim();
+    const forms = before.split(/,\s*/)
+      .map((c) => c.replace(/\s*\([^()]*\)\s*/g, '').trim())
+      .filter(Boolean);
+    if (forms.length === 0) continue;
+    const glossMatch = note.match(/[“"„]([^”"]+)[”"]/) || note.match(/'([^']+)'/);
+    const gloss = glossMatch ? glossMatch[1] : '';
+    for (const f of forms) {
+      result.push({ form: f, gloss });
+    }
+  }
+  return result;
+}
+
 // Parse vibhaktiNotes for compound type-tagged entries. Returns a list
 // of { compound, type, gloss } extracted from notes like:
 //   "अश्रुपूर्णाकुलेक्षणम् → द्वितीया एकवचन — बहुव्रीहि "(him) whose eyes…""
@@ -109,6 +136,9 @@ export function hydrateAutoStubVerses() {
       // When set, the क्रिया section renders the carried verb + source
       // verse instead of the generic "implied अस्ति" line.
       if (vOverride.anuvrtti && !v.anuvrtti) v.anuvrtti = vOverride.anuvrtti;
+      if (Array.isArray(vOverride.predicatePPPs) && (!v.predicatePPPs || v.predicatePPPs.length === 0)) {
+        v.predicatePPPs = vOverride.predicatePPPs;
+      }
       // implicitVerb — when the verse is genuinely nominal but the
       // implied predicate is something other than अस्ति. Used for
       // विभूति-style "I am X" verses where मनेप is implied (मन्ये etc.).
@@ -165,6 +195,17 @@ export function hydrateAutoStubVerses() {
     //   2. Fallback for any hyphenated pada with no vibhakti match: a
     //      bare compound-vigraha entry (just the structural split,
     //      empty type and gloss, source='derived-from-padaccheda').
+    // Auto-extract predicate-PPPs from vibhaktiNotes when the verse has
+    // no finite verb. Used by VerseDetail to surface "the predicate is
+    // काङ्क्षितम् ('was desired') + अवस्थिताः ('are stationed')" instead
+    // of the generic "implied अस्ति" line on PPP-only verses like 1.33.
+    if ((!v.predicatePPPs || v.predicatePPPs.length === 0)
+        && (v.finiteVerbs === null || v.noFiniteVerb)
+        && Array.isArray(v.vibhaktiNotes)) {
+      const ppps = parsePredicatePPPsFromVibhakti(v.vibhaktiNotes);
+      if (ppps.length > 0) v.predicatePPPs = ppps;
+    }
+
     if ((!v.samasNotes || v.samasNotes.length === 0)
         && Array.isArray(v.padaccheda)) {
       const vibhaktiSamasa = parseSamasaFromVibhakti(v.vibhaktiNotes);
