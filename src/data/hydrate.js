@@ -57,6 +57,9 @@ export function hydrateAutoStubVerses() {
       if (Array.isArray(vOverride.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
         v.keyFights = vOverride.keyFights;
       }
+      if (Array.isArray(vOverride.samasNotes) && (!v.samasNotes || v.samasNotes.length === 0)) {
+        v.samasNotes = vOverride.samasNotes;
+      }
       if (vOverride.anvaya && !v.anvaya) v.anvaya = vOverride.anvaya;
       if (vOverride.hindi && !v.hindi) v.hindi = vOverride.hindi;
       if (vOverride.english && !v.english) v.english = vOverride.english;
@@ -105,6 +108,31 @@ export function hydrateAutoStubVerses() {
       v.noFiniteVerb = true;
     } else if (Array.isArray(override) && override.length > 0) {
       v.finiteVerbs = override;
+    }
+
+    // Derive samasNotes from hyphenated padaccheda entries when the
+    // verse doesn't have explicit samasNotes. The Ch1/Ch2 batch agents
+    // hyphenate light compounds in padaccheda (काम-आत्मानः, स्वर्ग-पराः,
+    // जन्म-कर्म-फल-प्रदाम्) but rarely emit a structured samasNotes block.
+    // Surfacing the hyphens as a typeless "compound (vigraha)" entry
+    // gives the user something useful below पदच्छेद on every auto-stub
+    // verse — no compound type or gloss, just the structural split.
+    if ((!v.samasNotes || v.samasNotes.length === 0)
+        && Array.isArray(v.padaccheda)) {
+      const derived = [];
+      for (const pada of v.padaccheda) {
+        if (typeof pada !== 'string' || !pada.includes('-')) continue;
+        const parts = pada.split('-').filter(Boolean);
+        if (parts.length < 2) continue;
+        derived.push({
+          compound: pada,
+          vigraha: parts.join(' + '),
+          type: '',
+          gloss: '',
+          source: 'derived-from-padaccheda',
+        });
+      }
+      if (derived.length > 0) v.samasNotes = derived;
     }
 
     if (!v.english) {

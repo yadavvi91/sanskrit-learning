@@ -84,8 +84,8 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
                   <span className="samas-compound">{s.compound}</span>
                   <span className="samas-eq">=</span>
                   <span className="samas-vigraha">{s.vigraha}</span>
-                  <span className="samas-type">{s.type}</span>
-                  <span className="samas-gloss">{s.gloss}</span>
+                  {s.type ? <span className="samas-type">{s.type}</span> : null}
+                  {s.gloss ? <span className="samas-gloss">{s.gloss}</span> : null}
                 </li>
               ))}
             </ul>

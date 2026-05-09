@@ -39,6 +39,30 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(v.vyakhya.length).toBeGreaterThan(0);
   });
 
+  it('samasNotes are derived from hyphenated padaccheda when not explicitly set', () => {
+    // 2.43 has hyphenated compounds in padaccheda (काम-आत्मानः, etc.)
+    // but no explicit samasNotes block in the override. The hydrator
+    // should auto-derive a structural samasNotes list so the UI shows
+    // a समास section below पदच्छेद on auto-stub verses.
+    const v = find(2, 43);
+    expect(v.tier).toBe('auto-stub');
+    expect(Array.isArray(v.samasNotes)).toBe(true);
+    expect(v.samasNotes.length).toBeGreaterThan(0);
+    const kamatma = v.samasNotes.find((s) => s.compound === 'काम-आत्मानः');
+    expect(kamatma).toBeDefined();
+    expect(kamatma.vigraha).toBe('काम + आत्मानः');
+    expect(kamatma.source).toBe('derived-from-padaccheda');
+  });
+
+  it('hand-decoded samasNotes (Gītā 2.5) are NOT overwritten by derivation', () => {
+    const v = find(2, 5);
+    expect(Array.isArray(v.samasNotes)).toBe(true);
+    expect(v.samasNotes.length).toBeGreaterThan(0);
+    // The 2.5 hand-decoded entries have a real type (बहुव्रीहि /
+    // तत्पुरुष) — derivation would have left it empty.
+    expect(v.samasNotes.some((s) => s.type && s.type.length > 0)).toBe(true);
+  });
+
   it('Arnold reference has the expected shape', () => {
     const v = find(3, 5);
     const arnold = v.references.translations.find((t) => t.translator === 'Edwin Arnold');
