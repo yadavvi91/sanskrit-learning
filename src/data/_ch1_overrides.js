@@ -348,6 +348,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.16': {
     speaker: 'सञ्जय उवाच',
+    anuvrtti: { from: '1.15', verb: 'दध्मौ', meaning: 'blew (his conch)', note: 'perfect 3sg of √धम्' },
     padaccheda: [
       'अनन्त-विजयम्',
       'राजा',
@@ -384,6 +385,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.17': {
     speaker: 'सञ्जय उवाच',
+    anuvrtti: { from: '1.15', verb: 'दध्मौ', meaning: 'blew (his conch)', note: 'verb-chain continues from 1.15; resolves explicitly into दध्मुः (3pl) at 1.18' },
     padaccheda: [
       'काश्यः',
       'च',
@@ -514,6 +516,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.20': {
     speaker: 'सञ्जय उवाच',
+    anuvrtti: { from: '1.21', verb: 'आह', meaning: 'said / spoke', note: 'this verse is a long participle phrase (व्यवस्थितान्...दृष्ट्वा...उद्यम्य); the finite verb आह "said" arrives in 1.21' },
     padaccheda: [
       'अथ',
       'व्यवस्थितान्',

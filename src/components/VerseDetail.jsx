@@ -116,9 +116,27 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
               ))}
             </ul>
           ) : verse.noFiniteVerb ? (
-            <p className="finite-missing finite-nominal">
-              This verse is a nominal sentence — there is no overt finite verb. The predicate is implied <strong>अस्ति</strong> ("is"), or the verse is a descriptive list of qualities / participles. Hand-classified; no audit needed.
-            </p>
+            verse.anuvrtti ? (
+              <div className="finite-missing finite-anuvrtti">
+                <p>
+                  No overt finite verb in this verse — the action is supplied by <strong>अनुवृत्ति</strong> (carry-over) from
+                  {' '}<strong>Gītā {verse.anuvrtti.from}</strong>: <span className="anuvrtti-form">{verse.anuvrtti.verb}</span>
+                  {verse.anuvrtti.meaning && <span className="anuvrtti-gloss"> — "{verse.anuvrtti.meaning}"</span>}
+                  {verse.anuvrtti.note && <span className="anuvrtti-note"> ({verse.anuvrtti.note})</span>}.
+                </p>
+                <p className="anuvrtti-explainer">
+                  Each subject in this verse takes the same verb. Supply <em>{verse.anuvrtti.verb}</em> mentally before reading.
+                </p>
+              </div>
+            ) : (
+              <p className="finite-missing finite-nominal">
+                This verse is a nominal sentence — there is no overt finite verb.
+                {verse.implicitVerb
+                  ? <> The predicate is implied <strong>{verse.implicitVerb}</strong>{verse.implicitVerbMeaning ? <> ("{verse.implicitVerbMeaning}")</> : null}.</>
+                  : <> The predicate is implied <strong>अस्ति</strong> ("is"), or the verse is a descriptive list of qualities / participles.</>}
+                {' '}Hand-classified; no audit needed.
+              </p>
+            )
           ) : (
             <p className="finite-missing">
               ⚠ The engine couldn't identify a finite verb in this verse — likely an आत्मनेपद उत्तम-एकवचन (-ए, -से, -महे) or another less-common ending the regex-based detector misses. The verb may also span multiple verses (एक-वाक्यता). This needs a hand-audit. Open in <strong>Decode Helper</strong> to draft a correction.

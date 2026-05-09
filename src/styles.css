@@ -3418,6 +3418,40 @@ td.cell.is-suppletive {
   color: var(--ink-soft);
 }
 
+/* अनुवृत्ति variant — verb carried over from a neighbouring verse. */
+.finite-missing.finite-anuvrtti {
+  background: rgba(74, 94, 74, 0.04);
+  border-left: 2px solid var(--sage, #4a5e4a);
+  padding: 8px 12px;
+  color: var(--ink);
+}
+.finite-missing.finite-anuvrtti p {
+  margin: 0;
+  line-height: 1.6;
+}
+.finite-missing.finite-anuvrtti p + p {
+  margin-top: 8px;
+}
+.finite-missing.finite-anuvrtti .anuvrtti-form {
+  font-family: var(--font-deva);
+  font-size: 1.05em;
+  color: var(--gold);
+  font-weight: 500;
+}
+.finite-missing.finite-anuvrtti .anuvrtti-gloss {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.finite-missing.finite-anuvrtti .anuvrtti-note {
+  font-size: 0.9em;
+  color: var(--ink-soft);
+}
+.anuvrtti-explainer {
+  font-size: 0.95em;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
 /* ==================== Theme picker — collapsed icon + popover ==================== */
 
 .theme-picker {

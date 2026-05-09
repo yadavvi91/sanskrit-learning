@@ -63,6 +63,17 @@ export function hydrateAutoStubVerses() {
       if (Array.isArray(vOverride.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
         v.vyakhya = vOverride.vyakhya;
       }
+      // anuvṛtti — explicit verb-carry-over from a neighbouring verse.
+      // When set, the क्रिया section renders the carried verb + source
+      // verse instead of the generic "implied अस्ति" line.
+      if (vOverride.anuvrtti && !v.anuvrtti) v.anuvrtti = vOverride.anuvrtti;
+      // implicitVerb — when the verse is genuinely nominal but the
+      // implied predicate is something other than अस्ति. Used for
+      // विभूति-style "I am X" verses where मनेप is implied (मन्ये etc.).
+      if (vOverride.implicitVerb && !v.implicitVerb) {
+        v.implicitVerb = vOverride.implicitVerb;
+        v.implicitVerbMeaning = vOverride.implicitVerbMeaning;
+      }
     }
 
     if (!v.padaccheda || v.padaccheda.length === 0) {
