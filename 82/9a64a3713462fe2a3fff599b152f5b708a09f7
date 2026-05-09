@@ -1,0 +1,21 @@
+src/data/verses.js
+  s_d5e8c30b294ba2::t_0ce95c73864c63 2777-2805
+  s_d5e8c30b294ba2::t_5487e45c9cecca 2823-2855
+  s_d5e8c30b294ba2::t_55a69874819183 2651-2676,2678-2702,2704-2726
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "829a64a3713462fe2a3fff599b152f5b708a09f7",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
