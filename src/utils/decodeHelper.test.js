@@ -32,6 +32,23 @@ describe('autoDecode — sandhi-undo on each chunk', () => {
     expect(stub.padaccheda).toEqual(['रामः']);
     expect(stub.sandhiNotes).toEqual([]);
   });
+
+  it('rejects bogus 1-char savarna-dirgha splits (काङ्क्षे stays whole)', () => {
+    // Pre-fix: the engine eagerly applied सवर्ण-दीर्घ (अ + अ → आ) inside
+    // काङ्क्षे and produced a meaningless "क + अङ्क्षे" split. The fix
+    // rejects splits where any part is a single character outside a small
+    // particle whitelist. Pin that behaviour.
+    const stub = autoDecode('न काङ्क्षे विजयं');
+    expect(stub.padaccheda).toContain('काङ्क्षे');
+    expect(stub.padaccheda).not.toContain('क');     // bogus 1-char fragment
+    expect(stub.padaccheda).not.toContain('अङ्क्षे'); // bogus residue
+  });
+
+  it('still allows real one-char particles in splits (न, च, etc.)', () => {
+    // The whitelist must not over-reject — n + ca / etc. are legitimate.
+    const stub = autoDecode('च');
+    expect(stub.padaccheda).toContain('च');
+  });
 });
 
 describe('autoDecode — vocabulary lookup', () => {
