@@ -112,4 +112,26 @@ export function hydrateAutoStubVerses() {
       }
     }
   }
+
+  // Second pass: fill MISSING fields on full / browse-tier verses too.
+  // Hand-decoded verses keep all their curated content (gated on
+  // `!v.<field>` so the override never overwrites). This catches cases
+  // like 18.66 (browse-tier hand-decoded with rich anvaya/vyakhya but
+  // no vibhaktiNotes/keyFights — interp data fills the gap).
+  for (const v of VERSES) {
+    if (v.tier === 'auto-stub') continue;
+    const key = `${v.chapter}.${v.verse}`;
+    const interp = INTERP_NOTES[key];
+    if (!interp) continue;
+    if (interp.anvaya && !v.anvaya) v.anvaya = interp.anvaya;
+    if (Array.isArray(interp.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+      v.vibhaktiNotes = interp.vibhaktiNotes;
+    }
+    if (Array.isArray(interp.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+      v.keyFights = interp.keyFights;
+    }
+    if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+      v.vyakhya = interp.vyakhya;
+    }
+  }
 }
