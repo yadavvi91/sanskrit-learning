@@ -14,6 +14,7 @@ import { BESANT_TRANSLATIONS } from './translations-besant.js';
 import { ARNOLD_TRANSLATIONS } from './translations-arnold.js';
 import { HINDI_TRANSLATIONS } from './translations-hindi.js';
 import { INTERP_NOTES } from './interpretive.js';
+import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
 
 let done = false;
 
@@ -61,6 +62,20 @@ export function hydrateAutoStubVerses() {
           license: 'public-domain',
           work: 'The Song Celestial',
           text: arnold,
+        });
+      }
+    }
+
+    const shankara = SHANKARA_SUMMARIES[key];
+    if (shankara) {
+      if (!v.references) v.references = { translations: [], commentaries: [] };
+      if (!Array.isArray(v.references.commentaries)) v.references.commentaries = [];
+      const already = v.references.commentaries.some((c) => c.sage === 'Śaṅkara');
+      if (!already) {
+        v.references.commentaries.push({
+          sage: 'Śaṅkara',
+          school: 'Advaita Vedānta',
+          summary: shankara,
         });
       }
     }
