@@ -125,6 +125,157 @@ After 2.5, twenty-three patterns had landed. They became the foundation of `patt
 
 ---
 
+## The grammar that emerged from a year of conversations
+
+Past the four foundational verses, three more long Claude conversations took specific systems apart. Each became its own `CLAUDE.md` in the project — `CLAUDE.md` (parent, framing + nouns + decode pipeline), `CLAUDE2.md` (verb sub-app spec), `CLAUDE3.md` (grammar atlas spec). Together they're the conceptual map that the app teaches.
+
+### Verbs in five layers
+
+Every finite Sanskrit verb is built in five layers, and each layer answers exactly one question:
+
+```
+धातु
+ └─ गण rule → present stem (or +स्य → future stem)
+     └─ लकार → selects ending set + augment/marker
+         └─ पद → selects P or Ā column of that set
+             └─ पुरुष × वचन → picks the exact ending
+                 = finite verb form
+```
+
+| Layer | Question | Source |
+|---|---|---|
+| 1. **धातु** | What action? | Lexical (~192 cover 86%) |
+| 2. **गण** | How is the present stem built? | Fixed per root (1–10) |
+| 3. **लकार** | What tense/mood? | 5 of 10 matter for Gītā |
+| 4. **पद** | Which ending family? | Fixed per root (P / Ā / उभयपदी) |
+| 5. **पुरुष × वचन** | Which cell? | 3 × 3 = 9 |
+
+Three clarifications that matter:
+
+- **गण only matters for the present system** (लट्, लङ्, लोट्, विधिलिङ्). For लृट् (future) and लिट् (perfect), गण is irrelevant — they use their own stem rules.
+- **पद is lexically fixed per root in 99% of cases.** उभयपदी roots take both, sometimes with semantic shift, but in Epic / Gītā Sanskrit पद choice is often metrical, not semantic.
+- **The present stem is shared across four लकार** (लट्, लङ्, लोट्, विधिलिङ्). So once you've built the present stem for a root, you've unlocked four of the five.
+
+### The 10 गण, with shape
+
+| # | Name | Rule | Example |
+|---|---|---|---|
+| 1 | भ्वादि | guṇa + अ | भू → भव-ति |
+| 2 | अदादि | root itself, no addition | अद् → अत्-ति |
+| 3 | जुहोत्यादि | reduplicate | हु → जुहो-ति |
+| 4 | दिवादि | + य | दिव् → दीव्य-ति |
+| 5 | स्वादि | + नु / नो | सु → सुनो-ति |
+| 6 | तुदादि | + अ (no guṇa) | तुद् → तुद-ति |
+| 7 | रुधादि | infix न | रुध् → रुणद्-धि |
+| 8 | तनादि | + उ / ओ | तन् → तनो-ति |
+| 9 | क्र्यादि | + ना / नी | क्री → क्रीणा-ति |
+| 10 | चुरादि | + अय | चुर् → चोरय-ति |
+
+**Thematic vs athematic** is the practical split: gaṇa 1, 4, 6, 10 are **thematic** (stem ends in -अ-), endings attach uniformly, easy. Gaṇa 2, 3, 7 are **athematic** — endings attach to consonants, triggering sandhi, with strong/weak stem alternation. For Gītā reading, the six athematic roots that cannot be avoided: **√अस्** (be, 2), **√इ** (go, 2), **√हन्** (kill, 2), **√ज्ञा** (know, 9), **√शृ/शृणु** (hear, 5), **√कृ** (do, 8). Drill these harder than the rest.
+
+### Khoomeik's data, and what it doesn't give us
+
+Rohan Pandey ([@khoomeik](https://x.com/khoomeik)) used **vidyut** (ambuda-org/vidyut) to identify dhātus across the Digital Corpus of Sanskrit (~988 thousand verb tokens). The frequency curve:
+
+| Top N dhātus | Coverage |
+|---|---|
+| 10 | 27.7% |
+| 50 | 58.8% |
+| 100 | 73.0% |
+| **192** | **86.1%** |
+| 500 | 98.5% |
+
+The chart gives Devanagari root, gaṇa (color-coded), English meaning(s), and 3sg present (which implicitly encodes पद since -ति = P, -ते = Ā). It does *not* give: explicit P/Ā/उभयपदी tag, suppletive present stems (दृश् → पश्य-, गम् → गच्छ-, स्था → तिष्ठ-), लिट् 3sg forms, irregular sandhi quirks. Those are the per-root metadata we have to add as we go.
+
+Pandey also published a second ordering — same 192 grouped by गण — which is more pedagogically useful (one stem-rule unlocks all roots in that color). Both orderings live in the app's Periodic Table.
+
+### सर्वनाम — तद् as master template
+
+Pronouns are the largest genuinely-new system after nouns. Two sub-systems:
+
+**Personal pronouns** (अस्मद् "I/we", युष्मद् "you") — no gender, suppletive (different stems per case: अहम् / माम् / मया / मम share no visible root), with enclitic alternates (मा, मे, नौ, नः, ते, वः) that can't begin a sentence and can't follow च / वा / ह / अह / एव. These you memorize. You don't generate.
+
+**सर्वनाम pronouns** — these *are* generative. **तद्** ("he/she/it/that") is the master template. Once memorized, यद् (relative), किम् (interrogative), सर्व (all), अन्य (other), एक (one), एतद् (this) all follow it with prefix swaps. The signature deviation from the राम-pattern: four **स्म-cells** in masculine/neuter singular —
+
+| Case | राम-pattern | तद्-pattern |
+|---|---|---|
+| चतुर्थी sg. | -आय | **-स्मै** (तस्मै) |
+| पञ्चमी sg. | -आत् | **-स्मात्** (तस्मात्) |
+| सप्तमी sg. | -ए | **-स्मिन्** (तस्मिन्) |
+| प्रथमा pl. | -आः | **-ए** (ते) |
+
+— plus suppletive nominatives **सः** (m. sg.), **सा** (f. sg.), **तत्** (n. sg.).
+
+The pedagogical leverage: memorize one template, generalize to seven pronouns. This is one of the most efficient bits of Sanskrit pattern recognition. Where it pays off: **correlative pairs**, the structural backbone of Krishna's teaching style. यद्...तद्. यदा...तदा. यत्र...तत्र. यथा...तथा. यावत्...तावत्. यदि...तर्हि. Half of Krishna's teachings are यद्...तद् structures. Sanskrit has no relative pronoun + complementizer like English's "who"/"that"; it uses **paired clauses** where यद्-clause sets up a referent and तद्-clause picks it up. Once you see the pattern, half the Gītā unscrambles.
+
+### समास and the missing decode step
+
+Sanskrit aggressively compounds. The Gītā is saturated with compounds: धर्मक्षेत्रे, कुरुक्षेत्रे, हृदयदौर्बल्यम्, मधुसूदन, परन्तप, अरिसूदन. There are six classical types, and the same surface compound can mean entirely different things depending on which type it is:
+
+| Type | Logic | Example | Internal relation |
+|---|---|---|---|
+| **तत्पुरुष** | Case-determined | राजपुत्रः | "king's son" (षष्ठी inside) |
+| **कर्मधारय** | Adj + noun, same case | नीलोत्पलम् | "blue lotus" |
+| **द्वन्द्व** | List, "X and Y" | रामलक्ष्मणौ | "Rāma and Lakṣmaṇa" |
+| **बहुव्रीहि** | Possessive | पीताम्बरः | "[one who is] yellow-garmented" = Krishna |
+| **अव्ययीभाव** | Adverbial | यथाशक्ति | "according to ability" |
+| **द्विगु** | Numerical | पञ्चवटी | "group of five trees" |
+
+The diagnostic example is **पीताम्बरः**: as a *तत्पुरुष* it means "yellow garment" (the cloth itself); as a *बहुव्रीहि* it means "the one wearing a yellow garment" — Krishna's epithet. Same string, two different worlds.
+
+The realisation that fell out of this conversation: the project's original decode pipeline (पदच्छेद → अन्वय → हिंदी → English) was **missing a step**. The proper sequence is:
+
+> **पदच्छेद → विग्रह → अन्वय → translation**
+
+**विग्रह** is the un-compounding step — splitting a compound back into its parts and naming the type. The Atlas's Samāsa Bank exists because of this realisation: every compound from every decoded verse, classified, searchable, with worked विग्रह and type for each.
+
+### उपसर्ग — the 22 prefixes that violently change meaning
+
+Pāṇini's line on उपसर्ग is precise: *उपसर्गेण धात्वर्थो बलाद् अन्यत्र नीयते* — "by an upasarga the meaning of the dhātu is forcefully carried elsewhere." Twenty-two prefixes, attaching to roots, multiplying the apparent verbal vocabulary roughly five-fold. The 192 bare dhātus combined with upasargas yields 800–1000 attested verbs in classical Sanskrit.
+
+The four upasargas already met in the foundational verses:
+- **उद्** in उत्तिष्ठ (2.3) — "rise up"
+- **उप** in उपपद्यते (2.3) — "be fitting"
+- **प्रति** in प्रतियोत्स्यामि (2.4) — "fight against"
+- **सम् + अव** in समवेताः (1.1) — "having gathered together" (a stack of two)
+
+The verb sub-app's parser handles upasarga stripping: incoming form → strip prefix(es) → identify bare dhātu → look up paradigm. प्रतियोत्स्यामि decomposes as प्रति + √युध् + लृट् + उत्तम एकवचन. The Stack Builder's reverse mode is exactly this decomposition made interactive.
+
+### कारक — the semantic layer above विभक्ति
+
+A conceptual upgrade, not new memorization. The thing that makes passive sentences stop looking broken.
+
+**विभक्ति** is the morphological case — the ending. **कारक** is the semantic role in the action. The standard mapping in active voice:
+
+| कारक | Role | Default विभक्ति |
+|---|---|---|
+| कर्ता | agent | प्रथमा (active) / तृतीया (passive) |
+| कर्म | patient | द्वितीया (active) / प्रथमा (passive) |
+| करण | instrument | तृतीया |
+| सम्प्रदान | recipient | चतुर्थी |
+| अपादान | source | पञ्चमी |
+| अधिकरण | location | सप्तमी |
+
+What this unlocks: in passive constructions, the **विभक्ति assignments swap** but the **कारक roles stay the same**. *रामेण रावणः हतः* — रामेण is तृतीया (instrumental) but is the कर्ता (agent); रावणः is प्रथमा (nominative) but is the कर्म (patient). The Gītā uses passive constantly — especially for fate, divine action, and philosophical impersonals — and recognizing that the कारक is invariant under voice change is what makes such verses parseable.
+
+Pāṇini built the entire grammar around कारक, not विभक्ति. विभक्ति is just the surface form. कारक is the deeper structure. This frame is *retroactive* — once you've internalized it, the noun system you already knew works at a deeper level than you realized.
+
+### अव्यय — Pāṇini's third bin
+
+The most clarifying conceptual frame in `CLAUDE3.md`. Every Sanskrit word is one of three things:
+
+1. **सुबन्त** — ends in a case ending (nouns, pronouns, adjectives) → *declinable*
+2. **तिङन्त** — ends in a verbal ending (finite verbs) → *conjugable*
+3. **अव्यय** — *indeclinable* (everything else)
+
+That third bin absorbs prepositions, articles, conjunctions, most adverbs, and discourse particles. Sanskrit doesn't have prepositions as a word class — case endings (विभक्ति) and उपसर्ग do their work. It doesn't have articles — demonstratives (तद्, एतद्, इदम्) do. Most adverbs are **frozen case forms** of adjectives or nouns: *neuter accusative singular* gives manner adverbs (शीघ्रम् "quickly", सत्यम् "truly"); *instrumental* gives manner/means (सुखेन "with ease", बलात् "by force"); *locative* gives time/place (प्रातः "in the morning"). Plus the **-तस्** suffix ("from / -ly"): मूलतः, सर्वतः, शास्त्रतः.
+
+The genuinely indeclinable particles — हि, तु, च, वा, अपि, एव, इति, इह, अथ, सदा, यदि — number maybe thirty or forty. They're a closed list. Recognizing one is the answer to "this word has no विभक्ति ending and isn't a verb — what is it?": probably an अव्यय.
+
+What this conceptual frame buys you: half the "missing" parts of Sanskrit grammar disappear. There's no preposition system to learn. No article system. No separate adverb morphology. The systems that handle these jobs are systems you already know — case endings, demonstrative pronouns, frozen-case forms — wearing different hats.
+
+---
+
 ## The decision to build
 
 After those four verses, the question was: do I just keep notes? Markdown files in some folder? Or do I build something that *uses* them?
