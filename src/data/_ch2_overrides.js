@@ -1759,6 +1759,7 @@ export const CH2_VERSE_OVERRIDES = {
 
   '2.43': {
     speaker: 'श्रीभगवानुवाच',
+    anuvrtti: { from: '2.42', verb: 'प्रवदन्ति', meaning: 'they declare / utter (the flowery speech)', note: 'एक-वाक्यता with 2.42 — Krishna\'s critique of the Vedist ritualists spans 2.42-2.43 as one syntactic unit. The द्वितीया-singular feminine adjectives (जन्मकर्मफलप्रदाम् etc.) all qualify वाचम् from 2.42, governed by प्रवदन्ति.' },
     padaccheda: [
       'काम-आत्मानः',
       'स्वर्ग-पराः',

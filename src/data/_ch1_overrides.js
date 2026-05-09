@@ -99,6 +99,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.8': {
     speaker: 'दुर्योधन उवाच',
+    anuvrtti: { from: '1.7', verb: 'ब्रवीमि', meaning: 'I name / I tell you about', note: '1.7 ends with तान् ब्रवीमि ते ("I name them to you"); 1.8 is the actual list — every name supplies as the object of ब्रवीमि' },
     padaccheda: [
       'भवान्',
       'भीष्मः',
@@ -1074,6 +1075,7 @@ export const CH1_VERSE_OVERRIDES = {
 
   '1.34': {
     speaker: 'अर्जुन उवाच',
+    anuvrtti: { from: '1.33', verb: 'अवस्थिताः (सन्ति)', meaning: '(they) are standing-here, ready to die', note: 'एक-वाक्यता with 1.33 — 1.33 declares "ते इमे अवस्थिताः युद्धे" ("these stand in battle"); 1.34 is the kinship-list specifying *who* those इमे are. The predicate अवस्थिताः + implicit सन्ति carries through.' },
     padaccheda: [
       'आचार्याः',
       'पितरः',
