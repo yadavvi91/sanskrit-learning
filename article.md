@@ -74,61 +74,77 @@ He framed the same project thesis publicly in three tweets:
 
 Three things in that framing landed. First, **"taught more naturally than it is"** — the same Maharashtra SSC complaint, named precisely. Second, **"more parsimoniously than I thought"** — the Khoomeik 192-dhātu insight as the enabling parsimony. Third, **"boom in educational apps"** — Srinivasan was explicit that AI-tools-plus-personal-itch was a viable shape, not a hobbyist indulgence. He'd shipped his version. I could ship mine.
 
-But it's the *structure* of his lessons that did the convincing. I'll walk through what each one actually does.
+But it's the *educational design* underneath that did the convincing. Five principles, each of which is a direct attack on a way Sanskrit instruction usually fails:
 
-### Lesson 1 — one two-word phrase, four grammar concepts
+### 1. Density over enumeration
 
-The whole of Lesson 1 (~20 MCQ cards across four "sets") is built around the opening two words of the Gītā: **धृतराष्ट्र उवाच** (*Dhṛtarāṣṭra said*).
+A traditional Sanskrit textbook teaches one concept across many phrases — a chapter on the locative will give you fifteen examples of `-े` words. Srinivasan inverts this: **one phrase, many concepts**. Lesson 1 is built around the two words `धृतराष्ट्र उवाच` (*Dhṛtarāṣṭra said*) and mines four complete grammar concepts out of them — case ending, sandhi rule, verbal root, tense system. Twenty MCQ cards spread across those four concepts, all anchored to the same two-word phrase.
 
-Inside those two words sit four complete grammar concepts:
+Lesson 2 stays inside the same verse (Gītā 1.1) and pulls four more concepts: locative ending, word-order theory, vocative, a second sandhi class. After two lessons the student has eight live grammar concepts but has only had to ingest one verse's worth of vocabulary.
 
-| Set | Concept | What you learn from धृतराष्ट्र उवाच |
-|---|---|---|
-| 1 | **Prathamā Vibhakti** (nominative case) | The surface form `धृतराष्ट्र` is the sandhi'd form of the underlying nominative `धृतराष्ट्रः`. The case marks the speaker as the subject. |
-| 2 | **Sandhi** (specifically Visarga Lopa) | The visarga `ः` *disappears* before `उ`. Pāṇini 8.3.17. This is why the text shows `धृतराष्ट्र` with no visible visarga — the rule erased it. |
-| 3 | **Dhātu** (root) and **Lakāra** (tense) | `उवाच` is the perfect-tense (लिट्) third-person-singular form of `√वच्` (to speak). One root, many forms — once you know the root you can predict उवाच, अवोचत्, वक्ष्यति, ऊचुः. |
-| 4 | **Review** — all four concepts integrated | Five questions that demand you spot Prathamā + Sandhi + Dhātu + Lakāra simultaneously in the same two-word phrase. |
+The acceleration comes from this: the cognitive load of new vocabulary is amortized across many concepts, instead of paid fresh for each. The student doesn't have to track who Madhusūdana is *and* what locative means *and* what a sandhi rule looks like — they meet Madhusūdana once, in `मधुसूदन उवाच`, and the whole grammatical apparatus radiates out from that single two-word handle.
 
-Twenty cards. Two words. Every set introduces *exactly one* new concept, drills it through five variants (`सञ्जय उवाच`, `अर्जुन उवाच`, `मधुसूदन उवाच`, etc.), then layers on the next concept. By the end of Lesson 1 you've internalized four concepts so deeply that the very first two words of the Gītā are completely transparent.
+### 2. The Gītā as both corpus and curriculum
 
-### The Interlude — a meta-lesson on how to learn
+Srinivasan's framing on the landing page makes this explicit: *"The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it."*
 
-Between Lesson 1 and Lesson 2 sits an interlude that does no grammar at all. It's an essay-form page on the *epistemology of language learning*. Karl Popper drop-quoted at the top:
+This is the deeper move. A textbook invents synthetic example sentences to illustrate rules; Srinivasan refuses to. **Every example is a real Gītā verse.** Which means by the time you've worked through Lesson 1, you don't just know "the locative" — you know *how the Gītā opens*. The cultural reward and the grammatical lesson are paid simultaneously. There's no cold-storage period where you're learning rules for a payoff you can't see yet; the payoff is in your hands as you learn.
+
+### 3. Emergence over front-loading
+
+The राम declension table — the wall of 24 forms (8 cases × 3 numbers) every Maharashtra SSC student knows — is a flat, intimidating object when handed over whole. Srinivasan never hands it over. After Lesson 1, the table has *one cell filled in* (Prathamā singular). After Lesson 2, *two cells* (Prathamā and Saptamī, both singular). The other 22 emerge as future verses demand them.
+
+Same principle applies to sandhi: visarga-lopa is introduced because `धृतराष्ट्र उवाच` requires it; śatva-sandhi (visarga + च → श्) is introduced because `पाण्डवाश्चैव` requires it. **No rule is taught in advance of needing it.** This is the inverse of a grammar textbook, which front-loads every rule before any reading. The student of a textbook spends a year on phonology before reading a sentence; the student of bvsiitm reads a sentence on day one and learns the phonology that sentence demands.
+
+### 4. The intuition-as-data design
+
+Between Lesson 1 and Lesson 2 sits an interlude that does no grammar at all — it's a meta-lesson on the epistemology of language learning. Karl Popper drop-quoted at the top:
 
 > "All observation is theory-laden."
 
-Then a thesis I find genuinely well-articulated:
+The thesis: every act of learning happens inside a context — a background of hunches, half-formed theories, and borrowed intuitions the learner brings *before* any new fact arrives. *Learning is not filling an empty vessel; it is the ongoing refinement of a guess.* Two MCQ cards demonstrate it: `उलूकः` (owl) and `दुहितृ` (daughter), both Indo-European cognates a Hindi/English speaker can guess from sound. The point is procedural, not lexical: **guess freely; your existing language intuitions are not noise, they're data**.
 
-> *Every act of learning happens inside a context — a background of hunches, half-formed theories, and borrowed intuitions that the learner brings to the table before a single new fact arrives. The brain does not receive the world passively; it projects a model onto it, then corrects. Learning is not filling an empty vessel. It is the ongoing refinement of a guess.*
+This matters as accelerated-learning design because it discharges a hidden tax. Most Sanskrit pedagogy implicitly tells the student *you know nothing; absorb the system from scratch*. Srinivasan tells them *you know more than you think; here is permission to use it*. The interlude shifts the student from receiver mode to predictor mode — and predictor mode is where compression happens. Once a student is predicting, every new card is testing a hypothesis instead of installing a fact.
+
+### 5. Designed for forgetting — the Quantum Country lineage
+
+The interlude closes with three principle cards. The third is the load-bearing one:
+
+> **Don't memorise.** You do not need to remember everything now. The programme is designed for forgetting.
+
+This isn't an offhand claim. Srinivasan's own design notes in the bvsiitm repo cite the direct lineage:
+
+> *Inspired by Michael Nielsen and Andy Matuschak's* **Quantum Country**, *the cards live inside the essay. You read prose, encounter a concept, and a card appears immediately. You answer it. The card remembers when you need to see it again.*
+
+[Quantum Country](https://quantum.country/) (Matuschak + Nielsen, 2019) is the famous accelerated-learning experiment that pioneered **mnemonic media** — the technique of weaving spaced-repetition cards into the body of a long-form essay so that *reading and remembering become a single act*. Their thesis was that traditional textbooks fail not because the content is wrong but because there's no closed loop: you read, you forget, you don't come back. SRS apps fail in the opposite way — they have the loop but no narrative; you drill cards in a vacuum with no context to bind them to. Quantum Country fused the two.
+
+Srinivasan's bvsiitm site is one of the most disciplined Quantum-Country-style applications I've seen outside the original — and his repo's design notes name the four design rules verbatim:
+
+> *Cards appear inline in the essay — reading and drilling are one seamless experience, not two separate modes.*
 >
-> *You already know something about how languages work — from Hindi, Tamil, English, or wherever you come from. You have instincts about what a verb is, what a subject does, what it means for a word to 'belong' to another. Sanskrit will feel strange in places and eerily familiar in others. Both feelings are data. Trust them. Guess freely.*
+> *You move to the next concept only when the current one is solid. Time spent is irrelevant. Mastery is the gate.*
 >
-> *Wrong answers are not failures here. They are the system working exactly as intended.*
+> *Every wrong answer has a specific explanation — pointing to the correct root, case, or rule. Wrong answers teach, not just penalise.*
+>
+> *Every example comes from the actual Gita. The target — reading unaided — is visible from the very first card.*
 
-Two MCQ cards demonstrate the philosophy. *What does `उलूकः` mean?* — answer: owl, cognate with English *owl* via Proto-Indo-European `*ul-`. *What does `दुहितृ` mean?* — daughter, cognate with English *daughter* via PIE `*dʰugh₂tḗr`. The point: a Hindi/English speaker can *guess* these from cross-linguistic resonance. They don't need to be told. They just need permission to try.
+What this does to the learning loop: it turns each session into a *predict + correct* cycle instead of a *study + retain* cycle. The acceleration comes because predict-and-correct has shorter feedback edges and uses the brain's error-driven plasticity, while study-and-retain relies on rehearsal that mostly fails. SRS state is persisted (`localStorage` key `gita-srs-state` in his app), so the system tracks per-card spacing across sessions. The student does no bookkeeping. They just read the next essay, answer the next card, and trust the scheduler to surface the right ones.
 
-The interlude closes with three principle cards:
+The five principles, in summary, are not five inventions of Srinivasan's. They are five things known to work — frequency-prioritized vocabulary (corpus linguistics), worked-example pedagogy (Sweller's CLT), inline cards in prose (Quantum Country), trust-the-learner's-prior-knowledge (constructivist learning), spaced repetition (Ebbinghaus → Wozniak's SuperMemo) — and his contribution is that **he composed all five, in a coherent product, against the actual Gītā**. That composition is what I read as the platform thesis.
 
-- **I — Guess freely.** Use whatever language you know. Intuition is data.
-- **II — Wrong = Learning.** The SRS brings missed cards back. Every wrong answer is the system doing its job.
-- **III — Don't memorise.** You do not need to remember everything now. The programme is designed for forgetting.
+### Why this matters as a *platform*, not just a course
 
-That third one is the one I keep coming back to — *the programme is designed for forgetting*. Memorization is not the unit of progress. Re-encounter is.
+Stack the five principles and you get a small but coherent accelerated-learning architecture:
 
-### Lesson 2 — same verse, four new concepts
+- **A frequency-prioritized corpus** (Khoomeik's 192 dhātus = 86% coverage) ensures effort isn't wasted on rare forms.
+- **A density-first content layout** (one verse → many concepts) amortizes vocabulary cost.
+- **A "real text only" policy** (the Gītā as worked example) makes every minute of learning culturally rewarding.
+- **An emergence-driven schedule** (rules surface only when verses need them) keeps the present scope small.
+- **An intuition-trusting interface** (guess freely; SRS handles forgetting) turns the student into a predictor.
 
-Lesson 2 stays inside Gītā 1.1 (`धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः। मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय॥`) and walks four more concepts out of it:
+These five together are why I read Srinivasan's site as a *platform thesis* rather than a tutorial. He's not just teaching the Gītā; he's demonstrating that **once you have AI tooling that can write the per-card content cheaply, this kind of dense, frequency-weighted, emergence-driven curriculum is finally cost-effective to produce**. His own tweet — *"these tools will lead to a boom in educational apps"* — names the larger claim explicitly. The Gītā site is Ver 0.0.0.1 of that boom.
 
-| Set | Concept | Where in 1.1 |
-|---|---|---|
-| 1 | **Saptamī Vibhakti** (locative case, `-े` ending) | `धर्मक्षेत्रे` and `कुरुक्षेत्रे` — "in the field of dharma, in the field of the Kurus" |
-| 2 | **Word Order** | The free-order insight: `कुरुक्षेत्रे कृष्णः` and `कृष्णः कुरुक्षेत्रे` mean the same thing because the endings carry the meaning. The position is for emphasis. |
-| 3 | **Sambodhana** (vocative) | `सञ्जय` at the end of the verse — calling out to Sanjaya. Distinguished from the visarga-lopa'd nominative form by *reason*: the case ends in -अ; the lopa form ends in -अ for a different reason. |
-| 4 | **Śatva Sandhi** | `पाण्डवाश्चैव = पाण्डवाः + च + एव` — visarga before `च` becomes `श्`, then `च + एव → चैव` by the existing अ + ए → ऐ rule. Two sandhi operations stacked. |
-
-The progression matters. After Lesson 1 you have four concepts (`उवाच`-shaped). After Lesson 2 you have eight (now the locative, word-order theory, vocative, and a second sandhi class). The राम declension table at this point has *two cells filled in* (Prathamā singular, Saptamī singular) — and Srinivasan explicitly says the table will be filled *one cell at a time*. Eight cases × three numbers = 24 cells. At one or two cells per lesson, the full table emerges over the course of the curriculum, never as a wall of forms to memorize.
-
-### What I borrowed, and what I diverged from
+### What I borrowed, and where I diverged
 
 The pedagogy I took directly:
 
