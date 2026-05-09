@@ -101,12 +101,26 @@ describe('WordPopover — open / close', () => {
     expect(container.querySelector('.word-popover')).toBeNull();
   });
 
-  it('with parsing=null, clicking opens but the popover dialog is suppressed', () => {
-    const { container } = renderInRouter(<WordPopover word="अज्ञातम्" parsing={null} />);
+  it('with parsing=null and no shared-dict entry, clicking opens an EmptyPopover (not a silent no-op)', () => {
+    // Use a deliberately unknown sequence so sharedVocab fallback also misses.
+    const { container } = renderInRouter(<WordPopover word="ज़क़ह़ज़" parsing={null} />);
     const chip = container.querySelector('.pada');
     fireEvent.click(chip);
-    // open=true but {parsing} is falsy → <Popover /> not rendered.
-    expect(container.querySelector('.word-popover')).toBeNull();
+    const popover = container.querySelector('.word-popover');
+    expect(popover).not.toBeNull();
+    expect(popover.className).toContain('word-popover-empty');
+    expect(popover.textContent).toContain('no grammar data yet');
+  });
+
+  it('with parsing=null but the word IS in sharedVocab, clicking opens a regular popover (dict fallback)', () => {
+    // 'कृष्ण' is seeded in sharedVocab as a known vocative noun.
+    const { container } = renderInRouter(<WordPopover word="कृष्ण" parsing={null} />);
+    fireEvent.click(container.querySelector('.pada'));
+    const popover = container.querySelector('.word-popover');
+    expect(popover).not.toBeNull();
+    expect(popover.className).not.toContain('word-popover-empty');
+    // The dict-fallback path tags its source.
+    expect(popover.textContent).toContain('dict');
   });
 });
 

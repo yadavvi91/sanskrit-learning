@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.js';
 import { getPronounAnchor } from '../data/pronouns.js';
+import { lookupSharedVocab } from '../data/sharedVocab.js';
 
 const CASE_LABELS = {
   pra: 'प्रथमा (Nom.)',
@@ -51,9 +52,17 @@ const CATEGORY_LABEL = {
 };
 
 // Wraps a पद chip. Click to toggle a popover with the parsed grammar.
+// Three layers of parsing data, in priority order:
+//   1. verse.wordParsings[word] — hand-decoded verses' rich per-word data
+//   2. lookupSharedVocab(word) — shared dictionary fallback
+//   3. neither → render an "auto-stub draft" popover that at least
+//      surfaces the word, so the click isn't a silent no-op
 export default function WordPopover({ word, parsing, isFinite }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+
+  // Effective parsing: verse-local first, then shared-dict fallback.
+  const effectiveParsing = parsing ?? lookupSharedVocab(word) ?? null;
 
   useEffect(() => {
     if (!open) return;
@@ -71,24 +80,47 @@ export default function WordPopover({ word, parsing, isFinite }) {
     };
   }, [open]);
 
+  const titleText = effectiveParsing
+    ? (parsing ? 'Click to see grammar (hand-decoded)' : 'Click to see grammar (from shared dictionary)')
+    : 'Click — no grammar data yet, but the popover shows what we know';
+
   return (
     <span className="word-popover-wrap" ref={ref}>
       <button
         type="button"
-        className={`pada ${isFinite ? 'is-finite' : ''} ${parsing ? 'has-parsing' : ''} ${open ? 'is-open' : ''}`}
+        className={`pada ${isFinite ? 'is-finite' : ''} ${effectiveParsing ? 'has-parsing' : ''} ${open ? 'is-open' : ''}`}
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="dialog"
         aria-expanded={open}
-        title={parsing ? 'Click to see grammar' : 'No parsing data yet'}
+        title={titleText}
       >
         {word}
       </button>
-      {open && parsing && <Popover word={word} parsing={parsing} />}
+      {open && (
+        effectiveParsing
+          ? <Popover word={word} parsing={effectiveParsing} fromSharedDict={!parsing && !!effectiveParsing} />
+          : <EmptyPopover word={word} />
+      )}
     </span>
   );
 }
 
-function Popover({ word, parsing }) {
+function EmptyPopover({ word }) {
+  return (
+    <div className="word-popover word-popover-empty" role="dialog">
+      <div className="wp-header">
+        <span className="wp-word">{word}</span>
+        <span className="wp-category">no grammar data yet</span>
+      </div>
+      <p className="wp-gloss">
+        This word isn't in the shared dictionary, and the verse hasn't been hand-decoded.
+        It's a candidate for the Decode Helper queue.
+      </p>
+    </div>
+  );
+}
+
+function Popover({ word, parsing, fromSharedDict }) {
   const navigate = useNavigate();
   const paradigmId = getDeclensionForParsing(parsing);
   const paradigm = paradigmId ? getDeclensionById(paradigmId) : null;
@@ -99,7 +131,10 @@ function Popover({ word, parsing }) {
     <div className="word-popover" role="dialog">
       <div className="wp-header">
         <span className="wp-word">{word}</span>
-        <span className="wp-category">{CATEGORY_LABEL[parsing.category] ?? parsing.category}</span>
+        <span className="wp-category">
+          {CATEGORY_LABEL[parsing.category] ?? parsing.category}
+          {fromSharedDict && <span className="wp-source-tag" title="Source: shared dictionary fallback (verse not hand-decoded)"> · dict</span>}
+        </span>
       </div>
 
       {parsing.gloss && <p className="wp-gloss">"{parsing.gloss}"</p>}

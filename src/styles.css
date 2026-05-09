@@ -4180,6 +4180,24 @@ td.cell.is-suppletive {
   white-space: nowrap;
 }
 
+/* Source tag for shared-dict fallback (when verse has no per-word parsing). */
+.wp-source-tag {
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  font-size: 8px;
+}
+
+/* Empty-state popover for words with no parsing AND no shared-dict entry. */
+.word-popover-empty .wp-category {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.word-popover-empty .wp-gloss {
+  font-style: normal;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
 .wp-gloss {
   font-style: italic;
   font-family: var(--font-prose);
