@@ -1,0 +1,24 @@
+src/__tests__/anuvrtti-tagging.test.js
+  s_d5e8c30b294ba2::t_a75ba83db1b214 1-71
+src/data/_ch2_overrides.js
+  s_d5e8c30b294ba2::t_8f8e0102c72be9 1762
+src/data/_ch1_overrides.js
+  s_d5e8c30b294ba2::t_e7fa4b43ef385a 102
+  s_d5e8c30b294ba2::t_90ff7566baa582 1078
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "2760c2465530475b293a439fed2530146d1d3e7a",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
