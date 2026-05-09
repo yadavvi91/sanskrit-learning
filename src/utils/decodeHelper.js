@@ -306,10 +306,17 @@ function classifyFiniteVerb(form) {
 
   // Zero-th pass: direct vocab lookup. Catches forms like प्राहुरव्ययम्
   // (a sandhi-joined verb where neither stem nor regex match — only
-  // the agent-curated vocab knows it's a verb). High-confidence hit
-  // when vocab.category === 'verb' AND has lakara/purusha/number.
+  // the agent-curated vocab knows it's a verb).
+  //
+  // Length guard: real Sanskrit finite-verb forms rarely exceed 14 chars.
+  // Multi-word sandhi compounds the bulk-vocab agents wrongly tagged as
+  // single verbs (e.g., भीष्ममेवाभिरक्षन्तु = भीष्मम् + एव + अभिरक्षन्तु,
+  // 21 chars) get rejected here so the chunk falls through to the splitter
+  // passes instead. Genuine long verbs that exceed the threshold can be
+  // re-allowed via per-verse overrides in verses.js or finite-overrides.js.
   const v0 = lookupSharedVocab(form);
-  if (v0 && v0.category === 'verb' && v0.lakara && VALID_LAKARAS.has(v0.lakara)) {
+  if (v0 && v0.category === 'verb' && v0.lakara && VALID_LAKARAS.has(v0.lakara)
+      && form.length <= 14) {
     return {
       form,
       lakara: v0.lakara,
@@ -545,6 +552,76 @@ function splitNasalCompound(chunk) {
 // Recursively try yan-sandhi splits on a pada — keeps splitting as long
 // as a part keeps validating against KNOWN_VERB_FORMS. Returns the final
 // list of padas after all yan-splits applied, plus human-readable notes.
+// -म् + vowel sandhi splitter. The accusative-singular -म् ending and
+// many indeclinables (कथम्, यथाभागम्, …) end in virama-म्. When joined
+// with a vowel-initial next word, the virama is dropped and the next
+// vowel either becomes a matra on the surviving म or is fully absorbed
+// into the implicit अ on म. Two patterns to undo:
+//
+//   Pattern A: -मे[क-ह] mid-chunk → -म् + एव + (rest)
+//     e.g. भीष्ममेवाभिरक्षन्तु → भीष्मम् + एव + अभिरक्षन्तु
+//
+//   Pattern B: -म[bare consonant with implicit अ] mid-chunk where the
+//     prefix-with-virama is a recognized word → -म् + अ-(rest)
+//     e.g. यथाभागमवस्थिताः → यथाभागम् + अवस्थिताः
+//
+// Both gated by chunk length (skip if <8 chars) to avoid false positives
+// on intra-word -मे- / -म-clusters (कमेल, समय, etc.).
+function splitMakaraCompound(chunk) {
+  if (!chunk || chunk.length < 8) return null;
+
+  // Pattern A: मेव mid-chunk, NOT at the very start.
+  // Restoration: prefix gets virama (-म्), middle is एव (full particle
+  // with vowel-letter), suffix is rest with savarṇa-dīrgha undone if
+  // the next char is ा (एव + अ → एवा → restore as अ).
+  const mevaIdx = chunk.indexOf('मेव');
+  if (mevaIdx >= 1) {
+    const after = chunk[mevaIdx + 3];
+    // Only fire when there's something after मेव (otherwise it's the
+    // chunk-final particle and shouldn't be split).
+    if (after) {
+      const prefix = chunk.slice(0, mevaIdx) + 'म्';
+      let suffix = chunk.slice(mevaIdx + 3);
+      // Restore savarṇa-dīrgha: if suffix starts with ा, that came from
+      // एव + अ-; replace ा with the vowel-letter अ.
+      if (suffix.startsWith('ा')) suffix = 'अ' + suffix.slice(1);
+      // Plausibility: prefix must be a real ending (ends in -म् after
+      // adding virama, length >= 4) and suffix must be a real word start
+      // (length >= 2).
+      if (prefix.length >= 4 && suffix.length >= 2) {
+        return [prefix, 'एव', suffix];
+      }
+    }
+  }
+
+  // Pattern B: -म + bare consonant where prefix+्ʼ is a known noun/adverb.
+  // Walk through every म in the chunk that's followed by a bare consonant
+  // (not a matra, not a virama, not anusvara/visarga). Lexicon-validate
+  // the prefix-with-virama against shared vocab.
+  for (let i = 1; i < chunk.length - 2; i++) {
+    if (chunk[i] !== 'म') continue;
+    // The character at i must NOT have a matra after it (otherwise it's
+    // an internal syllable, not a word boundary)
+    const matraSet = new Set(['ा', 'ि', 'ी', 'ु', 'ू', 'ृ', 'ॄ', 'े', 'ै', 'ो', 'ौ', '्', 'ं', 'ः', 'ँ']);
+    if (matraSet.has(chunk[i + 1])) continue;
+    // Next must be a bare consonant
+    const next = chunk[i + 1];
+    if (!/[क-ह]/.test(next)) continue;
+    // Restore the virama on the prefix and prepend अ to the suffix
+    const prefix = chunk.slice(0, i + 1) + 'म्';
+    const suffix = 'अ' + chunk.slice(i + 1);
+    // Lexicon validate: at least the prefix must be a known word-form.
+    // Without this gate the rule would over-fire on internal -मक/-मन
+    // clusters in compounds like कमलाक्ष, समय, etc.
+    const prefixVocab = lookupSharedVocab(prefix);
+    if (prefixVocab) {
+      return [prefix, suffix];
+    }
+  }
+
+  return null;
+}
+
 function recursiveYanSplit(pada, notes) {
   const split = tryYanSandhiSplit(pada);
   if (!split) return [pada];
@@ -605,11 +682,22 @@ function extractPadas(mool) {
         }
         for (const piece2 of afterPast) {
           const nasalSplit = splitNasalCompound(piece2);
+          const afterNasal = nasalSplit || [piece2];
           if (nasalSplit) {
             sandhiNotes.push(`${piece2} = ${nasalSplit.join(' + ')} (compound -न् boundary)`);
-            padas.push(...nasalSplit);
-          } else {
-            padas.push(piece2);
+          }
+          // Final pass: -म् + vowel sandhi splitter on each piece. Catches
+          // compounds like भीष्ममेवाभिरक्षन्तु → भीष्मम् + एव + अभिरक्षन्तु
+          // and यथाभागमवस्थिताः → यथाभागम् + अवस्थिताः that the नasal /
+          // यन् passes don't reach.
+          for (const piece3 of afterNasal) {
+            const makaraSplit = splitMakaraCompound(piece3);
+            if (makaraSplit) {
+              sandhiNotes.push(`${piece3} = ${makaraSplit.join(' + ')} (compound -म् + vowel boundary)`);
+              padas.push(...makaraSplit);
+            } else {
+              padas.push(piece3);
+            }
           }
         }
       }

@@ -4,14 +4,28 @@ import { VERSES } from '../data/verses.js';
 
 describe('buildVocabulary', () => {
   it('returns one entry per unique word across the audited (full/browse) corpus', () => {
-    // auto-stub verses don't have padaccheda yet; vocabulary skips them.
+    // The vocabulary returned by buildVocabulary keeps every word that
+    // either (a) has gloss/category/parsing, or (b) appeared in any
+    // hand-audited (full / browse) verse's padaccheda. So that's the
+    // baseline to compare against — not the entire corpus' padaccheda
+    // (some auto-stub padas are sandhi-residue fragments that the
+    // Words-page filter intentionally drops).
     const vocab = buildVocabulary();
-    const allWords = new Set();
+    const expected = new Set();
     for (const v of VERSES) {
       if (!v.padaccheda) continue;
-      for (const w of v.padaccheda) allWords.add(w);
+      const isAudited = v.tier === 'full' || v.tier === 'browse';
+      for (const w of v.padaccheda) {
+        if (isAudited) expected.add(w);
+      }
     }
-    expect(vocab.length).toBe(allWords.size);
+    // Every audited word must show up; vocab.length may exceed expected
+    // because it also includes sharedVocab-glossed words that appear
+    // only in auto-stub verses. Assert containment, not equality.
+    const vocabWords = new Set(vocab.map((e) => e.word));
+    for (const w of expected) {
+      expect(vocabWords.has(w), `audited word missing from vocab: ${w}`).toBe(true);
+    }
   });
 
   it('every vocabulary entry has word + count + firstMet + occurrences', () => {

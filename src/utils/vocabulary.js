@@ -48,11 +48,17 @@ export function buildVocabulary() {
           gloss: parsing?.gloss ?? null,
           parsing,
           fromSharedDict: !verse.wordParsings?.[word] && !!parsing,
+          // Track whether this word was seen in any non-auto-stub verse.
+          // Hand-decoded verses anchor the word as legitimate even when
+          // it lacks a shared-vocab gloss, so the gloss-filter at the
+          // tail of this function won't drop it as a sandhi fragment.
+          fromAuditedVerse: verse.tier !== 'auto-stub',
         });
       } else {
         const e = map.get(key);
         e.count++;
         e.occurrences.push(ref);
+        if (verse.tier !== 'auto-stub') e.fromAuditedVerse = true;
         // Update firstMet if this verse decodes earlier
         if (verse.decodeIndex < e.firstMet.decodeIndex) {
           e.firstMet = { ...ref, decodeIndex: verse.decodeIndex };
@@ -86,7 +92,14 @@ export function buildVocabulary() {
   // explicitly marked these as null in VOCAB_EXTENDED). They'd otherwise
   // clutter the Words page as misleading "— no gloss yet —" entries
   // that can never be glossed because they aren't standalone words.
-  return [...map.values()].filter((e) => e.gloss || e.category || e.parsing);
+  //
+  // BUT keep entries that appeared in a hand-decoded (full/browse) verse
+  // even if they have no parsing — the verse author anchored them as
+  // legitimate, so they're real words even if shared-vocab is missing
+  // an entry. The Words page can show "— no gloss yet —" honestly here.
+  return [...map.values()].filter(
+    (e) => e.gloss || e.category || e.parsing || e.fromAuditedVerse
+  );
 }
 
 // Comparators keyed by sort-column.

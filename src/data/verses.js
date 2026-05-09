@@ -2664,7 +2664,42 @@ export const VERSES = [
   { chapter: 1, verse: 10, decodeIndex: 472, tier: 'auto-stub',
     mool: ['अपर्याप्तं तदस्माकं बलं भीष्माभिरक्षितम्।', 'पर्याप्तं त्विदमेतेषां बलं भीमाभिरक्षितम्॥'] },
   { chapter: 1, verse: 11, decodeIndex: 473, tier: 'auto-stub',
-    mool: ['अयनेषु च सर्वेषु यथाभागमवस्थिताः।', 'भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि॥'] },
+    speaker: 'दुर्योधन उवाच',
+    mool: ['अयनेषु च सर्वेषु यथाभागमवस्थिताः।', 'भीष्ममेवाभिरक्षन्तु भवन्तः सर्व एव हि॥'],
+    // Engine sandhi-undo wasn't splitting -म्+vowel boundaries here — both
+    // यथाभागमवस्थिताः and भीष्ममेवाभिरक्षन्तु sat as single padas. The
+    // splitter improvements ship alongside this verse-level override; the
+    // override locks the correct decomposition independently of the engine.
+    padaccheda: ['अयनेषु', 'च', 'सर्वेषु', 'यथाभागम्', 'अवस्थिताः', 'भीष्मम्', 'एव', 'अभिरक्षन्तु', 'भवन्तः', 'सर्वे', 'एव', 'हि'],
+    sandhiNotes: [
+      'यथाभागमवस्थिताः = यथाभागम् + अवस्थिताः (-म् loses virama before vowel-initial अ-; the अ of अवस्थिताः absorbs into the implicit अ on the surviving म)',
+      'भीष्ममेवाभिरक्षन्तु = भीष्मम् + एव + अभिरक्षन्तु (-म् + एव drops virama, the ए of एव becomes a matra on the surviving म; then एव + अ- becomes एवा by savarṇa-dīrgha, joined into the next word)',
+      'सर्व एव = सर्वे + एव (no junction; the line break separates them in the printed verse but in continuous reading the ः of सर्वेः wouldn\'t arise — सर्वे is plural nom.)',
+    ],
+    finiteVerbs: [
+      { form: 'अभिरक्षन्तु', root: 'रक्ष्', lakara: 'लोट्', purusha: 'प्रथम', vachana: 'बहुवचन', gloss: '"let (them) protect" (अभि- prefix + √रक्ष् in imperative 3pl)' },
+    ],
+    vibhaktiNotes: [
+      'अयनेषु, सर्वेषु — सप्तमी बहुवचन: locative plural ("on all the avenues / advance routes")',
+      'यथाभागम् — adverbial accusative ("according to one\'s position / sector")',
+      'अवस्थिताः — प्रथमा बहुवचन (PPP of अव+स्था): "stationed, arrayed"; agrees with the implied subject भवन्तः',
+      'भीष्मम् — द्वितीया एकवचन: object of अभिरक्षन्तु ("Bhīṣma, the one to be protected")',
+      'भवन्तः — प्रथमा बहुवचन: subject of अभिरक्षन्तु ("you, sirs")',
+      'सर्वे — प्रथमा बहुवचन of सर्व: agreeing apposition with भवन्तः ("all of you, every one")',
+      'एव × 2, च, हि — particles (अव्यय)',
+    ],
+    keyFights: [
+      'Two -म्+vowel sandhi junctions in one verse: यथाभागम् + अवस्थिताः and भीष्मम् + एव. The engine merges -म् with the next word\'s initial vowel by dropping the virama; reading depends on recognising the boundary.',
+      'अभिरक्षन्तु ends in -न्तु → लोट् (imperative) 3rd-person plural — "let them protect." The -अभि- prefix intensifies the verb (rakṣ → "guard" → abhi-rakṣ → "guard around / on all sides").',
+      'भवन्तः is the polite plural of भवत् ("you, sir") — Duryodhana addressing the army officers. Honorific subject + imperative verb is a common command structure in the Mahābhārata.',
+    ],
+    anvaya: 'अयनेषु च सर्वेषु यथाभागम् अवस्थिताः भवन्तः सर्वे एव हि भीष्मम् एव अभिरक्षन्तु।',
+    hindi: 'सब मोर्चों पर अपनी-अपनी जगह पर स्थित आप सब के सब निश्चय ही केवल भीष्म पितामह की रक्षा करें।',
+    english: 'And so, stationed each according to his sector on all the advance routes, may every one of you indeed guard Bhīṣma above all.',
+    vyakhya: [
+      { title: 'Duryodhana\'s tactical insistence', body: 'After the army-strength comparison in 1.10 (अपर्याप्तं तदस्माकम्…), Duryodhana issues a direct command: every officer, in his own sector, must specifically protect Bhīṣma. The एव after भीष्मम् is the load-bearing word — "Bhīṣma *above all*." It signals that Duryodhana sees Bhīṣma as the army\'s irreplaceable centre of gravity.' },
+    ],
+  },
   { chapter: 1, verse: 12, decodeIndex: 474, tier: 'auto-stub',
     mool: ['तस्य सञ्जनयन्हर्षं कुरुवृद्धः पितामहः।', 'सिंहनादं विनद्योच्चैः शङ्खं दध्मौ प्रतापवान्॥'] },
   { chapter: 1, verse: 13, decodeIndex: 475, tier: 'auto-stub',
