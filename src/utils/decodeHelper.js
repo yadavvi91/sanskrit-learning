@@ -267,6 +267,51 @@ function isPlausibleSplit(parts) {
   return true;
 }
 
+// Short particle / connective words that legitimately appear as the
+// second piece of a compound split (e.g., पितॄन् + अथ).
+const REAL_SHORT_TAILS = new Set([
+  'अथ', 'इति', 'अपि', 'अति', 'इव', 'एव', 'च', 'न', 'तु', 'हि', 'वा',
+  'तत्', 'सः', 'या', 'ते', 'मे', 'सा', 'अहम्',
+]);
+
+function isPlausibleNasalSplit(left, right) {
+  if (left.length < 3) return false;
+  if (right.length >= 3) return true;
+  return REAL_SHORT_TAILS.has(right);
+}
+
+// Split a chunk at "[long-vowel matra] + न + ् + [next-akṣara start]"
+// boundaries. Catches Sanskrit accusative-plural compound concatenation
+// where multiple -आन्/-ीन्/-ून्/-ॄन् nouns sit beside each other in
+// a list without intervening whitespace, e.g. Gītā 1.26's
+//   आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींः
+// → [आचार्यान्, मातुलान्, भ्रातॄन्, पुत्रान्, पौत्रान्, सखींः]
+//
+// Restricting to long matras (ा, ी, ू, ॄ) avoids the bulk of false
+// positives: words with internal -न्C clusters (शान्त, आनन्द) typically
+// have short or no preceding vowel-marker, so they don't match.
+// Plausibility guard rejects splits where one side is implausibly short.
+function splitNasalCompound(chunk) {
+  const re = /([ाीूॄ])न्([अ-ह])/g;
+  const splits = [];
+  let lastEnd = 0;
+  let match;
+  while ((match = re.exec(chunk)) !== null) {
+    // Cut after the virama (न्), i.e., 1 char of matra + 2 chars of न्
+    const splitAt = match.index + 1 + 2;
+    const left = chunk.slice(lastEnd, splitAt);
+    const remaining = chunk.slice(splitAt);
+    if (!isPlausibleNasalSplit(left, remaining)) continue;
+    splits.push(left);
+    lastEnd = splitAt;
+    re.lastIndex = splitAt;
+  }
+  if (lastEnd === 0) return null;
+  const final = chunk.slice(lastEnd);
+  if (final) splits.push(final);
+  return splits.length >= 2 ? splits : null;
+}
+
 // Recursively try yan-sandhi splits on a pada — keeps splitting as long
 // as a part keeps validating against KNOWN_VERB_FORMS. Returns the final
 // list of padas after all yan-splits applied, plus human-readable notes.
@@ -311,11 +356,23 @@ function extractPadas(mool) {
         sandhiNotes.push(`${chunk} = ${candidate.parts.join(' + ')} (${ruleNames})`);
       }
     }
-    // Second pass: try lexicon-validated yan-sandhi unjoin on each pada.
-    // Catches internal junctions like पश्यन्त्यात्मन्यवस्थितम् →
-    // पश्यन्ति + आत्मनि + अवस्थितम् (validated against KNOWN_VERB_FORMS).
+    // Second pass: yan-sandhi unjoin first (lexicon-validated; catches
+    // पश्यन्त्यात्मन्यवस्थितम् → पश्यन्ति + आत्मनि + अवस्थितम्), THEN
+    // nasal-compound split on accusative-plural lists (आचार्यान्मातुलान्…
+    // → आचार्यान् + मातुलान् + …). Yan must run first because some
+    // chunks like यान्त्यधमां look like both a nasal-list and a
+    // yan-junction; the lexicon-validated yan path is the right one.
     for (const p of firstPassPadas) {
-      padas.push(...recursiveYanSplit(p, sandhiNotes));
+      const afterYan = recursiveYanSplit(p, sandhiNotes);
+      for (const piece of afterYan) {
+        const nasalSplit = splitNasalCompound(piece);
+        if (nasalSplit) {
+          sandhiNotes.push(`${piece} = ${nasalSplit.join(' + ')} (compound -न् boundary)`);
+          padas.push(...nasalSplit);
+        } else {
+          padas.push(piece);
+        }
+      }
     }
   }
   return { padas, sandhiNotes, lines };
