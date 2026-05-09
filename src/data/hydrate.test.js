@@ -131,4 +131,13 @@ describe('hydrateAutoStubVerses — coverage', () => {
     );
     expect(missing.length, `verses missing vyakhya: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
   });
+
+  it('every auto-stub verse has a Śaṅkara commentary card after hydration', () => {
+    const missing = VERSES.filter((v) => {
+      if (v.tier !== 'auto-stub') return false;
+      const cs = v.references?.commentaries || [];
+      return !cs.some((c) => c.sage === 'Śaṅkara');
+    });
+    expect(missing.length, `verses missing Śaṅkara: ${missing.slice(0, 5).map(v => `${v.chapter}.${v.verse}`).join(', ')}`).toBe(0);
+  });
 });
