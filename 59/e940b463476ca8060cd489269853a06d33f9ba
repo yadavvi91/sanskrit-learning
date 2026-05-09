@@ -1,0 +1,30 @@
+src/utils/sandhi.js
+  s_d5e8c30b294ba2::t_82b792cf5ed873 224-239
+  s_d5e8c30b294ba2::t_6723f592fdfe67 369
+src/data/dhatus-extended.js
+  s_d5e8c30b294ba2::t_2704f1f788d216 28-43,83-84,90
+  s_d5e8c30b294ba2::t_071c40ba41cb59 44-82
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_ffe38bdd69119b 214,216
+  s_d5e8c30b294ba2::t_09b67cf10e984b 193-199
+  s_d5e8c30b294ba2::t_ee02dba0541e2f 144
+  s_d5e8c30b294ba2::t_b86e841f213c34 205-207
+  s_d5e8c30b294ba2::t_5ead138f090b0f 134
+  s_d5e8c30b294ba2::t_5fd371093cf712 213,215,217-218
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "59e940b463476ca8060cd489269853a06d33f9ba",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
