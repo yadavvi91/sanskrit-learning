@@ -27,7 +27,9 @@ export default function DhatuDetail({ dhatu, onOpenVerse }) {
         <div className="dhatu-detail-meta">
           <span className="meta-chip"><span>गण</span> {dhatu.gana} · {GANA_META[dhatu.gana]?.devanagari}</span>
           <span className="meta-chip"><span>पद</span> {PADA_LABEL[dhatu.pada]}</span>
-          <span className="meta-chip"><span>RANK</span> #{dhatu.frequencyRank}</span>
+          {dhatu.frequencyRank != null && (
+            <span className="meta-chip"><span>RANK</span> #{dhatu.frequencyRank}</span>
+          )}
           <span className="meta-chip"><span>STEM</span> {dhatu.presentStem}-</span>
           {dhatu.isSuppletive && <span className="meta-chip is-warn">suppletive</span>}
           {!GANA_META[dhatu.gana]?.thematic && <span className="meta-chip is-warn">athematic</span>}
