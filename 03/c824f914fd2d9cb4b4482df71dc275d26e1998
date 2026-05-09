@@ -1,0 +1,27 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_5f8e2fa92b3893 360-368,371
+  s_d5e8c30b294ba2::t_a5141acfeb6f39 462-476,480
+  s_d5e8c30b294ba2::t_ea190f836dde98 682-689,695-700,713-720,722
+  s_d5e8c30b294ba2::t_d639456c020cee 701-712
+  s_d5e8c30b294ba2::t_358eff06fd9090 739-741
+src/utils/splitter-bugs.test.js
+  s_d5e8c30b294ba2::t_c5141583808ca5 1-65,71-81,108-120
+  s_d5e8c30b294ba2::t_0fd1162de96188 66-70
+  s_d5e8c30b294ba2::t_6a33da8aaf42f9 82-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "03c824f914fd2d9cb4b4482df71dc275d26e1998",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
