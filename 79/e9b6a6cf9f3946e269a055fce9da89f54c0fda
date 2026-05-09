@@ -1,0 +1,23 @@
+article.md
+  s_d5e8c30b294ba2::t_294f055545c4bb 470-512
+  s_d5e8c30b294ba2::t_4cfd48d554cb58 29-32
+  s_d5e8c30b294ba2::t_44ab24e3f78045 196-197
+  s_d5e8c30b294ba2::t_dd8393d86bf332 220-225
+  s_d5e8c30b294ba2::t_f912d0fc16845b 59-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "79e9b6a6cf9f3946e269a055fce9da89f54c0fda",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
