@@ -346,6 +346,20 @@ const ELIDED_A_TAILS = new Map([
   ['हम्', 'अहम्'], // -नहम् → -न् + अहम्
 ]);
 
+// Pattern D: matra-on-न tails. When -न् + vowel-initial particle joins,
+// some printings drop the virama AND render the next word's vowel as a
+// MATRA on the surviving न. Different from ELIDED_A_TAILS (which assume
+// the vowel itself drops). E.g., कुरून् + इति → कुरूनिति (ि is the
+// matra-form of इ attached to न). Whitelisted to acc.pl.-acceptable
+// particle endings to avoid false positives on common words like भानुना,
+// मुनिता etc.
+const ELIDED_MATRA_TAILS = new Map([
+  ['निति', 'इति'],
+  ['निव',  'इव'],
+  ['नेव',  'एव'],
+  ['नेते', 'एते'],
+]);
+
 function splitNasalCompound(chunk) {
   // Pattern A: standard -न्-virama boundary (-ान्C, -ीन्C, etc.).
   // Pattern B: no-virama boundary (-ानV, -ीनV, etc.) where V is a
@@ -396,10 +410,33 @@ function splitNasalCompound(chunk) {
         }
       }
     }
+    // Pattern D (matra-on-न elision): the particle's initial vowel was
+    // rendered as a matra on the surviving -न (कुरून् + इति → कुरूनिति).
+    // Tighter regex: chunk ends in [long matra] + (full matra-tail).
+    for (const [tail, restored] of ELIDED_MATRA_TAILS) {
+      const re3 = new RegExp(`([ाीूॄ])${tail}(?=$|\\s|[।॥])`);
+      const m = re3.exec(chunk);
+      if (m) {
+        const splitAt = m.index + 1; // up through the long matra
+        const left = chunk.slice(0, splitAt) + 'न्'; // restore -न् ending
+        const right = restored;
+        if (isPlausibleNasalSplit(left, right)) {
+          const leftSplits = splitNasalCompound(left) || [left];
+          return [...leftSplits, right];
+        }
+      }
+    }
     return null;
   }
   const final = chunk.slice(lastEnd);
-  if (final) splits.push(final);
+  if (final) {
+    // Recurse on the final tail piece — it may itself contain a Pattern
+    // C or D match (e.g., कुरूनिति → कुरून् + इति) that the main loop
+    // doesn't catch because its regex requires explicit virama.
+    const sub = splitNasalCompound(final);
+    if (sub) splits.push(...sub);
+    else splits.push(final);
+  }
   return splits.length >= 2 ? splits : null;
 }
 
