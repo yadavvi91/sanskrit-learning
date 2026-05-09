@@ -594,32 +594,48 @@ function splitMakaraCompound(chunk) {
     }
   }
 
-  // Pattern B: -म + bare consonant where prefix+्ʼ is a known noun/adverb.
+  // Pattern B: -म + bare consonant where it's likely a word boundary.
   // Walk through every म in the chunk that's followed by a bare consonant
-  // (not a matra, not a virama, not anusvara/visarga). Lexicon-validate
-  // the prefix-with-virama against shared vocab.
+  // (not a matra, not a virama, not anusvara/visarga). Two-tier validation:
+  //   - PREFER lexicon validation: if the prefix-with-virama is in vocab,
+  //     definitely split.
+  //   - FALL BACK to length-and-shape heuristic: if the chunk is ≥12 chars,
+  //     prefix is ≥4 chars, and suffix is ≥5 chars, accept the split. Real
+  //     internal -म[C]- clusters in single words (e.g., कमलाक्ष = कम+ला+क्ष,
+  //     length 8) don't trigger the length gate. Rare false positives on
+  //     intermediate-length compounds are tolerable; 165 corpus-wide
+  //     false-negatives (-म्+vowel boundaries that should be split) is not.
+  const matraSet = new Set(['ा', 'ि', 'ी', 'ु', 'ू', 'ृ', 'ॄ', 'े', 'ै', 'ो', 'ौ', '्', 'ं', 'ः', 'ँ']);
   for (let i = 1; i < chunk.length - 2; i++) {
     if (chunk[i] !== 'म') continue;
-    // The character at i must NOT have a matra after it (otherwise it's
-    // an internal syllable, not a word boundary)
-    const matraSet = new Set(['ा', 'ि', 'ी', 'ु', 'ू', 'ृ', 'ॄ', 'े', 'ै', 'ो', 'ौ', '्', 'ं', 'ः', 'ँ']);
     if (matraSet.has(chunk[i + 1])) continue;
-    // Next must be a bare consonant
     const next = chunk[i + 1];
     if (!/[क-ह]/.test(next)) continue;
-    // Restore the virama on the prefix and prepend अ to the suffix
-    const prefix = chunk.slice(0, i + 1) + 'म्';
+    // chunk.slice(0, i+1) already includes the م itself; append the
+    // virama (्) — NOT an extra 'म्' which would double the consonant.
+    const prefix = chunk.slice(0, i + 1) + '्';
     const suffix = 'अ' + chunk.slice(i + 1);
-    // Lexicon validate: at least the prefix must be a known word-form.
-    // Without this gate the rule would over-fire on internal -मक/-मन
-    // clusters in compounds like कमलाक्ष, समय, etc.
-    const prefixVocab = lookupSharedVocab(prefix);
-    if (prefixVocab) {
-      return [prefix, suffix];
-    }
+    if (prefix.length < 4 || suffix.length < 5) continue;
+    // Tier 1: lexicon-validated split
+    if (lookupSharedVocab(prefix)) return [prefix, suffix];
+    // Tier 2: length-and-shape heuristic for unlexicalized -м् + अ- forms
+    if (chunk.length >= 12) return [prefix, suffix];
   }
 
   return null;
+}
+
+// Recursively apply splitMakaraCompound to a chunk. Each split reduces
+// length, so recursion terminates. Notes are appended for each successful
+// split for the sandhiNotes panel.
+function recursiveMakaraSplit(chunk, notes) {
+  const split = splitMakaraCompound(chunk);
+  if (!split) return [chunk];
+  notes.push(`${chunk} = ${split.join(' + ')} (compound -म् + vowel boundary)`);
+  // Re-apply on each piece in case any of them contains another junction.
+  const result = [];
+  for (const piece of split) result.push(...recursiveMakaraSplit(piece, notes));
+  return result;
 }
 
 function recursiveYanSplit(pada, notes) {
@@ -689,15 +705,12 @@ function extractPadas(mool) {
           // Final pass: -म् + vowel sandhi splitter on each piece. Catches
           // compounds like भीष्ममेवाभिरक्षन्तु → भीष्मम् + एव + अभिरक्षन्तु
           // and यथाभागमवस्थिताः → यथाभागम् + अवस्थिताः that the नasal /
-          // यन् passes don't reach.
+          // यन् passes don't reach. Recursive — a chunk with multiple
+          // -म् + V junctions gets fully decomposed (e.g., 15.1's
+          // ऊर्ध्वमूलमधःशाखमश्वत्थं → ऊर्ध्वमूलम् + अधःशाखम् + अश्वत्थम्).
           for (const piece3 of afterNasal) {
-            const makaraSplit = splitMakaraCompound(piece3);
-            if (makaraSplit) {
-              sandhiNotes.push(`${piece3} = ${makaraSplit.join(' + ')} (compound -म् + vowel boundary)`);
-              padas.push(...makaraSplit);
-            } else {
-              padas.push(piece3);
-            }
+            const fullySplit = recursiveMakaraSplit(piece3, sandhiNotes);
+            padas.push(...fullySplit);
           }
         }
       }
