@@ -1,0 +1,25 @@
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_1caf6e00a83ead 342-395,401-402,416-418
+  s_d5e8c30b294ba2::t_cb8b2893524780 396-400,403-415
+  s_d5e8c30b294ba2::t_1129f59b79bd9d 429-433,444-446
+src/data/coreVocab.js
+  s_d5e8c30b294ba2::t_cea4a72efc7eb3 489-497
+src/components/WordPopover.test.jsx
+  s_d5e8c30b294ba2::t_30059d944ae4a8 52-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "434bca5208cbd031370b87699b74bf8b680d2259",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
