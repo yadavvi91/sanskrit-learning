@@ -8,11 +8,21 @@
 //   - null value  → marks verse.noFiniteVerb = true so the audit UI
 //                   doesn't flag it as needing क्रिया audit
 //
-// Coverage status (parts arrive as the parallel agent batch completes):
-//   - _finite_overrides_part1.js: 49 verses (pending)
-//   - _finite_overrides_part2.js: 49 verses (pending)
-//   - _finite_overrides_part3.js: 48 verses (pending)
-// Total: 146 verses — every auto-stub verse where the engine returned
-// no क्रिया as of session start, hand-classified.
+// Coverage status:
+//   - _finite_overrides_part1.js: 49 verses (loaded — 34 null, 15 with verbs)
+//   - _finite_overrides_part2.js: 49 verses (loaded — 26 null, 23 with verbs)
+//   - _finite_overrides_part3.js: 48 verses (loaded — 31 null, 17 with verbs)
+// Total: 146 verses hand-classified. ~63% are genuinely nominal
+// (descriptive lists, all-participles, vibhūti enumerations); ~37%
+// are real engine misses caught here. After this lands, the audit-
+// needed count drops from 146 to roughly zero.
 
-export const FINITE_OVERRIDES = {};
+import { FINITE_OVERRIDES_PART_1 } from './_finite_overrides_part1.js';
+import { FINITE_OVERRIDES_PART_2 } from './_finite_overrides_part2.js';
+import { FINITE_OVERRIDES_PART_3 } from './_finite_overrides_part3.js';
+
+export const FINITE_OVERRIDES = {
+  ...FINITE_OVERRIDES_PART_1,
+  ...FINITE_OVERRIDES_PART_2,
+  ...FINITE_OVERRIDES_PART_3,
+};
