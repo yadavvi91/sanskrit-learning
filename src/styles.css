@@ -4379,6 +4379,52 @@ td.cell.is-suppletive {
   font-size: 12px;
 }
 
+/* Compound popover — for hyphenated samasa padas (पणव-आनक-गोमुखाः etc.) */
+.word-popover-compound .wp-category {
+  color: var(--saffron);
+  font-style: normal;
+}
+.word-popover-compound .wp-fields dt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+.wp-compound-pos {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--saffron);
+  min-width: 14px;
+  text-align: center;
+}
+.wp-compound-head {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  background: rgba(193, 127, 36, 0.08);
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+.wp-compound-gloss {
+  color: var(--ink);
+}
+.wp-compound-root {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+.wp-compound-root em {
+  font-family: var(--font-deva);
+  font-style: normal;
+  color: var(--gold);
+}
+.wp-compound-unknown {
+  color: var(--ink-faint);
+  font-style: italic;
+  font-size: 12px;
+}
+
 .wp-gloss {
   font-style: italic;
   font-family: var(--font-prose);

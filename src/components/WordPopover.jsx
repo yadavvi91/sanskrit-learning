@@ -55,14 +55,32 @@ const CATEGORY_LABEL = {
 // Three layers of parsing data, in priority order:
 //   1. verse.wordParsings[word] — hand-decoded verses' rich per-word data
 //   2. lookupSharedVocab(word) — shared dictionary fallback
-//   3. neither → render an "auto-stub draft" popover that at least
-//      surfaces the word, so the click isn't a silent no-op
+//   3. for hyphenated compounds (e.g., भीम-अर्जुन-समाः, पणव-आनक-गोमुखाः),
+//      decompose at hyphens and look up each component; render a compound
+//      popover listing per-component parsings + the case from the head.
+//   4. neither → render an EmptyPopover so the click isn't a silent no-op.
+function decomposeCompound(word) {
+  if (!word.includes('-')) return null;
+  const parts = word.split('-').filter(Boolean);
+  if (parts.length < 2) return null;
+  const components = parts.map((p) => ({ form: p, parsing: lookupSharedVocab(p) }));
+  // The head (final piece) carries the case ending — its parsing best
+  // describes the whole compound's grammatical role.
+  const head = components[components.length - 1];
+  // Only treat as a useful compound if at least one component resolved.
+  if (!components.some((c) => c.parsing)) return null;
+  return { components, head };
+}
+
 export default function WordPopover({ word, parsing, isFinite }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   // Effective parsing: verse-local first, then shared-dict fallback.
   const effectiveParsing = parsing ?? lookupSharedVocab(word) ?? null;
+  // If still null AND the word is hyphenated (light samasa unrolled in
+  // padaccheda), try component-by-component lookup.
+  const compound = !effectiveParsing ? decomposeCompound(word) : null;
 
   useEffect(() => {
     if (!open) return;
@@ -82,13 +100,17 @@ export default function WordPopover({ word, parsing, isFinite }) {
 
   const titleText = effectiveParsing
     ? (parsing ? 'Click to see grammar (hand-decoded)' : 'Click to see grammar (from shared dictionary)')
-    : 'Click — no grammar data yet, but the popover shows what we know';
+    : compound
+      ? 'Click to see compound components'
+      : 'Click — no grammar data yet, but the popover shows what we know';
+
+  const hasParsing = !!(effectiveParsing || compound);
 
   return (
     <span className="word-popover-wrap" ref={ref}>
       <button
         type="button"
-        className={`pada ${isFinite ? 'is-finite' : ''} ${effectiveParsing ? 'has-parsing' : ''} ${open ? 'is-open' : ''}`}
+        className={`pada ${isFinite ? 'is-finite' : ''} ${hasParsing ? 'has-parsing' : ''} ${open ? 'is-open' : ''}`}
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="dialog"
         aria-expanded={open}
@@ -99,9 +121,57 @@ export default function WordPopover({ word, parsing, isFinite }) {
       {open && (
         effectiveParsing
           ? <Popover word={word} parsing={effectiveParsing} fromSharedDict={!parsing && !!effectiveParsing} />
-          : <EmptyPopover word={word} />
+          : compound
+            ? <CompoundPopover word={word} compound={compound} />
+            : <EmptyPopover word={word} />
       )}
     </span>
+  );
+}
+
+function CompoundPopover({ word, compound }) {
+  const { components, head } = compound;
+  const headParsing = head.parsing;
+  return (
+    <div className="word-popover word-popover-compound" role="dialog">
+      <div className="wp-header">
+        <span className="wp-word">{word}</span>
+        <span className="wp-category">समास compound</span>
+      </div>
+      <p className="wp-gloss">
+        Light समास compound from पदच्छेद. The head (final component) carries the case ending; the others modify it.
+      </p>
+      <dl className="wp-fields">
+        {components.map((c, i) => (
+          <CompoundRow key={i} index={i} component={c} isHead={i === components.length - 1} />
+        ))}
+      </dl>
+      {headParsing?.case && (
+        <p className="wp-note">
+          Whole compound declines as: <strong>{CASE_LABELS[headParsing.case] ?? headParsing.case}</strong>
+          {headParsing.number ? ` · ${NUMBER_LABELS[headParsing.number] ?? headParsing.number}` : ''}
+          {headParsing.gender ? ` · ${GENDER_LABELS[headParsing.gender] ?? headParsing.gender}` : ''}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function CompoundRow({ index, component, isHead }) {
+  const { form, parsing } = component;
+  return (
+    <>
+      <dt>
+        <span className="wp-compound-pos">{index + 1}</span>
+        {isHead && <span className="wp-compound-head" title="Head of the compound — carries the case ending">head</span>}
+      </dt>
+      <dd>
+        <strong>{form}</strong>
+        {parsing?.gloss && <span className="wp-compound-gloss"> — {parsing.gloss}</span>}
+        {parsing?.root && parsing.root !== form && <span className="wp-compound-root"> · root <em>{parsing.root}</em></span>}
+        {!parsing && <span className="wp-compound-unknown"> — (no gloss yet)</span>}
+      </dd>
+    </>
   );
 }
 
