@@ -59,6 +59,45 @@ export const PRIMER_SECTIONS = [
       'A finite verb is the only word the sentence cannot lose.',
   },
   {
+    id: 'verb-displacement',
+    title: 'When the verb isn\'t where you expect it',
+    body: [
+      'Sanskrit — especially Gītā Sanskrit — frequently builds sentences that *look* verbless or whose verb sits somewhere odd. The English translation usually hides this: it inserts "is", "are", "say" because English requires finite verbs. Sanskrit does not.',
+      'Four patterns to recognise:',
+    ],
+    table: {
+      headers: ['Pattern', 'What\'s happening', 'Where to look', 'Gītā examples'],
+      rows: [
+        [
+          'Predicate PPP / adjective + implied अस्ति',
+          'A प्रथमा-case PPP (कृदन्त) or adjective IS the predicate. Implicit अस्ति links it to the subject. English spells this out as "was X / is X".',
+          'No finite verb anywhere; a stack of प्रथमा adjectives describing one subject',
+          '1.33 (काङ्क्षितम्, अवस्थिताः); 2.20 (अजः, नित्यः, शाश्वतः, पुराणः); 2.24 (अच्छेद्यः, अदाह्यः, अक्लेद्यः, अशोष्यः — nine adjectives describing the आत्मन्)',
+        ],
+        [
+          'अनुवृत्ति (verb carries across verses)',
+          'A finite verb in verse N governs the syntactic skeleton of verses N+1, N+2, …. Drop one verse out of context and it looks fragmentary.',
+          'The verb appears once and gets mentally supplied throughout',
+          '1.16-1.18 borrow दध्मौ from 1.15; the entire विभूति योग (10.20+) runs on अस्मि stated once and carried across ~30 manifestation verses',
+        ],
+        [
+          'यथा-तथा structure',
+          'Two-half simile. The verb in the तथा-half (second half) governs both halves. The यथा-half is grammatically complete *only because* of the तथा-half\'s verb.',
+          'यथा at the start of one half + तथा at the start of the other',
+          '2.22 (यथा... गृह्णाति | तथा... संयाति — "as a man takes new clothes, so the soul takes new bodies"); 9.6 (verb उपधारय in line 2 governs the आकाश-वायु simile of line 1)',
+        ],
+        [
+          'Defective verb आहुः / प्राहुः',
+          'The root √अह् ("to say") exists ONLY in लिट् (perfect tense). आहुः = "they say"; प्राहुः = "the wise declare". Used everywhere in the Gītā for narrative dialogue and authoritative pronouncements. Recognise on sight — no other tense exists.',
+          'Verbal endings -अहुः / -आहुः on otherwise narrative-feeling verses',
+          '3.42 (...पराण्याहुः... — "they call the senses higher"); 4.1 (विवस्वान्... प्राह — "Vivasvān told it [to Manu]"); 18.3 (...त्याज्यं प्राहुर्मनीषिणः — "the wise call action worth-discarding")',
+        ],
+      ],
+    },
+    aside:
+      'Why these matter: when you see a verse with no obvious finite verb, you\'re not reading it wrong — Sanskrit is using one of these displacement patterns. The translation will name an English verb, but the Sanskrit grammar keeps the verb implicit, displaced, or stretched across stanzas. Once you can name the pattern, the verse stops looking broken.',
+  },
+  {
     id: 'vibhakti',
     title: 'विभक्ति in one minute',
     body: [

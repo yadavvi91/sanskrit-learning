@@ -29,28 +29,39 @@ const COMPOUND_TYPES_LONGEST_FIRST = [
   'तत्पुरुष', 'बहुव्रीहि', 'द्वंद्व', 'द्वन्द्व', 'कर्मधारय', 'अव्ययीभाव',
 ];
 
-// Parse vibhaktiNotes for predicate-PPPs: words tagged as PPP / past
-// passive participle that "serve as predicate" or are explicitly called
-// predicate adjectives. These are the "verb" of nominal sentences —
-// e.g., 1.33's काङ्क्षितम् ("was desired") and अवस्थिताः ("are stationed").
-// Returns [{ form, gloss }, ...] so VerseDetail can surface them
-// instead of the generic "implied अस्ति" line.
+// Parse vibhaktiNotes for predicate participles AND predicate adjectives:
+// words tagged as PPP / past-passive / predicate adjective / gerundive that
+// "serve as predicate". These are the "verb" of nominal sentences —
+// e.g., 1.33's काङ्क्षितम् ("was desired"), 2.20's अजः नित्यः (stacked
+// predicate adjectives describing अयम्). Returns [{ form, gloss, kind }]
+// so VerseDetail can surface them instead of (or alongside) the generic
+// "implied अस्ति" line.
+//
+// `kind` indicates whether the note tagged a participle ("PPP") or a
+// plain adjective ("adjective") — used to label the rendered sub-section.
 function parsePredicatePPPsFromVibhakti(notes) {
   const result = [];
   for (const note of notes || []) {
-    if (!/PPP|past[- ]passive/i.test(note)) continue;
+    const isPPP = /PPP|past[- ]passive/i.test(note);
+    const isAdjective = /predicate adjective/i.test(note);
+    const isGerundive = /gerundive/i.test(note);
+    if (!isPPP && !isAdjective && !isGerundive) continue;
+    // Must explicitly mark "predicate" usage — avoids picking up
+    // attributive PPPs that are not the sentence's predicate.
     if (!/predicate|serves as/i.test(note)) continue;
     const arrowIdx = note.indexOf('→');
     if (arrowIdx === -1) continue;
     const before = note.slice(0, arrowIdx).trim();
     const forms = before.split(/,\s*/)
       .map((c) => c.replace(/\s*\([^()]*\)\s*/g, '').trim())
-      .filter(Boolean);
+      // Strip parenthetical count markers like "(thrice)" added by the agent.
+      .filter((c) => c && !/^\(.*\)$/.test(c));
     if (forms.length === 0) continue;
     const glossMatch = note.match(/[“"„]([^”"]+)[”"]/) || note.match(/'([^']+)'/);
     const gloss = glossMatch ? glossMatch[1] : '';
+    const kind = isPPP ? 'PPP' : isGerundive ? 'gerundive' : 'adjective';
     for (const f of forms) {
-      result.push({ form: f, gloss });
+      result.push({ form: f, gloss, kind });
     }
   }
   return result;
@@ -195,12 +206,11 @@ export function hydrateAutoStubVerses() {
     //   2. Fallback for any hyphenated pada with no vibhakti match: a
     //      bare compound-vigraha entry (just the structural split,
     //      empty type and gloss, source='derived-from-padaccheda').
-    // Auto-extract predicate-PPPs from vibhaktiNotes when the verse has
-    // no finite verb. Used by VerseDetail to surface "the predicate is
-    // काङ्क्षितम् ('was desired') + अवस्थिताः ('are stationed')" instead
-    // of the generic "implied अस्ति" line on PPP-only verses like 1.33.
+    // Auto-extract predicate-PPPs / predicate-adjectives from vibhaktiNotes.
+    // Fires on any verse whose vibhakti notes mention "predicate" — even
+    // if finite verbs exist (2.20 has 4 finite verbs but stacks four
+    // predicate adjectives describing अयम्; both deserve surfacing).
     if ((!v.predicatePPPs || v.predicatePPPs.length === 0)
-        && (v.finiteVerbs === null || v.noFiniteVerb)
         && Array.isArray(v.vibhaktiNotes)) {
       const ppps = parsePredicatePPPsFromVibhakti(v.vibhaktiNotes);
       if (ppps.length > 0) v.predicatePPPs = ppps;

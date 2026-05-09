@@ -69,6 +69,28 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(samp.source).toBe('derived-from-vibhakti');
   });
 
+  it('2.24 surfaces stacked predicate adjectives (अच्छेद्यः, अदाह्यः, नित्यः, …)', () => {
+    const v = find(2, 24);
+    expect(v.noFiniteVerb).toBe(true);
+    expect(Array.isArray(v.predicatePPPs)).toBe(true);
+    const forms = v.predicatePPPs.map((p) => p.form);
+    expect(forms).toContain('अच्छेद्यः');
+    expect(forms).toContain('नित्यः');
+    expect(forms).toContain('स्थाणुः');
+    expect(v.predicatePPPs.length).toBeGreaterThanOrEqual(8);
+  });
+
+  it('2.20 surfaces predicate adjectives EVEN WITH finite verbs present', () => {
+    const v = find(2, 20);
+    expect(v.finiteVerbs.length).toBeGreaterThan(0); // has जायते, म्रियते, …
+    expect(Array.isArray(v.predicatePPPs)).toBe(true);
+    const forms = v.predicatePPPs.map((p) => p.form);
+    expect(forms).toContain('अजः');
+    expect(forms).toContain('नित्यः');
+    expect(forms).toContain('शाश्वतः');
+    expect(forms).toContain('पुराणः');
+  });
+
   it('1.33 surfaces predicate-PPPs (काङ्क्षितम्, अवस्थिताः) instead of generic "implied अस्ति"', () => {
     const v = find(1, 33);
     expect(v.noFiniteVerb).toBe(true);

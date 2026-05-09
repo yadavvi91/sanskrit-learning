@@ -192,6 +192,22 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
               </ul>
             </div>
           )}
+          {verse.predicatePPPs && verse.predicatePPPs.length > 0
+            && verse.finiteVerbs && verse.finiteVerbs.length > 0 && (
+            <div className="predicate-adj-stack">
+              <div className="predicate-adj-label">
+                Predicate adjectives — stacked describers of the subject (each with implicit <strong>अस्ति</strong>)
+              </div>
+              <ul className="predicate-ppps">
+                {verse.predicatePPPs.map((p, i) => (
+                  <li key={i}>
+                    <span className="ppp-form">{p.form}</span>
+                    {p.gloss && <span className="ppp-gloss"> — "{p.gloss}"</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Section>
       ) : null}
 

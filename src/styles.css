@@ -3485,6 +3485,22 @@ td.cell.is-suppletive {
   font-style: italic;
 }
 
+/* Predicate-adjective stack — appears WITHIN a क्रिया section that
+   already has finite verbs. Highlights the additional adjective stacking
+   pattern (e.g., 2.20's अजः नित्यः शाश्वतः पुराणः). */
+.predicate-adj-stack {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(74, 94, 74, 0.04);
+  border-left: 2px solid var(--sage, #4a5e4a);
+  border-radius: 2px;
+}
+.predicate-adj-label {
+  font-size: 0.9em;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
 /* ==================== Theme picker — collapsed icon + popover ==================== */
 
 .theme-picker {
