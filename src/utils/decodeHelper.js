@@ -611,6 +611,12 @@ function splitMakaraCompound(chunk) {
     if (matraSet.has(chunk[i + 1])) continue;
     const next = chunk[i + 1];
     if (!/[क-ह]/.test(next)) continue;
+    // Conjunct-detection guard: if the next consonant is itself followed
+    // by a virama (i.e., it starts a conjunct cluster like क्ष, त्र, ष्व),
+    // the boundary is almost certainly internal to a समास compound, NOT
+    // a -м् + अ- sandhi junction. धर्मक्षेत्रे, कर्मक्षेत्रे — both fit
+    // this shape; both must NOT split.
+    if (chunk[i + 2] === '्') continue;
     // chunk.slice(0, i+1) already includes the م itself; append the
     // virama (्) — NOT an extra 'म्' which would double the consonant.
     const prefix = chunk.slice(0, i + 1) + '्';
@@ -620,6 +626,36 @@ function splitMakaraCompound(chunk) {
     if (lookupSharedVocab(prefix)) return [prefix, suffix];
     // Tier 2: length-and-shape heuristic for unlexicalized -м् + अ- forms
     if (chunk.length >= 12) return [prefix, suffix];
+  }
+
+  // Pattern C: -м + ा (matra) mid-chunk. The matra represents a vowel
+  // boundary — either -м् + आ- (visarga absorbed; common in genitive-
+  // plural -आम् + आ-initial-word: पाण्डुपुत्राणामाचार्य → पाण्डुपुत्राणाम्
+  // + आचार्य) or -м (implicit अ) + अ- (savarṇa-dīrgha: अ + अ → ā;
+  // common in समास compounds: भीमार्जुनसमाः → भीम + अर्जुनसमाः). Try
+  // both restorations and pick whichever validates against vocab. Falls
+  // back to (a) for long unlexicalized chunks since accusative/genitive
+  // -м् endings are more common in continuous text than समास unmerges.
+  for (let i = 1; i < chunk.length - 2; i++) {
+    if (chunk[i] !== 'म') continue;
+    if (chunk[i + 1] !== 'ा') continue;
+    const afterMatra = chunk[i + 2];
+    if (!afterMatra || matraSet.has(afterMatra)) continue;
+    // (a) -м् + आ- restoration
+    const prefixA = chunk.slice(0, i + 1) + '्';
+    const suffixA = 'आ' + chunk.slice(i + 2);
+    // (b) -м (implicit अ) + अ- restoration
+    const prefixB = chunk.slice(0, i + 1);
+    const suffixB = 'अ' + chunk.slice(i + 2);
+    if (prefixA.length < 4 || suffixA.length < 4) continue;
+    // Lexicon validation, in priority order:
+    if (lookupSharedVocab(prefixA)) return [prefixA, suffixA];
+    if (lookupSharedVocab(prefixB)) return [prefixB, suffixB];
+    if (lookupSharedVocab(suffixA)) return [prefixA, suffixA];
+    if (lookupSharedVocab(suffixB)) return [prefixB, suffixB];
+    // Tier 2: long chunk fallback — default to -м् + आ- since that's
+    // the more common pattern in flowing text.
+    if (chunk.length >= 14) return [prefixA, suffixA];
   }
 
   return null;
