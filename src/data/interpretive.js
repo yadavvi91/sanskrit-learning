@@ -15,7 +15,7 @@
 //   };
 //
 // Coverage status (parts arrive as the parallel agent batch completes):
-//   - _interp_part1.js: chapters 1–6   (pending)
+//   - _interp_part1.js: chapters 1–6   (loaded)
 //   - _interp_part2.js: chapters 7–12  (pending)
 //   - _interp_part3.js: chapters 13–18 (pending)
 //
@@ -23,4 +23,8 @@
 // them as canonical. The Decode Helper UI is the path to promote a verse from
 // auto-stub → browse → full once content has been reviewed.
 
-export const INTERP_NOTES = {};
+import { INTERP_PART_1 } from './_interp_part1.js';
+
+export const INTERP_NOTES = {
+  ...INTERP_PART_1,
+};
