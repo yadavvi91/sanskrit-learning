@@ -372,6 +372,120 @@ const COMMON_NOUNS = {
   'इन्द्रियाणाम्':  { category: 'noun', root: 'इन्द्रिय', gender: 'n', number: 'bahu', case: 'sha', gloss: 'of the senses' },
   'द्वन्द्वैः':     { category: 'noun', root: 'द्वन्द्व', gender: 'n', number: 'bahu', case: 'tri', gloss: 'by the pairs of opposites' },
   'द्वन्द्वम्':     { category: 'noun', root: 'द्वन्द्व', gender: 'n', number: 'eka', case: 'pra', gloss: 'pair of opposites' },
+
+  // ── Bulk batch: top compound stems user reading would hit ──
+  // Each gets bare-stem (compound prefix) + most common inflected forms.
+
+  // Pronominal prefixes & "common-modifier" stems
+  'स्व':            { category: 'pronoun', root: 'स्व', gloss: 'own / self (compound prefix; reflexive possessive)' },
+  'स्वम्':          { category: 'pronoun', root: 'स्व', gender: 'n', number: 'eka', case: 'pra', gloss: 'own' },
+  'स्वः':           { category: 'pronoun', root: 'स्व', gender: 'm', number: 'eka', case: 'pra', gloss: 'own' },
+  'स्वान्':         { category: 'pronoun', root: 'स्व', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'one\'s own (pl, object)' },
+  'स्वाम्':         { category: 'pronoun', root: 'स्व', gender: 'f', number: 'eka', case: 'dvi', gloss: 'one\'s own (f, object)' },
+  'बहु':            { category: 'adjective', root: 'बहु', gloss: 'much / many (compound prefix)' },
+  'बहवः':           { category: 'adjective', root: 'बहु', gender: 'm', number: 'bahu', case: 'pra', gloss: 'many' },
+  'नित्य':          { category: 'adjective', root: 'नित्य', gloss: 'eternal / constant (compound prefix)' },
+  'नित्यः':         { category: 'adjective', root: 'नित्य', gender: 'm', number: 'eka', case: 'pra', gloss: 'eternal' },
+
+  // High-frequency a-stem masculines as compound members
+  'कुल':            { category: 'noun', root: 'कुल', gender: 'n', gloss: 'family / clan (compound stem)' },
+  'कुलम्':          { category: 'noun', root: 'कुल', gender: 'n', number: 'eka', case: 'pra', gloss: 'family / clan' },
+  'क्षय':           { category: 'noun', root: 'क्षय', gender: 'm', gloss: 'destruction / loss (compound stem)' },
+  'क्षयः':          { category: 'noun', root: 'क्षय', gender: 'm', number: 'eka', case: 'pra', gloss: 'destruction' },
+  'क्षयम्':         { category: 'noun', root: 'क्षय', gender: 'm', number: 'eka', case: 'dvi', gloss: 'destruction (object)' },
+  'नाश':            { category: 'noun', root: 'नाश', gender: 'm', gloss: 'destruction (compound stem)' },
+  'नाशः':           { category: 'noun', root: 'नाश', gender: 'm', number: 'eka', case: 'pra', gloss: 'destruction' },
+  'वर्ण':           { category: 'noun', root: 'वर्ण', gender: 'm', gloss: 'color / class / varṇa (compound stem)' },
+  'वर्णः':          { category: 'noun', root: 'वर्ण', gender: 'm', number: 'eka', case: 'pra', gloss: 'class / varṇa' },
+  'वाद':            { category: 'noun', root: 'वाद', gender: 'm', gloss: 'speech / doctrine (compound stem)' },
+  'वादान्':         { category: 'noun', root: 'वाद', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'speeches (pl, object)' },
+  'भोग':            { category: 'noun', root: 'भोग', gender: 'm', gloss: 'enjoyment (compound stem)' },
+  'भोगाः':          { category: 'noun', root: 'भोग', gender: 'm', number: 'bahu', case: 'pra', gloss: 'enjoyments' },
+  'भोगान्':         { category: 'noun', root: 'भोग', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'enjoyments (pl, object)' },
+  'राग':            { category: 'noun', root: 'राग', gender: 'm', gloss: 'passion / attachment (compound stem)' },
+  'रागः':           { category: 'noun', root: 'राग', gender: 'm', number: 'eka', case: 'pra', gloss: 'attachment' },
+  'व्यवसाय':        { category: 'noun', root: 'व्यवसाय', gender: 'm', gloss: 'determination (compound stem)' },
+  'व्यवसायात्मिका': { category: 'adjective', root: 'व्यवसायात्मक', gender: 'f', number: 'eka', case: 'pra', gloss: 'of the nature of determination' },
+  'स्वर्ग':         { category: 'noun', root: 'स्वर्ग', gender: 'm', gloss: 'heaven (compound stem)' },
+  'स्वर्गः':        { category: 'noun', root: 'स्वर्ग', gender: 'm', number: 'eka', case: 'pra', gloss: 'heaven' },
+  'स्वर्गम्':       { category: 'noun', root: 'स्वर्ग', gender: 'm', number: 'eka', case: 'dvi', gloss: 'heaven (object)' },
+  'ऐश्वर्य':        { category: 'noun', root: 'ऐश्वर्य', gender: 'n', gloss: 'lordship / sovereignty (compound stem)' },
+  'ऐश्वर्यम्':      { category: 'noun', root: 'ऐश्वर्य', gender: 'n', number: 'eka', case: 'pra', gloss: 'lordship' },
+  'अव्यक्त':        { category: 'adjective', root: 'अव्यक्त', gloss: 'unmanifest (compound stem)' },
+  'अव्यक्तम्':      { category: 'adjective', root: 'अव्यक्त', gender: 'n', number: 'eka', case: 'pra', gloss: 'unmanifest' },
+  'अव्यक्तः':       { category: 'adjective', root: 'अव्यक्त', gender: 'm', number: 'eka', case: 'pra', gloss: 'unmanifest' },
+  'व्यक्त':         { category: 'adjective', root: 'व्यक्त', gloss: 'manifest (compound stem)' },
+  'व्यक्तम्':       { category: 'adjective', root: 'व्यक्त', gender: 'n', number: 'eka', case: 'pra', gloss: 'manifest' },
+  'पते':            { category: 'noun', root: 'पति', gender: 'm', number: 'eka', case: 'sambodhana', gloss: 'O lord! (vocative of पति)' },
+  'पतिः':           { category: 'noun', root: 'पति', gender: 'm', number: 'eka', case: 'pra', gloss: 'lord / master' },
+
+  // i-stem nouns
+  'सिद्धि':         { category: 'noun', root: 'सिद्धि', gender: 'f', gloss: 'success / accomplishment (compound stem)' },
+  'सिद्धिः':        { category: 'noun', root: 'सिद्धि', gender: 'f', number: 'eka', case: 'pra', gloss: 'success' },
+  'सिद्धिम्':       { category: 'noun', root: 'सिद्धि', gender: 'f', number: 'eka', case: 'dvi', gloss: 'success (object)' },
+  'स्मृति':         { category: 'noun', root: 'स्मृति', gender: 'f', gloss: 'memory (compound stem)' },
+  'स्मृतिः':        { category: 'noun', root: 'स्मृति', gender: 'f', number: 'eka', case: 'pra', gloss: 'memory' },
+  'धीः':            { category: 'noun', root: 'धी', gender: 'f', number: 'eka', case: 'pra', gloss: 'intellect / wisdom' },
+  'मतिः':           { category: 'noun', root: 'मति', gender: 'f', number: 'eka', case: 'pra', gloss: 'thought / mind' },
+  'मतिम्':          { category: 'noun', root: 'मति', gender: 'f', number: 'eka', case: 'dvi', gloss: 'thought (object)' },
+
+  // ī-stem feminine
+  'मही':            { category: 'noun', root: 'मही', gender: 'f', number: 'eka', case: 'pra', gloss: 'earth / great one (f)' },
+  'महीम्':          { category: 'noun', root: 'मही', gender: 'f', number: 'eka', case: 'dvi', gloss: 'earth (object)' },
+
+  // -अस् stem (n.) — चेतस्, मनस्-class with -अस् → -ः ending
+  'चेतस्':          { category: 'noun', root: 'चेतस्', gender: 'n', gloss: 'mind / consciousness (compound stem)' },
+  'चेतसः':          { category: 'noun', root: 'चेतस्', gender: 'n', number: 'bahu', case: 'pra', gloss: 'minds (pl) / of mind (gen sg)' },
+  'चेतसा':          { category: 'noun', root: 'चेतस्', gender: 'n', number: 'eka', case: 'tri', gloss: 'with the mind' },
+  'मनस्':           { category: 'noun', root: 'मनस्', gender: 'n', gloss: 'mind (compound stem)' },
+  'मनसा':           { category: 'noun', root: 'मनस्', gender: 'n', number: 'eka', case: 'tri', gloss: 'by/with the mind' },
+
+  // PPPs commonly used as compound members
+  'स्थित':          { category: 'krdanta', kind: 'past-passive', root: '√स्था', gloss: 'standing / stationed (compound stem)' },
+  'अभिरक्षित':      { category: 'krdanta', kind: 'past-passive', root: 'अभि + √रक्ष्', gloss: 'protected (compound stem)' },
+  'अभिरक्षितम्':    { category: 'krdanta', kind: 'past-passive', root: 'अभि + √रक्ष्', gender: 'n', number: 'eka', case: 'pra', gloss: 'protected' },
+  'उपहत':           { category: 'krdanta', kind: 'past-passive', root: 'उप + √हन्', gloss: 'struck / afflicted (compound stem)' },
+  'सुकृत':          { category: 'krdanta', kind: 'past-passive', root: 'सु + √कृ', gloss: 'well-done (compound stem)' },
+  'दुष्कृत':        { category: 'krdanta', kind: 'past-passive', root: 'दुस् + √कृ', gloss: 'badly-done (compound stem)' },
+  'दुष्कृते':       { category: 'krdanta', kind: 'past-passive', root: 'दुस् + √कृ', gender: 'n', number: 'eka', case: 'sap', gloss: 'in evil deed' },
+
+  // Other high-freq nouns
+  'शस्त्र':         { category: 'noun', root: 'शस्त्र', gender: 'n', gloss: 'weapon (compound stem)' },
+  'शस्त्रम्':       { category: 'noun', root: 'शस्त्र', gender: 'n', number: 'eka', case: 'pra', gloss: 'weapon' },
+  'शस्त्राणि':      { category: 'noun', root: 'शस्त्र', gender: 'n', number: 'bahu', case: 'pra', gloss: 'weapons (pl)' },
+  'घ्न':            { category: 'noun', root: 'घ्न', gloss: 'killer / destroyer (compound stem; from √हन्)' },
+  'घ्नानाम्':       { category: 'noun', root: 'घ्न', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of killers (pl)' },
+  'जनम्':           { category: 'noun', root: 'जन', gender: 'n', number: 'eka', case: 'dvi', gloss: 'people / person (object)' },
+  'जनः':            { category: 'noun', root: 'जन', gender: 'm', number: 'eka', case: 'pra', gloss: 'person' },
+  'जनाः':           { category: 'noun', root: 'जन', gender: 'm', number: 'bahu', case: 'pra', gloss: 'people' },
+  'भूतानाम्':       { category: 'noun', root: 'भूत', gender: 'n', number: 'bahu', case: 'sha', gloss: 'of beings' },
+  'अर्थेभ्यः':      { category: 'noun', root: 'अर्थ', gender: 'm', number: 'bahu', case: 'pan', gloss: 'from objects (pl)' },
+  'असून्':          { category: 'noun', root: 'असु', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'lives / life-breaths (pl, object)' },
+
+  // Vocative -ओ ending forms (long-vowel vocative)
+  'बाहो':           { category: 'noun', root: 'बाहु', gender: 'm', number: 'eka', case: 'sambodhana', gloss: 'O mighty-armed! (in महाबाहो)' },
+  'पते':            { category: 'noun', root: 'पति', gender: 'm', number: 'eka', case: 'sambodhana', gloss: 'O lord! (compound vocative)' },
+
+  // Common compound members
+  'सुख':            { category: 'noun', root: 'सुख', gender: 'n', gloss: 'pleasure (compound stem)' },
+  'दुःख':           { category: 'noun', root: 'दुःख', gender: 'n', gloss: 'pain (compound stem)' },
+  'दया':            { category: 'noun', root: 'दया', gender: 'f', number: 'eka', case: 'pra', gloss: 'compassion' },
+  'सत्य':           { category: 'noun', root: 'सत्य', gender: 'n', gloss: 'truth (compound stem)' },
+  'सत्यम्':         { category: 'noun', root: 'सत्य', gender: 'n', number: 'eka', case: 'pra', gloss: 'truth' },
+  'दैवी':           { category: 'adjective', root: 'दैव', gender: 'f', number: 'eka', case: 'pra', gloss: 'divine (f)' },
+  'दैवीम्':         { category: 'adjective', root: 'दैव', gender: 'f', number: 'eka', case: 'dvi', gloss: 'divine (f, object)' },
+  'दैवम्':          { category: 'noun', root: 'दैव', gender: 'n', number: 'eka', case: 'pra', gloss: 'fate / divine' },
+  'आसुर':           { category: 'adjective', root: 'आसुर', gloss: 'demonic (compound stem)' },
+  'आसुराः':         { category: 'adjective', root: 'आसुर', gender: 'm', number: 'bahu', case: 'pra', gloss: 'demonic ones' },
+  'पारुष्यम्':      { category: 'noun', root: 'पारुष्य', gender: 'n', number: 'eka', case: 'pra', gloss: 'harshness' },
+  'दृष्टि':         { category: 'noun', root: 'दृष्टि', gender: 'f', gloss: 'sight / view (compound stem)' },
+  'दृष्टिम्':       { category: 'noun', root: 'दृष्टि', gender: 'f', number: 'eka', case: 'dvi', gloss: 'sight (object)' },
+  'अतीतः':          { category: 'krdanta', kind: 'past-passive', root: 'अति + √इ', gender: 'm', number: 'eka', case: 'pra', gloss: 'gone beyond / transcended' },
+  'अतीश्वरः':       { category: 'noun', root: 'अतीश्वर', gender: 'm', number: 'eka', case: 'pra', gloss: 'supreme lord' },
+  'अपोहनं':         { category: 'noun', root: 'अपोहन', gender: 'n', number: 'eka', case: 'pra', gloss: 'driving away / removal (anusvara form)' },
+  'अपोहनम्':        { category: 'noun', root: 'अपोहन', gender: 'n', number: 'eka', case: 'pra', gloss: 'driving away / removal' },
+  'परिमार्गितव्यम्': { category: 'krdanta', kind: 'gerundive', root: 'परि + √मार्ग्', gender: 'n', number: 'eka', case: 'pra', gloss: 'is to be sought after' },
+  'लोकत्रयम्':      { category: 'noun', root: 'लोकत्रय', gender: 'n', number: 'eka', case: 'pra', gloss: 'the three worlds' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
