@@ -282,8 +282,79 @@ const COMMON_NOUNS = {
   'सेनयोः':        { category: 'noun', root: 'सेना', gender: 'f', number: 'dvi', case: 'sha', gloss: 'of (the two) armies' },
 };
 
+// आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
+// the Gītā with several characteristic forms (आत्मानम्, आत्मना, etc.).
+const ATMAN = {
+  'आत्मा':       { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'pra', gloss: 'self / Self' },
+  'आत्मानम्':    { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'dvi', gloss: 'self (object)' },
+  'आत्मानं':     { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'dvi', gloss: 'self (object, anusvāra form)' },
+  'आत्मना':      { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'tri', gloss: 'by the self' },
+  'आत्मने':      { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'cha', gloss: 'for the self' },
+  'आत्मनः':      { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'sha', gloss: 'of the self / from the self' },
+  'आत्मनि':      { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka',  case: 'sap', gloss: 'in the self' },
+  'आत्मानौ':     { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'dvi',  case: 'pra', gloss: 'two selves' },
+  'आत्मानः':     { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'selves (pl)' },
+  'आत्मनाम्':    { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of selves (pl)' },
+  'आत्मसु':      { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'bahu', case: 'sap', gloss: 'in selves (pl)' },
+};
+
+// Common i-stem nouns: अग्नि, मुनि, ऋषि, etc.
+function buildIStemMasculine(stem, gloss) {
+  return {
+    [stem + 'िः']:     { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'pra', gloss },
+    [stem + 'िम्']:    { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'dvi', gloss: `${gloss} (object)` },
+    [stem + 'िना']:    { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'tri', gloss: `by ${gloss}` },
+    [stem + 'ये']:     { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'cha', gloss: `for ${gloss}` },
+    [stem + 'ेः']:     { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'sha', gloss: `of ${gloss}` },
+    [stem + 'ौ']:      { category: 'noun', root: stem + 'ि', gender: 'm', number: 'eka',  case: 'sap', gloss: `in ${gloss}` },
+    [stem + 'यः']:     { category: 'noun', root: stem + 'ि', gender: 'm', number: 'bahu', case: 'pra', gloss: `${gloss} (pl)` },
+    [stem + 'ीन्']:    { category: 'noun', root: stem + 'ि', gender: 'm', number: 'bahu', case: 'dvi', gloss: `${gloss} (pl, object)` },
+    [stem + 'िभिः']:   { category: 'noun', root: stem + 'ि', gender: 'm', number: 'bahu', case: 'tri', gloss: `by ${gloss} (pl)` },
+    [stem + 'ीनाम्']:  { category: 'noun', root: stem + 'ि', gender: 'm', number: 'bahu', case: 'sha', gloss: `of ${gloss} (pl)` },
+    [stem + 'िषु']:    { category: 'noun', root: stem + 'ि', gender: 'm', number: 'bahu', case: 'sap', gloss: `in ${gloss} (pl)` },
+  };
+}
+const I_STEM_NOUNS = {
+  ...buildIStemMasculine('अग्न', 'fire'),
+  ...buildIStemMasculine('मुन', 'sage'),
+  ...buildIStemMasculine('ऋष', 'seer'),
+};
+
+// More common forms — krdantas, indeclinables, infrequent verbs.
+const MORE_COMMON = {
+  // Indefinite pronoun
+  'कश्चित्':       { category: 'pronoun', root: 'किम्+चित्', gender: 'm', number: 'eka', case: 'pra', gloss: 'anyone / someone' },
+  'कश्चन':         { category: 'pronoun', root: 'किम्+चन',  gender: 'm', number: 'eka', case: 'pra', gloss: 'anyone' },
+  'किञ्चित्':      { category: 'pronoun', root: 'किम्+चित्', gender: 'n', number: 'eka', case: 'pra', gloss: 'anything' },
+  // Common PPPs / krdantas
+  'प्रोक्तम्':      { category: 'krdanta', kind: 'past-passive', root: 'प्र + √वच्',  gender: 'n', number: 'eka', case: 'pra', gloss: 'declared / proclaimed' },
+  'प्रोक्तः':       { category: 'krdanta', kind: 'past-passive', root: 'प्र + √वच्',  gender: 'm', number: 'eka', case: 'pra', gloss: 'declared / proclaimed' },
+  'अहैतुकम्':       { category: 'krdanta', kind: 'past-passive', root: 'अ + हेतु', gender: 'n', number: 'eka', case: 'pra', gloss: 'without cause / motiveless' },
+  'असमुदाहृतम्':    { category: 'krdanta', kind: 'past-passive', root: 'अ + सम् + उद् + आ + √हृ', gender: 'n', number: 'eka', case: 'pra', gloss: 'not stated / not properly declared' },
+  'अफलाकाङ्क्षिभिः': { category: 'noun', root: 'अफलाकाङ्क्षिन्', gender: 'm', number: 'bahu', case: 'tri', gloss: 'by those not desiring fruit' },
+  // Infinitives
+  'शोचितुम्':      { category: 'krdanta', kind: 'infinitive', root: '√शुच्', gloss: 'to grieve' },
+  // Absolutives
+  'आश्रित्य':       { category: 'krdanta', kind: 'absolutive', root: 'आ + √श्रि', gloss: 'having taken refuge in' },
+  'उपेत्य':         { category: 'krdanta', kind: 'absolutive', root: 'उप + √इ',   gloss: 'having approached' },
+  'अवष्टभ्य':       { category: 'krdanta', kind: 'absolutive', root: 'अव + √स्तभ्', gloss: 'having relied on / steadied' },
+  'विसृज्य':        { category: 'krdanta', kind: 'absolutive', root: 'वि + √सृज्', gloss: 'having released' },
+  'उत्सृज्य':       { category: 'krdanta', kind: 'absolutive', root: 'उद् + √सृज्', gloss: 'having abandoned / cast off' },
+  'समुपाश्रितः':    { category: 'krdanta', kind: 'past-passive', root: 'सम् + उप + आ + √श्रि', gender: 'm', number: 'eka', case: 'pra', gloss: 'one who has fully taken refuge' },
+  // Adverbs
+  'आश्चर्यवत्':     { category: 'particle', gloss: 'wonderfully / as if a wonder' },
+  // Compound-derived nouns the pad-splitter leaves whole
+  'भूतग्राम्':      { category: 'noun', root: 'भूतग्राम', gender: 'm', number: 'eka', case: 'dvi', gloss: 'the multitude of beings (object)' },
+  'भूतग्रामः':      { category: 'noun', root: 'भूतग्राम', gender: 'm', number: 'eka', case: 'pra', gloss: 'the multitude of beings' },
+  'जन्ममृत्युजः':   { category: 'noun', root: 'जन्ममृत्युज', gender: 'm', number: 'eka', case: 'pra', gloss: 'born of birth-and-death' },
+  'आत्मविनिग्रहः':  { category: 'noun', root: 'आत्मविनिग्रह', gender: 'm', number: 'eka', case: 'pra', gloss: 'self-restraint' },
+};
+
 // Combined map. Pronoun tables come first, then common nouns/PPPs.
 export const CORE_VOCAB = {
+  ...ATMAN,
+  ...I_STEM_NOUNS,
+  ...MORE_COMMON,
   ...YAD,
   ...TAD,
   ...IDAM,
