@@ -11,7 +11,7 @@
 
 import { undoSandhi } from './sandhi.js';
 import { buildVocabulary } from './vocabulary.js';
-import { DHATUS_TOP25 as DHATUS } from '../data/dhatus.js';
+import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
 
 // Stem → dhātu lookup table. Used by classifyByStem (below) to confirm a
 // candidate verb form by checking whether its stripped stem matches a
