@@ -1,0 +1,23 @@
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_59578b85b81313 33-67
+  s_d5e8c30b294ba2::t_3c5f4192c430f2 21
+src/data/verse-overrides.js
+  s_d5e8c30b294ba2::t_ba5adedb4abcf8 11,15-17
+  s_d5e8c30b294ba2::t_7937ebe3028bee 1-10,12-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "c8391ed0585c57fba7c1f512c69e622f50b6f061",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
