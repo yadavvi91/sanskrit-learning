@@ -20,9 +20,11 @@
 import { FINITE_OVERRIDES_PART_1 } from './_finite_overrides_part1.js';
 import { FINITE_OVERRIDES_PART_2 } from './_finite_overrides_part2.js';
 import { FINITE_OVERRIDES_PART_3 } from './_finite_overrides_part3.js';
+import { FINITE_OVERRIDES_PART_4 } from './_finite_overrides_part4.js';
 
 export const FINITE_OVERRIDES = {
   ...FINITE_OVERRIDES_PART_1,
   ...FINITE_OVERRIDES_PART_2,
   ...FINITE_OVERRIDES_PART_3,
+  ...FINITE_OVERRIDES_PART_4,
 };

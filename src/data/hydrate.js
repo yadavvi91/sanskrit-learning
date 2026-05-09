@@ -41,19 +41,21 @@ export function hydrateAutoStubVerses() {
       }
     }
 
-    // Hand-decoded finite-verb overrides: either populate the array
-    // with the actual verb(s) the engine missed, or mark the verse as
-    // genuinely lacking a finite verb (nominal sentence) so the audit
-    // UI doesn't flag it as a failure. Override only fires when the
-    // engine produced nothing (so hand-decoded full-tier entries
-    // aren't disturbed).
-    if (!v.finiteVerbs || v.finiteVerbs.length === 0) {
-      const override = FINITE_OVERRIDES[key];
-      if (override === null) {
-        v.noFiniteVerb = true; // nominal sentence — implied अस्ति
-      } else if (Array.isArray(override) && override.length > 0) {
-        v.finiteVerbs = override;
-      }
+    // Hand-decoded finite-verb overrides:
+    //   - null      → mark verse.noFiniteVerb = true (nominal sentence)
+    //   - [items]   → replace v.finiteVerbs with the curated entries
+    //                 (used both to fill empties AND to correct engine
+    //                 mis-classifications, e.g., the future-stem regex
+    //                 firing on the denominative नमस्यन्ति in 11.36)
+    const override = FINITE_OVERRIDES[key];
+    if (override === null) {
+      // null = "this verse has no finite verb, period". Clears any
+      // engine false-positive (निर्योगक्षेम wrongly matching विधिलिङ्
+      // -एम) and marks the verse as nominal-by-design.
+      v.finiteVerbs = [];
+      v.noFiniteVerb = true;
+    } else if (Array.isArray(override) && override.length > 0) {
+      v.finiteVerbs = override;
     }
 
     if (!v.english) {

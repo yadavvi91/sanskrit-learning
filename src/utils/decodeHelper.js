@@ -12,6 +12,7 @@
 import { undoSandhi } from './sandhi.js';
 import { buildVocabulary } from './vocabulary.js';
 import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
+import { lookupSharedVocab } from '../data/sharedVocab.js';
 
 // Stem → dhātu lookup table. Used by classifyByStem (below) to confirm a
 // candidate verb form by checking whether its stripped stem matches a
@@ -120,6 +121,14 @@ function tryPastTenseSplit(chunk) {
 // "्या" is part of the root, not a sandhi junction — those have no
 // suffix that matches a verb form.
 function tryYanSandhiSplit(chunk) {
+  // Don't fire yan-split if the chunk already ends in a strong verb-ending
+  // (-न्ति, -न्ते, -न्तु, -ष्यति, -ष्यते). Those are almost certainly a
+  // single verb form where any internal `्य` is intrinsic to the dhātu
+  // stem (e.g., नमस्यन्ति from denominative √नमस्य), not a sandhi
+  // junction. Catches false-positive splits like
+  //   नमस्यन्ति → [नमसि(noun "in salutation"), अन्ति(particle "near")]
+  if (/(?:न्ति|न्ते|न्तु|ष्यति|ष्यते|स्यति|स्यते)$/.test(chunk)) return null;
+
   for (let i = 1; i < chunk.length - 1; i++) {
     if (chunk[i] !== '्' || chunk[i + 1] !== 'य') continue;
     const leftPrefixed = chunk.slice(0, i) + 'ि';
@@ -202,16 +211,22 @@ function classifyByStem(form) {
     const dpada = dhatu.pada; // 'P' | 'A' | 'U'
     const epada = ending.pada;
     if (dpada !== 'U' && dpada !== epada) continue;
+    const primaryMeaning = Array.isArray(dhatu.meanings) && dhatu.meanings[0];
+    // When the stem matched via futureStem (भविष्य), the lakara is लृट्
+    // regardless of which present-tense ending followed.
+    const isFutureStem = dhatu.viaStem === 'future';
+    const effectiveLakara = isFutureStem ? 'lrt' : ending.lakara;
     return {
       form,
-      lakara: ending.lakara,
+      lakara: effectiveLakara,
       purusha: ending.purusha,
       vachana: ending.vachana,
       pada: ending.pada,
       root: dhatu.devanagari,
       gana: dhatu.gana,
+      gloss: primaryMeaning ? (isFutureStem ? `will ${primaryMeaning}` : `to ${primaryMeaning}`) : '',
       confidence: 'medium',
-      signal: `${ending.hint} on √${dhatu.devanagari}`,
+      signal: `${ending.hint} on √${dhatu.devanagari}${isFutureStem ? ' (future stem)' : ''}`,
     };
   }
   return null;
@@ -227,24 +242,29 @@ function cleanMoolLine(s) {
 
 // Endings that strongly signal a particular लकार on the bare form.
 // Order matters: more specific (longer) signals first.
+// `trusted: true` means this regex is verb-specific enough that vocab
+// override (which can be agent-mistagged) shouldn't suppress it.
+// `trusted` defaults to false → vocab non-verb tag suppresses the match.
 const LAKARA_SIGNALS = [
   // Future stem signals (-ष्य- / -स्य- + present-tense ending). Cover
   // every (ष्य/स्य) × (ति, सि, मि, थः, थ, वः, मः, न्ति) combination
   // for parasmaipada — these regex patterns are highly specific because
   // the -स्य/-ष्य infix is a distinctive future-tense marker.
-  { match: /ष्यति$|ष्यतः$|ष्यन्ति$|ष्यसि$|ष्यथः$|ष्यथ$|ष्यामि$|ष्यावः$|ष्यामः$|स्यति$|स्यतः$|स्यन्ति$|स्यसि$|स्यथः$|स्यथ$|स्यामि$|स्यावः$|स्यामः$/, lakara: 'lrt', purusha: null, hint: 'future stem (P)' },
+  { match: /ष्यति$|ष्यतः$|ष्यन्ति$|ष्यसि$|ष्यथः$|ष्यथ$|ष्यामि$|ष्यावः$|ष्यामः$|स्यति$|स्यतः$|स्यन्ति$|स्यसि$|स्यथः$|स्यथ$|स्यामि$|स्यावः$|स्यामः$/, lakara: 'lrt', purusha: null, hint: 'future stem (P)', trusted: true },
   // Future ātmanepada
-  { match: /ष्यते$|ष्यन्ते$|ष्यसे$|ष्ये$|स्यते$|स्यन्ते$|स्यसे$|स्ये$|ष्यध्वे$|स्यध्वे$|ष्यावहे$|स्यावहे$|ष्यामहे$|स्यामहे$/, lakara: 'lrt', pada: 'A', hint: 'future stem (Ā)' },
+  { match: /ष्यते$|ष्यन्ते$|ष्यसे$|ष्ये$|स्यते$|स्यन्ते$|स्यसे$|स्ये$|ष्यध्वे$|स्यध्वे$|ष्यावहे$|स्यावहे$|ष्यामहे$|स्यामहे$/, lakara: 'lrt', pada: 'A', hint: 'future stem (Ā)', trusted: true },
   // विधिलिङ्
-  { match: /ेत्$|ेयुः$|ेताम्$|ेम$/, lakara: 'vidhilin', hint: 'optative -ेत्' },
-  { match: /ीय$|ीरन्$|ीमहि$/, lakara: 'vidhilin', pada: 'A', hint: 'optative आत्मनेपद' },
-  // लोट्
-  { match: /तु$|न्तु$/, lakara: 'lot', purusha: 'prathama', hint: 'imperative -तु' },
-  // लोट् मध्यम-एकवचन -हि (imperative "do!", "go!", e.g., जहि, उत्तिष्ठ).
-  // Highly distinctive ending — almost no nouns end in -हि.
+  { match: /ेत्$|ेयुः$|ेताम्$|ेम$/, lakara: 'vidhilin', hint: 'optative -ेत्', trusted: true },
+  { match: /ीय$|ीरन्$|ीमहि$/, lakara: 'vidhilin', pada: 'A', hint: 'optative आत्मनेपद', trusted: true },
+  // लोट् 3rd person (-न्तु distinctive). Bare -तु also matches the
+  // particle तु, so it's untrusted by default.
+  { match: /न्तु$/, lakara: 'lot', purusha: 'prathama', vachana: 'bahu', hint: 'imperative -न्तु', trusted: true },
+  { match: /तु$/, lakara: 'lot', purusha: 'prathama', hint: 'imperative -तु' },
+  // लोट् 2sg -हि — also matches the particle हि, untrusted.
   { match: /हि$/, lakara: 'lot', purusha: 'madhyama', vachana: 'eka', hint: 'imperative -हि' },
-  // लट् (present)
-  { match: /न्ति$/, lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present -न्ति' },
+  // लट् (present). Multi-character endings like -न्ति / -न्ते are
+  // distinctive enough to trust; bare -ति / -ते match many nouns.
+  { match: /न्ति$/, lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present -न्ति', trusted: true },
   { match: /ति$/,    lakara: 'lat', purusha: 'prathama', vachana: 'eka', hint: 'present -ति' },
   { match: /ते$/,    lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'eka', hint: 'present आत्मनेपद -ते' },
   { match: /मि$/,    lakara: 'lat', purusha: 'uttama', vachana: 'eka', hint: 'present -मि' },
@@ -252,44 +272,126 @@ const LAKARA_SIGNALS = [
   { match: /षि$/,    lakara: 'lat', purusha: 'madhyama', vachana: 'eka', hint: 'present -षि (2sg, retroflex)' },
   { match: /से$/,    lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'eka', hint: 'present आत्मनेपद -से (2sg)' },
   { match: /षे$/,    lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'eka', hint: 'present आत्मनेपद -षे (2sg, retroflex)' },
-  { match: /महे$/,   lakara: 'lat', pada: 'A', purusha: 'uttama', vachana: 'bahu', hint: 'present आत्मनेपद -महे (1pl)' },
-  { match: /ध्वे$/,  lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'bahu', hint: 'present आत्मनेपद -ध्वे (2pl)' },
-  // Plural परस्मैपद -ुः (प्राहुः, चकुः, …). Distinct enough from any
-  // common nominal ending that a regex match is safe.
+  // आत्मनेपद उत्तम/मध्यम endings — distinctive enough to trust.
+  { match: /महे$/,   lakara: 'lat', pada: 'A', purusha: 'uttama', vachana: 'bahu', hint: 'present आत्मनेपद -महे (1pl)', trusted: true },
+  { match: /ध्वे$/,  lakara: 'lat', pada: 'A', purusha: 'madhyama', vachana: 'bahu', hint: 'present आत्मनेपद -ध्वे (2pl)', trusted: true },
+  // -ुः matches both legit verbs (प्राहुः) and nouns (चक्षुः, मधुः).
+  // Untrusted — vocab override should suppress the noun cases.
   { match: /ुः$/,    lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present परस्मैपद -ुः (irregular plural)' },
   // NOTE: आत्मनेपद उत्तम-एकवचन ending -ए (काङ्क्षे, लभे, मन्ये) is intentionally
   // NOT a blanket signal — every सप्तमी-एकवचन noun also ends in -ए
   // (कुरुक्षेत्रे, गृहे), so a regex catches massive false positives. Verses
   // like 1.32 where the finite verb takes this ending need vocabulary-backed
   // verification (planned) or hand-decoded data (current path).
-  // लङ् (past, augmented)
+  // लङ् (past, augmented). The अ- prefix isn't actually verb-specific
+  // (many nouns/pronouns/adjectives start with अ- as a negative prefix:
+  // अन्यत्, अपरान्, अकर्मकृत्, अच्युत, अनन्त, …). Untrusted; rely on
+  // the stem-strip enrichment to confirm real verbs (अकुर्वत → √कृ).
   { match: /^अ.+त्$/, lakara: 'lan', hint: 'past with अ- augment + -त्' },
   { match: /^अ.+न्$/, lakara: 'lan', purusha: 'prathama', vachana: 'bahu', hint: 'past plural -न्' },
   { match: /^अ.+त$/,  lakara: 'lan', pada: 'A', hint: 'past आत्मनेपद with अ- augment' },
 ];
 
+// LAKARA codes used by VOCAB_EXTENDED / SHARED_VOCAB. The vocab schema
+// uses 'lat' / 'lan' / 'lrt' etc. internally — same as classifyByStem.
+const VALID_LAKARAS = new Set(['lat', 'lan', 'lrt', 'lot', 'vidhilin', 'lit', 'lun', 'lin']);
+
 function classifyFiniteVerb(form) {
-  // First pass: regex-based signals — high recall, may include some
-  // false positives on shared noun/verb endings (e.g., -ति, -ते).
-  for (const sig of LAKARA_SIGNALS) {
-    if (sig.match.test(form)) {
-      return {
-        form,
-        lakara: sig.lakara,
-        purusha: sig.purusha ?? '?',
-        vachana: sig.vachana ?? '?',
-        pada: sig.pada ?? 'P',
-        confidence: 'low',
-        signal: sig.hint,
-      };
-    }
+  // Reject fragments — no real Sanskrit verb is shorter than 3 characters.
+  // The 2-char "ति" / "ते" sandhi-residue tokens that the engine sometimes
+  // emits as padas would otherwise match the -ति / -ते regex patterns
+  // and produce gloss-less क्रिया cards. (Forms like अह्, स्था are dhātu
+  // citation forms, never as standalone padas in actual verses.)
+  if (!form || form.length < 3) return null;
+
+  // Zero-th pass: direct vocab lookup. Catches forms like प्राहुरव्ययम्
+  // (a sandhi-joined verb where neither stem nor regex match — only
+  // the agent-curated vocab knows it's a verb). High-confidence hit
+  // when vocab.category === 'verb' AND has lakara/purusha/number.
+  const v0 = lookupSharedVocab(form);
+  if (v0 && v0.category === 'verb' && v0.lakara && VALID_LAKARAS.has(v0.lakara)) {
+    return {
+      form,
+      lakara: v0.lakara,
+      purusha: v0.purusha || '?',
+      vachana: v0.number || '?',
+      pada: v0.pada || 'P',
+      root: v0.root || '',
+      gana: v0.gana,
+      gloss: v0.gloss || '',
+      confidence: 'medium',
+      signal: 'vocab-direct',
+    };
   }
-  // Second pass: vocabulary-backed stem cross-check — high precision.
-  // Catches forms the regex misses (मन्ये, लभे, भवसि, …) when the root
-  // is in DHATUS. Won't catch verbs whose root isn't yet in the list;
-  // those still need hand-decoding.
+
+  // First pass: vocabulary-backed stem cross-check — high precision +
+  // returns root/gloss/gana from the dhātu lexicon. Catches forms with
+  // recognisable presentStems (मन्ये, लभे, भवसि, अपश्यत् of √पश्य, …).
   const byStem = classifyByStem(form);
   if (byStem) return byStem;
+
+  // Second pass: regex-based signals — broader recall, suppresses
+  // false-positive endings against the vocabulary, and enriches with
+  // dictionary data when available so finiteVerbs always carries a
+  // gloss whenever we can produce one.
+  for (const sig of LAKARA_SIGNALS) {
+    if (!sig.match.test(form)) continue;
+    const vocab = lookupSharedVocab(form);
+    // Vocab-override suppression: the regex matched, but if vocab
+    // explicitly classifies the form as a non-verb AND the matching
+    // signal isn't `trusted` (i.e., it's an ending also common on
+    // nouns/particles), reject the regex match. Trusted signals
+    // (-ष्य-future, -न्ति, -न्ते, -महे, -न्तु, -^अ.+त्$ लङ्, etc.)
+    // are too verb-specific to be overridden — a "noun" vocab tag
+    // on those is almost certainly an agent miscategorisation.
+    if (!sig.trusted && vocab && vocab.category && vocab.category !== 'verb') return null;
+    const base = {
+      form,
+      lakara: sig.lakara,
+      purusha: sig.purusha ?? '?',
+      vachana: sig.vachana ?? '?',
+      pada: sig.pada ?? 'P',
+      confidence: 'low',
+      signal: sig.hint,
+    };
+    if (vocab && vocab.category === 'verb') {
+      // Vocab beats regex for grammatical specifics (it's hand- or
+      // agent-curated) but keep the regex's lakara if vocab lacks it.
+      return {
+        ...base,
+        root: vocab.root || '',
+        gloss: vocab.gloss || '',
+        lakara: vocab.lakara || base.lakara,
+        purusha: vocab.purusha || base.purusha,
+        vachana: vocab.number || base.vachana,
+        pada: vocab.pada || base.pada,
+        confidence: 'medium',
+      };
+    }
+    // Last resort: try stripping common verbal endings and looking up
+    // the stem in the dhātu list to populate root + gloss even when
+    // STEM_TO_DHATU's strict pada-match failed earlier.
+    for (const e of ['न्ति', 'ति', 'ते', 'मि', 'सि', 'षि', 'से', 'षे',
+                     'महे', 'ध्वे', 'वहे', 'त्', 'न्', 'त', 'ुः']) {
+      if (!form.endsWith(e)) continue;
+      const stem = form.slice(0, form.length - e.length);
+      const augmented = stem.startsWith('अ') ? stem.slice(1) : stem;
+      const dhatu = STEM_TO_DHATU.get(stem) || STEM_TO_DHATU.get(augmented);
+      if (!dhatu) continue;
+      const m = Array.isArray(dhatu.meanings) && dhatu.meanings[0];
+      return { ...base, root: dhatu.devanagari, gana: dhatu.gana,
+               gloss: m ? `to ${m}` : '' };
+    }
+    // Trusted regex matches stay even without gloss — they're verb-
+    // specific endings (-न्ति, -ष्यति, -^अ.+त्$) where the regex is
+    // confident even without lexicon backing.
+    if (sig.trusted) return base;
+    // Untrusted regex match + no enrichment available → almost
+    // certainly a false positive (sandhi-fragment, kṛdanta, or noun
+    // that happens to end in -ति/-ते). Reject rather than show a
+    // gloss-less क्रिया card.
+    return null;
+  }
   return null;
 }
 
