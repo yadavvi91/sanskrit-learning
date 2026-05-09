@@ -2184,4 +2184,715 @@ export const CH2_VERSE_OVERRIDES = {
       'O Pārtha, when one casts off all desires that dwell in the mind, content in the Self by the Self alone — then is he called of stable wisdom.',
   },
 
+  '2.56': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'दुःखेषु',
+      'अनुद्विग्न-मनाः',
+      'सुखेषु',
+      'विगत-स्पृहः',
+      'वीत-राग-भय-क्रोधः',
+      'स्थित-धीः',
+      'मुनिः',
+      'उच्यते',
+    ],
+    sandhiNotes: [
+      'दुःखेष्वनुद्विग्नमनाः = दुःखेषु + अनुद्विग्नमनाः (-उ + अ → -व्)',
+      'स्थितधीर्मुनिरुच्यते = स्थितधीः + मुनिः + उच्यते (-ः + म → -र्; -ः + उ → -र्)',
+    ],
+    finiteVerbs: [
+      { form: 'उच्यते', root: '√वच् (passive)', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"is called" (passive)' },
+    ],
+    vibhaktiNotes: [
+      'दुःखेषु, सुखेषु → सप्तमी बहुवचन = "in (the case of) sorrows / pleasures"',
+      'अनुद्विग्नमनाः → प्रथमा एकवचन (बहुव्रीहि, -मनस् stem) = "(one) whose-mind-is-not-agitated"',
+      'विगतस्पृहः → प्रथमा एकवचन (बहुव्रीहि) = "(one) whose-longing-has-departed"',
+      'वीतरागभयक्रोधः → प्रथमा एकवचन (बहुव्रीहि) = "(one) whose-passion-fear-and-anger-have-passed-away"',
+      'स्थितधीः → प्रथमा एकवचन (बहुव्रीहि) = "(one) whose-thought-is-stable"',
+      'मुनिः → प्रथमा एकवचन — predicate ("muni / sage")',
+    ],
+    keyFights: [
+      'Four parallel बहुव्रीहि, all प्रथमा एकवचन, all describing the implicit subject. The compound-cascade is the descriptive payload; उच्यते is the only finite anchor.',
+      'अनुद्विग्नमनाः and स्थितधीः both end in stem-final consonants (-स् for मनस्, -ई for धी): the प्रथमा एकवचन shows the visarga + the long-vowel respectively, sandhi-flagging the stem-class.',
+      'वीतरागभयक्रोधः — द्वन्द्व embedded in बहुव्रीहि: "(one in whom) passion-fear-and-anger have-departed". Three-fold vice-cluster. Cf. Buddhist trio rāga-dveṣa-moha.',
+    ],
+    anvaya:
+      'दुःखेषु अनुद्विग्नमनाः | सुखेषु विगतस्पृहः | वीतरागभयक्रोधः | (एवं) स्थितधीः मुनिः उच्यते',
+    hindi:
+      'दुःख में जिसका मन उद्विग्न नहीं होता, सुख में जिसकी स्पृहा नहीं रहती, राग, भय और क्रोध से रहित — ऐसा (पुरुष) स्थित-बुद्धिवाला मुनि कहलाता है।',
+    english:
+      'He whose mind is unagitated in sorrows, who has no longing for pleasures, from whom passion, fear, and anger have departed — he, the steady-minded one, is called a sage.',
+  },
+
+  '2.57': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'यः',
+      'सर्वत्र',
+      'अनभिस्नेहः',
+      'तत्-तत्',
+      'प्राप्य',
+      'शुभ-अशुभम्',
+      'न',
+      'अभिनन्दति',
+      'न',
+      'द्वेष्टि',
+      'तस्य',
+      'प्रज्ञा',
+      'प्रतिष्ठिता',
+    ],
+    sandhiNotes: [
+      'यः सर्वत्रानभिस्नेहस्तत्तत्प्राप्य = यः + सर्वत्र + अनभिस्नेहः + तत्तत् + प्राप्य (अ + अ → ा; -ः + त → -स्त)',
+      'शुभाशुभम् = शुभ + अशुभम् (अ + अ → ा)',
+      'नाभिनन्दति = न + अभिनन्दति (अ + अ → ा)',
+    ],
+    finiteVerbs: [
+      { form: 'अभिनन्दति', root: 'अभि + √नन्द्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"rejoices in / welcomes" (negated)' },
+      { form: 'द्वेष्टि', root: '√द्विष्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"hates / dislikes" (negated)' },
+    ],
+    vibhaktiNotes: [
+      'यः → प्रथमा एकवचन (relative)',
+      'सर्वत्र → indeclinable = "everywhere, in every case"',
+      'अनभिस्नेहः → प्रथमा एकवचन (बहुव्रीहि) = "(one) without-fond-attachment"',
+      'तत् तत् → द्वितीया एकवचन (नपुंसक) — distributive: "this and that, each thing"',
+      'शुभाशुभम् → द्वितीया एकवचन (नपुंसक) — द्वन्द्व ("good and bad") in apposition with तत् तत्',
+      'प्राप्य → absolutive of प्र + √आप् = "having attained / encountering"',
+      'तस्य → षष्ठी एकवचन (correlative) = "his"',
+      'प्रज्ञा प्रतिष्ठिता → प्रथमा एकवचन (स्त्री) — subject + predicate ("(his) wisdom (is) firmly-established")',
+    ],
+    keyFights: [
+      'The first appearance of the तस्य प्रज्ञा प्रतिष्ठिता formula — a refrain that recurs at 2.58, 2.61, 2.68. The relative-correlative (यः ... तस्य) holds the long descriptive sentence together.',
+      'तत् तत् — reduplicated demonstrative for distributive: "(encountering) this-thing-or-that-thing". Sanskrit\'s standard "each-and-every" idiom.',
+      'अनभिस्नेहः — three-prefix stack: अ- (negative) + अभि- + स्नेह. The compound type is बहुव्रीहि read as "(one) without (अ-) close-attachment (अभिस्नेह)".',
+    ],
+    anvaya:
+      'यः सर्वत्र अनभिस्नेहः | तत् तत् शुभाशुभम् प्राप्य | न अभिनन्दति न द्वेष्टि | तस्य प्रज्ञा प्रतिष्ठिता',
+    hindi:
+      'जो सर्वत्र (अनासक्त रहकर) किसी से विशेष स्नेह नहीं रखता; जो शुभ या अशुभ — जो भी प्राप्त हो — उसका न अभिनन्दन करता है, न द्वेष करता है — उसकी प्रज्ञा प्रतिष्ठित है।',
+    english:
+      'He who is everywhere without fond attachment; who, encountering this or that — whether good or bad — neither rejoices nor hates: his wisdom is firmly established.',
+  },
+
+  '2.58': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'यदा',
+      'संहरते',
+      'च',
+      'अयम्',
+      'कूर्मः',
+      'अङ्गानि',
+      'इव',
+      'सर्वशः',
+      'इन्द्रियाणि',
+      'इन्द्रिय-अर्थेभ्यः',
+      'तस्य',
+      'प्रज्ञा',
+      'प्रतिष्ठिता',
+    ],
+    sandhiNotes: [
+      'चायम् = च + अयम् (अ + अ → ा)',
+      'कूर्मोऽङ्गानीव = कूर्मः + अङ्गानि + इव (-ः + अ → -ोऽ; -इ + इ → -ी)',
+      'इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य = इन्द्रियाणि + इन्द्रियार्थेभ्यः + तस्य (-इ + इ → -ी; -ः + त → -स्त)',
+    ],
+    finiteVerbs: [
+      { form: 'संहरते', root: 'सम् + √हृ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"draws-together / withdraws" (आत्मनेपद)' },
+    ],
+    vibhaktiNotes: [
+      'यदा → indeclinable',
+      'अयम् → प्रथमा एकवचन — subject ("this (sage)")',
+      'कूर्मः → प्रथमा एकवचन — subject of (implicit) सम्हरते in the simile',
+      'अङ्गानि → द्वितीया बहुवचन (नपुंसक) — object inside the simile',
+      'इव → indeclinable = "as, like"',
+      'सर्वशः → indeclinable = "in every way, completely"',
+      'इन्द्रियाणि → द्वितीया बहुवचन (नपुंसक) — object of संहरते (main clause)',
+      'इन्द्रियार्थेभ्यः → पञ्चमी बहुवचन = "from the sense-objects" (ablative of withdrawal)',
+      'तस्य प्रज्ञा प्रतिष्ठिता → repeat of 2.57\'s refrain',
+    ],
+    keyFights: [
+      'The famous tortoise simile. The simile is grammatically structured: कूर्मः अङ्गानि इव sandwiched into the main sentence (अयम् इन्द्रियाणि संहरते इन्द्रियार्थेभ्यः) — the इव holds the analogy.',
+      'पञ्चमी-of-withdrawal: इन्द्रियार्थेभ्यः ... संहरते = "withdraws (the senses) FROM the-sense-objects". The ablative is the standard "source" case in withdrawal verbs.',
+      'संहरते — आत्मनेपद of सम् + √हृ; the -ते ending = प्रथम-एकवचन आत्मनेपद. The reflexive (आ-pada) sense fits the self-withdrawing tortoise.',
+    ],
+    anvaya:
+      'अयम् च यदा | कूर्मः अङ्गानि इव सर्वशः | इन्द्रियाणि इन्द्रियार्थेभ्यः संहरते | तस्य प्रज्ञा प्रतिष्ठिता',
+    hindi:
+      'जब यह (पुरुष) कछुए के समान — जैसे कछुआ अपने अंगों को सिकोड़ लेता है — सब ओर से अपनी इन्द्रियों को इन्द्रिय-विषयों से समेट लेता है, तब उसकी प्रज्ञा प्रतिष्ठित है।',
+    english:
+      'And when, like a tortoise drawing in its limbs, this man wholly withdraws his senses from the objects of sense — his wisdom is firmly established.',
+  },
+
+  '2.59': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'विषयाः',
+      'विनिवर्तन्ते',
+      'निर्-आहारस्य',
+      'देहिनः',
+      'रस-वर्जम्',
+      'रसः',
+      'अपि',
+      'अस्य',
+      'परम्',
+      'दृष्ट्वा',
+      'निवर्तते',
+    ],
+    sandhiNotes: [
+      'विषया विनिवर्तन्ते = विषयाः + विनिवर्तन्ते (-ः + व → -ा)',
+      'रसोऽप्यस्य = रसः + अपि + अस्य (-ः + अ → -ोऽ; -इ + अ → -य्)',
+      'दृष्ट्वा निवर्तते — no internal sandhi',
+    ],
+    finiteVerbs: [
+      { form: 'विनिवर्तन्ते', root: 'वि + नि + √वृत्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', pada: 'A', gloss: '"turn-back / fall-away" (आत्मनेपद)' },
+      { form: 'निवर्तते', root: 'नि + √वृत्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"turns-back / departs" (आत्मनेपद)' },
+    ],
+    vibhaktiNotes: [
+      'विषयाः → प्रथमा बहुवचन — subject ("the sense-objects")',
+      'निराहारस्य देहिनः → षष्ठी एकवचन (-इन् stem) = "of the abstaining-embodied-one"',
+      'रसवर्जम् → indeclinable / द्वितीया-adverbial (अव्ययी-भाव) = "with-the-exception-of (the underlying) relish"',
+      'रसः → प्रथमा एकवचन — subject of निवर्तते',
+      'अस्य → षष्ठी एकवचन = "of him"',
+      'परम् → द्वितीया एकवचन / adverbial = "the supreme (Brahman)" — object of दृष्ट्वा',
+      'दृष्ट्वा → absolutive of √दृश् = "having seen"',
+    ],
+    keyFights: [
+      'रसवर्जम् is the rare अव्ययीभाव compound — frozen as an adverb meaning "with-the-exception-of-relish". The -अम् ending here is adverbial-accusative, not predicate.',
+      'Two finite verbs from the same root √वृत् with different prefixes: विनिवर्तन्ते (sense-objects fall-away) vs. निवर्तते (relish-itself departs). The grammatical doubling tracks the philosophical two-stage detachment.',
+      'परम् दृष्ट्वा — the absolutive\'s object: "having-seen the-Supreme". The bare द्वितीया परम् is short for परं तत्त्वम् or परं ब्रह्म.',
+      'निराहारस्य — षष्ठी of the बहुव्रीहि निराहार ("(one) without-food/intake"): describes the deprived-of-objects person whose senses are not yet really renounced.',
+    ],
+    anvaya:
+      'निराहारस्य देहिनः रसवर्जम् विषयाः विनिवर्तन्ते | अस्य रसः अपि परम् दृष्ट्वा निवर्तते',
+    hindi:
+      'व्रत आदि से इन्द्रिय-निरोध करनेवाले देही (साधक) से (केवल) विषय हटते हैं — किन्तु उनका (अन्तर्गत) रस (आसक्ति) नहीं हटता। (परन्तु) इस (स्थित-प्रज्ञ) पुरुष का रस भी परम-तत्त्व (ब्रह्म) के दर्शन से निवृत्त हो जाता है।',
+    english:
+      'For the embodied man who abstains, the sense-objects fall away — except the relish itself. But for him (the wise one), even that relish departs, having seen the Supreme.',
+  },
+
+  '2.60': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'यततः',
+      'हि',
+      'अपि',
+      'कौन्तेय',
+      'पुरुषस्य',
+      'विपश्चितः',
+      'इन्द्रियाणि',
+      'प्रमाथीनि',
+      'हरन्ति',
+      'प्रसभम्',
+      'मनः',
+    ],
+    sandhiNotes: [
+      'यततो ह्यपि = यततः + हि + अपि (-ः + ह → -ो; -इ + अ → -य्)',
+    ],
+    finiteVerbs: [
+      { form: 'हरन्ति', root: '√हृ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', pada: 'P', gloss: '"they snatch / carry away"' },
+    ],
+    vibhaktiNotes: [
+      'यततः → षष्ठी एकवचन (शानच् present participle of √यत्) = "of (one who is) striving"',
+      'पुरुषस्य विपश्चितः → षष्ठी एकवचन (-त् stem) = "of a wise man"',
+      'कौन्तेय → सम्बोधन एकवचन',
+      'इन्द्रियाणि → प्रथमा बहुवचन (नपुंसक) — subject',
+      'प्रमाथीनि → प्रथमा बहुवचन (नपुंसक, -इन् stem) = "agitating, churning"',
+      'मनः → द्वितीया एकवचन (नपुंसक) — object of हरन्ति',
+      'प्रसभम् → indeclinable / adverbial = "by force, violently"',
+    ],
+    keyFights: [
+      'Three षष्ठी-एकवचन-of-disadvantage all stack: यततः पुरुषस्य विपश्चितः = "(even) of a striving, of a wise, of a man". The triple genitive is a Sanskrit poetic device — "even from such a one (the senses snatch the mind)".',
+      'विपश्चितः — षष्ठी एकवचन of -त् stem (विपश्चित्). The -तः ending after -चित् is the regular masculine-genitive-singular of -त् stems.',
+      'प्रमाथीनि — प्रथमा बहुवचन of -इन् stem (प्रमाथिन्), agreeing with neuter इन्द्रियाणि. The neuter -ईनि ending after -इन् stems is the irregular form.',
+      'A whole verse builds the contrast: even with all the rationale of effort + wisdom (the षष्ठी chain), the senses (प्रमाथीनि indriyāṇi) FORCIBLY (प्रसभम्) snatch (हरन्ति) the mind (मनः). Krishna grants the difficulty.',
+    ],
+    anvaya:
+      'कौन्तेय | यततः हि अपि विपश्चितः पुरुषस्य | प्रमाथीनि इन्द्रियाणि मनः प्रसभम् हरन्ति',
+    hindi:
+      'हे कौन्तेय! प्रयत्नशील विवेकी पुरुष की भी इन्द्रियाँ अत्यन्त मथन-कर्त्री होकर मन को बलात् हर लेती हैं।',
+    english:
+      'For, O son of Kuntī, even of a striving and discerning man, the turbulent senses forcibly carry away the mind.',
+  },
+
+  '2.61': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'तानि',
+      'सर्वाणि',
+      'संयम्य',
+      'युक्तः',
+      'आसीत',
+      'मत्-परः',
+      'वशे',
+      'हि',
+      'यस्य',
+      'इन्द्रियाणि',
+      'तस्य',
+      'प्रज्ञा',
+      'प्रतिष्ठिता',
+    ],
+    sandhiNotes: [
+      'युक्त आसीत = युक्तः + आसीत (-ः + आ → -अ; visarga lopa before vowel)',
+      'मत्परः — compound, no junction',
+      'यस्येन्द्रियाणि = यस्य + इन्द्रियाणि (-अ + इ → -य्)',
+    ],
+    finiteVerbs: [
+      { form: 'आसीत', root: '√आस्', lakara: 'विधिलिङ्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"should sit / should be settled" (optative)' },
+    ],
+    vibhaktiNotes: [
+      'तानि सर्वाणि → द्वितीया बहुवचन (नपुंसक) — object of संयम्य ("having-restrained all of those (senses)")',
+      'संयम्य → absolutive of सम् + √यम् = "having reined-in"',
+      'युक्तः → प्रथमा एकवचन (PPP) = "(being) yoked, controlled"',
+      'मत्परः → प्रथमा एकवचन (बहुव्रीहि) = "(one) whose-supreme-(goal)-is-Me"',
+      'वशे → सप्तमी एकवचन = "in (his) control"',
+      'यस्य ... तस्य → षष्ठी एकवचन (relative-correlative) = "of-whom ... of-him"',
+      'इन्द्रियाणि → प्रथमा बहुवचन — subject of implicit अस्ति',
+      'प्रज्ञा प्रतिष्ठिता → as in 2.57',
+    ],
+    keyFights: [
+      'विधिलिङ् आसीत carries the prescriptive force: "(he) SHOULD-sit". One of Krishna\'s key optatives in the स्थित-प्रज्ञ description.',
+      'मत्परः — Krishna\'s self-referential बहुव्रीहि: "(one) whose-supreme-(refuge)-is-Me". The first time in Chapter 2 Krishna names himself as goal — a foreshadowing of Chapter 9-10 भक्ति-language.',
+      'यस्य ... वशे ... इन्द्रियाणि — षष्ठी relative + सप्तमी locus: "in-whose control (the senses are)". An idiomatic possessive-of-power construction.',
+      'The तस्य प्रज्ञा प्रतिष्ठिता refrain reappears (cf. 2.57, 2.58, 2.68) — Krishna\'s anaphoric closing of each स्थित-प्रज्ञ-vignette.',
+    ],
+    anvaya:
+      'तानि सर्वाणि (इन्द्रियाणि) संयम्य | युक्तः मत्परः (सन्) आसीत | यस्य हि वशे इन्द्रियाणि (वर्तन्ते) | तस्य प्रज्ञा प्रतिष्ठिता',
+    hindi:
+      'उन सब (इन्द्रियों) को संयम में रखकर मेरे परायण होकर युक्त बैठे। जिसकी इन्द्रियाँ वश में होती हैं, उसी की प्रज्ञा प्रतिष्ठित है।',
+    english:
+      'Having restrained all those (senses), let him sit yoked, intent on Me. For he whose senses are under control — his wisdom is firmly established.',
+  },
+
+  '2.64': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'राग-द्वेष-वियुक्तैः',
+      'तु',
+      'विषयान्',
+      'इन्द्रियैः',
+      'चरन्',
+      'आत्म-वश्यैः',
+      'विधेय-आत्मा',
+      'प्रसादम्',
+      'अधिगच्छति',
+    ],
+    sandhiNotes: [
+      'रागद्वेषवियुक्तैस्तु = रागद्वेषवियुक्तैः + तु (-ः + त → -स्त)',
+      'विषयानिन्द्रियैश्चरन् = विषयान् + इन्द्रियैः + चरन् (न्-junction; -ः + च → -श्च)',
+      'आत्मवश्यैर्विधेयात्मा = आत्मवश्यैः + विधेयात्मा (-ः + व → -र्)',
+      'प्रसादमधिगच्छति = प्रसादम् + अधिगच्छति (-म् + अ → -म)',
+    ],
+    finiteVerbs: [
+      { form: 'अधिगच्छति', root: 'अधि + √गम्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"attains / reaches"' },
+    ],
+    vibhaktiNotes: [
+      'रागद्वेषवियुक्तैः, आत्मवश्यैः → तृतीया बहुवचन — agreeing with इन्द्रियैः ("(by senses) freed-from-passion-and-aversion, (and) self-controlled")',
+      'विषयान् → द्वितीया बहुवचन — object of चरन्',
+      'इन्द्रियैः → तृतीया बहुवचन = "by/with (his) senses" (instrumental of accompaniment)',
+      'चरन् → प्रथमा एकवचन (शानच्) = "(while) moving-among"',
+      'विधेयात्मा → प्रथमा एकवचन (बहुव्रीहि) = "(one) whose-self-is-disciplined"',
+      'प्रसादम् → द्वितीया एकवचन — object of अधिगच्छति',
+    ],
+    keyFights: [
+      'A long तृतीया-instrumental cascade: रागद्वेषवियुक्तैः ... इन्द्रियैः ... आत्मवश्यैः (three तृतीया plurals) — all agreeing, describing HOW the wise one moves through sense-objects. Sanskrit\'s "by means of" stack.',
+      'विधेयात्मा is a -आत्मन् stem masc. प्रथमा एकवचन (the -आत्मा ending). बहुव्रीहि: "(one in whom) the-self-is-(to-be)-disciplined".',
+      'चरन् + विषयान् — present participle + द्वितीया = "moving among the sense-objects". The Gītā\'s key concession: the wise one doesn\'t WITHDRAW from sense-objects, he MOVES through them, but with controlled instruments.',
+    ],
+    anvaya:
+      'विधेयात्मा तु | रागद्वेषवियुक्तैः आत्मवश्यैः इन्द्रियैः | विषयान् चरन् | प्रसादम् अधिगच्छति',
+    hindi:
+      'राग और द्वेष से मुक्त, और स्व-वश इन्द्रियों के द्वारा विषयों में विचरते हुए — विधेय-आत्मा (साधक) प्रसाद (= चित्त की प्रसन्नता) को प्राप्त करता है।',
+    english:
+      'But the disciplined one, moving among the sense-objects with senses freed from attraction and aversion, and brought under his own control — attains tranquillity.',
+  },
+
+  '2.65': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'प्रसादे',
+      'सर्व-दुःखानाम्',
+      'हानिः',
+      'अस्य',
+      'उपजायते',
+      'प्रसन्न-चेतसः',
+      'हि',
+      'आशु',
+      'बुद्धिः',
+      'पर्यवतिष्ठते',
+    ],
+    sandhiNotes: [
+      'हानिरस्योपजायते = हानिः + अस्य + उपजायते (-ः + अ → -र्; अ + उ → ो)',
+      'प्रसन्नचेतसो ह्याशु = प्रसन्नचेतसः + हि + आशु (-ः + ह → -ो; -इ + आ → -या)',
+    ],
+    finiteVerbs: [
+      { form: 'उपजायते', root: 'उप + √जन्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"arises / comes-into-being"' },
+      { form: 'पर्यवतिष्ठते', root: 'परि + अव + √स्था', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"becomes thoroughly established"' },
+    ],
+    vibhaktiNotes: [
+      'प्रसादे → सप्तमी एकवचन = "in (the state of) prasāda"',
+      'सर्वदुःखानाम् → षष्ठी बहुवचन = "of all sorrows"',
+      'हानिः → प्रथमा एकवचन (स्त्री) — subject ("(the) destruction")',
+      'अस्य → षष्ठी एकवचन = "of his / for him"',
+      'प्रसन्नचेतसः → षष्ठी एकवचन (-स् stem) = "of (one whose) mind-is-tranquil"',
+      'आशु → indeclinable = "swiftly"',
+      'बुद्धिः → प्रथमा एकवचन — subject of पर्यवतिष्ठते',
+    ],
+    keyFights: [
+      'Two locative-cause structures: प्रसादे ... हानिः अस्य उपजायते = "IN the (state of) tranquillity, his sorrows-destruction arises". The सप्तमी = locative-of-condition.',
+      'सर्वदुःखानाम् हानिः — षष्ठी + प्रथमा: "the destruction OF-all-sorrows". The षष्ठी-objective: hāni governs its content via षष्ठी.',
+      'पर्यवतिष्ठते — triple-prefixed आत्मनेपद of √स्था: "thoroughly-firmly-stands". The compound prefixes परि + अव intensify "stands established all-around".',
+      'प्रसन्नचेतसः — षष्ठी एकवचन of -स् stem (चेतस्). The -सः ending is the spotting cue.',
+    ],
+    anvaya:
+      'प्रसादे (सति) अस्य सर्वदुःखानाम् हानिः उपजायते | प्रसन्नचेतसः हि आशु बुद्धिः पर्यवतिष्ठते',
+    hindi:
+      'चित्त-प्रसाद (तृप्ति) होने पर इस (साधक) के सब दुःखों का नाश हो जाता है। प्रसन्न-चित्तवाले की बुद्धि शीघ्र ही (परमात्मा में) भली-भाँति स्थिर हो जाती है।',
+    english:
+      'In tranquillity, the destruction of all his sorrows comes about; for of one whose mind is tranquil, the understanding swiftly becomes thoroughly established.',
+  },
+
+  '2.66': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'न',
+      'अस्ति',
+      'बुद्धिः',
+      'अयुक्तस्य',
+      'न',
+      'च',
+      'अयुक्तस्य',
+      'भावना',
+      'न',
+      'च',
+      'अभावयतः',
+      'शान्तिः',
+      'अशान्तस्य',
+      'कुतः',
+      'सुखम्',
+    ],
+    sandhiNotes: [
+      'नास्ति = न + अस्ति (अ + अ → ा)',
+      'बुद्धिरयुक्तस्य = बुद्धिः + अयुक्तस्य (-ः + अ → -र्)',
+      'चायुक्तस्य = च + अयुक्तस्य (अ + अ → ा)',
+      'चाभावयतः = च + अभावयतः (अ + अ → ा)',
+      'शान्तिरशान्तस्य = शान्तिः + अशान्तस्य (-ः + अ → -र्)',
+    ],
+    finiteVerbs: [
+      { form: 'अस्ति', root: '√अस्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"is / exists" (negated, opening word)' },
+    ],
+    vibhaktiNotes: [
+      'अयुक्तस्य → षष्ठी एकवचन (twice) = "of the un-yoked"',
+      'अभावयतः → षष्ठी एकवचन (शानच् of √भू-causative) = "of (one who is) not-meditating"',
+      'अशान्तस्य → षष्ठी एकवचन = "of the un-peaceful"',
+      'बुद्धिः, भावना, शान्तिः → प्रथमा एकवचन (स्त्री) — successive subjects of implicit अस्ति',
+      'सुखम् → प्रथमा एकवचन (नपुंसक) — subject of implicit अस्ति in the कुतः-question',
+      'कुतः → indeclinable interrogative = "whence?"',
+    ],
+    keyFights: [
+      'A four-fold negation chain: न अस्ति बुद्धिः | न च भावना | न च शान्तिः | (अशान्तस्य) कुतः सुखम् — "no understanding, no contemplation, no peace; (and) for the unpeaceful, whence happiness?". The chain culminates in a rhetorical-कुतः (a beloved Sanskrit move).',
+      'A षष्ठी-of-disadvantage cascade: अयुक्तस्य ... अयुक्तस्य ... अभावयतः ... अशान्तस्य. Each negative-genitive specifies the disqualified person.',
+      'अभावयतः — षष्ठी एकवचन शानच् of the causative-stem भावय- (from √भू "to bring-into-being"). Spotting the causative + present-participle + genitive is a layered identification.',
+    ],
+    anvaya:
+      'अयुक्तस्य बुद्धिः न अस्ति | अयुक्तस्य च भावना न (अस्ति) | अभावयतः शान्तिः न (अस्ति) च | अशान्तस्य सुखम् कुतः',
+    hindi:
+      'जो (इन्द्रिय-)संयम से रहित है, उसकी बुद्धि (विवेकशीलता) नहीं होती; उसकी भावना (एकाग्र-चिन्तन) भी नहीं होती; जो भावना नहीं करता, उसकी शान्ति नहीं होती; और अशान्त को सुख कहाँ से?',
+    english:
+      'There is no understanding for the unyoked; nor for the unyoked is there contemplation; nor for the un-meditating is there peace; and for the unpeaceful, whence happiness?',
+  },
+
+  '2.67': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'इन्द्रियाणाम्',
+      'हि',
+      'चरताम्',
+      'यत्',
+      'मनः',
+      'अनुविधीयते',
+      'तत्',
+      'अस्य',
+      'हरति',
+      'प्रज्ञाम्',
+      'वायुः',
+      'नावम्',
+      'इव',
+      'अम्भसि',
+    ],
+    sandhiNotes: [
+      'यन्मनोऽनुविधीयते = यत् + मनः + अनुविधीयते (त् + म → न्म; -ः + अ → -ोऽ)',
+      'तदस्य = तत् + अस्य (त् + अ → द्अ)',
+      'वायुर्नावमिवाम्भसि = वायुः + नावम् + इव + अम्भसि (-ः + न → -र्; -म् + इ → -मि; आ + अ → ा)',
+    ],
+    finiteVerbs: [
+      { form: 'अनुविधीयते', root: 'अनु + वि + √धा (passive)', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'A', gloss: '"is conformed-to / follows after" (passive)' },
+      { form: 'हरति', root: '√हृ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"carries away / steals"' },
+    ],
+    vibhaktiNotes: [
+      'इन्द्रियाणाम् → षष्ठी बहुवचन = "of the senses"',
+      'चरताम् → षष्ठी बहुवचन (शानच्) = "of (those) wandering"',
+      'यत् ... तत् → प्रथमा/द्वितीया एकवचन (नपुंसक) — relative-correlative; refers to "(that) mind which..."',
+      'मनः → प्रथमा एकवचन — subject of अनुविधीयते',
+      'अस्य → षष्ठी एकवचन = "his"',
+      'प्रज्ञाम् → द्वितीया एकवचन (स्त्री) — object of हरति',
+      'वायुः → प्रथमा एकवचन — subject of (implicit) हरति in the simile',
+      'नावम् → द्वितीया एकवचन (स्त्री) — object inside the simile',
+      'अम्भसि → सप्तमी एकवचन = "in the water"',
+    ],
+    keyFights: [
+      'Beautiful boat-and-wind simile. The structure: relative-clause (यत् मनः इन्द्रियाणाम् ... अनुविधीयते) + correlative-main (तत् अस्य प्रज्ञाम् हरति) + simile (वायुः नावम् इव अम्भसि). Three clauses interlocked by नपुंसक-correlatives and a clear इव.',
+      'अनुविधीयते — passive of अनु + वि + √धा. The triple-prefix construction = "is-arranged-to-follow", i.e., "yields-itself-to". Spotting the passive (-य- + आत्मनेपद) is the key.',
+      'इन्द्रियाणाम् हि चरताम् — षष्ठी-of-the-senses-wandering: when the mind follows even ONE wandering sense, it loses the प्रज्ञा. The षष्ठी doubles up (genitive of possession + genitive of agent of शानच्).',
+    ],
+    anvaya:
+      'चरताम् इन्द्रियाणाम् यत् मनः अनुविधीयते | वायुः अम्भसि नावम् इव | तत् अस्य प्रज्ञाम् हरति',
+    hindi:
+      'चरती हुई इन्द्रियों के पीछे जो मन चलता है — जैसे जल में हवा नौका को (बहाकर ले जाती है) — वैसे ही वह (मन) इस (पुरुष) की प्रज्ञा को हर लेता है।',
+    english:
+      'For the mind which yields itself to the wandering senses — that carries away his understanding, just as the wind carries off a boat upon the waters.',
+  },
+
+  '2.68': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'तस्मात्',
+      'यस्य',
+      'महा-बाहो',
+      'निगृहीतानि',
+      'सर्वशः',
+      'इन्द्रियाणि',
+      'इन्द्रिय-अर्थेभ्यः',
+      'तस्य',
+      'प्रज्ञा',
+      'प्रतिष्ठिता',
+    ],
+    sandhiNotes: [
+      'तस्माद्यस्य = तस्मात् + यस्य (त् + य → द्य)',
+      'इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य = इन्द्रियाणि + इन्द्रियार्थेभ्यः + तस्य (-इ + इ → -ी; -ः + त → -स्त)',
+    ],
+    finiteVerbs: null,
+    vibhaktiNotes: [
+      'तस्मात् → indeclinable / पञ्चमी = "therefore"',
+      'यस्य ... तस्य → षष्ठी एकवचन (relative-correlative)',
+      'महाबाहो → सम्बोधन एकवचन',
+      'निगृहीतानि → प्रथमा बहुवचन (नपुंसक PPP) = "(have been) restrained" — predicate of इन्द्रियाणि',
+      'सर्वशः → indeclinable = "in every way, completely"',
+      'इन्द्रियाणि → प्रथमा बहुवचन — subject',
+      'इन्द्रियार्थेभ्यः → पञ्चमी बहुवचन = "from the sense-objects" (ablative-of-withdrawal)',
+      'प्रज्ञा प्रतिष्ठिता → standard refrain',
+    ],
+    keyFights: [
+      'No finite verb! निगृहीतानि is PPP-as-predicate ("(senses) have-been-restrained"); प्रतिष्ठिता is again PPP-as-predicate. Both with implicit अस्ति.',
+      'Final and most concentrated repetition of तस्य प्रज्ञा प्रतिष्ठिता (cf. 2.57, 2.58, 2.61) — Krishna closes the स्थित-प्रज्ञ description-cycle.',
+      'पञ्चमी-of-withdrawal again: इन्द्रियाणि इन्द्रियार्थेभ्यः निगृहीतानि = "(the senses are) restrained FROM the sense-objects". Same structure as 2.58.',
+    ],
+    anvaya:
+      'तस्मात् | महाबाहो | यस्य इन्द्रियाणि सर्वशः इन्द्रियार्थेभ्यः निगृहीतानि | तस्य प्रज्ञा प्रतिष्ठिता',
+    hindi:
+      'इसलिए, हे महाबाहो! जिसकी इन्द्रियाँ इन्द्रिय-विषयों से सब प्रकार से निग्रहीत हैं, उसी की प्रज्ञा प्रतिष्ठित है।',
+    english:
+      'Therefore, O mighty-armed one, he whose senses are wholly restrained from the objects of sense — his wisdom is firmly established.',
+  },
+
+  '2.69': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'या',
+      'निशा',
+      'सर्व-भूतानाम्',
+      'तस्याम्',
+      'जागर्ति',
+      'संयमी',
+      'यस्याम्',
+      'जाग्रति',
+      'भूतानि',
+      'सा',
+      'निशा',
+      'पश्यतः',
+      'मुनेः',
+    ],
+    sandhiNotes: [
+      'पश्यतो मुनेः = पश्यतः + मुनेः (-ः + म → -ो)',
+    ],
+    finiteVerbs: [
+      { form: 'जागर्ति', root: '√जागृ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"is awake / wakes" (intensive-stem)' },
+      { form: 'जाग्रति', root: '√जागृ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', pada: 'P', gloss: '"are awake" (plural)' },
+    ],
+    vibhaktiNotes: [
+      'या ... तस्याम् → प्रथमा/सप्तमी एकवचन (स्त्री) — relative-correlative #1',
+      'यस्याम् ... सा → सप्तमी/प्रथमा एकवचन (स्त्री) — relative-correlative #2',
+      'निशा (twice) → प्रथमा एकवचन (स्त्री) — subject',
+      'सर्वभूतानाम् → षष्ठी बहुवचन = "of all beings"',
+      'संयमी → प्रथमा एकवचन (-इन् stem) = "the self-controlled (one)"',
+      'भूतानि → प्रथमा बहुवचन (नपुंसक) — subject of जाग्रति',
+      'पश्यतः मुनेः → षष्ठी एकवचन = "of the seeing-sage" (शानच् + noun)',
+    ],
+    keyFights: [
+      'A perfect chiastic relative-correlative: या निशा सर्वभूतानाम् | तस्याम् जागर्ति संयमी ‖ यस्याम् जाग्रति भूतानि | सा निशा पश्यतः मुनेः. The structure inverts: night-(of)-all → (in)-it the-yogi-wakes ‖ (in)-which the-(others)-wake → that-night for-the-seer.',
+      'जागर्ति vs जाग्रति — same root √जागृ, singular vs. plural. The intensive स्तेम जाग्र- with -र्ति/-न्ति endings is a Vedic-flavoured form Krishna deploys for poetic effect.',
+      'पश्यतः मुनेः — षष्ठी एकवचन of the शानच् present participle of √दृश्. The -तः ending after -अत् stems is the regular masculine genitive-singular.',
+    ],
+    anvaya:
+      'या सर्वभूतानाम् निशा | तस्याम् संयमी जागर्ति | यस्याम् भूतानि जाग्रति | सा पश्यतः मुनेः निशा',
+    hindi:
+      'जो सब प्राणियों के लिए रात (= अज्ञान) है, उसमें संयमी (योगी) जागता है। और जिसमें प्राणी जागते हैं — वह (बाह्य व्यवहार) तत्त्व-दर्शी मुनि के लिए रात है।',
+    english:
+      'What is night to all beings, in that the self-controlled one is awake; and in what (other beings) are awake, that is night to the seeing sage.',
+  },
+
+  '2.70': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'आपूर्यमाणम्',
+      'अचल-प्रतिष्ठम्',
+      'समुद्रम्',
+      'आपः',
+      'प्रविशन्ति',
+      'यद्वत्',
+      'तद्वत्',
+      'कामाः',
+      'यम्',
+      'प्रविशन्ति',
+      'सर्वे',
+      'सः',
+      'शान्तिम्',
+      'आप्नोति',
+      'न',
+      'काम-कामी',
+    ],
+    sandhiNotes: [
+      'समुद्रमापः = समुद्रम् + आपः (-म् + आ → -मा)',
+      'तद्वत्कामा यं = तद्वत् + कामाः + यम् (त्-junction; -ः + य → -ा)',
+      'सर्वे स = सर्वे + सः (final visarga lopa before consonant)',
+      'शान्तिमाप्नोति = शान्तिम् + आप्नोति (-म् + आ → -मा)',
+    ],
+    finiteVerbs: [
+      { form: 'प्रविशन्ति', root: 'प्र + √विश्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'बहुवचन', pada: 'P', gloss: '"they enter" (twice — once for waters, once for desires)' },
+      { form: 'आप्नोति', root: '√आप्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"obtains, attains"' },
+    ],
+    vibhaktiNotes: [
+      'आपूर्यमाणम् अचलप्रतिष्ठम् समुद्रम् → द्वितीया एकवचन — object of प्रविशन्ति in the simile',
+      'आपः → प्रथमा बहुवचन (स्त्री, irregular) — subject in the simile',
+      'यद्वत् ... तद्वत् → indeclinable correlative = "just as ... so"',
+      'कामाः → प्रथमा बहुवचन — subject of प्रविशन्ति in the main clause',
+      'यम् → द्वितीया एकवचन (relative) — object of प्रविशन्ति',
+      'सर्वे → प्रथमा बहुवचन — agreeing with कामाः',
+      'सः → प्रथमा एकवचन — correlative subject of आप्नोति',
+      'शान्तिम् → द्वितीया एकवचन — object of आप्नोति',
+      'कामकामी → प्रथमा एकवचन (बहुव्रीहि, -इन् stem) = "(one) whose-desire-is-for-desires"',
+    ],
+    keyFights: [
+      'Magnificent ocean simile, with twin प्रविशन्ति. यद्वत् ... तद्वत् holds the analogy. आपूर्यमाणम् ("being-filled-up") is the present passive participle of आ + √पॄ — Sanskrit\'s elegant present-passive form.',
+      'अचलप्रतिष्ठम् — कर्मधारय: "(one) of-unmoving-establishment". Describes the ocean: even as the rivers pour in, the sea remains brimful and steady.',
+      'कामकामी — a paranomastic बहुव्रीहि: "desirer-of-desires". The verb-of-action contained inside the noun is itself the noun. Krishna\'s closing zinger.',
+      'आपः is irregularly only-plural-feminine; प्रथमा बहुवचन ends in -ः directly. A common stumbling block.',
+    ],
+    anvaya:
+      'आपूर्यमाणम् अचलप्रतिष्ठम् समुद्रम् | आपः प्रविशन्ति यद्वत् | तद्वत् सर्वे कामाः यम् प्रविशन्ति | सः शान्तिम् आप्नोति | न कामकामी',
+    hindi:
+      'जैसे (नदियों के) जल समुद्र में — जो भरता रहता है पर अचल बना रहता है — प्रवेश करते हैं; उसी प्रकार जिसमें सब कामनाएँ प्रवेश कर (समा) जाती हैं, वही शान्ति को प्राप्त करता है — कामनाओं की कामना करनेवाला (= काम-कामी) नहीं।',
+    english:
+      'As the waters enter the ocean — which, ever filling, yet stays motionless and full — so do all desires enter him: he attains peace, not the desirer of desires.',
+  },
+
+  '2.71': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'विहाय',
+      'कामान्',
+      'यः',
+      'सर्वान्',
+      'पुमान्',
+      'चरति',
+      'निःस्पृहः',
+      'निर्ममः',
+      'निरहङ्कारः',
+      'सः',
+      'शान्तिम्',
+      'अधिगच्छति',
+    ],
+    sandhiNotes: [
+      'कामान्यः = कामान् + यः (न्-junction)',
+      'सर्वान्पुमान् = सर्वान् + पुमान् (न्-junction; -ान् ending of पुम्-stem)',
+      'पुमांश्चरति = पुमान् + चरति (न् + च → ंश्च)',
+      'शान्तिमधिगच्छति = शान्तिम् + अधिगच्छति (-म् + अ → -म)',
+    ],
+    finiteVerbs: [
+      { form: 'चरति', root: '√चर्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"moves about / lives"' },
+      { form: 'अधिगच्छति', root: 'अधि + √गम्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"attains"' },
+    ],
+    vibhaktiNotes: [
+      'विहाय → absolutive of वि + √हा = "having abandoned"',
+      'कामान् सर्वान् → द्वितीया बहुवचन — object of विहाय',
+      'यः ... सः → प्रथमा एकवचन (relative-correlative)',
+      'पुमान् → प्रथमा एकवचन (पुम्-stem, irregular) = "man, person"',
+      'निःस्पृहः, निर्ममः, निरहङ्कारः → प्रथमा एकवचन (बहुव्रीहि triple) — predicate adjectives',
+      'शान्तिम् → द्वितीया एकवचन — object of अधिगच्छति',
+    ],
+    keyFights: [
+      'Three negative-prefixed बहुव्रीहि: निःस्पृहः (without-longing), निर्ममः (without-mine-ness), निरहङ्कारः (without-I-ness). The तृ-pada of the verse is structurally a triple-list of predicate-attributes.',
+      'पुमान् is the prātipadika पुम् ("man") in irregular प्रथमा एकवचन. The form पुमांश्चरति shows the rare retention of -ंस् before palatal — a phonological cue. The dual पुमांसौ and plural पुमांसः share the same stem-quirk.',
+      'विहाय is absolutive of वि + √हा (वि-prefix doesn\'t take त्वा-suffix; uses -य): "having-cast-off". A Sanskrit absolutive-of-prefix-verbs basic.',
+      'Closes the long स्थित-प्रज्ञ description with the matching शान्तिम् अधिगच्छति from 2.70 — the parallel verb-pair caps the section.',
+    ],
+    anvaya:
+      'यः पुमान् | सर्वान् कामान् विहाय | निःस्पृहः निर्ममः निरहङ्कारः (सन्) चरति | सः शान्तिम् अधिगच्छति',
+    hindi:
+      'जो मनुष्य सब कामनाओं को त्यागकर — स्पृहा-रहित, ममत्व-रहित और अहङ्कार-रहित होकर — विचरण करता है, वही शान्ति को प्राप्त होता है।',
+    english:
+      'The man who, casting off all desires, walks free from longing, free from "mine"-ness, free from egotism — he attains peace.',
+  },
+
+  '2.72': {
+    speaker: 'श्रीभगवानुवाच',
+    padaccheda: [
+      'एषा',
+      'ब्राह्मी',
+      'स्थितिः',
+      'पार्थ',
+      'न',
+      'एनाम्',
+      'प्राप्य',
+      'विमुह्यति',
+      'स्थित्वा',
+      'अस्याम्',
+      'अन्त-काले',
+      'अपि',
+      'ब्रह्म-निर्वाणम्',
+      'ऋच्छति',
+    ],
+    sandhiNotes: [
+      'नैनाम् = न + एनाम् (अ + ए → ै)',
+      'स्थित्वास्याम् = स्थित्वा + अस्याम् (आ + अ → ा)',
+      'अन्तकालेऽपि = अन्तकाले + अपि (-े + अ → -एऽ)',
+      'ब्रह्मनिर्वाणमृच्छति = ब्रह्मनिर्वाणम् + ऋच्छति (-म् + ऋ → -म)',
+    ],
+    finiteVerbs: [
+      { form: 'विमुह्यति', root: 'वि + √मुह्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"becomes deluded" (negated)' },
+      { form: 'ऋच्छति', root: '√ऋ', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', pada: 'P', gloss: '"reaches, attains" (irregular -च्छ- present)' },
+    ],
+    vibhaktiNotes: [
+      'एषा ब्राह्मी स्थितिः → प्रथमा एकवचन (स्त्री) — subject of implicit अस्ति',
+      'पार्थ → सम्बोधन एकवचन',
+      'एनाम् → द्वितीया एकवचन (स्त्री) — object of प्राप्य',
+      'प्राप्य → absolutive of प्र + √आप् = "having attained"',
+      'स्थित्वा → absolutive of √स्था = "having stood / having abided"',
+      'अस्याम् → सप्तमी एकवचन (स्त्री) = "in this (state)"',
+      'अन्तकाले → सप्तमी एकवचन = "at the time-of-end (death)"',
+      'ब्रह्मनिर्वाणम् → द्वितीया एकवचन (नपुंसक) — object of ऋच्छति',
+    ],
+    keyFights: [
+      'The closing verse of Chapter 2. एषा ब्राह्मी स्थितिः ("this is the brahma-state") — एषा the topic-pronoun, ब्राह्मी the तद्धित feminine adjective from ब्रह्मन्. Both प्रथमा एकवचन स्त्री in agreement with स्थितिः.',
+      'Two absolutives → one finite verb structure repeated: एनाम् प्राप्य ... विमुह्यति | अस्याम् स्थित्वा ... ऋच्छति. The absolutives create the conditional setup; the finite verb delivers the result.',
+      'अन्तकाले अपि — सप्तमी + एमphatic अपि: "EVEN at the time of death". The Gītā\'s philosophical wager: even last-moment establishment in this state delivers ब्रह्म-निर्वाण.',
+      'ब्रह्मनिर्वाणम् — कर्मधारय: "the brahma-extinction". An adapted-from-Buddhism term that Krishna domesticates into the Vedānta vocabulary.',
+      'ऋच्छति is the irregular -च्छ-stem present of √ऋ (cf. गच्छति from √गम्). The -च्छ- present-stem from a vowel-final root is a rare Sanskrit form.',
+    ],
+    anvaya:
+      'पार्थ | एषा ब्राह्मी स्थितिः | एनाम् प्राप्य न विमुह्यति | अस्याम् अन्तकाले अपि स्थित्वा | ब्रह्मनिर्वाणम् ऋच्छति',
+    hindi:
+      'हे पार्थ! यह ब्राह्मी स्थिति है। इसको प्राप्त करके (मनुष्य) मोह को नहीं प्राप्त होता। अन्त-काल (मृत्यु-समय) में भी इसमें स्थित होकर वह ब्रह्म-निर्वाण को प्राप्त कर लेता है।',
+    english:
+      'This is the state of Brahman, O Pārtha; having attained it, one is no longer deluded. Standing fast in it even at the hour of death, one attains absorption in Brahman.',
+  },
+
 };
