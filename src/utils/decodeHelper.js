@@ -256,6 +256,9 @@ const LAKARA_SIGNALS = [
   // विधिलिङ्
   { match: /ेत्$|ेयुः$|ेताम्$|ेम$/, lakara: 'vidhilin', hint: 'optative -ेत्', trusted: true },
   { match: /ीय$|ीरन्$|ीमहि$/, lakara: 'vidhilin', pada: 'A', hint: 'optative आत्मनेपद', trusted: true },
+  // Irregular विधिलिङ् -यात् (अदादिगण: √अस् → स्यात्; also कुर्यात्, etc.).
+  // Highly verb-specific tail; trusted.
+  { match: /यात्$/, lakara: 'vidhilin', purusha: 'prathama', vachana: 'eka', hint: 'optative -यात् (irregular, e.g., स्यात्)', trusted: true },
   // लोट् 3rd person (-न्तु distinctive). Bare -तु also matches the
   // particle तु, so it's untrusted by default.
   { match: /न्तु$/, lakara: 'lot', purusha: 'prathama', vachana: 'bahu', hint: 'imperative -न्तु', trusted: true },
@@ -278,6 +281,12 @@ const LAKARA_SIGNALS = [
   // distinctive enough to trust; bare -ति / -ते match many nouns.
   { match: /न्ति$/, lakara: 'lat', purusha: 'prathama', vachana: 'bahu', hint: 'present -न्ति', trusted: true },
   { match: /ति$/,    lakara: 'lat', purusha: 'prathama', vachana: 'eka', hint: 'present -ति' },
+  // Passive (कर्मणि प्रयोग) -यते: उच्यते "is called", ज्ञायते "is known",
+  // दृश्यते "is seen". Distinct from आत्मनेपद -ते: passive inserts -य- before
+  // the ending. Future stems (-स्यते/-ष्यते) match earlier, so this only
+  // catches genuine passive -यते. Trusted.
+  { match: /यते$/,   lakara: 'lat', pada: 'Kr', purusha: 'prathama', vachana: 'eka', hint: 'passive -यते (कर्मणि लट्)', trusted: true },
+  { match: /यन्ते$/, lakara: 'lat', pada: 'Kr', purusha: 'prathama', vachana: 'bahu', hint: 'passive -यन्ते (कर्मणि लट् 3pl)', trusted: true },
   { match: /ते$/,    lakara: 'lat', pada: 'A', purusha: 'prathama', vachana: 'eka', hint: 'present आत्मनेपद -ते' },
   { match: /मि$/,    lakara: 'lat', purusha: 'uttama', vachana: 'eka', hint: 'present -मि' },
   { match: /सि$/,    lakara: 'lat', purusha: 'madhyama', vachana: 'eka', hint: 'present -सि (2sg)' },
@@ -308,6 +317,18 @@ const LAKARA_SIGNALS = [
 // uses 'lat' / 'lan' / 'lrt' etc. internally — same as classifyByStem.
 const VALID_LAKARAS = new Set(['lat', 'lan', 'lrt', 'lot', 'vidhilin', 'lit', 'lun', 'lin']);
 
+// Defective √अह् ("to say") exists only in लिट् (perfect). Common forms
+// across the Gītā: आह (3sg), आहतुः (3du), आहुः (3pl), with उपसर्ग variants
+// (प्र-, अनु-, सम्-). Hard-coded so the regex pass doesn't have to choose
+// between "obscure perfect" and the much commoner -ुः plural ending.
+const DEFECTIVE_AH_FORMS = new Map([
+  ['आह',     { purusha: 'prathama', vachana: 'eka',  gloss: '"he/she said"' }],
+  ['आहतुः',  { purusha: 'prathama', vachana: 'dvi',  gloss: '"the two said"' }],
+  ['आहुः',   { purusha: 'prathama', vachana: 'bahu', gloss: '"they say / the wise say"' }],
+  ['प्राह',  { purusha: 'prathama', vachana: 'eka',  gloss: '"he/she declared"' }],
+  ['प्राहुः', { purusha: 'prathama', vachana: 'bahu', gloss: '"they declare / the wise declare"' }],
+]);
+
 function classifyFiniteVerb(form) {
   // Reject fragments — no real Sanskrit verb is shorter than 3 characters.
   // The 2-char "ति" / "ते" sandhi-residue tokens that the engine sometimes
@@ -315,6 +336,22 @@ function classifyFiniteVerb(form) {
   // and produce gloss-less क्रिया cards. (Forms like अह्, स्था are dhātu
   // citation forms, never as standalone padas in actual verses.)
   if (!form || form.length < 3) return null;
+
+  // Defective √अह् perfect (लिट्) — fixed lookup; bypasses regex/vocab.
+  const defective = DEFECTIVE_AH_FORMS.get(form);
+  if (defective) {
+    return {
+      form,
+      lakara: 'lit',
+      purusha: defective.purusha,
+      vachana: defective.vachana,
+      pada: 'P',
+      root: form.startsWith('प्र') ? 'प्र + √अह्' : '√अह्',
+      gloss: defective.gloss,
+      confidence: 'high',
+      signal: 'defective-ah',
+    };
+  }
 
   // Zero-th pass: direct vocab lookup. Catches forms like प्राहुरव्ययम्
   // (a sandhi-joined verb where neither stem nor regex match — only

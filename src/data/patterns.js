@@ -96,6 +96,36 @@ export const PATTERN_CATEGORIES = [
           'Sanskrit verbs come in two voice classes. परस्मैपद = "active for another" (most verbs); आत्मनेपद = "active for oneself" (e.g. √युध्, √लभ्, √सेव्). The endings differ in EVERY लकार × पुरुष × वचन cell.',
         trigger: { label: '2.18', verse: '2.18', example: 'युध्यस्व — आत्मनेपद flag' },
       },
+      {
+        name: 'आत्मनेपद लट् — -ते ending',
+        meaning:
+          'आत्मनेपद present 3sg ends in -ते (परस्मैपद equivalent: -ति). Same root, different voice. Visible in कुरुते, मन्यते, लभते, सेवते across the Gītā.',
+        trigger: { label: '3.x', example: 'कुरुते — "consumes" (एधांसि/अग्नि simile)' },
+      },
+      {
+        name: 'Passive voice (कर्मणि प्रयोग) — -यते ending',
+        meaning:
+          'The -यते infix-ending marks passive: the subject is acted upon. उच्यते = "is called," ज्ञायते = "is known," दृश्यते = "is seen." Distinct from आत्मनेपद -ते — passive inserts -य- before the ending.',
+        trigger: { label: '8.3', verse: '8.3', example: 'अध्यात्ममुच्यते — "is called अध्यात्म"' },
+      },
+      {
+        name: 'Defective verb √अह् → आहुः / प्राहुः',
+        meaning:
+          '√अह् ("to say") exists ONLY in लिट् (perfect). आहुः = प्रथम बहुवचन = "they say," used throughout the Gītā for "the wise/sages say." Recognise on sight — no other tense exists.',
+        trigger: { label: '3.42', example: 'इन्द्रियाणि पराण्याहुः — "they say the senses are higher"' },
+      },
+      {
+        name: 'यथा-तथा structure — verb governs across the simile',
+        meaning:
+          '"यथा X... तथा Y..." = "Just as X... so too Y." The यथा-clause is often verbless; the finite verb sits in the तथा clause and governs both. When तथा is dropped the second line still owns the verb.',
+        trigger: { label: '9.6', verse: '9.6', example: 'यथाकाशस्थितो...उपधारय (line 2 verb governs line 1)' },
+      },
+      {
+        name: 'अनुवृत्ति within a verse — अस्मि carry-over',
+        meaning:
+          'विभूति योग repeats "अहं X" across many lines with अस्मि appearing once and carrying across the rest. Same अनुवृत्ति mechanic as cross-verse (1.16-1.18 दध्मौ), compressed into one stanza.',
+        trigger: { label: '10.21', verse: '10.21', example: 'आदित्यानामहं विष्णुः... मरीचिर्मरुतामस्मि' },
+      },
     ],
   },
   {
