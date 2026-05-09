@@ -287,26 +287,79 @@ function isPlausibleNasalSplit(left, right) {
 //   आचार्यान्मातुलान्भ्रातॄन्पुत्रान्पौत्रान्सखींः
 // → [आचार्यान्, मातुलान्, भ्रातॄन्, पुत्रान्, पौत्रान्, सखींः]
 //
+// Also handles the no-virama variant where the source typing convention
+// drops the virama on -न् before a following vowel-letter:
+//   पितॄनथ = पितॄन् + अथ (written as if the virama is absent)
+// matched on `[long matra] + न + [vowel-letter अ-औ]` (no virama in between).
+//
 // Restricting to long matras (ा, ी, ू, ॄ) avoids the bulk of false
 // positives: words with internal -न्C clusters (शान्त, आनन्द) typically
 // have short or no preceding vowel-marker, so they don't match.
 // Plausibility guard rejects splits where one side is implausibly short.
+// Elided-अ particle tails: when -न् (acc.pl. ending) joins with अ-initial
+// particle, both the virama and the अ may be elided in writing convention
+// (e.g., पितॄन् + अथ → पितॄनथ, with the implicit-अ on न absorbing the
+// अ from अथ). Map of "tail-after-elision → original full particle" used
+// to lexicon-validate this specific split pattern.
+const ELIDED_A_TAILS = new Map([
+  ['थ',   'अथ'],   // पितॄनथ → पितॄन् + अथ
+  ['पि',  'अपि'],  // -नपि → -न् + अपि
+  ['ति',  'अति'],  // -नति → -न् + अति (rarer, possible false-positive on -नति nouns)
+  ['हम्', 'अहम्'], // -नहम् → -न् + अहम्
+]);
+
 function splitNasalCompound(chunk) {
-  const re = /([ाीूॄ])न्([अ-ह])/g;
+  // Pattern A: standard -न्-virama boundary (-ान्C, -ीन्C, etc.).
+  // Pattern B: no-virama boundary (-ानV, -ीनV, etc.) where V is a
+  //            vowel-letter (अ, आ, इ, ई, उ, ऊ, ऋ, ए, ऐ, ओ, औ).
+  // Combined regex with two alternatives.
+  const re = /([ाीूॄ])(न्[अ-ह]|न[अ-औ])/g;
   const splits = [];
   let lastEnd = 0;
   let match;
   while ((match = re.exec(chunk)) !== null) {
-    // Cut after the virama (न्), i.e., 1 char of matra + 2 chars of न्
-    const splitAt = match.index + 1 + 2;
+    const matra = match[1];
+    const tail = match[2];
+    // For pattern A (न्C): cut AFTER virama, before next consonant.
+    //   "...ान्म..." → "...ान्" + "म..."  (splitAt = matchStart + 1 + 2)
+    // For pattern B (नV): cut AFTER न (no virama), before vowel-letter.
+    //   "...ानअ..." → "...ान" + "अ..."     (splitAt = matchStart + 1 + 1)
+    const isVirama = tail.startsWith('न्');
+    const splitAt = match.index + 1 + (isVirama ? 2 : 1);
     const left = chunk.slice(lastEnd, splitAt);
+    // For no-virama case the LEFT ends in bare न (implicit अ); the next
+    // word starts with its own vowel. To make LEFT a proper word, append
+    // a virama so it reads as -न्.
+    const leftWord = isVirama ? left : left + '्';
     const remaining = chunk.slice(splitAt);
-    if (!isPlausibleNasalSplit(left, remaining)) continue;
-    splits.push(left);
+    if (!isPlausibleNasalSplit(leftWord, remaining)) continue;
+    splits.push(leftWord);
     lastEnd = splitAt;
     re.lastIndex = splitAt;
   }
-  if (lastEnd === 0) return null;
+  if (lastEnd === 0) {
+    // Pattern C (elided अ-particle): scan for "[long matra]+न+(elided
+    // tail)" where the tail is a known अ-initial particle missing its
+    // initial अ (पितॄनथ → पितॄन् + अथ). Whitelisted to avoid false
+    // positives like जनति (a noun in -नति).
+    for (const [tail, restored] of ELIDED_A_TAILS) {
+      // We want chunk to END with [matra]+न+tail (so the elided particle
+      // is the rightmost piece), or to have it followed by a separator.
+      const re2 = new RegExp(`([ाीूॄ])न${tail}(?=$|\\s|[।॥])`);
+      const m = re2.exec(chunk);
+      if (m) {
+        const splitAt = m.index + 1 + 1; // matra + न
+        const left = chunk.slice(0, splitAt) + '्';
+        const right = restored;
+        if (isPlausibleNasalSplit(left, right)) {
+          // Recurse on the left in case it's also a nasal compound.
+          const leftSplits = splitNasalCompound(left) || [left];
+          return [...leftSplits, right];
+        }
+      }
+    }
+    return null;
+  }
   const final = chunk.slice(lastEnd);
   if (final) splits.push(final);
   return splits.length >= 2 ? splits : null;

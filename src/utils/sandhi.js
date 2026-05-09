@@ -457,6 +457,10 @@ const VOWEL_LEFT_WHITELIST = new Set([
   'या', 'ये', 'ने', 'ते', 'मे', 'से', 'सा', 'सः', 'एते', 'एव',
   // Common avyaya prefixes that act as full preverbs.
   'अति', 'अपि', 'इति', 'यथा', 'तथा', 'सदा',
+  // Locative/temporal adverbs that often start a verse-line and sandhi
+  // with the next word's vowel: तत्र (there), यत्र (where), अत्र (here),
+  // सर्वत्र (everywhere), अन्यत्र (elsewhere).
+  'तत्र', 'यत्र', 'अत्र', 'सर्वत्र', 'अन्यत्र',
 ]);
 
 // Vowel sandhi can also happen at characteristic word-endings —
