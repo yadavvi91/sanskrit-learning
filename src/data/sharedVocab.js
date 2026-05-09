@@ -296,14 +296,23 @@ export const SHARED_VOCAB = {
   'अद्वेष्टा':              { category: 'noun', root: 'अद्वेष्टृ', gender: 'm', number: 'eka', case: 'pra', gloss: 'one who hates no being / non-hater' },
 };
 
+import { VOCAB_EXTENDED } from './vocabulary-extended.js';
+
 // Helper: lookup with both exact match and a small fall-through for hyphenated
 // surface forms (e.g., padaccheda may use "आगम-अपायिनः" while the dictionary
 // keys the unhyphenated form). Returns null if not found.
+//
+// Lookup priority (high → low):
+//   1. SHARED_VOCAB[word]       — hand-curated, trusted entries
+//   2. VOCAB_EXTENDED[word]     — bulk agent-generated, audit-flagged
+//   3. de-hyphenated retries on each
 export function lookupSharedVocab(word) {
   if (!word) return null;
   if (SHARED_VOCAB[word]) return SHARED_VOCAB[word];
+  if (VOCAB_EXTENDED[word]) return VOCAB_EXTENDED[word];
   // Try without hyphens (compound surface form → dictionary form)
   const dehyphenated = word.replace(/-/g, '');
   if (SHARED_VOCAB[dehyphenated]) return SHARED_VOCAB[dehyphenated];
+  if (VOCAB_EXTENDED[dehyphenated]) return VOCAB_EXTENDED[dehyphenated];
   return null;
 }

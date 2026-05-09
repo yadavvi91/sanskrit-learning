@@ -66,14 +66,26 @@ describe('lookupSharedVocab — hyphen-stripping fallback', () => {
     expect(r.gloss).toMatch(/sense-contacts|matter-touches/i);
   });
 
-  it('returns null for unknown words', () => {
-    expect(lookupSharedVocab('नोपस्थितः')).toBeNull();
+  it('returns null for completely-unknown words (no entry in either map)', () => {
+    // Use a deliberately nonsense sequence — won't be in SHARED_VOCAB
+    // OR in the bulk-generated VOCAB_EXTENDED. (Real Devanagari letters
+    // so the call site doesn't bypass on falsy input.)
+    expect(lookupSharedVocab('ज़क़ह़')).toBeNull();
   });
 
   it('handles falsy input safely', () => {
     expect(lookupSharedVocab('')).toBeNull();
     expect(lookupSharedVocab(null)).toBeNull();
     expect(lookupSharedVocab(undefined)).toBeNull();
+  });
+
+  it('SHARED_VOCAB beats VOCAB_EXTENDED on key collision', async () => {
+    // A word seeded in SHARED_VOCAB (कृष्ण → "O Krishna") must continue
+    // to win even after the bulk-generated extended map lands. This is
+    // a live-state assertion, not a fixture mock.
+    const r = lookupSharedVocab('कृष्ण');
+    expect(r).toBeTruthy();
+    expect(r.gloss).toContain('Krishna');
   });
 });
 
