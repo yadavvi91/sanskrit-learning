@@ -1,0 +1,20 @@
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_7fb79ce37a462c 138-178
+  s_d5e8c30b294ba2::t_04f88b87a27111 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "53991cfd844cee80d413bf5deef82665e9035d87",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
