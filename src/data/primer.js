@@ -235,4 +235,108 @@ export const PRIMER_SECTIONS = [
       'Articles and prepositions don\'t exist as word classes — case endings do their work.',
     ],
   },
+  {
+    id: 'obscure-points',
+    title: 'Obscure points — gotchas worth bookmarking',
+    body: [
+      'Edge cases and non-obvious rules that have surfaced while decoding the Gītā. Each row names the rule, gives a concrete verse + word it appeared on, and the sandhi or grammatical mechanism in play. When you hit one of these in the wild and it looks "broken", check this index — odds are it\'s on the list.',
+    ],
+    table: {
+      headers: ['Rule / pattern', 'What\'s happening', 'Verse · word', 'Why it\'s easy to miss'],
+      rows: [
+        [
+          'Compound declension follows उत्तरपद',
+          'Inside a समास, only the LAST member\'s gender + stem-class determine the declension. The first member is just a stem; its standalone class doesn\'t apply.',
+          '1.1 · कुरुक्षेत्रे (n. -अ stem → फल-class). Standalone कुरु is m. u-stem (कुरूणाम्) — but inside the compound that doesn\'t carry over.',
+          'Same surface fragment "कुरु" appears in two completely different paradigms depending on whether it\'s standalone or compound-internal.',
+        ],
+        [
+          'Defective √अह् (only लिट्)',
+          '√अह् ("to say") exists ONLY in the perfect tense. आह = he said, आहुः = they say, प्राहुः = the wise declare. No लट्/लङ्/लृट्/लोट् forms exist.',
+          '3.42 · पराण्याहुः ("they call them higher"); 4.1 · प्राह (विवस्वान्...प्राह); 18.3 · प्राहुर्मनीषिणः ("the wise call action…")',
+          'Recognise on sight — no other tense available, so trying to derive a "present" आहति is wasted effort.',
+        ],
+        [
+          'Visarga-र् sandhi (Pattern A: before voiced consonant)',
+          '-ः + voiced consonant → -र् + cons (with virama written: र्). The visarga turns into an actual र्.',
+          '10.21 · मरीचिर्मरुताम् ← मरीचिः + मरुताम्; 18.3 · प्राहुर्मनीषिणः ← प्राहुः + मनीषिणः',
+          'र् + ् + cons looks structurally distinct, but visually blends into compound-internal -र्C- clusters; lexicon validation needed.',
+        ],
+        [
+          'Visarga-र् sandhi (Pattern B: before vowel-letter)',
+          '-ः + vowel → -र् + vowel-as-matra. The next word\'s initial vowel attaches as a matra on र; NO virama written. र+ि / र+े / र+ो look identical to internal syllables.',
+          '3.42 · पराण्याहुरिन्द्रियेभ्यः ← पराण्याहुः + इन्द्रियेभ्यः (the इ became ि matra on र)',
+          'Internal -र+matra- is everywhere (कुरुते, मरुत्, पुरुष, etc.). The boundary is invisible without lexicon hints.',
+        ],
+        [
+          'Implicit virama drop (continuous writing)',
+          '-म् or -त् or -न् + vowel-letter often drops the virama in writing — pure typographic convention. The hyphenless string covers a real word boundary.',
+          '1.2 · आचार्यमुपसङ्गम्य = आचार्यम् + उपसङ्गम्य; 4.37 · भस्मसात्कुरुते = भस्मसात् + कुरुते',
+          'Looks like one long word; only vocab/hint validation reveals the boundary.',
+        ],
+        [
+          'Anusvara ं ↔ -म् equivalence',
+          'Word-final ं (anusvara) and -म् (consonant + virama) are phonologically identical. Sanskrit prints them inconsistently: इदं vs इदम्, हृदं vs हृदम्.',
+          '10.42 · विष्टभ्याहमिदं ↔ canonical विष्टभ्याहमिदम् (= विष्टभ्य + अहम् + इदम्)',
+          'Same word looks different across editions; vocab lookup must canonicalise across both.',
+        ],
+        [
+          'Predicate PPP / adjective + implied अस्ति',
+          'A प्रथमा-case PPP or adjective IS the predicate; implicit अस्ति links it to the subject. English forces "is/was X" — Sanskrit doesn\'t.',
+          '1.33 · काङ्क्षितम् ("was desired") + अवस्थिताः ("are stationed"); 2.20 · अजः नित्यः शाश्वतः पुराणः (4 stacked); 2.24 · अच्छेद्यः अदाह्यः अक्लेद्यः अशोष्यः नित्यः सर्वगतः स्थाणुः अचलः सनातनः (9 stacked!)',
+          'No finite verb anywhere; the verse looks "incomplete" until you recognise the PPP/adjective IS the verb.',
+        ],
+        [
+          'अनुवृत्ति — verb spans verses',
+          'A finite verb in verse N governs the syntactic skeleton of verses N+1, N+2, …. Drop one verse out of context and it looks fragmentary.',
+          '1.15 दध्मौ → 1.16-1.18 (no verb shown; mentally supply दध्मौ); 10.19/10.20 अहम् + implicit अस्मि → 10.21-10.42 entire विभूति योग chain',
+          'Verse incomplete in isolation — only makes sense in sequence. Modern editions sometimes break the chain visually, hiding the connection.',
+        ],
+        [
+          'यथा-तथा structure',
+          'Two-half simile. Verb in the तथा-half (second half) governs both halves. The यथा-half is grammatically complete *only because* of the तथा-half\'s verb.',
+          '2.22 · यथा...गृह्णाति | तथा...संयाति ("just as a man takes new clothes, so the soul takes new bodies"); 9.6 · यथाकाशस्थितो...वायुः | तथा सर्वाणि भूतानि...उपधारय',
+          'First half looks verbless; second half\'s verb is the anchor for both.',
+        ],
+        [
+          'आत्मनेपद imperative endings',
+          'लोट् मध्यम-एकवचन आत्मनेपद = -स्व (not the परस्मैपद -हि). Other आत्मनेपद imperatives: -ध्वम् (2pl), -न्ताम् (3pl), -ताम् (3sg).',
+          '2.18 · युध्यस्व ("fight!" — √युध् gaṇa 4 आत्मनेपद)',
+          'Looks like noun ending in -व; only the verb-stem context reveals the imperative.',
+        ],
+        [
+          'Passive voice -यते (कर्मणि लट्)',
+          'The -यते infix-ending marks passive: subject is acted upon. उच्यते = "is called", ज्ञायते = "is known", दृश्यते = "is seen". Distinct from आत्मनेपद -ते: passive inserts -य- before the ending.',
+          '8.3 · अध्यात्ममुच्यते ("is called अध्यात्म")',
+          'Looks like आत्मनेपद on first glance; the inserted -य- is the passive marker.',
+        ],
+        [
+          'Irregular विधिलिङ् of √अस् → -यात्',
+          '√अस् (अदादिगण) takes -यात् in optative-3sg, not the regular -एत्. स्यात्, स्याताम्, स्युः.',
+          '18.40 · स्यात्त्रिभिर्गुणैः ("could be by three guṇas")',
+          'Standard verb-class regex for विधिलिङ् expects -एत् ending; -यात् is the irregular signal.',
+        ],
+        [
+          'एक-वाक्यता vs अनुवृत्ति',
+          'एक-वाक्यता = single sentence spanning multiple verses (one syntactic unit broken across stanzas by metre). अनुवृत्ति = the supply rule that lets you continue a verb/word implicitly. Both produce "verbless" verses; अनुवृत्ति specifically names which verb is being supplied.',
+          '1.20 → 1.21 (एक-वाक्यता; the अनुवृत्ति verb is आह in 1.21); 2.42 → 2.43 (एक-वाक्यता; प्रवदन्ति from 2.42 governs both)',
+          'Both feel "broken" mid-thought; naming the mechanism (which verb? from where?) is what unblocks reading.',
+        ],
+        [
+          'कर्म as -न् stem (mixed paradigm)',
+          'कर्म looks like a -अ neuter stem (कर्म, कर्मणि, कर्माणि), but it\'s actually a -न् stem (kṛn-suffix → कर्मन्). Strong cases drop the -न् (कर्म), weak cases keep it (कर्मणा, कर्मणि).',
+          'Many Gītā verses · कर्म, कर्मणा, कर्मणि, कर्मणाम्',
+          'Looks identical to -अ stem in some cases; differs sharply in others (कर्मणाम् not *कर्मानाम्).',
+        ],
+        [
+          'Defective verb गाम् / गन्तृ irregularity',
+          'गम्-related forms have unusual stem alternations. The -ता form (गन्तासि "you will go") is the लुट् periphrastic future, not the लृट्.',
+          '2.52 · गन्तासि ("you will go beyond")',
+          'Periphrastic future is a tense regex doesn\'t catch — easy to misclassify as a noun in -ता.',
+        ],
+      ],
+    },
+    aside:
+      'This page grows over time. Each entry was a moment of "wait, why is this not parsing?" — captured here so you don\'t hit the same wall twice.',
+  },
 ];
