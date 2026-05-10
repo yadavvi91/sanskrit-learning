@@ -1,0 +1,32 @@
+checkpoints/checkpoint-45.md
+  s_d5e8c30b294ba2::t_4670ef9f4db90a 1-88
+src/data/vocabulary-extended.js
+  s_d5e8c30b294ba2::t_4aa1c5639af8eb 32,44
+src/data/_vocab_extended_part10.js
+  s_d5e8c30b294ba2::t_f629b32e2e7faf 1-347
+src/__tests__/template-gloss-audit.test.js
+  s_d5e8c30b294ba2::t_88bc839c3f3566 1-15,24,38-108,110,115-118
+  s_d5e8c30b294ba2::t_ef6a1f6117fc9a 109,111-114
+  s_d5e8c30b294ba2::t_4aebe58c0450ce 16-23,25-37
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_849167a01fbaa3 503,505
+  s_d5e8c30b294ba2::t_d72706b655f985 544,546,551-552
+  s_d5e8c30b294ba2::t_62abd5dcb505f1 407,409,412,414,417,419,422,424,427,429-433,436,438,441,443,446,448-456
+  s_d5e8c30b294ba2::t_3d429440745f46 561-562,566-567,571-572,576,578,583,585,589,591
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b1678a9df1fcfcab99eb59d3418628ae76e28933",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
