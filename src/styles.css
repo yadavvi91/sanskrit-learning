@@ -405,6 +405,47 @@ button:disabled {
   padding: 80px 0;
 }
 
+/* Prev/next verse navigation — appears at top and bottom of detail. */
+.verse-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.verse-detail + .verse-nav {
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+.verse-nav-btn {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-deva);
+  font-size: 0.95em;
+  transition: background 0.15s;
+}
+.verse-nav-btn:hover:not(:disabled) {
+  background: var(--parchment-deep);
+  border-color: var(--gold);
+}
+.verse-nav-btn:disabled {
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+.verse-nav-current {
+  font-family: var(--font-deva);
+  color: var(--ink-soft);
+  font-size: 0.9em;
+}
+
 .verse-detail {
   display: flex;
   flex-direction: column;

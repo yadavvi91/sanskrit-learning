@@ -173,7 +173,19 @@ export default function VerseJourney() {
 
       <section className="journey-detail">
         {selectedVerse ? (
-          <VerseDetail verse={selectedVerse} onOpenPrimer={openPrimer} />
+          <>
+            <VerseNavBar
+              chapter={selected.chapter}
+              verse={selected.verse}
+              onSelect={setSelected}
+            />
+            <VerseDetail verse={selectedVerse} onOpenPrimer={openPrimer} />
+            <VerseNavBar
+              chapter={selected.chapter}
+              verse={selected.verse}
+              onSelect={setSelected}
+            />
+          </>
         ) : (
           <div className="empty-state">
             <p>Pick a verse from the journey to read its decode.</p>
@@ -181,6 +193,48 @@ export default function VerseJourney() {
         )}
       </section>
     </div>
+  );
+}
+
+// Prev/next navigation. Wraps around the chapter boundary so reading
+// continuously through 18 chapters works without manual chapter jumps.
+function VerseNavBar({ chapter, verse, onSelect }) {
+  const ch = CHAPTERS.find((c) => c.number === chapter);
+  if (!ch) return null;
+  // Prev: same chapter, verse-1; if verse=1, jump to previous chapter's last.
+  const prev = verse > 1
+    ? { chapter, verse: verse - 1 }
+    : chapter > 1
+      ? { chapter: chapter - 1, verse: CHAPTERS.find((c) => c.number === chapter - 1)?.verseCount ?? 1 }
+      : null;
+  // Next: same chapter, verse+1; if verse=verseCount, jump to next chapter's first.
+  const next = verse < ch.verseCount
+    ? { chapter, verse: verse + 1 }
+    : chapter < CHAPTERS.length
+      ? { chapter: chapter + 1, verse: 1 }
+      : null;
+  return (
+    <nav className="verse-nav" aria-label="Verse navigation">
+      <button
+        type="button"
+        className="verse-nav-btn verse-nav-prev"
+        onClick={() => prev && onSelect(prev)}
+        disabled={!prev}
+        title={prev ? `Go to Gītā ${prev.chapter}.${prev.verse}` : 'Already at first verse'}
+      >
+        ← {prev ? `${prev.chapter}.${prev.verse}` : 'start'}
+      </button>
+      <span className="verse-nav-current">Gītā {chapter}.{verse}</span>
+      <button
+        type="button"
+        className="verse-nav-btn verse-nav-next"
+        onClick={() => next && onSelect(next)}
+        disabled={!next}
+        title={next ? `Go to Gītā ${next.chapter}.${next.verse}` : 'Already at last verse'}
+      >
+        {next ? `${next.chapter}.${next.verse}` : 'end'} →
+      </button>
+    </nav>
   );
 }
 
