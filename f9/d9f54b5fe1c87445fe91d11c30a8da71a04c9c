@@ -1,0 +1,43 @@
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_80fcfedb851adc 653-654
+  s_d5e8c30b294ba2::t_aea1bd0482f9c9 437-454
+  s_d5e8c30b294ba2::t_178504c5225932 420-435
+  s_d5e8c30b294ba2::t_ef1ef9875740b7 631-634
+  s_d5e8c30b294ba2::t_d93c32a69960d3 668-669
+  s_d5e8c30b294ba2::t_90bb5d02ae2132 620-621
+  s_d5e8c30b294ba2::t_9c7907d1f97891 368-403
+  s_d5e8c30b294ba2::t_34aaa5cce2de66 550-557
+  s_d5e8c30b294ba2::t_ee8abe59f76551 507-533
+  s_d5e8c30b294ba2::t_e92e1f11ebf5c9 581-600
+  s_d5e8c30b294ba2::t_9cd9992410a9c4 558-561
+  s_d5e8c30b294ba2::t_f6ecc9955c294f 603-606
+  s_d5e8c30b294ba2::t_d834e6aa746942 609-612,614-617
+  s_d5e8c30b294ba2::t_8a56e28427cee8 637,639
+  s_d5e8c30b294ba2::t_bd5c6134896054 407-418
+  s_d5e8c30b294ba2::t_df2bfc091d6f70 577
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_d4318b05e9478c 933-941
+  s_d5e8c30b294ba2::t_a61f62b485501a 880-904,919-922
+  s_d5e8c30b294ba2::t_7518b72d94b61c 873-877
+src/data/_vocab_extended_part6.js
+  s_d5e8c30b294ba2::t_09ed9936045bb2 101
+  s_d5e8c30b294ba2::t_085902c5161535 96-100
+checkpoints/checkpoint-46.md
+  s_d5e8c30b294ba2::t_95dede755e34b5 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "f9d9f54b5fe1c87445fe91d11c30a8da71a04c9c",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
