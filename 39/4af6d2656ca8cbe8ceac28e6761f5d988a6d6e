@@ -1,0 +1,33 @@
+src/__tests__/empty-popover-audit.test.js
+  s_d5e8c30b294ba2::t_62c5c6d339e4aa 8-25,28-31,35-39,49-50
+  s_d5e8c30b294ba2::t_916bf970cbbc73 1-7,26-27,32-34,40-48
+src/data/vocabulary-extended.js
+  s_d5e8c30b294ba2::t_96dce85729b5f6 31,42
+src/components/WordPopover.test.jsx
+  s_d5e8c30b294ba2::t_453633a2b1ad13 116-119
+checkpoints/checkpoint-43.md
+  s_d5e8c30b294ba2::t_72bfc4bf032afd 1-88
+src/components/WordPopover.jsx
+  s_d5e8c30b294ba2::t_01d97ddd7b20ce 188-202,208,210
+src/data/_vocab_extended_part9.js
+  s_d5e8c30b294ba2::t_fb33250f871d28 1-144
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_3c4743d1eea82c 491-533,542-550
+  s_d5e8c30b294ba2::t_f835c770b05951 534-541
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "394af6d2656ca8cbe8ceac28e6761f5d988a6d6e",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
