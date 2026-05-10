@@ -34,16 +34,18 @@ function OriginSummary() {
       <ArticleImage src="article-images/debroy-notes-1.jpg" alt="Handwritten Debroy notes — SOV/SVO, padaccheda, anvaya, the six vedanga" />
       <ArticleImage src="article-images/debroy-notes-2.jpg" alt="Handwritten Debroy notes — anushtubh metre, laghu/guru, the metrical rules" />
 
-      <h3>The parallel Sundarkand reading practice</h3>
+      <h3>Sundarkand — the longer route that brought me here</h3>
       <p>
-        Separate thread, longer-running than the Sanskrit one: I read Sundarkand every other
-        week, and have been doing that for the past four-plus years. To help me read along with
-        the audio I built the <a href="https://sundarkand.yadavvi.com/">Sundarkand reciter</a>{' '}
-        (chaupāī text synced to recitation). Years of reciting trained my ear for Awadhi metre,
-        and out of that came the{' '}
+        I read Sundarkand every other week, and have been doing that for the past four-plus
+        years. To read along with the audio I built the{' '}
+        <a href="https://sundarkand.yadavvi.com/">Sundarkand reciter</a> (chaupāī text synced
+        to recitation). Years of reciting is where I came to *feel* why metre matters — the
+        laghu/guru rhythm, why the यति falls where it does. None of that would have come from
+        a book. The{' '}
         <a href="https://github.com/yadavvi91/awadhi-meter-identifier">Awadhi Meter Visualizer</a>{' '}
-        (laghu/guru breakdown for chaupāī). Independent of the Sanskrit work — mentioned because
-        it's the longer practice in my life.
+        then made the felt sense visible. By the time I sat down with the Gītā, अनुष्टुभ was
+        no longer abstract. These threads don't compete; they completed each other. The longer
+        route is what gave the Sanskrit reading whatever depth it has.
       </p>
 
       <h3>The WhatsApp trigger</h3>

@@ -40,15 +40,17 @@ These four ideas are the reason I could later read a verse at all. They're what 
 
 ---
 
-## Sundarkand — the parallel reading practice
+## Sundarkand — the longer route that brought me here
 
-I read Sundarkand every other week, and have been doing that for the past four-plus years. The reading itself is the practice; everything else came out of it.
+The thought of not learning Sanskrit when I had the chance had been with me for a while. I wanted to come back to it. And on that path — back to Sanskrit, back to actually reading the Gītā — a lot of things came my way that I didn't ask for in advance, but that turned out to be exactly what I needed.
 
-To help me read along with the audio, I built [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)) — chaupāī text synced to the recitation, so the line I'm on is the line being recited. Years of doing this trained my ear for Awadhi metre — laghu/guru rhythms, where the यति falls, how a chaupāī actually scans. None of this was theoretical; it came from reciting.
+I read Sundarkand every other week, and have been doing that for the past four-plus years. To read along with the audio I built [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)) — chaupāī text synced to the recitation. The reading itself is the practice; the app exists to support it.
 
-The **[Awadhi Meter Visualizer](https://github.com/yadavvi91/awadhi-meter-identifier)** came after. Once I had a feel for the metre from years of recitation, I wanted to see it laid out — feed it a chaupāī and watch laghu/guru and the यति fall out visibly. That's all it does. It paid back the reading practice; it wasn't a stepping-stone to anything else.
+Years of reciting Sundarkand is where I came to feel why metre matters. The laghu/guru rhythm, the way a chaupāī breathes, the place the यति falls — those aren't things I'd have understood from a book. I'd have read about अनुष्टुभ in Debroy and known the rule on paper, but I'd never have *felt* why यति was important. The Sundarkand reading gave me that. The **[Awadhi Meter Visualizer](https://github.com/yadavvi91/awadhi-meter-identifier)** then took the felt sense and made it visible — feed it a chaupāī and watch the metre fall out. That tool is what years of reciting deserved.
 
-The Sanskrit thread is separate. The reason I'm mentioning Sundarkand here at all is that it's the longer-running practice in my life, and the Awadhi meter work is what came out of it — neither was built in service of Sanskrit. They're parallel.
+When the Sanskrit work began, the अनुष्टुभ in the Gītā was no longer abstract. The Awadhi route had taught me to listen for the metre before reading the words.
+
+These don't compete. They don't run parallel. They completed each other. Looking back, it feels less like a plan and more like a longer route I was led down — through Sundarkand, through Awadhi metre, through Debroy — so that when I sat down with the Gītā I'd have the in-depth feel for it that I wouldn't have had if I'd come at it directly.
 
 ---
 
@@ -535,7 +537,7 @@ For attribution and context, in case future me forgets: this project rests on pe
 - **Annie Besant, 1895** — the public-domain English translation that gave every auto-stub verse a baseline English reading.
 - **Edwin Arnold, 1885** — *The Song Celestial*, the second public-domain English translation, used as a comparison voice on each verse.
 - **Śaṅkara** — Advaitin commentary positions, agent-summarized, attached to every verse's references panel for grounding.
-- **The Sundarkand audio-reciter app** ([sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/)) and the **Awadhi Meter Visualizer** — both came out of my own Sundarkand reading practice (every other week, four-plus years). Independent of this project; mentioned because they're the longer-running thread in my life.
+- **The Sundarkand audio-reciter app** ([sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/)) and the **Awadhi Meter Visualizer** — both came out of my Sundarkand reading practice (every other week, four-plus years). They aren't predecessors to this app, they're the longer route that gave me the feel for metre and recitation that the Gītā work draws on now. They complete each other.
 - **Pāṇini** — without whom none of this is possible.
 
 ---
@@ -590,9 +592,9 @@ That's the whole project. A garden, not a textbook. A journal, not a graveyard.
 - Edwin Arnold, *The Song Celestial* (1885), public domain — the secondary English voice in the per-verse References panel.
 - Śaṅkara's commentary positions, Advaita-tradition summaries — agent-paraphrased, attached to every verse's References panel for grounding.
 
-**The parallel Sundarkand thread (separate practice):**
-- *Sundarkand audio reciter* — [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)). Audio player with chaupāī text synced to the recitation, built for my own reading practice (every other week, four-plus years). This is what trained my ear for Awadhi metre.
-- *Awadhi Meter Visualizer* — [github.com/yadavvi91/awadhi-meter-identifier](https://github.com/yadavvi91/awadhi-meter-identifier). A meter-recognition tool for Awadhi chaupāī (laghu/guru breakdown, यति marker). It came out of the years of reciting via the Sundarkand app, not out of any Sanskrit ambition.
+**The Sundarkand thread that completes this one:**
+- *Sundarkand audio reciter* — [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)). Audio player with chaupāī text synced to the recitation, built for my own reading practice (every other week, four-plus years). This is where I came to *feel* metre rather than read about it.
+- *Awadhi Meter Visualizer* — [github.com/yadavvi91/awadhi-meter-identifier](https://github.com/yadavvi91/awadhi-meter-identifier). A meter-recognition tool for Awadhi chaupāī. The felt sense from years of reciting, made visible. By the time the Sanskrit work began, अनुष्टुभ was no longer abstract — these were the routes that prepared me for it.
 
 **The grammar tradition itself:**
 - Pāṇini, *Aṣṭādhyāyī* (~5th–4th century BCE). The four-thousand-rule generative grammar that Maharashtra SSC quietly used to compile its tables without ever telling its students it was the source.
