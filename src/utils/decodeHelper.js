@@ -870,9 +870,38 @@ function recursiveYanSplit(pada, notes) {
 // reshape the join (e.g., सखा + इति → सखेति) fail the equality test
 // and fall through to the existing sandhi rules.
 const MATRA_TO_VOWEL = {
-  'ा': 'अ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ',
+  // matra-ā phonetically represents *long* आ, not short अ. The earlier
+  // map had 'ा': 'अ' which broke savarṇa-dīrgha equality (e.g. matra ा
+  // in a chunk failed to compare equal to explicit आ in a vocab-hint
+  // join). All other matras were already correct.
+  'ा': 'आ', 'ि': 'इ', 'ी': 'ई', 'ु': 'उ', 'ू': 'ऊ',
   'ृ': 'ऋ', 'ॄ': 'ॠ', 'े': 'ए', 'ै': 'ऐ', 'ो': 'ओ', 'ौ': 'औ',
 };
+// Savarṇa-dīrgha collapse: same-class vowel pairs merge to the long form.
+// अ+अ, अ+आ, आ+अ, आ+आ → आ. इ+इ, इ+ई, ई+इ, ई+ई → ई. Same for u/ū, ṛ/ṝ.
+// Without this, vocab-hint splits whose join uses savarṇa-dīrgha (e.g.
+// त्यक्त्वा + आत्मशुद्धये → त्यक्त्वात्मशुद्धये, आ+आ → आ) fail the
+// canonical-join equality test and the splitter mis-cuts on a vowel
+// boundary instead.
+const SAVARNA_CLASS = {
+  'अ': 'आ', 'आ': 'आ',
+  'इ': 'ई', 'ई': 'ई',
+  'उ': 'ऊ', 'ऊ': 'ऊ',
+  'ऋ': 'ॠ', 'ॠ': 'ॠ',
+};
+function collapseSavarna(arr) {
+  const out = [];
+  for (let i = 0; i < arr.length; i++) {
+    const cur = arr[i], next = arr[i + 1];
+    if (cur && next && SAVARNA_CLASS[cur] && SAVARNA_CLASS[cur] === SAVARNA_CLASS[next]) {
+      out.push(SAVARNA_CLASS[cur]);
+      i++; // skip the merged neighbour
+    } else {
+      out.push(cur);
+    }
+  }
+  return out;
+}
 function devaCanonical(s) {
   return Array.from(s)
     // Drop viramas, avagrahas, candrabindu (nasal-vowel marker).
@@ -887,6 +916,11 @@ function devaCanonical(s) {
     })
     .join('');
 }
+// Canonical with savarṇa-dīrgha collapse — used to validate vocab-hint
+// joins that contracted via अकः सवर्णे दीर्घः.
+function devaCanonicalSavarna(s) {
+  return collapseSavarna(Array.from(devaCanonical(s))).join('');
+}
 const VOCAB_HINT_SPLITS = new Map();
 for (const [key, v] of Object.entries(VOCAB_EXTENDED)) {
   if (!v || !v.gloss) continue;
@@ -896,8 +930,15 @@ for (const [key, v] of Object.entries(VOCAB_EXTENDED)) {
   if (parts.length < 2) continue;
   // Each part must be pure Devanagari (no Latin, no parenthetical noise).
   if (parts.some((p) => !/^[ऀ-ॿ]+$/.test(p))) continue;
-  // Structural validation: canonical join must equal canonical chunk.
-  if (devaCanonical(parts.join('')) !== devaCanonical(key)) continue;
+  // Structural validation: canonical join must equal canonical chunk,
+  // either as-is or under savarṇa-dīrgha collapse (अकः सवर्णे दीर्घः).
+  const joinCanon = devaCanonical(parts.join(''));
+  const keyCanon = devaCanonical(key);
+  if (joinCanon !== keyCanon) {
+    const joinSav = devaCanonicalSavarna(parts.join(''));
+    const keySav = devaCanonicalSavarna(key);
+    if (joinSav !== keySav) continue;
+  }
   VOCAB_HINT_SPLITS.set(key, parts);
 }
 

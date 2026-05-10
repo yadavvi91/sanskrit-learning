@@ -365,31 +365,93 @@ function inferFromSuffix(word) {
     return `${casePrefix} ${baseGloss}`;
   }
   // ── Verb forms ──
-  if (word.endsWith('न्तु')) return synth({ category: 'verb', lakara: 'lot', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'imperative 3pl — "let them X"' });
-  if (word.endsWith('न्ताम्')) return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'prathama', number: 'bahu', gloss: 'imperative ātmanepada 3pl' });
-  if (word.endsWith('ध्वम्')) return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'bahu', gloss: 'imperative ātmanepada 2pl — "you all do!"' });
-  if (word.endsWith('स्व'))  return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'eka', gloss: 'imperative ātmanepada 2sg — "do (for yourself)!"' });
-  if (word.endsWith('ष्यति') || word.endsWith('स्यति')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'P', gloss: 'future 3sg — "will X"' });
-  if (word.endsWith('ष्यन्ति') || word.endsWith('स्यन्ति')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'future 3pl — "they will X"' });
-  if (word.endsWith('ष्यसि') || word.endsWith('स्यसि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'madhyama', number: 'eka', pada: 'P', gloss: 'future 2sg — "you will X"' });
-  if (word.endsWith('ष्यामि') || word.endsWith('स्यामि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'uttama', number: 'eka', pada: 'P', gloss: 'future 1sg — "I will X"' });
-  if (word.endsWith('ष्यते') || word.endsWith('स्यते')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'future ātmanepada 3sg' });
+  if (word.endsWith('न्तु')) {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'verb', lakara: 'lot', purusha: 'prathama', number: 'bahu', pada: 'P', root: stem, gloss: `imperative 3pl of "${stem}"-stem — "let them ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('न्ताम्')) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'prathama', number: 'bahu', root: stem, gloss: `imperative ātmanepada 3pl of "${stem}"-stem (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ध्वम्')) {
+    const stem = word.slice(0, -4);
+    return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'bahu', root: stem, gloss: `imperative ātmanepada 2pl of "${stem}"-stem — "you all ${stem}!" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('स्व'))  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'madhyama', number: 'eka', root: stem, gloss: `imperative ātmanepada 2sg of "${stem}"-stem — "${stem} (for yourself)!" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ष्यति') || word.endsWith('स्यति')) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'P', root: stem, gloss: `future 3sg of "${stem}"-stem — "will ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ष्यन्ति') || word.endsWith('स्यन्ति')) {
+    const stem = word.slice(0, -6);
+    return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'bahu', pada: 'P', root: stem, gloss: `future 3pl of "${stem}"-stem — "they will ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ष्यसि') || word.endsWith('स्यसि')) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'verb', lakara: 'lrt', purusha: 'madhyama', number: 'eka', pada: 'P', root: stem, gloss: `future 2sg of "${stem}"-stem — "you will ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ष्यामि') || word.endsWith('स्यामि')) {
+    const stem = word.slice(0, -6);
+    return synth({ category: 'verb', lakara: 'lrt', purusha: 'uttama', number: 'eka', pada: 'P', root: stem, gloss: `future 1sg of "${stem}"-stem — "I will ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ष्यते') || word.endsWith('स्यते')) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'A', root: stem, gloss: `future ātmanepada 3sg of "${stem}"-stem (verb stem not in dictionary)` });
+  }
   // ── Imperfect (लङ्) — past tense, augmented with अ- ──
   // -अन्त (no virama after त) = ātmanepada/passive 3pl past:
   //   अभ्यहन्यन्त ← अभि + √हन् passive + लङ् 3pl
-  if (/^अ.+न्त$/.test(word)) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', pada: 'A', gloss: 'imperfect 3pl ātmanepada/passive — "they were X-ed / they X-ed (for self)"' });
-  if (/^अ.+त्$/.test(word) && word.length >= 4) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'eka', gloss: 'imperfect 3sg with अ- augment — "X-ed"' });
-  if (/^अ.+न्$/.test(word) && word.length >= 4) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'imperfect 3pl with अ- augment — "they X-ed"' });
+  if (/^अ.+न्त$/.test(word)) {
+    const stem = word.slice(1, -3); // strip leading अ + trailing न्त
+    return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', pada: 'A', root: stem, gloss: `imperfect 3pl ātmanepada/passive of "${stem}"-stem — "they were ${stem}-ed / they ${stem}-ed (for self)" (verb stem not in dictionary)` });
+  }
+  if (/^अ.+त्$/.test(word) && word.length >= 4) {
+    const stem = word.slice(1, -2);
+    return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'eka', root: stem, gloss: `imperfect 3sg of "${stem}"-stem — augmented "अ-${stem}-त्" past form (verb stem not in dictionary)` });
+  }
+  if (/^अ.+न्$/.test(word) && word.length >= 4) {
+    const stem = word.slice(1, -2);
+    return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', root: stem, gloss: `imperfect 3pl of "${stem}"-stem — augmented "अ-${stem}-न्" past form (verb stem not in dictionary)` });
+  }
   // ── Optative (विधिलिङ्) ──
-  if (word.endsWith('ेयुः')) return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'bahu', gloss: 'optative 3pl — "they should X"' });
-  if (word.endsWith('ेम'))    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'uttama', number: 'bahu', gloss: 'optative 1pl — "we should X"' });
-  if (word.endsWith('ेताम्')) return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'dvi', gloss: 'optative 3du — "the two should X"' });
-  if (word.endsWith('यात्'))  return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: 'optative 3sg (irregular -यात्)' });
+  if (word.endsWith('ेयुः')) {
+    const stem = word.slice(0, -4);
+    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'bahu', root: stem, gloss: `optative 3pl of "${stem}"-stem — "they should ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ेम'))    {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'uttama', number: 'bahu', root: stem, gloss: `optative 1pl of "${stem}"-stem — "we should ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ेताम्')) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'dvi', root: stem, gloss: `optative 3du of "${stem}"-stem — "the two should ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('यात्'))  {
+    const stem = word.slice(0, -4);
+    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', root: stem, gloss: `optative 3sg of "${stem}"-stem (irregular -यात् ending; verb stem not in dictionary)` });
+  }
   // ── Krdanta endings ──
-  if (word.endsWith('त्वा'))  return synth({ category: 'krdanta', kind: 'absolutive', gloss: 'absolutive — "having X-ed"' });
-  if (word.endsWith('तुम्'))  return synth({ category: 'krdanta', kind: 'infinitive', gloss: 'infinitive — "to X"' });
-  if (word.endsWith('इतव्यम्') || word.endsWith('तव्यम्')) return synth({ category: 'krdanta', kind: 'gerundive', gloss: 'gerundive — "to be X-ed / ought to be X-ed"', gender: 'n', number: 'eka', case: 'pra' });
-  if (word.endsWith('अनीयम्') || word.endsWith('नीयम्'))  return synth({ category: 'krdanta', kind: 'gerundive', gloss: 'gerundive — "to be X-ed"', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('त्वा'))  {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'krdanta', kind: 'absolutive', root: stem, gloss: `absolutive of "${stem}"-stem — "having ${stem}-ed" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('तुम्'))  {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'krdanta', kind: 'infinitive', root: stem, gloss: `infinitive of "${stem}"-stem — "to ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('इतव्यम्') || word.endsWith('तव्यम्')) {
+    const suffix = word.endsWith('इतव्यम्') ? 'इतव्यम्' : 'तव्यम्';
+    const stem = word.slice(0, -suffix.length);
+    return synth({ category: 'krdanta', kind: 'gerundive', root: stem, gloss: `gerundive of "${stem}"-stem — "to be ${stem}-ed / ought to be ${stem}-ed" (verb stem not in dictionary)`, gender: 'n', number: 'eka', case: 'pra' });
+  }
+  if (word.endsWith('अनीयम्') || word.endsWith('नीयम्'))  {
+    const suffix = word.endsWith('अनीयम्') ? 'अनीयम्' : 'नीयम्';
+    const stem = word.slice(0, -suffix.length);
+    return synth({ category: 'krdanta', kind: 'gerundive', root: stem, gloss: `gerundive of "${stem}"-stem — "to be ${stem}-ed" (verb stem not in dictionary)`, gender: 'n', number: 'eka', case: 'pra' });
+  }
   if (word.endsWith('इतम्'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
   if (word.endsWith('इतः'))   return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
   if (word.endsWith('िताः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl)', gender: 'm', number: 'bahu', case: 'pra' });
@@ -442,6 +504,33 @@ function inferFromSuffix(word) {
     const real = withStemGloss('एण', 'by');
     return synth({ category: 'noun', number: 'eka', case: 'tri', root: stem, gloss: real || `instrumental singular of "${stem}" — "by ${stem}" (a-stem; stem not in dictionary)` });
   }
+  // a-stem instrumental singular — matra forms (the common surface form,
+  // since matra-e (े) + न/ण is how -एन/-एण actually appears after a
+  // consonantal stem). अचल → अचलेन, अध्यक्ष → अध्यक्षेण, etc.
+  if (word.endsWith('ेन') && word.length >= 4) {
+    const stem = word.slice(0, -2);
+    const real = withStemGloss('ेन', 'by');
+    return synth({ category: 'noun', number: 'eka', case: 'tri', root: stem, gloss: real || `instrumental singular of "${stem}" — "by ${stem}" (a-stem; stem not in dictionary)` });
+  }
+  if (word.endsWith('ेण') && word.length >= 4) {
+    const stem = word.slice(0, -2);
+    const real = withStemGloss('ेण', 'by');
+    return synth({ category: 'noun', number: 'eka', case: 'tri', root: stem, gloss: real || `instrumental singular of "${stem}" — "by ${stem}" (a-stem with retroflex assimilation; stem not in dictionary)` });
+  }
+  // u-stem instrumental singular: matra-u + ना/णा (हेतु → हेतुना, गुरु → गुरुणा).
+  if ((word.endsWith('ुना') || word.endsWith('ुणा')) && word.length >= 4) {
+    const stem = word.slice(0, -2);
+    const real = withStemGloss(word.endsWith('ुना') ? 'ुना' : 'ुणा', 'by');
+    return synth({ category: 'noun', number: 'eka', case: 'tri', root: stem, gloss: real || `instrumental singular of "${stem}" — "by ${stem}" (u-stem; stem not in dictionary)` });
+  }
+  // ā-stem feminine nominative/vocative singular: word ends in matra ा after a consonant.
+  // Catches forms like प्रभा, माला, सेना, गंगा, etc. — must not collide with the
+  // a-stem matra-ा above; this is purely a nom-sg ā-stem catch-all.
+  if (word.endsWith('ा') && word.length >= 3 && !word.endsWith('ता') && !word.endsWith('त्वा') && !word.endsWith('स्या') && !word.endsWith('न्या') && !word.endsWith('या') && !word.endsWith('ुना') && !word.endsWith('ुणा')) {
+    const stem = word.slice(0, -1);
+    const real = withStemGloss('ा', '');
+    return synth({ category: 'noun', gender: 'f', number: 'eka', case: 'pra-or-sam', root: stem, gloss: real ? `${real.trim()} (f. nom. sg.)` : `feminine nominative/vocative singular of "${stem}" — ā-stem (stem not in dictionary)` });
+  }
   if (word.endsWith('स्य')) {
     const stem = word.slice(0, -2);
     const real = withStemGloss('स्य', 'of');
@@ -458,9 +547,18 @@ function inferFromSuffix(word) {
   // ── Indeclinable yathā-/sarva- compounds ──
   if (word.startsWith('यथा'))   return synth({ category: 'particle', gloss: 'yathā-compound — "according to / as / in the manner of"' });
   // ── Present tense verb forms (broad) ──
-  if (word.endsWith('न्ति') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'present 3pl — "they X"' });
-  if (word.endsWith('न्ते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'A', gloss: 'present ātmanepada 3pl — "they X (for self)"' });
-  if (word.endsWith('यते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'Kr', gloss: 'passive present 3sg — "is X-ed"' });
+  if (word.endsWith('न्ति') && word.length >= 4) {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'P', root: stem, gloss: `present 3pl of "${stem}"-stem — "they ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('न्ते') && word.length >= 4) {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'A', root: stem, gloss: `present ātmanepada 3pl of "${stem}"-stem — "they ${stem} (for self)" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('यते') && word.length >= 4) {
+    const stem = word.slice(0, -3);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'Kr', root: stem, gloss: `passive present 3sg of "${stem}"-stem — "is ${stem}-ed" (verb stem not in dictionary)` });
+  }
   // Before treating -ते as a verb ending, check if stripping just -े
   // (locative singular) gives a known noun/PPP/adjective — many forms
   // like युक्ते (loc sg of युक्त PPP) are mis-classified otherwise.
@@ -476,26 +574,51 @@ function inferFromSuffix(word) {
         gender: stemEntry.gender,
         number: 'eka',
         case: 'sap',
-        gloss: baseGloss ? `in ${baseGloss}` : 'a-stem locative singular — "in X"',
+        gloss: baseGloss ? `in ${baseGloss}` : `locative singular of "${locStem}" — "in ${locStem}" (a-stem; stem not in dictionary)`,
       });
     }
   }
-  if (word.endsWith('ते') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'present ātmanepada 3sg — "X-s (for self)"' });
-  if (word.endsWith('ति') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'P', gloss: 'present 3sg — "X-s"' });
-  if (word.endsWith('मि') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'uttama',  number: 'eka', pada: 'P', gloss: 'present 1sg — "I X"' });
-  if (word.endsWith('से') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'A', gloss: 'present ātmanepada 2sg — "you X (for self)"' });
-  if (word.endsWith('सि') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'P', gloss: 'present 2sg — "you X"' });
+  if (word.endsWith('ते') && word.length >= 4)  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'A', root: stem, gloss: `present ātmanepada 3sg of "${stem}"-stem — "${stem}-s (for self)" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('ति') && word.length >= 4)  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'P', root: stem, gloss: `present 3sg of "${stem}"-stem — "${stem}-s" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('मि') && word.length >= 4)  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'uttama',  number: 'eka', pada: 'P', root: stem, gloss: `present 1sg of "${stem}"-stem — "I ${stem}" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('से') && word.length >= 4)  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'A', root: stem, gloss: `present ātmanepada 2sg of "${stem}"-stem — "you ${stem} (for self)" (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('सि') && word.length >= 4)  {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'verb', lakara: 'lat', purusha: 'madhyama', number: 'eka', pada: 'P', root: stem, gloss: `present 2sg of "${stem}"-stem — "you ${stem}" (verb stem not in dictionary)` });
+  }
   // Present active participles (शतृ) — -अन्/-अन्तम्/-अन्तः ending after consonant.
   // Devanagari surface: -न्, -न्तम्, -न्तः, -न्तौ, -न्तः
-  if (word.endsWith('न्तौ')) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. dual) — "X-ing two"' });
+  if (word.endsWith('न्तौ')) {
+    const stem = word.slice(0, -4);
+    return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. dual) of "${stem}"-stem — "two ${stem}-ing" (verb stem not in dictionary)` });
+  }
   if (word.endsWith('न्तः') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. pl, nom)' });
   if (word.endsWith('न्तम्') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. sg, acc)' });
-  if (word.endsWith('न्') && word.length >= 4) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. sg, nom) — "the one who X-s"' });
+  if (word.endsWith('न्') && word.length >= 4) {
+    const stem = word.slice(0, -2);
+    return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. sg. nom.) of "${stem}"-stem — "the one who ${stem}-s" (verb stem not in dictionary)` });
+  }
   // Absolutive -य ending (अव्ययीभाव style — for prefix+verb forms like आसाद्य, उद्यम्य, आपूर्य)
-  if (word.endsWith('य') && word.length >= 4) return synth({ category: 'krdanta', kind: 'absolutive', gloss: 'absolutive — "having X-ed" (-य suffix)' });
+  if (word.endsWith('य') && word.length >= 4) {
+    const stem = word.slice(0, -1);
+    return synth({ category: 'krdanta', kind: 'absolutive', root: stem, gloss: `absolutive of "${stem}"-stem — "having ${stem}-ed" (-य suffix; verb stem not in dictionary)` });
+  }
   // Vocative -न् forms (राजन्, भगवन्)
   if (/[कगचजटडतदपबमरलवशसह]न्$/.test(word)) {
-    return synth({ category: 'noun', case: 'sambodhana', gloss: '-अन् stem vocative — "O X!"' });
+    const stem = word.slice(0, -2);
+    return synth({ category: 'noun', case: 'sambodhana', root: stem, gloss: `vocative of "${stem}"-stem — "O ${stem}!" (-अन् stem; stem not in dictionary)` });
   }
   // ── Broad fallbacks (run last) ──
   // -आत् (matra-ा + त्) → a-stem ablative singular ("from X")
@@ -505,11 +628,15 @@ function inferFromSuffix(word) {
     return synth({ category: 'noun', number: 'eka', case: 'pan', root: stem, gloss: real || `ablative singular of "${stem}" — "from ${stem}" (a-stem; stem not in dictionary)` });
   }
   // Vocative endings — broad
-  if (word.endsWith('हो'))    return synth({ category: 'noun', case: 'sambodhana', gloss: 'vocative (compound) — "O X!"' });
+  if (word.endsWith('हो'))    {
+    const stem = word.slice(0, -1);
+    return synth({ category: 'noun', case: 'sambodhana', root: stem, gloss: `vocative of "${stem}"-stem — "O ${stem}!" (compound; stem not in dictionary)` });
+  }
   // -वत् → adverbial particle "like X" (e.g. आदित्यवत्, अग्निवत्)
   if (word.endsWith('वत्') && word.length >= 4) {
+    const stem = word.slice(0, -3);
     const real = withStemGloss('वत्', 'like');
-    return synth({ category: 'particle', root: word.slice(0, -3), gloss: real || 'adverbial -वत् — "like X / in the manner of X"' });
+    return synth({ category: 'particle', root: stem, gloss: real || `adverbial -वत् of "${stem}" — "like ${stem} / in the manner of ${stem}" (stem not in dictionary)` });
   }
   // -धा → particle of manner/multiplicity (एकधा, अनेकधा, बहुधा, शतधा)
   if (word.endsWith('धा') && word.length >= 4) {
@@ -523,7 +650,8 @@ function inferFromSuffix(word) {
   if ((word.endsWith('त्व') || word.endsWith('त्वम्')) && word.length >= 4) {
     const cut = word.endsWith('त्वम्') ? -3 : -2;
     const real = withStemGloss(word.endsWith('त्वम्') ? 'त्वम्' : 'त्व', '');
-    return synth({ category: 'noun', gender: 'n', number: 'eka', case: word.endsWith('त्वम्') ? 'pra' : 'pra', root: word.slice(0, cut), gloss: real ? `${real.trim()}-ness` : 'abstract -त्व suffix — "X-ness / state of being X"' });
+    const stem = word.slice(0, cut);
+    return synth({ category: 'noun', gender: 'n', number: 'eka', case: word.endsWith('त्वम्') ? 'pra' : 'pra', root: stem, gloss: real ? `${real.trim()}-ness` : `abstract noun of "${stem}"-stem — "${stem}-ness / state of being ${stem}" (-त्व suffix; stem not in dictionary)` });
   }
   // -चित् ending on pronominal stems → indefinite "any-/some-"
   // (कस्यचित्, केनचित्, कस्मिंश्चित्, कस्मैचित्)
@@ -537,7 +665,8 @@ function inferFromSuffix(word) {
   // Word-final -अया → ā-stem feminine instrumental singular ("by X")
   if (word.endsWith('या') && word.length >= 4 && !word.endsWith('स्या') && !word.endsWith('न्या')) {
     const real = withStemGloss('या', 'by');
-    return synth({ category: 'noun', gender: 'f', number: 'eka', case: 'tri', root: word.slice(0, -2), gloss: real || 'ā-stem feminine instrumental singular — "by X / with X"' });
+    const stem = word.slice(0, -2);
+    return synth({ category: 'noun', gender: 'f', number: 'eka', case: 'tri', root: stem, gloss: real || `feminine instrumental singular of "${stem}" — "by ${stem} / with ${stem}" (ā-stem; stem not in dictionary)` });
   }
   // -ोः → genitive/locative dual ("of two X / in two X")
   if (word.endsWith('ोः') && word.length >= 4) {

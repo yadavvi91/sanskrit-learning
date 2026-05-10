@@ -93,7 +93,12 @@ export const VOCAB_EXTENDED_PART_6 = {
   'अच्युत': { category: 'noun', root: 'अच्युत', gender: 'm', number: 'eka', case: 'sam', gloss: 'O Acyuta' },
   'अज्ञानविमोहिताः': { category: 'adjective', root: 'अज्ञानविमोहित', gender: 'm', number: 'bahu', case: 'pra', gloss: 'deluded by ignorance' },
   'अतिमानिता': { category: 'noun', root: 'अतिमानिता', gender: 'f', number: 'eka', case: 'pra', gloss: 'arrogance' },
-  'अत्मशुद्धये': { category: 'noun', root: 'आत्मशुद्धि', gender: 'f', number: 'eka', case: 'cha', gloss: 'for self-purification' }, // AUDIT
+  // Was: 'अत्मशुद्धये' (with short अ — a splitter mis-cut covering up
+  // a savarṇa-dīrgha sandhi bug). Replaced with the correct आत्मशुद्धये
+  // entry plus a त्यक्त्वात्मशुद्धये vocab-hint that fixes the splitter
+  // at the source via the new सवर्ण-दीर्घ-aware validation in decodeHelper.
+  'आत्मशुद्धये': { category: 'noun', root: 'आत्मशुद्धि', gender: 'f', number: 'eka', case: 'cha', gloss: 'for self-purification (dative of purpose — तादर्थ्य चतुर्थी)' },
+  'त्यक्त्वात्मशुद्धये': { category: 'krdanta', gloss: 'having abandoned, for self-purification — savarṇa-dīrgha सन्धि आ + आ → आ collapses त्यक्त्वा and आत्मशुद्धये (त्यक्त्वा + आत्मशुद्धये)' },
   'अत्स्थितिं': { category: 'noun', root: 'स्थिति', gender: 'f', number: 'eka', case: 'dvi', gloss: 'state' }, // AUDIT
   'अद्यं': { category: 'adjective', root: 'आद्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'primordial' }, // AUDIT
   'अधिदैवतम्': { category: 'noun', root: 'अधिदैवत', gender: 'n', number: 'eka', case: 'pra', gloss: 'governing-deity principle' },
