@@ -3,7 +3,21 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { COVERAGE_CURVE } from '../data/dhatus.js';
 import { DHATUS_EXTENDED as DHATUS } from '../data/dhatus-extended.js';
 
-const getDhatuById = (id) => DHATUS.find((d) => d.id === id) ?? null;
+// Match by id first, then by devanagari (with or without virama at end),
+// so links like /verbs/ध्मा (from popovers that don't know the IAST id)
+// also resolve. Returns null when nothing matches — the caller falls back
+// to DHATUS[0] AND we surface a "not in list" notice.
+const getDhatuById = (id) => {
+  if (!id) return null;
+  // Exact id match
+  let d = DHATUS.find((x) => x.id === id);
+  if (d) return d;
+  // Devanagari match (e.g., "कृ", "ध्मा") with or without trailing virama
+  const stripped = id.replace(/्$/, '');
+  d = DHATUS.find((x) => x.devanagari === id || x.devanagari === stripped
+    || x.devanagari === id + '्' || x.devanagari.replace(/्$/, '') === stripped);
+  return d ?? null;
+};
 import DhatuPeriodicTable from './DhatuPeriodicTable.jsx';
 import DhatuDetail from './DhatuDetail.jsx';
 import StackBuilder from './StackBuilder.jsx';

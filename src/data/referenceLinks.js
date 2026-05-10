@@ -11,6 +11,28 @@
 
 import { getDeclensionForParsing, getDeclensionById } from './declensions.js';
 import { getPronounAnchor } from './pronouns.js';
+import { DHATUS_EXTENDED } from './dhatus-extended.js';
+
+// Build a quick lookup by both id and devanagari (with/without virama)
+// so reference links can verify a dhatu actually exists in the Verbs
+// page before linking there. Without this check, /verbs/ध्मा silently
+// falls back to /verbs/भू (the first dhatu) — confusing.
+const DHATU_REGISTRY = (() => {
+  const set = new Set();
+  for (const d of DHATUS_EXTENDED) {
+    if (d.id) set.add(d.id);
+    if (d.devanagari) {
+      set.add(d.devanagari);
+      set.add(d.devanagari.replace(/्$/, ''));
+    }
+  }
+  return set;
+})();
+function dhatuExists(rootKey) {
+  return DHATU_REGISTRY.has(rootKey)
+      || DHATU_REGISTRY.has(rootKey.replace(/्$/, ''))
+      || DHATU_REGISTRY.has(rootKey + '्');
+}
 
 const KIND_TO_PRIMER_TARGET = {
   'absolutive':      { url: '/primer#krdanta', label: 'see in Primer — कृदन्त (absolutive form)' },
@@ -71,11 +93,21 @@ export function getReferenceLink(parsing) {
     case 'verb': {
       // Strip "√" / preverb prefix to get a bare-root candidate.
       const rootMatch = parsing.root && /√([^\s]+)/.exec(parsing.root);
-      const dhatuId = rootMatch ? bareRootToId(rootMatch[1]) : null;
-      if (dhatuId) {
+      const bareRoot = rootMatch ? rootMatch[1] : null;
+      // Only link to /verbs/<id> if the dhatu is actually in the
+      // Verbs page list. Otherwise the link silently falls back to
+      // DHATUS[0] (= √भू) and surprises the user.
+      if (bareRoot && dhatuExists(bareRoot)) {
         return {
-          url: `/verbs/${dhatuId}`,
-          label: `open √${rootMatch[1]} in Verbs page`,
+          url: `/verbs/${bareRoot}`,
+          label: `open √${bareRoot} in Verbs page`,
+        };
+      }
+      // Dhatu exists in this verse but not in the 192-list yet.
+      if (bareRoot && lakara) {
+        return {
+          url: '/primer#lakara',
+          label: `see in Primer — लकार (√${bareRoot} not in the top-192 list yet)`,
         };
       }
       // Lakara-specific Primer hop.
