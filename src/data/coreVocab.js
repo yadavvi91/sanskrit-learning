@@ -732,6 +732,22 @@ const COMMON_NOUNS = {
   'अनीक':           { category: 'noun', root: 'अनीक', gender: 'n', gloss: 'army / array (compound stem)' },
   'अनीकम्':         { category: 'noun', root: 'अनीक', gender: 'n', number: 'eka', case: 'dvi', gloss: 'army / battle-array (Gītā 1.2: पाण्डवानीकम् = पाण्डव + अनीकम्)' },
   'पाण्डवानीकम्':   { category: 'noun', root: 'पाण्डव+अनीक', gender: 'n', number: 'eka', case: 'dvi', gloss: 'army of the Pāṇḍavas (Gītā 1.2; षष्ठी तत्पुरुष or कर्मधारय)' },
+
+  // -न् stem neuters whose nom/acc singular drops the -न् and surfaces
+  // as a plain "X-म" form (वर्त्मन् → वर्त्म, नामन् → नाम, etc.). These
+  // look like regular -अ stems on the surface but inflect as -न् stems
+  // in the oblique cases (वर्त्मना, वर्त्मनि, वर्त्मानि — analogous to
+  // कर्मणा / कर्मणि / कर्माणि).
+  'वर्त्म':          { category: 'noun', root: 'वर्त्मन्', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'path / track / way (nom-or-acc sg; -न् stem with dropped -न्)' },
+  'वर्त्मन्':        { category: 'noun', root: 'वर्त्मन्', gender: 'n', gloss: 'path / track / way (compound stem)' },
+  'वर्त्मना':        { category: 'noun', root: 'वर्त्मन्', gender: 'n', number: 'eka', case: 'tri', gloss: 'by the path' },
+  'वर्त्मनि':        { category: 'noun', root: 'वर्त्मन्', gender: 'n', number: 'eka', case: 'sap', gloss: 'on the path' },
+  'नाम':            { category: 'noun', root: 'नामन्', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'name (nom-or-acc sg; -न् stem)' },
+  'नामन्':          { category: 'noun', root: 'नामन्', gender: 'n', gloss: 'name (compound stem)' },
+  'शर्म':            { category: 'noun', root: 'शर्मन्', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'shelter / happiness / refuge (nom-or-acc sg)' },
+  'दाम':            { category: 'noun', root: 'दामन्', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'rope / garland (nom-or-acc sg)' },
+  'जन्म':            { category: 'noun', root: 'जन्मन्', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'birth (nom-or-acc sg; from √जन्)' },
+  'जन्मन्':          { category: 'noun', root: 'जन्मन्', gender: 'n', gloss: 'birth (compound stem; common in जन्ममृत्युजरा compounds)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
