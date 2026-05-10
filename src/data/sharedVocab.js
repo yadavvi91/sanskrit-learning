@@ -350,6 +350,20 @@ import { CORE_VOCAB } from './coreVocab.js';
 function inferFromSuffix(word) {
   if (!word || word.length < 2) return null;
   const synth = (extra) => ({ source: 'suffix-inferred', ...extra });
+
+  // Stem lookup helper: strip a suffix from `word`, look up the stem in
+  // SHARED_VOCAB / CORE_VOCAB / VOCAB_EXTENDED. If found and the stem
+  // entry has a gloss, prepend a case-prefix like "by/with X". Returns
+  // a resolved gloss string or null if stem not found.
+  function withStemGloss(suffix, casePrefix) {
+    const stem = word.slice(0, -suffix.length);
+    if (!stem || stem.length < 2) return null;
+    const stemEntry = SHARED_VOCAB[stem] || CORE_VOCAB[stem] || VOCAB_EXTENDED[stem];
+    if (!stemEntry || !stemEntry.gloss) return null;
+    // Take the first sense (before parenthetical/dash/comma).
+    const baseGloss = stemEntry.gloss.split(/[—,;(]/)[0].trim();
+    return `${casePrefix} ${baseGloss}`;
+  }
   // ── Verb forms ──
   if (word.endsWith('न्तु')) return synth({ category: 'verb', lakara: 'lot', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'imperative 3pl — "let them X"' });
   if (word.endsWith('न्ताम्')) return synth({ category: 'verb', lakara: 'lot', pada: 'A', purusha: 'prathama', number: 'bahu', gloss: 'imperative ātmanepada 3pl' });
@@ -386,15 +400,42 @@ function inferFromSuffix(word) {
   if (word.endsWith('ष्टम्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
   if (word.endsWith('ष्टः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
   // ── A-stem nominal endings (broad fallback) ──
-  if (word.endsWith('ानाम्')) return synth({ category: 'noun', number: 'bahu', case: 'sha', gloss: 'a-stem genitive plural — "of (the) X-s"' });
-  if (word.endsWith('एभ्यः')) return synth({ category: 'noun', number: 'bahu', case: 'cha', gloss: 'a-stem dative/ablative plural' });
-  if (word.endsWith('ेभ्यः')) return synth({ category: 'noun', number: 'bahu', case: 'cha', gloss: 'a-stem dative/ablative plural' });
-  if (word.endsWith('ैः'))    return synth({ category: 'noun', number: 'bahu', case: 'tri', gloss: 'a-stem instrumental plural — "by/with X-s"' });
-  if (word.endsWith('ान्'))   return synth({ category: 'noun', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'a-stem accusative plural (m)' });
+  // Each pattern tries to strip the suffix and look up the stem to
+  // produce a real gloss like "by horses" instead of the generic
+  // "by/with X-s". Falls back to the template if stem isn't in vocab.
+  if (word.endsWith('ानाम्')) {
+    const real = withStemGloss('ानाम्', 'of (the)') || withStemGloss('ानाम्', 'of') || null;
+    return synth({ category: 'noun', number: 'bahu', case: 'sha', root: word.slice(0, -5), gloss: real ? `${real} (pl)` : 'a-stem genitive plural — "of (the) X-s"' });
+  }
+  if (word.endsWith('एभ्यः')) {
+    const real = withStemGloss('एभ्यः', 'for/from');
+    return synth({ category: 'noun', number: 'bahu', case: 'cha', root: word.slice(0, -5), gloss: real ? `${real} (pl)` : 'a-stem dative/ablative plural' });
+  }
+  if (word.endsWith('ेभ्यः')) {
+    const real = withStemGloss('ेभ्यः', 'for/from');
+    return synth({ category: 'noun', number: 'bahu', case: 'cha', root: word.slice(0, -4), gloss: real ? `${real} (pl)` : 'a-stem dative/ablative plural' });
+  }
+  if (word.endsWith('ैः')) {
+    const real = withStemGloss('ैः', 'by/with');
+    return synth({ category: 'noun', number: 'bahu', case: 'tri', root: word.slice(0, -2), gloss: real ? `${real} (pl)` : 'a-stem instrumental plural — "by/with X-s"' });
+  }
+  if (word.endsWith('ान्')) {
+    const real = withStemGloss('ान्', '(object)');
+    return synth({ category: 'noun', gender: 'm', number: 'bahu', case: 'dvi', root: word.slice(0, -3), gloss: real ? `${real} (pl, object)` : 'a-stem accusative plural (m)' });
+  }
   if (word.endsWith('आभ्याम्')) return synth({ category: 'noun', number: 'dvi', case: 'tri', gloss: 'a-stem dual instrumental/dative/ablative' });
-  if (word.endsWith('ाभिः'))   return synth({ category: 'noun', gender: 'f', number: 'bahu', case: 'tri', gloss: 'ā-stem feminine instrumental plural' });
-  if (word.endsWith('एण'))    return synth({ category: 'noun', number: 'eka', case: 'tri', gloss: 'a-stem instrumental singular — "by X"' });
-  if (word.endsWith('स्य'))   return synth({ category: 'noun', number: 'eka', case: 'sha', gloss: 'a-stem genitive singular — "of X"' });
+  if (word.endsWith('ाभिः'))   {
+    const real = withStemGloss('ाभिः', 'by/with');
+    return synth({ category: 'noun', gender: 'f', number: 'bahu', case: 'tri', root: word.slice(0, -3), gloss: real ? `${real} (f. pl)` : 'ā-stem feminine instrumental plural' });
+  }
+  if (word.endsWith('एण')) {
+    const real = withStemGloss('एण', 'by');
+    return synth({ category: 'noun', number: 'eka', case: 'tri', root: word.slice(0, -2), gloss: real || 'a-stem instrumental singular — "by X"' });
+  }
+  if (word.endsWith('स्य')) {
+    const real = withStemGloss('स्य', 'of');
+    return synth({ category: 'noun', number: 'eka', case: 'sha', root: word.slice(0, -2), gloss: real || 'a-stem genitive singular — "of X"' });
+  }
   if (word.endsWith('स्मात्')) return synth({ category: 'pronoun', number: 'eka', case: 'pan', gloss: 'pronominal ablative — "from X / for that reason"' });
   if (word.endsWith('स्मिन्')) return synth({ category: 'pronoun', number: 'eka', case: 'sap', gloss: 'pronominal locative — "in X"' });
   // ── Indeclinable yathā-/sarva- compounds ──
@@ -423,22 +464,26 @@ function inferFromSuffix(word) {
   // ── Broad fallbacks (run last) ──
   // -आत् (matra-ा + त्) → a-stem ablative singular ("from X")
   if (word.endsWith('ात्') && word.length >= 4) {
-    return synth({ category: 'noun', number: 'eka', case: 'pan', gloss: 'a-stem ablative singular — "from X"' });
+    const real = withStemGloss('ात्', 'from');
+    return synth({ category: 'noun', number: 'eka', case: 'pan', root: word.slice(0, -3), gloss: real || 'a-stem ablative singular — "from X"' });
   }
   // Vocative endings — broad
   if (word.endsWith('हो'))    return synth({ category: 'noun', case: 'sambodhana', gloss: 'vocative (compound) — "O X!"' });
   // Word-final -ः with reasonable stem length → m. nom. sg. (a-stem)
   if (word.endsWith('ः') && word.length >= 4 && !word.endsWith('ुः') && !word.endsWith('ोः')) {
-    return synth({ category: 'noun', gender: 'm', number: 'eka', case: 'pra', gloss: 'a-stem nominative singular (m) — likely subject form' });
+    const real = withStemGloss('ः', '');
+    return synth({ category: 'noun', gender: 'm', number: 'eka', case: 'pra', root: word.slice(0, -1), gloss: real ? real.trim() : 'a-stem nominative singular (m) — likely subject form' });
   }
   // Word-final -म् with reasonable stem length → ambiguous (n. nom or
   // m. acc); flag both.
   if (word.endsWith('म्') && word.length >= 4) {
-    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', gloss: 'a-stem -म् ending — neuter nominative or masculine accusative singular (ambiguous)' });
+    const real = withStemGloss('म्', '');
+    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', root: word.slice(0, -2), gloss: real ? `${real.trim()} (nom or acc sg)` : 'a-stem -म् ending — neuter nominative or masculine accusative singular (ambiguous)' });
   }
   // Word-final -अं (anusvara) → equivalent to -म्
   if (word.endsWith('ं') && word.length >= 4) {
-    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', gloss: 'a-stem -ं ending (anusvara form of -म्) — neuter nom or masc acc singular' });
+    const real = withStemGloss('ं', '');
+    return synth({ category: 'noun', number: 'eka', case: 'pra-or-dvi', root: word.slice(0, -1), gloss: real ? `${real.trim()} (nom or acc sg)` : 'a-stem -ं ending (anusvara form of -म्) — neuter nom or masc acc singular' });
   }
   return null;
 }

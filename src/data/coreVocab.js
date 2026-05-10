@@ -641,6 +641,9 @@ const COMMON_NOUNS = {
   'सिंह-नादम्':       { category: 'noun', root: 'सिंहनाद', gender: 'm', number: 'eka', case: 'dvi', gloss: 'lion\'s roar (object)' },
   'अभ्यहन्यन्त':       { category: 'verb', root: 'अभि + √हन्', gana: 2, pada: 'A', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'were struck / sounded forth (imperfect passive/ātmane. 3pl — "they-were-struck / sounded-forth")' },
   'अहन्यन्त':         { category: 'verb', root: '√हन्', gana: 2, pada: 'A', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'were struck / were-killed (imperfect passive 3pl)' },
+  'हय':              { category: 'noun', root: 'हय', gender: 'm', gloss: 'horse (compound stem)' },
+  'हयः':             { category: 'noun', root: 'हय', gender: 'm', number: 'eka', case: 'pra', gloss: 'horse' },
+  'हयम्':            { category: 'noun', root: 'हय', gender: 'm', number: 'eka', case: 'dvi', gloss: 'horse (object)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
