@@ -24,6 +24,7 @@ import { DHATUS_TOP25 } from './dhatus.js';
 import { DHATUS_PART_2 } from './_dhatus_part2.js';
 import { DHATUS_PART_3 } from './_dhatus_part3.js';
 import { DHATUS_PART_4 } from './_dhatus_part4.js';
+import { DHATUS_EXTRA } from './_dhatus_extra.js';
 
 // Hand-added dhātus the bulk-generated parts missed but appear in the
 // Gītā corpus. √या ("go") is a particularly egregious miss — it's one
@@ -110,4 +111,5 @@ export const DHATUS_EXTENDED = mergeDhatus(
   DHATUS_PART_3,
   DHATUS_PART_4,
   DHATUS_PATCH,
+  DHATUS_EXTRA,
 );
