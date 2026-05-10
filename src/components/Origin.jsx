@@ -34,13 +34,15 @@ function OriginSummary() {
       <ArticleImage src="article-images/debroy-notes-1.jpg" alt="Handwritten Debroy notes — SOV/SVO, padaccheda, anvaya, the six vedanga" />
       <ArticleImage src="article-images/debroy-notes-2.jpg" alt="Handwritten Debroy notes — anushtubh metre, laghu/guru, the metrical rules" />
 
-      <h3>Awadhi meter visualiser — same itch, different shape</h3>
+      <h3>The parallel Sundarkand thread</h3>
       <p>
-        Around the same period I built the <strong>Awadhi Meter Visualizer</strong> — a small
-        React tool for Sundarkand that breaks chaupāī into laghu/guru syllables and marks the यति.
-        Different language, same itch: take an Indian verse tradition and make the structure visible
-        instead of opaque. The parchment + Devanāgarī typography of <em>this</em> project comes
-        from there.
+        Separate from any of this, I read Sundarkand every other week — have been doing that for
+        the past four-plus years. Out of that practice came two small web apps for myself:
+        the <a href="https://sundarkand.yadavvi.com/">Sundarkand audio reciter</a> (chaupāī text
+        synced to recitation audio, what I keep open while reading) and the{' '}
+        <a href="https://github.com/yadavvi91/awadhi-meter-identifier">Awadhi Meter Visualizer</a>
+        (laghu/guru breakdown for chaupāī). Independent of the Sanskrit work, but they're where
+        the parchment + Devanāgarī design language of <em>this</em> project came from.
       </p>
 
       <h3>The WhatsApp trigger</h3>

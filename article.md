@@ -40,11 +40,15 @@ These four ideas are the reason I could later read a verse at all. They're what 
 
 ---
 
-## The Awadhi visualizer — the same obsession, sideways
+## Sundarkand and the Awadhi meter visualiser
 
-Before any of this, there was the **[Awadhi Meter Visualizer](https://github.com/yadavvi91/awadhi-meter-identifier)** — a small React tool I built for Sundarkand. Same instinct, different content: take a vernacular Indian verse tradition, build something that lets you *see* the structural skeleton you can't see when you just read the line. For Awadhi that skeleton is metre — laghu/guru syllables, the यति (pause), how to recite. For Sanskrit it's grammar — vibhakti, finite verb, anvaya. Two languages, two skeletons, one underlying obsession: I find these traditions beautiful and the existing teaching pipelines fail them.
+These are a separate thread that runs alongside the Sanskrit work, not a precursor to it. Worth saying because they share the design DNA of this project (parchment, Devanāgarī typography, the same React + Vite stack), but the *content* is unrelated and the chronology isn't linear.
 
-That project was the first form the obsession took. The Sanskrit project is the same obsession taking the more direct form. The technical donations were small things — same stack, same parchment-ink aesthetic, same engineering discipline — but the *real* inheritance was this: I'd already proven to myself I could build something that made an opaque tradition visible. Which meant the Sanskrit attempt wasn't a leap.
+I read Sundarkand every other week, and have been doing that for the past four-plus years. Out of that practice came a small audio-player web app — [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)) — that syncs the chaupāī text with the recitation audio so I can follow along as I recite. Built for myself, kept open in a browser tab while reading. Years of doing this gave me an ear for Awadhi metre — laghu/guru rhythms, where the यति (pause) falls, how a chaupāī actually scans.
+
+That's where the **[Awadhi Meter Visualizer](https://github.com/yadavvi91/awadhi-meter-identifier)** came from. Not as a stepping-stone to Sanskrit, but as a tool that paid back the years of Sundarkand reading: feed it a chaupāī and watch the metre fall out as a visual breakdown of laghu/guru syllables and the यति marker. It's a meter-recognition tool for Awadhi, full stop.
+
+The two projects feed each other (the Sundarkand reciter created the ear; the meter visualiser made the ear's intuitions explicit), and they share design language with this Sanskrit project, but neither was a "sideways version" of the Sanskrit work. They're parallel threads from a parallel reading practice.
 
 ---
 
@@ -414,7 +418,7 @@ After those four verses, the question was: do I just keep notes? Markdown files 
 
 The argument for building was selfish. I knew that if the cognitive grain — *fighting for every word* — wasn't preserved in software, it would dissolve. Two months later I'd be back to "Sanskrit is hard, I can't read it," with all the fights I'd won evaporated. A pile of markdown notes is a graveyard. An app with a verse-grid that lights up as you decode is a journal that you keep adding to.
 
-The other argument was that this had been brewing since February 2023. The Awadhi visualizer had been the same itch in a different shape. The Sanskrit project was the direct version. Building it would put the thing into a form that exists, instead of leaving it in my head where it would slowly turn into guilt about not having done it.
+The other argument was that this had been brewing since February 2023. The Debroy reading had given me a frame I could no longer un-see; the WhatsApp moment had given me the verses to apply it to. Building this would put the thing into a form that exists, instead of leaving it in my head where it would slowly turn into guilt about not having done it.
 
 So I built it.
 
@@ -531,7 +535,7 @@ For attribution and context, in case future me forgets: this project rests on pe
 - **Annie Besant, 1895** — the public-domain English translation that gave every auto-stub verse a baseline English reading.
 - **Edwin Arnold, 1885** — *The Song Celestial*, the second public-domain English translation, used as a comparison voice on each verse.
 - **Śaṅkara** — Advaitin commentary positions, agent-summarized, attached to every verse's references panel for grounding.
-- **The Awadhi Meter Visualizer** (my prior project) — donor of the design language and the engine architecture.
+- **The Sundarkand audio-reciter app** ([sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/)) and the **Awadhi Meter Visualizer** — both grew out of my own Sundarkand reading practice (every other week, four-plus years). Independent of this project, but they're where the parchment + Devanāgarī design language and the engineering discipline came from.
 - **Pāṇini** — without whom none of this is possible.
 
 ---
@@ -586,8 +590,9 @@ That's the whole project. A garden, not a textbook. A journal, not a graveyard.
 - Edwin Arnold, *The Song Celestial* (1885), public domain — the secondary English voice in the per-verse References panel.
 - Śaṅkara's commentary positions, Advaita-tradition summaries — agent-paraphrased, attached to every verse's References panel for grounding.
 
-**The sister project — the same obsession applied to Awadhi:**
-- *Awadhi Meter Visualizer* — [github.com/yadavvi91/awadhi-meter-identifier](https://github.com/yadavvi91/awadhi-meter-identifier). My prior tool for Sundarkand. Different language, different prosodic tradition, same instinct: build something that lets you *see* the structural skeleton of an Indian verse tradition you can't see when you just read the line.
+**The parallel Sundarkand thread (separate practice, same design DNA):**
+- *Sundarkand audio reciter* — [sundarkand.yadavvi.com](https://sundarkand.yadavvi.com/) ([source](https://github.com/yadavvi91/sundarkand-xstate-ts)). Audio player with chaupāī text synced to the recitation, built for my own reading practice (every other week, four-plus years). This is what trained my ear for Awadhi metre.
+- *Awadhi Meter Visualizer* — [github.com/yadavvi91/awadhi-meter-identifier](https://github.com/yadavvi91/awadhi-meter-identifier). A meter-recognition tool for Awadhi chaupāī (laghu/guru breakdown, यति marker). It came out of the years of reciting via the Sundarkand app, not out of any Sanskrit ambition.
 
 **The grammar tradition itself:**
 - Pāṇini, *Aṣṭādhyāyī* (~5th–4th century BCE). The four-thousand-rule generative grammar that Maharashtra SSC quietly used to compile its tables without ever telling its students it was the source.
