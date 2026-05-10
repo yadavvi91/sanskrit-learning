@@ -1,8 +1,12 @@
 # गीताध्ययनम् — A working journal of Sanskrit, decoded one verse at a time
 
-*An article on where this project came from, what it's trying to preserve, and how it grew.*
+*An article in three parts: how I got here (the personal evolution from 2006 onward), the pedagogy and data that shaped my thinking (in detail), and the project itself (what got built, design, progress).*
 
 ---
+
+# Part 1 — how I got here
+
+The personal arc: from Maharashtra SSC Sanskrit in 2006 to the Debroy reading in 2023 to the Sundarkand thread to the Gītā work the app is built around.
 
 ## The shape of a frustration
 
@@ -54,115 +58,15 @@ These don't compete. They don't run parallel. They completed each other. Looking
 
 ---
 
-## bvsiitm.github.io — the pedagogy that made this seem possible
+## Two more things came my way: bvsiitm.github.io and Khoomeik
 
-Two sources I'd found and worked through before any of this app existed: [`gita-sanskrit-teacher.netlify.app`](https://gita-sanskrit-teacher.netlify.app/) and [`bvsiitm.github.io/sanskrit-gita-learn`](https://bvsiitm.github.io/sanskrit-gita-learn/) (with its [Interlude](https://bvsiitm.github.io/sanskrit-gita-learn/interlude) and [Lesson 2](https://bvsiitm.github.io/sanskrit-gita-learn/lesson/2)). **B. V. Srinivasan**'s site is the project that convinced me the thing I wanted was actually buildable, and the way he structured it taught me how.
+Around the same period that the Debroy reading was working on me, two more pieces showed up that I needed.
 
-The framing on his landing page is the cleanest statement of the problem I've seen anywhere:
+The first was [`bvsiitm.github.io/sanskrit-gita-learn`](https://bvsiitm.github.io/sanskrit-gita-learn/) — **B. V. Srinivasan**'s Gītā-through-Sanskrit course. His site is what convinced me the kind of thing I wanted to build was actually buildable. The pedagogy he uses (worked-example, emergence over front-loading, Quantum Country–style inline cards, trust the learner's prior knowledge) is something I leaned on heavily. I've written about it in detail later — see [the pedagogy section in Part 2](#the-pedagogy-and-data-that-shaped-my-thinking).
 
-> **Sanskrit is not hard. The way it is taught is.**
->
-> Most students encounter Sanskrit in one of three ways: rote-learning of shlokas in school with no understanding, an intimidating grammar textbook with thousands of rules before a single sentence, or a translation they can read but cannot parse.
->
-> *The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it.*
+The second was [Rohan Pandey's (@khoomeik) tweet thread](https://x.com/khoomeik) on the **top 192 Sanskrit dhātus** — that with just 192 verb roots you cover ~86% of all Sanskrit verb tokens in real literature. The whole point of the Verbs sub-app rests on this insight. Same as above — full detail [later](#khoomeiks-data-foundation).
 
-He framed the same project thesis publicly in three tweets:
-
-> *I always thought that Sanskrit can be taught more "naturally" than it is. The attached post also indicates that it can be done more parsimoniously than I thought.* — [@BVSrinivasan, citing Khoomeik's 192-dhātu post](https://x.com/BVSrinivasan/status/2031768975391207750)
-
-> *Here is Ver 0.0.0.1 of applying some idiosyncratic ideas — Gītā with Sanskrit. Lots to be improved even in this minimum version but it is amazing to see how fast we can go from idea to execution thanks to the tools today. These tools will lead to a boom in educational apps!* — [@BVSrinivasan](https://x.com/BVSrinivasan/status/2031769447510540604)
-
-> *Interlude: bvsiitm.github.io/sanskrit-gita-learn/interlude — Lesson 2: bvsiitm.github.io/sanskrit-gita-learn/lesson/2* — [@BVSrinivasan](https://x.com/BVSrinivasan/status/2032516518957953409)
-
-Three things in that framing landed. First, **"taught more naturally than it is"** — the same Maharashtra SSC complaint, named precisely. Second, **"more parsimoniously than I thought"** — the Khoomeik 192-dhātu insight as the enabling parsimony. Third, **"boom in educational apps"** — Srinivasan was explicit that AI-tools-plus-personal-itch was a viable shape, not a hobbyist indulgence. He'd shipped his version. I could ship mine.
-
-But it's the *educational design* underneath that did the convincing. Five principles, each of which is a direct attack on a way Sanskrit instruction usually fails:
-
-### 1. Density over enumeration
-
-A traditional Sanskrit textbook teaches one concept across many phrases — a chapter on the locative will give you fifteen examples of `-े` words. Srinivasan inverts this: **one phrase, many concepts**. Lesson 1 is built around the two words `धृतराष्ट्र उवाच` (*Dhṛtarāṣṭra said*) and mines four complete grammar concepts out of them — case ending, sandhi rule, verbal root, tense system. Twenty MCQ cards spread across those four concepts, all anchored to the same two-word phrase.
-
-Lesson 2 stays inside the same verse (Gītā 1.1) and pulls four more concepts: locative ending, word-order theory, vocative, a second sandhi class. After two lessons the student has eight live grammar concepts but has only had to ingest one verse's worth of vocabulary.
-
-The acceleration comes from this: the cognitive load of new vocabulary is amortized across many concepts, instead of paid fresh for each. The student doesn't have to track who Madhusūdana is *and* what locative means *and* what a sandhi rule looks like — they meet Madhusūdana once, in `मधुसूदन उवाच`, and the whole grammatical apparatus radiates out from that single two-word handle.
-
-### 2. The Gītā as both corpus and curriculum
-
-Srinivasan's framing on the landing page makes this explicit: *"The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it."*
-
-This is the deeper move. A textbook invents synthetic example sentences to illustrate rules; Srinivasan refuses to. **Every example is a real Gītā verse.** Which means by the time you've worked through Lesson 1, you don't just know "the locative" — you know *how the Gītā opens*. The cultural reward and the grammatical lesson are paid simultaneously. There's no cold-storage period where you're learning rules for a payoff you can't see yet; the payoff is in your hands as you learn.
-
-### 3. Emergence over front-loading
-
-The राम declension table — the wall of 24 forms (8 cases × 3 numbers) every Maharashtra SSC student knows — is a flat, intimidating object when handed over whole. Srinivasan never hands it over. After Lesson 1, the table has *one cell filled in* (Prathamā singular). After Lesson 2, *two cells* (Prathamā and Saptamī, both singular). The other 22 emerge as future verses demand them.
-
-Same principle applies to sandhi: visarga-lopa is introduced because `धृतराष्ट्र उवाच` requires it; śatva-sandhi (visarga + च → श्) is introduced because `पाण्डवाश्चैव` requires it. **No rule is taught in advance of needing it.** This is the inverse of a grammar textbook, which front-loads every rule before any reading. The student of a textbook spends a year on phonology before reading a sentence; the student of bvsiitm reads a sentence on day one and learns the phonology that sentence demands.
-
-### 4. The intuition-as-data design
-
-Between Lesson 1 and Lesson 2 sits an interlude that does no grammar at all — it's a meta-lesson on the epistemology of language learning. Karl Popper drop-quoted at the top:
-
-> "All observation is theory-laden."
-
-The thesis: every act of learning happens inside a context — a background of hunches, half-formed theories, and borrowed intuitions the learner brings *before* any new fact arrives. *Learning is not filling an empty vessel; it is the ongoing refinement of a guess.* Two MCQ cards demonstrate it: `उलूकः` (owl) and `दुहितृ` (daughter), both Indo-European cognates a Hindi/English speaker can guess from sound. The point is procedural, not lexical: **guess freely; your existing language intuitions are not noise, they're data**.
-
-This matters as accelerated-learning design because it discharges a hidden tax. Most Sanskrit pedagogy implicitly tells the student *you know nothing; absorb the system from scratch*. Srinivasan tells them *you know more than you think; here is permission to use it*. The interlude shifts the student from receiver mode to predictor mode — and predictor mode is where compression happens. Once a student is predicting, every new card is testing a hypothesis instead of installing a fact.
-
-### 5. Designed for forgetting — the Quantum Country lineage
-
-The interlude closes with three principle cards. The third is the load-bearing one:
-
-> **Don't memorise.** You do not need to remember everything now. The programme is designed for forgetting.
-
-This isn't an offhand claim. Srinivasan's own design notes in the bvsiitm repo cite the direct lineage:
-
-> *Inspired by Michael Nielsen and Andy Matuschak's* **Quantum Country**, *the cards live inside the essay. You read prose, encounter a concept, and a card appears immediately. You answer it. The card remembers when you need to see it again.*
-
-[Quantum Country](https://quantum.country/) (Matuschak + Nielsen, 2019) is the famous accelerated-learning experiment that pioneered **mnemonic media** — the technique of weaving spaced-repetition cards into the body of a long-form essay so that *reading and remembering become a single act*. Their thesis was that traditional textbooks fail not because the content is wrong but because there's no closed loop: you read, you forget, you don't come back. SRS apps fail in the opposite way — they have the loop but no narrative; you drill cards in a vacuum with no context to bind them to. Quantum Country fused the two.
-
-Srinivasan's bvsiitm site is one of the most disciplined Quantum-Country-style applications I've seen outside the original — and his repo's design notes name the four design rules verbatim:
-
-> *Cards appear inline in the essay — reading and drilling are one seamless experience, not two separate modes.*
->
-> *You move to the next concept only when the current one is solid. Time spent is irrelevant. Mastery is the gate.*
->
-> *Every wrong answer has a specific explanation — pointing to the correct root, case, or rule. Wrong answers teach, not just penalise.*
->
-> *Every example comes from the actual Gita. The target — reading unaided — is visible from the very first card.*
-
-What this does to the learning loop: it turns each session into a *predict + correct* cycle instead of a *study + retain* cycle. The acceleration comes because predict-and-correct has shorter feedback edges and uses the brain's error-driven plasticity, while study-and-retain relies on rehearsal that mostly fails. SRS state is persisted (`localStorage` key `gita-srs-state` in his app), so the system tracks per-card spacing across sessions. The student does no bookkeeping. They just read the next essay, answer the next card, and trust the scheduler to surface the right ones.
-
-The five principles, in summary, are not five inventions of Srinivasan's. They are five things known to work — frequency-prioritized vocabulary (corpus linguistics), worked-example pedagogy (Sweller's CLT), inline cards in prose (Quantum Country), trust-the-learner's-prior-knowledge (constructivist learning), spaced repetition (Ebbinghaus → Wozniak's SuperMemo) — and his contribution is that **he composed all five, in a coherent product, against the actual Gītā**. That composition is what I read as the platform thesis.
-
-### Why this matters as a *platform*, not just a course
-
-Stack the five principles and you get a small but coherent accelerated-learning architecture:
-
-- **A frequency-prioritized corpus** (Khoomeik's 192 dhātus = 86% coverage) ensures effort isn't wasted on rare forms.
-- **A density-first content layout** (one verse → many concepts) amortizes vocabulary cost.
-- **A "real text only" policy** (the Gītā as worked example) makes every minute of learning culturally rewarding.
-- **An emergence-driven schedule** (rules surface only when verses need them) keeps the present scope small.
-- **An intuition-trusting interface** (guess freely; SRS handles forgetting) turns the student into a predictor.
-
-These five together are why I read Srinivasan's site as a *platform thesis* rather than a tutorial. He's not just teaching the Gītā; he's demonstrating that **once you have AI tooling that can write the per-card content cheaply, this kind of dense, frequency-weighted, emergence-driven curriculum is finally cost-effective to produce**. His own tweet — *"these tools will lead to a boom in educational apps"* — names the larger claim explicitly. The Gītā site is Ver 0.0.0.1 of that boom.
-
-### What I borrowed, and where I diverged
-
-The pedagogy I took directly:
-
-- **Known → +1 → Drill → SRS** — start where the student is, add exactly one idea, drill it, space it. The Practice mode in this app implements that loop.
-- **Sandhi comes last.** Understand what the unjoined form looks like first; *then* learn why it changed. The Decode Helper enforces this — पदच्छेद is shown before sandhi notes.
-- **One Gītā verse → many concepts.** The four-verse decode notes (1.1, 2.3, 2.4, 2.5) follow this principle: each verse is mined for as many concepts as it can yield. Verse 2.5 alone produced six patterns.
-- **The राम declension table fills slowly.** The Atlas → Declensions tab in this app has the full 24-cell राम table, but Verse Detail popovers only surface the case that the verse you're reading actually uses.
-- **Trust intuition.** The popovers in Verse Journey present the parsing as data, not as gospel — the user is meant to look at it and form a model, not to memorize.
-
-Where I diverged:
-
-- **bvsiitm is a curriculum; this is a journal.** Srinivasan's site is structured pedagogy with a planned arc (Lesson 1 → Lesson 2 → ...). This app is a working journal: every verse I personally fight through gets recorded, and the structure emerges from what I happened to read, not from a predetermined sequence.
-- **bvsiitm is for any beginner; this is for one specific learner with an existing background.** The Maharashtra SSC training I had retains some scaffolding (बहुव्रीहि समास, the राम declension table, the प्रथम-पुरुष flip). I didn't start from zero. The app's *Patterns Won* view tracks where I am specifically, not where a generic learner is.
-- **bvsiitm has 700 Gītā verses as a planned distant target; this app starts with all 700 already in the corpus, tier-tagged by how decoded they are.** The user can navigate to any verse at any time. The bulk-imported `auto-stub` tier is honest about what hasn't been hand-decoded.
-
-The two enabling theses — **Khoomeik's parsimony** (192 dhātus = 86% coverage) and **Srinivasan's pedagogy** (Known → +1, sandhi last, one verse → many concepts) — are what make this project tractable. Without the parsimony, Sanskrit looks infinite. Without the pedagogy, you have data with no on-ramp and the user gives up by lesson 3. Together they make the project buildable. What I added on top: the *fight every word* discipline, the verse-by-verse journal as the durable artefact, and the tier system that's honest about confidence levels.
+Mentioning them here because they're part of the path that brought me to the Gītā work. The detail of *why* they mattered, and *what* I took from them, is its own thing and belongs in a section that isn't trying to also tell you about my school days.
 
 ---
 
@@ -295,37 +199,9 @@ Three clarifications that matter:
 
 **Thematic vs athematic** is the practical split: gaṇa 1, 4, 6, 10 are **thematic** (stem ends in -अ-), endings attach uniformly, easy. Gaṇa 2, 3, 7 are **athematic** — endings attach to consonants, triggering sandhi, with strong/weak stem alternation. For Gītā reading, the six athematic roots that cannot be avoided: **√अस्** (be, 2), **√इ** (go, 2), **√हन्** (kill, 2), **√ज्ञा** (know, 9), **√शृ/शृणु** (hear, 5), **√कृ** (do, 8). Drill these harder than the rest.
 
-### Khoomeik's data, and what it doesn't give us
+### The dhātu data behind the verb sub-app
 
-![Khoomeik's "Top 192 Sanskrit Dhātus by Frequency" chart — Digital Corpus of Sanskrit, color-coded by gaṇa, frequency-ordered with भू at top-left](article-images/khoomeik-chart-frequency.jpg)
-
-The source of the dhātu data is Rohan Pandey's three-tweet thread, which I'd come across on X some time before:
-
-> *Sanskrit has >2000 verb roots (dhātus). But do you really need to learn them all? I had Claude analyze 270 Sanskrit texts, and it found that with just the 192 most common dhātus, you can understand ~90% of verbs in literature.*
->
-> *With the 10 most common dhātus, you can understand 30% of verbs. With 50, 60%. With 192, 90%. With 500, 99%. The rarest ~1000 dhātus are virtually never attested in Classical Sanskrit literature. Btw I used Vidyut to identify each verb's dhātu because of gaṇa ambiguity.*
->
-> *Thanks to Arun (Vidyut), Neelesh (Ashtadhyayi), Oliver (Digital Corpus of Sanskrit), and Claude for enabling this. I also created a frequency list grouped by gaṇa.*
-
-Rohan Pandey ([@khoomeik](https://x.com/khoomeik)) used **vidyut** (ambuda-org/vidyut) to identify dhātus across the Digital Corpus of Sanskrit (~988 thousand verb tokens). The frequency curve:
-
-| Top N dhātus | Coverage |
-|---|---|
-| 10 | 27.7% |
-| 50 | 58.8% |
-| 100 | 73.0% |
-| **192** | **86.1%** |
-| 500 | 98.5% |
-
-The chart gives Devanagari root, gaṇa (color-coded), English meaning(s), and 3sg present (which implicitly encodes पद since -ति = P, -ते = Ā). It does *not* give: explicit P/Ā/उभयपदी tag, suppletive present stems (दृश् → पश्य-, गम् → गच्छ-, स्था → तिष्ठ-), लिट् 3sg forms, irregular sandhi quirks. Those are the per-root metadata we have to add as we go.
-
-Pandey also published a second ordering — same 192 grouped by गण — which is more pedagogically useful (one stem-rule unlocks all roots in that color). Both orderings live in the app's Periodic Table.
-
-![Khoomeik's second variant — the same 192 dhātus, this time grouped by gaṇa so all gaṇa-1 roots cluster together, all gaṇa-2 roots cluster together, etc. One stem-rule per band.](article-images/khoomeik-chart-gana.jpg)
-
-The corresponding **Dhātu Coverage Curve** — what 10 / 50 / 100 / 192 / 500 dhātus actually buy you in real text — is the single most motivating data visualization in the entire project. It says: you do not need 2,000 verb roots. You need 192. The reading curriculum is finite.
-
-![Dhātu Coverage Curve — Digital Corpus of Sanskrit (~988k matched verb tokens via vidyut). Top 10 = 27.7%; top 50 = 58.8%; top 100 = 73%; top 192 = 86.1%; top 500 = 98.5%.](article-images/khoomeik-coverage-curve.jpg)
+The 192-root list this app's Verbs section is built around comes from Rohan Pandey ([@khoomeik](https://x.com/khoomeik)). The pedagogically critical fact: 192 dhātus cover ~86% of all Sanskrit verb tokens in real literature. Full detail — the coverage curve, the chart variants, what the data does and doesn't give — is in [Part 2](#khoomeiks-data-foundation).
 
 ### सर्वनाम — तद् as master template
 
@@ -413,6 +289,162 @@ The genuinely indeclinable particles — हि, तु, च, वा, अपि,
 What this conceptual frame buys you: half the "missing" parts of Sanskrit grammar disappear. There's no preposition system to learn. No article system. No separate adverb morphology. The systems that handle these jobs are systems you already know — case endings, demonstrative pronouns, frozen-case forms — wearing different hats.
 
 ---
+
+---
+
+# Part 2 — the pedagogy and data that shaped my thinking
+
+The two earlier callouts (bvsiitm + Khoomeik) were just placeholders. Here's the full version of why each mattered to me — separated out so the historical narrative above isn't weighed down by methodology, and the project section that comes after this can stay focused on what got built rather than where the ideas came from.
+
+## The pedagogy and data that shaped my thinking
+
+### bvsiitm.github.io — the pedagogy that made this seem possible
+
+I'd worked through [`bvsiitm.github.io/sanskrit-gita-learn`](https://bvsiitm.github.io/sanskrit-gita-learn/) (with its [Interlude](https://bvsiitm.github.io/sanskrit-gita-learn/interlude) and [Lesson 2](https://bvsiitm.github.io/sanskrit-gita-learn/lesson/2)) and [`gita-sanskrit-teacher.netlify.app`](https://gita-sanskrit-teacher.netlify.app/) before any of this app existed. **B. V. Srinivasan**'s site is the project that convinced me the thing I wanted was actually buildable, and the way he structured it taught me how.
+
+The framing on his landing page is the cleanest statement of the problem I've seen anywhere:
+
+> **Sanskrit is not hard. The way it is taught is.**
+>
+> Most students encounter Sanskrit in one of three ways: rote-learning of shlokas in school with no understanding, an intimidating grammar textbook with thousands of rules before a single sentence, or a translation they can read but cannot parse.
+>
+> *The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it.*
+
+He framed the same project thesis publicly in three tweets:
+
+> *I always thought that Sanskrit can be taught more "naturally" than it is. The attached post also indicates that it can be done more parsimoniously than I thought.* — [@BVSrinivasan, citing Khoomeik's 192-dhātu post](https://x.com/BVSrinivasan/status/2031768975391207750)
+
+> *Here is Ver 0.0.0.1 of applying some idiosyncratic ideas — Gītā with Sanskrit. Lots to be improved even in this minimum version but it is amazing to see how fast we can go from idea to execution thanks to the tools today. These tools will lead to a boom in educational apps!* — [@BVSrinivasan](https://x.com/BVSrinivasan/status/2031769447510540604)
+
+> *Interlude: bvsiitm.github.io/sanskrit-gita-learn/interlude — Lesson 2: bvsiitm.github.io/sanskrit-gita-learn/lesson/2* — [@BVSrinivasan](https://x.com/BVSrinivasan/status/2032516518957953409)
+
+Three things in that framing landed. First, **"taught more naturally than it is"** — the same Maharashtra SSC complaint, named precisely. Second, **"more parsimoniously than I thought"** — the Khoomeik 192-dhātu insight as the enabling parsimony. Third, **"boom in educational apps"** — Srinivasan was explicit that AI-tools-plus-personal-itch was a viable shape, not a hobbyist indulgence. He'd shipped his version. I could ship mine.
+
+But it's the *educational design* underneath that did the convincing. Five principles, each of which is a direct attack on a way Sanskrit instruction usually fails:
+
+#### 1. Density over enumeration
+
+A traditional Sanskrit textbook teaches one concept across many phrases — a chapter on the locative will give you fifteen examples of `-े` words. Srinivasan inverts this: **one phrase, many concepts**. Lesson 1 is built around the two words `धृतराष्ट्र उवाच` (*Dhṛtarāṣṭra said*) and mines four complete grammar concepts out of them — case ending, sandhi rule, verbal root, tense system. Twenty MCQ cards spread across those four concepts, all anchored to the same two-word phrase.
+
+Lesson 2 stays inside the same verse (Gītā 1.1) and pulls four more concepts: locative ending, word-order theory, vocative, a second sandhi class. After two lessons the student has eight live grammar concepts but has only had to ingest one verse's worth of vocabulary.
+
+The acceleration comes from this: the cognitive load of new vocabulary is amortized across many concepts, instead of paid fresh for each. The student doesn't have to track who Madhusūdana is *and* what locative means *and* what a sandhi rule looks like — they meet Madhusūdana once, in `मधुसूदन उवाच`, and the whole grammatical apparatus radiates out from that single two-word handle.
+
+#### 2. The Gītā as both corpus and curriculum
+
+Srinivasan's framing on the landing page makes this explicit: *"The Gita teaches Sanskrit grammar simply by existing. Every verse is a worked example. The question is how to use it."*
+
+This is the deeper move. A textbook invents synthetic example sentences to illustrate rules; Srinivasan refuses to. **Every example is a real Gītā verse.** Which means by the time you've worked through Lesson 1, you don't just know "the locative" — you know *how the Gītā opens*. The cultural reward and the grammatical lesson are paid simultaneously. There's no cold-storage period where you're learning rules for a payoff you can't see yet; the payoff is in your hands as you learn.
+
+#### 3. Emergence over front-loading
+
+The राम declension table — the wall of 24 forms (8 cases × 3 numbers) every Maharashtra SSC student knows — is a flat, intimidating object when handed over whole. Srinivasan never hands it over. After Lesson 1, the table has *one cell filled in* (Prathamā singular). After Lesson 2, *two cells* (Prathamā and Saptamī, both singular). The other 22 emerge as future verses demand them.
+
+Same principle applies to sandhi: visarga-lopa is introduced because `धृतराष्ट्र उवाच` requires it; śatva-sandhi (visarga + च → श्) is introduced because `पाण्डवाश्चैव` requires it. **No rule is taught in advance of needing it.** This is the inverse of a grammar textbook, which front-loads every rule before any reading. The student of a textbook spends a year on phonology before reading a sentence; the student of bvsiitm reads a sentence on day one and learns the phonology that sentence demands.
+
+#### 4. The intuition-as-data design
+
+Between Lesson 1 and Lesson 2 sits an interlude that does no grammar at all — it's a meta-lesson on the epistemology of language learning. Karl Popper drop-quoted at the top:
+
+> "All observation is theory-laden."
+
+The thesis: every act of learning happens inside a context — a background of hunches, half-formed theories, and borrowed intuitions the learner brings *before* any new fact arrives. *Learning is not filling an empty vessel; it is the ongoing refinement of a guess.* Two MCQ cards demonstrate it: `उलूकः` (owl) and `दुहितृ` (daughter), both Indo-European cognates a Hindi/English speaker can guess from sound. The point is procedural, not lexical: **guess freely; your existing language intuitions are not noise, they're data**.
+
+This matters as accelerated-learning design because it discharges a hidden tax. Most Sanskrit pedagogy implicitly tells the student *you know nothing; absorb the system from scratch*. Srinivasan tells them *you know more than you think; here is permission to use it*. The interlude shifts the student from receiver mode to predictor mode — and predictor mode is where compression happens. Once a student is predicting, every new card is testing a hypothesis instead of installing a fact.
+
+#### 5. Designed for forgetting — the Quantum Country lineage
+
+The interlude closes with three principle cards. The third is the load-bearing one:
+
+> **Don't memorise.** You do not need to remember everything now. The programme is designed for forgetting.
+
+This isn't an offhand claim. Srinivasan's own design notes in the bvsiitm repo cite the direct lineage:
+
+> *Inspired by Michael Nielsen and Andy Matuschak's* **Quantum Country**, *the cards live inside the essay. You read prose, encounter a concept, and a card appears immediately. You answer it. The card remembers when you need to see it again.*
+
+[Quantum Country](https://quantum.country/) (Matuschak + Nielsen, 2019) is the famous accelerated-learning experiment that pioneered **mnemonic media** — the technique of weaving spaced-repetition cards into the body of a long-form essay so that *reading and remembering become a single act*. Their thesis was that traditional textbooks fail not because the content is wrong but because there's no closed loop: you read, you forget, you don't come back. SRS apps fail in the opposite way — they have the loop but no narrative; you drill cards in a vacuum with no context to bind them to. Quantum Country fused the two.
+
+Srinivasan's bvsiitm site is one of the most disciplined Quantum-Country-style applications I've seen outside the original — and his repo's design notes name the four design rules verbatim:
+
+> *Cards appear inline in the essay — reading and drilling are one seamless experience, not two separate modes.*
+>
+> *You move to the next concept only when the current one is solid. Time spent is irrelevant. Mastery is the gate.*
+>
+> *Every wrong answer has a specific explanation — pointing to the correct root, case, or rule. Wrong answers teach, not just penalise.*
+>
+> *Every example comes from the actual Gita. The target — reading unaided — is visible from the very first card.*
+
+What this does to the learning loop: it turns each session into a *predict + correct* cycle instead of a *study + retain* cycle. The acceleration comes because predict-and-correct has shorter feedback edges and uses the brain's error-driven plasticity, while study-and-retain relies on rehearsal that mostly fails. SRS state is persisted (`localStorage` key `gita-srs-state` in his app), so the system tracks per-card spacing across sessions. The student does no bookkeeping. They just read the next essay, answer the next card, and trust the scheduler to surface the right ones.
+
+The five principles, in summary, are not five inventions of Srinivasan's. They are five things known to work — frequency-prioritized vocabulary (corpus linguistics), worked-example pedagogy (Sweller's CLT), inline cards in prose (Quantum Country), trust-the-learner's-prior-knowledge (constructivist learning), spaced repetition (Ebbinghaus → Wozniak's SuperMemo) — and his contribution is that **he composed all five, in a coherent product, against the actual Gītā**. That composition is what I read as the platform thesis.
+
+#### Why this matters as a *platform*, not just a course
+
+Stack the five principles and you get a small but coherent accelerated-learning architecture:
+
+- **A frequency-prioritized corpus** (Khoomeik's 192 dhātus = 86% coverage) ensures effort isn't wasted on rare forms.
+- **A density-first content layout** (one verse → many concepts) amortizes vocabulary cost.
+- **A "real text only" policy** (the Gītā as worked example) makes every minute of learning culturally rewarding.
+- **An emergence-driven schedule** (rules surface only when verses need them) keeps the present scope small.
+- **An intuition-trusting interface** (guess freely; SRS handles forgetting) turns the student into a predictor.
+
+These five together are why I read Srinivasan's site as a *platform thesis* rather than a tutorial. He's not just teaching the Gītā; he's demonstrating that **once you have AI tooling that can write the per-card content cheaply, this kind of dense, frequency-weighted, emergence-driven curriculum is finally cost-effective to produce**. His own tweet — *"these tools will lead to a boom in educational apps"* — names the larger claim explicitly. The Gītā site is Ver 0.0.0.1 of that boom.
+
+#### What I borrowed, and where I diverged
+
+The pedagogy I took directly:
+
+- **Known → +1 → Drill → SRS** — start where the student is, add exactly one idea, drill it, space it. The Practice mode in this app implements that loop.
+- **Sandhi comes last.** Understand what the unjoined form looks like first; *then* learn why it changed. The Decode Helper enforces this — पदच्छेद is shown before sandhi notes.
+- **One Gītā verse → many concepts.** The four-verse decode notes (1.1, 2.3, 2.4, 2.5) follow this principle: each verse is mined for as many concepts as it can yield. Verse 2.5 alone produced six patterns.
+- **The राम declension table fills slowly.** The Atlas → Declensions tab in this app has the full 24-cell राम table, but Verse Detail popovers only surface the case that the verse you're reading actually uses.
+- **Trust intuition.** The popovers in Verse Journey present the parsing as data, not as gospel — the user is meant to look at it and form a model, not to memorize.
+
+Where I diverged:
+
+- **bvsiitm is a curriculum; this is a journal.** Srinivasan's site is structured pedagogy with a planned arc (Lesson 1 → Lesson 2 → ...). This app is a working journal: every verse I personally fight through gets recorded, and the structure emerges from what I happened to read, not from a predetermined sequence.
+- **bvsiitm is for any beginner; this is for one specific learner with an existing background.** The Maharashtra SSC training I had retains some scaffolding (बहुव्रीहि समास, the राम declension table, the प्रथम-पुरुष flip). I didn't start from zero. The app's *Patterns Won* view tracks where I am specifically, not where a generic learner is.
+- **bvsiitm has 700 Gītā verses as a planned distant target; this app starts with all 700 already in the corpus, tier-tagged by how decoded they are.** The user can navigate to any verse at any time. The bulk-imported `auto-stub` tier is honest about what hasn't been hand-decoded.
+
+The two enabling theses — **Khoomeik's parsimony** (192 dhātus = 86% coverage) and **Srinivasan's pedagogy** (Known → +1, sandhi last, one verse → many concepts) — are what make this project tractable. Without the parsimony, Sanskrit looks infinite. Without the pedagogy, you have data with no on-ramp and the user gives up by lesson 3. Together they make the project buildable. What I added on top: the *fight every word* discipline, the verse-by-verse journal as the durable artefact, and the tier system that's honest about confidence levels.
+
+### Khoomeik's data foundation
+
+![Khoomeik's "Top 192 Sanskrit Dhātus by Frequency" chart — Digital Corpus of Sanskrit, color-coded by gaṇa, frequency-ordered with भू at top-left](article-images/khoomeik-chart-frequency.jpg)
+
+The source of the dhātu data is Rohan Pandey's three-tweet thread, which I'd come across on X some time before:
+
+> *Sanskrit has >2000 verb roots (dhātus). But do you really need to learn them all? I had Claude analyze 270 Sanskrit texts, and it found that with just the 192 most common dhātus, you can understand ~90% of verbs in literature.*
+>
+> *With the 10 most common dhātus, you can understand 30% of verbs. With 50, 60%. With 192, 90%. With 500, 99%. The rarest ~1000 dhātus are virtually never attested in Classical Sanskrit literature. Btw I used Vidyut to identify each verb's dhātu because of gaṇa ambiguity.*
+>
+> *Thanks to Arun (Vidyut), Neelesh (Ashtadhyayi), Oliver (Digital Corpus of Sanskrit), and Claude for enabling this. I also created a frequency list grouped by gaṇa.*
+
+Rohan Pandey ([@khoomeik](https://x.com/khoomeik)) used **vidyut** (ambuda-org/vidyut) to identify dhātus across the Digital Corpus of Sanskrit (~988 thousand verb tokens). The frequency curve:
+
+| Top N dhātus | Coverage |
+|---|---|
+| 10 | 27.7% |
+| 50 | 58.8% |
+| 100 | 73.0% |
+| **192** | **86.1%** |
+| 500 | 98.5% |
+
+The chart gives Devanagari root, gaṇa (color-coded), English meaning(s), and 3sg present (which implicitly encodes पद since -ति = P, -ते = Ā). It does *not* give: explicit P/Ā/उभयपदी tag, suppletive present stems (दृश् → पश्य-, गम् → गच्छ-, स्था → तिष्ठ-), लिट् 3sg forms, irregular sandhi quirks. Those are the per-root metadata we have to add as we go.
+
+Pandey also published a second ordering — same 192 grouped by गण — which is more pedagogically useful (one stem-rule unlocks all roots in that color). Both orderings live in the app's Periodic Table.
+
+![Khoomeik's second variant — the same 192 dhātus, this time grouped by gaṇa so all gaṇa-1 roots cluster together, all gaṇa-2 roots cluster together, etc. One stem-rule per band.](article-images/khoomeik-chart-gana.jpg)
+
+The corresponding **Dhātu Coverage Curve** — what 10 / 50 / 100 / 192 / 500 dhātus actually buy you in real text — is the single most motivating data visualization in the entire project. It says: you do not need 2,000 verb roots. You need 192. The reading curriculum is finite.
+
+![Dhātu Coverage Curve — Digital Corpus of Sanskrit (~988k matched verb tokens via vidyut). Top 10 = 27.7%; top 50 = 58.8%; top 100 = 73%; top 192 = 86.1%; top 500 = 98.5%.](article-images/khoomeik-coverage-curve.jpg)
+
+---
+
+# Part 3 — the project itself
+
+What was actually built — design, growth, the audit pass, where the engine is now, and what's still open. This is about the app, not about how I got to building it.
 
 ## The decision to build
 
