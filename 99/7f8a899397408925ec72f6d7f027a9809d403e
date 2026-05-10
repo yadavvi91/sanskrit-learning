@@ -1,0 +1,21 @@
+src/data/coreVocab.js
+  s_d5e8c30b294ba2::t_93577cc2e23a75 642-643
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_19c9531f8f37f2 363-368
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "997f8a899397408925ec72f6d7f027a9809d403e",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
