@@ -1,0 +1,22 @@
+src/data/referenceLinks.js
+  s_d5e8c30b294ba2::t_7da6c82e6dd80f 96-100,102-110
+  s_d5e8c30b294ba2::t_c697f4c5a7ab1c 14-35
+src/components/Verbs.jsx
+  s_d5e8c30b294ba2::t_4f48dddc4b2e4d 6-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "aee7cb406c2452a2d6cdc2866cdabdfbb0272f59",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
