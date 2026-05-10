@@ -1,0 +1,26 @@
+src/components/WordPopover.jsx
+  s_d5e8c30b294ba2::t_3e77d8364957a1 111,117
+  s_d5e8c30b294ba2::t_448ea1ea40a90b 82-93
+  s_d5e8c30b294ba2::t_08278379572945 132-133
+src/data/coreVocab.js
+  s_d5e8c30b294ba2::t_369e514b04da1b 659-678
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_7ac24b0facc85a 1
+  s_d5e8c30b294ba2::t_adede1b5057b37 54-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e4f4459a79b28749501cb92805ae76b72f5195f1",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
