@@ -241,17 +241,37 @@ export function hydrateAutoStubVerses() {
         // "twice-born (द्विज) + best (उत्तम)" so the user at least sees
         // what each part means — this is samāsa-vigraha lite, until a
         // human annotates the full type+gloss.
+        let derivedType = match ? match.type : '';
         if (!match) {
-          const componentGlosses = parts.map((part) => {
-            const v0 = lookupSharedVocab(part);
-            return v0?.gloss ? part + ' (' + v0.gloss.split(/[—,;(]/)[0].trim() + ')' : part;
-          });
+          const components = parts.map((part) => ({ part, vocab: lookupSharedVocab(part) }));
+          const componentGlosses = components.map(({ part, vocab }) =>
+            vocab?.gloss ? part + ' (' + vocab.gloss.split(/[—,;(]/)[0].trim() + ')' : part
+          );
           derivedGloss = componentGlosses.join(' + ');
+          // Heuristic type detection: 3+ noun-category parts with the
+          // same gender → इतरेतर द्वंद्व (coordinated list).
+          // पणव-आनक-गोमुखाः, सुख-दुःख-समुद्भव style.
+          if (parts.length >= 3) {
+            const noun_like = components.filter(({ vocab }) =>
+              vocab && (vocab.category === 'noun' || vocab.category === 'adjective'));
+            if (noun_like.length >= 3) {
+              derivedType = 'इतरेतर द्वंद्व (inferred)';
+            }
+          }
+          // 2-part heuristic: if parts share same category (both nouns,
+          // both adjectives), and only the LAST has case ending, it's
+          // either तत्पुरुष or कर्मधारय. Mark as "तत्पुरुष? (inferred)".
+          if (parts.length === 2 && !derivedType) {
+            const [a, b] = components.map((c) => c.vocab);
+            if (a && b && a.category === 'noun' && b.category === 'noun') {
+              derivedType = 'तत्पुरुष? (inferred — best guess)';
+            }
+          }
         }
         derived.push({
           compound: pada,
           vigraha: parts.join(' + '),
-          type: match ? match.type : '',
+          type: derivedType,
           gloss: derivedGloss,
           source: match ? 'derived-from-vibhakti' : 'derived-from-padaccheda',
         });
