@@ -1,0 +1,29 @@
+checkpoints/checkpoint-40.md
+  s_d5e8c30b294ba2::t_7b1ccf52ad8616 1-92
+plans/v14-coverage-and-voice.md
+  s_d5e8c30b294ba2::t_a614d7b4e1729b 1-113
+checkpoints/checkpoint-38.md
+  s_d5e8c30b294ba2::t_ca302fda97f256 1-98
+checkpoints/checkpoint-39.md
+  s_d5e8c30b294ba2::t_b4602b61537eb9 1-124
+checkpoints/checkpoint-42.md
+  s_d5e8c30b294ba2::t_b72a9d80365df0 1-135
+checkpoints/checkpoint-41.md
+  s_d5e8c30b294ba2::t_d297e309e97b94 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e8cd9de9e03e235e2a13f36abce285b98b1958b6",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
