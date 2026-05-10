@@ -34,15 +34,16 @@ function OriginSummary() {
       <ArticleImage src="article-images/debroy-notes-1.jpg" alt="Handwritten Debroy notes — SOV/SVO, padaccheda, anvaya, the six vedanga" />
       <ArticleImage src="article-images/debroy-notes-2.jpg" alt="Handwritten Debroy notes — anushtubh metre, laghu/guru, the metrical rules" />
 
-      <h3>The parallel Sundarkand thread</h3>
+      <h3>The parallel Sundarkand reading practice</h3>
       <p>
-        Separate from any of this, I read Sundarkand every other week — have been doing that for
-        the past four-plus years. Out of that practice came two small web apps for myself:
-        the <a href="https://sundarkand.yadavvi.com/">Sundarkand audio reciter</a> (chaupāī text
-        synced to recitation audio, what I keep open while reading) and the{' '}
-        <a href="https://github.com/yadavvi91/awadhi-meter-identifier">Awadhi Meter Visualizer</a>
-        (laghu/guru breakdown for chaupāī). Independent of the Sanskrit work, but they're where
-        the parchment + Devanāgarī design language of <em>this</em> project came from.
+        Separate thread, longer-running than the Sanskrit one: I read Sundarkand every other
+        week, and have been doing that for the past four-plus years. To help me read along with
+        the audio I built the <a href="https://sundarkand.yadavvi.com/">Sundarkand reciter</a>{' '}
+        (chaupāī text synced to recitation). Years of reciting trained my ear for Awadhi metre,
+        and out of that came the{' '}
+        <a href="https://github.com/yadavvi91/awadhi-meter-identifier">Awadhi Meter Visualizer</a>{' '}
+        (laghu/guru breakdown for chaupāī). Independent of the Sanskrit work — mentioned because
+        it's the longer practice in my life.
       </p>
 
       <h3>The WhatsApp trigger</h3>
