@@ -656,6 +656,26 @@ const COMMON_NOUNS = {
   'सम्युक्त':         { category: 'krdanta', kind: 'past-passive', root: 'सम् + √युज्', gloss: 'joined / united (compound stem)' },
   'अयुक्त':           { category: 'krdanta', kind: 'past-passive', root: 'अ + √युज्', gloss: 'unyoked / undisciplined (compound stem)' },
   'अव्ययीभूत':        { category: 'krdanta', kind: 'past-passive', root: 'अव्ययी + √भू', gloss: 'become indeclinable (compound stem)' },
+  // Common compound modifier
+  'परम':              { category: 'adjective', root: 'परम', gloss: 'supreme / highest (compound stem)' },
+  'परमः':             { category: 'adjective', root: 'परम', gender: 'm', number: 'eka', case: 'pra', gloss: 'supreme' },
+  'परमम्':            { category: 'adjective', root: 'परम', gender: 'n', number: 'eka', case: 'pra', gloss: 'supreme' },
+  'परमाम्':           { category: 'adjective', root: 'परम', gender: 'f', number: 'eka', case: 'dvi', gloss: 'supreme (f, object)' },
+  // Mahābhārata characters
+  'धृष्टद्युम्न':     { category: 'noun', root: 'धृष्टद्युम्न', gender: 'm', gloss: 'Dhṛṣṭadyumna (compound stem)' },
+  'धृष्टद्युम्नः':    { category: 'noun', root: 'धृष्टद्युम्न', gender: 'm', number: 'eka', case: 'pra', gloss: 'Dhṛṣṭadyumna (Drupada\'s son, commander of the Pāṇḍava forces)' },
+  'द्रुपद':           { category: 'noun', root: 'द्रुपद', gender: 'm', gloss: 'Drupada (compound stem)' },
+  'द्रुपदः':          { category: 'noun', root: 'द्रुपद', gender: 'm', number: 'eka', case: 'pra', gloss: 'Drupada (king of Pāñcāla)' },
+  'विराट':            { category: 'noun', root: 'विराट', gender: 'm', gloss: 'Virāṭa (compound stem)' },
+  'विराटः':           { category: 'noun', root: 'विराट', gender: 'm', number: 'eka', case: 'pra', gloss: 'Virāṭa (king of Matsya)' },
+  'युयुधान':          { category: 'noun', root: 'युयुधान', gender: 'm', gloss: 'Yuyudhāna / Sātyaki (compound stem)' },
+  'युयुधानः':         { category: 'noun', root: 'युयुधान', gender: 'm', number: 'eka', case: 'pra', gloss: 'Yuyudhāna (Sātyaki — Yādava warrior allied with Pāṇḍavas)' },
+  'चेकितान':          { category: 'noun', root: 'चेकितान', gender: 'm', gloss: 'Cekitāna (compound stem)' },
+  'चेकितानः':         { category: 'noun', root: 'चेकितान', gender: 'm', number: 'eka', case: 'pra', gloss: 'Cekitāna (Yādava warrior)' },
+  'काशिराज':          { category: 'noun', root: 'काशिराज', gender: 'm', gloss: 'King of Kāśī (compound stem)' },
+  'काशिराजः':         { category: 'noun', root: 'काशिराज', gender: 'm', number: 'eka', case: 'pra', gloss: 'King of Kāśī' },
+  'शिखण्डि':          { category: 'noun', root: 'शिखण्डिन्', gender: 'm', gloss: 'Śikhaṇḍin (compound stem)' },
+  'सात्यकि':          { category: 'noun', root: 'सात्यकि', gender: 'm', gloss: 'Sātyaki (compound stem)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across

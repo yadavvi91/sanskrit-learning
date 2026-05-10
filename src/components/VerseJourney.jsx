@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CHAPTERS } from '../data/chapters.js';
 import { VERSES, getVerse, getVerseTier } from '../data/verses.js';
@@ -50,6 +50,42 @@ export default function VerseJourney() {
 
   const setSelected = ({ chapter, verse }) => navigate(`/journey/${chapter}/${verse}`);
   const openPrimer = (sectionId) => navigate(sectionId ? `/primer#${sectionId}` : '/primer');
+
+  // Keyboard prev/next: ← / → arrow keys advance through verses,
+  // wrapping across chapter boundaries. Disabled when an input is
+  // focused or a modifier key is held (so typing in search / jump
+  // box and browser-shortcut combos still work).
+  useEffect(() => {
+    if (!selected) return;
+    function onKey(e) {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+      const tag = (e.target && e.target.tagName) || '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || (e.target && e.target.isContentEditable)) return;
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      const ch = CHAPTERS.find((c) => c.number === selected.chapter);
+      if (!ch) return;
+      let target = null;
+      if (e.key === 'ArrowLeft') {
+        target = selected.verse > 1
+          ? { chapter: selected.chapter, verse: selected.verse - 1 }
+          : selected.chapter > 1
+            ? { chapter: selected.chapter - 1, verse: CHAPTERS.find((c) => c.number === selected.chapter - 1)?.verseCount ?? 1 }
+            : null;
+      } else {
+        target = selected.verse < ch.verseCount
+          ? { chapter: selected.chapter, verse: selected.verse + 1 }
+          : selected.chapter < CHAPTERS.length
+            ? { chapter: selected.chapter + 1, verse: 1 }
+            : null;
+      }
+      if (target) {
+        e.preventDefault();
+        navigate(`/journey/${target.chapter}/${target.verse}`);
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected, navigate]);
 
   const selectedVerse = selected ? getVerse(selected.chapter, selected.verse) : null;
 

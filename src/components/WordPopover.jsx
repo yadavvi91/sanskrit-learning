@@ -79,9 +79,18 @@ export default function WordPopover({ word, parsing, isFinite }) {
 
   // Effective parsing: verse-local first, then shared-dict fallback.
   const effectiveParsing = parsing ?? lookupSharedVocab(word) ?? null;
-  // If still null AND the word is hyphenated (light samasa unrolled in
-  // padaccheda), try component-by-component lookup.
-  const compound = !effectiveParsing ? decomposeCompound(word) : null;
+  // For hyphenated words, prefer component-by-component decomposition
+  // over a generic suffix-inferred entry — the latter would say
+  // "a-stem nom sg" with no real meaning, while CompoundPopover shows
+  // each part's actual gloss (परम-इष्वासः → परम "supreme" + इष्वासः
+  // "archer"). Authoritative parsings (verse-local or hand-curated
+  // dict) still win over decomposition.
+  const isWeakParsing = effectiveParsing && effectiveParsing.source === 'suffix-inferred';
+  const compound = (!effectiveParsing || (isWeakParsing && word.includes('-')))
+    ? decomposeCompound(word)
+    : null;
+  // If we found a usable compound decomposition, override the weak parsing.
+  const finalParsing = compound ? null : effectiveParsing;
 
   useEffect(() => {
     if (!open) return;
@@ -99,13 +108,13 @@ export default function WordPopover({ word, parsing, isFinite }) {
     };
   }, [open]);
 
-  const titleText = effectiveParsing
+  const titleText = finalParsing
     ? (parsing ? 'Click to see grammar (hand-decoded)' : 'Click to see grammar (from shared dictionary)')
     : compound
       ? 'Click to see compound components'
       : 'Click — no grammar data yet, but the popover shows what we know';
 
-  const hasParsing = !!(effectiveParsing || compound);
+  const hasParsing = !!(finalParsing || compound);
 
   return (
     <span className="word-popover-wrap" ref={ref}>
@@ -120,8 +129,8 @@ export default function WordPopover({ word, parsing, isFinite }) {
         {word}
       </button>
       {open && (
-        effectiveParsing
-          ? <Popover word={word} parsing={effectiveParsing} fromSharedDict={!parsing && !!effectiveParsing} />
+        finalParsing
+          ? <Popover word={word} parsing={finalParsing} fromSharedDict={!parsing && !!finalParsing} />
           : compound
             ? <CompoundPopover word={word} compound={compound} />
             : <EmptyPopover word={word} />
