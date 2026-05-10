@@ -14,7 +14,7 @@ function ArticleImage({ src, alt, ...rest }) {
 function OriginSummary() {
   return (
     <div className="origin-summary">
-      <h2>The short version</h2>
+      <h2>Short version</h2>
 
       <p>
         I went through Maharashtra SSC Sanskrit — pure rote. <em>देवः देवौ देवाः </em>
@@ -80,12 +80,6 @@ function OriginSummary() {
         <li><strong>Practice</strong> — SRS-style review of patterns and forms.</li>
       </ul>
 
-      <p className="origin-summary-cta">
-        Below is the full long-form essay — the same story with the cuts un-made. Read on if you
-        want the texture (or skim the table of contents and skip to what catches your eye).
-      </p>
-
-      <hr />
     </div>
   );
 }
@@ -93,33 +87,57 @@ function OriginSummary() {
 export default function Origin() {
   // Article markdown is bundled at build time via Vite's `?raw` import.
   const [md] = useState(articleMarkdown);
+  const [view, setView] = useState('short'); // 'short' | 'full'
 
   // Match the project's verse-detail scroll-on-mount behaviour.
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [view]);
 
   return (
     <article className="origin">
       <header className="origin-header">
         <p className="origin-eyebrow">How this project came to be</p>
         <p className="origin-meta">
-          A short summary first, then the full long-form essay. Includes the original handwritten
-          Debroy notes (Feb 2023), the holy-bhagavad-gita.org grid that started the spillover, and
-          the Khoomeik 192-dhātu charts that seeded the Verbs sub-app.
+          Two versions: a short summary card with the key images, or the full long-form essay.
+          The seed (Debroy, Feb 2023), the trigger (a WhatsApp message + holy-bhagavad-gita.org grid),
+          the four foundational verses, the bvsiitm + Khoomeik influences, and the conversations
+          with Claude that produced this codebase.
         </p>
+        <div className="origin-toggle" role="tablist" aria-label="Origin view">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === 'short'}
+            className={`origin-toggle-btn ${view === 'short' ? 'is-active' : ''}`}
+            onClick={() => setView('short')}
+          >
+            Short version
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={view === 'full'}
+            className={`origin-toggle-btn ${view === 'full' ? 'is-active' : ''}`}
+            onClick={() => setView('full')}
+          >
+            Full essay
+          </button>
+        </div>
       </header>
 
-      <OriginSummary />
-
-      <div className="origin-prose">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{ img: ArticleImage }}
-        >
-          {md}
-        </ReactMarkdown>
-      </div>
+      {view === 'short' ? (
+        <OriginSummary />
+      ) : (
+        <div className="origin-prose">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{ img: ArticleImage }}
+          >
+            {md}
+          </ReactMarkdown>
+        </div>
+      )}
     </article>
   );
 }

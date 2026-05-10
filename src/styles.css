@@ -1068,6 +1068,42 @@ button:disabled {
   color: var(--ink-soft);
   margin-top: 22px !important;
 }
+
+/* Toggle between short and full versions of the origin essay. */
+.origin-toggle {
+  display: inline-flex;
+  gap: 0;
+  margin-top: 18px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--parchment);
+}
+.origin-toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--ink-soft);
+  transition: background 0.15s, color 0.15s;
+}
+.origin-toggle-btn:hover {
+  color: var(--ink);
+  background: var(--parchment-deep);
+}
+.origin-toggle-btn.is-active {
+  background: var(--gold);
+  color: white;
+}
+.origin-toggle-btn.is-active:hover {
+  background: var(--gold);
+  color: white;
+}
+.origin-toggle-btn + .origin-toggle-btn {
+  border-left: 1px solid var(--rule);
+}
 .origin-prose h1 {
   font-family: var(--font-display);
   font-size: 28px;
