@@ -644,6 +644,18 @@ const COMMON_NOUNS = {
   'हय':              { category: 'noun', root: 'हय', gender: 'm', gloss: 'horse (compound stem)' },
   'हयः':             { category: 'noun', root: 'हय', gender: 'm', number: 'eka', case: 'pra', gloss: 'horse' },
   'हयम्':            { category: 'noun', root: 'हय', gender: 'm', number: 'eka', case: 'dvi', gloss: 'horse (object)' },
+  // Common PPP stems — needed so the -े (locative) fallback resolves
+  // forms like युक्ते, मुक्ते, etc. as "in/on the [yoked one]" instead
+  // of mis-classifying as a verb.
+  'युक्त':            { category: 'krdanta', kind: 'past-passive', root: '√युज्', gloss: 'yoked / joined / disciplined (compound stem)' },
+  'युक्तः':           { category: 'krdanta', kind: 'past-passive', root: '√युज्', gender: 'm', number: 'eka', case: 'pra', gloss: 'yoked / joined' },
+  'युक्तम्':          { category: 'krdanta', kind: 'past-passive', root: '√युज्', gender: 'n', number: 'eka', case: 'pra', gloss: 'yoked / joined' },
+  'मुक्त':            { category: 'krdanta', kind: 'past-passive', root: '√मुच्', gloss: 'released / liberated (compound stem)' },
+  'मुक्तः':           { category: 'krdanta', kind: 'past-passive', root: '√मुच्', gender: 'm', number: 'eka', case: 'pra', gloss: 'liberated' },
+  'भुक्त':            { category: 'krdanta', kind: 'past-passive', root: '√भुज्', gloss: 'enjoyed / consumed (compound stem)' },
+  'सम्युक्त':         { category: 'krdanta', kind: 'past-passive', root: 'सम् + √युज्', gloss: 'joined / united (compound stem)' },
+  'अयुक्त':           { category: 'krdanta', kind: 'past-passive', root: 'अ + √युज्', gloss: 'unyoked / undisciplined (compound stem)' },
+  'अव्ययीभूत':        { category: 'krdanta', kind: 'past-passive', root: 'अव्ययी + √भू', gloss: 'become indeclinable (compound stem)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across

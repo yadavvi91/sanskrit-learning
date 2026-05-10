@@ -444,6 +444,25 @@ function inferFromSuffix(word) {
   if (word.endsWith('न्ति') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'P', gloss: 'present 3pl — "they X"' });
   if (word.endsWith('न्ते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'bahu', pada: 'A', gloss: 'present ātmanepada 3pl — "they X (for self)"' });
   if (word.endsWith('यते') && word.length >= 4) return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'Kr', gloss: 'passive present 3sg — "is X-ed"' });
+  // Before treating -ते as a verb ending, check if stripping just -े
+  // (locative singular) gives a known noun/PPP/adjective — many forms
+  // like युक्ते (loc sg of युक्त PPP) are mis-classified otherwise.
+  if (word.endsWith('े') && word.length >= 4) {
+    const locStem = word.slice(0, -1);
+    const stemEntry = SHARED_VOCAB[locStem] || CORE_VOCAB[locStem] || VOCAB_EXTENDED[locStem];
+    if (stemEntry && (stemEntry.category === 'noun' || stemEntry.category === 'adjective' || stemEntry.category === 'krdanta')) {
+      const baseGloss = (stemEntry.gloss || '').split(/[—,;(]/)[0].trim();
+      return synth({
+        category: stemEntry.category,
+        kind: stemEntry.kind,
+        root: stemEntry.root || locStem,
+        gender: stemEntry.gender,
+        number: 'eka',
+        case: 'sap',
+        gloss: baseGloss ? `in ${baseGloss}` : 'a-stem locative singular — "in X"',
+      });
+    }
+  }
   if (word.endsWith('ते') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'present ātmanepada 3sg — "X-s (for self)"' });
   if (word.endsWith('ति') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'prathama', number: 'eka', pada: 'P', gloss: 'present 3sg — "X-s"' });
   if (word.endsWith('मि') && word.length >= 4)  return synth({ category: 'verb', lakara: 'lat', purusha: 'uttama',  number: 'eka', pada: 'P', gloss: 'present 1sg — "I X"' });
