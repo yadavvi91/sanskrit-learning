@@ -112,7 +112,7 @@ export default function WordPopover({ word, parsing, isFinite }) {
     ? (parsing ? 'Click to see grammar (hand-decoded)' : 'Click to see grammar (from shared dictionary)')
     : compound
       ? 'Click to see compound components'
-      : 'Click — no grammar data yet, but the popover shows what we know';
+      : 'Click — best-effort shape hint based on the word\'s form';
 
   const hasParsing = !!(finalParsing || compound);
 
