@@ -1,0 +1,21 @@
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_58e84a7abdccfe 178,194-198,212,215,218-219,221,225,228-229,231,233
+src/styles.css
+  s_d5e8c30b294ba2::t_11fa970a371470 408-414,416-423,425,428-429,431-436,438-440,442,444-445
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "038b0016a6131ac22e421a6f1a5cc1031e3c91c8",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
