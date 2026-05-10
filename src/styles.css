@@ -405,45 +405,45 @@ button:disabled {
   padding: 80px 0;
 }
 
-/* Prev/next verse navigation — appears at top and bottom of detail. */
-.verse-nav {
+/* Floating chevron prev/next navigation — fixed to right edge of
+   viewport, vertically centered. Zero document-flow footprint. */
+.verse-nav-floating {
+  position: fixed;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 50;
+}
+.verse-nav-chev {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
-  padding: 8px 12px;
+  justify-content: center;
   background: var(--parchment);
   border: 1px solid var(--rule);
-  border-radius: 4px;
-}
-.verse-detail + .verse-nav {
-  margin-top: 24px;
-  margin-bottom: 0;
-}
-.verse-nav-btn {
-  background: transparent;
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  padding: 6px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: var(--font-deva);
-  font-size: 0.95em;
-  transition: background 0.15s;
-}
-.verse-nav-btn:hover:not(:disabled) {
-  background: var(--parchment-deep);
-  border-color: var(--gold);
-}
-.verse-nav-btn:disabled {
-  color: var(--ink-faint);
-  cursor: not-allowed;
-}
-.verse-nav-current {
-  font-family: var(--font-deva);
+  border-radius: 50%;
   color: var(--ink-soft);
-  font-size: 0.9em;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.55;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.verse-nav-chev:hover:not(:disabled) {
+  opacity: 1;
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--parchment-deep);
+}
+.verse-nav-chev:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 
 .verse-detail {
