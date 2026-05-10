@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.js';
 import { getPronounAnchor } from '../data/pronouns.js';
 import { lookupSharedVocab } from '../data/sharedVocab.js';
+import { getReferenceLink } from '../data/referenceLinks.js';
 
 const CASE_LABELS = {
   pra: 'प्रथमा (Nom.)',
@@ -246,6 +247,27 @@ function Popover({ word, parsing, fromSharedDict }) {
           <span className="wp-paradigm-arrow">↗</span>
         </button>
       )}
+
+      {/* Generic reference-link fallback — fires when neither the
+          paradigm classifier nor the pronoun anchor produced a link.
+          Routes verbs to /verbs, krdantas to /primer#krdanta, particles
+          to /atlas/avyaya, etc. Ensures every popover has at least
+          one outbound pedagogical link. */}
+      {!paradigm && !pronounAnchor && (() => {
+        const ref = getReferenceLink(parsing);
+        if (!ref) return null;
+        return (
+          <button
+            type="button"
+            className="wp-paradigm-link"
+            onClick={() => navigate(ref.url)}
+            title={ref.label}
+          >
+            <span>{ref.label}</span>
+            <span className="wp-paradigm-arrow">↗</span>
+          </button>
+        );
+      })()}
     </div>
   );
 }

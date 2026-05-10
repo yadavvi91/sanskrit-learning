@@ -624,6 +624,21 @@ const COMMON_NOUNS = {
   'सिंहनादम्':        { category: 'noun', root: 'सिंहनाद', gender: 'm', number: 'eka', case: 'dvi', gloss: 'lion\'s roar (object)' },
   'कतरत्':            { category: 'pronoun', root: 'कतर', gender: 'n', number: 'eka', case: 'pra', gloss: 'which-of-the-two' },
   'पराण्याहुः':       { category: 'verb', root: '√अह्', gana: 2, lakara: 'lit', purusha: 'prathama', number: 'bahu', gloss: 'they call (them) higher (पराणि + आहुः)' },
+  // 1.12 — गाङ्गेय blew the conch
+  'हर्ष':             { category: 'noun', root: 'हर्ष', gender: 'm', gloss: 'joy / thrill (compound stem)' },
+  'हर्षम्':           { category: 'noun', root: 'हर्ष', gender: 'm', number: 'eka', case: 'dvi', gloss: 'joy (object)' },
+  'सञ्जनयन्':         { category: 'krdanta', kind: 'present-active', root: 'सम् + √जन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'producing / generating (m. nom sg)' },
+  'पितामह':           { category: 'noun', root: 'पितामह', gender: 'm', gloss: 'paternal grandfather (compound stem)' },
+  'पितामहः':          { category: 'noun', root: 'पितामह', gender: 'm', number: 'eka', case: 'pra', gloss: 'paternal grandfather (Bhīṣma)' },
+  'सिंहनाद':          { category: 'noun', root: 'सिंहनाद', gender: 'm', gloss: 'lion-roar (compound stem)' },
+  'उच्चैः':           { category: 'particle', gloss: 'loudly / aloft (indeclinable)' },
+  'शङ्ख':             { category: 'noun', root: 'शङ्ख', gender: 'm', gloss: 'conch (compound stem)' },
+  'शङ्खम्':           { category: 'noun', root: 'शङ्ख', gender: 'm', number: 'eka', case: 'dvi', gloss: 'conch (object)' },
+  'दध्मौ':            { category: 'verb', root: '√ध्मा', gana: 1, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'eka', gloss: 'blew (perfect 3sg)' },
+  'दध्मुः':           { category: 'verb', root: '√ध्मा', gana: 1, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'bahu', gloss: 'they blew (perfect 3pl)' },
+  'प्रतापवान्':       { category: 'adjective', root: 'प्रतापवत्', gender: 'm', number: 'eka', case: 'pra', gloss: 'majestic / glowing-with-might (matup-suffix)' },
+  'कुरु-वृद्धः':      { category: 'noun', root: 'कुरुवृद्ध', gender: 'm', number: 'eka', case: 'pra', gloss: 'the elder of the Kurus (Bhīṣma)' },
+  'सिंह-नादम्':       { category: 'noun', root: 'सिंहनाद', gender: 'm', number: 'eka', case: 'dvi', gloss: 'lion\'s roar (object)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across

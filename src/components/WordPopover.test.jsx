@@ -248,19 +248,25 @@ describe('WordPopover — paradigm link (popover → Atlas/Declensions)', () => 
     expect(links[0].textContent).toMatch(/देव/);
   });
 
-  it('does NOT show paradigm link for verbs', () => {
+  it('shows a "see in Verbs" link for verb forms (not the देव-class declension link)', () => {
     const { container } = renderInRouter(
       <WordPopover word="भवति" parsing={{ category: 'verb', root: '√भू', gana: 1, lakara: 'lat' }} isFinite />
     );
     fireEvent.click(container.querySelector('.pada'));
-    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
+    const link = container.querySelector('.wp-paradigm-link');
+    expect(link).not.toBeNull();
+    // It's a verb-routed link, not the declension-paradigm link.
+    expect(link.textContent).not.toMatch(/follows.*-class/);
+    expect(link.textContent).toMatch(/Verbs|Primer|लकार|√/);
   });
 
-  it('does NOT show paradigm link for particles', () => {
+  it('shows a "see in अव्यय" link for particles', () => {
     const { container } = renderInRouter(
       <WordPopover word="हि" parsing={{ category: 'particle', gloss: 'indeed' }} />
     );
     fireEvent.click(container.querySelector('.pada'));
-    expect(container.querySelector('.wp-paradigm-link')).toBeNull();
+    const link = container.querySelector('.wp-paradigm-link');
+    expect(link).not.toBeNull();
+    expect(link.textContent).toMatch(/अव्यय|Indeclinables/);
   });
 });
