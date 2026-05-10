@@ -48,7 +48,16 @@ export default function VerseJourney() {
     return first ? { chapter: first.chapter, verse: first.verse } : null;
   }, [params.chapter, params.verse]);
 
-  const setSelected = ({ chapter, verse }) => navigate(`/journey/${chapter}/${verse}`);
+  // Preserve scroll position across prev/next navigation. The user
+  // commonly scrolls down to read the अन्वय / English translation;
+  // resetting to top on every verse-change forces them to re-scroll.
+  // Capture scrollY before navigate, restore after React commits the
+  // new verse via two rAFs (one for the DOM update, one for layout).
+  const setSelected = ({ chapter, verse }) => {
+    const y = window.scrollY;
+    navigate(`/journey/${chapter}/${verse}`);
+    requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, y)));
+  };
   const openPrimer = (sectionId) => navigate(sectionId ? `/primer#${sectionId}` : '/primer');
 
   // Keyboard prev/next: ← / → arrow keys advance through verses,
@@ -80,7 +89,9 @@ export default function VerseJourney() {
       }
       if (target) {
         e.preventDefault();
+        const y = window.scrollY;
         navigate(`/journey/${target.chapter}/${target.verse}`);
+        requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, y)));
       }
     }
     window.addEventListener('keydown', onKey);
