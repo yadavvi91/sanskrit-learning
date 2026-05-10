@@ -185,17 +185,29 @@ function CompoundRow({ index, component, isHead }) {
   );
 }
 
+// Last-resort shape analysis when every dictionary + suffix-inference layer
+// has failed. Devanagari shape signals only: length, head/tail characters,
+// presence of vowel marks. We return a short human-readable hint so the
+// popover is never a pure dead-end.
+function shapeHint(word) {
+  const len = [...word].length;
+  if (len <= 1) return 'Single character — almost certainly a splitter residue (likely an आ-/अ- prefix detached from its host word).';
+  if (len === 2) return 'Two-character fragment — likely a splitter residue. Read the verse line for the surrounding context.';
+  if (word.includes('-')) return 'Hyphenated compound with no resolved components — the head probably carries the case; each part may need its own gloss.';
+  if (word.startsWith('ं') || word.startsWith('ः') || word.startsWith('े') || word.startsWith('ा') || word.startsWith('ि') || word.startsWith('ी') || word.startsWith('ु') || word.startsWith('ू') || word.startsWith('ो'))
+    return 'Begins with a vowel-mark (मात्रा) — splitter cut at the wrong place; the leading consonant was absorbed by the previous word.';
+  if (word.endsWith('्')) return 'Ends in विराम (् ) — consonant-stem form; check the verse text for the larger compound this belongs to.';
+  return 'No dictionary entry or suffix pattern matched. Likely either an uncommon compound or a splitter mis-cut — check the verse line for context.';
+}
+
 function EmptyPopover({ word }) {
   return (
     <div className="word-popover word-popover-empty" role="dialog">
       <div className="wp-header">
         <span className="wp-word">{word}</span>
-        <span className="wp-category">no grammar data yet</span>
+        <span className="wp-category">best-effort shape hint</span>
       </div>
-      <p className="wp-gloss">
-        This word isn't in the shared dictionary, and the verse hasn't been hand-decoded.
-        It's a candidate for the Decode Helper queue.
-      </p>
+      <p className="wp-gloss">{shapeHint(word)}</p>
     </div>
   );
 }

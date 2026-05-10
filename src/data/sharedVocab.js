@@ -488,6 +488,66 @@ function inferFromSuffix(word) {
   }
   // Vocative endings — broad
   if (word.endsWith('हो'))    return synth({ category: 'noun', case: 'sambodhana', gloss: 'vocative (compound) — "O X!"' });
+  // -वत् → adverbial particle "like X" (e.g. आदित्यवत्, अग्निवत्)
+  if (word.endsWith('वत्') && word.length >= 4) {
+    const real = withStemGloss('वत्', 'like');
+    return synth({ category: 'particle', root: word.slice(0, -3), gloss: real || 'adverbial -वत् — "like X / in the manner of X"' });
+  }
+  // -धा → particle of manner/multiplicity (एकधा, अनेकधा, बहुधा, शतधा)
+  if (word.endsWith('धा') && word.length >= 4) {
+    return synth({ category: 'particle', gloss: 'adverb of multiplicity — "in N ways / N-fold"' });
+  }
+  // -दृक् / -दृशम् → pronoun-adjective "of X sort" (यादृक्, तादृक्, ईदृक्)
+  if (word.endsWith('दृक्') || word.endsWith('दृशम्')) {
+    return synth({ category: 'pronoun', gloss: 'pronominal adjective — "of which/that/this sort"' });
+  }
+  // -त्व, -त्वम् → abstract noun "X-ness / state of being X"
+  if ((word.endsWith('त्व') || word.endsWith('त्वम्')) && word.length >= 4) {
+    const cut = word.endsWith('त्वम्') ? -3 : -2;
+    const real = withStemGloss(word.endsWith('त्वम्') ? 'त्वम्' : 'त्व', '');
+    return synth({ category: 'noun', gender: 'n', number: 'eka', case: word.endsWith('त्वम्') ? 'pra' : 'pra', root: word.slice(0, cut), gloss: real ? `${real.trim()}-ness` : 'abstract -त्व suffix — "X-ness / state of being X"' });
+  }
+  // -चित् ending on pronominal stems → indefinite "any-/some-"
+  // (कस्यचित्, केनचित्, कस्मिंश्चित्, कस्मैचित्)
+  if (word.endsWith('चित्') && word.length >= 5) {
+    return synth({ category: 'pronoun', root: 'किम्', gloss: 'indefinite pronoun with -चित् — "any / some-"' });
+  }
+  // -अन (a-stem nom sg n. / vocative / verbal noun)
+  if (word.endsWith('अन') && word.length >= 4) {
+    return synth({ category: 'noun', gender: 'n', number: 'eka', case: 'pra-or-sam', gloss: '-अन ending — neuter nominative or vocative singular' });
+  }
+  // Word-final -अया → ā-stem feminine instrumental singular ("by X")
+  if (word.endsWith('या') && word.length >= 4 && !word.endsWith('स्या') && !word.endsWith('न्या')) {
+    const real = withStemGloss('या', 'by');
+    return synth({ category: 'noun', gender: 'f', number: 'eka', case: 'tri', root: word.slice(0, -2), gloss: real || 'ā-stem feminine instrumental singular — "by X / with X"' });
+  }
+  // -ोः → genitive/locative dual ("of two X / in two X")
+  if (word.endsWith('ोः') && word.length >= 4) {
+    const real = withStemGloss('ोः', 'of (two)');
+    return synth({ category: 'noun', number: 'dvi', case: 'sha-or-sap', root: word.slice(0, -2), gloss: real || 'a-stem genitive/locative dual — "of two X / in two X"' });
+  }
+  // -ुः → -u-stem masculine nominative singular OR -तृ-stem (कर्तृ → कर्ता)
+  // (already excluded from generic -ः above)
+  if (word.endsWith('ुः') && word.length >= 4) {
+    return synth({ category: 'noun', gender: 'm', number: 'eka', case: 'pra', root: word.slice(0, -2), gloss: '-u-stem masculine nominative singular — likely subject form' });
+  }
+  // -अनि / -आनि / -ानि → -अन्/-न् stem neuter nom/acc plural (नामानि, कर्माणि, भूतानि, आनानि)
+  // The matra form -ानि (matra-ā + na + matra-i) is the common surface
+  // realisation when the previous consonant carries its own vowel (e.g.
+  // आनानि = आ + ना + नि, where -ानि is just न+matra-i after the stem-ा).
+  if ((word.endsWith('आनि') || word.endsWith('ानि')) && word.length >= 4) {
+    const suffix = word.endsWith('आनि') ? 'आनि' : 'ानि';
+    const real = withStemGloss(suffix, '');
+    return synth({ category: 'noun', gender: 'n', number: 'bahu', case: 'pra-or-dvi', root: word.slice(0, -suffix.length), gloss: real ? `${real.trim()} (n. pl)` : '-अन्/-न् stem neuter nom/acc plural' });
+  }
+  // -र् → likely visarga-sandhi residue of -ः (पुनः → पुनर्, स्वर्ग → स्वर्)
+  if (word.endsWith('र्') && word.length >= 3) {
+    return synth({ category: 'particle', gloss: 'visarga-sandhi form ending in -र् (sandhi residue of -ः)' });
+  }
+  // -क् → -च्/-ज्/-क् stem nominative (दिक्, ऋत्विक्, यादृक्) — short consonant-final.
+  if (word.endsWith('क्') && word.length >= 3 && !word.endsWith('दृक्')) {
+    return synth({ category: 'noun', case: 'pra', gloss: 'consonant-stem nominative — final -क् form' });
+  }
   // Word-final -ः with reasonable stem length → m. nom. sg. (a-stem)
   if (word.endsWith('ः') && word.length >= 4 && !word.endsWith('ुः') && !word.endsWith('ोः')) {
     const real = withStemGloss('ः', '');

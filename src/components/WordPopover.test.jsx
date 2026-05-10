@@ -113,7 +113,10 @@ describe('WordPopover — open / close', () => {
     const popover = container.querySelector('.word-popover');
     expect(popover).not.toBeNull();
     expect(popover.className).toContain('word-popover-empty');
-    expect(popover.textContent).toContain('no grammar data yet');
+    // EmptyPopover now degrades gracefully: instead of a dead-end "no
+    // grammar data yet" message, it shows a best-effort shape-based hint
+    // so every popover offers *something* to read.
+    expect(popover.textContent).toContain('best-effort shape hint');
   });
 
   it('with parsing=null but the word IS in sharedVocab, clicking opens a regular popover (dict fallback)', () => {

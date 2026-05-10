@@ -28,6 +28,7 @@ import { VOCAB_EXTENDED_PART_5 } from './_vocab_extended_part5.js';
 import { VOCAB_EXTENDED_PART_6 } from './_vocab_extended_part6.js';
 import { VOCAB_EXTENDED_PART_7 } from './_vocab_extended_part7.js';
 import { VOCAB_EXTENDED_PART_8 } from './_vocab_extended_part8.js';
+import { VOCAB_EXTENDED_PART_9 } from './_vocab_extended_part9.js';
 
 export const VOCAB_EXTENDED = {
   ...VOCAB_EXTENDED_PART_1,
@@ -38,4 +39,5 @@ export const VOCAB_EXTENDED = {
   ...VOCAB_EXTENDED_PART_6,
   ...VOCAB_EXTENDED_PART_7,
   ...VOCAB_EXTENDED_PART_8,
+  ...VOCAB_EXTENDED_PART_9,
 };
