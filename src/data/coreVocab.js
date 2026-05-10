@@ -639,6 +639,8 @@ const COMMON_NOUNS = {
   'प्रतापवान्':       { category: 'adjective', root: 'प्रतापवत्', gender: 'm', number: 'eka', case: 'pra', gloss: 'majestic / glowing-with-might (matup-suffix)' },
   'कुरु-वृद्धः':      { category: 'noun', root: 'कुरुवृद्ध', gender: 'm', number: 'eka', case: 'pra', gloss: 'the elder of the Kurus (Bhīṣma)' },
   'सिंह-नादम्':       { category: 'noun', root: 'सिंहनाद', gender: 'm', number: 'eka', case: 'dvi', gloss: 'lion\'s roar (object)' },
+  'अभ्यहन्यन्त':       { category: 'verb', root: 'अभि + √हन्', gana: 2, pada: 'A', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'were struck / sounded forth (imperfect passive/ātmane. 3pl — "they-were-struck / sounded-forth")' },
+  'अहन्यन्त':         { category: 'verb', root: '√हन्', gana: 2, pada: 'A', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'were struck / were-killed (imperfect passive 3pl)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across

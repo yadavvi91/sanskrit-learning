@@ -360,6 +360,12 @@ function inferFromSuffix(word) {
   if (word.endsWith('ष्यसि') || word.endsWith('स्यसि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'madhyama', number: 'eka', pada: 'P', gloss: 'future 2sg — "you will X"' });
   if (word.endsWith('ष्यामि') || word.endsWith('स्यामि')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'uttama', number: 'eka', pada: 'P', gloss: 'future 1sg — "I will X"' });
   if (word.endsWith('ष्यते') || word.endsWith('स्यते')) return synth({ category: 'verb', lakara: 'lrt', purusha: 'prathama', number: 'eka', pada: 'A', gloss: 'future ātmanepada 3sg' });
+  // ── Imperfect (लङ्) — past tense, augmented with अ- ──
+  // -अन्त (no virama after त) = ātmanepada/passive 3pl past:
+  //   अभ्यहन्यन्त ← अभि + √हन् passive + लङ् 3pl
+  if (/^अ.+न्त$/.test(word)) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', pada: 'A', gloss: 'imperfect 3pl ātmanepada/passive — "they were X-ed / they X-ed (for self)"' });
+  if (/^अ.+त्$/.test(word) && word.length >= 4) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'eka', gloss: 'imperfect 3sg with अ- augment — "X-ed"' });
+  if (/^अ.+न्$/.test(word) && word.length >= 4) return synth({ category: 'verb', lakara: 'lan', purusha: 'prathama', number: 'bahu', gloss: 'imperfect 3pl with अ- augment — "they X-ed"' });
   // ── Optative (विधिलिङ्) ──
   if (word.endsWith('ेयुः')) return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'prathama', number: 'bahu', gloss: 'optative 3pl — "they should X"' });
   if (word.endsWith('ेम'))    return synth({ category: 'verb', lakara: 'vidhilin', purusha: 'uttama', number: 'bahu', gloss: 'optative 1pl — "we should X"' });
