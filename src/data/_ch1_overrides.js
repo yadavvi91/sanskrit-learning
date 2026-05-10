@@ -5,6 +5,14 @@
 // these via a wrapper module — overrides only fill missing fields, so
 // any later hand-correction in verses.js takes priority.
 export const CH1_VERSE_OVERRIDES = {
+  '1.2': {
+    speaker: 'सञ्जय उवाच',
+    keyFights: [
+      'The तु here is not "however." It\'s functioning as a discourse / transitional particle ("now," "then") + पादपूरण (metrical filler). Count the syllables of the first pāda: दृ-ष्ट्वा-तु-पा-ण्ड-वा-नी-कं = 8. Drop the तु and the अनुष्टुभ pāda breaks. So तु is doing two jobs: marking the pivot from 1.1\'s question (किमकुर्वत सञ्जय) into Sañjaya\'s answer, and completing the metre.',
+      'Read it as "Now, having seen the Pāṇḍava army drawn up…" — a narrator\'s transition, the way a storyteller clears his throat before starting. The Hindi translation captures this with "उस समय" (at that time); most English translators drop it because English has no semantic slot for it, though some (Telang, SBE) do render it as "Then."',
+      'तु has four uses in classical Sanskrit, only one of which is the contrastive "however/but":  (1) contrastive — "however," (2) discourse / transitional — "now, then," (3) emphatic — often left untranslated, similar to English "you see" or "indeed," (4) पादपूरण — pure metrical filler to complete the syllable count. This verse uses (2) + (4).',
+    ],
+  },
   '1.6': {
     speaker: 'दुर्योधन उवाच',
     padaccheda: [
