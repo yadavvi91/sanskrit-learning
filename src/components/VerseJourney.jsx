@@ -209,10 +209,10 @@ function VerseNavFloating({ chapter, verse, onSelect }) {
       ? { chapter: chapter + 1, verse: 1 }
       : null;
   return (
-    <div className="verse-nav-floating" aria-label="Verse navigation">
+    <>
       <button
         type="button"
-        className="verse-nav-chev"
+        className="verse-nav-chev verse-nav-chev-left"
         onClick={() => prev && onSelect(prev)}
         disabled={!prev}
         aria-label={prev ? `Previous: Gītā ${prev.chapter}.${prev.verse}` : 'Already at first verse'}
@@ -222,7 +222,7 @@ function VerseNavFloating({ chapter, verse, onSelect }) {
       </button>
       <button
         type="button"
-        className="verse-nav-chev"
+        className="verse-nav-chev verse-nav-chev-right"
         onClick={() => next && onSelect(next)}
         disabled={!next}
         aria-label={next ? `Next: Gītā ${next.chapter}.${next.verse}` : 'Already at last verse'}
@@ -230,7 +230,7 @@ function VerseNavFloating({ chapter, verse, onSelect }) {
       >
         ›
       </button>
-    </div>
+    </>
   );
 }
 
