@@ -45,20 +45,30 @@ describe('StackBuilder — Forward mode', () => {
 
   it('changing the dhātu picker updates the resulting form', () => {
     const { container } = render(<StackBuilder dhatus={DHATUS_TOP25} />);
-    const dhatuSelect = container.querySelector('.picker select');
-    expect(dhatuSelect).toBeDefined();
+    // Dhātu picker is now a searchable combobox, not a <select>.
+    const trigger = container.querySelector('.dhatu-combobox-trigger');
+    expect(trigger).toBeDefined();
+    fireEvent.click(trigger);
 
-    // Switch to √कृ (id=kr). The default cell is लट् P प्रथम एक → करोति.
-    fireEvent.change(dhatuSelect, { target: { value: 'kr' } });
+    // Type a search query that uniquely matches √कृ.
+    const search = container.querySelector('.dhatu-combobox-search');
+    fireEvent.change(search, { target: { value: 'do' } });
+
+    // Click the first row in the filtered list.
+    const firstRow = container.querySelector('.dhatu-combobox-row');
+    expect(firstRow).toBeDefined();
+    fireEvent.click(firstRow);
+
+    // √कृ default cell is लट् P प्रथम एक → करोति.
     expect(container.querySelector('.formula-result').textContent).toBe('करोति');
   });
 
   it('changing the लकार picker updates the form', () => {
     const { container } = render(<StackBuilder dhatus={DHATUS_TOP25} />);
-    // Pickers are .picker labels in declared order: dhātu, गण(readonly), लकार, पद, पुरुष, वचन
+    // Pickers in declared order: dhātu(combobox), गण(readonly), लकार, पद, पुरुष, वचन
+    // The first .picker select is now लकार (since dhātu is a combobox).
     const selects = container.querySelectorAll('.picker select');
-    // selects: [dhatu, lakara, pada, purusha, vachana] (gana is readonly span, no select)
-    const lakaraSelect = selects[1];
+    const lakaraSelect = selects[0];
     expect(lakaraSelect).toBeDefined();
 
     // √भू, switch to लृट् (future): भविष्यति
@@ -69,7 +79,7 @@ describe('StackBuilder — Forward mode', () => {
   it('लङ् (past) shows an augment chip', () => {
     const { container } = render(<StackBuilder dhatus={DHATUS_TOP25} />);
     const selects = container.querySelectorAll('.picker select');
-    const lakaraSelect = selects[1];
+    const lakaraSelect = selects[0];
     fireEvent.change(lakaraSelect, { target: { value: 'lan' } });
 
     // Augment chip is .formula-aug
@@ -80,10 +90,9 @@ describe('StackBuilder — Forward mode', () => {
 
   it('Atmanepada-only dhātu locks the पद select', () => {
     const { container } = render(<StackBuilder dhatus={DHATUS_TOP25} />);
-    // Find an A-pada-only dhātu (or U-pada to confirm both options).
-    // भू is P-only — पद select should be disabled.
+    // selects index 1 is now पद (was 2 before the dhātu combobox).
     const selects = container.querySelectorAll('.picker select');
-    const padaSelect = selects[2];
+    const padaSelect = selects[1];
     expect(padaSelect).toBeDefined();
     // भू pada is P → padasAvailable.length === 1 → disabled
     expect(padaSelect.disabled).toBe(true);

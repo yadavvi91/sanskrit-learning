@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { conjugate, decompose, decompose_reverse } from '../utils/conjugator.js';
 import {
   LAKARAS, LAKARA_META, GANA_META, PURUSHAS, VACHANAS,
@@ -46,20 +46,14 @@ function Forward({ dhatus }) {
     <div className="forward">
       <div className="forward-pickers">
         <Picker label="1. धातु">
-          <select
-            value={dhatu.id}
-            onChange={(e) => {
-              const next = dhatus.find((d) => d.id === e.target.value);
+          <DhatuCombobox
+            dhatus={dhatus}
+            value={dhatu}
+            onChange={(next) => {
               setDhatu(next);
               if (next.pada !== 'U' && pada !== next.pada) setPada(next.pada);
             }}
-          >
-            {dhatus.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.devanagari} — {d.meanings[0]} (गण {d.gana})
-              </option>
-            ))}
-          </select>
+          />
         </Picker>
 
         <Picker label="2. गण">
@@ -214,5 +208,124 @@ function Picker({ label, children }) {
       <span className="picker-label">{label}</span>
       {children}
     </label>
+  );
+}
+
+// Searchable replacement for the 190-entry dhātu <select>. Click toggles
+// a popover with a search input that filters by devanāgarī / IAST /
+// meaning / gana number; clicking a row commits the selection and closes.
+function DhatuCombobox({ dhatus, value, onChange }) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const wrapRef = useRef(null);
+  const inputRef = useRef(null);
+  const listRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false); };
+    const key = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('mousedown', close);
+    document.addEventListener('keydown', key);
+    // Focus the search input on open.
+    requestAnimationFrame(() => inputRef.current?.focus());
+    return () => {
+      document.removeEventListener('mousedown', close);
+      document.removeEventListener('keydown', key);
+    };
+  }, [open]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return dhatus;
+    return dhatus.filter((d) => {
+      if (d.devanagari.includes(query)) return true;
+      const iast = (d.iast || '').toLowerCase();
+      if (iast.includes(q)) return true;
+      if (d.meanings.some((m) => m.toLowerCase().includes(q))) return true;
+      if (String(d.gana) === q) return true;
+      return false;
+    });
+  }, [dhatus, query]);
+
+  // Keep activeIdx in range when the filter changes.
+  useEffect(() => { setActiveIdx(0); }, [query]);
+
+  const commit = (d) => {
+    onChange(d);
+    setOpen(false);
+    setQuery('');
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActiveIdx((i) => Math.min(i + 1, filtered.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActiveIdx((i) => Math.max(i - 1, 0));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filtered[activeIdx]) commit(filtered[activeIdx]);
+    }
+  };
+
+  // Scroll the active row into view as the user arrow-keys through.
+  useEffect(() => {
+    if (!open || !listRef.current) return;
+    const el = listRef.current.querySelector(`[data-idx="${activeIdx}"]`);
+    if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ block: 'nearest' });
+  }, [open, activeIdx]);
+
+  return (
+    <div className="dhatu-combobox" ref={wrapRef}>
+      <button
+        type="button"
+        className="dhatu-combobox-trigger"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+      >
+        <span className="dhatu-trigger-deva">{value.devanagari}</span>
+        <span className="dhatu-trigger-meta">— {value.meanings[0]} (गण {value.gana})</span>
+        <span className="dhatu-trigger-caret">▾</span>
+      </button>
+
+      {open && (
+        <div className="dhatu-combobox-popover" role="listbox">
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={onKeyDown}
+            placeholder={`Search ${dhatus.length} dhātus — devanāgarī, IAST, meaning, or gaṇa`}
+            className="dhatu-combobox-search"
+          />
+          <div className="dhatu-combobox-list" ref={listRef}>
+            {filtered.length === 0 ? (
+              <div className="dhatu-combobox-empty">No match.</div>
+            ) : filtered.map((d, i) => (
+              <button
+                key={d.id}
+                type="button"
+                data-idx={i}
+                className={`dhatu-combobox-row ${i === activeIdx ? 'is-active' : ''} ${d.id === value.id ? 'is-selected' : ''}`}
+                onMouseEnter={() => setActiveIdx(i)}
+                onClick={() => commit(d)}
+                role="option"
+                aria-selected={d.id === value.id}
+              >
+                <span className="dhatu-row-deva">{d.devanagari}</span>
+                <span className="dhatu-row-iast">{d.iast || ''}</span>
+                <span className="dhatu-row-meaning">{d.meanings[0]}</span>
+                <span className="dhatu-row-gana">गण {d.gana}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

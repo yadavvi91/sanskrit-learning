@@ -1971,6 +1971,130 @@ td.is-picked { background: var(--saffron-soft); }
   color: var(--ink-soft);
 }
 
+/* Searchable dhātu combobox — replaces the 190-entry <select> in Forward. */
+.dhatu-combobox {
+  position: relative;
+}
+.dhatu-combobox-trigger {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
+  font-family: var(--font-deva);
+  font-size: 14px;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 4px 6px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.dhatu-combobox-trigger:hover {
+  border-color: var(--gold);
+}
+.dhatu-trigger-deva {
+  font-weight: 600;
+}
+.dhatu-trigger-meta {
+  flex: 1;
+  color: var(--ink-soft);
+  font-family: var(--font-prose);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dhatu-trigger-caret {
+  color: var(--ink-faint);
+  font-size: 10px;
+}
+.dhatu-combobox-popover {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--parchment);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(28, 16, 8, 0.18);
+  display: flex;
+  flex-direction: column;
+  max-height: 360px;
+  min-width: 320px;
+}
+.dhatu-combobox-search {
+  font-family: var(--font-prose);
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+}
+.dhatu-combobox-search::placeholder {
+  color: var(--ink-faint);
+}
+.dhatu-combobox-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+.dhatu-combobox-empty {
+  font-family: var(--font-prose);
+  font-size: 13px;
+  color: var(--ink-faint);
+  padding: 12px 10px;
+  text-align: center;
+}
+.dhatu-combobox-row {
+  display: grid;
+  grid-template-columns: 1.5em 4em 1fr auto;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 10px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ink);
+}
+.dhatu-combobox-row.is-active {
+  background: rgba(193, 127, 36, 0.10);
+}
+.dhatu-combobox-row.is-selected {
+  background: rgba(181, 119, 13, 0.18);
+}
+.dhatu-row-deva {
+  font-family: var(--font-deva);
+  font-size: 15px;
+  font-weight: 600;
+}
+.dhatu-row-iast {
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.dhatu-row-meaning {
+  font-family: var(--font-prose);
+  font-size: 12px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dhatu-row-gana {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
 .formula-line {
   display: flex;
   flex-wrap: wrap;
