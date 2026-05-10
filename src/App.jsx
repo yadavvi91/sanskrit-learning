@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect } from 'react';
+import { useCallback, useLayoutEffect, useRef } from 'react';
 import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
@@ -46,7 +46,20 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const prevPathRef = useRef(pathname);
   useLayoutEffect(() => {
+    // Reading-flow exception: don't reset when moving between verses on
+    // the same /journey path (e.g., /journey/1/11 → /journey/1/12).
+    // The user's reading position should carry over so they see the
+    // same section (अन्वय / English) of the next verse without re-
+    // scrolling. VerseJourney captures + restores scrollY explicitly
+    // via rAFs in that case.
+    const prev = prevPathRef.current;
+    prevPathRef.current = pathname;
+    const isVerseToVerse =
+      pathname.startsWith('/journey/') && prev.startsWith('/journey/');
+    if (isVerseToVerse) return;
+
     // Bypass any inherited CSS scroll-behavior that might smooth-scroll us.
     const html = document.documentElement;
     const prevBehavior = html.style.scrollBehavior;

@@ -676,6 +676,15 @@ const COMMON_NOUNS = {
   'काशिराजः':         { category: 'noun', root: 'काशिराज', gender: 'm', number: 'eka', case: 'pra', gloss: 'King of Kāśī' },
   'शिखण्डि':          { category: 'noun', root: 'शिखण्डिन्', gender: 'm', gloss: 'Śikhaṇḍin (compound stem)' },
   'सात्यकि':          { category: 'noun', root: 'सात्यकि', gender: 'm', gloss: 'Sātyaki (compound stem)' },
+  // Defective √अह् ("say") — exists ONLY in लिट् (perfect tense).
+  // Common in narrative dialogue ("he said / they say"). Already handled
+  // by the engine's verb classifier; adding here so word popovers also
+  // resolve cleanly.
+  'आह':              { category: 'verb', root: '√अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'eka',  gloss: 'he/she said (perfect 3sg of defective √अह्)' },
+  'आहतुः':           { category: 'verb', root: '√अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'dvi',  gloss: 'the two said (perfect 3du)' },
+  'आहुः':            { category: 'verb', root: '√अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'bahu', gloss: 'they say / the wise say (perfect 3pl of defective √अह्)' },
+  'प्राह':           { category: 'verb', root: 'प्र + √अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'eka',  gloss: 'he/she declared (perfect 3sg of defective √अह्)' },
+  'प्राहुः':          { category: 'verb', root: 'प्र + √अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'bahu', gloss: 'they declare / the wise declare (perfect 3pl)' },
 };
 
 // आत्मन् — n-stem masculine "self / soul / Self". Hugely common across
