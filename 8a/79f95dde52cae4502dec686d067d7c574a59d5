@@ -1,0 +1,30 @@
+article.md
+  s_d5e8c30b294ba2::t_b35c0fb8b99cf2 599,601
+  s_d5e8c30b294ba2::t_984b162ed25fbe 41
+  s_d5e8c30b294ba2::t_0c7ab1b79d33ed 298
+  s_d5e8c30b294ba2::t_446f8325db2a09 399
+  s_d5e8c30b294ba2::t_03eb29a604be86 55
+  s_d5e8c30b294ba2::t_9aa851acffff90 176,178
+  s_d5e8c30b294ba2::t_336231455594ec 9
+  s_d5e8c30b294ba2::t_9bec07bc422b6b 184
+  s_d5e8c30b294ba2::t_c0474c27b00403 246,248
+  s_d5e8c30b294ba2::t_039ca42bc6153c 423
+  s_d5e8c30b294ba2::t_d3789c4de37114 360
+  s_d5e8c30b294ba2::t_f5c44598893a38 513
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "8a79f95dde52cae4502dec686d067d7c574a59d5",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
