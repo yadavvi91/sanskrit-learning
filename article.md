@@ -8,21 +8,19 @@
 
 I remember learning Sanskrit in Maharashtra board 8th–10th standard textbooks back in ~2006. The way it was taught was odd. We had to do a **ratta** (rote learning) of nouns like देवः देवौ देवाः, and I think these were only nouns, not verbs. I don't remember a thing about the verbs. I do remember **समास** (बहुव्रीहि समास and the rest), but the verb system was a black box.
 
-The book was **Navneet's शब्द धातु रूपावलिः** — the famous Mumbai-published lookup-and-drill booklet that every Maharashtra SSC Sanskrit student gets. *नवनीत* literally means *butter* — fresh, soft — a slightly charming name for a book that was, for most students, anything but. Inside: the राम declension table. देवः, देवौ, देवाः. नरः, नरौ, नराः. Page after page of forms, memorized by rote for an exam, repeated until they're a kind of muscle memory disconnected from anything that means anything.
+The book was **Navneet's शब्द धातु रूपावलिः** — the lookup-and-drill booklet every Maharashtra SSC Sanskrit student gets. Inside: the राम declension table. देवः, देवौ, देवाः. नरः, नरौ, नराः. Page after page of forms, memorised for the exam, repeated until they're muscle memory and nothing more.
 
-What that book never tells you is *where the table comes from*. It is the compiled binary. The source code — Pāṇini's अष्टाध्यायी, one of the most sophisticated formal generative grammars ever written, two-and-a-half thousand years old — is a generative system that **derives** these forms. Apply rule, apply sandhi, get form. The table is the output.
+What the book never told us is *where those tables came from*. There's an old grammar — Pāṇini's अष्टाध्यायी — that I've since heard is the source of the rules behind these forms, but I'd never come across it in school and I still don't really know how it works. We were just handed the tables and told to learn them.
 
-Maharashtra SSC taught the table. It did not teach the rules. The Pāṇinian irony is hard to overstate: the grammar tradition that arguably invented the idea of a formal generative system, taught backwards, as a fixed lookup. A student who emerges able to recite देवः देवौ देवाः for any prompt knows nothing about why those endings exist or how to predict the form of a word they haven't seen.
+I came out of those years with the Sanskrit-shaped hole most of us my age came out with: respect for the language, a vocabulary of half-known terms ("dhātu", "vibhakti"), and zero ability to read a sentence. Specifically — zero ability to look at a Gītā verse and parse it. The verb system was a black box. The compounding was a black box. We were told the word order was "scrambled" and given अन्वय (logical reordering) as a magic untanglement step, with no theory behind it.
 
-I came out of that with the Sanskrit-shaped hole that a lot of Indians my age came out with: a respect for the language, a vocabulary of broken half-knowledge ("dhātu", "vibhakti"), and zero ability to read a sentence. Specifically — zero ability to look at a Gītā verse and parse it. The verb system was a black box. The compounding was a black box. The fact that Sanskrit's *free word order* and English's *fixed word order* were two different typological choices, with consequences that explain almost everything about why Sanskrit feels alien — that wasn't taught. We were just told it was scrambled, and given अन्वय (logical reordering) as a magic untanglement step, with no theory behind it.
-
-So when the project started, the hole was real and I knew it was real. The question was whether I could close it.
+I knew the hole was real. The question was whether I could close it.
 
 ---
 
-## February 2023 — the actual seed
+## February 2023 — picking up the Gītā again
 
-Two years before any code was written, I started Bibek Debroy's *Bhagavad Gita for Millennials*. Made serious handwritten notes. Then ran out of time and shelved the book.
+In February 2023 I picked up Bibek Debroy's *Bhagavad Gita for Millennials*. There was no plan to build anything. I just wanted to read the Gītā with some real understanding for once. I made handwritten notes as I went, then ran out of time and shelved the book — but the notes were the part that stayed.
 
 ![Vishal's handwritten Debroy notes — page 1: SOV/SVO, पदच्छेद, अन्वय, the सिक्स वेदांग](article-images/debroy-notes-1.jpg)
 
@@ -38,7 +36,7 @@ The notes covered four things, and they're worth listing because every later dec
 
 4. **छंद / metre.** The Gītā's primary metre is **अनुष्टुभ** — eight syllables × four pādas = thirty-two syllables per verse, with constraints on heavy/light syllable patterns at specific positions. Some Gītā verses (the शार्दूलविक्रीडित-class ones in chapter 11) use longer metres with eleven or more syllables per pāda. Metre constrains word order: if the verb won't fit at position eight, the poet swaps it for a synonym or moves it to pāda three. अन्वय unscrambles what metre scrambled. Knowing this lets you stop being annoyed at "weird" word order.
 
-These four ideas are the reason I could later read a verse at all. They were the latent capital this project drew on.
+These four ideas are the reason I could later read a verse at all. They're what I had to work with when I came back to it.
 
 ---
 
@@ -416,7 +414,7 @@ After those four verses, the question was: do I just keep notes? Markdown files 
 
 The argument for building was selfish. I knew that if the cognitive grain — *fighting for every word* — wasn't preserved in software, it would dissolve. Two months later I'd be back to "Sanskrit is hard, I can't read it," with all the fights I'd won evaporated. A pile of markdown notes is a graveyard. An app with a verse-grid that lights up as you decode is a journal that you keep adding to.
 
-The other argument was that this had been brewing since February 2023. The Awadhi visualizer was the same obsession sublimated sideways. The Sanskrit project was the direct version. Building it would discharge the obsession into a thing that exists, instead of leaving it in my head where it would slowly become guilt about not having done it.
+The other argument was that this had been brewing since February 2023. The Awadhi visualizer had been the same itch in a different shape. The Sanskrit project was the direct version. Building it would put the thing into a form that exists, instead of leaving it in my head where it would slowly turn into guilt about not having done it.
 
 So I built it.
 
@@ -581,7 +579,7 @@ That's the whole project. A garden, not a textbook. A journal, not a graveyard.
 - [holy-bhagavad-gita.org](https://www.holy-bhagavad-gita.org/) — the chapter/verse grid I stumbled into via Gītā 2.3, screenshot above. Every verse in the app's *Verse Journey* has a "↗ holy-bhagavad-gita.org" link back to its corresponding page there.
 
 **The reading that started it all:**
-- Bibek Debroy, *Bhagavad Gita for Millennials* (HarperCollins India, 2020). The handwritten notes embedded above are mine, made in February 2023, covering SOV/SVO, पदच्छेद, अन्वय, the six वेदांग, अनुष्टुभ metre, and the स्वर/व्यञ्जन distinction. They were the latent capital that made every later step possible.
+- Bibek Debroy, *Bhagavad Gita for Millennials* (HarperCollins India, 2020). The handwritten notes embedded above are mine, made in February 2023, covering SOV/SVO, पदच्छेद, अन्वय, the six वेदांग, अनुष्टुभ metre, and the स्वर/व्यञ्जन distinction. They're what made every later step possible.
 
 **The translation lanes the bulk corpus uses:**
 - Annie Besant, *Bhagavad-Gita* (1895), public domain — the project's primary English translation lane for auto-stub verses.

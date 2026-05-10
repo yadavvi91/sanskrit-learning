@@ -17,28 +17,30 @@ function OriginSummary() {
       <h2>Short version</h2>
 
       <p>
-        I went through Maharashtra SSC Sanskrit — pure rote. <em>देवः देवौ देवाः </em>
-        memorised without ever being told why those endings exist. The compiled binary, never the source.
-        Pāṇini's 2,500-year-old generative grammar — one of the most sophisticated formal systems
-        ever written — taught upside-down.
+        I went through Maharashtra SSC Sanskrit in school — pure rote. <em>देवः देवौ देवाः </em>
+        memorised for the exam, without ever being told why those endings exist. There's an old
+        grammar — Pāṇini's अष्टाध्यायी — that I've heard explains the rules behind the forms,
+        but I'd never come across it in school and I still don't really know how it works.
+        We got the tables; we never got the rules.
       </p>
 
-      <h3>February 2023 — the seed</h3>
+      <h3>February 2023 — picking up the Gītā again</h3>
       <p>
-        I picked up Bibek Debroy's <em>Bhagavad Gītā for Millennials</em> and made serious
-        handwritten notes — SOV vs SVO, पदच्छेद, अन्वय, the six वेदांग, अनुष्टुभ metre, laghu/guru.
-        Then ran out of time and shelved it. The latent obsession kept simmering.
+        In February 2023 I picked up Bibek Debroy's <em>Bhagavad Gītā for Millennials</em>. There
+        was no plan to build anything — I just wanted to read the Gītā with some real understanding
+        for once. I made handwritten notes as I went (SOV vs SVO, पदच्छेद, अन्वय, the six वेदांग,
+        अनुष्टुभ metre, laghu/guru), then ran out of time and shelved it. The notes stayed.
       </p>
       <ArticleImage src="article-images/debroy-notes-1.jpg" alt="Handwritten Debroy notes — SOV/SVO, padaccheda, anvaya, the six vedanga" />
       <ArticleImage src="article-images/debroy-notes-2.jpg" alt="Handwritten Debroy notes — anushtubh metre, laghu/guru, the metrical rules" />
 
-      <h3>The sideways expression — Awadhi meter visualiser</h3>
+      <h3>Awadhi meter visualiser — same itch, different shape</h3>
       <p>
-        That latent interest first surfaced as the <strong>Awadhi Meter Visualizer</strong> — a
-        React + Vite app that breaks Sundarkand chaupāī into laghu/guru syllables, marks the यति,
-        and animates the breakdown across four steps. Different language, same obsession with prosody.
-        The parchment aesthetic + Devanāgarī + Cinzel/Cormorant typography of <em>this</em> project
-        is the same design DNA.
+        Around the same period I built the <strong>Awadhi Meter Visualizer</strong> — a small
+        React tool for Sundarkand that breaks chaupāī into laghu/guru syllables and marks the यति.
+        Different language, same itch: take an Indian verse tradition and make the structure visible
+        instead of opaque. The parchment + Devanāgarī typography of <em>this</em> project comes
+        from there.
       </p>
 
       <h3>The WhatsApp trigger</h3>
