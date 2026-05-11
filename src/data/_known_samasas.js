@@ -127,6 +127,8 @@ export const KNOWN_SAMASAS = {
   // BG 7.27 — nested compound: द्वंद्व inside तृतीया-तत्पुरुष
   'इच्छा-द्वेष-समुत्थ': { vigraha: 'इच्छाद्वेषाभ्याम् समुत्थः', type: 'तृतीया तत्पुरुष (with द्वंद्व इच्छा-द्वेष inside)', gloss: 'arisen from desire-and-aversion (nested compound: द्वंद्व इच्छा-द्वेष "desire+aversion" inside तृतीया-तत्पुरुष; BG 7.27 — what gives rise to the द्वंद्व-मोह that confuses all beings at birth)' },
   'द्वंद्व-मोह':      { vigraha: 'द्वंद्वस्य मोहः', type: 'षष्ठी तत्पुरुष', gloss: 'delusion of the pairs of opposites (BG 7.27)' },
+  // BG 8.8 — नञ्-bahuvrīhi describing the focused mind
+  'न-अन्य-गामिन्': { vigraha: 'न अन्यत्र गच्छति इति', type: 'नञ्-तत्पुरुष / बहुव्रीहि', gloss: 'non-other-going / not going elsewhere = single-pointed / unwavering (BG 8.8 — describing चेतसा). The surface नान्यगामिन् is the नञ्-prefix form (न- before vowel-initial -अन्य-, gives नान्य- by savarṇa-dīrgha).' },
 
   // ─── Batch expansion: common Gītā compounds (commit batch) ───
   // तत्पुरुष chains involving ब्रह्म, कर्म, ज्ञान, आत्म, धर्म, योग

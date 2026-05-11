@@ -1326,6 +1326,16 @@ const SPLITTER_OVERRIDES = new Map([
   // Engine's vocab had whole-chunk entry; recursive splitter caught the
   // outer level but missed the inner ममाव्ययम्.
   ['ममाव्ययमनुत्तमम्', ['मम', 'अव्ययम्', 'अनुत्तमम्']],
+  // 8.8 — नान्यगामिना is ONE नञ्-bahuvrīhi compound: न-अन्य-गामिन्
+  //   ("non-other-going" = "single-pointed"); inst. sg. modifying
+  //   चेतसा. The surface नान्य- is the नञ्-prefix form (न + अन्य →
+  //   नान्य via savarṇa-dīrgha). The recursive splitter and undoSandhi
+  //   both wrongly produced न + अन्यगामिना.
+  ['नान्यगामिना', ['न-अन्य-गामिना']],
+  // 8.8 — चेतसा is a real word (inst. sg. of चेतस् "mind"). The
+  // undoSandhi loop was wrongly applying guṇ-undo on the ए-matra,
+  // splitting as च + इतसा. Keep whole.
+  ['चेतसा', ['चेतसा']],
   // 7.27 — इच्छाद्वेषसमुत्थेन is ONE nested compound (inst. sg.):
   //   outer तृतीया-तत्पुरुष: इच्छा-द्वेष-समुत्थ "arisen by means of
   //   icchā-dveṣa". inner द्वन्द्व: इच्छा-द्वेष "desire and aversion".
@@ -1381,6 +1391,19 @@ function recursiveSplit(chunk, depth = 0) {
     for (const candidate of candidates) {
       if (!candidate || !Array.isArray(candidate.parts)) continue;
       if (candidate.parts.length < 2) continue;
+      // नञ्-bahuvrīhi guard: a split with parts[0] == 'न' and parts[1]
+      // starting with अ/आ is almost always wrong — what looks like
+      // "न + अX" is actually a single नञ्-prefix compound "नान्यगामिन्",
+      // "नादत्ते", etc. Reject the split and force fall-through to the
+      // whole-chunk vocab match. This is the नञ्-समास Sanskrit
+      // convention: न- before vowel-initial second member forms one word.
+      // Exception: very short chunks where the split is clearly two
+      // words (e.g., "न अहम्" → "नाहम्") — short chunks already prefer
+      // whole-chunk vocab via the isLong gate above.
+      if (candidate.parts[0] === 'न' && candidate.parts.length === 2
+          && /^[अआ]/.test(candidate.parts[1]) && chunk.length >= 6) {
+        continue;
+      }
       const resolved = [];
       let allOK = true;
       for (const part of candidate.parts) {
