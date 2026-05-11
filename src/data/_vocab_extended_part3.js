@@ -201,7 +201,7 @@ export const VOCAB_EXTENDED_PART_3 = {
   'चित्तमात्मन्येवावतिष्ठते': { category: 'verb', root: '√स्था', gana: 1, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'mind abides in the self only' }, // compound
   'चिदेनमाः': null, // sandhi residue / fragmented split // AUDIT
   'चूर्णितैरुत्तमाङ्गैः': { category: 'noun', root: 'उत्तमाङ्ग', gender: 'n', number: 'bahu', case: 'tri', gloss: 'with crushed heads' },
-  'छिन्नद्वैधा': { category: 'adjective', root: 'छिन्नद्वैध', gender: 'f', number: 'eka', case: 'pra', gloss: 'whose duality is cut (f.)' },
+  'छिन्नद्वैधा': { category: 'adjective', root: 'छिन्नद्वैध', gender: 'm', number: 'bahu', case: 'pra', gloss: 'those whose duality / doubt has been cut away (बहुव्रीहि — छिन्नं द्वैधं येषां ते; m. nom. pl., agreeing with ऋषयः)' },
   'जगदव्यक्तमूर्तिना': { category: 'noun', root: 'अव्यक्तमूर्ति', gender: 'm', number: 'eka', case: 'tri', gloss: 'by me of unmanifest form, the world' }, // AUDIT
   'जनाधिपाः': { category: 'noun', root: 'जनाधिप', gender: 'm', number: 'bahu', case: 'pra', gloss: 'rulers of people' },
   'जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम्': { category: 'noun', root: 'जन्ममृत्युजराव्याधिदुःखदोषानुदर्शन', gender: 'n', number: 'eka', case: 'pra', gloss: 'reflection on birth-death-old-age-disease-pain-fault' },

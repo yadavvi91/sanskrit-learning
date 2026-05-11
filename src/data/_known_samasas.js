@@ -61,6 +61,18 @@ export const KNOWN_SAMASAS = {
   'बाह्यस्पर्श': { vigraha: 'बाह्याः स्पर्शाः', type: 'कर्मधारय', gloss: 'outer contacts / external sensations' },
   'शरीरविमोक्षण': { vigraha: 'शरीरस्य विमोक्षणम्', type: 'षष्ठी तत्पुरुष', gloss: 'release of the body (i.e. death; the moment of bodily liberation)' },
   'काम-क्रोध-उद्भव':{ vigraha: 'कामात् क्रोधात् च उद्भवः', type: 'पञ्चमी तत्पुरुष (chain)', gloss: 'arising from desire and anger (two-source chain: desire → anger → impulse-arising)' },
+  // BG 5.24 — three bahuvrīhi compounds describing the inward-turned yogī
+  'अन्तःसुख':    { vigraha: 'अन्तः सुखं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose happiness is within (अन्तर् "inside" + सुख "happiness")' },
+  'अन्तराराम':  { vigraha: 'अन्तर्-आरामः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose delight is within (अन्तर् + आराम — "inner garden / inner delight")' },
+  'अन्तर्ज्योतिः':{ vigraha: 'अन्तर्-ज्योतिः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose light is within (अन्तर् + ज्योति — "inner light")' },
+  // BG 5.25 — more bahuvrīhi describing the liberated sage
+  'छिन्नद्वैध':   { vigraha: 'छिन्नं द्वैधं येषां ते', type: 'बहुव्रीहि', gloss: 'those whose duality / doubt has been cut away' },
+  'यतात्मन्':    { vigraha: 'यतः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is controlled (BG 5.7, 5.25, 7.18, 12.11, 12.14)' },
+  'क्षीणकल्मष':  { vigraha: 'क्षीणाः कल्मषाः येषां ते', type: 'बहुव्रीहि', gloss: 'those whose impurities have wasted away (BG 5.25)' },
+  'सर्वभूतहित':  { vigraha: 'सर्वेषां भूतानां हितम्', type: 'षष्ठी तत्पुरुष', gloss: 'the welfare of all beings' },
+  'काम-क्रोध-वियुक्त': { vigraha: 'कामात् क्रोधात् च वियुक्तः', type: 'पञ्चमी तत्पुरुष (chain)', gloss: 'free from desire and anger' },
+  'विदितात्मन्':       { vigraha: 'विदितः आत्मा येषां ते', type: 'बहुव्रीहि', gloss: 'those whose self has been known / those who have realized the Self (BG 5.26)' },
+  'नास-अभ्यन्तर-चारिन्': { vigraha: 'नासायाः अभ्यन्तरे चरति इति', type: 'उपपद तत्पुरुष', gloss: 'moving inside the nostrils (the prāṇa-apāna in BG 5.27 yogic breath description)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

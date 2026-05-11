@@ -416,7 +416,9 @@ export const VOCAB_EXTENDED_PART_8 = {
   'विकर्णः': { category: 'noun', root: 'विकर्न', gender: 'm', number: 'eka', case: 'pra', gloss: 'Vikarna' },
   'विगतो': { category: 'krdanta', root: '√गम्', kind: 'past-passive', gloss: 'departed, gone' },
   'विजितेन्द्रियः': { category: 'adjective', root: 'विजित-इन्द्रिय', gender: 'm', number: 'eka', case: 'pra', gloss: 'with conquered senses' },
-  'विदितात्मनाम्': { category: 'adjective', root: 'विदित-अत्मन्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those who know self' },
+  // Vocab-hint pre-split. Two pieces: विदित + आत्मनाम्. Bahuvrīhi
+  // "those whose self has been known" (विदितः आत्मा येषाम् ते), gen. pl.
+  'विदितात्मनाम्': { category: 'adjective', root: 'विदित-आत्मन्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those whose self has been known (बहुव्रीहि — विदितः आत्मा येषाम् ते; gen. pl. m.; विदित + आत्मनाम् via savarṇa-dīrgha अ+आ→आ)' },
   'विद्ध्यनादी': { category: 'adjective', root: 'अनदि', gender: 'm', number: 'dvi', case: 'pra', gloss: 'know as beginningless (dual)' },
   'विद्वान्': { category: 'noun', root: 'विद्वस्', gender: 'm', number: 'eka', case: 'pra', gloss: 'wise one' },
   'विना': { category: 'particle', gloss: 'without' },

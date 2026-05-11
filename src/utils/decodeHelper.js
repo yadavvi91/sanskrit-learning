@@ -1033,6 +1033,37 @@ const SPLITTER_OVERRIDES = new Map([
   // 5.23 — कामक्रोधोद्भवम् is ONE compound: काम-क्रोध-उद्भव-म्
   // ("arising from desire and anger"); samāsa note via KNOWN_SAMASAS.
   ['कामक्रोधोद्भवं', ['काम-क्रोध-उद्भवम्']],
+  // 5.24 — one giant sandhi-run chunk:
+  //   यः + अन्तःसुखः + अन्तरारामः + तथा + अन्तर्ज्योतिः + एव
+  // (visarga + अ → ोऽ thrice; -ः + त → स्त; आ + अ → आ savarṇa; -ः + ए → रे visarga-र्).
+  ['योऽन्तःसुखोऽन्तरारामस्तथान्तर्ज्योतिरेव', ['यः', 'अन्तःसुखः', 'अन्तरारामः', 'तथा', 'अन्तर्ज्योतिः', 'एव']],
+  // 5.24 — ब्रह्मनिर्वाणम् is one compound; the engine was wrongly
+  // applying the visarga-र् split rule mid-compound and cutting it as
+  // ब्रह्मनिः + वाणम्. Keep whole; samāsa note via KNOWN_SAMASAS.
+  ['ब्रह्मनिर्वाणं', ['ब्रह्म-निर्वाणम्']],
+  // 5.25 — ब्रह्मनिर्वाणम् + ऋषयः joined by sandhi (visible -म् + ऋ
+  // concatenation; no modification). Engine was cutting as ब्रह्मनिः +
+  // वाणमृषयः, splitting the visarga-र् mid-compound *and* attaching
+  // the residue to the next word.
+  ['ब्रह्मनिर्वाणमृषयः', ['ब्रह्म-निर्वाणम्', 'ऋषयः']],
+  // 5.26 — कामक्रोधवियुक्तानां is ONE bahuvrīhi compound (काम-क्रोध-वियुक्त
+  // "free from desire and anger", gen. pl.). Engine was cutting visarga-र्
+  // mid-compound as काम् + अक्रोधवियुक्तानां. Keep whole; samāsa via
+  // KNOWN_SAMASAS.
+  ['कामक्रोधवियुक्तानां', ['काम-क्रोध-वियुक्तानाम्']],
+  // 5.26 — विदित-आत्मन् "those whose self has been known" (bahuvrīhi),
+  // gen. pl. विदित + आत्मनाम् with अ + आ → आ savarṇa-dīrgha hiding the
+  // join. Split for transparency (same treatment as ब्रह्मयोगयुक्त + आत्मा
+  // in 5.21).
+  ['विदितात्मनाम्', ['विदित', 'आत्मनाम्']],
+  // 5.27 — one giant chunk: बहिर् + बाह्यान् + चक्षुः + च + एव + अन्तरे
+  // Visarga-र् (बहिः→बहिर्), -न् + च → -ंश्च (anunāsika), -ः + च → श्च,
+  // -ः + ए → रे (re-visarga), then च + एव → चैव (savarṇa).
+  ['बहिर्बाह्यांश्चक्षुश्चैवान्तरे', ['बहिर्', 'बाह्यान्', 'चक्षुः', 'च', 'एव', 'अन्तरे']],
+  // 5.27 — नासाभ्यन्तरचारिणौ ("moving inside the nostrils") is one
+  // compound: नास-अभ्यन्तर-चारिन् (तत्पुरुष). Engine was wrongly cutting
+  // off an initial न- (treating it as the negation prefix).
+  ['नासाभ्यन्तरचारिणौ', ['नास-अभ्यन्तर-चारिणौ']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
