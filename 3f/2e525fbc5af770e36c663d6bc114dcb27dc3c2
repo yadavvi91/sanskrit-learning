@@ -1,0 +1,23 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_af31f3c84898fd 1027-1035
+src/data/_vocab_extended_part1.js
+  s_d5e8c30b294ba2::t_f769b478a4ee22 398-401
+src/data/_known_samasas.js
+  s_d5e8c30b294ba2::t_c4ab801ceda6d3 62-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "3f2e525fbc5af770e36c663d6bc114dcb27dc3c2",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
