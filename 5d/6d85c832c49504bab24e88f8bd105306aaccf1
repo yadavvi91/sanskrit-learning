@@ -1,0 +1,20 @@
+scripts/find-splitter-bugs.mjs
+  s_d5e8c30b294ba2::t_c271dd78a2ed11 1,6-8,11,15,17,21,29-30,32,62-64,77-80,82,89
+  s_d5e8c30b294ba2::t_ad7200ccee2c8f 2-5,9-10,12-14,16,18-20,22-28,31,33-61,65-76,81,83-88
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "5d6d85c832c49504bab24e88f8bd105306aaccf1",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
