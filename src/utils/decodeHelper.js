@@ -942,6 +942,35 @@ for (const [key, v] of Object.entries(VOCAB_EXTENDED)) {
   VOCAB_HINT_SPLITS.set(key, parts);
 }
 
+// Hand-curated splitter overrides. These bypass the structural-canonical
+// validation entirely — used when sandhi at the join boundary involves
+// voiced/voiceless stop alternation (त् + अ → द् + अ, त् + भ → द् + भ)
+// that the canonical comparison doesn't handle. User-reported chunks
+// that the engine consistently mis-cut go here.
+const SPLITTER_OVERRIDES = new Map([
+  // 3.10 — वोऽस्तु + इष्टकामधुक् via avagraha + vowel sandhi
+  ['वोऽस्त्विष्टकामधुक्', ['वः', 'अस्तु', 'इष्टकामधुक्']],
+  // 3.11 — तैः + दत्तान् + अप्रदाय + एभ्यः (visarga-र् + accusative + abs. + dat.pl.)
+  ['तैर्दत्तानप्रदायैभ्यो', ['तैः', 'दत्तान्', 'अप्रदाय', 'एभ्यः']],
+  // 3.13 — त् + voiced sandhi (अन्नात्/यज्ञात्/पर्जन्यात् + ...)
+  ['अन्नाद्भवन्ति', ['अन्नात्', 'भवन्ति']],
+  ['पर्जन्यादन्नसम्भवः', ['पर्जन्यात्', 'अन्न-सम्भवः']],
+  ['यज्ञाद्भवति', ['यज्ञात्', 'भवति']],
+  // 3.15 — कर्म + ब्रह्म-उद्भवम्; ब्रह्म + अक्षर-समुद्भवम्; तस्मात् + सर्वगतम्
+  ['ब्रह्मोद्भवं', ['ब्रह्म-उद्भवम्']],
+  ['ब्रह्माक्षरसमुद्भवम्', ['ब्रह्म-अक्षर-समुद्भवम्']],
+  ['तस्मात्सर्वगतं', ['तस्मात्', 'सर्वगतम्']],
+  // 3.16 — न + अनुवर्तयति + इह (न + vrddhi)
+  ['नानुवर्तयतीह', ['न', 'अनुवर्तयति', 'इह']],
+  // 3.17 — यः + तु + आत्मरतिः + एव; आत्म-न्य + एव + च + सन्तुष्टः
+  ['यस्त्वात्मरतिरेव', ['यः', 'तु', 'आत्मरतिः', 'एव']],
+  // 3.18 — कश्चित् + अर्थ-व्यपाश्रयः
+  ['कश्चिदर्थव्यपाश्रयः', ['कश्चित्', 'अर्थ-व्यपाश्रयः']],
+]);
+for (const [chunk, parts] of SPLITTER_OVERRIDES) {
+  VOCAB_HINT_SPLITS.set(chunk, parts);
+}
+
 // Extract individual padas from a (multi-line) mool string by splitting on
 // whitespace and running each chunk through the sandhi engine.
 function extractPadas(mool) {
