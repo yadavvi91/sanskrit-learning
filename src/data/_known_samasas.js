@@ -85,6 +85,13 @@ export const KNOWN_SAMASAS = {
   // metaphor: यो + ग as the goal mountain; अ + आ → आ savarṇa-dīrgha).
   'योग-आरूढ':         { vigraha: 'योगम् आरूढः', type: 'द्वितीया तत्पुरुष', gloss: 'one who has ascended into yoga / is established in yoga (BG 6.3, 6.4)' },
   'सर्वसङ्कल्पसंन्यासिन्': { vigraha: 'सर्वान् सङ्कल्पान् संन्यसति इति', type: 'उपपद तत्पुरुष (over a कर्मधारय)', gloss: 'one who renounces all sankalpas / will-formations (the defining quality of the योग-आरूढ in BG 6.4)' },
+  // BG 6.7–6.9 — the सम-दर्शन (equal-vision) compounds
+  'मान-अपमान':       { vigraha: 'मानश्च अपमानश्च', type: 'इतरेतर द्वंद्व', gloss: 'honour and dishonour' },
+  'शीत-उष्ण-सुख-दुःख':{ vigraha: 'शीतं उष्णं सुखं दुःखं च', type: 'इतरेतर द्वंद्व (chain)', gloss: 'cold, heat, pleasure, and pain — the classical four-element द्वंद्व chain BG 6.7 uses to define equanimity' },
+  'ज्ञान-विज्ञान-तृप्त-आत्मन्': { vigraha: 'ज्ञानेन विज्ञानेन च तृप्तः आत्मा यस्य सः', type: 'बहुव्रीहि (chain)', gloss: 'one whose self is satisfied with knowledge and discriminative knowledge (BG 6.8)' },
+  'सम-लोष्ट-अश्म-काञ्चन':{ vigraha: 'समाः लोष्ट-अश्म-काञ्चनाः यस्य सः', type: 'बहुव्रीहि', gloss: 'one to whom a clod, a stone, and gold are equal (BG 6.8 — image of supreme detachment)' },
+  'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु':{ vigraha: 'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धवः', type: 'इतरेतर द्वंद्व (seven-element chain)', gloss: 'friend, ally, enemy, neutral, mediator, hateful, and kinsman — the seven categories of social relation BG 6.9 says the yogi sees with equal eye' },
+  'परम-आत्मन्':       { vigraha: 'परमः आत्मा', type: 'कर्मधारय', gloss: 'the Supreme Self (परम "supreme" + आत्मन् "self")' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

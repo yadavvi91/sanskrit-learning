@@ -1098,6 +1098,33 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.4 — कर्मस्वनुषज्जते = कर्मसु + अनुषज्जते (yaṇ उ + अ → व).
   // Engine was applying त् + ज → ज्ज split mid-word.
   ['कर्मस्वनुषज्जते', ['कर्मसु', 'अनुषज्जते']],
+  // 12.18 / 6.7 — मानापमानयोः: मान-अपमान द्वंद्व (gen./loc. dual).
+  // Engine cut mid-compound as मानापम् + आनयोः.
+  ['मानापमानयोः', ['मान-अपमानयोः']],
+  // 12.18 / 6.7 — शीतोष्णसुखदुःखेषु: four-noun द्वंद्व chain (loc. pl.)
+  ['शीतोष्णसुखदुःखेषु', ['शीत-उष्ण-सुख-दुःखेषु']],
+  // 6.7 — visarga surface variant; canonical form is कूटस्थः
+  ['कूटस्थो', ['कूटस्थः']],
+  // 6.8 — ज्ञान-विज्ञान-तृप्त-आत्मन् (bahuvrīhi: "one whose self is
+  // satisfied with knowledge and discriminative knowledge"). Engine
+  // likely splits मा at the end. Keep whole.
+  ['ज्ञानविज्ञानतृप्तात्मा', ['ज्ञान-विज्ञान-तृप्त-आत्मा']],
+  // 6.8 — सम-लोष्ट-अश्म-काञ्चन (bahuvrīhi: "one to whom clod, stone,
+  // and gold are equal")
+  ['समलोष्टाश्मकाञ्चनः', ['सम-लोष्ट-अश्म-काञ्चनः']],
+  // 6.9 — sandhi-run of one giant compound + visarga-र् mis-fire:
+  //   सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु-षु (loc. pl. of
+  //   the seven-element द्वंद्व). Engine cut as
+  //   सुहृन्मित्राः + युदासीनमध्यस्थद्वेष्यबन्धुषु.
+  ['सुहृन्मित्रार्युदासीनमध्यस्थद्वेष्यबन्धुषु', ['सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धुषु']],
+  // 6.9 — साधुषु + अपि (yaṇ उ + अ → व)
+  ['साधुष्वपि', ['साधुषु', 'अपि']],
+  // 6.7 — प्रशान्तस्य ("of the calmed one") is one gen. sg.; engine was
+  // cutting as प्रशान् + तस्य (wrongly splitting at the -न् + त boundary).
+  ['प्रशान्तस्य', ['प्रशान्तस्य']],
+  // 6.7 — परमात्मा is one compound (परम-आत्मन् "Supreme Self"); engine
+  // was wrongly cutting as परम् + आत्मा.
+  ['परमात्मा', ['परम-आत्मा']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
