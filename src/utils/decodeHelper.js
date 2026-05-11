@@ -1358,45 +1358,63 @@ function recursiveSplit(chunk, depth = 0) {
   if (typeof chunk !== 'string' || chunk.length < 3) return null;
   if (RECURSIVE_SPLIT_CACHE.has(chunk)) return RECURSIVE_SPLIT_CACHE.get(chunk);
 
-  // Base case: chunk-as-whole is a real word.
-  if (partHasRealVocab(chunk)) {
+  // Long chunks (>= 12 chars) are likely compounds even if they happen
+  // to be in vocab as bulk-generated single entries. Try splitting them
+  // first; fall back to whole-chunk only if no clean split exists.
+  // Short chunks prefer whole-chunk match (कर्मयोग, धर्मक्षेत्र etc.
+  // are real single compounds that should stay whole).
+  const LONG_CHUNK_THRESHOLD = 12;
+  const isLong = chunk.length >= LONG_CHUNK_THRESHOLD;
+
+  // Try whole-chunk vocab match first (only for short chunks).
+  if (!isLong && partHasRealVocab(chunk)) {
     const result = [chunk];
     RECURSIVE_SPLIT_CACHE.set(chunk, result);
     return result;
   }
 
-  // Try undoSandhi for candidate splits.
+  // Try undoSandhi for candidate splits. Track the BEST (deepest) split
+  // among all candidates that fully resolve.
   const candidates = undoSandhi(chunk);
-  if (!candidates || candidates.length === 0) {
-    RECURSIVE_SPLIT_CACHE.set(chunk, null);
-    return null;
+  let bestSplit = null;
+  if (candidates && candidates.length > 0) {
+    for (const candidate of candidates) {
+      if (!candidate || !Array.isArray(candidate.parts)) continue;
+      if (candidate.parts.length < 2) continue;
+      const resolved = [];
+      let allOK = true;
+      for (const part of candidate.parts) {
+        if (partHasRealVocab(part)) {
+          resolved.push(part);
+          continue;
+        }
+        const sub = recursiveSplit(part, depth + 1);
+        if (sub) {
+          resolved.push(...sub);
+        } else {
+          allOK = false;
+          break;
+        }
+      }
+      if (allOK && resolved.length >= 2) {
+        // Prefer the split with the most parts (deepest resolution).
+        if (!bestSplit || resolved.length > bestSplit.length) {
+          bestSplit = resolved;
+        }
+      }
+    }
   }
 
-  for (const candidate of candidates) {
-    if (!candidate || !Array.isArray(candidate.parts)) continue;
-    if (candidate.parts.length < 2) continue;
-    // For each candidate's parts, recursively check that every part
-    // resolves to either a real vocab entry or a further valid split.
-    const resolved = [];
-    let allOK = true;
-    for (const part of candidate.parts) {
-      if (partHasRealVocab(part)) {
-        resolved.push(part);
-        continue;
-      }
-      // Try recursive split.
-      const sub = recursiveSplit(part, depth + 1);
-      if (sub) {
-        resolved.push(...sub);
-      } else {
-        allOK = false;
-        break;
-      }
-    }
-    if (allOK && resolved.length >= 2) {
-      RECURSIVE_SPLIT_CACHE.set(chunk, resolved);
-      return resolved;
-    }
+  if (bestSplit) {
+    RECURSIVE_SPLIT_CACHE.set(chunk, bestSplit);
+    return bestSplit;
+  }
+
+  // Fall back to whole-chunk vocab match (for long chunks that don't split).
+  if (partHasRealVocab(chunk)) {
+    const result = [chunk];
+    RECURSIVE_SPLIT_CACHE.set(chunk, result);
+    return result;
   }
 
   RECURSIVE_SPLIT_CACHE.set(chunk, null);
