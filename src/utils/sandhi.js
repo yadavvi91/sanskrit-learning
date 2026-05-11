@@ -12,6 +12,64 @@
 //   — the rules are written so this works.
 // - Output is a list of *hypotheses*. Multiple splits may be valid; the
 //   user (or a downstream pruner) decides.
+//
+// ═════════════════ COVERAGE INVENTORY ═════════════════
+// The 21 Pāṇinian sandhi rule-families one encounters reading the Gītā.
+// Update this table when you wire a new rule into RULES + UNJOIN below,
+// or when you change the `auto` flag on an existing one. Status legend:
+//   ✅  — wired and auto-firing in the splitter
+//   ⚠️  — wired but limited/gated (one flavour only, or auto: false)
+//   ❌  — not implemented; per-chunk SPLITTER_OVERRIDES used as workaround
+//   📍  — handled outside sandhi.js (decodeHelper.js or pre-pass)
+//
+// SVARA SANDHI (vowel + vowel)
+//   1.  सवर्ण-दीर्घ — अ/आ + अ/आ → आ                    ✅ aa-aa (also via devaCanonicalSavarna)
+//                    इ/ई + इ/ई → ई                       📍 devaCanonicalSavarna
+//                    उ/ऊ + उ/ऊ → ऊ                       📍 devaCanonicalSavarna
+//   2.  गुण — अ + इ/ई → ए                              ✅ aa-ee
+//             अ + उ/ऊ → ओ                              ✅ aa-uu
+//             अ + ऋ → अर्                              ❌
+//   3.  वृद्धि — अ + ए/ऐ → ऐ                            ✅ aa-e
+//                अ + ओ/औ → औ                           ✅ aa-o
+//   4.  यण् — इ + dissimilar vowel → य्                ⚠️  i-u-yan (only इ+उ form)
+//             उ + dissimilar vowel → व्                ❌
+//             ऋ + dissimilar vowel → र्                ❌
+//   5.  अयादि — ए/ऐ/ओ/औ + vowel → अय्/आय्/अव्/आव्     ❌
+//   6.  पूर्वरूप/अवग्रह — ए/ओ + अ → ए/ओ + ऽ            ✅ visarga-avagraha, avagraha-elision
+//
+// VYAÑJANA SANDHI (consonant + ...)
+//   7.  श्चुत्व — स्/त्-series before श्/च → palatal     ⚠️  partial via visarga-ca / visarga-cha
+//   8.  ष्टुत्व — स्/त्-series before ष्/ट → retroflex    ❌
+//   9.  जश्त्व — final voiceless stop voices before     ⚠️  t-jash-bha/ga/ba (auto: false — needs lexicon)
+//                voiced sound (झलां जश् झशि, 8.4.53)
+//                Narrow clusters wired (auto): त्+च→च्च,
+//                त्+ज→ज्ज, त्+त→त्त, त्+द→द्द, त्+ल→ल्ल
+//  10.  चर्त्व — final stop before unvoiced → unvoiced   ❌
+//                unaspirated (the car-set)
+//  11.  अनुस्वार — म् + consonant → ं                  ✅ m-anusvara
+//  12.  परसवर्ण — anusvara → class nasal               ❌
+//  13.  छत्व — त्/द् + श् → च्छ                         ❌
+//  14.  लत्व — त्/द् + ल → ल्ल                         ✅ t-la (under t-jash family)
+//  15.  णत्व — न् → ण् after ऋ/र्/ष्                    ❌
+//
+// VISARGA SANDHI (ः + ...)
+//  16.  ः + अ → ो + ऽ (when preceded by अ)             ✅ visarga-avagraha
+//  17.  ः + voiced consonant → ो (when preceded by अ)  ✅ visarga-aa-vowel
+//  18.  ः + voiced cons/vowel → र् (preceded by other  📍 splitVisargaR in decodeHelper.js (Patterns A + B)
+//        vowel than अ/आ)
+//  19.  ः + क्/प् → jihvāmūlīya/upadhmānīya             ⚠️  visarga-ka/visarga-pa route to ष्क/ष्प (= rule 20)
+//  20.  ः + sibilants/dentals → श्/ष्/स्               ✅ visarga-ca, visarga-cha, visarga-ta,
+//                                                          visarga-tha, visarga-ka, visarga-pa
+//  21.  ः + र् → preceding vowel lengthens             ❌
+//
+// SUMMARY (as of commit 181f375): 11 rules fully auto-firing,
+// 4 partial/gated, 6 unimplemented. Missing rules are the
+// systemic reason the user has been surfacing splitter mis-cuts
+// (especially #4 यण् beyond इ+उ, #5 अयादि, #8 ष्टुत्व, #9 generic
+// जश्त्व, #12 परसवर्ण, #15 णत्व, #21 visarga+र्). Each chunk that
+// triggers one of these falls back to SPLITTER_OVERRIDES in
+// decodeHelper.js.
+// ═══════════════════════════════════════════════════════════
 
 // ─────────────── Rule catalogue ───────────────
 
