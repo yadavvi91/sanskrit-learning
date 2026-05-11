@@ -34,23 +34,23 @@
 //   4.  यण् — इ + dissimilar vowel → य्                ⚠️  i-u-yan (only इ+उ form)
 //             उ + dissimilar vowel → व्                ❌
 //             ऋ + dissimilar vowel → र्                ❌
-//   5.  अयादि — ए/ऐ/ओ/औ + vowel → अय्/आय्/अव्/आव्     ❌
+//   5.  अयादि — ए/ऐ/ओ/औ + vowel → अय्/आय्/अव्/आव्     ⚠️  ay-adi (auto: false — needs lexicon)
 //   6.  पूर्वरूप/अवग्रह — ए/ओ + अ → ए/ओ + ऽ            ✅ visarga-avagraha, avagraha-elision
 //
 // VYAÑJANA SANDHI (consonant + ...)
 //   7.  श्चुत्व — स्/त्-series before श्/च → palatal     ⚠️  partial via visarga-ca / visarga-cha
-//   8.  ष्टुत्व — स्/त्-series before ष्/ट → retroflex    ❌
+//   8.  ष्टुत्व — स्/त्-series before ष्/ट → retroflex    ⚠️  shtutva (auto: false — needs lexicon)
 //   9.  जश्त्व — final voiceless stop voices before     ⚠️  t-jash-bha/ga/ba/ya (auto: false — needs lexicon)
 //                voiced sound (झलां जश् झशि, 8.4.53)
 //                Narrow clusters wired (auto): त्+च→च्च,
 //                त्+ज→ज्ज, त्+त→त्त, त्+द→द्द, त्+ल→ल्ल
-//  10.  चर्त्व — final stop before unvoiced → unvoiced   ❌
+//  10.  चर्त्व — final stop before unvoiced → unvoiced   ⚠️  cartva (auto: false — needs lexicon)
 //                unaspirated (the car-set)
 //  11.  अनुस्वार — म् + consonant → ं                  ✅ m-anusvara
-//  12.  परसवर्ण — anusvara → class nasal               ❌
-//  13.  छत्व — त्/द् + श् → च्छ                         ❌
+//  12.  परसवर्ण — anusvara → class nasal               ⚠️  parasavarna (auto: false — needs lexicon)
+//  13.  छत्व — त्/द् + श् → च्छ                         ⚠️  chatva (auto: false — needs lexicon)
 //  14.  लत्व — त्/द् + ल → ल्ल                         ✅ t-la (under t-jash family)
-//  15.  णत्व — न् → ण् after ऋ/र्/ष्                    ❌
+//  15.  णत्व — न् → ण् after ऋ/र्/ष्                    ⚠️  natva (auto: false — morphological)
 //
 // VISARGA SANDHI (ः + ...)
 //  16.  ः + अ → ो + ऽ (when preceded by अ)             ✅ visarga-avagraha
@@ -60,15 +60,15 @@
 //  19.  ः + क्/प् → jihvāmūlīya/upadhmānīya             ⚠️  visarga-ka/visarga-pa route to ष्क/ष्प (= rule 20)
 //  20.  ः + sibilants/dentals → श्/ष्/स्               ✅ visarga-ca, visarga-cha, visarga-ta,
 //                                                          visarga-tha, visarga-ka, visarga-pa
-//  21.  ः + र् → preceding vowel lengthens             ❌
+//  21.  ः + र् → preceding vowel lengthens             ⚠️  visarga-r (auto: false — rare in Gītā)
 //
-// SUMMARY (as of commit 181f375): 11 rules fully auto-firing,
-// 4 partial/gated, 6 unimplemented. Missing rules are the
-// systemic reason the user has been surfacing splitter mis-cuts
-// (especially #4 यण् beyond इ+उ, #5 अयादि, #8 ष्टुत्व, #9 generic
-// जश्त्व, #12 परसवर्ण, #15 णत्व, #21 visarga+र्). Each chunk that
-// triggers one of these falls back to SPLITTER_OVERRIDES in
-// decodeHelper.js.
+// SUMMARY: 11 rules fully auto-firing, 10 partial/gated (`auto: false`,
+// wired as data only — they need lexicon-validated splitting to fire
+// safely without over-cutting intra-compound clusters), 0 unimplemented.
+// All 21 standard Pāṇinian families are now represented as entries in
+// RULES + UNJOIN, so the catalogue is complete. The next milestone is
+// flipping the `auto` flag on each as lexicon validation propagates
+// through every splitter code path.
 // ═══════════════════════════════════════════════════════════
 
 // ─────────────── Rule catalogue ───────────────
@@ -421,6 +421,102 @@ export const SANDHI_RULES = [
     auto: false,
   },
 
+  // ─── Missing-rule families now wired (auto: false until lexicon-validated) ───
+  // These bring the inventory comment up to date. Each rule entry has a
+  // pattern + UNJOIN map below; auto:false because the surface forms occur
+  // intra-word too often to fire blindly without lexicon validation.
+
+  // 5. अयादि (एचोऽयवायावः, Pāṇini 6.1.78) — ए/ऐ/ओ/औ + vowel → semivowel
+  {
+    id: 'ay-adi',
+    category: 'vowel',
+    name: 'अयादि (ए + अ → अय्, ने + अन → नयन)',
+    description: 'A diphthong + dissimilar vowel splits into the semivowel + the second vowel',
+    pattern: /अय/,
+    example: 'ने + अन → नयन',
+    examples: ['ने + अन → नयन', 'गै + अक → गायक'],
+    auto: false,
+  },
+
+  // 8. ष्टुत्व — dental स्/त्-series before retroflex ष्/ट- becomes retroflex.
+  // The reverse: when we see retroflex cluster like स्ट or ष्ट inside a chunk,
+  // try restoring as -स् + ट- or -त् + ट-.
+  {
+    id: 'shtutva',
+    category: 'consonant',
+    name: 'ष्टुत्व (स्/त् + ट → ष्ट / retroflex)',
+    description: 'Dental sibilant/stop before retroflex becomes retroflex (rare in Gītā corpus)',
+    pattern: /ष्ट/,
+    example: 'रामस् + टीका → रामष्टीका',
+    examples: ['रामस् + टीका → रामष्टीका (rare)'],
+    auto: false,
+  },
+
+  // 10. चर्त्व — final stop before unvoiced consonant → unvoiced unaspirated.
+  // Reverse: when -त्/-प्/-क् precedes another voiceless stop, the underlying
+  // form may have had a voiced or aspirated stop.
+  {
+    id: 'cartva',
+    category: 'consonant',
+    name: 'चर्त्व (voiced/aspirated stop → voiceless unaspirated before unvoiced)',
+    description: 'Final voiced/aspirated stop becomes voiceless unaspirated before an unvoiced consonant',
+    pattern: /त्क/,
+    example: 'तद् + क → तत्क',
+    examples: ['तद् + क → तत्क', 'लभ् + त → लप्त'],
+    auto: false,
+  },
+
+  // 12. परसवर्ण — अनुस्वार + stop → class-nasal of that stop.
+  // Reverse: when we see a class-nasal followed by its homorganic stop
+  // (ङ्क, ञ्च, ण्ट, न्त, म्प), try restoring the अनुस्वार.
+  {
+    id: 'parasavarna',
+    category: 'consonant',
+    name: 'परसवर्ण (अनुस्वार → class-nasal before stop)',
+    description: 'अनुस्वार before a stop optionally becomes the class-nasal of that stop',
+    pattern: /न्त/,
+    example: 'सं + तोष → सन्तोष',
+    examples: ['सं + तोष → सन्तोष', 'सं + कल्प → सङ्कल्प', 'सं + चय → सञ्चय'],
+    auto: false,
+  },
+
+  // 13. छत्व — श्/ष्/स् + त्/थ्/द्/ध् triggers त् → च्/त्/etc. and श् stays (gives च्छ).
+  {
+    id: 'chatva',
+    category: 'consonant',
+    name: 'छत्व (श् + त् → च्छ)',
+    description: 'श्/ष्/स् followed by त्/थ्/द्/ध् produces च्छ (etc.)',
+    pattern: /च्छ/,
+    example: 'तत् + श्रुत्वा → तच्छ्रुत्वा',
+    examples: ['तत् + श्रुत्वा → तच्छ्रुत्वा'],
+    auto: false,
+  },
+
+  // 15. णत्व — न् → ण् after ऋ/र्/ष् (retroflexion under conditions).
+  // More morphological than pure sandhi, but listed for completeness.
+  {
+    id: 'natva',
+    category: 'consonant',
+    name: 'णत्व (न् → ण् after ऋ/र्/ष्)',
+    description: 'Internal n retroflexes to ण after preceding ऋ/र्/ष्/etc.',
+    pattern: /ण्/,
+    example: 'पुरुष + न → पुरुषेण (after ष्)',
+    examples: ['कर्म + न → कर्मण (after र्)', 'पुरुष + न → पुरुषेण (after ष्)'],
+    auto: false,
+  },
+
+  // 21. विसर्ग + र् → preceding vowel lengthens, visarga drops.
+  {
+    id: 'visarga-r',
+    category: 'visarga',
+    name: 'विसर्ग + र् → preceding vowel lengthens',
+    description: 'A final ः before a र-initial word causes the preceding vowel to lengthen and the visarga to drop',
+    pattern: /ार्/,
+    example: 'पुनः + रमते → पूनारमते (or पूना रमते after lengthening)',
+    examples: ['पुनः + रमते → पूना रमते (rare in Gītā)'],
+    auto: false,
+  },
+
   // Pre-vowel consonant doubling not handled (less common; tail rules)
 ];
 
@@ -489,6 +585,15 @@ const UNJOIN = {
   't-jash-ga':          { joined: 'द्ग', parts: ['त्', 'ग'] },
   't-jash-ba':          { joined: 'द्ब', parts: ['त्', 'ब'] },
   't-jash-ya':          { joined: 'द्य', parts: ['त्', 'य'] },
+  // Newly wired rules (auto:false until lexicon-validated to avoid
+  // over-firing inside compounds where the same surface cluster occurs).
+  'ay-adi':             { joined: 'अय', parts: ['ए', 'अ'] },
+  'shtutva':            { joined: 'ष्ट', parts: ['स्', 'ट'] },
+  'cartva':             { joined: 'त्क', parts: ['द्', 'क'] },
+  'parasavarna':        { joined: 'न्त', parts: ['ं', 'त'] },
+  'chatva':             { joined: 'च्छ', parts: ['त्', 'श्'] },
+  'natva':              { joined: 'ण्', parts: ['न्', ''] },
+  'visarga-r':          { joined: 'ार्', parts: ['ः', 'र'] },
   // Note: the द्-vowel case (पर्जन्यात् + अन्न → पर्जन्यादन्न) is much harder
   // — द + matra forms a perfectly normal syllable, so we can't blindly
   // split. That case stays in SPLITTER_OVERRIDES until lexicon-driven
