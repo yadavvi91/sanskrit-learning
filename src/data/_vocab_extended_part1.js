@@ -408,6 +408,7 @@ export const VOCAB_EXTENDED_PART_1 = {
   'यतात्मानः':         { category: 'adjective', root: 'यतात्मन्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'those whose self is controlled (बहुव्रीहि — यतः आत्मा यस्य सः; nom. pl. m.)' },
   'काम-क्रोध-वियुक्तानाम्':{ category: 'adjective', root: 'काम-क्रोध-वियुक्त', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those free from desire and anger (पञ्चमी तत्पुरुष chain — कामात् क्रोधात् च वियुक्तः; gen. pl. m.)' },
   'बहिर्':              { category: 'particle', gloss: 'outside / external (avyaya; equivalent to बहिः before voiced consonants/vowels via visarga-र् sandhi)' },
+  'बहिः':              { category: 'particle', gloss: 'outside / external (avyaya — the canonical visarga form; becomes बहिर् before voiced consonants/vowels via visarga-र् sandhi)' },
   'बाह्यान्':           { category: 'adjective', root: 'बाह्य', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'external / outer (m. acc. pl. of the adjective बाह्य)' },
   'अन्तरे':             { category: 'noun', root: 'अन्तर', gender: 'n', number: 'eka', case: 'sap', gloss: 'in the middle / between (locative singular of the noun/adj. अन्तर)' },
   'नास-अभ्यन्तर-चारिणौ': { category: 'noun', root: 'नास-अभ्यन्तर-चारिन्', gender: 'm', number: 'dvi', case: 'pra-or-dvi', gloss: 'the two moving inside the nostrils (उपपद तत्पुरुष — referring to प्राण and अपान breaths)' },

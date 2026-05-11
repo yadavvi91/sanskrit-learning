@@ -1056,10 +1056,14 @@ const SPLITTER_OVERRIDES = new Map([
   // join. Split for transparency (same treatment as ब्रह्मयोगयुक्त + आत्मा
   // in 5.21).
   ['विदितात्मनाम्', ['विदित', 'आत्मनाम्']],
-  // 5.27 — one giant chunk: बहिर् + बाह्यान् + चक्षुः + च + एव + अन्तरे
-  // Visarga-र् (बहिः→बहिर्), -न् + च → -ंश्च (anunāsika), -ः + च → श्च,
-  // -ः + ए → रे (re-visarga), then च + एव → चैव (savarṇa).
-  ['बहिर्बाह्यांश्चक्षुश्चैवान्तरे', ['बहिर्', 'बाह्यान्', 'चक्षुः', 'च', 'एव', 'अन्तरे']],
+  // 5.27 — one giant chunk: बहिः + बाह्यान् + चक्षुः + च + एव + अन्तरे
+  // Decompose to the canonical visarga form बहिः rather than the
+  // sandhi-realised बहिर्, since padaccheda surfaces the underlying
+  // word forms (visarga is the dictionary form; -र् is just how it
+  // looks before voiced consonants/vowels via visarga-र् sandhi).
+  // -न् + च → -ंश्च (anunāsika), -ः + च → श्च, -ः + ए → रे (visarga-र्),
+  // then च + एव → चैव (vrddhi).
+  ['बहिर्बाह्यांश्चक्षुश्चैवान्तरे', ['बहिः', 'बाह्यान्', 'चक्षुः', 'च', 'एव', 'अन्तरे']],
   // 5.27 — नासाभ्यन्तरचारिणौ ("moving inside the nostrils") is one
   // compound: नास-अभ्यन्तर-चारिन् (तत्पुरुष). Engine was wrongly cutting
   // off an initial न- (treating it as the negation prefix).
