@@ -92,6 +92,7 @@ export const KNOWN_SAMASAS = {
   'सम-लोष्ट-अश्म-काञ्चन':{ vigraha: 'समाः लोष्ट-अश्म-काञ्चनाः यस्य सः', type: 'बहुव्रीहि', gloss: 'one to whom a clod, a stone, and gold are equal (BG 6.8 — image of supreme detachment)' },
   'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु':{ vigraha: 'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धवः', type: 'इतरेतर द्वंद्व (seven-element chain)', gloss: 'friend, ally, enemy, neutral, mediator, hateful, and kinsman — the seven categories of social relation BG 6.9 says the yogi sees with equal eye' },
   'परम-आत्मन्':       { vigraha: 'परमः आत्मा', type: 'कर्मधारय', gloss: 'the Supreme Self (परम "supreme" + आत्मन् "self")' },
+  'यत-चित्त-आत्मन्':  { vigraha: 'यतौ चित्तम् आत्मा च यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind and self are restrained (BG 6.10)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

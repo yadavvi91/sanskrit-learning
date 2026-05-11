@@ -1125,6 +1125,18 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.7 — परमात्मा is one compound (परम-आत्मन् "Supreme Self"); engine
   // was wrongly cutting as परम् + आत्मा.
   ['परमात्मा', ['परम-आत्मा']],
+  // 6.10 — निराशीः + अपरिग्रहः (visarga-र् at the joint). Engine was
+  // cutting visarga-र् at the WRONG position, producing
+  // निराशीरपः + इग्रहः.
+  ['निराशीरपरिग्रहः', ['निराशीः', 'अपरिग्रहः']],
+  // 6.10 — यतचित्तात्मा is one bahuvrīhi compound (यत-चित्त-आत्मन्
+  // "one whose mind-and-self are restrained")
+  ['यतचित्तात्मा', ['यत-चित्त-आत्मा']],
+  // 6.11 — अति + उच्छ्रितम् ("not too high"); सवर्ण-दीर्घ
+  // (अ + उ → ?  actually इ + उ → यु or vrddhi to ओ; let me think again.
+  //  अति ends in i; उच्छ्रितम् starts with उ. yaṇ इ + उ → य्यु — that's
+  //  what makes अत्युच्छ्रितम् with य्यु at the joint).
+  ['अत्युच्छ्रितं', ['अति', 'उच्छ्रितम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

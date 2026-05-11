@@ -326,8 +326,29 @@ function ChapterRow({ chapter, decodedKeys, auditKeys, selected, onSelect, showO
   // In "audit only" mode, hide chapters with no audit-needed verses.
   if (showOnlyAuditNeeded && auditInChapter.length === 0) return null;
 
+  // Open only the chapter containing the active verse by default.
+  // When the user navigates to a different verse, the new active chapter
+  // opens. User can manually toggle other chapters; that user-toggled
+  // state survives because we only force `open=true` for the active
+  // chapter, not `open=false` for the others (React's prop-vs-DOM
+  // reconciliation keeps user toggles intact for non-active chapters).
+  const [userToggled, setUserToggled] = useState(false);
+  const isActiveChapter = selected?.chapter === chapter.number;
+  // Reset the user-toggle tracking when the active chapter changes
+  // (so navigating to a different chapter doesn't inherit stale toggle state).
+  useEffect(() => { if (isActiveChapter) setUserToggled(false); }, [isActiveChapter]);
+  const open = isActiveChapter || userToggled || (showOnlyDecoded && decodedInChapter.length > 0);
+
   return (
-    <details className="chapter-row" open={chapter.number <= 2 || (showOnlyDecoded && decodedInChapter.length > 0)}>
+    <details
+      className="chapter-row"
+      open={open}
+      onToggle={(e) => {
+        // Only track user's manual toggle for non-active chapters.
+        // For the active chapter, the default open=true should hold.
+        if (!isActiveChapter) setUserToggled(e.currentTarget.open);
+      }}
+    >
       <summary className="chapter-summary">
         <span className="chapter-num">अध्यायः {chapter.number}</span>
         <span className="chapter-name">{chapter.name}</span>
