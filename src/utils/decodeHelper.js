@@ -1291,6 +1291,12 @@ const SPLITTER_OVERRIDES = new Map([
   ['यत्तद्बुद्धिग्राह्यमतीन्द्रियम्', ['यत्', 'तत्', 'बुद्धि-ग्राह्यम्', 'अति-इन्द्रियम्']],
   // 6.20 — पश्यन् + आत्मनि (consonant-doubling -न् + अ → -न्न).
   ['पश्यन्नात्मनि', ['पश्यन्', 'आत्मनि']],
+  // 7.15 — मायया + अपहृत-ज्ञानाः (savarṇa-dīrgha आ + अ → आ).
+  // Underlying ज्ञानाः; surface "ज्ञाना" because the visarga dropped
+  // before the following आसुरं (visarga + voiced vowel → drop).
+  ['माययापहृतज्ञाना', ['मायया', 'अपहृत-ज्ञानाः']],
+  // 7.14 — मायाम् + एताम् (-म् + ए → concatenation, no sandhi mod).
+  ['मायामेतां', ['मायाम्', 'एताम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
