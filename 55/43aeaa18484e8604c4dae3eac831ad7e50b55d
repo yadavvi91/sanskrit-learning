@@ -1,0 +1,30 @@
+src/data/_vocab_extended_part1.js
+  s_d5e8c30b294ba2::t_3258075b81fd4d 443-444
+  s_d5e8c30b294ba2::t_92bdac746a5c18 442
+  s_d5e8c30b294ba2::t_a8788646cb2fb9 440-441
+src/data/_known_samasas.js
+  s_d5e8c30b294ba2::t_f06c60c304fbd2 95
+src/components/VerseJourney.jsx
+  s_d5e8c30b294ba2::t_7186ff9b9aa342 329,336,341
+  s_d5e8c30b294ba2::t_1862d13bb9082d 330-335,337-340,343-351
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_9f893c08d0daa5 1135-1139
+  s_d5e8c30b294ba2::t_d52356380b5cf6 1128-1131
+  s_d5e8c30b294ba2::t_a87b2e64cd564c 1132-1134
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "5543aeaa18484e8604c4dae3eac831ad7e50b55d",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
