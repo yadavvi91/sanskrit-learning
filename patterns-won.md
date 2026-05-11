@@ -29,6 +29,14 @@
 | विधिलिङ् identification | -ीय/-यात् endings = "should/ought to" — the mood of rhetorical anguish | 2.5 (भुञ्जीय) |
 | मा स्म + लोट् | "Do not [verb]" — negated imperative | 2.3 (मा स्म गमः) |
 | प्रथम पुरुष flip | Sanskrit प्रथम = English 3rd person (he/she/it). Counted from outside in. | 1.1 (अकुर्वत — they did) |
+| आत्मनेपद imperative — -स्व ending | लोट् मध्यम-एकवचन **आत्मनेपद** ending. Not -हि (परस्मैपद) but -स्व (आत्मनेपद). The form looks plain — verb-stem + -स्व directly. Two voice paradigms exist; you've now met both. | 2.18 (युध्यस्व — "fight!", from √युध् gaṇa 4 आत्मनेपद) |
+| आत्मनेपद imperative — -ध्वम् / -न्ताम् / -ताम् | -ध्वम् = 2pl ("you all do!"), -न्ताम् = 3pl ("let them do"), -ताम् = 3sg ("let him do"). All आत्मनेपद. The परस्मैपद equivalents are -त (2pl), -न्तु (3pl), -तु (3sg). | 2.18 (the -स्व paradigm; -ध्वम् etc. land in later verses) |
+| परस्मैपद vs आत्मनेपद — voice paradigms | Sanskrit verbs come in two voice classes. परस्मैपद = "active for another" (most verbs); आत्मनेपद = "active for oneself" (a smaller class, including √युध्, √लभ्, √सेव्). The endings differ in EVERY लकार × पुरुष × वचन cell. The -स्व ending is the first taste of आत्मनेपद. | 2.18 (युध्यस्व) |
+| आत्मनेपद लट् — -ते ending | आत्मनेपद present 3sg ends in **-ते** (परस्मैपद equivalent: -ति). Same root, different voice — कुरुति vs कुरुते both = "does," but आत्मनेपद implies "for oneself / middle voice." Visible across the Gītā in verbs like कुरुते, मन्यते, लभते, सेवते. | 3.40-ish? (कुरुते — "consumes" in the एधांसि/अग्नि simile) |
+| Passive voice (कर्मणि प्रयोग) — -यते ending | The **-यते** infix-ending marks passive: the subject is acted upon, not acting. उच्यते = "is called/said," ज्ञायते = "is known," दृश्यते = "is seen." Looks like आत्मनेपद -ते but with -य- inserted before. Distinct grammatical voice — neither active परस्मैपद nor middle आत्मनेपद. | 8.3 (अक्षरं ब्रह्म...अध्यात्ममुच्यते — "is called अध्यात्म") |
+| Defective verb √अह् → आहुः / प्राहुः | √अह् ("to say") exists ONLY in लिट् (perfect) — no लट्, no लङ्, no other लकार. आहुः = प्रथम बहुवचन = "they say," used constantly in the Gītā for "the wise/sages/scriptures say." Recognise it on sight; don't try to parse it as anything else. | (आहुः, प्राहुः — "the wise say") |
+| यथा-तथा structure — verb governs across the simile | "यथा X... तथा Y..." = "Just as X... so too Y..." The यथा-clause is the simile (often verbless or sharing the verb with तथा); the finite verb sits in the तथा clause and governs both. When the तथा is dropped, the second line still owns the verb. Same with यथा-clauses in विभूति योग where एक finite verb anchors many parallel similes. | 9.6 (यथाकाश...वायुः सर्वत्रगो महान् — verb उपधारय in line 2 governs line 1) |
+| अनुवृत्ति within a verse — अस्मि carry-over | विभूति योग lists Krishna's manifestations as "अहं X" repeated across many lines, with **अस्मि** appearing only once and carrying back/forward across the rest. Same अनुवृत्ति mechanic as cross-verse (1.16-1.18 दध्मौ), but compressed to one stanza. | 10.21+ (आदित्यानामहं विष्णुः... मरीचिर्मरुतामस्मि — एक अस्मि anchors the चैत्र list) |
 
 ---
 
@@ -110,8 +118,10 @@ Three distinct negation mechanisms — each for a different grammatical context.
 | Pattern | What it means | Where learned |
 |---------|--------------|---------------|
 | पदच्छेद → अन्वय → हिंदी → English | The full decode sequence | Conversation |
-| अन्वय follows SOV | Reorder into Subject → Object → Verb (not SVO) | Conversation |
-| Hindi before English | Stays in SOV mode, doesn't force English SVO on Sanskrit structure | Conversation |
+| अन्वय restores the *default* SOV order | Sanskrit word order is free (case endings disambiguate), but the unmarked default is SOV — अन्वय restores that default after the verse scrambles for metre | Conversation |
+| Hindi before English | Hindi is also default-SOV, so the order carries through; English flips to SVO. Translating Sanskrit → Hindi is a closer structural step than Sanskrit → English | Conversation |
 | Giveaway test | Remove word X — does the sentence still work? If yes, X is not the finite verb | 2.5 (removing भोक्तुम् vs removing भुञ्जीय) |
 | Endings narrow, meaning picks | विभक्ति matching gives candidates; context selects the right pairing | 1.1 (समवेताः — which noun does it describe?) |
 | Sandhi comes last | Understand the expected form first; then the change makes sense | bvsiitm explainer |
+| **अनुवृत्ति** — verb carry-over across verses | When a verse has no overt finite verb, the verb is often *gapped* from a neighbouring stanza. Example: 1.15 has दध्मौ ("blew the conch"), 1.16 and 1.17 list more warriors with no verb — the दध्मौ is mentally supplied for each. Same with bridge verses (1.20 → 1.21 आह; 1.24 → 1.25 उवाच; 1.27 → 1.28 अब्रवीत्). Distinct from "implied अस्ति" — the carried verb is specific, recoverable, and pedagogically named. | 1.16, 1.17 (←1.15 दध्मौ), 1.20 (→1.21 आह), 1.24 (→1.25 उवाच), 1.27 (→1.28 अब्रवीत्) |
+| एक-वाक्यता vs अनुवृत्ति | एक-वाक्यता = single sentence spanning multiple verses (one syntactic unit broken across stanzas by metre). अनुवृत्ति = the supply rule that lets you continue a verb/word implicitly. Both produce "verbless" verses; अनुवृत्ति specifically names which verb is being supplied. | 1.20 (एक-वाक्यता with 1.21; the अनुवृत्ति verb is आह) |

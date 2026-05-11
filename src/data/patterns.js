@@ -84,6 +84,48 @@ export const PATTERN_CATEGORIES = [
           'Sanskrit प्रथम = English 3rd person (he/she/it). Counted from outside in.',
         trigger: { label: '1.1', verse: '1.1', example: 'अकुर्वत — they did' },
       },
+      {
+        name: 'आत्मनेपद imperative — -स्व ending',
+        meaning:
+          'लोट् मध्यम-एकवचन आत्मनेपद ending. Not -हि (परस्मैपद) but -स्व. Two voice paradigms exist; this is the first आत्मनेपद form you meet.',
+        trigger: { label: '2.18', verse: '2.18', example: 'युध्यस्व — "fight!"' },
+      },
+      {
+        name: 'परस्मैपद vs आत्मनेपद — voice paradigms',
+        meaning:
+          'Sanskrit verbs come in two voice classes. परस्मैपद = "active for another" (most verbs); आत्मनेपद = "active for oneself" (e.g. √युध्, √लभ्, √सेव्). The endings differ in EVERY लकार × पुरुष × वचन cell.',
+        trigger: { label: '2.18', verse: '2.18', example: 'युध्यस्व — आत्मनेपद flag' },
+      },
+      {
+        name: 'आत्मनेपद लट् — -ते ending',
+        meaning:
+          'आत्मनेपद present 3sg ends in -ते (परस्मैपद equivalent: -ति). Same root, different voice. Visible in कुरुते, मन्यते, लभते, सेवते across the Gītā.',
+        trigger: { label: '3.x', example: 'कुरुते — "consumes" (एधांसि/अग्नि simile)' },
+      },
+      {
+        name: 'Passive voice (कर्मणि प्रयोग) — -यते ending',
+        meaning:
+          'The -यते infix-ending marks passive: the subject is acted upon. उच्यते = "is called," ज्ञायते = "is known," दृश्यते = "is seen." Distinct from आत्मनेपद -ते — passive inserts -य- before the ending.',
+        trigger: { label: '8.3', verse: '8.3', example: 'अध्यात्ममुच्यते — "is called अध्यात्म"' },
+      },
+      {
+        name: 'Defective verb √अह् → आहुः / प्राहुः',
+        meaning:
+          '√अह् ("to say") exists ONLY in लिट् (perfect). आहुः = प्रथम बहुवचन = "they say," used throughout the Gītā for "the wise/sages say." Recognise on sight — no other tense exists.',
+        trigger: { label: '3.42', example: 'इन्द्रियाणि पराण्याहुः — "they say the senses are higher"' },
+      },
+      {
+        name: 'यथा-तथा structure — verb governs across the simile',
+        meaning:
+          '"यथा X... तथा Y..." = "Just as X... so too Y." The यथा-clause is often verbless; the finite verb sits in the तथा clause and governs both. When तथा is dropped the second line still owns the verb.',
+        trigger: { label: '9.6', verse: '9.6', example: 'यथाकाशस्थितो...उपधारय (line 2 verb governs line 1)' },
+      },
+      {
+        name: 'अनुवृत्ति within a verse — अस्मि carry-over',
+        meaning:
+          'विभूति योग repeats "अहं X" across many lines with अस्मि appearing once and carrying across the rest. Same अनुवृत्ति mechanic as cross-verse (1.16-1.18 दध्मौ), compressed into one stanza.',
+        trigger: { label: '10.21', verse: '10.21', example: 'आदित्यानामहं विष्णुः... मरीचिर्मरुतामस्मि' },
+      },
     ],
   },
   {
@@ -123,13 +165,13 @@ export const PATTERN_CATEGORIES = [
         trigger: { label: 'Conversation' },
       },
       {
-        name: 'अन्वय follows SOV',
-        meaning: 'Reorder into Subject → Object → Verb (not SVO)',
+        name: 'अन्वय restores the default SOV order',
+        meaning: 'Word order is free (case endings disambiguate); the unmarked default is SOV. अन्वय restores that default after the verse scrambles for metre — it does NOT mean "Sanskrit IS SOV"',
         trigger: { label: 'Conversation' },
       },
       {
         name: 'Hindi before English',
-        meaning: "Stays in SOV mode, doesn't force English SVO on Sanskrit structure",
+        meaning: 'Hindi is also default-SOV, so the order carries through; English flips to SVO. Sanskrit → Hindi is a closer structural step than Sanskrit → English',
         trigger: { label: 'Conversation' },
       },
       {
@@ -151,6 +193,18 @@ export const PATTERN_CATEGORIES = [
         name: 'Sandhi comes last',
         meaning: 'Understand the expected form first; then the change makes sense',
         trigger: { label: 'bvsiitm explainer' },
+      },
+      {
+        name: 'अनुवृत्ति — verb carry-over across verses',
+        meaning:
+          'When a verse has no overt finite verb, the verb is often gapped from a neighbouring stanza. Distinct from "implied अस्ति" — the carried verb is specific, recoverable, and pedagogically named.',
+        trigger: { label: '1.16, 1.17', verse: '1.16', example: '←1.15 दध्मौ "blew the conch"' },
+      },
+      {
+        name: 'एक-वाक्यता vs अनुवृत्ति',
+        meaning:
+          'एक-वाक्यता = single sentence spanning multiple verses (one syntactic unit broken across stanzas by metre). अनुवृत्ति = the supply rule that lets you continue a verb implicitly. Both produce "verbless" verses; अनुवृत्ति specifically names which verb is being supplied.',
+        trigger: { label: '1.20', verse: '1.20', example: '→1.21 आह — bridge verse with the verb arriving in the next stanza' },
       },
     ],
   },

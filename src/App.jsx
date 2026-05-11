@@ -1,17 +1,103 @@
-import { useState } from 'react';
+import { useCallback, useLayoutEffect, useRef } from 'react';
+import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import VerseJourney from './components/VerseJourney.jsx';
 import PatternsWon from './components/PatternsWon.jsx';
+import Verbs from './components/Verbs.jsx';
+import Atlas from './components/Atlas.jsx';
+import Primer from './components/Primer.jsx';
+import LastVisitBanner from './components/LastVisitBanner.jsx';
+import Practice from './components/Practice.jsx';
+import Vocabulary from './components/Vocabulary.jsx';
+import DecodeHelper from './components/DecodeHelper.jsx';
+import Origin from './components/Origin.jsx';
+import ThemePicker from './components/ThemePicker.jsx';
+import { hydrateAutoStubVerses } from './data/hydrate.js';
+
+// Hydrate auto-stub verses with engine-generated padaccheda on first
+// load. Runs once at module init, after all imports resolve.
+hydrateAutoStubVerses();
 
 const VIEWS = [
-  { id: 'journey', label: 'Verse Journey' },
-  { id: 'patterns', label: 'Patterns Won' },
+  { path: '/journey',  label: 'Verse Journey' },
+  { path: '/patterns', label: 'Patterns Won' },
+  { path: '/verbs',    label: 'Verbs' },
+  { path: '/atlas',    label: 'Atlas' },
+  { path: '/words',    label: 'Words' },
+  { path: '/decode',   label: 'Decode' },
+  { path: '/primer',   label: 'Primer' },
+  { path: '/practice', label: 'Practice' },
+  { path: '/origin',   label: 'Origin' },
 ];
 
+// Reset window scroll on every pathname change.
+//
+// Tried (in order):
+//   1. useEffect — fires AFTER paint; visible jump.
+//   2. useLayoutEffect — fires before paint, but browser was still
+//      auto-restoring scrollY from its history stack, overriding us.
+//   3. Below: useLayoutEffect + manual history.scrollRestoration +
+//      scrollingElement (modern API) + a rAF fallback after paint.
+//
+// One-time setup at module load: tell the browser "I'll handle scroll
+// restoration, you stay out of it."
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  const prevPathRef = useRef(pathname);
+  useLayoutEffect(() => {
+    // Reading-flow exception: don't reset when moving between verses on
+    // the same /journey path (e.g., /journey/1/11 → /journey/1/12).
+    // The user's reading position should carry over so they see the
+    // same section (अन्वय / English) of the next verse without re-
+    // scrolling. VerseJourney captures + restores scrollY explicitly
+    // via rAFs in that case.
+    const prev = prevPathRef.current;
+    prevPathRef.current = pathname;
+    const isVerseToVerse =
+      pathname.startsWith('/journey/') && prev.startsWith('/journey/');
+    if (isVerseToVerse) return;
+
+    // Bypass any inherited CSS scroll-behavior that might smooth-scroll us.
+    const html = document.documentElement;
+    const prevBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+
+    // Try every scroll target known to current browsers.
+    const target = document.scrollingElement || html;
+    target.scrollTop = 0;
+    target.scrollLeft = 0;
+    if (target !== html) html.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+
+    // Some browsers re-apply scroll *after* layout (e.g. async layout).
+    // Belt-and-suspenders: do it again on the next animation frame.
+    const raf = requestAnimationFrame(() => {
+      target.scrollTop = 0;
+      window.scrollTo(0, 0);
+      html.style.scrollBehavior = prevBehavior;
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
-  const [view, setView] = useState('journey');
+  const navigate = useNavigate();
+
+  // Banner-driven navigation: keep the existing API for the banner,
+  // implemented now by router navigation.
+  const openPrimer = useCallback((sectionId) => {
+    navigate(sectionId ? `/primer#${sectionId}` : '/primer');
+  }, [navigate]);
 
   return (
     <div className="app">
+      <ScrollToTop />
       <header className="masthead">
         <div className="masthead-inner">
           <div className="masthead-text">
@@ -22,27 +108,66 @@ export default function App() {
           </div>
           <nav className="view-switcher" aria-label="Views">
             {VIEWS.map((v) => (
-              <button
-                key={v.id}
-                type="button"
-                className={`view-tab ${view === v.id ? 'is-active' : ''}`}
-                onClick={() => setView(v.id)}
+              <NavLink
+                key={v.path}
+                to={v.path}
+                className={({ isActive }) => `view-tab ${isActive ? 'is-active' : ''}`}
               >
                 {v.label}
-              </button>
+              </NavLink>
             ))}
           </nav>
         </div>
+        <ThemePicker />
       </header>
 
+      <LastVisitBanner onOpenPrimer={openPrimer} />
+
       <main className="content">
-        {view === 'journey' && <VerseJourney />}
-        {view === 'patterns' && <PatternsWon />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/journey" replace />} />
+          <Route path="/journey" element={<VerseJourney />} />
+          <Route path="/journey/:chapter/:verse" element={<VerseJourney />} />
+          <Route path="/patterns" element={<PatternsWon />} />
+          <Route path="/verbs" element={<Verbs />} />
+          <Route path="/verbs/:dhatuId" element={<Verbs />} />
+          <Route path="/atlas" element={<Atlas />} />
+          <Route path="/atlas/:section" element={<Atlas />} />
+          <Route path="/words" element={<Vocabulary />} />
+          <Route path="/decode" element={<DecodeHelper />} />
+          <Route path="/primer" element={<Primer />} />
+          <Route path="/practice" element={<Practice />} />
+          <Route path="/origin" element={<Origin />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
 
       <footer className="colophon">
         <span>SOV · पदच्छेद · अन्वय · हिंदी · English</span>
+        <NavLink to="/origin" className="colophon-link" title="How this project came to be">
+          How this began →
+        </NavLink>
       </footer>
+    </div>
+  );
+}
+
+function NotFound() {
+  const navigate = useNavigate();
+  // Use navigate() rather than <a href="/journey"> so the link works
+  // identically under BrowserRouter (local dev) and HashRouter (Pages).
+  return (
+    <div className="empty-state">
+      <p>
+        That tab doesn't exist.{' '}
+        <button
+          type="button"
+          onClick={() => navigate('/journey')}
+          style={{ background: 'none', border: 'none', padding: 0, color: 'var(--gold)', textDecoration: 'underline', cursor: 'pointer', font: 'inherit' }}
+        >
+          Back to Verse Journey →
+        </button>
+      </p>
     </div>
   );
 }

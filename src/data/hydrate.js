@@ -1,0 +1,409 @@
+// One-time hydration of auto-stub verses with engine-generated padaccheda
+// + finite-verb candidates. Runs autoDecode (which does sandhi-undo +
+// dictionary lookups) over each tier='auto-stub' verse on app boot, so
+// the user sees clickable word chips instead of a wall of mool text.
+//
+// Why a separate module: avoids the cycle if we put the import directly
+// in verses.js (verses → decodeHelper → vocabulary → verses). Here we
+// import both, but only call the function from App.jsx after all modules
+// have fully loaded.
+
+import { VERSES } from './verses.js';
+import { autoDecode } from '../utils/decodeHelper.js';
+import { BESANT_TRANSLATIONS } from './translations-besant.js';
+import { ARNOLD_TRANSLATIONS } from './translations-arnold.js';
+import { HINDI_TRANSLATIONS } from './translations-hindi.js';
+import { INTERP_NOTES } from './interpretive.js';
+import { SHANKARA_SUMMARIES } from './commentaries-shankara.js';
+import { FINITE_OVERRIDES } from './finite-overrides.js';
+import { DHATUS_EXTENDED } from './dhatus-extended.js';
+import { FUTURE_STEMS } from './_dhatu_future_stems.js';
+import { VERSE_OVERRIDES } from './verse-overrides.js';
+import { lookupSharedVocab } from './sharedVocab.js';
+
+// Compound-type names recognised in vibhaktiNotes. Longest-first so
+// "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
+const COMPOUND_TYPES_LONGEST_FIRST = [
+  'इतरेतर द्वंद्व', 'इतरेतर द्वन्द्व', 'समाहार द्वंद्व', 'समाहार द्वन्द्व',
+  'उपपद तत्पुरुष', 'षष्ठी तत्पुरुष', 'तृतीया तत्पुरुष', 'चतुर्थी तत्पुरुष',
+  'पञ्चमी तत्पुरुष', 'सप्तमी तत्पुरुष', 'द्वितीया तत्पुरुष',
+  'तत्पुरुष', 'बहुव्रीहि', 'द्वंद्व', 'द्वन्द्व', 'कर्मधारय', 'अव्ययीभाव',
+];
+
+// Parse vibhaktiNotes for predicate participles AND predicate adjectives:
+// words tagged as PPP / past-passive / predicate adjective / gerundive that
+// "serve as predicate". These are the "verb" of nominal sentences —
+// e.g., 1.33's काङ्क्षितम् ("was desired"), 2.20's अजः नित्यः (stacked
+// predicate adjectives describing अयम्). Returns [{ form, gloss, kind }]
+// so VerseDetail can surface them instead of (or alongside) the generic
+// "implied अस्ति" line.
+//
+// `kind` indicates whether the note tagged a participle ("PPP") or a
+// plain adjective ("adjective") — used to label the rendered sub-section.
+function parsePredicatePPPsFromVibhakti(notes) {
+  const result = [];
+  for (const note of notes || []) {
+    const isPPP = /PPP|past[- ]passive/i.test(note);
+    const isAdjective = /predicate adjective/i.test(note);
+    const isGerundive = /gerundive/i.test(note);
+    if (!isPPP && !isAdjective && !isGerundive) continue;
+    // Must explicitly mark "predicate" usage — avoids picking up
+    // attributive PPPs that are not the sentence's predicate.
+    if (!/predicate|serves as/i.test(note)) continue;
+    const arrowIdx = note.indexOf('→');
+    if (arrowIdx === -1) continue;
+    const before = note.slice(0, arrowIdx).trim();
+    const forms = before.split(/,\s*/)
+      .map((c) => c.replace(/\s*\([^()]*\)\s*/g, '').trim())
+      // Strip parenthetical count markers like "(thrice)" added by the agent.
+      .filter((c) => c && !/^\(.*\)$/.test(c));
+    if (forms.length === 0) continue;
+    const glossMatch = note.match(/[“"„]([^”"]+)[”"]/) || note.match(/'([^']+)'/);
+    const gloss = glossMatch ? glossMatch[1] : '';
+    const kind = isPPP ? 'PPP' : isGerundive ? 'gerundive' : 'adjective';
+    for (const f of forms) {
+      result.push({ form: f, gloss, kind });
+    }
+  }
+  return result;
+}
+
+// Parse vibhaktiNotes for compound type-tagged entries. Returns a list
+// of { compound, type, gloss } extracted from notes like:
+//   "अश्रुपूर्णाकुलेक्षणम् → द्वितीया एकवचन — बहुव्रीहि "(him) whose eyes…""
+//   "महानुभावान् गुरून् → ... ; both बहुव्रीहि"
+function parseSamasaFromVibhakti(notes) {
+  const result = [];
+  for (const note of notes || []) {
+    let type = null;
+    for (const t of COMPOUND_TYPES_LONGEST_FIRST) {
+      if (note.includes(t)) { type = t; break; }
+    }
+    if (!type) continue;
+    const arrowIdx = note.indexOf('→');
+    if (arrowIdx === -1) continue;
+    const before = note.slice(0, arrowIdx).trim();
+    // Compound names — comma-separated; strip parenthetical annotations.
+    const compounds = before.split(/,\s*/)
+      .map((c) => c.replace(/\s*\([^()]*\)\s*/g, '').trim())
+      .filter(Boolean);
+    if (compounds.length === 0) continue;
+    // Gloss — first quoted span (curly or straight quotes).
+    const glossMatch = note.match(/[“"„]([^”"]+)[”"]/) || note.match(/'([^']+)'/);
+    const gloss = glossMatch ? glossMatch[1] : '';
+    for (const c of compounds) {
+      result.push({ compound: c, type, gloss });
+    }
+  }
+  return result;
+}
+
+let done = false;
+
+export function hydrateAutoStubVerses() {
+  if (done) return;
+  done = true;
+
+  for (const v of VERSES) {
+    if (v.tier !== 'auto-stub') continue;
+    const key = `${v.chapter}.${v.verse}`;
+
+    // Verse-level overrides — hand-decoded padaccheda / finiteVerbs /
+    // notes / anvaya / hindi / english for verses where the engine
+    // produces sub-quality results. Each field is filled only if the
+    // verse doesn't already have it (so an in-place verses.js override
+    // takes priority over a chapter-level batch override). The verse
+    // remains tier='auto-stub' for tier-test compatibility, but with
+    // floor-quality content it cannot regress below.
+    const vOverride = VERSE_OVERRIDES[key];
+    if (vOverride) {
+      if (vOverride.speaker && !v.speaker) v.speaker = vOverride.speaker;
+      if (Array.isArray(vOverride.padaccheda) && (!v.padaccheda || v.padaccheda.length === 0)) {
+        v.padaccheda = vOverride.padaccheda;
+      }
+      if (Array.isArray(vOverride.sandhiNotes) && (!v.sandhiNotes || v.sandhiNotes.length === 0)) {
+        v.sandhiNotes = vOverride.sandhiNotes;
+      }
+      if (Array.isArray(vOverride.finiteVerbs) && (!v.finiteVerbs || v.finiteVerbs.length === 0)) {
+        v.finiteVerbs = vOverride.finiteVerbs;
+      } else if (vOverride.finiteVerbs === null) {
+        v.noFiniteVerb = true;
+      }
+      if (Array.isArray(vOverride.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+        v.vibhaktiNotes = vOverride.vibhaktiNotes;
+      }
+      if (Array.isArray(vOverride.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+        v.keyFights = vOverride.keyFights;
+      }
+      if (Array.isArray(vOverride.samasNotes) && (!v.samasNotes || v.samasNotes.length === 0)) {
+        v.samasNotes = vOverride.samasNotes;
+      }
+      if (vOverride.anvaya && !v.anvaya) v.anvaya = vOverride.anvaya;
+      if (vOverride.hindi && !v.hindi) v.hindi = vOverride.hindi;
+      if (vOverride.english && !v.english) v.english = vOverride.english;
+      if (Array.isArray(vOverride.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+        v.vyakhya = vOverride.vyakhya;
+      }
+      // anuvṛtti — explicit verb-carry-over from a neighbouring verse.
+      // When set, the क्रिया section renders the carried verb + source
+      // verse instead of the generic "implied अस्ति" line.
+      if (vOverride.anuvrtti && !v.anuvrtti) v.anuvrtti = vOverride.anuvrtti;
+      if (Array.isArray(vOverride.predicatePPPs) && (!v.predicatePPPs || v.predicatePPPs.length === 0)) {
+        v.predicatePPPs = vOverride.predicatePPPs;
+      }
+      // implicitVerb — when the verse is genuinely nominal but the
+      // implied predicate is something other than अस्ति. Used for
+      // विभूति-style "I am X" verses where मनेप is implied (मन्ये etc.).
+      if (vOverride.implicitVerb && !v.implicitVerb) {
+        v.implicitVerb = vOverride.implicitVerb;
+        v.implicitVerbMeaning = vOverride.implicitVerbMeaning;
+      }
+    }
+
+    if (!v.padaccheda || v.padaccheda.length === 0) {
+      try {
+        const stub = autoDecode((v.mool || []).join(' '));
+        if (stub) {
+          v.padaccheda = stub.padaccheda;
+          if (!v.finiteVerbs || v.finiteVerbs.length === 0) {
+            v.finiteVerbs = stub.finiteVerbs;
+          }
+          // Plumb sandhiNotes from the engine — these are the structural
+          // splits the engine made (visarga sandhi, yan, makara, vocab-hint
+          // splits, etc.). Without this the सन्धि section was empty for
+          // every Ch 3+ verse even when the engine clearly did the work.
+          if ((!v.sandhiNotes || v.sandhiNotes.length === 0)
+              && Array.isArray(stub.sandhiNotes) && stub.sandhiNotes.length > 0) {
+            v.sandhiNotes = stub.sandhiNotes;
+          }
+        }
+      } catch {
+        // Skip — the verse just renders without padaccheda.
+      }
+    }
+
+    // Hand-decoded finite-verb overrides:
+    //   - null      → mark verse.noFiniteVerb = true (nominal sentence)
+    //   - [items]   → replace v.finiteVerbs with the curated entries
+    //                 (used both to fill empties AND to correct engine
+    //                 mis-classifications, e.g., the future-stem regex
+    //                 firing on the denominative नमस्यन्ति in 11.36)
+    const override = FINITE_OVERRIDES[key];
+    if (override === null) {
+      // null = "this verse has no finite verb, period". Clears any
+      // engine false-positive (निर्योगक्षेम wrongly matching विधिलिङ्
+      // -एम) and marks the verse as nominal-by-design.
+      v.finiteVerbs = [];
+      v.noFiniteVerb = true;
+    } else if (Array.isArray(override) && override.length > 0) {
+      v.finiteVerbs = override;
+    }
+
+    // Derive samasNotes from hyphenated padaccheda entries when the
+    // verse doesn't have explicit samasNotes. The Ch1/Ch2 batch agents
+    // hyphenate light compounds in padaccheda (काम-आत्मानः, स्वर्ग-पराः,
+    // जन्म-कर्म-फल-प्रदाम्) but rarely emit a structured samasNotes block.
+    //
+    // Two-tier derivation:
+    //   1. Parse vibhaktiNotes for "<compound> → <vibhakti> ... <type>
+    //      "<gloss>"" patterns. Many ch1/ch2 vibhakti notes already tag
+    //      the compound type (बहुव्रीहि, तत्पुरुष, द्वंद्व, etc.) and
+    //      give a paraphrase — that's the proper समासविग्रह, not just
+    //      a sandhi split. Match the parsed compound to the hyphenated
+    //      padaccheda entry by prefix (sandhi may modify the visible
+    //      form: सम्प्लुत-उदके in padaccheda ↔ सम्प्लुतोदके in vibhakti).
+    //   2. Fallback for any hyphenated pada with no vibhakti match: a
+    //      bare compound-vigraha entry (just the structural split,
+    //      empty type and gloss, source='derived-from-padaccheda').
+    // Auto-extract predicate-PPPs / predicate-adjectives from vibhaktiNotes.
+    // Fires on any verse whose vibhakti notes mention "predicate" — even
+    // if finite verbs exist (2.20 has 4 finite verbs but stacks four
+    // predicate adjectives describing अयम्; both deserve surfacing).
+    if ((!v.predicatePPPs || v.predicatePPPs.length === 0)
+        && Array.isArray(v.vibhaktiNotes)) {
+      const ppps = parsePredicatePPPsFromVibhakti(v.vibhaktiNotes);
+      if (ppps.length > 0) v.predicatePPPs = ppps;
+    }
+
+    if ((!v.samasNotes || v.samasNotes.length === 0)
+        && Array.isArray(v.padaccheda)) {
+      const vibhaktiSamasa = parseSamasaFromVibhakti(v.vibhaktiNotes);
+      const derived = [];
+      for (const pada of v.padaccheda) {
+        if (typeof pada !== 'string' || !pada.includes('-')) continue;
+        const parts = pada.split('-').filter(Boolean);
+        if (parts.length < 2) continue;
+        const firstPart = parts[0];
+        const match = vibhaktiSamasa.find((s) => s.compound.startsWith(firstPart));
+        let derivedGloss = match ? match.gloss : '';
+        // Fallback: when no vibhakti type-tag is available, look up each
+        // component in the shared dictionary and synthesise a gloss like
+        // "twice-born (द्विज) + best (उत्तम)" so the user at least sees
+        // what each part means — this is samāsa-vigraha lite, until a
+        // human annotates the full type+gloss.
+        let derivedType = match ? match.type : '';
+        if (!match) {
+          const components = parts.map((part) => ({ part, vocab: lookupSharedVocab(part) }));
+          const componentGlosses = components.map(({ part, vocab }) =>
+            vocab?.gloss ? part + ' (' + vocab.gloss.split(/[—,;(]/)[0].trim() + ')' : part
+          );
+          derivedGloss = componentGlosses.join(' + ');
+          // Heuristic type detection: 3+ noun-category parts with the
+          // same gender → इतरेतर द्वंद्व (coordinated list).
+          // पणव-आनक-गोमुखाः, सुख-दुःख-समुद्भव style.
+          if (parts.length >= 3) {
+            const noun_like = components.filter(({ vocab }) =>
+              vocab && (vocab.category === 'noun' || vocab.category === 'adjective'));
+            if (noun_like.length >= 3) {
+              derivedType = 'इतरेतर द्वंद्व (inferred)';
+            }
+          }
+          // 2-part heuristic: if parts share same category (both nouns,
+          // both adjectives), and only the LAST has case ending, it's
+          // either तत्पुरुष or कर्मधारय. Mark as "तत्पुरुष? (inferred)".
+          if (parts.length === 2 && !derivedType) {
+            const [a, b] = components.map((c) => c.vocab);
+            if (a && b && a.category === 'noun' && b.category === 'noun') {
+              derivedType = 'तत्पुरुष? (inferred — best guess)';
+            }
+          }
+        }
+        derived.push({
+          compound: pada,
+          vigraha: parts.join(' + '),
+          type: derivedType,
+          gloss: derivedGloss,
+          source: match ? 'derived-from-vibhakti' : 'derived-from-padaccheda',
+        });
+      }
+      if (derived.length > 0) v.samasNotes = derived;
+    }
+
+    if (!v.english) {
+      const t = BESANT_TRANSLATIONS[key];
+      if (t) v.english = t;
+    }
+
+    if (!v.hindi) {
+      const t = HINDI_TRANSLATIONS[key];
+      if (t) v.hindi = t;
+    }
+
+    const arnold = ARNOLD_TRANSLATIONS[key];
+    if (arnold) {
+      if (!v.references) v.references = { translations: [], commentaries: [] };
+      if (!Array.isArray(v.references.translations)) v.references.translations = [];
+      const already = v.references.translations.some((t) => t.translator === 'Edwin Arnold');
+      if (!already) {
+        v.references.translations.push({
+          translator: 'Edwin Arnold',
+          year: 1885,
+          license: 'public-domain',
+          work: 'The Song Celestial',
+          text: arnold,
+        });
+      }
+    }
+
+    const shankara = SHANKARA_SUMMARIES[key];
+    if (shankara) {
+      if (!v.references) v.references = { translations: [], commentaries: [] };
+      if (!Array.isArray(v.references.commentaries)) v.references.commentaries = [];
+      const already = v.references.commentaries.some((c) => c.sage === 'Śaṅkara');
+      if (!already) {
+        v.references.commentaries.push({
+          sage: 'Śaṅkara',
+          school: 'Advaita Vedānta',
+          summary: shankara,
+        });
+      }
+    }
+
+    const interp = INTERP_NOTES[key];
+    if (interp) {
+      if (interp.anvaya && !v.anvaya) v.anvaya = interp.anvaya;
+      if (Array.isArray(interp.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+        v.vibhaktiNotes = interp.vibhaktiNotes;
+      }
+      if (Array.isArray(interp.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+        v.keyFights = interp.keyFights;
+      }
+      if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+        v.vyakhya = interp.vyakhya;
+      }
+    }
+  }
+
+  // Second pass: fill MISSING fields on full / browse-tier verses too.
+  // Hand-decoded verses keep all their curated content (gated on
+  // `!v.<field>` so the override never overwrites). This catches cases
+  // like 18.66 (browse-tier hand-decoded with rich anvaya/vyakhya but
+  // no vibhaktiNotes/keyFights — interp data fills the gap).
+  for (const v of VERSES) {
+    if (v.tier === 'auto-stub') continue;
+    const key = `${v.chapter}.${v.verse}`;
+    const interp = INTERP_NOTES[key];
+    if (!interp) continue;
+    if (interp.anvaya && !v.anvaya) v.anvaya = interp.anvaya;
+    if (Array.isArray(interp.vibhaktiNotes) && (!v.vibhaktiNotes || v.vibhaktiNotes.length === 0)) {
+      v.vibhaktiNotes = interp.vibhaktiNotes;
+    }
+    if (Array.isArray(interp.keyFights) && (!v.keyFights || v.keyFights.length === 0)) {
+      v.keyFights = interp.keyFights;
+    }
+    if (Array.isArray(interp.vyakhya) && (!v.vyakhya || v.vyakhya.length === 0)) {
+      v.vyakhya = interp.vyakhya;
+    }
+  }
+
+  // Fill futureStem on bulk-extended dhātus that lack it. Top-25
+  // entries already have hand-curated futureStem and won't be touched.
+  // This unblocks the लृट् column in DhatuDetail's conjugation grid
+  // for the ~80 in-Gītā dhātus that were previously blank.
+  for (const d of DHATUS_EXTENDED) {
+    if (d.futureStem) continue;
+    const stem = FUTURE_STEMS[d.id];
+    if (stem) d.futureStem = stem;
+  }
+
+  // Third pass: back-populate gitaOccurrences on each dhātu by scanning
+  // every verse's finiteVerbs across the whole corpus. The original 25
+  // top-frequency dhātus were hand-curated with gitaOccurrences (and
+  // those entries are preserved); the other ~167 dhātus from the
+  // bulk-extended list previously had nothing. Catches "In Gītā" filter
+  // dhātus across all 18 chapters automatically.
+  const rootKeyMap = new Map();
+  for (const d of DHATUS_EXTENDED) {
+    // Index by every plausible key the finiteVerbs root field might
+    // use: bare devanagari, devanagari without trailing virama, with √
+    // prefix, etc.
+    const bareDeva = d.devanagari.replace(/्$/, '');
+    rootKeyMap.set(d.devanagari, d);
+    rootKeyMap.set(bareDeva, d);
+    rootKeyMap.set('√' + d.devanagari, d);
+    rootKeyMap.set('√' + bareDeva, d);
+    if (d.id) rootKeyMap.set(d.id, d);
+  }
+  for (const v of VERSES) {
+    for (const fv of v.finiteVerbs || []) {
+      if (!fv.root) continue;
+      const dhatu = rootKeyMap.get(fv.root) || rootKeyMap.get(fv.root.replace(/^√/, ''));
+      if (!dhatu) continue;
+      if (!Array.isArray(dhatu.gitaOccurrences)) dhatu.gitaOccurrences = [];
+      // Skip if this exact (chapter, verse, form) is already recorded —
+      // top-25 entries have curated examples we don't want to dupe.
+      const already = dhatu.gitaOccurrences.some(
+        (o) => o.chapter === v.chapter && o.verse === v.verse && o.form === fv.form
+      );
+      if (already) continue;
+      dhatu.gitaOccurrences.push({
+        chapter: v.chapter,
+        verse: v.verse,
+        form: fv.form,
+        context: fv.gloss
+          ? `${fv.form} — ${fv.gloss}`
+          : `${fv.form} (${fv.lakara || '?'} ${fv.purusha || '?'} ${fv.vachana || '?'})`,
+      });
+    }
+  }
+}

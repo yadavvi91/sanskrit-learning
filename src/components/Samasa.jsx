@@ -1,0 +1,233 @@
+import { useMemo, useState } from 'react';
+import { SAMASA_TYPES, buildSamasaBank, lookupSamasaType } from '../data/samasa.js';
+import { SAMASA_REF_BANK } from '../data/samasaRefBank.js';
+
+export default function Samasa({ onOpenVerse }) {
+  const [view, setView] = useState('bank'); // 'bank' | 'identifier'
+
+  return (
+    <article className="atlas-page">
+      <h3 className="atlas-page-title">समास — compound analysis</h3>
+      <p className="atlas-lede">
+        The same compound can mean wildly different things depending on type:{' '}
+        <strong>पीताम्बरः</strong> as <em>तत्पुरुष</em> = "yellow garment";
+        as <em>बहुव्रीहि</em> = "[the one] wearing yellow garments" = Krishna.
+        विग्रह — un-compounding — is the analytical step that decides which.
+      </p>
+
+      <nav className="samasa-views">
+        <button type="button" className={`samasa-view ${view === 'bank' ? 'is-active' : ''}`} onClick={() => setView('bank')}>
+          Compound bank
+        </button>
+        <button type="button" className={`samasa-view ${view === 'identifier' ? 'is-active' : ''}`} onClick={() => setView('identifier')}>
+          Type identifier (drill)
+        </button>
+        <button type="button" className={`samasa-view ${view === 'types' ? 'is-active' : ''}`} onClick={() => setView('types')}>
+          Type reference
+        </button>
+      </nav>
+
+      {view === 'bank'       && <CompoundBank onOpenVerse={onOpenVerse} />}
+      {view === 'identifier' && <TypeIdentifier />}
+      {view === 'types'      && <TypeReference />}
+    </article>
+  );
+}
+
+function CompoundBank({ onOpenVerse }) {
+  // Two layers: a reference catalogue (Atlas-as-reference) and the
+  // auto-grown bank from decoded verses ("from your reading").
+  const [mode, setMode] = useState('reference'); // 'reference' | 'verses'
+  const [filter, setFilter] = useState('all');
+
+  const fromVerses = useMemo(() => buildSamasaBank(), []);
+  const reference = SAMASA_REF_BANK;
+
+  const baseBank = mode === 'reference' ? reference : fromVerses;
+  const filtered = filter === 'all'
+    ? baseBank
+    : baseBank.filter((b) => {
+        const t = lookupSamasaType(b.type);
+        return t && t.family === filter;
+      });
+
+  const families = ['all', ...new Set(SAMASA_TYPES.map((t) => t.family))];
+
+  return (
+    <>
+      <div className="samasa-mode-toggle">
+        <button
+          type="button"
+          className={`samasa-mode-btn ${mode === 'reference' ? 'is-active' : ''}`}
+          onClick={() => setMode('reference')}
+        >
+          Reference catalogue ({reference.length})
+        </button>
+        <button
+          type="button"
+          className={`samasa-mode-btn ${mode === 'verses' ? 'is-active' : ''}`}
+          onClick={() => setMode('verses')}
+        >
+          From your verses ({fromVerses.length})
+        </button>
+      </div>
+
+      <div className="samasa-filters">
+        {families.map((f) => (
+          <button
+            key={f}
+            type="button"
+            className={`samasa-filter ${filter === f ? 'is-active' : ''}`}
+            onClick={() => setFilter(f)}
+          >
+            {f === 'all' ? 'All' : f}
+          </button>
+        ))}
+      </div>
+
+      {mode === 'reference' ? (
+        <p className="samasa-bank-meta">
+          {filtered.length} canonical compound{filtered.length === 1 ? '' : 's'} from a curated reference catalogue —
+          examples a student would meet in any introductory grammar.
+          Independent of the project's verse corpus.
+        </p>
+      ) : (
+        <p className="samasa-bank-meta">
+          {filtered.length} compound{filtered.length === 1 ? '' : 's'} auto-grown from <code>verses.js → samasNotes[]</code> across {new Set(filtered.map((b) => `${b.verseRef.chapter}.${b.verseRef.verse}`)).size}{' '}
+          decoded verse(s).
+        </p>
+      )}
+
+      <ul className="samasa-bank">
+        {filtered.map((b, i) => (
+          <li key={i} className="samasa-bank-row">
+            <span className="bank-compound">{b.compound}</span>
+            <span className="bank-eq">=</span>
+            <span className="bank-vigraha">{b.vigraha}</span>
+            <span className="bank-type">{b.type}</span>
+            <span className="bank-gloss">{b.gloss}</span>
+            {b.verseRef ? (
+              onOpenVerse ? (
+                <button
+                  type="button"
+                  className="bank-ref bank-ref-link"
+                  onClick={() => onOpenVerse(b.verseRef.chapter, b.verseRef.verse)}
+                  title="Open this verse in Verse Journey"
+                >
+                  Gītā {b.verseRef.chapter}.{b.verseRef.verse} ↗
+                </button>
+              ) : (
+                <span className="bank-ref">Gītā {b.verseRef.chapter}.{b.verseRef.verse}</span>
+              )
+            ) : b.source ? (
+              <span className="bank-ref bank-ref-source">{b.source}</span>
+            ) : null}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+function TypeIdentifier() {
+  // Draw from BOTH the verse-grown bank and the reference catalogue, so
+  // every type (including अव्ययीभाव — absent from our 25-verse Gītā corpus)
+  // can come up as a drill prompt.
+  const bank = useMemo(() => {
+    const verseBank = buildSamasaBank().map((b) => ({ ...b, fromBank: 'verses' }));
+    const refBank = SAMASA_REF_BANK.map((b) => ({ ...b, fromBank: 'reference' }));
+    // Shuffle pseudo-randomly but deterministically so order doesn't surprise
+    // mid-drill. Interleave reference + verse so types stay diverse.
+    const merged = [];
+    const max = Math.max(verseBank.length, refBank.length);
+    for (let i = 0; i < max; i++) {
+      if (i < refBank.length) merged.push(refBank[i]);
+      if (i < verseBank.length) merged.push(verseBank[i]);
+    }
+    return merged;
+  }, []);
+  const [idx, setIdx] = useState(0);
+  const [picked, setPicked] = useState(null);
+  const [score, setScore] = useState({ correct: 0, total: 0 });
+
+  if (bank.length === 0) {
+    return <p>No samas data in the corpus yet.</p>;
+  }
+  const current = bank[idx % bank.length];
+
+  function handlePick(typeDeva) {
+    if (picked) return; // already answered
+    const isCorrect = typeDeva === current.type;
+    setPicked({ typeDeva, isCorrect });
+    setScore((s) => ({ correct: s.correct + (isCorrect ? 1 : 0), total: s.total + 1 }));
+  }
+
+  function next() {
+    setPicked(null);
+    setIdx((i) => i + 1);
+  }
+
+  return (
+    <div className="samasa-drill">
+      <div className="drill-prompt">
+        <div className="drill-row">
+          <span className="drill-compound">{current.compound}</span>
+          <span className="drill-eq">=</span>
+          <span className="drill-vigraha">{current.vigraha}</span>
+        </div>
+        <p className="drill-question">Which type?</p>
+      </div>
+
+      <div className="drill-options">
+        {SAMASA_TYPES.map((t) => {
+          let cls = 'drill-option';
+          if (picked) {
+            if (t.deva === current.type) cls += ' is-correct';
+            else if (picked.typeDeva === t.deva) cls += ' is-wrong';
+          }
+          return (
+            <button key={t.id} type="button" className={cls} onClick={() => handlePick(t.deva)} disabled={!!picked}>
+              <span className="opt-deva">{t.deva}</span>
+              <span className="opt-en">{t.en}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {picked && (
+        <div className={`drill-feedback ${picked.isCorrect ? 'is-correct' : 'is-wrong'}`}>
+          {picked.isCorrect
+            ? <>✓ Right. <strong>{current.compound}</strong> is <em>{current.type}</em> — {current.gloss}.</>
+            : <>✗ It's <em>{current.type}</em> — {current.gloss}.</>}
+          <button type="button" className="drill-next" onClick={next}>Next</button>
+        </div>
+      )}
+
+      <div className="drill-score">
+        Score: {score.correct} / {score.total}{' '}
+        {score.total > 0 && <span className="drill-pct">({Math.round(100 * score.correct / score.total)}%)</span>}
+      </div>
+    </div>
+  );
+}
+
+function TypeReference() {
+  return (
+    <div className="samasa-types">
+      {SAMASA_TYPES.map((t) => (
+        <section key={t.id} className="samasa-type-card">
+          <header>
+            <h4 className="type-deva">{t.deva}</h4>
+            <span className="type-family">{t.family}</span>
+          </header>
+          <p className="type-en">{t.en}</p>
+          <p className="type-rule">{t.rule}</p>
+          {t.pattern && <p className="type-pattern"><strong>Pattern:</strong> {t.pattern}</p>}
+          <ul className="type-examples">
+            {t.examples.map((ex, i) => <li key={i}>{ex}</li>)}
+          </ul>
+        </section>
+      ))}
+    </div>
+  );
+}
