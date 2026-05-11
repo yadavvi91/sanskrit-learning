@@ -312,6 +312,46 @@ export const SANDHI_RULES = [
       'तत् + द्रष्टव्यम् → तद्द्रष्टव्यम्',
     ],
   },
+  // ─── झलां जश् झशि (Pāṇini 8.4.53) — generic word-final voicing ───
+  // Word-final voiceless stop voices before any voiced sound. These rules
+  // capture the underlying linguistics correctly, but the surface clusters
+  // (द्भ, द्ग, द्ब, द + vowel) appear constantly INSIDE valid words and
+  // compounds — लब्ध, मद्भाव, उद्भवम्, सद्भाव, मद्धरः, etc. Without a
+  // lexicon to validate that both halves of the split are real words,
+  // auto-firing these rules over-splits and produces fragments. They are
+  // therefore `auto: false` — kept here for documentation and as a wired-in
+  // base when lexicon-driven validation lands. Until then, specific chunks
+  // that need this sandhi un-done are listed in SPLITTER_OVERRIDES.
+  {
+    id: 't-jash-bha',
+    category: 'consonant',
+    name: 'त् + भ → द्भ (जश्त्व)',
+    description: 'Final त् voices to द् before voiced भ (auto-firing disabled — needs lexicon)',
+    pattern: /द्भ/,
+    example: 'यज्ञात् + भवति → यज्ञाद्भवति',
+    examples: ['यज्ञात् + भवति → यज्ञाद्भवति (3.13)', 'अन्नात् + भवन्ति → अन्नाद्भवन्ति (3.13)'],
+    auto: false,
+  },
+  {
+    id: 't-jash-ga',
+    category: 'consonant',
+    name: 'त् + ग → द्ग (जश्त्व)',
+    description: 'Final त् voices to द् before voiced ग (auto-firing disabled — needs lexicon)',
+    pattern: /द्ग/,
+    example: 'सत् + गुणः → सद्गुणः',
+    examples: ['सत् + गुणः → सद्गुणः', 'जगत् + गुरुः → जगद्गुरुः'],
+    auto: false,
+  },
+  {
+    id: 't-jash-ba',
+    category: 'consonant',
+    name: 'त् + ब → द्ब (जश्त्व)',
+    description: 'Final त् voices to द् before voiced ब (auto-firing disabled — needs lexicon)',
+    pattern: /द्ब/,
+    example: 'तत् + ब्रह्म → तद्ब्रह्म',
+    examples: ['तत् + ब्रह्म → तद्ब्रह्म', 'सत् + बुद्धिः → सद्बुद्धिः'],
+    auto: false,
+  },
 
   // Pre-vowel consonant doubling not handled (less common; tail rules)
 ];
@@ -374,6 +414,16 @@ const UNJOIN = {
   't-la':               { joined: 'ल्ल', parts: ['त्', 'ल'] },
   't-ta':               { joined: 'त्त', parts: ['त्', 'त'] },
   't-da':               { joined: 'द्द', parts: ['त्', 'द'] },
+  // जश्त्व (Pāṇini 8.4.53) — final त् voices to द् before any voiced sound.
+  // The reverse here: when we see द् + voiced consonant, try splitting as
+  // त् + that consonant. Lexicon plausibility filter prevents false splits.
+  't-jash-bha':         { joined: 'द्भ', parts: ['त्', 'भ'] },
+  't-jash-ga':          { joined: 'द्ग', parts: ['त्', 'ग'] },
+  't-jash-ba':          { joined: 'द्ब', parts: ['त्', 'ब'] },
+  // Note: the द्-vowel case (पर्जन्यात् + अन्न → पर्जन्यादन्न) is much harder
+  // — द + matra forms a perfectly normal syllable, so we can't blindly
+  // split. That case stays in SPLITTER_OVERRIDES until lexicon-driven
+  // splitting is in place.
 };
 
 function unjoin(ruleId, _fragment) {

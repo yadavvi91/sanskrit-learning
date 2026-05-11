@@ -955,7 +955,11 @@ const SPLITTER_OVERRIDES = new Map([
   ['वोऽस्त्विष्टकामधुक्', ['वः', 'अस्तु', 'इष्टकामधुक्']],
   // 3.11 — तैः + दत्तान् + अप्रदाय + एभ्यः (visarga-र् + accusative + abs. + dat.pl.)
   ['तैर्दत्तानप्रदायैभ्यो', ['तैः', 'दत्तान्', 'अप्रदाय', 'एभ्यः']],
-  // 3.13 — त् + voiced sandhi (अन्नात्/यज्ञात्/पर्जन्यात् + ...)
+  // 3.13 — त् + voiced sandhi (जश्त्व, Pāṇini 8.4.53). The generic rules
+  // exist in sandhi.js but `auto: false` because the same surface
+  // clusters (द्भ, द्ग, द + vowel) occur inside non-compound words and
+  // we don't yet have lexicon validation on the splitter. Until that
+  // lands, listing each chunk here.
   ['अन्नाद्भवन्ति', ['अन्नात्', 'भवन्ति']],
   ['पर्जन्यादन्नसम्भवः', ['पर्जन्यात्', 'अन्न-सम्भवः']],
   ['यज्ञाद्भवति', ['यज्ञात्', 'भवति']],
