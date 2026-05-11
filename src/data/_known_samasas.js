@@ -50,6 +50,8 @@ export const KNOWN_SAMASAS = {
   'दृढव्रत':    { vigraha: 'दृढं व्रतं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose vow is firm' },
   // Botanical / object तत्पुरुष compounds — recur across the Gītā in similes.
   'पद्मपत्र':   { vigraha: 'पद्मस्य पत्रम्', type: 'षष्ठी तत्पुरुष', gloss: 'leaf of a lotus (the classic image: untouched by water)' },
+  'कर्मफलसंयोग': { vigraha: 'कर्मणः फलस्य संयोगः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'connection with the fruit of action (three-noun chain: action → fruit → connection)' },
+  'कर्मफलहेतु':  { vigraha: 'कर्मणः फलं हेतुः यस्य', type: 'बहुव्रीहि', gloss: 'one whose motive is the fruit of action' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

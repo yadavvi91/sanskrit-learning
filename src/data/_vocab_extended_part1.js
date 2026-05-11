@@ -381,6 +381,7 @@ export const VOCAB_EXTENDED_PART_1 = {
   'मामिच्छाप्तुं':      { category: 'krdanta', gloss: '"(you) want to attain me" — माम् "me" + इच्छ "wish/desire (lot. 2sg)" + आप्तुम् "to attain" (माम् + इच्छ + आप्तुम्)' },
   'आप्तुम्':            { category: 'krdanta', root: '√आप्', kind: 'infinitive', gloss: 'to attain / to obtain (infinitive of √आप्)' },
   'इच्छ':               { category: 'verb', root: '√इष्', gana: 6, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka', gloss: 'wish! / desire! (imperative 2sg of √इष्)' },
+  'आस्ते':              { category: 'verb', root: '√आस्', gana: 2, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'sits / remains / abides (ātmanepada 3sg of √आस्)' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },

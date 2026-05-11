@@ -98,7 +98,10 @@ export const VOCAB_EXTENDED_PART_7 = {
   'अकृतेनेह': { category: 'krdanta', root: '√कृ', kind: 'past-passive', gloss: 'by the undone here (अकृतेन + इह)' },
   'अग्निर्वरुणः': { category: 'noun', root: 'अग्नि', gender: 'm', number: 'eka', case: 'pra', gloss: 'Agni and Varuṇa (compound)' }, // AUDIT
   'अजः': { category: 'adjective', root: 'अज', gender: 'm', number: 'eka', case: 'pra', gloss: 'unborn' },
-  'अज्ञानेनावृतं': { category: 'krdanta', root: '√वृ', kind: 'past-passive', gloss: 'covered by ignorance' },
+  // Vocab-hint pre-split: अज्ञानेन + आवृतम् (savarṇa-dīrgha अ + आ → आ).
+  'अज्ञानेनावृतं': { category: 'krdanta', gloss: '"covered by ignorance" — अज्ञानेन "by ignorance" (inst.) + आवृतम् "covered" (PPP, n. nom. sg.); अ + आ → आ savarṇa-dīrgha' },
+  'अज्ञानेन':      { category: 'noun', root: 'अज्ञान', gender: 'n', number: 'eka', case: 'tri', gloss: 'by ignorance (instrumental singular of अज्ञान — "non-knowledge")' },
+  'आवृतम्':       { category: 'krdanta', root: '√वृ', upasarga: ['आ'], kind: 'past-passive', gender: 'n', number: 'eka', case: 'pra', gloss: 'covered / enveloped (PPP n. sg. of आ + √वृ)' },
   'अतिस्वप्नशीलस्य': { category: 'adjective', root: 'अतिस्वप्नशील', gender: 'm', number: 'eka', case: 'sha', gloss: 'of one given to excess sleep' },
   'अत्मैव': { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'self alone (आत्मा + एव, sandhi)' },
   'अथवाप्यच्युत': { category: 'particle', gloss: 'or else, O Acyuta (अथवा + अपि + अच्युत)' },

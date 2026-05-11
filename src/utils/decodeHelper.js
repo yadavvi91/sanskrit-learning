@@ -987,6 +987,15 @@ const SPLITTER_OVERRIDES = new Map([
   // words; पद्मपत्र itself is a तत्पुरुष samāsa ("leaf of lotus") that
   // KNOWN_SAMASAS surfaces separately.
   ['पद्मपत्रमिवाम्भसा', ['पद्मपत्रम्', 'इव', 'अम्भसा']],
+  // 5.13 — संन्यस्य + आस्ते ("having renounced, [he] sits"). The य + आ
+  // join via savarṇa-dīrgha (अ + आ → आ on the inherent vowel of य्) hides
+  // the boundary; engine was mis-cutting as संन्यस्याः + ते (visarga +
+  // pronoun "ते") which is totally wrong here.
+  ['संन्यस्यास्ते', ['संन्यस्य', 'आस्ते']],
+  // 5.15 — अज्ञानेन + आवृतम् ("covered by ignorance"). Savarṇa-dīrgha
+  // (अ + आ → आ) at the joint hides the boundary; the result looks like
+  // one PPP word but is actually instrumental + PPP.
+  ['अज्ञानेनावृतं', ['अज्ञानेन', 'आवृतम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
