@@ -52,6 +52,10 @@ export const KNOWN_SAMASAS = {
   'पद्मपत्र':   { vigraha: 'पद्मस्य पत्रम्', type: 'षष्ठी तत्पुरुष', gloss: 'leaf of a lotus (the classic image: untouched by water)' },
   'कर्मफलसंयोग': { vigraha: 'कर्मणः फलस्य संयोगः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'connection with the fruit of action (three-noun chain: action → fruit → connection)' },
   'कर्मफलहेतु':  { vigraha: 'कर्मणः फलं हेतुः यस्य', type: 'बहुव्रीहि', gloss: 'one whose motive is the fruit of action' },
+  'विद्याविनयसम्पन्न': { vigraha: 'विद्यया विनयेन च सम्पन्नः', type: 'तृतीया तत्पुरुष (chain)', gloss: 'endowed with knowledge and humility (विद्या "knowledge" + विनय "humility" both qualifying सम्पन्न "endowed")' },
+  'धूतकल्मष':    { vigraha: 'धूताः कल्मषाः येषां ते', type: 'बहुव्रीहि', gloss: 'those whose impurities have been shaken off' },
+  'ब्रह्मविद्':    { vigraha: 'ब्रह्म वेत्ति इति', type: 'उपपद तत्पुरुष', gloss: 'knower of Brahman (-विद् "one who knows" as second member)' },
+  'स्थिरबुद्धि':  { vigraha: 'स्थिरा बुद्धिः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose intellect is steady' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

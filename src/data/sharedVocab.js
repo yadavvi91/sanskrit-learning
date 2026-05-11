@@ -700,6 +700,21 @@ function inferFromSuffix(word) {
     const stem = word.slice(0, -1);
     return synth({ category: 'noun', case: 'pra', root: stem, gloss: `consonant-stem nominative of "${stem}" — final -क् form (stem not in dictionary)` });
   }
+  // -आः / -ाः ending → m. nom. plural a-stem ("the X-s"). The full ending
+  // is matra-ā + visarga (ाः) — two characters of the surface form, both
+  // part of the case ending, neither part of the stem. The previous logic
+  // only stripped the visarga and kept the matra in the stem, which then
+  // failed every dictionary lookup. Try the proper 2-char strip first.
+  // Examples: धूतकल्मषाः → stem धूतकल्मष; योगिनः already handled separately.
+  if (word.endsWith('ाः') && word.length >= 4) {
+    const stem = word.slice(0, -2);
+    const stemEntry = SHARED_VOCAB[stem] || CORE_VOCAB[stem] || VOCAB_EXTENDED[stem];
+    if (stemEntry?.gloss) {
+      const baseGloss = stemEntry.gloss.split(/[—,;(]/)[0].trim();
+      return synth({ category: stemEntry.category || 'noun', gender: 'm', number: 'bahu', case: 'pra', root: stem, gloss: `${baseGloss} (m. nom. pl.)` });
+    }
+    return synth({ category: 'noun', gender: 'm', number: 'bahu', case: 'pra', root: stem, gloss: `nominative plural of "${stem}" — m. pl., subject form (a-stem; stem not in dictionary)` });
+  }
   // Word-final -ः with reasonable stem length → m. nom. sg. (a-stem)
   if (word.endsWith('ः') && word.length >= 4 && !word.endsWith('ुः') && !word.endsWith('ोः')) {
     const stem = word.slice(0, -1);

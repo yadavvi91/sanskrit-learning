@@ -996,6 +996,23 @@ const SPLITTER_OVERRIDES = new Map([
   // (अ + आ → आ) at the joint hides the boundary; the result looks like
   // one PPP word but is actually instrumental + PPP.
   ['अज्ञानेनावृतं', ['अज्ञानेन', 'आवृतम्']],
+  // 5.19 — तस्मात् + ब्रह्मणि (त् + ब → द्ब via जश्त्व). Same generic
+  // rule we have wired-but-gated in sandhi.js.
+  ['तस्माद्ब्रह्मणि', ['तस्मात्', 'ब्रह्मणि']],
+  // 5.20 — ब्रह्मविद् + ब्रह्मणि (consonant-final compound noun next to
+  // locative; no sandhi modification at the join, just concatenation).
+  ['ब्रह्मविद्ब्रह्मणि', ['ब्रह्मविद्', 'ब्रह्मणि']],
+  // 5.18 — हस्तिनि is a single word (loc. sg. of हस्तिन् "elephant"); the
+  // splitter was wrongly cutting it as हः + तिनि. Surface form unchanged
+  // but kept whole.
+  ['हस्तिनि', ['हस्तिनि']],
+  // 5.20 — न + प्रहृष्येत् + प्रियं + प्राप्य + न + उद्विजेत् + प्राप्य
+  // + च + अप्रियम्. The user-flagged chunks:
+  ['नोद्विजेत्प्राप्य', ['न', 'उद्विजेत्', 'प्राप्य']],
+  ['प्रहृष्येत्प्रियं', ['प्रहृष्येत्', 'प्रियम्']],
+  // 5.20 — स्थिरबुद्धिः + असम्मूढः (visarga-र् sandhi); the first half
+  // स्थिरबुद्धि is itself a बहुव्रीहि samāsa (covered in KNOWN_SAMASAS).
+  ['स्थिरबुद्धिरसम्मूढो', ['स्थिरबुद्धिः', 'असम्मूढः']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
