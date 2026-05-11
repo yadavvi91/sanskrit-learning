@@ -464,6 +464,13 @@ export const VOCAB_EXTENDED_PART_1 = {
   'उपमा':            { category: 'noun', root: 'उपमा', gender: 'f', number: 'eka', case: 'pra', gloss: 'analogy / comparison / simile (nom. sg. of f. ā-stem उपमा; BG 6.19 — the lamp-simile)' },
   'बुद्धि-ग्राह्यम्': { category: 'adjective', root: 'बुद्धि-ग्राह्य', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'graspable by the intellect (तृतीया तत्पुरुष — बुद्ध्या ग्राह्यः; gerundive of √ग्रह्; BG 6.21)' },
   'अति-इन्द्रियम्':  { category: 'adjective', root: 'अति-इन्द्रिय', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'beyond the senses / transcending the senses (BG 6.21; प्रादि-समास "अति + इन्द्रिय")' },
+  'इन्द्रिय-ग्रामम्':{ category: 'noun', root: 'इन्द्रिय-ग्राम', gender: 'm', number: 'eka', case: 'dvi', gloss: 'the group/collection of senses (षष्ठी तत्पुरुष — इन्द्रियाणां ग्रामः; BG 6.24)' },
+  // Canonical visarga forms uncovered by the new -ो → -ः normalizer
+  'आहः':            { category: 'noun', root: 'आह', gender: 'm', number: 'eka', case: 'pra', gloss: 'noon / day (m. nom. sg.); some readings: a verbal form of √अह्' },
+  'अरः':            { category: 'noun', root: 'अर', gender: 'm', number: 'eka', case: 'pra', gloss: 'spoke (of a wheel); fragment from compound like ज्ञान-अर or splitter residue' },
+  'तरः':            { category: 'noun', root: 'तर', gender: 'm', number: 'eka', case: 'pra', gloss: 'crossing-over / boat (m. nom. sg.); also surface stem in many compounds' },
+  'शठः':            { category: 'adjective', root: 'शठ', gender: 'm', number: 'eka', case: 'pra', gloss: 'deceitful / crafty (m. nom. sg.; BG 18.28)' },
+  'आसक्त-मनाः':    { category: 'adjective', root: 'आसक्त-मनस्', gender: 'm', number: 'eka', case: 'pra', gloss: 'one whose mind is attached (बहुव्रीहि — आसक्तं मनः यस्य सः; BG 7.1 — with मयि as locus, "mind attached to me")' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },

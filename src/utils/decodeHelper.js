@@ -1231,6 +1231,14 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.20 — यत्र + उपरमते (अ + उ → ओ guṇa). Engine was wrongly producing
   // यत्रा + उपरमते (treating यत्र's inherent अ as matra-ā).
   ['यत्रोपरमते', ['यत्र', 'उपरमते']],
+  // 6.24 — मनसैवेन्द्रियग्रामं → मनसा + एव + इन्द्रिय-ग्रामम्
+  // (अ + ए → ऐ vrddhi at मनसा-एव, then इन्द्रिय-ग्राम compound).
+  // The compound इन्द्रिय-ग्राम "collection of senses" is a षष्ठी
+  // तत्पुरुष "group of the senses".
+  ['मनसैवेन्द्रियग्रामं', ['मनसा', 'एव', 'इन्द्रिय-ग्रामम्']],
+  // 7.1 — मयि + आसक्त-मनाः (yaṇ इ + आ → या). The compound आसक्त-मनस्
+  // is a bahuvrīhi "one whose mind is attached" (to me, with मयि as locus).
+  ['मय्यासक्तमनाः', ['मयि', 'आसक्त-मनाः']],
   // 6.21 — यत् + तत् + बुद्धि-ग्राह्यम् + अतीन्द्रियम्.
   //   यत्+तत् stays as यत्तत् (no change); तत्+ब → तद्ब (जश्त्व त्+ब→द्ब);
   //   बुद्धिग्राह्यम् + अतीन्द्रियम् → -मतीन्द्रियम् (-म्+अ concatenation).
@@ -1331,7 +1339,31 @@ function extractPadas(mool) {
       }
     }
   }
-  return { padas, sandhiNotes, lines, chunks };
+  // Post-pass: normalize -ो endings to canonical -ः. In padaccheda
+  // display we want the *underlying* form, not the sandhi-realized
+  // surface. Most chunks ending in -ो in the Gītā come from a final -ः
+  // + voiced consonant or +अ via visarga sandhi (अः + voiced → ो;
+  // अः + अ → ोऽ). The handful of words that legitimately end in -ो in
+  // their dictionary form are listed in LEGIT_O_ENDINGS.
+  const LEGIT_O_ENDINGS = new Set([
+    'गो',   // cow (nom. sg. of गो stem)
+    'द्यो',  // heaven (nom. sg. of दिव्)
+    'भो',   // O! (vocative particle)
+    'अहो',  // oh! / alas!
+    'अथो',  // then also / and (= अथ + उ)
+    'नो',   // and not (= न + उ)
+    'सो',   // = सः before consonants (very common particle-like usage)
+    'न्यो', 'भ्यो', 'ष्यो', 'च्यो', // very short forms that aren't real words alone
+  ]);
+  const normalized = padas.map((p) => {
+    if (typeof p !== 'string') return p;
+    if (!p.endsWith('ो')) return p;
+    if (LEGIT_O_ENDINGS.has(p)) return p;
+    if (p.length < 3) return p; // too short to be confidently a sandhi residue
+    // Replace trailing -ो with -ः to surface the canonical visarga form.
+    return p.slice(0, -1) + 'ः';
+  });
+  return { padas: normalized, sandhiNotes, lines, chunks };
 }
 
 // Look up each pada against the vocabulary library built from the existing
