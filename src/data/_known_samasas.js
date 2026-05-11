@@ -115,6 +115,10 @@ export const KNOWN_SAMASAS = {
   'अति-इन्द्रिय':     { vigraha: 'इन्द्रियाणि अतिक्रान्तः', type: 'प्रादि-समास / अव्ययीभाव', gloss: 'beyond the senses / transcending the senses (BG 6.21)' },
   'इन्द्रिय-ग्राम':   { vigraha: 'इन्द्रियाणां ग्रामः', type: 'षष्ठी तत्पुरुष', gloss: 'collection / group of the senses (BG 6.24)' },
   'आसक्त-मनस्':      { vigraha: 'आसक्तं मनः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is attached (BG 7.1, with मयि as locus: "mind attached to me")' },
+  // BG 6.23 — Krishna's own definition of yoga
+  'दुःख-संयोग-वियोग':{ vigraha: 'दुःख-संयोगस्य वियोगः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the disjunction from union with sorrow / separation from sorrow-contact (BG 6.23 — Krishna\'s definition of yoga)' },
+  'योग-संज्ञित':      { vigraha: 'योगः इति संज्ञितः', type: 'तत्पुरुष', gloss: 'called yoga / known by the name yoga (BG 6.23)' },
+  'अनिर्विण्ण-चेतस्':{ vigraha: 'अनिर्विण्णं चेतः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is undisheartened / undespondent (BG 6.23)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
