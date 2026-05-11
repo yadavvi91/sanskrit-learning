@@ -978,6 +978,9 @@ const SPLITTER_OVERRIDES = new Map([
   // whose semantic role (the locus of "absorbed in me") is independent
   // of the बहुव्रीहि आवेशित-चेतस्.
   ['मय्यावेशितचेतसाम्', ['मयि', 'आवेशित-चेतसाम्']],
+  // 12.9 — माम् + इच्छ + आप्तुम् ("(you) want to attain me"). इच्छ + आप्तुम्
+  // → इच्छाप्तुम् via savarṇa-dīrgha (अ + आ → आ); the boundary disappears.
+  ['मामिच्छाप्तुं', ['माम्', 'इच्छ', 'आप्तुम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

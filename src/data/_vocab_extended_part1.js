@@ -47,7 +47,11 @@ export const VOCAB_EXTENDED_PART_1 = {
   'अमी':                { category: 'pronoun', root: 'अदस्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'these / those (m. nom. pl.)' },
   'असंशयं':             { category: 'adjective', root: 'असंशय', gender: 'n', number: 'eka', case: 'pra', gloss: 'without doubt (adverbially)' },
   'इज्यते':             { category: 'verb', root: '√यज्', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'is sacrificed / worshipped (passive)' },
-  'ऊर्ध्वं':            { category: 'particle', gloss: 'upward / above' },
+  // ऊर्ध्वम् is the accusative singular neuter of the adjective ऊर्ध्व
+  // ("upward, high") used as a क्रियाविशेषण (adverbial accusative).
+  // It functions like a particle ("upward") but originates as a case-form
+  // of a regular adjective stem — a very common Sanskrit pattern.
+  'ऊर्ध्वं':            { category: 'particle', root: 'ऊर्ध्व', gloss: 'upward / above (क्रियाविशेषण — adverbial accusative of the adjective ऊर्ध्व; same as English "high" used as adverb)' },
   'कर्मणः':             { category: 'noun', root: 'कर्मन्', gender: 'n', number: 'eka', case: 'sha', gloss: 'of action / from action' },
   'काले':               { category: 'noun', root: 'काल', gender: 'm', number: 'eka', case: 'sap', gloss: 'in time / at the (right) time' },
   'कुलधर्माः':          { category: 'noun', root: 'कुलधर्म', gender: 'm', number: 'bahu', case: 'pra', gloss: 'family-dharmas' },
@@ -371,7 +375,12 @@ export const VOCAB_EXTENDED_PART_1 = {
   'मातुलान्':           { category: 'noun', root: 'मातुल', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'maternal uncles (acc. pl.)' },
   'मानुषे':             { category: 'adjective', root: 'मानुष', gender: 'n', number: 'eka', case: 'sap', gloss: 'in human (loka)' },
   'मामप्राप्यैव':       { category: 'krdanta', root: 'प्र + √आप्', kind: 'absolutive', gloss: 'without attaining me (माम् + अप्राप्य + एव)' },
-  'मामिच्छाप्तुं':      { category: 'verb', root: '√आप्', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'desires to attain me (compound, infin.)' },
+  // Vocab-hint pre-split: माम् + इच्छ + आप्तुम् (the splitter wraps
+  // them into one chunk; the इ + आ → ई sandhi at the इच्छ + आप्तुम् join
+  // makes the boundary invisible).
+  'मामिच्छाप्तुं':      { category: 'krdanta', gloss: '"(you) want to attain me" — माम् "me" + इच्छ "wish/desire (lot. 2sg)" + आप्तुम् "to attain" (माम् + इच्छ + आप्तुम्)' },
+  'आप्तुम्':            { category: 'krdanta', root: '√आप्', kind: 'infinitive', gloss: 'to attain / to obtain (infinitive of √आप्)' },
+  'इच्छ':               { category: 'verb', root: '√इष्', gana: 6, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka', gloss: 'wish! / desire! (imperative 2sg of √इष्)' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },

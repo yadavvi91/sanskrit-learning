@@ -83,6 +83,8 @@ export default function Primer() {
                 </table>
               )}
 
+              {Array.isArray(sec.body2) && sec.body2.map((p, i) => <p key={`body2-${i}`}>{renderInline(p)}</p>)}
+
               {sec.aside && <p className="primer-aside">{renderInline(sec.aside)}</p>}
 
               {sec.linkToAtlas && onOpenAtlas && (
