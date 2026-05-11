@@ -497,6 +497,27 @@ const BOGUS_SHORT_FRAGMENTS = new Set([
 // pada). Never occurs in a real Sanskrit word at the start.
 const MATRA_INITIAL = /^[ािीुूृेैोौंः]/;
 
+// Lexicon-validated splitter check. A split is "in the lexicon" if at
+// least one part has a real (non-suffix-inferred) vocab entry. If
+// neither part is, the candidate split is suspect (the engine is
+// probably mid-compound or producing a fragment).
+//
+// This is the core engineering improvement the user has been asking
+// for: don't accept a split unless the resulting parts look like
+// actual Sanskrit words.
+function partHasRealVocab(part) {
+  if (typeof part !== 'string' || !part.trim()) return false;
+  // Strip any hyphens (de-hyphenated compound surface form).
+  const dehyphen = part.replace(/-/g, '');
+  const v1 = lookupSharedVocab(part);
+  if (v1 && v1.source !== 'suffix-inferred') return true;
+  const v2 = lookupSharedVocab(dehyphen);
+  if (v2 && v2.source !== 'suffix-inferred') return true;
+  // Common particles / short pronouns that are always in vocab.
+  if (REAL_SHORT_TAILS.has(part) || REAL_SHORT_TAILS.has(dehyphen)) return true;
+  return false;
+}
+
 function isPlausibleSplit(parts) {
   for (const p of parts) {
     if (p.length === 1 && !REAL_ONECHAR_PADAS.has(p)) return false;
@@ -508,6 +529,15 @@ function isPlausibleSplit(parts) {
     // 2-char fragments ending in विराम (e.g. 'व्', 'क्') alone are
     // never standalone words. Real consonant-stems are at least 3 chars.
     if (p.length === 2 && p[1] === '्') return false;
+  }
+  // Lexicon validation: for multi-part splits, demand that AT LEAST ONE
+  // half has a real (non-suffix-inferred) vocab entry. This catches the
+  // bulk of mid-compound mis-cuts (e.g., ब्रह्मनिर्वाण → ब्रह्मनिः +
+  // वाणम् where neither half is a real word). Single-part "splits" (i.e.,
+  // keeping the chunk whole) pass through this check trivially.
+  if (parts.length >= 2) {
+    const anyReal = parts.some(partHasRealVocab);
+    if (!anyReal) return false;
   }
   return true;
 }
