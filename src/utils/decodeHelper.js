@@ -1013,6 +1013,11 @@ const SPLITTER_OVERRIDES = new Map([
   // 5.20 — स्थिरबुद्धिः + असम्मूढः (visarga-र् sandhi); the first half
   // स्थिरबुद्धि is itself a बहुव्रीहि samāsa (covered in KNOWN_SAMASAS).
   ['स्थिरबुद्धिरसम्मूढो', ['स्थिरबुद्धिः', 'असम्मूढः']],
+  // 5.21 — बाह्य-स्पर्शेषु + असक्त-आत्मा (loc. pl. + bahuvrīhi adj.).
+  // The षु + अ → ष्व + अ join hides the boundary.
+  ['बाह्यस्पर्शेष्वसक्तात्मा', ['बाह्य-स्पर्शेषु', 'असक्त-आत्मा']],
+  // 5.21 — विन्दति + आत्मनि (yaṇ sandhi इ + आ → य्या).
+  ['विन्दत्यात्मनि', ['विन्दति', 'आत्मनि']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

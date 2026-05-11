@@ -56,6 +56,9 @@ export const KNOWN_SAMASAS = {
   'धूतकल्मष':    { vigraha: 'धूताः कल्मषाः येषां ते', type: 'बहुव्रीहि', gloss: 'those whose impurities have been shaken off' },
   'ब्रह्मविद्':    { vigraha: 'ब्रह्म वेत्ति इति', type: 'उपपद तत्पुरुष', gloss: 'knower of Brahman (-विद् "one who knows" as second member)' },
   'स्थिरबुद्धि':  { vigraha: 'स्थिरा बुद्धिः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose intellect is steady' },
+  'असक्तात्मन्':  { vigraha: 'असक्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is unattached' },
+  'ब्रह्मयोगयुक्तात्मन्': { vigraha: 'ब्रह्मयोगेन युक्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is joined to Brahman-yoga' },
+  'बाह्यस्पर्श': { vigraha: 'बाह्याः स्पर्शाः', type: 'कर्मधारय', gloss: 'outer contacts / external sensations' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
