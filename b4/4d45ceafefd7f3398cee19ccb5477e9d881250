@@ -1,0 +1,21 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_f514dbf63ce37a 1422-1431
+  s_d5e8c30b294ba2::t_8ec678f52c843d 1325-1328
+  s_d5e8c30b294ba2::t_cba42f3e4751ac 1334-1399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "b44d45ceafefd7f3398cee19ccb5477e9d881250",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
