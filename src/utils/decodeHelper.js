@@ -1326,6 +1326,12 @@ const SPLITTER_OVERRIDES = new Map([
   // Engine's vocab had whole-chunk entry; recursive splitter caught the
   // outer level but missed the inner ममाव्ययम्.
   ['ममाव्ययमनुत्तमम्', ['मम', 'अव्ययम्', 'अनुत्तमम्']],
+  // 7.27 — इच्छाद्वेषसमुत्थेन is ONE nested compound (inst. sg.):
+  //   outer तृतीया-तत्पुरुष: इच्छा-द्वेष-समुत्थ "arisen by means of
+  //   icchā-dveṣa". inner द्वन्द्व: इच्छा-द्वेष "desire and aversion".
+  // Kept as a single hyphenated compound; KNOWN_SAMASAS surfaces both
+  // layers in the popover.
+  ['इच्छाद्वेषसमुत्थेन', ['इच्छा-द्वेष-समुत्थेन']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

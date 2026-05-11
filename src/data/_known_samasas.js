@@ -124,6 +124,9 @@ export const KNOWN_SAMASAS = {
   // BG 7.16 — agent-nouns describing the kinds of devotees
   'अर्थार्थिन्':       { vigraha: 'अर्थम् अर्थयते इति', type: 'उपपद तत्पुरुष', gloss: 'seeker of wealth / one who desires wealth (BG 7.16)' },
   'हृत-ज्ञान':       { vigraha: 'हृतं ज्ञानं येषां ते', type: 'बहुव्रीहि', gloss: 'those whose knowledge has been stolen (BG 7.20 — companion to the 7.15 मायया-अपहृत-ज्ञान compound)' },
+  // BG 7.27 — nested compound: द्वंद्व inside तृतीया-तत्पुरुष
+  'इच्छा-द्वेष-समुत्थ': { vigraha: 'इच्छाद्वेषाभ्याम् समुत्थः', type: 'तृतीया तत्पुरुष (with द्वंद्व इच्छा-द्वेष inside)', gloss: 'arisen from desire-and-aversion (nested compound: द्वंद्व इच्छा-द्वेष "desire+aversion" inside तृतीया-तत्पुरुष; BG 7.27 — what gives rise to the द्वंद्व-मोह that confuses all beings at birth)' },
+  'द्वंद्व-मोह':      { vigraha: 'द्वंद्वस्य मोहः', type: 'षष्ठी तत्पुरुष', gloss: 'delusion of the pairs of opposites (BG 7.27)' },
 
   // ─── Batch expansion: common Gītā compounds (commit batch) ───
   // तत्पुरुष chains involving ब्रह्म, कर्म, ज्ञान, आत्म, धर्म, योग

@@ -482,6 +482,8 @@ export const VOCAB_EXTENDED_PART_1 = {
   'इच्छति':           { category: 'verb', root: '√इष्', gana: 6, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'wishes / desires (lat. 3sg of √इष्)' },
   'आराधनम्':       { category: 'noun', root: 'आराधन', gender: 'n', number: 'eka', case: 'dvi', gloss: 'worship / propitiation (acc. sg.; आ + √राध् + अन; BG 7.22)' },
   'ईहते':            { category: 'verb', root: '√ईह्', gana: 1, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'strives / endeavours (lat. 3sg of √ईह्, ātmanepada; BG 7.22)' },
+  'इच्छा-द्वेष-समुत्थेन':{ category: 'adjective', root: 'इच्छा-द्वेष-समुत्थ', gender: 'm', number: 'eka', case: 'tri', gloss: 'by [that] which arises from desire and aversion (nested compound: द्वंद्व इच्छा-द्वेष inside तृतीया-तत्पुरुष; modifies द्वन्द्व-मोह; BG 7.27)' },
+  'द्वन्द्वमोहेन':     { category: 'noun', root: 'द्वंद्व-मोह', gender: 'm', number: 'eka', case: 'tri', gloss: 'by the delusion of pairs of opposites (षष्ठी तत्पुरुष — द्वंद्वस्य मोहः; BG 7.27)' },
   'विद्यात्':         { category: 'verb', root: '√विद्', gana: 2, pada: 'P', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: 'should know (optative 3sg of √विद्; BG 6.23)' },
   'दुःख-संयोग-वियोगम्': { category: 'noun', root: 'दुःख-संयोग-वियोग', gender: 'm', number: 'eka', case: 'dvi', gloss: 'separation from sorrow-contact (षष्ठी तत्पुरुष chain — दुःख-संयोगस्य वियोगः; BG 6.23 — Krishna\'s definition of yoga as "disjunction from union with sorrow")' },
   'योग-संज्ञितम्':   { category: 'adjective', root: 'योग-संज्ञित', gender: 'm', number: 'eka', case: 'dvi', gloss: 'called/known as yoga (acc. sg. of तत्पुरुष — योगः इति संज्ञितः; BG 6.23)' },
