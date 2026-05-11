@@ -72,7 +72,7 @@ export const KNOWN_SAMASAS = {
   'सर्वभूतहित':  { vigraha: 'सर्वेषां भूतानां हितम्', type: 'षष्ठी तत्पुरुष', gloss: 'the welfare of all beings' },
   'काम-क्रोध-वियुक्त': { vigraha: 'कामात् क्रोधात् च वियुक्तः', type: 'पञ्चमी तत्पुरुष (chain)', gloss: 'free from desire and anger' },
   'विदितात्मन्':       { vigraha: 'विदितः आत्मा येषां ते', type: 'बहुव्रीहि', gloss: 'those whose self has been known / those who have realized the Self (BG 5.26)' },
-  'नास-अभ्यन्तर-चारिन्': { vigraha: 'नासायाः अभ्यन्तरे चरति इति', type: 'उपपद तत्पुरुष', gloss: 'moving inside the nostrils (the prāṇa-apāna in BG 5.27 yogic breath description)' },
+  'नासा-अभ्यन्तर-चारिन्': { vigraha: 'नासायाः अभ्यन्तरे चरति इति', type: 'उपपद तत्पुरुष', gloss: 'moving inside the nostrils (the prāṇa-apāna in BG 5.27 yogic breath description; first member नासा "nostril" with long ā)' },
   // BG 5.28 — two long bahuvrīhi compounds describing the liberated yogi
   'यतेन्द्रियमनोबुद्धि': { vigraha: 'यतानि इन्द्रिय-मनस्-बुद्धयः येन सः', type: 'बहुव्रीहि', gloss: 'one whose senses, mind, and intellect are controlled' },
   'मोक्षपरायण':         { vigraha: 'मोक्षः परायणम् यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose supreme goal is liberation' },
@@ -90,7 +90,7 @@ export const KNOWN_SAMASAS = {
   'शीत-उष्ण-सुख-दुःख':{ vigraha: 'शीतं उष्णं सुखं दुःखं च', type: 'इतरेतर द्वंद्व (chain)', gloss: 'cold, heat, pleasure, and pain — the classical four-element द्वंद्व chain BG 6.7 uses to define equanimity' },
   'ज्ञान-विज्ञान-तृप्त-आत्मन्': { vigraha: 'ज्ञानेन विज्ञानेन च तृप्तः आत्मा यस्य सः', type: 'बहुव्रीहि (chain)', gloss: 'one whose self is satisfied with knowledge and discriminative knowledge (BG 6.8)' },
   'सम-लोष्ट-अश्म-काञ्चन':{ vigraha: 'समाः लोष्ट-अश्म-काञ्चनाः यस्य सः', type: 'बहुव्रीहि', gloss: 'one to whom a clod, a stone, and gold are equal (BG 6.8 — image of supreme detachment)' },
-  'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु':{ vigraha: 'सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धवः', type: 'इतरेतर द्वंद्व (seven-element chain)', gloss: 'friend, ally, enemy, neutral, mediator, hateful, and kinsman — the seven categories of social relation BG 6.9 says the yogi sees with equal eye' },
+  'सुहृद्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु':{ vigraha: 'सुहृद्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धवः', type: 'इतरेतर द्वंद्व (seven-element chain)', gloss: 'friend (well-hearted), ally, enemy, neutral, mediator, hateful, and kinsman — the seven categories of social relation BG 6.9 says the yogi sees with equal eye. First stem सुहृद् (voiced -द्); the surface न्म in सुहृन्मित्र comes from -द् + म- → -न्म- consonant-cluster nasal assimilation' },
   'परम-आत्मन्':       { vigraha: 'परमः आत्मा', type: 'कर्मधारय', gloss: 'the Supreme Self (परम "supreme" + आत्मन् "self")' },
   'यत-चित्त-आत्मन्':  { vigraha: 'यतौ चित्तम् आत्मा च यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind and self are restrained (BG 6.10)' },
   // BG 6.12 — the meditation-seat verse compounds

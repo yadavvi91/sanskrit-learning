@@ -1077,9 +1077,11 @@ const SPLITTER_OVERRIDES = new Map([
   // then च + एव → चैव (vrddhi).
   ['बहिर्बाह्यांश्चक्षुश्चैवान्तरे', ['बहिः', 'बाह्यान्', 'चक्षुः', 'च', 'एव', 'अन्तरे']],
   // 5.27 — नासाभ्यन्तरचारिणौ ("moving inside the nostrils") is one
-  // compound: नास-अभ्यन्तर-चारिन् (तत्पुरुष). Engine was wrongly cutting
-  // off an initial न- (treating it as the negation prefix).
-  ['नासाभ्यन्तरचारिणौ', ['नास-अभ्यन्तर-चारिणौ']],
+  // compound: नासा-अभ्यन्तर-चारिन् (तत्पुरुष). The stem is नासा (long ā,
+  // "nostril"), and the surface नासाभ्यन्तर comes from savarṇa-dīrgha
+  // आ + अ → आ. Engine was wrongly cutting off an initial न- (treating
+  // it as the negation prefix).
+  ['नासाभ्यन्तरचारिणौ', ['नासा-अभ्यन्तर-चारिणौ']],
   // 5.28 — three padas in one chunk via visarga-र्:
   //   यतेन्द्रियमनोबुद्धिः + मुनिः + मोक्षपरायणः
   // (-ः after इ before voiced म → र्; happens twice)
@@ -1128,7 +1130,11 @@ const SPLITTER_OVERRIDES = new Map([
   //   सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धु-षु (loc. pl. of
   //   the seven-element द्वंद्व). Engine cut as
   //   सुहृन्मित्राः + युदासीनमध्यस्थद्वेष्यबन्धुषु.
-  ['सुहृन्मित्रार्युदासीनमध्यस्थद्वेष्यबन्धुषु', ['सुहृत्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धुषु']],
+  // 6.9 — seven-element द्वंद्व chain in loc. pl.: सुहृद्-मित्र-अरि-
+  // उदासीन-मध्यस्थ-द्वेष्य-बन्धु. The first stem is सुहृद् (voiced -द्);
+  // the surface न्म comes from -द् + म- → न्म- consonant-cluster
+  // nasal assimilation, not from a final -त्.
+  ['सुहृन्मित्रार्युदासीनमध्यस्थद्वेष्यबन्धुषु', ['सुहृद्-मित्र-अरि-उदासीन-मध्यस्थ-द्वेष्य-बन्धुषु']],
   // 6.9 — साधुषु + अपि (yaṇ उ + अ → व)
   ['साधुष्वपि', ['साधुषु', 'अपि']],
   // 6.7 — प्रशान्तस्य ("of the calmed one") is one gen. sg.; engine was
