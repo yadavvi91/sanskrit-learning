@@ -1,0 +1,23 @@
+src/data/_known_samasas.js
+  s_d5e8c30b294ba2::t_43843cdc79321b 127-129
+src/data/_vocab_extended_part1.js
+  s_d5e8c30b294ba2::t_d8b9cabbf565e6 485-486
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_1cdb06a81c571c 1329-1334
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "c749c944bd464af185692baba93dd6ee5cde9ca3",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
