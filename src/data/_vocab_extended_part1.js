@@ -393,6 +393,8 @@ export const VOCAB_EXTENDED_PART_1 = {
   'असक्त-आत्मा':       { category: 'adjective', root: 'असक्तात्मन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'one whose self is unattached (बहुव्रीहि — असक्तः आत्मा यस्य सः)' },
   'विन्दति':           { category: 'verb', root: '√विद्', gana: 6, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'finds / obtains (present 3sg of √विद् "to find/obtain", गण 6)' },
   'आत्मनि':            { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka', case: 'sap', gloss: 'in the self (locative singular of आत्मन्)' },
+  'आत्मा':             { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'the self / soul (nom. sg. of आत्मन्); also the second member of a बहुव्रीहि compound ("one whose self is X-ed")' },
+  'ब्रह्मयोगयुक्त':     { category: 'adjective', root: 'ब्रह्मयोगयुक्त', gender: 'm', number: 'eka', case: 'pra', gloss: 'joined with Brahman-yoga (तृतीया तत्पुरुष: ब्रह्मयोगेन युक्तः)' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },

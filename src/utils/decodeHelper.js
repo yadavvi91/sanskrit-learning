@@ -1018,6 +1018,12 @@ const SPLITTER_OVERRIDES = new Map([
   ['बाह्यस्पर्शेष्वसक्तात्मा', ['बाह्य-स्पर्शेषु', 'असक्त-आत्मा']],
   // 5.21 — विन्दति + आत्मनि (yaṇ sandhi इ + आ → य्या).
   ['विन्दत्यात्मनि', ['विन्दति', 'आत्मनि']],
+  // 5.21 — ब्रह्मयोगयुक्त + आत्मा (savarṇa-dīrgha अ + आ → आ). Yes,
+  // lexically it's a single bahuvrīhi, but for padaccheda we decompose
+  // it into its two clear semantic halves — same as we do for हस्त-
+  // and -आत्मन् compounds elsewhere. The bahuvrīhi entry stays in
+  // KNOWN_SAMASAS for when the form appears compactly.
+  ['ब्रह्मयोगयुक्तात्मा', ['ब्रह्मयोगयुक्त', 'आत्मा']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
