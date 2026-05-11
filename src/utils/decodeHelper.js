@@ -1178,6 +1178,61 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.14 — मच्चित्तः ("with mind on me") = मत् + चित्तः
   // (त् + च → च्च gemination = श्चुत्व). Bahuvrīhi.
   ['मच्चित्तो', ['मत्-चित्तः']],
+  // 6.15 — नियतमानसः: नियत-मानस bahuvrīhi "one whose mind is
+  // restrained" (नियतम् मानसम् यस्य सः). Engine was wrongly cutting at
+  // the -त्+म boundary as नियत् + मानसः (or worse नियतम् + आनसः).
+  ['नियतमानसः', ['नियत-मानसः']],
+  // 6.15 — निर्वाणपरमाम् (f. acc. sg.): bahuvrīhi निर्वाण-परम
+  // "she whose supreme end is nirvāṇa" — modifying शान्तिम् in this verse.
+  ['निर्वाणपरमां', ['निर्वाण-परमाम्']],
+  // 6.15 — मत्संस्थाम् + अधिगच्छति (no sandhi mod, just -म् + अ
+  // concatenation). मत्-संस्था itself is a bahuvrīhi "she who has abode
+  // in me" — also modifying शान्तिम्.
+  ['मत्संस्थामधिगच्छति', ['मत्-संस्थाम्', 'अधिगच्छति']],
+  // 6.15 — शान्तिम् should stay whole (acc. sg. of f. i-stem शान्ति).
+  // Engine was wrongly cutting at -न्+त as शान् + तिम्.
+  ['शान्तिं', ['शान्तिम्']],
+  // 6.16 — योगः + अस्ति (visarga-avagraha अः + अ → ोऽ; canonical
+  // padaccheda surfaces both halves).
+  ['योगोऽस्ति', ['योगः', 'अस्ति']],
+  // 6.16 — च + एकान्तम् + अनश्नतः. Engine wrongly cut at -न्+त as
+  // च + एकान् + तमनश्नतः. Surface: च + एकान्तम् → चैकान्तम् (vrddhi
+  // अ+ए→ऐ); + अनश्नतः → -मनश्नतः (-म्+अ concatenation).
+  ['चैकान्तमनश्नतः', ['च', 'एकान्तम्', 'अनश्नतः']],
+  // 6.16 — च + अतिस्वप्नशीलस्य. Sandhi अ+अ→आ (savarṇa). The compound
+  // अति-स्वप्न-शील "habituated to too much sleep" (bahuvrīhi) stays whole.
+  ['चातिस्वप्नशीलस्य', ['च', 'अति-स्वप्नशीलस्य']],
+  // 6.16 — जाग्रतो → canonical visarga form जाग्रतः
+  ['जाग्रतो', ['जाग्रतः']],
+  // 6.16 — च + अर्जुन (savarṇa-dīrgha अ+अ→आ).
+  ['चार्जुन', ['च', 'अर्जुन']],
+  // 6.17 — युक्तस्वप्नावबोधस्य and युक्ताहारविहारस्य are both compounds
+  // (gen. sg. bahuvrīhi/tatpuruṣa). Engine was wrongly cutting and
+  // producing fragments like बोधसि + अ.
+  ['युक्ताहारविहारस्य', ['युक्त-आहार-विहारस्य']],
+  ['युक्तस्वप्नावबोधस्य', ['युक्त-स्वप्न-अवबोधस्य']],
+  // 6.17 — योगो → योगः (canonical visarga form, regardless of the
+  // sandhi-realised -ो before voiced sound)
+  ['योगो', ['योगः']],
+  // 6.18 — आत्मनि + एव + अवतिष्ठते. Yaṇ इ + ए → ये, then ए + अ → अव्.
+  ['आत्मन्येवावतिष्ठते', ['आत्मनि', 'एव', 'अवतिष्ठते']],
+  // 6.18 — the actual mool chunk includes leading चित्तम्.
+  ['चित्तमात्मन्येवावतिष्ठते', ['चित्तम्', 'आत्मनि', 'एव', 'अवतिष्ठते']],
+  // 6.18 — canonical visarga form (chunk in mool: सर्वकामेभ्यो + spr...).
+  ['सर्वकामेभ्यो', ['सर्व-कामेभ्यः']],
+  // 6.19 — सा + उपमा (आ + उ → ओ guṇa). "She is the analogy" — referring
+  // to the lamp simile in the preceding line.
+  ['सोपमा', ['सा', 'उपमा']],
+  // 6.20 — एव + आत्मना + आत्मानम् (savarṇa-dīrgha twice: अ+आ→आ, आ+आ→आ).
+  ['एवात्मनात्मानं', ['एव', 'आत्मना', 'आत्मानम्']],
+  // 6.20 — च + एव + आत्मना + आत्मानम् (the actual mool chunk includes
+  // the preceding च via vrddhi)
+  ['चैवात्मनात्मानं', ['च', 'एव', 'आत्मना', 'आत्मानम्']],
+  // 6.20 — यत्र + उपरमते (अ + उ → ओ guṇa). Engine was wrongly producing
+  // यत्रा + उपरमते (treating यत्र's inherent अ as matra-ā).
+  ['यत्रोपरमते', ['यत्र', 'उपरमते']],
+  // 6.20 — पश्यन् + आत्मनि (consonant-doubling -न् + अ → -न्न).
+  ['पश्यन्नात्मनि', ['पश्यन्', 'आत्मनि']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

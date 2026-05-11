@@ -101,6 +101,15 @@ export const KNOWN_SAMASAS = {
   // BG 6.14 — bahuvrīhi describing the meditator
   'प्रशान्त-आत्मन्':   { vigraha: 'प्रशान्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is calmed (BG 6.14)' },
   'मत्-चित्त':         { vigraha: 'मयि चित्तं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is on me / fixed on Me (मत्- = "of me, in me"; recurring epithet for the yogī devoted to Kṛṣṇa, e.g. BG 6.14, 18.57)' },
+  // BG 6.15 — three bahuvrīhi modifying शान्तिम्
+  'नियत-मानस':       { vigraha: 'नियतम् मानसम् यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is restrained (BG 6.15)' },
+  'निर्वाण-परम':     { vigraha: 'निर्वाणं परमं यस्याः सा', type: 'बहुव्रीहि', gloss: 'she whose supreme end is nirvāṇa (modifying शान्तिम् in BG 6.15)' },
+  'मत्-संस्था':        { vigraha: 'मयि संस्था यस्याः सा', type: 'बहुव्रीहि', gloss: 'she who has abode in me (modifying शान्तिम् in BG 6.15; मत्- = "in me")' },
+  // BG 6.16 — "not too much, not too little" bahuvrīhi
+  'अति-स्वप्न-शील':   { vigraha: 'अति-स्वप्नः शीलं यस्य सः', type: 'बहुव्रीहि', gloss: 'one habituated to too much sleep (BG 6.16; अति-स्वप्न = "too much sleep", -शील = "having as habit")' },
+  // BG 6.17 — moderation compounds describing the yogi
+  'युक्त-आहार-विहार': { vigraha: 'युक्तौ आहार-विहारौ यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose eating and recreation are regulated (BG 6.17)' },
+  'युक्त-स्वप्न-अवबोध': { vigraha: 'युक्तौ स्वप्न-अवबोधौ यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose sleeping and waking are regulated (BG 6.17)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
