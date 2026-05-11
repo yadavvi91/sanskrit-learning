@@ -492,10 +492,22 @@ const BOGUS_SHORT_FRAGMENTS = new Set([
   'त्व',  // absolutive fragment / abstract-noun suffix
 ]);
 
+// Devanagari vowel matras — a part starting with one of these is a
+// splitter mis-cut (the leading consonant got absorbed by the previous
+// pada). Never occurs in a real Sanskrit word at the start.
+const MATRA_INITIAL = /^[ािीुूृेैोौंः]/;
+
 function isPlausibleSplit(parts) {
   for (const p of parts) {
     if (p.length === 1 && !REAL_ONECHAR_PADAS.has(p)) return false;
     if (BOGUS_SHORT_FRAGMENTS.has(p)) return false;
+    // No real Sanskrit word starts with a bare vowel-mark — that's a
+    // sandhi residue from the splitter cutting at the wrong vowel
+    // boundary. Reject the split outright so the chunk stays whole.
+    if (MATRA_INITIAL.test(p)) return false;
+    // 2-char fragments ending in विराम (e.g. 'व्', 'क्') alone are
+    // never standalone words. Real consonant-stems are at least 3 chars.
+    if (p.length === 2 && p[1] === '्') return false;
   }
   return true;
 }
