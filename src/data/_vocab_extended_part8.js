@@ -24,7 +24,7 @@ export const VOCAB_EXTENDED_PART_8 = {
   'करोति': { category: 'verb', root: '√कृ', gana: 8, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'does' },
   'गुणान्': { category: 'noun', root: 'गुन', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'qualities (acc.)' },
   'ज्ञानी': { category: 'noun', root: 'ज्ञानिन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'the knower, wise one' },
-  'तिं': { category: 'noun', root: '-ti', gender: 'f', number: 'eka', case: 'dvi', gloss: 'sandhi-residue fragment' }, // AUDIT
+  'तिं': { category: 'noun', root: '-ति', gender: 'f', number: 'eka', case: 'dvi', gloss: 'sandhi-residue fragment (likely the tail of a -ति suffix form)' }, // AUDIT
   'दुःखं': { category: 'noun', root: 'दुःख', gender: 'n', number: 'eka', case: 'pra', gloss: 'sorrow, suffering' },
   'निबध्नन्ति': { category: 'verb', root: '√बन्ध्', gana: 9, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'bahu', gloss: 'they bind down' },
   'परम्': { category: 'adjective', root: 'पर', gender: 'n', number: 'eka', case: 'dvi', gloss: 'supreme, beyond' },
@@ -50,7 +50,7 @@ export const VOCAB_EXTENDED_PART_8 = {
   'तथापरे': { category: 'pronoun', root: 'अपर', gender: 'm', number: 'bahu', case: 'pra', gloss: 'and others, likewise others' },
   'तमाहुः': { category: 'verb', root: '√अह्', gana: 2, pada: 'P', lakara: 'lit', purusha: 'prathama', number: 'bahu', gloss: 'him they call' }, // AUDIT
   'तिमाप्नोति': { category: 'verb', root: '√आप्', gana: 5, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'attains (sandhi)' }, // AUDIT
-  'त्रं': { category: 'noun', root: '-tra', gender: 'n', number: 'eka', case: 'dvi', gloss: 'sandhi-residue fragment' }, // AUDIT
+  'त्रं': { category: 'noun', root: '-त्र', gender: 'n', number: 'eka', case: 'dvi', gloss: 'sandhi-residue fragment (likely the tail of a -त्र suffix form)' }, // AUDIT
   'दधामि': { category: 'verb', root: '√ध', gana: 3, pada: 'P', lakara: 'lat', purusha: 'uttama', number: 'eka', gloss: 'I place, bestow' },
   'दिशः': { category: 'noun', root: 'दिस्', gender: 'f', number: 'bahu', case: 'pra', gloss: 'directions' },
   'द्रियार्थेभ्यः': { category: 'noun', root: 'इन्द्रिय-अर्थ', gender: 'm', number: 'bahu', case: 'pan', gloss: 'from sense-objects (sandhi)' }, // AUDIT
