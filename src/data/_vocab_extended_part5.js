@@ -323,7 +323,10 @@ export const VOCAB_EXTENDED_PART_5 = {
   'प्रवर्तितं': { category: 'krdanta', root: '√वृत्', kind: 'past-passive', gloss: 'set in motion' },
   'प्रवृत्तिर्भूतानां': { category: 'noun', root: 'प्रवृत्ति+भूत', gender: 'f', number: 'eka', case: 'pra', gloss: 'origin of beings' },
   'प्रसङ्गेन': { category: 'noun', root: 'प्रसङ्ग', gender: 'm', number: 'eka', case: 'tri', gloss: 'by attachment' },
-  'प्रसिद्ध्येदकर्मणः': { category: 'verb', root: '√सिध्', gana: 4, pada: 'P', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: 'would succeed without action' },
+  // Vocab-hint pre-split: the chunk is actually two words joined by त् + अ → द् + अ sandhi.
+  'प्रसिद्ध्येदकर्मणः': { category: 'verb', gloss: 'would succeed without action (प्रसिद्ध्येत् + अकर्मणः; sandhi त् + अ → द् + अ)' },
+  'प्रसिद्ध्येत्': { category: 'verb', root: '√सिध्', upasarga: ['प्र'], gana: 4, pada: 'P', lakara: 'vidhilin', purusha: 'prathama', number: 'eka', gloss: '(it) would succeed / would be fully accomplished — प्र + √सिध् optative 3sg' },
+  'अकर्मणः': { category: 'noun', root: 'अकर्मन्', gender: 'n', number: 'eka', case: 'pan', gloss: 'without action / from inaction (ablative singular)' },
   'प्राक्शरीरविमोक्षणात्': { category: 'noun', root: 'प्राक्शरीरविमोक्षण', gender: 'n', number: 'eka', case: 'pan', gloss: 'before body-release' },
   'प्राणापानगती': { category: 'noun', root: 'प्राणापानगति', gender: 'f', number: 'dvi', case: 'dvi', gloss: 'movements of prana-apana' },
   'प्राप्तो': { category: 'krdanta', root: '√आप्', kind: 'past-passive', gloss: 'attained, reached' },

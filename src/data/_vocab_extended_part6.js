@@ -82,7 +82,7 @@ export const VOCAB_EXTENDED_PART_6 = {
   'शरणं': { category: 'noun', root: 'शरण', gender: 'n', number: 'eka', case: 'dvi', gloss: 'refuge' },
   'श्रद्धा': { category: 'noun', root: 'श्रद्धा', gender: 'f', number: 'eka', case: 'pra', gloss: 'faith' },
   'सदृशं': { category: 'adjective', root: 'सदृश', gender: 'n', number: 'eka', case: 'pra', gloss: 'similar' },
-  'समाचर': { category: 'verb', root: '√चर्', gana: 1, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka', gloss: 'perform!' },
+  'समाचर': { category: 'verb', root: '√चर्', upasarga: ['सम्', 'आ'], gana: 1, pada: 'P', lakara: 'lot', purusha: 'madhyama', number: 'eka', gloss: 'perform!  (सम् + आ + √चर् — "carry out / observe / undertake fully")' },
   'सर्वथा': { category: 'particle', gloss: 'in every way' },
   'साङ्ख्ये': { category: 'noun', root: 'साङ्ख्य', gender: 'n', number: 'eka', case: 'sap', gloss: 'in Sankhya' },
   'स्थितिः': { category: 'noun', root: 'स्थिति', gender: 'f', number: 'eka', case: 'pra', gloss: 'state; standing' },

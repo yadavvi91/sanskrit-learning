@@ -4,6 +4,7 @@ import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.
 import { getPronounAnchor } from '../data/pronouns.js';
 import { lookupSharedVocab } from '../data/sharedVocab.js';
 import { getReferenceLink } from '../data/referenceLinks.js';
+import { lookupUpasarga } from '../data/upasargas.js';
 
 const CASE_LABELS = {
   pra: 'प्रथमा (Nom.)',
@@ -233,6 +234,15 @@ function Popover({ word, parsing, fromSharedDict }) {
 
       <dl className="wp-fields">
         {parsing.root && <Row label="root" value={parsing.root} />}
+        {Array.isArray(parsing.upasarga) && parsing.upasarga.length > 0 && (
+          <Row
+            label="उपसर्ग"
+            value={parsing.upasarga.map((u) => {
+              const info = lookupUpasarga(u);
+              return info ? `${u} (${info.sense})` : u;
+            }).join(' + ')}
+          />
+        )}
         {parsing.kind && <Row label="kind" value={parsing.kind} />}
         {parsing.gana != null && <Row label="गण" value={parsing.gana} />}
         {parsing.pada && <Row label="पद" value={parsing.pada === 'P' ? 'परस्मैपद' : parsing.pada === 'A' ? 'आत्मनेपद' : parsing.pada} />}

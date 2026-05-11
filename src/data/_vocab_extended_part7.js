@@ -466,7 +466,7 @@ export const VOCAB_EXTENDED_PART_7 = {
   'संन्यासमिति': { category: 'noun', root: 'संन्यास', gender: 'm', number: 'eka', case: 'dvi', gloss: '"as renunciation" (संन्यासम् + इति)' },
   'समग्रान्': { category: 'adjective', root: 'समग्र', gender: 'm', number: 'bahu', case: 'dvi', gloss: 'complete / all (m. acc. pl.)' },
   'समधिगच्छति': { category: 'verb', root: '√गम्', gana: 1, pada: 'P', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'fully attains' },
-  'समाचरन्': { category: 'krdanta', root: '√चर्', kind: 'present-active', gloss: 'performing (m. sg.)' },
+  'समाचरन्': { category: 'krdanta', root: '√चर्', upasarga: ['सम्', 'आ'], kind: 'present-active', gloss: 'performing — सम् + आ + √चर् present active participle (m. sg.)' },
   'समासतः': { category: 'particle', gloss: 'in brief / summarily' },
   'समुद्धर्ता': { category: 'noun', root: 'समुद्धर्तृ', gender: 'm', number: 'eka', case: 'pra', gloss: 'redeemer / lifter-up' },
   'सम्पदमासुरीम्': { category: 'noun', root: 'सम्पद्', gender: 'f', number: 'eka', case: 'dvi', gloss: 'demonic endowment (compound)' },

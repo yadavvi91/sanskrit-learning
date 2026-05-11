@@ -131,12 +131,12 @@ export const VOCAB_EXTENDED_PART_4 = {
   'असत्यमप्रतिष्ठं': { category: 'noun', root: 'असत्य+अप्रतिष्ठ', gender: 'n', number: 'eka', case: 'pra', gloss: 'untrue, baseless (असत्यम्+अप्रतिष्ठम्)' },
   'अस्माकं': { category: 'pronoun', root: 'अस्मद्', gender: '-', number: 'bahu', case: 'sha', gloss: 'our' },
   'अहंकारं': { category: 'noun', root: 'अहंकार', gender: 'm', number: 'eka', case: 'dvi', gloss: 'ego (acc.)' },
-  'अहमहमेवाज्यमहमग्निरहं': { category: 'noun', root: 'compound', gender: '-', number: 'eka', case: 'pra', gloss: 'I am the oblation, I the fire (अहम्+अहम्+एव+आज्यम्+अहम्+अग्निः+अहम्)' }, // AUDIT
+  'अहमहमेवाज्यमहमग्निरहं': { category: 'noun', root: 'चोम्पोउन्द्', gender: '-', number: 'eka', case: 'pra', gloss: 'I am the oblation, I the fire (अहम्+अहम्+एव+आज्यम्+अहम्+अग्निः+अहम्)' }, // AUDIT
   'अहमेवाक्षयः': { category: 'noun', root: 'अक्षय', gender: 'm', number: 'eka', case: 'pra', gloss: 'I myself imperishable (अहम्+एव+अक्षयः)' },
   'आचार्यमुपसङ्गम्य': { category: 'krdanta', root: '√गम्', kind: 'absolutive', gloss: 'having approached the teacher (आचार्यम्+उपसङ्गम्य)' },
   'आत्मन्येवात्मना': { category: 'noun', root: 'आत्मन्', gender: 'm', number: 'eka', case: 'sap', gloss: 'in the self by the self (आत्मनि+एव+आत्मना)' },
   'आत्मसंस्थं': { category: 'noun', root: 'आत्मसंस्थ', gender: 'n', number: 'eka', case: 'dvi', gloss: 'fixed in the self (acc.)' },
-  'आयुःसत्त्वबलारोग्यसुखप्रीतिविवर्धनाः': { category: 'noun', root: 'compound', gender: 'm', number: 'bahu', case: 'pra', gloss: 'increasing life-strength-health-joy-affection' },
+  'आयुःसत्त्वबलारोग्यसुखप्रीतिविवर्धनाः': { category: 'noun', root: 'चोम्पोउन्द्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'increasing life-strength-health-joy-affection' },
   'आसुरीं': { category: 'noun', root: 'आसुरी', gender: 'f', number: 'eka', case: 'dvi', gloss: 'demonic (f.acc.)' },
   'इच्छा': { category: 'noun', root: 'इच्छा', gender: 'f', number: 'eka', case: 'pra', gloss: 'desire' },
   'इत्सुदुराचारो': { category: 'noun', root: 'सुदुराचार', gender: 'm', number: 'eka', case: 'pra', gloss: 'extreme evil-doer (अपि+सुदुराचारः)' }, // AUDIT

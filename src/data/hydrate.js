@@ -20,6 +20,7 @@ import { DHATUS_EXTENDED } from './dhatus-extended.js';
 import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 import { VERSE_OVERRIDES } from './verse-overrides.js';
 import { lookupSharedVocab } from './sharedVocab.js';
+import { KNOWN_SAMASAS } from './_known_samasas.js';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -229,8 +230,34 @@ export function hydrateAutoStubVerses() {
         && Array.isArray(v.padaccheda)) {
       const vibhaktiSamasa = parseSamasaFromVibhakti(v.vibhaktiNotes);
       const derived = [];
+
+      // First pass: hand-curated KNOWN_SAMASAS table. Match the pada's
+      // vocab `root` field against the dictionary, regardless of whether
+      // the surface form has a hyphen. Catches unhyphenated compounds
+      // like कर्मयोग, आत्मशुद्धि, स्थितप्रज्ञ.
+      const seenCompounds = new Set();
+      for (const pada of v.padaccheda) {
+        if (typeof pada !== 'string') continue;
+        const vocab = lookupSharedVocab(pada);
+        const rootForLookup = vocab?.root && typeof vocab.root === 'string' && !vocab.root.includes('+')
+          ? vocab.root
+          : null;
+        const known = rootForLookup ? KNOWN_SAMASAS[rootForLookup] : null;
+        if (known && !seenCompounds.has(pada)) {
+          seenCompounds.add(pada);
+          derived.push({
+            compound: pada,
+            vigraha: known.vigraha,
+            type: known.type,
+            gloss: known.gloss,
+            source: 'known-samasa-lexicon',
+          });
+        }
+      }
+
       for (const pada of v.padaccheda) {
         if (typeof pada !== 'string' || !pada.includes('-')) continue;
+        if (seenCompounds.has(pada)) continue;
         const parts = pada.split('-').filter(Boolean);
         if (parts.length < 2) continue;
         const firstPart = parts[0];

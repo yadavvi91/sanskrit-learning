@@ -22,7 +22,15 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
 
     let arr = dhatus.filter((d) => {
       if (tierOpt.inGitaOnly && (d.gitaOccurrences || []).length === 0) return false;
-      if (d.frequencyRank > tierOpt.maxRank) return false;
+      // The 49 stub dhātus added via _dhatus_extra.js have frequencyRank=null
+      // (they exist in the Gītā but not in Khoomeik's top-192 list). Without
+      // an explicit null check, `null > N` evaluates to false (null coerces
+      // to 0), so they would leak through every Top-N tier. Treat unranked
+      // dhātus as outside any Top-N tier; they only appear under "All".
+      if (tierOpt.maxRank !== Infinity) {
+        if (d.frequencyRank == null) return false;
+        if (d.frequencyRank > tierOpt.maxRank) return false;
+      }
       if (q) {
         const hay = `${d.devanagari} ${d.iast} ${d.meanings.join(' ')}`.toLowerCase();
         if (!hay.includes(q)) return false;
