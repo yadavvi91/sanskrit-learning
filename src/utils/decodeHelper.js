@@ -640,7 +640,10 @@ function splitNasalCompound(chunk) {
         const splitAt = m.index + 1 + 1; // matra + न
         const left = chunk.slice(0, splitAt) + '्';
         const right = restored;
-        if (isPlausibleNasalSplit(left, right)) {
+        // Lexicon validation: don't split if the LEFT half isn't a real
+        // word — catches false positives like नायका being wrongly cut
+        // as न + अयका when the chunk-as-a-whole is a real word.
+        if (isPlausibleNasalSplit(left, right) && partHasRealVocab(left)) {
           // Recurse on the left in case it's also a nasal compound.
           const leftSplits = splitNasalCompound(left) || [left];
           return [...leftSplits, right];
@@ -657,7 +660,7 @@ function splitNasalCompound(chunk) {
         const splitAt = m.index + 1; // up through the long matra
         const left = chunk.slice(0, splitAt) + 'न्'; // restore -न् ending
         const right = restored;
-        if (isPlausibleNasalSplit(left, right)) {
+        if (isPlausibleNasalSplit(left, right) && partHasRealVocab(left)) {
           const leftSplits = splitNasalCompound(left) || [left];
           return [...leftSplits, right];
         }
