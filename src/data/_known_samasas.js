@@ -119,6 +119,11 @@ export const KNOWN_SAMASAS = {
   'दुःख-संयोग-वियोग':{ vigraha: 'दुःख-संयोगस्य वियोगः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the disjunction from union with sorrow / separation from sorrow-contact (BG 6.23 — Krishna\'s definition of yoga)' },
   'योग-संज्ञित':      { vigraha: 'योगः इति संज्ञितः', type: 'तत्पुरुष', gloss: 'called yoga / known by the name yoga (BG 6.23)' },
   'अनिर्विण्ण-चेतस्':{ vigraha: 'अनिर्विण्णं चेतः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is undisheartened / undespondent (BG 6.23)' },
+  // BG 7.15 — Krishna's classification of those who don't approach him
+  'मायया-अपहृत-ज्ञान':{ vigraha: 'मायया अपहृतं ज्ञानं येषां ते', type: 'बहुव्रीहि (with embedded तृतीया-तत्पुरुष)', gloss: 'those whose knowledge has been carried off by māyā (BG 7.15 — the instrumental मायया is embedded inside the bahuvrīhi; the masc.-pl. ending -आः agrees with the referent, not with neuter ज्ञान)' },
+  // BG 7.16 — agent-nouns describing the kinds of devotees
+  'अर्थार्थिन्':       { vigraha: 'अर्थम् अर्थयते इति', type: 'उपपद तत्पुरुष', gloss: 'seeker of wealth / one who desires wealth (BG 7.16)' },
+  'हृत-ज्ञान':       { vigraha: 'हृतं ज्ञानं येषां ते', type: 'बहुव्रीहि', gloss: 'those whose knowledge has been stolen (BG 7.20 — companion to the 7.15 मायया-अपहृत-ज्ञान compound)' },
 
   // ─── Batch expansion: common Gītā compounds (commit batch) ───
   // तत्पुरुष chains involving ब्रह्म, कर्म, ज्ञान, आत्म, धर्म, योग

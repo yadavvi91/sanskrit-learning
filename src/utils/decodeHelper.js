@@ -1291,12 +1291,37 @@ const SPLITTER_OVERRIDES = new Map([
   ['यत्तद्बुद्धिग्राह्यमतीन्द्रियम्', ['यत्', 'तत्', 'बुद्धि-ग्राह्यम्', 'अति-इन्द्रियम्']],
   // 6.20 — पश्यन् + आत्मनि (consonant-doubling -न् + अ → -न्न).
   ['पश्यन्नात्मनि', ['पश्यन्', 'आत्मनि']],
-  // 7.15 — मायया + अपहृत-ज्ञानाः (savarṇa-dīrgha आ + अ → आ).
-  // Underlying ज्ञानाः; surface "ज्ञाना" because the visarga dropped
-  // before the following आसुरं (visarga + voiced vowel → drop).
-  ['माययापहृतज्ञाना', ['मायया', 'अपहृत-ज्ञानाः']],
+  // 7.15 — माययापहृतज्ञानाः is ONE big बहुव्रीहि compound:
+  //   मायया-अपहृत-ज्ञान- ("those whose knowledge has been carried off
+  //   by māyā"). The instrumental मायया is nested INSIDE the
+  //   compound (तृतीया-तत्पुरुष embedded inside the बहुव्रीहि), not a
+  //   separate word. The masc.-pl. ending -आः agrees with the
+  //   referent (the आसुरं भावम् आश्रिताः people), not with neuter
+  //   ज्ञान — the gender-mismatch is the bahuvrīhi tell.
+  //   Surface "ज्ञाना" because the visarga dropped before the
+  //   following आसुरं (visarga + voiced vowel → drop).
+  //   विग्रह: मायया अपहृतम् ज्ञानम् येषाम् ते.
+  ['माययापहृतज्ञाना', ['मायया-अपहृत-ज्ञानाः']],
   // 7.14 — मायाम् + एताम् (-म् + ए → concatenation, no sandhi mod).
   ['मायामेतां', ['मायाम्', 'एताम्']],
+  // 7.16 — जिज्ञासुः + अर्थार्थी (visarga-र् sandhi; -ः after उ before
+  // voiced अ → र्). Both are agent-nouns from desideratives/compounds.
+  ['जिज्ञासुरर्थार्थी', ['जिज्ञासुः', 'अर्थार्थी']],
+  // 7.20 — तैः + हृत-ज्ञानाः (visarga-र् sandhi). हृत-ज्ञान is a
+  // बहुव्रीहि "those whose knowledge has been stolen" — companion to
+  // the 7.15 मायया-अपहृत-ज्ञान compound.
+  ['तैर्हृतज्ञानाः', ['तैः', 'हृत-ज्ञानाः']],
+  // 7.20 — the full mool chunk: कामैः + तैस्तैः + हृत-ज्ञानाः.
+  // तैस्तैः = तैः + तैः (repeated demonstrative, visarga-स sandhi).
+  ['कामैस्तैस्तैर्हृतज्ञानाः', ['कामैः', 'तैः', 'तैः', 'हृत-ज्ञानाः']],
+  // 7.20 — नियममास्थाय = नियमम् + आस्थाय (-म् + आ concatenation,
+  // no sandhi mod). Engine was cutting wrongly as नियम् + अमास्थाय.
+  ['नियममास्थाय', ['नियमम्', 'आस्थाय']],
+  // 7.21 — श्रद्धया + अर्चितुम् + इच्छति. आ + अ → आ savarṇa-dīrgha
+  // hides the boundary at श्रद्धया-अर्चितुम्; -म् + इ concatenation.
+  ['श्रद्धयार्चितुमिच्छति', ['श्रद्धया', 'अर्चितुम्', 'इच्छति']],
+  // 7.22 — आराधनम् + ईहते (-म् + ई concatenation). Engine kept whole.
+  ['आराधनमीहते', ['आराधनम्', 'ईहते']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
