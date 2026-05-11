@@ -1,0 +1,20 @@
+src/data/_vocab_extended_part8.js
+  s_d5e8c30b294ba2::t_9a825198b2be17 53
+  s_d5e8c30b294ba2::t_5a28ba6baa2b4f 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "34e938b2bb9df00f8f38244e9ad9a3f4e6a834eb",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
