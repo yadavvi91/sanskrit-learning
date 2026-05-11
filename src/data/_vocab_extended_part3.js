@@ -475,7 +475,7 @@ export const VOCAB_EXTENDED_PART_3 = {
   'सर्वतःश्रुतिमत्': { category: 'adjective', root: 'सर्वतःश्रुतिमत्', gender: 'n', number: 'eka', case: 'pra', gloss: 'with hearing on all sides' },
   'सर्वद्वारेषु': { category: 'noun', root: 'सर्वद्वार', gender: 'n', number: 'bahu', case: 'sap', gloss: 'in all gates' },
   'सर्वमिति': { category: 'pronoun', root: 'सर्व', gender: 'n', number: 'eka', case: 'pra', gloss: 'all, thus (सर्वम् + इति)' },
-  'सर्वसङ्कल्पसंन्यासी': { category: 'noun', root: 'सर्वसङ्कल्पसंन्यासिन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'renouncer of all designs' },
+  'सर्वसङ्कल्पसंन्यासी': { category: 'noun', root: 'सर्वसङ्कल्पसंन्यासिन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'one who renounces all sankalpas / will-formations (उपपद तत्पुरुष over कर्मधारय — सर्वान् सङ्कल्पान् संन्यसति इति; defining quality of the योग-आरूढ in BG 6.4)' },
   'सर्वारम्भा': { category: 'noun', root: 'सर्वारम्भ', gender: 'm', number: 'bahu', case: 'pra', gloss: 'all undertakings' }, // AUDIT
   'संवादमिममश्रौषमद्भुतं': { category: 'noun', root: 'संवाद', gender: 'm', number: 'eka', case: 'dvi', gloss: 'this wonderful dialogue I heard' },
   'सशरं': { category: 'adjective', root: 'सशर', gender: 'n', number: 'eka', case: 'dvi', gloss: 'with arrows (acc.)' },

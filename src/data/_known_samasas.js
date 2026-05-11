@@ -84,6 +84,7 @@ export const KNOWN_SAMASAS = {
   // BG 6.3, 6.4 — योग-आरूढ "one who has ascended into yoga" (the
   // metaphor: यो + ग as the goal mountain; अ + आ → आ savarṇa-dīrgha).
   'योग-आरूढ':         { vigraha: 'योगम् आरूढः', type: 'द्वितीया तत्पुरुष', gloss: 'one who has ascended into yoga / is established in yoga (BG 6.3, 6.4)' },
+  'सर्वसङ्कल्पसंन्यासिन्': { vigraha: 'सर्वान् सङ्कल्पान् संन्यसति इति', type: 'उपपद तत्पुरुष (over a कर्मधारय)', gloss: 'one who renounces all sankalpas / will-formations (the defining quality of the योग-आरूढ in BG 6.4)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
