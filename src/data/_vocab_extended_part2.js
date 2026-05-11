@@ -288,7 +288,12 @@ export const VOCAB_EXTENDED_PART_2 = {
   'निःश्रेयसकरावुभौ': { category: 'adjective', root: 'निःश्रेयसकर+उभ', gender: 'm', number: 'dvi', case: 'pra', gloss: 'both bestowing the highest good' }, // compound
   'न्याय्यं':   { category: 'adjective', root: 'न्याय्य', gender: 'n', number: 'eka', case: 'pra', gloss: 'just / proper' },
   'पञ्चैते':    { category: 'adjective', root: 'पञ्चन्+एतद्', gender: 'm', number: 'bahu', case: 'pra', gloss: 'these five (पञ्च + एते)' },
-  'पद्मपत्रमिवाम्भसा': { category: 'adjective', root: 'पद्मपत्र+अम्भस्', gender: 'n', number: 'eka', case: 'tri', gloss: 'like lotus-leaf by water' }, // compound
+  // Vocab-hint: three words sandhi'd together. Splitter override decomposes
+  // into पद्मपत्रम् + इव + अम्भसा. पद्मपत्र itself is a तत्पुरुष samāsa
+  // (पद्मस्य पत्रम् — "leaf of lotus"), surfaced via KNOWN_SAMASAS lexicon.
+  'पद्मपत्रमिवाम्भसा': { category: 'adjective', gloss: '"like a lotus-leaf by water" — पद्मपत्रम् + इव + अम्भसा (the classic Gītā image, BG 5.10)' },
+  'पद्मपत्रम्': { category: 'noun', root: 'पद्मपत्र', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'lotus-leaf (पद्मस्य पत्रम् — षष्ठी तत्पुरुष)' },
+  'अम्भसा':    { category: 'noun', root: 'अम्भस्', gender: 'n', number: 'eka', case: 'tri', gloss: 'by water / with water (instrumental of the -अस् stem अम्भस्)' },
   'परमात्मेति': { category: 'noun', root: 'परमात्मन्', gender: 'm', number: 'eka', case: 'pra', gloss: 'the Supreme Self, thus (+इति)' },
   'परम्पराप्राप्तमिमं': { category: 'krdanta', root: '√आप्', kind: 'past-passive', gloss: 'received in succession, this' }, // compound
   'परिक्लिष्टं': { category: 'krdanta', root: '√क्लिश्', kind: 'past-passive', gloss: 'distressed / harassed' },

@@ -981,6 +981,12 @@ const SPLITTER_OVERRIDES = new Map([
   // 12.9 — माम् + इच्छ + आप्तुम् ("(you) want to attain me"). इच्छ + आप्तुम्
   // → इच्छाप्तुम् via savarṇa-dīrgha (अ + आ → आ); the boundary disappears.
   ['मामिच्छाप्तुं', ['माम्', 'इच्छ', 'आप्तुम्']],
+  // 5.10 — ब्रह्मणि + आधाय (yaṇ sandhi इ + आ → य्या); "having placed in Brahman"
+  ['ब्रह्मण्याधाय', ['ब्रह्मणि', 'आधाय']],
+  // 5.10 — पद्मपत्रम् + इव + अम्भसा ("like a lotus-leaf by water"). Three
+  // words; पद्मपत्र itself is a तत्पुरुष samāsa ("leaf of lotus") that
+  // KNOWN_SAMASAS surfaces separately.
+  ['पद्मपत्रमिवाम्भसा', ['पद्मपत्रम्', 'इव', 'अम्भसा']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

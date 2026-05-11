@@ -340,7 +340,11 @@ export const VOCAB_EXTENDED_PART_7 = {
   'बुद्धिर्ज्ञानमसम्मोहः': { category: 'noun', root: 'असम्मोह', gender: 'm', number: 'eka', case: 'pra', gloss: 'intellect, knowledge, non-delusion (compound list)' },
   'बुद्धौ': { category: 'noun', root: 'बुद्धि', gender: 'f', number: 'eka', case: 'sap', gloss: 'in / on intellect' },
   'बोधसि': { category: 'verb', root: '√बुध्', gana: 1, pada: 'P', lakara: 'lat', purusha: 'madhyama', number: 'eka', gloss: 'you understand / awaken' },
-  'ब्रह्मण्याधाय': { category: 'krdanta', root: '√धा', kind: 'absolutive', gloss: 'having placed in Brahman' },
+  // Vocab-hint: ब्रह्मणि (loc. sg.) + आधाय (absolutive) joined by yaṇ sandhi
+  // (इ + आ → य्या). Splitter override surfaces the two pieces.
+  'ब्रह्मण्याधाय': { category: 'krdanta', gloss: 'having placed in Brahman — ब्रह्मणि + आधाय (yaṇ sandhi इ + आ → य्या; locative "in Brahman" + absolutive "having placed")' },
+  'ब्रह्मणि':      { category: 'noun', root: 'ब्रह्मन्', gender: 'n', number: 'eka', case: 'sap', gloss: 'in Brahman / on Brahman (locative singular of -न् stem ब्रह्मन्)' },
+  'आधाय':       { category: 'krdanta', root: '√धा', upasarga: ['आ'], kind: 'absolutive', gloss: 'having placed / having entrusted (आ + √धा absolutive)' },
   'ब्रह्मसंस्पर्शमत्यन्तं': { category: 'noun', root: 'ब्रह्मसंस्पर्श', gender: 'n', number: 'eka', case: 'dvi', gloss: 'utter contact with Brahman' },
   'ब्राह्मणक्षत्रियविशां': { category: 'noun', root: 'ब्राह्मणक्षत्रियविश्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of brahmins, kṣatriyas, and vaiśyas' },
   'भक्तियोगेन': { category: 'noun', root: 'भक्तियोग', gender: 'm', number: 'eka', case: 'tri', gloss: 'by yoga of devotion' },
