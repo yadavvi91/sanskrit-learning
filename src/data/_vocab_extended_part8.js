@@ -354,7 +354,11 @@ export const VOCAB_EXTENDED_PART_8 = {
   'मनसैवेन्द्रियग्रामं': { category: 'noun', root: 'इन्द्रिय-ग्रम', gender: 'm', number: 'eka', case: 'dvi', gloss: 'group of senses by mind alone' },
   'मन्त्रः': { category: 'noun', root: 'मन्त्र', gender: 'm', number: 'eka', case: 'pra', gloss: 'mantra' },
   'ममाव्ययमनुत्तमम्': { category: 'adjective', root: 'अव्यय-अनुत्तम', gender: 'n', number: 'eka', case: 'dvi', gloss: 'my supreme imperishable' },
-  'मय्यावेशितचेतसाम्': { category: 'adjective', root: 'आवेशित-चेतस्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those whose minds are absorbed in me' },
+  // Whole chunk — falls through to the splitter override that produces
+  // मयि + आवेशित-चेतसाम्. Both halves get their own popovers below.
+  'मय्यावेशितचेतसाम्': { category: 'adjective', root: 'आवेशित-चेतस्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those whose minds are absorbed in me (मयि + आवेशितचेतसाम्; इ + आ → य्या via yaṇ)' },
+  'आवेशित-चेतसाम्': { category: 'adjective', root: 'आवेशित-चेतस्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those whose minds are absorbed (बहुव्रीहि — आवेशितानि चेतांसि येषाम् ते)' },
+  'आवेशितचेतसाम्': { category: 'adjective', root: 'आवेशित-चेतस्', gender: 'm', number: 'bahu', case: 'sha', gloss: 'of those whose minds are absorbed (बहुव्रीहि — आवेशितानि चेतांसि येषाम् ते)' },
   'मंस्यन्ते': { category: 'verb', root: '√man', gana: 4, pada: 'A', lakara: 'lrt', purusha: 'prathama', number: 'bahu', gloss: 'they will think' },
   'महर्षिसिद्धसङ्घाः': { category: 'noun', root: 'महर्सि-सिद्ध-सङ्ह', gender: 'm', number: 'bahu', case: 'pra', gloss: 'hosts of great seers and siddhas' },
   'महिमानं': { category: 'noun', root: 'महिमन्', gender: 'm', number: 'eka', case: 'dvi', gloss: 'greatness' },

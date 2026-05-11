@@ -973,6 +973,11 @@ const SPLITTER_OVERRIDES = new Map([
   ['यस्त्वात्मरतिरेव', ['यः', 'तु', 'आत्मरतिः', 'एव']],
   // 3.18 — कश्चित् + अर्थ-व्यपाश्रयः
   ['कश्चिदर्थव्यपाश्रयः', ['कश्चित्', 'अर्थ-व्यपाश्रयः']],
+  // 12.7 — मयि + आवेशितचेतसाम् (yaṇ sandhi: इ + आ → य्या). The vocab gloss
+  // treats this as one chunk; the locative pronoun मयि is a separate word
+  // whose semantic role (the locus of "absorbed in me") is independent
+  // of the बहुव्रीहि आवेशित-चेतस्.
+  ['मय्यावेशितचेतसाम्', ['मयि', 'आवेशित-चेतसाम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
