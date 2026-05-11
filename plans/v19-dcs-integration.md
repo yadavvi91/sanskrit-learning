@@ -1,6 +1,19 @@
 # Plan v19 — Migrate to DCS (Digital Corpus of Sanskrit) hand-annotated padaccheda
 
-**Status:** In progress (this session, overnight).
+**Status:** Shipped 2026-05-12. Tagged at `v0.10.0-dcs-integration`.
+
+## What landed
+
+- `scripts/import-dcs-gita.mjs` — CoNLL-U parser + IAST→Devanāgarī transliterator (with Pāṇinian parasvarna ं + stop → varga-nasal) + content-match verse aligner (handles DCS's recension-shift for BG 13).
+- `src/data/dcs-padaccheda.json` — 700 verses, ~9 800 padas with full morphology in legacy schema (case / number / gender / lakara / purusha / vachana / category). 3.4 MB raw, ~500 KB gzipped.
+- `src/data/hydrate.js` — DCS is now the primary source for auto-stub padaccheda + finiteVerbs + wordParsings. Engine kept as fallback for BG 13.1 (the one verse DCS omits — Arjuna's "prakṛtim puruṣam" question, an interpolation not in the critical edition).
+- All 582 tests pass. The empty-popover audit now resolves DCS-provided forms via the merged wordParsings.
+
+## What stayed
+
+- The four hand-decoded verses (BG 1.1, 2.3, 2.4, 2.5) and other full-tier entries keep their hand-curated padaccheda intact — those embody the user's learning fights.
+- The home-rolled splitter (`decodeHelper.js`, `sandhi.js`) stays in the codebase as fallback for non-DCS Sanskrit.
+- `KNOWN_SAMASAS` keeps its semantic vigraha annotations — genuine value DCS doesn't provide.
 
 ## Context (the why)
 

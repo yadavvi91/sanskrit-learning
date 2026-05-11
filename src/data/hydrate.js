@@ -21,6 +21,7 @@ import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 import { VERSE_OVERRIDES } from './verse-overrides.js';
 import { lookupSharedVocab } from './sharedVocab.js';
 import { KNOWN_SAMASAS } from './_known_samasas.js';
+import DCS_PADACCHEDA from './dcs-padaccheda.json';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -161,11 +162,39 @@ export function hydrateAutoStubVerses() {
       }
     }
 
+    // DCS (Digital Corpus of Sanskrit) is the new primary source for
+    // padaccheda — overrides engine + _chN_overrides for auto-stub
+    // verses. Full-tier hand decodes (BG 1.1, 2.3, 2.4, 2.5) are not in
+    // this loop and remain untouched. See plans/v19-dcs-integration.md.
+    const dcsEntry = DCS_PADACCHEDA[key];
+    if (dcsEntry && Array.isArray(dcsEntry.padaccheda) && dcsEntry.padaccheda.length > 0) {
+      v.padaccheda = dcsEntry.padaccheda;
+      v.padacchedaSource = 'dcs';
+      // Merge DCS wordParsings into verse.wordParsings (legacy schema)
+      // so WordPopover and the empty-popover audit pick them up as
+      // proper coverage. Existing wordParsings from VERSE_OVERRIDES win
+      // (so any hand-curated entry stays authoritative).
+      if (dcsEntry.wordParsings && typeof dcsEntry.wordParsings === 'object') {
+        if (!v.wordParsings) v.wordParsings = {};
+        for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
+          if (!v.wordParsings[w]) v.wordParsings[w] = p;
+        }
+      }
+      // DCS finite verbs — fill only if not already populated by a
+      // FINITE_OVERRIDES block or verse-level override. Hand-decoded
+      // finiteVerbs (where present) keep priority over DCS.
+      if (Array.isArray(dcsEntry.finiteVerbs) && dcsEntry.finiteVerbs.length > 0
+          && (!v.finiteVerbs || v.finiteVerbs.length === 0)) {
+        v.finiteVerbs = dcsEntry.finiteVerbs;
+      }
+    }
+
     if (!v.padaccheda || v.padaccheda.length === 0) {
       try {
         const stub = autoDecode((v.mool || []).join(' '));
         if (stub) {
           v.padaccheda = stub.padaccheda;
+          v.padacchedaSource = v.padacchedaSource || 'engine';
           if (!v.finiteVerbs || v.finiteVerbs.length === 0) {
             v.finiteVerbs = stub.finiteVerbs;
           }

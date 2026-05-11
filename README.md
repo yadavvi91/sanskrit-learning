@@ -40,9 +40,16 @@ CI handles this automatically: pushes to `main` trigger [`.github/workflows/page
 - `src/data/` — the corpus: 188 hand-or-auto-decoded verses, 4000+ vocab entries, 190 dhātus, declension paradigms, sandhi rules
 - `src/utils/` — engines: `decodeHelper.js` (sandhi splitter), `conjugator.js` (Forward/Reverse), notes, markdown export
 - `article.md` — the long-form essay rendered at `/origin`
-- `plans/` — versioned design docs (v1 → v15)
+- `plans/` — versioned design docs (v1 → v19)
 - `checkpoints/` — per-slice change records
+
+## Data sources
+
+- **Padaccheda + morphology** — [Digital Corpus of Sanskrit](https://github.com/OliverHellwig/sanskrit) (Oliver Hellwig, Heidelberg). The 700 Gītā verses are pre-processed into `src/data/dcs-padaccheda.json` by `scripts/import-dcs-gita.mjs`. DCS provides the word-segmentation (पदच्छेद), lemma, and Universal Dependencies morphology for every token. **License:** CC BY-SA 4.0 — derivative work (the JSON file) inherits this license. The home-rolled splitter in `src/utils/decodeHelper.js` is kept as a fallback for the one interpolated verse (BG 13.1) DCS doesn't include.
+- **Translations** — Annie Besant (1905, public domain), Edwin Arnold (*The Song Celestial*, 1885, public domain). Hindi translation set is the author's hand work.
+- **Commentaries** — Śaṅkara summaries are paraphrases of the standard Advaita reading, the author's own writing.
+- **Dhātu frequency data** — [Rohan Pandey's @khoomeik thread](https://twitter.com/khoomeik) on the top-192 Sanskrit dhātus by frequency, derived from DCS via vidyut.
 
 ## License
 
-The code is MIT. The textual reading notes (article.md, the per-verse interpretive commentary, the dhātu notes) are © Vishal Yadav, all rights reserved.
+The code is MIT. The textual reading notes (article.md, the per-verse interpretive commentary, the dhātu notes) are © Vishal Yadav, all rights reserved. The DCS-derived `src/data/dcs-padaccheda.json` is CC BY-SA 4.0 per the upstream license — credit Oliver Hellwig if you reuse it.
