@@ -1064,6 +1064,23 @@ const SPLITTER_OVERRIDES = new Map([
   // compound: नास-अभ्यन्तर-चारिन् (तत्पुरुष). Engine was wrongly cutting
   // off an initial न- (treating it as the negation prefix).
   ['नासाभ्यन्तरचारिणौ', ['नास-अभ्यन्तर-चारिणौ']],
+  // 5.28 — three padas in one chunk via visarga-र्:
+  //   यतेन्द्रियमनोबुद्धिः + मुनिः + मोक्षपरायणः
+  // (-ः after इ before voiced म → र्; happens twice)
+  ['यतेन्द्रियमनोबुद्धिर्मुनिर्मोक्षपरायणः', ['यतेन्द्रियमनोबुद्धिः', 'मुनिः', 'मोक्षपरायणः']],
+  // 5.28 — विगतेच्छाभयक्रोधः is one बहुव्रीहि (विगत-इच्छा-भय-क्रोध:
+  // "one whose desire, fear, and anger have departed"). Engine likely
+  // cuts it; keep whole and surface samāsa via KNOWN_SAMASAS.
+  ['विगतेच्छाभयक्रोधो', ['विगत-इच्छा-भय-क्रोधः']],
+  // 5.29 — सर्वलोकमहेश्वरम् is ONE compound (सर्व-लोक-महेश्वर — "Great
+  // Lord of all worlds"). Engine was cutting as सर्वलोकम् + अहेश्वरम्.
+  ['सर्वलोकमहेश्वरम्', ['सर्व-लोक-महेश्वरम्']],
+  // 5.29 — शान्तिमृच्छति → शान्तिम् + ऋच्छति. Engine was cutting as
+  // शान् + तिमृच्छति (visible -न् boundary applied wrongly).
+  ['शान्तिमृच्छति', ['शान्तिम्', 'ऋच्छति']],
+  // 6.2 — हि + असंन्यस्त-सङ्कल्पः joined by yaṇ sandhi (इ + अ → य).
+  // Engine was wrongly applying visarga + त → स्त split mid-compound.
+  ['ह्यसंन्यस्तसङ्कल्पो', ['हि', 'असंन्यस्त-सङ्कल्पः']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
