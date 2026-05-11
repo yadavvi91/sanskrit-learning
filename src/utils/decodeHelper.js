@@ -948,6 +948,9 @@ for (const [key, v] of Object.entries(VOCAB_EXTENDED)) {
 // that the canonical comparison doesn't handle. User-reported chunks
 // that the engine consistently mis-cut go here.
 const SPLITTER_OVERRIDES = new Map([
+  // 3.10 — visarga-lopa: एषः → एष before व; the vocab gloss says (प्रसविष्यध्वम् + एषः)
+  // which fails the canonical validation because the join has a trailing ः the chunk doesn't.
+  ['प्रसविष्यध्वमेष', ['प्रसविष्यध्वम्', 'एष']],
   // 3.10 — वोऽस्तु + इष्टकामधुक् via avagraha + vowel sandhi
   ['वोऽस्त्विष्टकामधुक्', ['वः', 'अस्तु', 'इष्टकामधुक्']],
   // 3.11 — तैः + दत्तान् + अप्रदाय + एभ्यः (visarga-र् + accusative + abs. + dat.pl.)
