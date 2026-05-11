@@ -1149,6 +1149,22 @@ const SPLITTER_OVERRIDES = new Map([
   //  अति ends in i; उच्छ्रितम् starts with उ. yaṇ इ + उ → य्यु — that's
   //  what makes अत्युच्छ्रितम् with य्यु at the joint).
   ['अत्युच्छ्रितं', ['अति', 'उच्छ्रितम्']],
+  // 6.12 — युञ्ज्यात् + योगम् (जश्त्व त्+य → द्य). Same rule family
+  // as the wired-but-gated t-jash-bha/ga/ba/ya in sandhi.js.
+  // SPLITTER_OVERRIDES fires on the WHOLE mool chunk, which here is
+  // युञ्ज्याद्योगमात्मविशुद्धये (युञ्ज्यात्-जश्त्व + -म् + आ savarṇa).
+  ['युञ्ज्याद्योगम्', ['युञ्ज्यात्', 'योगम्']],
+  ['युञ्ज्याद्योगमात्मविशुद्धये', ['युञ्ज्यात्', 'योगम्', 'आत्मविशुद्धये']],
+  // 6.13 — कायशिरोग्रीवम् is one कर्मधारय chain: काय-शिरस्-ग्रीव
+  // ("body-head-neck"). Keep whole; KNOWN_SAMASAS annotation.
+  ['कायशिरोग्रीवं', ['काय-शिरस्-ग्रीवम्']],
+  // 6.13 — धारयन् + अचलम् (न् + अ → न्न via consonant gemination,
+  // technically the actual sandhi rule). Engine kept it as one chunk
+  // धारयन्नचलं.
+  ['धारयन्नचलं', ['धारयन्', 'अचलम्']],
+  // 6.13 — नासिकाग्रम् is one compound (नासिका-अग्र — "tip of the
+  // nose"; षष्ठी तत्पुरुष). The user prefers seeing the components.
+  ['नासिकाग्रं', ['नासिका-अग्रम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

@@ -40,7 +40,7 @@
 // VYAÑJANA SANDHI (consonant + ...)
 //   7.  श्चुत्व — स्/त्-series before श्/च → palatal     ⚠️  partial via visarga-ca / visarga-cha
 //   8.  ष्टुत्व — स्/त्-series before ष्/ट → retroflex    ❌
-//   9.  जश्त्व — final voiceless stop voices before     ⚠️  t-jash-bha/ga/ba (auto: false — needs lexicon)
+//   9.  जश्त्व — final voiceless stop voices before     ⚠️  t-jash-bha/ga/ba/ya (auto: false — needs lexicon)
 //                voiced sound (झलां जश् झशि, 8.4.53)
 //                Narrow clusters wired (auto): त्+च→च्च,
 //                त्+ज→ज्ज, त्+त→त्त, त्+द→द्द, त्+ल→ल्ल
@@ -410,6 +410,16 @@ export const SANDHI_RULES = [
     examples: ['तत् + ब्रह्म → तद्ब्रह्म', 'सत् + बुद्धिः → सद्बुद्धिः'],
     auto: false,
   },
+  {
+    id: 't-jash-ya',
+    category: 'consonant',
+    name: 'त् + य → द्य (जश्त्व)',
+    description: 'Final त् voices to द् before voiced य (auto-firing disabled — needs lexicon)',
+    pattern: /द्य/,
+    example: 'युञ्ज्यात् + योगम् → युञ्ज्याद्योगम् (BG 6.12)',
+    examples: ['युञ्ज्यात् + योगम् → युञ्ज्याद्योगम् (6.12)', 'सत् + योगः → सद्योगः'],
+    auto: false,
+  },
 
   // Pre-vowel consonant doubling not handled (less common; tail rules)
 ];
@@ -478,6 +488,7 @@ const UNJOIN = {
   't-jash-bha':         { joined: 'द्भ', parts: ['त्', 'भ'] },
   't-jash-ga':          { joined: 'द्ग', parts: ['त्', 'ग'] },
   't-jash-ba':          { joined: 'द्ब', parts: ['त्', 'ब'] },
+  't-jash-ya':          { joined: 'द्य', parts: ['त्', 'य'] },
   // Note: the द्-vowel case (पर्जन्यात् + अन्न → पर्जन्यादन्न) is much harder
   // — द + matra forms a perfectly normal syllable, so we can't blindly
   // split. That case stays in SPLITTER_OVERRIDES until lexicon-driven
