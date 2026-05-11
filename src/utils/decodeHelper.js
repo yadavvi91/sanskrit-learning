@@ -1322,9 +1322,79 @@ const SPLITTER_OVERRIDES = new Map([
   ['श्रद्धयार्चितुमिच्छति', ['श्रद्धया', 'अर्चितुम्', 'इच्छति']],
   // 7.22 — आराधनम् + ईहते (-म् + ई concatenation). Engine kept whole.
   ['आराधनमीहते', ['आराधनम्', 'ईहते']],
+  // 7.24 — मम + अव्ययम् + अनुत्तमम् (savarṇa अ+अ→आ + -म्+अ concatenation).
+  // Engine's vocab had whole-chunk entry; recursive splitter caught the
+  // outer level but missed the inner ममाव्ययम्.
+  ['ममाव्ययमनुत्तमम्', ['मम', 'अव्ययम्', 'अनुत्तमम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);
+}
+
+// ─── Recursive lexicon-validated splitter ───
+//
+// Given a chunk, try every sandhi rule. For each candidate (left, right)
+// pair, recursively try to split each half. A split is "accepted" only
+// if BOTH halves resolve to a real vocab entry (directly or after
+// further splitting). Returns the best decomposition found, or null if
+// no valid split exists (caller should keep the chunk whole).
+//
+// This is the systemic fix the user has been asking for: instead of
+// trying every sandhi rule blindly, we only commit to a split where
+// the resulting words actually exist in the lexicon.
+//
+// Bounded by maxDepth to prevent runaway recursion on pathological
+// inputs; the user-flagged worst cases are typically 3–4 words deep.
+const RECURSIVE_SPLIT_CACHE = new Map();
+
+function recursiveSplit(chunk, depth = 0) {
+  if (depth > 4) return null;
+  if (typeof chunk !== 'string' || chunk.length < 3) return null;
+  if (RECURSIVE_SPLIT_CACHE.has(chunk)) return RECURSIVE_SPLIT_CACHE.get(chunk);
+
+  // Base case: chunk-as-whole is a real word.
+  if (partHasRealVocab(chunk)) {
+    const result = [chunk];
+    RECURSIVE_SPLIT_CACHE.set(chunk, result);
+    return result;
+  }
+
+  // Try undoSandhi for candidate splits.
+  const candidates = undoSandhi(chunk);
+  if (!candidates || candidates.length === 0) {
+    RECURSIVE_SPLIT_CACHE.set(chunk, null);
+    return null;
+  }
+
+  for (const candidate of candidates) {
+    if (!candidate || !Array.isArray(candidate.parts)) continue;
+    if (candidate.parts.length < 2) continue;
+    // For each candidate's parts, recursively check that every part
+    // resolves to either a real vocab entry or a further valid split.
+    const resolved = [];
+    let allOK = true;
+    for (const part of candidate.parts) {
+      if (partHasRealVocab(part)) {
+        resolved.push(part);
+        continue;
+      }
+      // Try recursive split.
+      const sub = recursiveSplit(part, depth + 1);
+      if (sub) {
+        resolved.push(...sub);
+      } else {
+        allOK = false;
+        break;
+      }
+    }
+    if (allOK && resolved.length >= 2) {
+      RECURSIVE_SPLIT_CACHE.set(chunk, resolved);
+      return resolved;
+    }
+  }
+
+  RECURSIVE_SPLIT_CACHE.set(chunk, null);
+  return null;
 }
 
 // Extract individual padas from a (multi-line) mool string by splitting on
@@ -1347,6 +1417,16 @@ function extractPadas(mool) {
     if (hintParts) {
       sandhiNotes.push(`${chunk} = ${hintParts.join(' + ')} (vocab-hint split)`);
       padas.push(...hintParts);
+      continue;
+    }
+    // Recursive lexicon-validated split: only commits to a split when
+    // every resulting part resolves to a real vocab entry (directly or
+    // through further recursion). Catches the long tail of compound
+    // chunks the user has been hand-fixing one by one.
+    const recSplit = recursiveSplit(chunk);
+    if (recSplit && recSplit.length >= 2) {
+      sandhiNotes.push(`${chunk} = ${recSplit.join(' + ')} (lexicon-validated split)`);
+      padas.push(...recSplit);
       continue;
     }
     const r = undoSandhi(chunk);
