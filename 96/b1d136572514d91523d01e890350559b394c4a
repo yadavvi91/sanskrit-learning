@@ -1,0 +1,31 @@
+checkpoints/checkpoint-51.md
+  s_d5e8c30b294ba2::t_be08accc3bcef8 1-50
+plans/v19-dcs-integration.md
+  s_d5e8c30b294ba2::t_a041736ee7f8bb 1-108
+checkpoints/checkpoint-50.md
+  s_d5e8c30b294ba2::t_507d4cff1c1a6f 1-36
+plans/v17-corpus-decomposition-sweep.md
+  s_d5e8c30b294ba2::t_86042213c52da3 1-74
+plans/v16-recursive-splitter-and-lexicon-validation.md
+  s_d5e8c30b294ba2::t_3d6a0601b52192 1-100
+checkpoints/checkpoint-49.md
+  s_d5e8c30b294ba2::t_7eb01ead2a717d 1-34
+plans/v18-roots-and-misc.md
+  s_d5e8c30b294ba2::t_2cc2e043e8b4cf 1-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "96b1d136572514d91523d01e890350559b394c4a",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
