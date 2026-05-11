@@ -245,7 +245,18 @@ function Popover({ word, parsing, fromSharedDict }) {
         )}
         {parsing.kind && <Row label="kind" value={parsing.kind} />}
         {parsing.gana != null && <Row label="गण" value={parsing.gana} />}
-        {parsing.pada && <Row label="पद" value={parsing.pada === 'P' ? 'परस्मैपद' : parsing.pada === 'A' ? 'आत्मनेपद' : parsing.pada} />}
+        {parsing.pada && (
+          <Row
+            label="पद"
+            value={
+              parsing.pada === 'P'  ? 'परस्मैपद'
+              : parsing.pada === 'A'  ? 'आत्मनेपद'
+              : parsing.pada === 'U'  ? 'उभयपद'
+              : parsing.pada === 'Kr' ? 'कर्मणि (passive)'
+              : parsing.pada
+            }
+          />
+        )}
         {parsing.lakara && <Row label="लकार" value={LAKARA_LABELS[parsing.lakara] ?? parsing.lakara} />}
         {parsing.purusha && <Row label="पुरुष" value={PURUSHA_LABELS[parsing.purusha] ?? parsing.purusha} />}
         {parsing.gender && <Row label="लिंग" value={GENDER_LABELS[parsing.gender] ?? parsing.gender} />}

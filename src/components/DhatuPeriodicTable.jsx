@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { GANA_META } from '../utils/endings.js';
 
 const TIER_OPTIONS = [
@@ -11,10 +11,48 @@ const TIER_OPTIONS = [
   { id: 'gita',    label: 'In Gītā',  maxRank: Infinity, inGitaOnly: true },
 ];
 
+// Pick the narrowest tier that contains the selected dhātu so it's visible
+// when the user lands here via a deep link (e.g. /verbs/रिच्).
+function defaultTierFor(dhatu) {
+  if (!dhatu) return 'all';
+  const rank = dhatu.frequencyRank;
+  // Unranked stubs (the 49 _dhatus_extra entries) don't fit any Top-N
+  // tier, so default to 'all' to keep them visible.
+  if (rank == null) return 'all';
+  if (rank <= 10)  return 'top10';
+  if (rank <= 25)  return 'top25';
+  if (rank <= 50)  return 'top50';
+  if (rank <= 100) return 'top100';
+  if (rank <= 192) return 'top192';
+  return 'all';
+}
+
 export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
   const [order, setOrder] = useState('frequency');
-  const [tier, setTier] = useState('all');
+  const initialTier = defaultTierFor(dhatus.find((d) => d.id === selectedId));
+  const [tier, setTier] = useState(initialTier);
   const [query, setQuery] = useState('');
+
+  // When the selected dhātu changes (deep-link navigation to a different
+  // /verbs/<id>), auto-widen the tier if the new selection isn't in the
+  // currently visible filter. Keeps the user-visible behaviour: "the
+  // verb you came here for is always in view, and the surrounding peers
+  // are the narrowest tier that includes it."
+  useEffect(() => {
+    const sel = dhatus.find((d) => d.id === selectedId);
+    if (!sel) return;
+    const needed = defaultTierFor(sel);
+    const curOpt = TIER_OPTIONS.find((t) => t.id === tier) ?? TIER_OPTIONS[0];
+    const needOpt = TIER_OPTIONS.find((t) => t.id === needed) ?? TIER_OPTIONS[0];
+    // Switch only if the current tier would hide the selection.
+    if (sel.frequencyRank == null) {
+      if (curOpt.maxRank !== Infinity) setTier(needed);
+      return;
+    }
+    if (sel.frequencyRank > curOpt.maxRank) setTier(needed);
+    // No-op if the current tier already contains the selection — we don't
+    // narrow the user's view if they widened it on purpose.
+  }, [selectedId, dhatus, tier]);
 
   const filtered = useMemo(() => {
     const tierOpt = TIER_OPTIONS.find((t) => t.id === tier) ?? TIER_OPTIONS[0];
