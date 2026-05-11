@@ -1024,6 +1024,15 @@ const SPLITTER_OVERRIDES = new Map([
   // and -आत्मन् compounds elsewhere. The bahuvrīhi entry stays in
   // KNOWN_SAMASAS for when the form appears compactly.
   ['ब्रह्मयोगयुक्तात्मा', ['ब्रह्मयोगयुक्त', 'आत्मा']],
+  // 5.23 — शक्नोति + इह + एव (इ + इ → ई savarṇa-dīrgha, then अ + ए → ऐ vrddhi)
+  ['शक्नोतीहैव', ['शक्नोति', 'इह', 'एव']],
+  // 5.23 — प्राक् + शरीर-विमोक्षण-आत् (no sandhi modification at the
+  // boundary; just concatenation. Splitter was wrongly cutting visarga +
+  // श sandhi where there is none).
+  ['प्राक्शरीरविमोक्षणात्', ['प्राक्', 'शरीर-विमोक्षणात्']],
+  // 5.23 — कामक्रोधोद्भवम् is ONE compound: काम-क्रोध-उद्भव-म्
+  // ("arising from desire and anger"); samāsa note via KNOWN_SAMASAS.
+  ['कामक्रोधोद्भवं', ['काम-क्रोध-उद्भवम्']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

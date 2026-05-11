@@ -59,6 +59,8 @@ export const KNOWN_SAMASAS = {
   'असक्तात्मन्':  { vigraha: 'असक्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is unattached' },
   'ब्रह्मयोगयुक्तात्मन्': { vigraha: 'ब्रह्मयोगेन युक्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is joined to Brahman-yoga' },
   'बाह्यस्पर्श': { vigraha: 'बाह्याः स्पर्शाः', type: 'कर्मधारय', gloss: 'outer contacts / external sensations' },
+  'शरीरविमोक्षण': { vigraha: 'शरीरस्य विमोक्षणम्', type: 'षष्ठी तत्पुरुष', gloss: 'release of the body (i.e. death; the moment of bodily liberation)' },
+  'काम-क्रोध-उद्भव':{ vigraha: 'कामात् क्रोधात् च उद्भवः', type: 'पञ्चमी तत्पुरुष (chain)', gloss: 'arising from desire and anger (two-source chain: desire → anger → impulse-arising)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
