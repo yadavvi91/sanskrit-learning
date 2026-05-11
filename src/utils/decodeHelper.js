@@ -1165,6 +1165,13 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.13 — नासिकाग्रम् is one compound (नासिका-अग्र — "tip of the
   // nose"; षष्ठी तत्पुरुष). The user prefers seeing the components.
   ['नासिकाग्रं', ['नासिका-अग्रम्']],
+  // 6.14 — प्रशान्त + आत्मा (savarṇa-dīrgha अ + आ → आ; bahuvrīhi
+  // "one whose self is calmed"). Engine was wrongly cutting at the
+  // -न् + त boundary as प्रशान् + तात्मा.
+  ['प्रशान्तात्मा', ['प्रशान्त', 'आत्मा']],
+  // 6.14 — मच्चित्तः ("with mind on me") = मत् + चित्तः
+  // (त् + च → च्च gemination = श्चुत्व). Bahuvrīhi.
+  ['मच्चित्तो', ['मत्-चित्तः']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

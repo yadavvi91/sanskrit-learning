@@ -98,6 +98,9 @@ export const KNOWN_SAMASAS = {
   'आत्मविशुद्धि':      { vigraha: 'आत्मनः विशुद्धिः', type: 'षष्ठी तत्पुरुष', gloss: 'self-purification (विशुद्धि = वि + शुद्धि, "thorough purification"; BG 6.12)' },
   'काय-शिरस्-ग्रीव':  { vigraha: 'कायश्च शिरश्च ग्रीवा च', type: 'इतरेतर द्वंद्व (chain)', gloss: 'body, head, and neck (the three-part posture-target in BG 6.13)' },
   'नासिका-अग्र':      { vigraha: 'नासिकायाः अग्रम्', type: 'षष्ठी तत्पुरुष', gloss: 'tip of the nose (the gaze-target in BG 6.13)' },
+  // BG 6.14 — bahuvrīhi describing the meditator
+  'प्रशान्त-आत्मन्':   { vigraha: 'प्रशान्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is calmed (BG 6.14)' },
+  'मत्-चित्त':         { vigraha: 'मयि चित्तं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is on me / fixed on Me (मत्- = "of me, in me"; recurring epithet for the yogī devoted to Kṛṣṇa, e.g. BG 6.14, 18.57)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },

@@ -447,6 +447,8 @@ export const VOCAB_EXTENDED_PART_1 = {
   'धारयन्':          { category: 'krdanta', root: '√धृ', kind: 'present-active', gender: 'm', number: 'eka', case: 'pra', gloss: 'holding / supporting (शतृ present-active participle of √धृ, m. nom. sg.)' },
   'अचलम्':           { category: 'adjective', root: 'अचल', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'unmoving / steady (नञ् + चल "moving"; BG 6.13)' },
   'नासिका-अग्रम्':   { category: 'noun', root: 'नासिका-अग्र', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'tip of the nose (षष्ठी तत्पुरुष — नासिकायाः अग्रम्; BG 6.13 gaze-target)' },
+  'प्रशान्त':          { category: 'krdanta', root: '√शम्', upasarga: ['प्र'], kind: 'past-passive', gloss: 'calmed / pacified (PPP of प्र + √शम्; first member of the bahuvrīhi प्रशान्त-आत्मन्)' },
+  'मत्-चित्तः':       { category: 'adjective', root: 'मत्-चित्त', gender: 'm', number: 'eka', case: 'pra', gloss: 'one whose mind is on me (बहुव्रीहि — मयि चित्तं यस्य सः; BG 6.14)' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },
