@@ -1,0 +1,23 @@
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_d891303b6bc4db 958-962
+src/utils/sandhi.js
+  s_d5e8c30b294ba2::t_3daaed296f9707 315,325-328,330-331,334-338,340-342,344-348,350-354
+  s_d5e8c30b294ba2::t_72a23d428008ef 316-324,329,332-333,339,343,349
+  s_d5e8c30b294ba2::t_f4e90dcc2a231b 417-426
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "bb61578605df874887b60cc194a4765981762785",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
