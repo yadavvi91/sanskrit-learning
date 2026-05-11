@@ -462,6 +462,8 @@ export const VOCAB_EXTENDED_PART_1 = {
   'अवतिष्ठते':       { category: 'verb', root: '√स्था', upasarga: ['अव'], gana: 1, pada: 'A', lakara: 'lat', purusha: 'prathama', number: 'eka', gloss: 'abides / stands firm (अव + √स्था ātmanepada present 3sg)' },
   'सर्व-कामेभ्यः':   { category: 'noun', root: 'सर्व-काम', gender: 'm', number: 'bahu', case: 'cha-or-pan', gloss: 'from/for all desires (कर्मधारय — सर्व-काम "all desires"; dat./abl. pl.; BG 6.18)' },
   'उपमा':            { category: 'noun', root: 'उपमा', gender: 'f', number: 'eka', case: 'pra', gloss: 'analogy / comparison / simile (nom. sg. of f. ā-stem उपमा; BG 6.19 — the lamp-simile)' },
+  'बुद्धि-ग्राह्यम्': { category: 'adjective', root: 'बुद्धि-ग्राह्य', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'graspable by the intellect (तृतीया तत्पुरुष — बुद्ध्या ग्राह्यः; gerundive of √ग्रह्; BG 6.21)' },
+  'अति-इन्द्रियम्':  { category: 'adjective', root: 'अति-इन्द्रिय', gender: 'n', number: 'eka', case: 'pra-or-dvi', gloss: 'beyond the senses / transcending the senses (BG 6.21; प्रादि-समास "अति + इन्द्रिय")' },
   'मामेवैष्यत्यसंशयः':  { category: 'verb', root: '√इ', lakara: 'lrt', purusha: 'prathama', number: 'eka', gloss: 'will come to me, no doubt (compound)' },
   'माहात्म्यमपि':       { category: 'noun', root: 'माहात्म्य', gender: 'n', number: 'eka', case: 'dvi', gloss: 'greatness too (माहात्म्यम् + अपि)' },
   'मुक्तः':             { category: 'krdanta', root: '√मुच्', kind: 'past-passive', gloss: 'released / liberated' },

@@ -110,6 +110,9 @@ export const KNOWN_SAMASAS = {
   // BG 6.17 — moderation compounds describing the yogi
   'युक्त-आहार-विहार': { vigraha: 'युक्तौ आहार-विहारौ यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose eating and recreation are regulated (BG 6.17)' },
   'युक्त-स्वप्न-अवबोध': { vigraha: 'युक्तौ स्वप्न-अवबोधौ यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose sleeping and waking are regulated (BG 6.17)' },
+  // BG 6.21 — pair describing the supreme bliss
+  'बुद्धि-ग्राह्य':    { vigraha: 'बुद्ध्या ग्राह्यः', type: 'तृतीया तत्पुरुष', gloss: 'graspable by the intellect (gerundive ग्राह्य; BG 6.21)' },
+  'अति-इन्द्रिय':     { vigraha: 'इन्द्रियाणि अतिक्रान्तः', type: 'प्रादि-समास / अव्ययीभाव', gloss: 'beyond the senses / transcending the senses (BG 6.21)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
