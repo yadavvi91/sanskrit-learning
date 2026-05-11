@@ -1081,6 +1081,19 @@ const SPLITTER_OVERRIDES = new Map([
   // 6.2 — हि + असंन्यस्त-सङ्कल्पः joined by yaṇ sandhi (इ + अ → य).
   // Engine was wrongly applying visarga + त → स्त split mid-compound.
   ['ह्यसंन्यस्तसङ्कल्पो', ['हि', 'असंन्यस्त-सङ्कल्पः']],
+  // 6.3 — three words sandhi-joined: आरुरुक्षोः + मुनेः + योगम्
+  // (visarga-र् twice; -म् retained on योगम्). Engine kept the first
+  // two as one chunk आरुरुक्षोर्मुनेः.
+  ['आरुरुक्षोर्मुनेर्योगं', ['आरुरुक्षोः', 'मुनेः', 'योगम्']],
+  // 6.3, 6.4 — योग + आरूढ joined by savarṇa-dīrgha (अ + आ → आ); one
+  // compound, gen. sg. Engine was wrongly applying visarga-र् split
+  // and producing योगाः + ऊढस्य.
+  ['योगारूढस्य', ['योग-आरूढस्य']],
+  ['योगारूढः', ['योग-आरूढः']],
+  ['योगारूढस्तदोच्यते', ['योग-आरूढः', 'तदा', 'उच्यते']],
+  // 6.4 — कर्मस्वनुषज्जते = कर्मसु + अनुषज्जते (yaṇ उ + अ → व).
+  // Engine was applying त् + ज → ज्ज split mid-word.
+  ['कर्मस्वनुषज्जते', ['कर्मसु', 'अनुषज्जते']],
 ]);
 for (const [chunk, parts] of SPLITTER_OVERRIDES) {
   VOCAB_HINT_SPLITS.set(chunk, parts);

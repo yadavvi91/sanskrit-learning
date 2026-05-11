@@ -81,6 +81,9 @@ export const KNOWN_SAMASAS = {
   'सर्व-लोक-महेश्वर':  { vigraha: 'सर्वेषां लोकानां महेश्वरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'Great Lord of all worlds' },
   // BG 6.2 — bahuvrīhi describing who is/is-not a yogi
   'असंन्यस्त-सङ्कल्प': { vigraha: 'असंन्यस्तः सङ्कल्पः येन सः', type: 'बहुव्रीहि (नञ्)', gloss: 'one who has not renounced his sankalpas (intentions / will-formations)' },
+  // BG 6.3, 6.4 — योग-आरूढ "one who has ascended into yoga" (the
+  // metaphor: यो + ग as the goal mountain; अ + आ → आ savarṇa-dīrgha).
+  'योग-आरूढ':         { vigraha: 'योगम् आरूढः', type: 'द्वितीया तत्पुरुष', gloss: 'one who has ascended into yoga / is established in yoga (BG 6.3, 6.4)' },
 
   // Multi-element तत्पुरुष chains (each next member governs the previous in षष्ठी)
   'मृत्युसंसारसागर': { vigraha: 'मृत्योः संसारस्य सागरः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the ocean of the saṃsāra (cycle of rebirth) of death — three nouns in successive षष्ठी' },
