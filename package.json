@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:pages": "VITE_BASE=/sanskrit-learning/ vite build",
     "preview": "vite preview",
+    "preview:pages": "VITE_BASE=/sanskrit-learning/ vite build && vite preview --base /sanskrit-learning/",
     "test": "vitest"
   },
   "dependencies": {

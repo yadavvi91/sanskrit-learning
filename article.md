@@ -635,4 +635,4 @@ That's the whole project. A garden, not a textbook. A journal, not a graveyard.
 
 ## Appendix: source notes
 
-The long-form working notes that produced this project's framing — the verse-by-verse decoding, the verb-system spec, the grammar-atlas spec — are preserved in the [`conversation/`](conversation/) directory at the repo root, exported as full HTML pages. They're personal working notes, kept for offline reference and as the durable record behind `CLAUDE.md` / `CLAUDE2.md` / `CLAUDE3.md`.
+The long-form working notes that produced this project's framing — the verse-by-verse decoding, the verb-system spec, the grammar-atlas spec — are preserved in the [`conversation/` directory in the repo](https://github.com/yadavvi91/sanskrit-learning/tree/main/conversation), exported as full HTML pages. They're personal working notes, kept for offline reference and as the durable record behind `CLAUDE.md` / `CLAUDE2.md` / `CLAUDE3.md`.

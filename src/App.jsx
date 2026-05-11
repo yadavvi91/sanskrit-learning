@@ -153,9 +153,21 @@ export default function App() {
 }
 
 function NotFound() {
+  const navigate = useNavigate();
+  // Use navigate() rather than <a href="/journey"> so the link works
+  // identically under BrowserRouter (local dev) and HashRouter (Pages).
   return (
     <div className="empty-state">
-      <p>That tab doesn't exist. <a href="/journey">Back to Verse Journey →</a></p>
+      <p>
+        That tab doesn't exist.{' '}
+        <button
+          type="button"
+          onClick={() => navigate('/journey')}
+          style={{ background: 'none', border: 'none', padding: 0, color: 'var(--gold)', textDecoration: 'underline', cursor: 'pointer', font: 'inherit' }}
+        >
+          Back to Verse Journey →
+        </button>
+      </p>
     </div>
   );
 }
