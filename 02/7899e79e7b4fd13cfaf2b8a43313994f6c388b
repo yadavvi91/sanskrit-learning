@@ -1,0 +1,39 @@
+src/data/_known_samasas.js
+  s_d5e8c30b294ba2::t_031070e0d6627d 64-67
+  s_d5e8c30b294ba2::t_f4ac6169c1a0f5 74
+  s_d5e8c30b294ba2::t_cc386d575480e4 68-72
+  s_d5e8c30b294ba2::t_7be73ada33b5cb 73
+  s_d5e8c30b294ba2::t_a751f3b8e0bb63 75
+src/data/_vocab_extended_part8.js
+  s_d5e8c30b294ba2::t_abc1f9fecdd887 419-421
+src/data/_vocab_extended_part3.js
+  s_d5e8c30b294ba2::t_59c5c817f7e219 204
+src/utils/decodeHelper.js
+  s_d5e8c30b294ba2::t_cbf9452bcf1b85 1044-1048
+  s_d5e8c30b294ba2::t_4714d181286de5 1049-1053
+  s_d5e8c30b294ba2::t_e85c5a2b05ce6a 1054-1058
+  s_d5e8c30b294ba2::t_86b698d6627f46 1059-1066
+  s_d5e8c30b294ba2::t_732b14cb69bedf 1036-1043
+src/data/_vocab_extended_part1.js
+  s_d5e8c30b294ba2::t_08ac368130bf1a 402-405
+  s_d5e8c30b294ba2::t_a60df884744c2a 406-408
+  s_d5e8c30b294ba2::t_3cf5131307cd79 414
+  s_d5e8c30b294ba2::t_9ff207af044b5c 410-413
+  s_d5e8c30b294ba2::t_75938e4ee73507 409
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "027899e79e7b4fd13cfaf2b8a43313994f6c388b",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
