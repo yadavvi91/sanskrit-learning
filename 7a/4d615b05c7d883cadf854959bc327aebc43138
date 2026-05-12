@@ -1,0 +1,23 @@
+scripts/extract-unknown-compounds.mjs
+  s_d5e8c30b294ba2::t_fd7d382b756401 44
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_48b1266c0b1b61 392
+scripts/_unknown_compounds.json
+  s_d5e8c30b294ba2::t_f52975ae6bbc6e 3,171,369,674,787,1115,1392,1894,1920,2106,3599,5701,6049,6878,7522,7880,8123,8359
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "7a4d615b05c7d883cadf854959bc327aebc43138",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
