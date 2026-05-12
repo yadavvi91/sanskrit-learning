@@ -24,6 +24,7 @@ import { KNOWN_SAMASAS } from './_known_samasas.js';
 import DCS_PADACCHEDA from './dcs-padaccheda.json';
 import ENRICHED_VIBHAKTI from './_enriched_vibhakti.json';
 import ENRICHED_VYAKHYA from './_enriched_vyakhya.json';
+import BG3_VYAKHYA from './_bg3_vyakhya.json';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -722,6 +723,17 @@ export function hydrateAutoStubVerses() {
           v.keyFights = [...(v.keyFights || []), ...toAdd];
         }
       }
+    }
+    // Hand-curated interpretive vyakhya for BG 3 (Karma Yoga). Each
+    // verse gets 2 substantive entries beyond the single INTERP_NOTES
+    // entry that was already there. Append-only — same merge pattern.
+    const bg3 = BG3_VYAKHYA[key];
+    if (Array.isArray(bg3) && bg3.length > 0) {
+      const existing = new Set((v.vyakhya || [])
+        .filter((e) => e && typeof e === 'object')
+        .map((e) => (e.title || '').trim()));
+      const toAdd = bg3.filter((e) => !existing.has((e.title || '').trim()));
+      if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
     }
     // Structural vyakhya: finite-verb anchor, kṛdanta layer, case
     // distribution. Generated from DCS by scripts/enrich-vyakhya.mjs.
