@@ -1,0 +1,19 @@
+src/components/Origin.jsx
+  s_77270f59c41566::t_425c768b835a36 7-9,11-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e6355ceb06cf6336911a9e86b4a308cb7d0e993a",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
