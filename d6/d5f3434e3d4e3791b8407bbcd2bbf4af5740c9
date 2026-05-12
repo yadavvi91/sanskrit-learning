@@ -1,0 +1,23 @@
+src/data/_finite_overrides_part1.js
+  s_77270f59c41566::t_086a586a1b651c 75-84
+src/data/_finite_overrides_part2.js
+  s_77270f59c41566::t_086a586a1b651c 118-125
+src/data/hydrate.test.js
+  s_77270f59c41566::t_181a94157f1c5f 80-104
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d6d5f3434e3d4e3791b8407bbcd2bbf4af5740c9",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
