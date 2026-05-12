@@ -529,23 +529,22 @@ button:disabled {
   color: var(--ink-faint);
 }
 
-/* Collapsible section — toggle button lives on the right edge of the
-   body column. The label stays plain (non-clickable), matching the
-   regular Section layout. */
+/* Collapsible section — toggle button sits on the LEFT of the body
+   row, with preview / content flowing to its right. */
 .section-body-wrap {
-  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .section-collapse-toggle {
-  position: absolute;
-  top: -2px;
-  right: 0;
+  flex: 0 0 auto;
   appearance: none;
   background: none;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   font-size: 13px;
   line-height: 1;
@@ -554,23 +553,52 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  margin-top: 2px;
 }
 
 .section-collapse-toggle:hover {
   color: var(--gold);
   border-color: var(--gold);
+  background: var(--gold-pale, rgba(181, 119, 13, 0.06));
 }
 
-.verse-section-collapsible .section-body {
-  padding-right: 36px;
+.section-body-wrap > .section-body {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
-@media (max-width: 720px) {
-  .section-collapse-toggle {
-    top: 0;
-    right: 0;
-  }
+/* Collapsed-state preview: keeps the row visually balanced instead of
+   an empty gap. Shows count + first entry preview as a faded line. */
+.section-body-collapsed {
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.collapsed-summary {
+  margin: 0;
+}
+
+.collapsed-summary strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.collapsed-hint {
+  display: inline-block;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.collapsed-first {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--font-deva);
+  color: var(--ink);
+  font-size: 14px;
 }
 
 .section-body {

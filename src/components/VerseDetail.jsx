@@ -218,7 +218,19 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       ) : null}
 
       {verse.vibhaktiNotes && verse.vibhaktiNotes.length > 0 && (
-        <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer} collapsible>
+        <Section
+          label="विभक्ति"
+          labelEn="Case roles"
+          glossaryTerm="विभक्ति"
+          onOpenPrimer={onOpenPrimer}
+          collapsible
+          collapsedPreview={
+            <p className="collapsed-summary">
+              <strong>{verse.vibhaktiNotes.length}</strong> case-role note{verse.vibhaktiNotes.length === 1 ? '' : 's'} hidden — click <span className="collapsed-hint">▸</span> to expand.
+              <span className="collapsed-first"> First: {String(verse.vibhaktiNotes[0]).slice(0, 80)}{String(verse.vibhaktiNotes[0]).length > 80 ? '…' : ''}</span>
+            </p>
+          }
+        >
           <ul className="vibhakti-notes">
             {verse.vibhaktiNotes.map((note, i) => (
               <li key={i}>{note}</li>
@@ -228,7 +240,17 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       )}
 
       {verse.keyFights && verse.keyFights.length > 0 && (
-        <Section label="विवेकः" labelEn="Key fights won here" collapsible>
+        <Section
+          label="विवेकः"
+          labelEn="Key fights won here"
+          collapsible
+          collapsedPreview={
+            <p className="collapsed-summary">
+              <strong>{verse.keyFights.length}</strong> realisation{verse.keyFights.length === 1 ? '' : 's'} hidden — click <span className="collapsed-hint">▸</span> to expand.
+              <span className="collapsed-first"> First: {String(verse.keyFights[0]).slice(0, 80)}{String(verse.keyFights[0]).length > 80 ? '…' : ''}</span>
+            </p>
+          }
+        >
           <ul className="fights">
             {verse.keyFights.map((fight, i) => (
               <li key={i}>{fight}</li>
@@ -389,7 +411,7 @@ function References({ references }) {
   );
 }
 
-function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children, collapsible, defaultOpen = true }) {
+function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children, collapsible, collapsedPreview, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
   const labelNode = glossaryTerm
     ? <Glossary term={glossaryTerm} onOpenPrimer={onOpenPrimer}><span className="section-label-sa">{label}</span></Glossary>
@@ -413,7 +435,9 @@ function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children, collaps
           >
             {open ? '▾' : '▸'}
           </button>
-          {open && <div className="section-body">{children}</div>}
+          {open
+            ? <div className="section-body">{children}</div>
+            : <div className="section-body section-body-collapsed">{collapsedPreview}</div>}
         </div>
       </section>
     );
