@@ -92,29 +92,38 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
   it('BG 13.18 — उच्यते is recovered from the sandhi-fused परमुच्यते via override', () => {
     // The engine missed उच्यते because परम् + उच्यते joins as परमुच्यते
     // (orthographic, no sandhi transformation) and the DCS padaccheda
-    // covers only the second half. Override surfaces उच्यते as passive
-    // 3sg of √वच्.
+    // originally covered only the second half. Override surfaces उच्यते
+    // as passive 3sg of √वच्, and the DCS data has been completed with
+    // the full first-half padaccheda so the verse no longer shows up
+    // truncated.
     const v = find(13, 18);
     expect(Array.isArray(v.finiteVerbs)).toBe(true);
     const uchyate = v.finiteVerbs.find((f) => f.form === 'उच्यते');
     expect(uchyate).toBeDefined();
     expect(uchyate.root).toBe('√वच्');
     expect(uchyate.lakara).toBe('लट्');
+    // Completion-of-padaccheda check: every word from the verse text
+    // (both halves) must appear as a pada.
+    expect(v.padaccheda).toEqual(expect.arrayContaining([
+      'ज्योतिषाम्', 'अपि', 'तत्', 'ज्योतिः', 'तमसः', 'परम्', 'उच्यते',
+      'ज्ञानम्', 'ज्ञेयम्', 'ज्ञान-गम्यम्', 'हृदि', 'सर्वस्य', 'विष्ठितम्',
+    ]));
   });
 
-  it('samasNotes pick up type + gloss from vibhaktiNotes (samāsa-vigraha, not just sandhi-split)', () => {
-    // 2.46's vibhakti note tags सम्प्लुतोदके as a बहुव्रीहि with the
-    // gloss "(in that) whose-water-is-flooded-(everywhere)". The
-    // padaccheda has the hyphenated form `सम्प्लुत-उदके` — prefix
-    // matching against the parsed vibhakti compound enriches the
-    // derived samasNotes entry with type + gloss.
+  it('samasNotes pick up type + gloss for सम्प्लुत-उदके (BG 2.46) via the known-samasa lexicon', () => {
+    // 2.46's सम्प्लुत-उदके — a बहुव्रीहि "(in a reservoir) whose
+    // waters have flooded". Originally inferred from vibhaktiNotes; after
+    // the v19 KNOWN_SAMASAS expansion, this compound has a hand-curated
+    // entry that supersedes the heuristic derivation. Either source path
+    // is fine — what matters is that the type is बहुव्रीहि and the gloss
+    // is real.
     const v = find(2, 46);
     expect(Array.isArray(v.samasNotes)).toBe(true);
     const samp = v.samasNotes.find((s) => s.compound === 'सम्प्लुत-उदके');
     expect(samp).toBeDefined();
     expect(samp.type).toBe('बहुव्रीहि');
     expect(samp.gloss.length).toBeGreaterThan(0);
-    expect(samp.source).toBe('derived-from-vibhakti');
+    expect(['known-samasa-lexicon', 'derived-from-vibhakti']).toContain(samp.source);
   });
 
   it('2.24 surfaces stacked predicate adjectives (अच्छेद्यः, अदाह्यः, नित्यः, …)', () => {

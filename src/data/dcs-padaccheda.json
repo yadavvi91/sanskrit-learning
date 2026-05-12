@@ -89975,6 +89975,13 @@
   },
   "13.18": {
     "padaccheda": [
+      "ज्योतिषाम्",
+      "अपि",
+      "तत्",
+      "ज्योतिः",
+      "तमसः",
+      "परम्",
+      "उच्यते",
       "ज्ञानम्",
       "ज्ञेयम्",
       "ज्ञान-गम्यम्",
@@ -89983,6 +89990,77 @@
       "विष्ठितम्"
     ],
     "wordParsings": {
+      "ज्योतिषाम्": {
+        "form": "ज्योतिषाम्",
+        "root": "ज्योतिस्",
+        "source": "dcs",
+        "category": "noun",
+        "case": "sha",
+        "number": "bahu",
+        "gender": "n",
+        "lemmaIast": "jyotis",
+        "pos": "NOUN"
+      },
+      "अपि": {
+        "form": "अपि",
+        "root": "अपि",
+        "source": "dcs",
+        "category": "particle",
+        "lemmaIast": "api",
+        "pos": "PART"
+      },
+      "तत्": {
+        "form": "तत्",
+        "root": "तद्",
+        "source": "dcs",
+        "category": "pronoun",
+        "case": "pra",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "tad",
+        "pos": "PRON"
+      },
+      "ज्योतिः": {
+        "form": "ज्योतिः",
+        "root": "ज्योतिस्",
+        "source": "dcs",
+        "category": "noun",
+        "case": "pra",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "jyotis",
+        "pos": "NOUN"
+      },
+      "तमसः": {
+        "form": "तमसः",
+        "root": "तमस्",
+        "source": "dcs",
+        "category": "noun",
+        "case": "pan",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "tamas",
+        "pos": "NOUN"
+      },
+      "परम्": {
+        "form": "परम्",
+        "root": "परम्",
+        "source": "dcs",
+        "category": "particle",
+        "lemmaIast": "param",
+        "pos": "ADV"
+      },
+      "उच्यते": {
+        "form": "उच्यते",
+        "root": "वच्",
+        "source": "dcs",
+        "category": "verb",
+        "number": "eka",
+        "lakara": "lat",
+        "purusha": "prathama",
+        "lemmaIast": "vac",
+        "pos": "VERB"
+      },
       "ज्ञानम्": {
         "form": "ज्ञानम्",
         "root": "ज्ञान",
@@ -90062,8 +90140,17 @@
         "pos": "VERB"
       }
     },
-    "finiteVerbs": [],
-    "sandhied": "ज्ञानं ज्ञेयं ज्ञानगम्यं हृदि सर्वस्य विष्ठितम्"
+    "finiteVerbs": [
+      {
+        "form": "उच्यते",
+        "root": "वच्",
+        "lakara": "lat",
+        "purusha": "prathama",
+        "number": "eka",
+        "source": "dcs"
+      }
+    ],
+    "sandhied": "ज्योतिषामपि तज्ज्योतिस्तमसः परमुच्यते ज्ञानं ज्ञेयं ज्ञानगम्यं हृदि सर्वस्य विष्ठितम्"
   },
   "13.19": {
     "padaccheda": [
