@@ -1,0 +1,50 @@
+src/data/_bg5_vyakhya.json
+  s_d5e8c30b294ba2::t_0b4aeea0dccff8 1-292
+src/data/_bg2_vyakhya.json
+  s_d5e8c30b294ba2::t_e4b09c60020a82 1-290
+src/data/_bg9_vyakhya.json
+  s_d5e8c30b294ba2::t_b61edb4a2f0fb2 1-342
+src/data/_bg17_vyakhya.json
+  s_d5e8c30b294ba2::t_cf5a317df593ab 1-282
+src/data/_bg8_vyakhya.json
+  s_d5e8c30b294ba2::t_4dbb985db2a627 1-282
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_5adf3652a4643a 27-28,30-37,39-40,42-55
+  s_d5e8c30b294ba2::t_346cc295c4a712 884-893
+src/data/_bg13_vyakhya.json
+  s_d5e8c30b294ba2::t_305c539f2f175c 1-352
+src/data/_bg1_vyakhya.json
+  s_d5e8c30b294ba2::t_a41ad9e4ce566b 1-190
+src/data/_bg18_vyakhya.json
+  s_d5e8c30b294ba2::t_c8179bc45d2404 1-782
+src/data/_bg11_vyakhya.json
+  s_d5e8c30b294ba2::t_b89bb4bc903d11 1-552
+src/data/_bg6_vyakhya.json
+  s_d5e8c30b294ba2::t_7b7e3af5ec5208 1-472
+src/data/_bg16_vyakhya.json
+  s_d5e8c30b294ba2::t_6b960b4e4c483c 1-242
+src/data/_bg4_vyakhya.json
+  s_d5e8c30b294ba2::t_eb6f316ab85151 1-170
+src/data/_bg10_vyakhya.json
+  s_d5e8c30b294ba2::t_8cf37efd723d70 1-422
+src/data/_bg7_vyakhya.json
+  s_d5e8c30b294ba2::t_13c7062c10270e 1-302
+src/data/_bg14_vyakhya.json
+  s_d5e8c30b294ba2::t_75532696d2ff2d 1-272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e54bda34feae264eaff9aab1a71cfefa1baf2668",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
