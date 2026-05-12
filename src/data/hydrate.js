@@ -23,6 +23,7 @@ import { lookupSharedVocab, lookupByRoot } from './sharedVocab.js';
 import { KNOWN_SAMASAS } from './_known_samasas.js';
 import DCS_PADACCHEDA from './dcs-padaccheda.json';
 import ENRICHED_VIBHAKTI from './_enriched_vibhakti.json';
+import ENRICHED_VYAKHYA from './_enriched_vyakhya.json';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -664,6 +665,38 @@ export function hydrateAutoStubVerses() {
         }
       }
     }
+    // Structural vyakhya: finite-verb anchor, kṛdanta layer, case
+    // distribution. Generated from DCS by scripts/enrich-vyakhya.mjs.
+    // Brings auto-stub verses from ~1 vyakhya entry to ~3-4 each — still
+    // less interpretive than hand-curated full-tier, but covers the
+    // structural skeleton for every verse.
+    const enrichedVy = ENRICHED_VYAKHYA[key];
+    if (Array.isArray(enrichedVy) && enrichedVy.length > 0) {
+      const existing = new Set((v.vyakhya || [])
+        .filter((e) => e && typeof e === 'object')
+        .map((e) => (e.title || '').trim()));
+      const toAdd = enrichedVy.filter((e) => !existing.has((e.title || '').trim()));
+      if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
+    }
+    // Inline compound-architecture vyakhya — needs samasNotes which are
+    // built earlier in this loop, so do it here rather than in the script.
+    if (Array.isArray(v.samasNotes) && v.samasNotes.length > 0) {
+      const existing = new Set((v.vyakhya || [])
+        .filter((e) => e && typeof e === 'object')
+        .map((e) => (e.title || '').trim()));
+      const title = `Compound architecture (${v.samasNotes.length})`;
+      if (!existing.has(title)) {
+        const top = v.samasNotes.slice(0, 5).filter((s) => s.compound && s.type);
+        if (top.length > 0) {
+          const lines = top.map((s) => `${s.compound} — ${s.type.split('(')[0].trim()}`);
+          const extra = v.samasNotes.length > 5 ? ` (and ${v.samasNotes.length - 5} more)` : '';
+          v.vyakhya = [...(v.vyakhya || []), {
+            title,
+            body: `${lines.join(' · ')}${extra}. Each compound chip above shows its vigraha and meaning on click.`,
+          }];
+        }
+      }
+    }
   }
 
   // Second pass: fill MISSING fields on full / browse-tier verses too.
@@ -710,6 +743,14 @@ export function hydrateAutoStubVerses() {
         });
         if (toAdd.length > 0) v.keyFights = [...(v.keyFights || []), ...toAdd];
       }
+    }
+    const enrichedVy = ENRICHED_VYAKHYA[key];
+    if (Array.isArray(enrichedVy) && enrichedVy.length > 0) {
+      const existing = new Set((v.vyakhya || [])
+        .filter((e) => e && typeof e === 'object')
+        .map((e) => (e.title || '').trim()));
+      const toAdd = enrichedVy.filter((e) => !existing.has((e.title || '').trim()));
+      if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
     }
   }
 
