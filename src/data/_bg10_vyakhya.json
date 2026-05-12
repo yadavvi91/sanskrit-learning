@@ -31,8 +31,8 @@
   ],
   "10.4": [
     {
-      "title": "Ten dispositions in नपुंसकलिंग प्रथमा",
-      "body": "बुद्धिः ज्ञानम् असम्मोहः क्षमा सत्यं दमः शमः सुखं दुःखं भवः अभावः भयं अभयम् — a long parallel list of qualities, mostly नपुंसकलिंग एकवचन nouns in प्रथमा, gathered as subjects whose predicate ('arise from Me') will land only in verse 5. The grammar holds its breath across the verse boundary."
+      "title": "Thirteen dispositions in mixed gender प्रथमा",
+      "body": "बुद्धिः ज्ञानम् असम्मोहः क्षमा सत्यं दमः शमः सुखं दुःखं भवः अभावः भयं अभयम् — a long parallel list of qualities in प्रथमा एकवचन, spanning all three genders (स्त्री.: बुद्धिः, क्षमा; न.: ज्ञानम्, सत्यम्, सुखम्, दुःखम्, भयम्, अभयम्; पु.: असम्मोहः, दमः, शमः, भवः, अभावः). They are gathered as subjects whose predicate ('arise from Me') will land only in verse 5. The grammar holds its breath across the verse boundary."
     },
     {
       "title": "Pairs of opposites under one source",
@@ -46,7 +46,7 @@
     },
     {
       "title": "Even अहिंसा and यशः traced upstream",
-      "body": "The list extends: अहिंसा, समता, तुष्टिः, तपः, दानं, यशः, अयशः. यशः/अयशः again pair opposites — fame and infamy alike originate in Him. सामानाधिकरण्य holds: पृथग्विधाः agrees with भावाः in प्रथमा बहुवचन नपुंसकलिंग."
+      "body": "The list extends: अहिंसा, समता, तुष्टिः, तपः, दानं, यशः, अयशः. यशः/अयशः again pair opposites — fame and infamy alike originate in Him. सामानाधिकरण्य holds: पृथग्विधाः agrees with भावाः in प्रथमा बहुवचन पुल्लिंग."
     }
   ],
   "10.6": [
@@ -82,11 +82,11 @@
   "10.9": [
     {
       "title": "Four participles painting the bhakta's life",
-      "body": "मच्चित्ताः, मद्गतप्राणाः, बोधयन्तः, कथयन्तश्च — the first two are bahuvrīhi compounds, the latter two are present active participles (शतृ) in प्रथमा बहुवचन. They surround the two finite verbs तुष्यन्ति and रमन्ति (both √, लट्, प्रथम बहुवचन)."
+      "body": "मच्चित्ताः, मद्गतप्राणाः, बोधयन्तः, कथयन्तश्च — the first two are bahuvrīhi compounds, the latter two are present active participles (शतृ) in प्रथमा बहुवचन. They surround the two finite verbs तुष्यन्ति (√तुष्) and रमन्ति (√रम्), both लट् प्रथम बहुवचन."
     },
     {
       "title": "तुष्यन्ति च रमन्ति च — two verbs, one life",
-      "body": "The pairing 'they are satisfied and they delight' captures bhakti as both fulfillment (तुष्) and play (रम्). परस्परम् ('mutually') tells us this is a communal phenomenon — the bhakta is plural here, not solitary."
+      "body": "The pairing 'they are satisfied and they delight' captures bhakti as both fulfillment (तुष्यन्ति, √तुष्, लट्, प्रथम बहुवचन) and play (रमन्ति, √रम्, लट् आत्मनेपद-flavoured form, प्रथम बहुवचन). परस्परम् ('mutually') tells us this is a communal phenomenon — the bhakta is plural here, not solitary."
     }
   ],
   "10.10": [
@@ -106,7 +106,7 @@
     },
     {
       "title": "आत्मभावस्थः — abiding in His own nature",
-      "body": "आत्मभावस्थः is a bahuvrīhi adjective qualifying अहम् — 'I, abiding in My own state'. The verse rejects the idea that Krishna leaves His own ground to destroy ignorance; the destruction happens from within His unchanged seat. अनुकम्पार्थम् is the तृतीया-flavoured purpose ('for the sake of compassion')."
+      "body": "आत्मभावस्थः is a bahuvrīhi adjective qualifying अहम् — 'I, abiding in My own state'. The verse rejects the idea that Krishna leaves His own ground to destroy ignorance; the destruction happens from within His unchanged seat. अनुकम्पार्थम् ('for the sake of compassion') is a -अर्थम् compound used adverbially in द्वितीया एकवचन — the standard Sanskrit way of expressing purpose."
     }
   ],
   "10.12": [
@@ -145,7 +145,7 @@
       "body": "वेत्थ is √विद्, लट्, मध्यम एकवचन ('you know'). The doubled आत्मन् — instrumental आत्मना and accusative आत्मानम् — captures self-knowledge as a closed reflexive loop: 'by yourself you know yourself'. स्वयम् एव intensifies the reflexivity."
     },
     {
-      "title": "Four सम्बोधन epithets in a row",
+      "title": "Five सम्बोधन epithets in a row",
       "body": "पुरुषोत्तम, भूतभावन, भूतेश, देवदेव, जगत्पते — five vocatives in succession. सम्बोधन never participates in the action; here they are pure honorific apostrophe, and the case ending alone (no kāraka role) is what tells us so."
     }
   ],
@@ -155,8 +155,8 @@
       "body": "वक्तुम् is the तुमुन् infinitive of √वच् ('to speak'); अर्हसि (√अर्ह्, लट्, मध्यम एकवचन — 'you are worthy / are obliged') is the polite request marker. अशेषेण ('without remainder', तृतीया) is the manner adverb — Arjuna asks for the complete list."
     },
     {
-      "title": "व्याप्य तिष्ठसि — absolutive plus finite",
-      "body": "व्याप्य is the absolutive of √व्याप् ('having pervaded'); तिष्ठसि is √स्था, लट्, मध्यम एकवचन ('you stand'). The construction is 'having pervaded, you stand' — Krishna pervades and remains, simultaneous and not sequential despite the absolutive's normal sequencing force."
+      "title": "व्याप्य तिष्ठसि — ल्यबन्त plus finite",
+      "body": "व्याप्य is the ल्यबन्त of वि+√आप् ('having pervaded') — because the root has a prefix, the absolutive suffix is ल्यप् (-य), not क्त्वा (-त्वा). तिष्ठसि is √स्था, लट्, मध्यम एकवचन ('you stand'). The construction is 'having pervaded, you stand' — Krishna pervades and remains, simultaneous and not sequential despite the absolutive's normal sequencing force."
     }
   ],
   "10.17": [
@@ -272,7 +272,7 @@
   "10.28": [
     {
       "title": "वज्रम् among weapons, कामधुक् among cows",
-      "body": "आयुधानाम् gets the वज्र (Indra's thunderbolt); धेनूनाम् gets कामधुक् ('the wish-yielder', the magical cow). कामधुक् is a derivative of √दुह् ('to milk') with काम ('desire') — 'milking desires' — a बहुव्रीहि turned noun."
+      "body": "आयुधानाम् gets the वज्र (Indra's thunderbolt); धेनूनाम् gets कामधुक् ('the wish-yielder', the magical cow). कामधुक् is an उपपद-तत्पुरुष कृदन्त — काम (object) + √दुह् ('to milk') + क्विप् → 'one who milks desires'."
     },
     {
       "title": "कन्दर्पः and वासुकिः — the chief of love and serpent",
@@ -416,7 +416,7 @@
     },
     {
       "title": "एकांशेन स्थितः — the chapter's final seal",
-      "body": "विष्टभ्य is the absolutive of √स्तम्भ् with वि ('having supported/upheld'); इदं कृत्स्नं जगत् ('this whole world') is the द्वितीया object. एकांशेन (तृतीया एकवचन — 'with a single fragment') is the instrument. The vibhūti list is reframed: He pervades not by accumulation of glories but by a single fragment of Himself."
+      "body": "विष्टभ्य is the ल्यबन्त of वि+√स्तम्भ् ('having supported/upheld') — the prefix वि- forces ल्यप् (-य), not क्त्वा. इदं कृत्स्नं जगत् ('this whole world') is the द्वितीया object. एकांशेन (तृतीया एकवचन — 'with a single fragment') is the instrument. The vibhūti list is reframed: He pervades not by accumulation of glories but by a single fragment of Himself."
     }
   ]
 }

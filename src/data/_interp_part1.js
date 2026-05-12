@@ -4061,19 +4061,24 @@ export const INTERP_PART_1 = {
     ]
   },
   '6.11': {
-    anvaya: "शुचौ देशे न अत्युच्छ्रितं न अतिनीचं चैलाजिनकुशोत्तरं स्थिरं आत्मनः आसनं प्रतिष्ठाप्य...",
+    // Verse 6.11 is structurally incomplete — its only verbal form is the
+    // absolutive प्रतिष्ठाप्य. The finite verb (युञ्ज्यात्) lives in 6.12.
+    // The anvaya/hindi below complete the sentence by spanning 6.11+6.12.
+    anvaya: "शुचौ देशे न अत्युच्छ्रितं न अतिनीचं चैलाजिनकुशोत्तरं स्थिरं आत्मनः आसनं प्रतिष्ठाप्य, (तत्र) तत्र एकाग्रं मनः कृत्वा, यतचित्तेन्द्रियक्रियः, आसने उपविश्य, आत्मविशुद्धये योगं युञ्ज्यात् [BG 6.12].",
+    hindi: "शुद्ध स्थान में स्थिर आसन — न बहुत ऊँचा न बहुत नीचा — कुश, मृगचर्म और वस्त्र क्रम से बिछाकर, [आगे श्लोक 6.12 में:] उसी आसन पर बैठकर, मन को एकाग्र करके, चित्त-इन्द्रिय की क्रियाओं को संयमित करके, आत्म-शुद्धि के लिए योग का अभ्यास करे।",
     vibhaktiNotes: [
       "शुचौ, देशे — सप्तमी.",
-      "आसनम्, स्थिरम्, अत्युच्छ्रितम्, अतिनीचम्, चैलाजिनकुशोत्तरम् — द्वितीया.",
+      "आसनम्, स्थिरम्, अत्युच्छ्रितम्, अतिनीचम्, चैलाजिनकुशोत्तरम् — द्वितीया (objects of प्रतिष्ठाप्य).",
       "आत्मनः — षष्ठी."
     ],
     keyFights: [
-      "प्रतिष्ठाप्य = absolutive.",
-      "Verse continues into 6.12.",
-      "Three negated adjectives + one positive compound."
+      "प्रतिष्ठाप्य = absolutive (ल्यबन्त, प्रति + √स्था).",
+      "Verse 6.11+6.12 form ONE sentence — 6.11 stages the seat, 6.12 carries the finite verb युञ्ज्यात्.",
+      "Three negated adjectives + one positive compound modify आसनम्."
     ],
     vyakhya: [
-      { title: "Triple-negated adjective", body: "न अत्युच्छ्रितम्, न अतिनीचम् — \"not too high, not too low\". Sanskrit's negative-adjective construction with अति-prefix." }
+      { title: "Triple-negated adjective", body: "न अत्युच्छ्रितम्, न अतिनीचम् — \"not too high, not too low\". Sanskrit's negative-adjective construction with अति-prefix." },
+      { title: "Sentence spans two verses", body: "6.11 has no finite verb — only the absolutive प्रतिष्ठाप्य (\"having set up\"). The main verb युञ्ज्यात् appears in 6.12. The two verses must be read as one sentence: \"having set up the seat ... let him practise yoga.\" The भाष्यकार-s treat them as a single प्रकरण." }
     ]
   },
   '6.12': {

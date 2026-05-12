@@ -11,8 +11,8 @@
   ],
   "7.2": [
     {
-      "title": "सविज्ञानम् — saha-compound flagged by स-",
-      "body": "सविज्ञानम् is an avyayībhāva-style बहुव्रीहि with the prefix स- meaning सह: \"together with विज्ञान\". Krishna offers not ज्ञान alone but ज्ञान-plus-experiential-realisation, अशेषतः (अव्यय, \"without remainder\")."
+      "title": "सविज्ञानम् — स-prefixed बहुव्रीहि",
+      "body": "सविज्ञानम् is a बहुव्रीहि with the prefix स- (= सह) meaning \"together with विज्ञान\" — used adverbially with ज्ञानम्. Krishna offers not ज्ञान alone but ज्ञान-plus-experiential-realisation, अशेषतः (अव्यय, \"without remainder\")."
     },
     {
       "title": "ज्ञातव्यम् — the कृत्य participle of finality",
@@ -22,7 +22,7 @@
   "7.3": [
     {
       "title": "सहस्रेषु — सप्तमी of selection",
-      "body": "मनुष्याणां सहस्रेषु uses सप्तमी बहुवचन to mark the pool from which the rare one (कश्चित्) is selected. यतति (√यत्, लट्, प्रथम, एकवचन) is आत्मनेपद-flavoured \"strives\", with सिद्धये (चतुर्थी) as the goal-dative."
+      "body": "मनुष्याणां सहस्रेषु uses सप्तमी बहुवचन to mark the pool from which the rare one (कश्चित्) is selected. यतति (लट्, प्रथम, एकवचन of √यत्) takes सिद्धये (चतुर्थी) as the goal-dative — the Gītā uses the परस्मैपद form here, though √यत् is canonically आत्मनेपद (यतते)."
     },
     {
       "title": "तत्त्वतः — the अव्यय of accurate knowing",
@@ -32,7 +32,7 @@
   "7.4": [
     {
       "title": "भिन्ना प्रकृतिरष्टधा — the eightfold cleavage",
-      "body": "भिन्ना is the past passive participle of √भिद् agreeing with प्रकृतिः (स्त्रीलिंग, प्रथमा एकवचन). अष्टधा is an अव्यय in -धा meaning \"in eight ways\"; the eight items (भूमि through अहङ्कार) are all प्रथमा एकवचन, listed paratactically before being summed up by इयम् मे प्रकृतिः."
+      "body": "भिन्ना is the past passive participle of √भिद् agreeing with प्रकृतिः (स्त्रीलिंग, प्रथमा एकवचन). अष्टधा is an अव्यय in -धा (a Pāṇinian distributive affix) meaning \"in eight ways\"; the eight items (भूमिः, आपः, अनलः, वायुः, खम्, मनः, बुद्धिः, अहङ्कारः) are listed paratactically — note आपः is सदा बहुवचन — before being summed up by इयम् मे प्रकृतिः."
     },
     {
       "title": "अहङ्कार — द्वन्द्व closed with इति",
@@ -66,7 +66,7 @@
     },
     {
       "title": "सूत्रे मणिगणा इव — the locative simile of thread and beads",
-      "body": "मयि... प्रोतम् is a लट् कर्मणि-style past participle (√प्रोत from प्र+वे) — \"strung in me\". The simile सूत्रे मणिगणा इव keeps the same सप्तमी (\"as bead-clusters on a thread\"), so the syntax of the metaphor mirrors the syntax of the claim."
+      "body": "मयि... प्रोतम् pairs the सप्तमी मयि with प्रोतम्, the क्त-participle (past passive) of प्र+√वे (\"to weave\") — \"strung in me\". The simile सूत्रे मणिगणा इव keeps the same सप्तमी (\"as bead-clusters on a thread\"), so the syntax of the metaphor mirrors the syntax of the claim."
     }
   ],
   "7.8": [
@@ -156,7 +156,7 @@
     },
     {
       "title": "आर्त / जिज्ञासु / अर्थार्थिन् / ज्ञानिन् — four affix-types",
-      "body": "आर्तः is ppp of √ऋ (\"afflicted\"); जिज्ञासुः is the desiderative-noun from सन्-formation of √ज्ञा; अर्थार्थी is एक्ता upapada-तत्पुरुष \"seeking-wealth\" (इन्-stem); ज्ञानी is also इन्-stem from ज्ञान. The four etymologies map four orientations of devotion."
+      "body": "आर्तः is the क्त-participle of √अर्द्/√ऋ (\"afflicted\"); जिज्ञासुः is the desiderative noun from सन्-formation of √ज्ञा with उ-affix; अर्थार्थी is an उपपद-तत्पुरुष \"seeking-wealth\" with the इन्-stem अर्थिन्; ज्ञानी is also an इन्-stem from ज्ञान. The four etymologies map four orientations of devotion."
     }
   ],
   "7.17": [
@@ -186,7 +186,7 @@
     },
     {
       "title": "वासुदेवः सर्वम् इति — the इति-clause of realisation",
-      "body": "वासुदेवः सर्वम् is the content of the realisation, sealed by इति. महात्मा is a बहुव्रीहि (\"of great soul\"); सुदुर्लभः is a पञ्चमी-tatpuruṣa-flavoured adjective with intensifying सु- — \"very-hard-to-obtain\"."
+      "body": "वासुदेवः सर्वम् is the content of the realisation, sealed by इति. महात्मा is a बहुव्रीहि (\"of great soul\"); सुदुर्लभः is a प्रादि/गति-compound — दुर्लभ (दुर् + √लभ्, \"hard to obtain\") intensified by सु- — yielding \"very-hard-to-obtain\"."
     }
   ],
   "7.20": [
@@ -235,8 +235,8 @@
       "body": "अव्यक्तम् (\"unmanifest\") and व्यक्तिमापन्नम् (\"having reached manifestation\") are both नपुंसकलिंग द्वितीया एकवचन — apposed to माम्. आपन्नम् is ppp of आ+√पद् taking व्यक्तिम् (द्वितीया) as its sub-object. The unwise reverse the order of being."
     },
     {
-      "title": "अबुद्धयः — nañ-tatpuruṣa of those-without-discernment",
-      "body": "अबुद्धयः is the नञ्-तत्पुरुष \"non-buddhi-ones\" (प्रथमा बहुवचन), subject of मन्यन्ते (लट्, आत्मनेपद, √मन्). परम् भावम् is द्वितीया एकवचन object of the negated शतृ-participle अजानन्तः (\"not-knowing\")."
+      "title": "अबुद्धयः — नञ्-बहुव्रीहि of those-without-discernment",
+      "body": "अबुद्धयः is a नञ्-बहुव्रीहि — \"those without buddhi\" (प्रथमा बहुवचन), subject of मन्यन्ते (लट्, आत्मनेपद, √मन्). परम् भावम् is द्वितीया एकवचन, the object of the negated शतृ-participle अजानन्तः (\"not-knowing\")."
     }
   ],
   "7.25": [
@@ -275,8 +275,8 @@
       "body": "येषाम् is षष्ठी बहुवचन relative pronoun; अन्तगतम् is a बहुव्रीहि-flavoured ppp compound (\"gone-to-end\") agreeing with पापम् (नपुंसकलिंग प्रथमा एकवचन). The case structure: *those of whom sin has gone to its end*."
     },
     {
-      "title": "द्वन्द्वमोहनिर्मुक्ताः दृढव्रताः — paired बहुव्रीहि epithets",
-      "body": "द्वन्द्वमोहनिर्मुक्ताः is पञ्चमी-tatpuruṣa with ppp निर्मुक्त (\"freed-from द्वन्द्वमोह\"); दृढव्रताः is बहुव्रीहि (\"those whose vows are firm\"). The two epithets together govern भजन्ते (लट् आत्मनेपद, प्र+√भज् without the prefix here)."
+      "title": "द्वन्द्वमोहनिर्मुक्ताः दृढव्रताः — paired compound epithets",
+      "body": "द्वन्द्वमोहनिर्मुक्ताः is a पञ्चमी-तत्पुरुष with ppp निर्मुक्त (\"freed-from द्वन्द्वमोह\"); दृढव्रताः is बहुव्रीहि (\"those whose vows are firm\"). Both govern भजन्ते (लट् आत्मनेपद of √भज्), the आत्मनेपद here marking the devotional sense."
     }
   ],
   "7.29": [

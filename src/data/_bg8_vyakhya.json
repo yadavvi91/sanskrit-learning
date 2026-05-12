@@ -1,8 +1,8 @@
 {
   "8.1": [
     {
-      "title": "Arjuna's six interrogatives open the chapter",
-      "body": "The verse stacks six किम् pronouns — किं तद्ब्रह्म किमध्यात्मं किं कर्म ... अधिभूतं किं ... अधिदैवं किम् — each a प्रथमा नपुंसक interrogative demanding a definitional reply. प्रोक्तम् and उच्यते are passive forms (कर्मणि प्रयोग), signalling that Arjuna is asking which technical term has been declared by tradition for each cosmic level."
+      "title": "Arjuna's five interrogatives open the chapter",
+      "body": "The verse stacks five किम् pronouns — किं तद्ब्रह्म, किमध्यात्मं, किं कर्म, अधिभूतं च किं प्रोक्तम्, अधिदैवं किम् उच्यते — each a प्रथमा नपुंसक interrogative demanding a definitional reply. प्रोक्तम् and उच्यते are passive forms (कर्मणि प्रयोग), signalling that Arjuna is asking which technical term has been declared by tradition for each cosmic level. Two more questions (कथम् + कः on अधियज्ञ, and the death-knowing question) follow in 8.2, totalling seven."
     },
     {
       "title": "पुरुषोत्तम as the chapter's first epithet",
@@ -62,7 +62,7 @@
   "8.7": [
     {
       "title": "तस्मात् — Krishna's practical conclusion",
-      "body": "तस्मात् (पञ्चमी ablative-of-reason) draws the consequence from 8.5–6: since the final thought determines destination, मामनुस्मर युध्य च — two लोट् imperatives (अनुस्मर is अनु + √स्मृ, युध्य is √युध् आत्मनेपद imperative). The conjunction च yokes remembering and fighting as one practice, not alternatives."
+      "body": "तस्मात् (पञ्चमी ablative-of-reason) draws the consequence from 8.5–6: since the final thought determines destination, मामनुस्मर युध्य च — two लोट् imperatives (अनुस्मर is अनु + √स्मृ parasmaipada). √युध् is canonically आत्मनेपद (its आर्ष imperative is युध्यस्व, as in 2.18), but here the Gītā uses the parasmaipada-shaped form युध्य — common in epic/Gītā usage. The conjunction च yokes remembering and fighting as one practice, not alternatives."
     },
     {
       "title": "मय्यर्पितमनोबुद्धिः — the bahuvrīhi yogi",
@@ -176,13 +176,13 @@
     },
     {
       "title": "तत्रैव अव्यक्तसंज्ञके — the recursive locative",
-      "body": "तत्र एव is the emphatic locative adverb; अव्यक्तसंज्ञके (सप्तमी एकवचन of a बहुव्रीहि — \"in that whose designation is unmanifest\") is in apposition. The verse closes the cycle: what emerges from the avyakta returns to that very avyakta, signalled by प्रलीयन्ते (लट् कर्मणि — \"are dissolved\")."
+      "body": "तत्र एव is the emphatic locative adverb; अव्यक्तसंज्ञके (सप्तमी एकवचन of a बहुव्रीहि — \"in that whose designation is unmanifest\") is in apposition. The verse closes the cycle: what emerges from the avyakta returns to that very avyakta, signalled by प्रलीयन्ते (लट् आत्मनेपद of प्र + √ली — \"dissolve away,\" class 4 with श्यन् vikaraṇa; the -य- here is श्यन्, not the कर्मणि -य-)."
     }
   ],
   "8.19": [
     {
       "title": "भूत्वा भूत्वा प्रलीयते — reduplicated absolutive",
-      "body": "भूत्वा भूत्वा is a doubled क्त्वा absolutive of √भू — \"having come into being again and again.\" The reduplication encodes habitual repetition. The finite verb प्रलीयते (लट् कर्मणि एकवचन of प्र + √ली — \"is dissolved\") then closes the cycle for भूतग्रामः (\"the collective host of beings\")."
+      "body": "भूत्वा भूत्वा is a doubled क्त्वा absolutive of √भू — \"having come into being again and again.\" The reduplication encodes habitual repetition. The finite verb प्रलीयते (लट् आत्मनेपद एकवचन of प्र + √ली, class 4 with श्यन् vikaraṇa — \"dissolves away\") then closes the cycle for भूतग्रामः (\"the collective host of beings\"). The -य- is श्यन्, not the कर्मणि passive marker."
     },
     {
       "title": "अवशः — the bahuvrīhi of compulsion",
@@ -231,7 +231,7 @@
   ],
   "8.24": [
     {
-      "title": "Five nominatives in apposition — the bright list",
+      "title": "Six nominatives in apposition — the bright list",
       "body": "अग्निः ज्योतिः अहः शुक्लः षण्मासाः उत्तरायणम् — six items in प्रथमा (with उत्तरायणम् नपुंसक) listed without coordination, each a marker of the bright path. The asyndetic list is the standard Vedic and Upaniṣadic style for ritual cosmic equations; the Gītā here recapitulates the Chāndogya devayāna."
     },
     {
@@ -261,12 +261,12 @@
   ],
   "8.27": [
     {
-      "title": "Two relative-correlative threads, one negation",
-      "body": "नैते सृती (नपुंसक/स्त्री द्विवचन accusative — \"these two paths\") is the object of जानन् (शतृ — \"knowing\"); न मुह्यति (लट् of √मुह् — \"is not deluded\") is the finite. कश्चन (indefinite — \"any whatsoever\") strengthens the negation across all yogins."
+      "title": "Two paths, one negation",
+      "body": "नैते सृती (स्त्रीलिंग द्विवचन accusative — \"these two paths,\" सृति being feminine) is the object of जानन् (शतृ — \"knowing\"); न मुह्यति (लट् of √मुह् — \"is not deluded\") is the finite. कश्चन (indefinite — \"any whatsoever\") strengthens the negation across all yogins."
     },
     {
       "title": "योगयुक्तो भव — the imperative of practical conclusion",
-      "body": "तस्मात् ... सर्वेषु कालेषु (पञ्चमी + सप्तमी बहुवचन) frames the imperative भव (लोट् मध्यम एकवचन of √भू). The predicate योगयुक्तः is a बहुव्रीहि (\"one yoked to yoga\"). The chapter ends with the same practical command as 8.7 — anuṣaṅgika to fight, here simply to be yoked."
+      "body": "तस्मात् (पञ्चमी एकवचन ablative-of-reason) plus सर्वेषु कालेषु (सप्तमी बहुवचन — \"in all times\") frames the imperative भव (लोट् मध्यम एकवचन of √भू). The predicate योगयुक्तः is a बहुव्रीहि (\"one yoked to yoga\"). The chapter ends with the same practical command as 8.7 — anuṣaṅgika to fight, here simply to be yoked."
     }
   ],
   "8.28": [
@@ -276,7 +276,7 @@
     },
     {
       "title": "अत्येति ... इदम् विदित्वा — transcending by knowing",
-      "body": "अत्येति (लट् of अति + √इ — \"goes beyond, transcends\") governs तत् सर्वम् (नपुंसक द्वितीया — \"all that\"). The means is the absolutive विदित्वा (\"having known\") with इदम् as its object — the entire teaching of chapter 8. The यत् ... तत् correlative then yields परं स्थानम् आद्यम् — \"the highest, primal abode\" — as the final destination."
+      "body": "अत्येति (लट् of अति + √इ — \"goes beyond, transcends\") governs तत् सर्वम् (नपुंसक द्वितीया — \"all that\"), which is the correlative of यत् पुण्यफलं प्रदिष्टम् in pādas a–b: \"that whole merit-fruit prescribed in Vedas, sacrifices, austerities and gifts — [the yogin] transcends.\" The means is the absolutive विदित्वा (\"having known\") with इदम् as its object — this entire teaching of chapter 8. A separate finite clause then adds योगी परं स्थानम् आद्यम् उपैति च — \"and the yogin attains the highest, primal abode.\""
     }
   ]
 }

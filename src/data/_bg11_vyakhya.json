@@ -82,7 +82,7 @@
   "11.9": [
     {
       "title": "एवम् उक्त्वा — absolutive shifting the speaker",
-      "body": "उक्त्वा is the absolutive (क्त्वा) of √वच् — \"having spoken thus\" — and signals Sañjaya now takes the narrative reins. The finite verb दर्शयामास is लिट् (perfect periphrastic) उत्तम पुरुष एकवचन of causative √दृश्: \"he caused to be seen.\""
+      "body": "उक्त्वा is the absolutive (क्त्वा) of √वच् — \"having spoken thus\" — and signals Sañjaya now takes the narrative reins. The finite verb दर्शयामास is लिट् (periphrastic perfect) प्रथम पुरुष एकवचन of causative √दृश्: \"he caused to be seen.\""
     },
     {
       "title": "महायोगेश्वरः हरिः — title before name",
@@ -316,7 +316,7 @@
     },
     {
       "title": "ऋते अपि त्वाम् — even-without-you",
-      "body": "ऋते governs पञ्चमी-like accusative त्वाम् (\"even without thee\"). भविष्यन्ति is लृट् प्रथम बहुवचन of √भू, spotted by the -ष्य- infix — \"they will not be.\" अवस्थिताः is past passive participle of अव + √स्था, agreeing with योधाः."
+      "body": "ऋते (\"without/except\") here governs the द्वितीया त्वाम् — \"even without thee\"; ऋते optionally takes द्वितीया or पञ्चमी. भविष्यन्ति is लृट् प्रथम बहुवचन of √भू, spotted by the -ष्य- infix — \"they will not be.\" अवस्थिताः is past passive participle of अव + √स्था, agreeing with योधाः."
     }
   ],
   "11.33": [
@@ -366,7 +366,7 @@
     },
     {
       "title": "ब्रह्मणः अपि आदि-कर्त्रे — even Brahmā's first cause",
-      "body": "गरीयसे and आदि-कर्त्रे are चतुर्थी एकवचन (datives governed by नमेरन्). ब्रह्मणः is पञ्चमी एकवचन (\"than Brahmā\") with comparative गरीयसे — \"weightier even than Brahmā.\" सत् असत् तत् परम् stacks predicates of अक्षरम्."
+      "body": "गरीयसे and आदि-कर्त्रे are चतुर्थी एकवचन (datives governed by नमेरन्). ब्रह्मणः is षष्ठी एकवचन depending on आदि-कर्त्रे — \"first-creator even of Brahmā.\" सत् असत् तत् परम् stacks predicates of अक्षरम्."
     }
   ],
   "11.38": [
@@ -471,7 +471,7 @@
   ],
   "11.48": [
     {
-      "title": "न ... न ... न — fivefold negation of means",
+      "title": "न ... न ... न — fourfold negation of means",
       "body": "वेद-यज्ञ-अध्ययनैः, दानैः, क्रियाभिः, तपोभिः उग्रैः — four तृतीया बहुवचन nouns of religious means, each negated. The grammar bars every conventional path. शक्यः is the gerundive predicate (\"capable-of-being-seen\")."
     },
     {

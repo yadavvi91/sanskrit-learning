@@ -66,7 +66,7 @@
     },
     {
       "title": "सविकारम् — with-its-modifications",
-      "body": "The सह-prefix compound सविकारम् (अव्ययीभाव-style adverbial) says the field has just been described *together with* its mutations. समासेन (तृतीया as adverb) repeats the methodology flag from 13.4 — this was the condensed enumeration."
+      "body": "सविकारम् is a स-prefixed बहुव्रीहि ('having modifications') agreeing with क्षेत्रम् in नपुंसकलिङ्ग एकवचन — not an अव्ययीभाव, since it inflects to match its head. समासेन (तृतीया as adverb) repeats the methodology flag from 13.4 — this was the condensed enumeration with-its-modifications included."
     }
   ],
   "13.8": [
@@ -85,8 +85,8 @@
       "body": "इन्द्रियार्थेषु (सप्तमी बहुवचन) anchors वैराग्यम् — non-attachment *with respect to* sense-objects. अनहङ्कारः (नञ्-तत्पुरुष) adds the absence of ego-sense, continuing the privative pattern from 13.8."
     },
     {
-      "title": "Five-fold compound condensing the human predicament",
-      "body": "जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम् is a single दीर्घ-समास: birth-death-old age-disease-pain-defect-perception. The constant *anudarśanam* (re-seeing) of these is itself ज्ञानम् — a Buddhist-resonant move within a Vedāntic frame."
+      "title": "Six-fold compound condensing the human predicament",
+      "body": "जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम् is a single दीर्घ-समास stacking six items — birth, death, old age, disease, pain, defect — under one अनुदर्शनम् ('seeing-along'). The constant anudarśanam (re-seeing) of these six is itself ज्ञानम् — a Buddhist-resonant move within a Vedāntic frame."
     }
   ],
   "13.10": [
@@ -131,8 +131,8 @@
   ],
   "13.14": [
     {
-      "title": "सर्वतः — quadruple omnipresence compound",
-      "body": "Four सर्वतः-prefixed compounds (पाणिपादम्, अक्षिशिरोमुखम्, श्रुतिमत्, आवृत्य) saturate the verse with omnidirectionality. The structure echoes Śvetāśvatara 3.16 / Puruṣa-sūkta — hands, feet, eyes, heads, mouths, ears *everywhere*."
+      "title": "सर्वतः — triple omnipresence compound",
+      "body": "Three सर्वतः-prefixed compounds (सर्वतःपाणिपादम्, सर्वतोऽक्षिशिरोमुखम्, सर्वतःश्रुतिमत्) saturate the verse with omnidirectionality, then सर्वम् आवृत्य ('having enveloped everything') extends the saturation. The structure echoes Śvetāśvatara 3.16 / Puruṣa-sūkta — hands, feet, eyes, heads, mouths, ears *everywhere*."
     },
     {
       "title": "आवृत्य तिष्ठति — having enveloped, it stands",
@@ -221,8 +221,8 @@
   ],
   "13.23": [
     {
-      "title": "Five agent-nouns naming the higher Puruṣa",
-      "body": "उपद्रष्टा (witness), अनुमन्ता (consenter), भर्ता (sustainer), भोक्ता (enjoyer), महेश्वरः (great lord) — five -तृ agent-nouns climbing in cosmic rank. The same body's resident is reframed from passive भोक्ता (13.21) to महेश्वर."
+      "title": "Four -तृ agent-nouns plus महेश्वरः",
+      "body": "उपद्रष्टा (witness), अनुमन्ता (consenter), भर्ता (sustainer), भोक्ता (enjoyer) — four -तृ agent-nouns climbing in cosmic rank — culminate in महेश्वरः (great lord, -अ stem). The same body's resident is reframed from passive भोक्ता (13.21) to महेश्वर."
     },
     {
       "title": "परमात्मा इति च अपि उक्तः — the third name",
@@ -242,7 +242,7 @@
   "13.25": [
     {
       "title": "Three तृतीया methods for one आत्मा",
-      "body": "ध्यानेन, साङ्ख्येन योगेन, कर्मयोगेन — three instrumentals naming three methods. Each takes its own subject (केचित्, अन्ये, अपरे = 'some, others, others'). पश्यन्ति (लट् बहुवचन from √दृश्) governs the first; उपासते (lat. आत्मनेपद) the second cluster."
+      "body": "ध्यानेन, साङ्ख्येन योगेन, कर्मयोगेन — three instrumentals naming three methods. Each takes its own subject (केचित्, अन्ये, अपरे = 'some, others, others'). पश्यन्ति (लट् बहुवचन from √दृश्) is the sole finite verb, understood across all three clauses — the अन्ये and अपरे groups share it elliptically."
     },
     {
       "title": "आत्मनि आत्मानम् आत्मना — three cases of one word",
@@ -346,7 +346,7 @@
     },
     {
       "title": "भूतप्रकृतिमोक्षम् — द्वितीया of liberation",
-      "body": "भूतप्रकृतिमोक्षम् (द्वितीया एकवचन, 'liberation from creatures' prakṛti') is the second object of विदुः (परोक्ष/लिट्-flavoured present from √विद्). ये … ते (relative-correlative बहुवचन) frames the chapter's final yājñikas: they go to परम् — the highest. Chapter sealed."
+      "body": "भूतप्रकृतिमोक्षम् (द्वितीया एकवचन, 'liberation from creatures' prakṛti') is the second object of विदुः (परोक्ष/लिट्-flavoured present from √विद्). ये … ते (relative-correlative बहुवचन) frames the chapter's final knowers: they go to परम् — the highest. Chapter sealed."
     }
   ]
 }

@@ -2,7 +2,7 @@
   "18.1": [
     {
       "title": "Arjuna's twin question: saṃnyāsa and tyāga",
-      "body": "Arjuna opens the final chapter with षष्ठी genitives — संन्यासस्य and त्यागस्य — both depending on the infinitive वेदितुम् (\"to know\"). The particle पृथक् (\"separately\") is the crux: he has heard both terms used through the Gītā and now wants their tattva drawn apart, not collapsed."
+      "body": "Arjuna opens the final chapter with षष्ठी genitives — संन्यासस्य and त्यागस्य — both depending on तत्त्वम् (\"the truth/essence [of]\"), the द्वितीया object of वेदितुम् (infinitive of √विद्, \"to know\"). The particle पृथक् (\"separately\") is the crux: he has heard both terms used through the Gītā and now wants their tattva drawn apart, not collapsed."
     },
     {
       "title": "Three vocatives for one Krishna",
@@ -26,7 +26,7 @@
     },
     {
       "title": "दोषवत् — the suffix that means \"like a flaw\"",
-      "body": "दोषवत् is the तद्धित suffix -वत् (\"like, possessing\"), attached to दोष. The first school treats action itself as inherently faulty (like the Sāṃkhyas / extreme renunciants); the second protects the trio यज्ञ-दान-तप as purifying. The seeming contradiction is what 18.4-6 will resolve."
+      "body": "दोषवत् uses the तद्धित suffix वति (Pā. 5.1.115, \"like, as\"), attached to दोष — distinct from मतुप् (दोषवान् = \"possessing fault\"). The first school treats action itself as inherently faulty (like the Sāṃkhyas / extreme renunciants); the second protects the trio यज्ञ-दान-तप as purifying. The seeming contradiction is what 18.4-6 will resolve."
     }
   ],
   "18.4": [
@@ -51,8 +51,8 @@
   ],
   "18.6": [
     {
-      "title": "सङ्गं त्यक्त्वा फलानि च — the तjsमजquality test",
-      "body": "त्यक्त्वा is the absolutive (क्त्वा-pratyaya) — \"having abandoned attachment and fruits.\" The two द्वितीया objects, सङ्गम् and फलानि, name what must go before the action proceeds. The action stays; the inner posture changes. This is the sāttvika tyāga 18.9 will codify."
+      "title": "सङ्गं त्यक्त्वा फलानि च — the sāttvika test",
+      "body": "त्यक्त्वा is the absolutive (क्त्वा-pratyaya, no prefix on the root) — \"having abandoned attachment and fruits.\" The two द्वितीया objects, सङ्गम् and फलानि, name what must go before the action proceeds. The action stays; the inner posture changes. This is the sāttvika tyāga 18.9 will codify."
     },
     {
       "title": "मे मतमुत्तमम् — Krishna stamps the verdict",
@@ -91,8 +91,8 @@
   ],
   "18.10": [
     {
-      "title": "Six adjectives for the त्यागी",
-      "body": "न द्वेष्टि (does not hate) + न अनुषज्जते (does not get attached) + सत्त्वसमाविष्टः (saturated with sattva) + मेधावी (intelligent) + छिन्नसंशयः (whose doubts are cut). The negations frame the equanimity; the positives name the inner condition that produces it."
+      "title": "Five marks of the त्यागी",
+      "body": "न द्वेष्टि (does not hate) + न अनुषज्जते (does not get attached) + सत्त्वसमाविष्टः (saturated with sattva) + मेधावी (intelligent) + छिन्नसंशयः (whose doubts are cut). Two negated finite verbs frame the equanimity; the three nominative adjectives name the inner condition that produces it."
     },
     {
       "title": "अकुशले / कुशले — locatives of indifference",
@@ -215,8 +215,8 @@
       "body": "कृत्स्नवत् (as if it were the whole), एकस्मिन् कार्ये सक्तम् (clinging to one effect), अहैतुकम् (without reason), अतत्त्वार्थवत् (without grasp of reality), अल्पम् (paltry). Each compound or adverb compounds the verdict — tāmasa knowledge mistakes a fragment for the totality."
     },
     {
-      "title": "उदाहृतम् — the verdict suffix",
-      "body": "उदाहृतम् (past passive participle of उद् + आ + √हृ, \"is cited / is declared as an example\") closes 18.22, 18.25, 18.39 — each tāmasa entry in the gunatraya analysis. The pattern: detailed description, then judicial verdict by passive participle."
+      "title": "उदाहृतम् — the verdict participle",
+      "body": "उदाहृतम् (past passive participle of उद् + आ + √हृ, \"is cited / is declared as an example\") closes 18.22, 18.25 (तत्तामसमुच्यते uses उच्यते; उदाहृतम् instead closes 18.24 rājasa karma), and 18.39. The pattern: detailed description, then judicial verdict by passive participle (उदाहृतम् / उच्यते / परिकीर्तितः) — Krishna varies the closing verb-form across the triads."
     }
   ],
   "18.23": [
@@ -251,7 +251,7 @@
   ],
   "18.26": [
     {
-      "title": "Six markers of the sāttvika कर्ता",
+      "title": "Four markers of the sāttvika कर्ता",
       "body": "मुक्तसङ्गः (free from attachment), अनहंवादी (not ego-asserting), धृत्युत्साहसमन्वितः (endowed with steadfastness and enthusiasm), सिद्ध्यसिद्ध्योः निर्विकारः (unchanged in success or failure). The compounds stack rapidly — each names a virtue that 18.27 / 18.28 will negatively mirror."
     },
     {
@@ -261,7 +261,7 @@
   ],
   "18.27": [
     {
-      "title": "Eight nominatives painting the rājasa कर्ता",
+      "title": "Six nominatives painting the rājasa कर्ता",
       "body": "रागी, कर्मफलप्रेप्सुः, लुब्धः, हिंसात्मकः, अशुचिः, हर्षशोकान्वितः — six adjectives in प्रथमा एकवचन agreeing with कर्ता. Each names a passion-driven trait: desire for the object, greed, violent disposition, impurity, swing between joy and sorrow. The rājasa agent is volatile."
     },
     {
@@ -291,7 +291,7 @@
   ],
   "18.30": [
     {
-      "title": "Six pairs the sāttvika buddhi distinguishes",
+      "title": "Four pairs the sāttvika buddhi distinguishes",
       "body": "प्रवृत्ति-निवृत्ति (engagement/disengagement), कार्य-अकार्य (to-be-done/not-to-be-done), भय-अभय (fear/fearlessness), बन्ध-मोक्ष (bondage/liberation) — all in द्वितीया as objects of वेत्ति. The sāttvika buddhi is precisely the cognitive faculty that draws these decisive dharmic distinctions."
     },
     {
@@ -506,7 +506,7 @@
     },
     {
       "title": "Three absolutives setting the discipline",
-      "body": "नियम्य (having restrained — आत्मानम्), त्यक्त्वा (having abandoned — विषयान्), व्युदस्य (having cast away — रागद्वेषौ). The chain of क्त्वा-absolutives marks the sequence of preparatory acts. Note रागद्वेषौ is द्विवचन — the pair, treated as a single complex."
+      "body": "नियम्य (having restrained — आत्मानम्; ल्यबन्त, नि + √यम् + ल्यप्), त्यक्त्वा (having abandoned — विषयान्; क्त्वान्त, prefix-less √त्यज् + क्त्वा), व्युदस्य (having cast away — रागद्वेषौ; ल्यबन्त, वि + उद् + √अस् + ल्यप्). Pāṇinian rule: ल्यप् replaces क्त्वा when a prefix is present (समासेऽनञ्पूर्वे क्त्वो ल्यप्). Note रागद्वेषौ is द्विवचन — the pair, treated as a single complex."
     }
   ],
   "18.52": [
@@ -542,7 +542,7 @@
   "18.55": [
     {
       "title": "भक्त्या — instrumental of recognition",
-      "body": "भक्त्या (तृतीया एकवचन) माम् अभिजानाति यावान् यः च अस्मि तत्त्वतः — \"by bhakti one knows me, how much and what, in truth.\" The double interrogative-relative यावान् यः maps both the extent and the identity of the divine."
+      "body": "भक्त्या (तृतीया एकवचन) माम् अभिजानाति यावान् यः च अस्मि तत्त्वतः — \"by bhakti one knows me, how much and what, in truth.\" The relative-pair यावान्...यः maps both the extent (यावान् = \"how great\") and the identity (यः = \"who\") of the divine; both are relatives, picked up by an implicit तावान्...सः."
     },
     {
       "title": "विशते तदनन्तरम् — entry, not addition",
@@ -601,7 +601,7 @@
   ],
   "18.61": [
     {
-      "title": "ईश्वरः — locative of the inner driver",
+      "title": "हृद्देशे — locative of the inner driver",
       "body": "ईश्वरः सर्वभूतानाम् (षष्ठी बहुवचन) हृद्देशे (सप्तमी, \"in the region of the heart\") तिष्ठति. The Lord stands in the heart-region of all beings. भ्रामयन् (शतृ-pratyaya: \"causing to revolve\") names the action: he rotates all beings."
     },
     {
@@ -732,7 +732,7 @@
   "18.74": [
     {
       "title": "Sañjaya resumes — अश्रौषम्",
-      "body": "अश्रौषम् is लङ् उत्तम पुरुष एकवचन of √श्रु — \"I heard.\" The augment अ- + endings mark past tense, first-person singular. इति अहम् वासुदेवस्य पार्थस्य च महात्मनः (षष्ठी, \"of Vāsudeva and the great-souled Pārtha\") — the conversation he has heard."
+      "body": "अश्रौषम् is लुङ् (aorist) उत्तम पुरुष एकवचन of √श्रु — \"I heard.\" The augment अ-, sigmatic stem श्रौष्-, and ending -अम् mark the स्-aorist; लङ् of √श्रु would be अशृणवम्. इति अहम् वासुदेवस्य पार्थस्य च महात्मनः (षष्ठी, \"of Vāsudeva and the great-souled Pārtha\") — the conversation he has heard."
     },
     {
       "title": "अद्भुतम् रोमहर्षणम् — the marvelous, hair-raising",
@@ -742,11 +742,11 @@
   "18.75": [
     {
       "title": "व्यासप्रसादात् — the channel of transmission",
-      "body": "व्यासप्रसादात् (पञ्चमी, \"by Vyāsa's grace\") — Sañjaya credits Vyāsa for the divya-cakṣus that enabled his witnessing. श्रुतवान् (-वत् कृदन्त, perfect active participle, \"having heard\") एतत् गुह्यम् परम् — \"this supreme secret.\""
+      "body": "व्यासप्रसादात् (पञ्चमी, \"by Vyāsa's grace\") — Sañjaya credits Vyāsa for the divya-cakṣus that enabled his witnessing. श्रुतवान् is the क्तवतु-कृदन्त (past active participle: -त-वत् stem) of √श्रु, प्रथमा एकवचन पुल्लिङ्ग — \"having heard / one who has heard\" — qualifying the implicit अहम्. एतत् गुह्यम् परम् — \"this supreme secret.\""
     },
     {
       "title": "साक्षात् कथयतः स्वयम् — directly, in person",
-      "body": "योगेश्वरात् कृष्णात् (पञ्चमी, \"from Kṛṣṇa, the lord of yoga\") कथयतः (षष्ठी of कथयत्, present active participle: \"of him speaking\") साक्षात् स्वयम् — \"directly, in person.\" Sañjaya emphasizes the unmediated source. The grammar piles the ablatives and the participle to mark the immediacy."
+      "body": "योगेश्वरात् कृष्णात् (पञ्चमी, \"from Kṛṣṇa, the lord of yoga\") कथयतः (पञ्चमी एकवचन of शतृ-stem कथयत्, \"from him as he was speaking\") साक्षात् स्वयम् — \"directly, in person.\" Sañjaya emphasizes the unmediated source. The participle agrees in case with कृष्णात्; पञ्चमी and षष्ठी of शतृ-stems are homophonous (-तः), but the syntactic anchor कृष्णात् fixes the case as ablative."
     }
   ],
   "18.76": [
