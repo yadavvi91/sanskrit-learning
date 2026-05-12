@@ -1,0 +1,23 @@
+src/data/dcs-padaccheda.json
+  s_77270f59c41566::t_2057215bdf3361 87414-87569
+src/data/hydrate.test.js
+  s_77270f59c41566::t_440620e48ed154 101
+  s_77270f59c41566::t_c24183e181ae98 80-99,102-103
+  s_77270f59c41566::t_e06a3d3906d1af 100
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "84ec1f5193bebfdc03749e4ab1a7860ce7bd63f1",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
