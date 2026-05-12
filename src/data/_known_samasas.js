@@ -250,6 +250,11 @@ export const KNOWN_SAMASAS = {
   'काम-क्रोध-उद्भव': { vigraha: 'काम-क्रोधाभ्यां उद्भवः यस्य', type: 'बहुव्रीहि', gloss: 'arising from desire and anger' },
   'काम-क्रोध-वियुक्त': { vigraha: 'काम-क्रोधाभ्यां वियुक्तः', type: 'तृतीया तत्पुरुष', gloss: 'free from desire and anger (BG 5.26)' },
   'काम-क्रोध-परायण': { vigraha: 'काम-क्रोधयोः परायणाः', type: 'बहुव्रीहि', gloss: 'devoted to desire and anger (BG 16.12)' },
+  // BG 16.12 — the bondage-of-desire compounds. Both are तत्पुरुष chains
+  // describing what binds the demoniac: the "hundreds of bonds of hope"
+  // by which they are tied, and the "accumulations of wealth" they pursue.
+  'आशा-पाश-शत':  { vigraha: 'आशा-पाशानां शतानि', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'hundreds of bonds of desire (BG 16.12 — chain: आशा "desire/hope" → पाश "noose/bond" → शत "hundred"; the instrumental plural -ऐः on शत carries the case of the whole compound: "bound by hundreds of hope-nooses")' },
+  'अर्थ-सञ्चय':   { vigraha: 'अर्थस्य सञ्चयः', type: 'षष्ठी तत्पुरुष', gloss: 'accumulation of wealth (BG 16.12)' },
 
   // मद्-* compounds (DCS uses मद् for "me/my" — first-person compound prefix)
   'मद्-भक्त':    { vigraha: 'मम भक्तः', type: 'षष्ठी तत्पुरुष', gloss: 'my devotee' },

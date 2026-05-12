@@ -43,15 +43,38 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     // 2.43 has hyphenated compounds in padaccheda (काम-आत्मानः, etc.)
     // but no explicit samasNotes block in the override. The hydrator
     // should auto-derive a structural samasNotes list so the UI shows
-    // a समास section below पदच्छेद on auto-stub verses.
+    // a समास section below पदच्छेद on auto-stub verses. Once काम-आत्मन्
+    // was added to KNOWN_SAMASAS, this entry comes from the lexicon
+    // (proper bahuvrīhi vigraha) rather than the component-list fallback.
     const v = find(2, 43);
     expect(v.tier).toBe('auto-stub');
     expect(Array.isArray(v.samasNotes)).toBe(true);
     expect(v.samasNotes.length).toBeGreaterThan(0);
     const kamatma = v.samasNotes.find((s) => s.compound === 'काम-आत्मानः');
     expect(kamatma).toBeDefined();
-    expect(kamatma.vigraha).toBe('काम + आत्मानः');
-    expect(kamatma.source).toBe('derived-from-padaccheda');
+    expect(kamatma.vigraha).toBe('कामे आत्मा यस्य');
+    expect(kamatma.source).toBe('known-samasa-lexicon');
+  });
+
+  it('BG 16.12 — आशा-पाश-शतैः and अर्थ-सञ्चयान् surface as proper समास, not component-list fallback', () => {
+    // Both compounds appear in the DCS padaccheda as single hyphenated
+    // padas. Without lexicon entries the hydrator falls through to the
+    // "componentGlosses.join(' + ')" path, producing surface like
+    // "आशा (hope) + पाश (bond) + शतैः (hundred)". With KNOWN_SAMASAS
+    // entries keyed as आशा-पाश-शत and अर्थ-सञ्चय (case-stripped), the
+    // hydrator's path-(d) case-strip lookup finds them and surfaces the
+    // proper vigraha + type + gloss.
+    const v = find(16, 12);
+    expect(Array.isArray(v.samasNotes)).toBe(true);
+    const apashata = v.samasNotes.find((s) => s.compound === 'आशा-पाश-शतैः');
+    expect(apashata).toBeDefined();
+    expect(apashata.type).toMatch(/षष्ठी तत्पुरुष/);
+    expect(apashata.source).toBe('known-samasa-lexicon');
+    expect(apashata.vigraha).not.toContain('+'); // not the fallback shape
+    const arthas = v.samasNotes.find((s) => s.compound === 'अर्थ-सञ्चयान्');
+    expect(arthas).toBeDefined();
+    expect(arthas.type).toMatch(/षष्ठी तत्पुरुष/);
+    expect(arthas.source).toBe('known-samasa-lexicon');
   });
 
   it('samasNotes pick up type + gloss from vibhaktiNotes (samāsa-vigraha, not just sandhi-split)', () => {
