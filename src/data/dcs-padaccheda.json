@@ -87411,6 +87411,162 @@
     ],
     "sandhied": "ये तु धर्म्यामृतमिदं यथोक्तं पर्युपासते श्रद्दधाना मत्परमा भक्तास्ते ऽतीव मे प्रियाः"
   },
+  "13.1": {
+    "padaccheda": [
+      "प्रकृतिम्",
+      "पुरुषम्",
+      "च",
+      "एव",
+      "क्षेत्रम्",
+      "क्षेत्रज्ञम्",
+      "एव",
+      "च",
+      "एतत्",
+      "वेदितुम्",
+      "इच्छामि",
+      "ज्ञानम्",
+      "ज्ञेयम्",
+      "च",
+      "केशव"
+    ],
+    "wordParsings": {
+      "प्रकृतिम्": {
+        "form": "प्रकृतिम्",
+        "root": "प्रकृति",
+        "source": "dcs",
+        "category": "noun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "f",
+        "lemmaIast": "prakṛti",
+        "pos": "NOUN"
+      },
+      "पुरुषम्": {
+        "form": "पुरुषम्",
+        "root": "पुरुष",
+        "source": "dcs",
+        "category": "noun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "m",
+        "lemmaIast": "puruṣa",
+        "pos": "NOUN"
+      },
+      "च": {
+        "form": "च",
+        "root": "च",
+        "source": "dcs",
+        "category": "particle",
+        "lemmaIast": "ca",
+        "pos": "CONJ"
+      },
+      "एव": {
+        "form": "एव",
+        "root": "एव",
+        "source": "dcs",
+        "category": "particle",
+        "lemmaIast": "eva",
+        "pos": "PART"
+      },
+      "क्षेत्रम्": {
+        "form": "क्षेत्रम्",
+        "root": "क्षेत्र",
+        "source": "dcs",
+        "category": "noun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "kṣetra",
+        "pos": "NOUN"
+      },
+      "क्षेत्रज्ञम्": {
+        "form": "क्षेत्रज्ञम्",
+        "root": "क्षेत्रज्ञ",
+        "source": "dcs",
+        "category": "noun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "m",
+        "lemmaIast": "kṣetrajña",
+        "pos": "NOUN"
+      },
+      "एतत्": {
+        "form": "एतत्",
+        "root": "एतद्",
+        "source": "dcs",
+        "category": "pronoun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "etad",
+        "pos": "PRON"
+      },
+      "वेदितुम्": {
+        "form": "वेदितुम्",
+        "root": "विद्",
+        "source": "dcs",
+        "category": "krdanta",
+        "kind": "infinitive",
+        "lemmaIast": "vid",
+        "pos": "VERB"
+      },
+      "इच्छामि": {
+        "form": "इच्छामि",
+        "root": "इष्",
+        "source": "dcs",
+        "category": "verb",
+        "number": "eka",
+        "lakara": "lat",
+        "purusha": "uttama",
+        "lemmaIast": "iṣ",
+        "pos": "VERB"
+      },
+      "ज्ञानम्": {
+        "form": "ज्ञानम्",
+        "root": "ज्ञान",
+        "source": "dcs",
+        "category": "noun",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "jñāna",
+        "pos": "NOUN"
+      },
+      "ज्ञेयम्": {
+        "form": "ज्ञेयम्",
+        "root": "ज्ञा",
+        "source": "dcs",
+        "category": "verb",
+        "case": "dvi",
+        "number": "eka",
+        "gender": "n",
+        "lemmaIast": "jñā",
+        "pos": "VERB"
+      },
+      "केशव": {
+        "form": "केशव",
+        "root": "केशव",
+        "source": "dcs",
+        "category": "noun",
+        "case": "sam",
+        "number": "eka",
+        "gender": "m",
+        "lemmaIast": "keśava",
+        "pos": "NOUN"
+      }
+    },
+    "finiteVerbs": [
+      {
+        "form": "इच्छामि",
+        "root": "इष्",
+        "lakara": "lat",
+        "purusha": "uttama",
+        "number": "eka",
+        "source": "dcs"
+      }
+    ],
+    "sandhied": "प्रकृतिं पुरुषं चैव क्षेत्रं क्षेत्रज्ञमेव च एतद्वेदितुमिच्छामि ज्ञानं ज्ञेयं च केशव"
+  },
   "13.2": {
     "padaccheda": [
       "इदम्",

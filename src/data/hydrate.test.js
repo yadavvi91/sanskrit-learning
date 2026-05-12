@@ -77,6 +77,30 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(arthas.source).toBe('known-samasa-lexicon');
   });
 
+  it('BG 13.1 — एतद्वेदितुमिच्छामि splits into three independent words (NOT a समास)', () => {
+    // The string एतद्वेदितुमिच्छामि is two sandhis stuck together:
+    // एतत् + वेदितुम् (जश्त्व: त् → द्ʼ) + इच्छामि (silent म्+vowel).
+    // Finite-verb (तिङन्त) इच्छामि can never appear inside a समास —
+    // Pāṇinian grammar excludes तिङन्त from compound formation.
+    // The three words have independent syntactic roles: एतत् is the
+    // accusative object, वेदितुम् is the infinitive complement, and
+    // इच्छामि is the finite verb. The verse had no DCS data at all;
+    // now it does, with all three words as separate padas.
+    const v = find(13, 1);
+    expect(Array.isArray(v.padaccheda)).toBe(true);
+    expect(v.padaccheda).toEqual(expect.arrayContaining([
+      'एतत्', 'वेदितुम्', 'इच्छामि',
+    ]));
+    // Make sure no fused-समास variant slipped in.
+    expect(v.padaccheda).not.toContain('एतद्-वेदितुम्-इच्छामि');
+    expect(v.padaccheda).not.toContain('एतद्वेदितुमिच्छामि');
+    // इच्छामि must surface as the finite verb (उत्तम-एकवचन of √इष्).
+    const icchami = v.finiteVerbs.find((f) => f.form === 'इच्छामि');
+    expect(icchami).toBeDefined();
+    expect(icchami.root).toMatch(/√?इष्/); // DCS strips √, overrides keep it
+    expect(icchami.purusha).toMatch(/उत्तम|uttama/); // DCS uses IAST, overrides Devanagari
+  });
+
   it('BG 6.36 — pure nominal predication, finite-verb-warning is silenced via null override', () => {
     // Both halves drop अस्ति: "योगो दुष्प्रापः (अस्ति) इति मे मतिः" and
     // "(योगः) अवाप्तुं शक्यः (अस्ति)". No surface finite verb anywhere —
