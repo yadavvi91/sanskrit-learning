@@ -3,215 +3,235 @@
 // AUDIT EVERYTHING.
 export const INTERP_PART_3 = {
   // ── Chapter 13 — Kṣetra-Kṣetrajña Vibhāga Yoga ──────────────────────
+  // 13.1 — Arjuna's question (interpolated in verses.js's recension;
+  // DCS omits it, so the DCS-derived enrichment can't fill it.
+  // Hand-curated here.)
   '13.1': {
+    anvaya: "केशव, प्रकृतिं पुरुषं च एव, क्षेत्रं क्षेत्रज्ञम् एव च, ज्ञानं ज्ञेयं च — एतत् वेदितुम् इच्छामि",
+    vibhaktiNotes: [
+      "केशव → सम्बोधन — Arjuna addressing Kṛṣṇa",
+      "प्रकृतिम्, पुरुषम्, क्षेत्रम्, क्षेत्रज्ञम्, ज्ञानम्, ज्ञेयम् → द्वितीया (objects of वेदितुम् / इच्छामि)",
+      "एतत् → द्वितीया (sums up the six topics — 'all this')"
+    ],
+    keyFights: [
+      "इच्छामि = √इष् + लट् + उत्तम + एकवचन — \"I wish\" (the only finite verb)",
+      "वेदितुम् = infinitive of √विद् — \"to know\" (governed by इच्छामि)",
+      "Six द्वितीया objects all governed by the single infinitive"
+    ],
+    vyakhya: [
+      {
+        title: "Three pairs as the chapter's agenda",
+        body: "Arjuna names three dyads — prakṛti / puruṣa, kṣetra / kṣetrajña, jñāna / jñeya. The chapter answers each in turn. Grammatically a single sentence: one finite verb (इच्छामि), one infinitive (वेदितुम्), six द्वितीया objects."
+      },
+      {
+        title: "Editorial note: not in every recension",
+        body: "This verse appears in the longer recension of the Gītā but is absent from the critical edition (the DCS source we use). When present, scholars count BG 13 as 35 verses; without it, 34. The numbering in this app follows the longer recension — interpretive content for the remaining verses 13.2 – 13.35 was originally authored against the shorter numbering and was shifted up by one to align."
+      }
+    ]
+  },
+  '13.2': {
     anvaya: "कौन्तेय, इदं शरीरं क्षेत्रम् इति अभिधीयते; एतद् यः वेत्ति, तं तज्ज्ञाः क्षेत्रज्ञः इति प्राहुः",
     vibhaktiNotes: [ "कौन्तेय → सम्बोधन", "इदं शरीरम् → प्रथमा (subject)", "क्षेत्रम्, क्षेत्रज्ञः → प्रथमा (predicate nominatives)" ],
     keyFights: [ "अभिधीयते and प्राहुः are the two finite verbs — both passive/indicative of naming", "इति marks the named term — \"called X\" pattern" ],
     vyakhya: [ { title: "The naming pattern with इति", body: "Sanskrit uses N1 + इति + verb-of-naming to mean \"X is called Y\". Two such frames stacked here introduce the chapter's core dyad: क्षेत्र and क्षेत्रज्ञ." } ]
   },
-  '13.2': {
+  '13.3': {
     anvaya: "भारत, सर्वक्षेत्रेषु क्षेत्रज्ञं माम् अपि च विद्धि; क्षेत्रक्षेत्रज्ञयोः यद् ज्ञानं तद् ज्ञानम् इति मम मतम्",
     vibhaktiNotes: [ "भारत → सम्बोधन", "सर्वक्षेत्रेषु → सप्तमी बहुवचन (locative of domain)", "क्षेत्रक्षेत्रज्ञयोः → षष्ठी द्विवचन (\"of the two\")" ],
     keyFights: [ "विद्धि is लोट् 2sg of √विद् — \"know!\"", "मतम् = past passive participle of √मन् used as neuter noun (\"my view\")" ] ,
     vyakhya: [ { title: "Dual genitive के two", body: "क्षेत्रक्षेत्रज्ञयोः is a dvandva compound in षष्ठी द्विवचन — literally \"of (the two) field-and-knower\". The dual ending -योः signals exactly two referents." } ]
   },
-  '13.3': {
+  '13.4': {
     anvaya: "तत् क्षेत्रं यत् च, यादृक् च, यद्विकारि, यतः च यत्, सः च यः, यत्प्रभावः च — तत् समासेन मे शृणु",
     vibhaktiNotes: [ "तत् क्षेत्रम् → प्रथमा (topic)", "समासेन → तृतीया (\"in brief\" — adverbial instrumental)", "मे → षष्ठी/चतुर्थी enclitic (\"from me\")" ],
     keyFights: [ "Six interrogative-relative pronouns stacked — यत्, यादृक्, यद्विकारि, यतः, यः, यत्प्रभावः", "शृणु is लोट् 2sg of √श्रु" ],
     vyakhya: [ { title: "Catalogue by relatives", body: "Sanskrit lists topics-to-be-explained by piling यत्/यादृक्-clauses, then closes with the imperative. Each yat- pronoun previews one question the next verses will answer." } ]
   },
-  '13.4': {
+  '13.5': {
     anvaya: "ऋषिभिः बहुधा गीतम्, छन्दोभिः विविधैः पृथक्, ब्रह्मसूत्रपदैः च एव हेतुमद्भिः विनिश्चितैः (गीतम्)",
     vibhaktiNotes: [ "ऋषिभिः, छन्दोभिः, ब्रह्मसूत्रपदैः → तृतीया बहुवचन (agents/instruments of singing)", "विविधैः, हेतुमद्भिः, विनिश्चितैः → तृतीया बहुवचन adjectives agreeing" ],
     keyFights: [ "गीतम् is past passive participle (कृदन्त) — \"has been sung\", not a finite verb", "बहुधा, पृथक् → indeclinable adverbs" ],
     vyakhya: [ { title: "PPP as anchor", body: "When no finite verb appears, a PPP like गीतम् + तृतीया-agent forms a complete passive sentence: \"It has been sung by the seers.\"" } ]
   },
-  '13.5': {
+  '13.6': {
     anvaya: "महाभूतानि, अहङ्कारः, बुद्धिः, अव्यक्तम् एव च, इन्द्रियाणि दशैकं च, पञ्च च इन्द्रियगोचराः",
     vibhaktiNotes: [ "All listed items → प्रथमा (nominative enumeration)", "इन्द्रियाणि दश + एकम् → \"ten and one\" = the eleven (10 senses + manas)" ],
     keyFights: [ "Verb-less list — implicit (सन्ति) \"are\"", "इन्द्रियगोचराः = षष्ठी तत्पुरुष (\"ranges of the senses\")" ],
     vyakhya: [ { title: "Sāṅkhya enumeration as nominative dump", body: "The verse simply lists the constituents of the kṣetra in प्रथमा with no finite verb — Sanskrit's compressed way of giving an inventory." } ]
   },
-  '13.6': {
+  '13.7': {
     anvaya: "इच्छा, द्वेषः, सुखम्, दुःखम्, सङ्घातः, चेतना, धृतिः — एतत् क्षेत्रं समासेन सविकारम् उदाहृतम्",
     vibhaktiNotes: [ "All listed feelings → प्रथमा एकवचन", "एतत् क्षेत्रम्, सविकारम् → प्रथमा predicate", "समासेन → तृतीया (adverbial)" ],
     keyFights: [ "उदाहृतम् = PPP of उद् + आ + √हृ — \"has been described\"", "सविकारम् = सह विकारैः (बहुव्रीहि or adverb)" ],
     vyakhya: [ { title: "Field includes feelings", body: "The kṣetra is not just material — desire, hate, pleasure, pain are themselves listed as \"field\" components, locating affect in prakṛti rather than the knower." } ]
   },
-  '13.7': {
+  '13.8': {
     anvaya: "अमानित्वम्, अदम्भित्वम्, अहिंसा, क्षान्तिः, आर्जवम्, आचार्योपासनम्, शौचम्, स्थैर्यम्, आत्मविनिग्रहः",
     vibhaktiNotes: [ "All items → प्रथमा एकवचन (subject of an implied predicate \"is jñāna\" continued in 13.11)" ],
     keyFights: [ "Verb-less catalogue running over multiple verses — finite verb (प्रोक्तम्) appears at 13.11", "आचार्योपासनम् = षष्ठी तत्पुरुष (\"service of the teacher\")" ],
     vyakhya: [ { title: "Long predicate awaits", body: "Verses 13.7–13.11 form one syntactic unit: a long subject-list whose predicate (\"this is called knowledge\") only arrives at 13.11." } ]
   },
-  '13.8': {
+  '13.9': {
     anvaya: "इन्द्रियार्थेषु वैराग्यम्, अनहङ्कारः एव च, जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम्",
     vibhaktiNotes: [ "इन्द्रियार्थेषु → सप्तमी बहुवचन (locative \"toward sense-objects\")", "Other items → प्रथमा" ],
     keyFights: [ "जन्ममृत्युजराव्याधिदुःखदोषानुदर्शनम् — six-member द्वन्द्व compounded with अनुदर्शन (gerund-noun)", "Compound depth is the fight here" ],
     vyakhya: [ { title: "Long compound parsing", body: "Long कर्मधारय/तत्पुरुष chains read left-to-right: (birth-death-age-disease)-pain-fault + perceiving = \"perceiving the suffering-defects of birth-death-age-disease\"." } ]
   },
-  '13.9': {
+  '13.10': {
     anvaya: "असक्तिः, पुत्रदारगृहादिषु अनभिष्वङ्गः, इष्टानिष्टोपपत्तिषु नित्यं समचित्तत्वं च",
     vibhaktiNotes: [ "पुत्रदारगृहादिषु, इष्टानिष्टोपपत्तिषु → सप्तमी बहुवचन (\"toward/in\")", "Items → प्रथमा" ],
     keyFights: [ "नित्यम् → adverb", "समचित्तत्वम् = abstract noun via -त्व suffix" ],
     vyakhya: [ { title: "Locative of relation", body: "सप्तमी here marks the domain over which (non-)attachment operates — \"non-clinging WITH-RESPECT-TO sons, wives, homes\"." } ]
   },
-  '13.10': {
+  '13.11': {
     anvaya: "मयि च अनन्ययोगेन अव्यभिचारिणी भक्तिः, विविक्तदेशसेवित्वम्, जनसंसदि अरतिः",
     vibhaktiNotes: [ "मयि → सप्तमी (locative of object of devotion)", "अनन्ययोगेन → तृतीया (instrumental — \"by\")", "जनसंसदि → सप्तमी" ],
     keyFights: [ "अव्यभिचारिणी = feminine participle agreeing with भक्तिः", "सेवित्वम् = -त्व abstract from agent noun सेविन्" ],
     vyakhya: [ { title: "Locative of devotion", body: "मयि (in/toward me) is the standard सप्तमी for the object of devotion — भक्तिः always takes locative for whom devotion is directed at." } ]
   },
-  '13.11': {
+  '13.12': {
     anvaya: "अध्यात्मज्ञाननित्यत्वम्, तत्त्वज्ञानार्थदर्शनम् — एतत् ज्ञानम् इति प्रोक्तम्; अतः अन्यथा अज्ञानं (भवति)",
     vibhaktiNotes: [ "एतत् ज्ञानम् → प्रथमा (the predicate finally arrives)", "अतः अन्यथा → adverbial (\"otherwise than this\")" ],
     keyFights: [ "प्रोक्तम् = PPP of प्र + √वच् — the long-awaited finite-equivalent", "इति marks the close of the long subject-list begun at 13.7" ],
     vyakhya: [ { title: "The predicate arrives", body: "After four verses of subject-list (7–10), 13.11 finally supplies the predicate: एतत् ज्ञानम् प्रोक्तम् — \"all that has been called knowledge.\"" } ]
   },
-  '13.12': {
+  '13.13': {
     anvaya: "यत् ज्ञेयं तत् प्रवक्ष्यामि, यत् ज्ञात्वा अमृतम् अश्नुते; अनादिमत् परं ब्रह्म, न सत् न असत् च उच्यते",
     vibhaktiNotes: [ "यत्, तत् → प्रथमा (relative correlation)", "अमृतम् → द्वितीया (object of अश्नुते)" ],
     keyFights: [ "प्रवक्ष्यामि → लृट् (future) — note the -ष्य- infix", "ज्ञात्वा → absolutive (\"having known\")", "अश्नुते → लट् 3sg of √अश् (Ā) — \"attains\"" ],
     vyakhya: [ { title: "Future-tense promise", body: "प्र + वक्ष्यामि shows लृट् with the characteristic -ष्य- — \"I shall declare.\" Krishna marks the discourse shift from describing kṣetra to describing the supreme jñeya." } ]
   },
-  '13.13': {
+  '13.14': {
     anvaya: "तत् सर्वतः पाणिपादम्, सर्वतः अक्षिशिरोमुखम्, सर्वतः श्रुतिमत् लोके सर्वम् आवृत्य तिष्ठति",
     vibhaktiNotes: [ "लोके → सप्तमी", "सर्वम् → द्वितीया (object of आवृत्य)" ],
     keyFights: [ "आवृत्य → absolutive of आ + √वृ (\"having enveloped\")", "तिष्ठति → लट् 3sg of √स्था" ],
     vyakhya: [ { title: "Bahuvrīhi pile-up", body: "पाणिपादम्, अक्षिशिरोमुखम्, श्रुतिमत् are all bahuvrīhis describing तत् — \"that-which-has hands-and-feet everywhere\"." } ]
   },
-  '13.14': {
+  '13.15': {
     anvaya: "सर्वेन्द्रियगुणाभासम्, सर्वेन्द्रियविवर्जितम्, असक्तं सर्वभृत् च एव, निर्गुणं गुणभोक्तृ च (तत्)",
     vibhaktiNotes: [ "All adjectives → प्रथमा एकवचन (predicates of तत्)" ],
     keyFights: [ "Paradox-stack: has-the-qualities-of-all-senses YET sense-less; without-attachment YET supporting-all", "विवर्जितम्, असक्तम् → PPPs functioning adjectivally" ],
     vyakhya: [ { title: "Paradox by juxtaposition", body: "Sanskrit drops connectives — paradox is shown by simply placing X and not-X in the same verse, both agreeing with the same subject." } ]
   },
-  '13.15': {
+  '13.16': {
     anvaya: "भूतानां बहिः अन्तः च, अचरं चरम् एव च, सूक्ष्मत्वात् तत् अविज्ञेयम्, दूरस्थं च अन्तिके च (तत्)",
     vibhaktiNotes: [ "भूतानाम् → षष्ठी बहुवचन (\"of beings\")", "सूक्ष्मत्वात् → पञ्चमी (ablative of cause — \"because of subtlety\")" ],
     keyFights: [ "पञ्चमी of cause: -त्वात् ending = \"because of being X\"", "अविज्ञेयम् = potential passive participle (-य)" ],
     vyakhya: [ { title: "Ablative of cause", body: "सूक्ष्मत्वात् uses पञ्चमी to give a reason: \"because of (its) subtlety, that is unknowable.\" The -त्वात् ending is a frequent Sanskrit way of saying \"due to being X\"." } ]
   },
-  '13.16': {
+  '13.17': {
     anvaya: "अविभक्तं च भूतेषु विभक्तम् इव च स्थितम्, भूतभर्तृ च तत् ज्ञेयम्, ग्रसिष्णु प्रभविष्णु च",
     vibhaktiNotes: [ "भूतेषु → सप्तमी बहुवचन", "तत् ज्ञेयम् → प्रथमा (potential PP — \"to be known\")" ],
     keyFights: [ "इव = simile particle (\"as if\")", "ग्रसिष्णु, प्रभविष्णु = -इष्णु tendency-suffix" ],
     vyakhya: [ { title: "-इष्णु suffix", body: "The -इष्णु formation marks habitual tendency: ग्रसिष्णु = \"one prone to devour\". A rare but elegant nominal pattern." } ]
   },
-  '13.17': {
+  '13.18': {
     anvaya: "तत् ज्योतिषाम् अपि तत् ज्योतिः, तमसः परम् उच्यते; ज्ञानं ज्ञेयं ज्ञानगम्यं सर्वस्य हृदि विष्ठितम्",
     vibhaktiNotes: [ "ज्योतिषाम् → षष्ठी बहुवचन (\"of lights\")", "तमसः → पञ्चमी (\"beyond darkness\")", "हृदि → सप्तमी (\"in the heart\")", "सर्वस्य → षष्ठी (\"of everyone\")" ],
     keyFights: [ "उच्यते → passive लट् of √वच्", "विष्ठितम् → PPP of वि + √स्था" ],
     vyakhya: [ { title: "Triple identification", body: "ज्ञानं ज्ञेयं ज्ञानगम्यम् — three roles around one root √ज्ञा. The supreme is simultaneously the knowing, the to-be-known, and the goal of knowledge." } ]
   },
-  '13.18': {
+  '13.19': {
     anvaya: "इति क्षेत्रं तथा ज्ञानं ज्ञेयं च समासतः उक्तम्; मद्भक्तः एतत् विज्ञाय मद्भावाय उपपद्यते",
     vibhaktiNotes: [ "मद्भावाय → चतुर्थी (dative of purpose — \"toward my state\")", "एतत् → द्वितीया (object of विज्ञाय)" ],
     keyFights: [ "विज्ञाय → absolutive (\"having understood\")", "उक्तम् → PPP serving as the only finite verb of the first half" ],
     vyakhya: [ { title: "Dative of purpose", body: "मद्भावाय shows चतुर्थी for goal: \"becomes fit FOR my state.\" Dative naturally encodes the toward-which of action." } ]
   },
-  '13.19': {
+  '13.20': {
     anvaya: "प्रकृतिं पुरुषं च एव विद्धि उभौ अपि अनादी; विकारान् च गुणान् च एव विद्धि प्रकृतिसम्भवान्",
     vibhaktiNotes: [ "प्रकृतिम्, पुरुषम् → द्वितीया (objects of विद्धि)", "विकारान्, गुणान् → द्वितीया बहुवचन" ],
     keyFights: [ "विद्धि → लोट् 2sg of √विद् (\"know!\")", "उभौ → द्विवचन (\"both two\")" ],
     vyakhya: [ { title: "Dual उभौ", body: "उभौ is dual: \"the two of them.\" Sanskrit's three-vacana system reserves dual for natural pairs — and here the prakṛti-puruṣa pair gets exactly that grammatical recognition." } ]
   },
-  '13.20': {
+  '13.21': {
     anvaya: "कार्यकारणकर्तृत्वे प्रकृतिः हेतुः उच्यते; पुरुषः सुखदुःखानां भोक्तृत्वे हेतुः उच्यते",
     vibhaktiNotes: [ "कार्यकारणकर्तृत्वे, भोक्तृत्वे → सप्तमी (locative of domain)", "सुखदुःखानाम् → षष्ठी बहुवचन" ],
     keyFights: [ "उच्यते repeated → passive लट्", "-त्व abstract nouns: कर्तृत्व, भोक्तृत्व" ],
     vyakhya: [ { title: "Two domains, two causes", body: "Locative -त्वे = \"in the matter of being-X\". The verse cleanly assigns prakṛti to the agency-domain and puruṣa to the experience-domain." } ]
   },
-  '13.21': {
+  '13.22': {
     anvaya: "पुरुषः प्रकृतिस्थः हि प्रकृतिजान् गुणान् भुङ्क्ते; गुणसङ्गः अस्य सद्-असद्-योनिजन्मसु कारणम्",
     vibhaktiNotes: [ "गुणान् → द्वितीया (object of भुङ्क्ते)", "अस्य → षष्ठी (\"his\")", "योनिजन्मसु → सप्तमी बहुवचन" ],
     keyFights: [ "भुङ्क्ते → लट् 3sg ātmanepada of √भुज्", "प्रकृतिस्थः, प्रकृतिजान् → compound adjectives" ],
     vyakhya: [ { title: "Cause located in attachment", body: "The verse names सङ्ग as the कारण — attachment-to-guṇas, not the guṇas themselves, drives rebirth in good or bad wombs." } ]
   },
-  '13.22': {
+  '13.23': {
     anvaya: "उपद्रष्टा अनुमन्ता च भर्ता भोक्ता महेश्वरः; परमात्मा इति च अपि उक्तः, देहे अस्मिन् पुरुषः परः",
     vibhaktiNotes: [ "देहे अस्मिन् → सप्तमी (\"in this body\")", "All epithets → प्रथमा" ],
     keyFights: [ "Five agent-noun epithets: -तृ stems (द्रष्टृ, मन्तृ, भर्तृ, भोक्तृ)", "उक्तः → PPP \"called\"" ],
     vyakhya: [ { title: "Agent-noun stack", body: "-तृ agent-nouns are Sanskrit's compact way of naming roles. Five stacked here describe the single supreme: witness, consenter, sustainer, enjoyer, lord." } ]
   },
-  '13.23': {
+  '13.24': {
     anvaya: "यः एवं पुरुषं प्रकृतिं च गुणैः सह वेत्ति, सर्वथा वर्तमानः अपि सः न भूयः अभिजायते",
     vibhaktiNotes: [ "गुणैः सह → तृतीया + सह (\"together with\")", "सर्वथा → adverb" ],
     keyFights: [ "वर्तमानः → present participle of √वृत् (\"abiding\")", "अभिजायते → लट् 3sg of अभि + √जन्" ],
     vyakhya: [ { title: "सह + तृतीया", body: "\"Together with\" requires तृतीया + सह — a fixed instrumental-postposition pattern that's distinct from plain instrumental." } ]
   },
-  '13.24': {
+  '13.25': {
     anvaya: "केचित् ध्यानेन आत्मना आत्मनि आत्मानं पश्यन्ति; अन्ये साङ्ख्येन योगेन, अन्ये कर्मयोगेन (पश्यन्ति)",
     vibhaktiNotes: [ "ध्यानेन, साङ्ख्येन योगेन, कर्मयोगेन → तृतीया (means)", "आत्मनि → सप्तमी (\"in the self\")", "आत्मना → तृतीया (\"by the self\")", "आत्मानम् → द्वितीया (object)" ],
     keyFights: [ "Triple आत्मन् in three different cases — same word, three roles", "पश्यन्ति → लट् 3pl of √दृश्" ],
     vyakhya: [ { title: "One word, three cases", body: "आत्मना (instrumental — by) + आत्मनि (locative — in) + आत्मानम् (accusative — sees) shows how Sanskrit packs subject-instrument-locus-object into one root by case alone." } ]
   },
-  '13.25': {
+  '13.26': {
     anvaya: "अन्ये तु एवम् अजानन्तः अन्येभ्यः श्रुत्वा उपासते; ते अपि श्रुतिपरायणाः मृत्युं अति-तरन्ति",
     vibhaktiNotes: [ "अन्येभ्यः → पञ्चमी (\"from others\")", "मृत्युम् → द्वितीया (\"death\")" ],
     keyFights: [ "अजानन्तः → present participle negated by अ-", "श्रुत्वा → absolutive", "उपासते → लट् 3pl Ā", "अतितरन्ति → लट् 3pl of अति + √तृ" ],
     vyakhya: [ { title: "Ablative of source", body: "अन्येभ्यः शृणोति — पञ्चमी for source-from-which one hears. Hearing-from is consistently ablative." } ]
   },
-  '13.26': {
+  '13.27': {
     anvaya: "भारतर्षभ, यावत् किञ्चित् सत्त्वं स्थावरं जङ्गमं वा सञ्जायते, तत् क्षेत्रक्षेत्रज्ञसंयोगात् (सञ्जायते) इति विद्धि",
     vibhaktiNotes: [ "भारतर्षभ → सम्बोधन", "क्षेत्रक्षेत्रज्ञसंयोगात् → पञ्चमी (ablative of source)" ],
     keyFights: [ "सञ्जायते → passive-like middle, लट् 3sg", "यावत्...तावत् correlative pair (तावत् implicit)" ],
     vyakhya: [ { title: "Ablative of origin", body: "X-संयोगात् = \"from the union of X\". Origin and source naturally take पञ्चमी; here the union itself is the source-of-being for every born thing." } ]
   },
-  '13.27': {
+  '13.28': {
     anvaya: "यः समं सर्वेषु भूतेषु तिष्ठन्तं परमेश्वरं विनश्यत्सु अविनश्यन्तं पश्यति, सः (एव) पश्यति",
     vibhaktiNotes: [ "सर्वेषु भूतेषु → सप्तमी बहुवचन", "विनश्यत्सु → सप्तमी बहुवचन (locative of present participle — \"in/among the perishing\")" ],
     keyFights: [ "तिष्ठन्तम्, अविनश्यन्तम् → present participles in द्वितीया (objects of पश्यति)", "Locative absolute hint with विनश्यत्सु" ],
     vyakhya: [ { title: "Participles as objects", body: "तिष्ठन्तम् (\"abiding\") and अविनश्यन्तम् (\"non-perishing\") are -अत् participles declined like nouns and serving as accusative objects of पश्यति." } ]
   },
-  '13.28': {
+  '13.29': {
     anvaya: "समं सर्वत्र अवस्थितम् ईश्वरं पश्यन्, हि सः आत्मना आत्मानं न हिनस्ति; ततः परां गतिं याति",
     vibhaktiNotes: [ "आत्मना → तृतीया (instrumental — by)", "आत्मानम् → द्वितीया (object — the self)", "परां गतिम् → द्वितीया (goal of याति)" ],
     keyFights: [ "पश्यन् → present participle (\"seeing\") qualifying the subject", "हिनस्ति → लट् 3sg of √हिंस्", "याति → लट् 3sg of √या" ],
     vyakhya: [ { title: "Self by self upon self", body: "आत्मना आत्मानं हिनस्ति — same word, two cases, one verb: instrumental-of-agent and accusative-of-patient. Sanskrit's reflexive elegance." } ]
   },
-  '13.29': {
+  '13.30': {
     anvaya: "यः च प्रकृत्या एव क्रियमाणानि कर्माणि सर्वशः पश्यति, तथा आत्मानम् अकर्तारं (पश्यति), सः (एव) पश्यति",
     vibhaktiNotes: [ "प्रकृत्या → तृतीया (instrumental of agent — \"by prakṛti\")", "कर्माणि → द्वितीया बहुवचन" ],
     keyFights: [ "क्रियमाणानि → present passive participle (\"being done\")", "अकर्तारम् → द्वितीया of अकर्तृ (\"as non-doer\")" ],
     vyakhya: [ { title: "Passive participle", body: "क्रियमाण- = present passive of √कृ — \"being-done\". The -मान- ending marks ongoing passive action, agreeing with कर्माणि as adjective." } ]
   },
-  '13.30': {
+  '13.31': {
     anvaya: "यदा भूतपृथग्भावम् एकस्थम् अनुपश्यति, ततः एव च विस्तारं (अनुपश्यति), तदा ब्रह्म सम्पद्यते",
     vibhaktiNotes: [ "भूतपृथग्भावम्, विस्तारम् → द्वितीया (objects)", "ततः → पञ्चमी (\"from that\")" ],
     keyFights: [ "यदा...तदा correlative", "सम्पद्यते → लट् 3sg Ā of सम् + √पद् (\"attains\")" ],
     vyakhya: [ { title: "Temporal correlation", body: "यदा (when) — तदा (then) is Sanskrit's temporal correlative pair. The verse hinges on this when/then frame." } ]
   },
-  '13.31': {
+  '13.32': {
     anvaya: "कौन्तेय, अनादित्वात् निर्गुणत्वात् अयं परमात्मा अव्ययः, शरीरस्थः अपि न करोति न लिप्यते",
     vibhaktiNotes: [ "अनादित्वात्, निर्गुणत्वात् → पञ्चमी (cause)", "कौन्तेय → सम्बोधन" ],
     keyFights: [ "Two ablatives of cause stacked: \"because beginningless, because guṇa-less\"", "करोति, लिप्यते → finite verbs (act, is-stained)" ],
     vyakhya: [ { title: "Stacked ablatives of cause", body: "Multiple -त्वात् ablatives in series give a chain of reasons: \"because-X, because-Y, therefore Z.\"" } ]
   },
-  '13.32': {
+  '13.33': {
     anvaya: "यथा सर्वगतं सौक्ष्म्यात् आकाशं न उपलिप्यते, तथा देहे सर्वत्र अवस्थितः आत्मा न उपलिप्यते",
     vibhaktiNotes: [ "सौक्ष्म्यात् → पञ्चमी (cause — \"because of subtlety\")", "देहे → सप्तमी" ],
     keyFights: [ "यथा...तथा simile pair", "उपलिप्यते → passive लट् of उप + √लिप्" ],
     vyakhya: [ { title: "Yathā-tathā simile", body: "यथा (just as) — तथा (so) is the standard Sanskrit simile frame. Both clauses share grammatical structure for didactic clarity." } ]
   },
-  '13.33': {
+  '13.34': {
     anvaya: "भारत, यथा एकः सूर्यः कृत्स्नं इमं लोकं प्रकाशयति, तथा क्षेत्री कृत्स्नं क्षेत्रं प्रकाशयति",
     vibhaktiNotes: [ "इमं लोकम्, कृत्स्नम् क्षेत्रम् → द्वितीया (objects)", "भारत → सम्बोधन" ],
     keyFights: [ "क्षेत्री = क्षेत्रिन् in प्रथमा (\"the field-owner\")", "प्रकाशयति → लट् causative of प्र + √काश्" ],
     vyakhya: [ { title: "-इन् possessor stem", body: "क्षेत्रिन् (\"having a field\") becomes क्षेत्री in nom.sg. — possessor-suffix that converts a noun to \"one-who-has-X\"." } ]
   },
-  '13.34': {
+  '13.35': {
     anvaya: "एवं ये क्षेत्रक्षेत्रज्ञयोः अन्तरं ज्ञानचक्षुषा (पश्यन्ति), भूतप्रकृतिमोक्षं च (पश्यन्ति), ते परम् यान्ति",
     vibhaktiNotes: [ "ज्ञानचक्षुषा → तृतीया (instrumental — \"with the eye of knowledge\")", "क्षेत्रक्षेत्रज्ञयोः → षष्ठी द्विवचन", "परम् → द्वितीया (goal)" ],
     keyFights: [ "Implied पश्यन्ति governs two द्वितीया objects", "यान्ति → लट् 3pl of √या" ],
     vyakhya: [ { title: "Instrumental of organ", body: "Instruments-of-perception take तृतीया: चक्षुषा (with the eye), श्रोत्रेण (with the ear). Here ज्ञानचक्षुषा is the inner organ of insight." } ]
-  },
-  '13.35': {
-    anvaya: "(कोलोफन — colophon verse marking close of the discourse)",
-    vibhaktiNotes: [ "Colophon-style — recension-dependent" ],
-    keyFights: [ "Some editions add a colophon-numbered verse here" ],
-    vyakhya: [ { title: "Recension marker", body: "Verse numbering 35 may carry the chapter colophon depending on edition; treat as boundary line." } ]
   },
 
   // ── Chapter 14 — Guṇa-Traya Vibhāga Yoga ────────────────────────────
