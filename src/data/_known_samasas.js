@@ -142,7 +142,7 @@ export const KNOWN_SAMASAS = {
   'भरतर्षभ':       { vigraha: 'भरतानां ऋषभः', type: 'षष्ठी तत्पुरुष', gloss: 'bull among the Bharatas (epithet)' },
   'भरतसत्तम':      { vigraha: 'भरतानां सत्तमः', type: 'षष्ठी तत्पुरुष', gloss: 'best among the Bharatas (epithet)' },
   'पुरुषर्षभ':      { vigraha: 'पुरुषाणां ऋषभः', type: 'षष्ठी तत्पुरुष', gloss: 'bull among men (epithet)' },
-  'पुरुषोत्तम':     { vigraha: 'पुरुषाणाम् उत्तमः', type: 'षष्ठी तत्पुरुष', gloss: 'supreme person (epithet of Kṛṣṇa; BG 15)' },
+  'पुरुषोत्तम':     { vigraha: 'पुरुषेषु उत्तमः', type: 'सप्तमी तत्पुरुष', gloss: 'best among men / supreme person (epithet of Kṛṣṇa; Pāṇini 2.1.40 — उत्तम mandatorily takes सप्तमी here)' },
   'नरोत्तम':       { vigraha: 'नराणाम् उत्तमः', type: 'षष्ठी तत्पुरुष', gloss: 'best of men' },
   'नरेन्द्र':        { vigraha: 'नराणाम् इन्द्रः', type: 'षष्ठी तत्पुरुष', gloss: 'king (lit. "Indra of men")' },
   'राजर्षि':         { vigraha: 'राजा ऋषिः', type: 'कर्मधारय', gloss: 'royal sage' },
