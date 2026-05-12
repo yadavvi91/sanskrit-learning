@@ -1,0 +1,28 @@
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_1d49ba45099f25 316-337,348-367,369,371
+  s_d5e8c30b294ba2::t_6f4da4cc3d8677 184-192,197-198,205-206
+src/components/VerseDetail.jsx
+  s_d5e8c30b294ba2::t_42f161da9a7789 52-66
+src/components/WordPopover.jsx
+  s_d5e8c30b294ba2::t_185c44910781f7 64,68-93,98
+  s_d5e8c30b294ba2::t_482d4aef5dc138 122
+  s_d5e8c30b294ba2::t_29a085ce5010c6 165,167,174,177-182,187-190,192-200
+  s_d5e8c30b294ba2::t_d69cd0d822c087 262,268-273,281,286-291
+  s_d5e8c30b294ba2::t_ac2c184241279f 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "8bbc421029ae8d140fedd522a2cef1dd49a22b1f",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
