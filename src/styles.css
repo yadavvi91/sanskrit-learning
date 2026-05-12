@@ -529,6 +529,47 @@ button:disabled {
   color: var(--ink-faint);
 }
 
+/* Collapsible section header — styled as a button but keeps the
+   regular .section-label flex layout. The chevron sits at the top
+   left of the label column on wide screens, inline on mobile. */
+.section-label-toggle {
+  appearance: none;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--rule);
+  padding: 0 16px 0 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 100%;
+}
+
+.section-label-toggle:hover .section-label-sa {
+  color: var(--gold);
+}
+
+.section-label-chevron {
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 720px) {
+  .section-label-toggle {
+    border-right: none;
+    padding-right: 0;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+  }
+}
+
 .section-body {
   min-width: 0;
 }

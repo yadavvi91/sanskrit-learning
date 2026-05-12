@@ -218,7 +218,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       ) : null}
 
       {verse.vibhaktiNotes && verse.vibhaktiNotes.length > 0 && (
-        <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer}>
+        <Section label="विभक्ति" labelEn="Case roles" glossaryTerm="विभक्ति" onOpenPrimer={onOpenPrimer} collapsible>
           <ul className="vibhakti-notes">
             {verse.vibhaktiNotes.map((note, i) => (
               <li key={i}>{note}</li>
@@ -228,7 +228,7 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       )}
 
       {verse.keyFights && verse.keyFights.length > 0 && (
-        <Section label="विवेकः" labelEn="Key fights won here">
+        <Section label="विवेकः" labelEn="Key fights won here" collapsible>
           <ul className="fights">
             {verse.keyFights.map((fight, i) => (
               <li key={i}>{fight}</li>
@@ -389,10 +389,29 @@ function References({ references }) {
   );
 }
 
-function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children }) {
+function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children, collapsible, defaultOpen = true }) {
+  const [open, setOpen] = useState(defaultOpen);
   const labelNode = glossaryTerm
     ? <Glossary term={glossaryTerm} onOpenPrimer={onOpenPrimer}><span className="section-label-sa">{label}</span></Glossary>
     : <span className="section-label-sa">{label}</span>;
+
+  if (collapsible) {
+    return (
+      <section className="verse-section verse-section-collapsible">
+        <button
+          type="button"
+          className="section-label section-label-toggle"
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+        >
+          <span className="section-label-chevron">{open ? '▾' : '▸'}</span>
+          {labelNode}
+          {labelEn && <span className="section-label-en">{labelEn}</span>}
+        </button>
+        {open && <div className="section-body">{children}</div>}
+      </section>
+    );
+  }
 
   return (
     <section className="verse-section">

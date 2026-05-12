@@ -1263,7 +1263,7 @@ export const KNOWN_SAMASAS = {
   'सम-ता': { vigraha: 'समस्य भावः', type: 'भाव-prk', gloss: 'evenness / equality (BG 10.5)' },
   'सम-दर्शन': { vigraha: 'समम् दर्शनं यस्य', type: 'बहुव्रीहि', gloss: 'one of equal vision (BG 6.29)' },
   'समाधि-स्थ': { vigraha: 'समाधौ स्थितः', type: 'सप्तमी तत्पुरुष', gloss: 'established in samādhi (BG 2.54)' },
-  'सम्प्लुत-उदक': { vigraha: 'सम्प्लुतम् उदकम्', type: 'कर्मधारय', gloss: 'flooded waters (BG 2.46)' },
+  'सम्प्लुत-उदक': { vigraha: 'सम्प्लुतम् उदकं यस्मिन्', type: 'बहुव्रीहि', gloss: 'in which waters have flooded — (of a reservoir/well) overflowing (BG 2.46)' },
   'संयत-इन्द्रिय': { vigraha: 'संयतानि इन्द्रियाणि येन', type: 'बहुव्रीहि', gloss: 'one whose senses are restrained (BG 4.39)' },
   'संयम-अग्नि': { vigraha: 'संयमस्य अग्नौ', type: 'सप्तमी तत्पुरुष', gloss: 'in the fire of self-restraint (BG 4.26)' },
   'सर्व-गुह्यतम': { vigraha: 'सर्वेषु गुह्येषु गुह्यतमम्', type: 'सप्तमी तत्पुरुष', gloss: 'most secret of all secrets (BG 18.64)' },
