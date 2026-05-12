@@ -339,11 +339,38 @@ function tokenToParsing(token) {
     const purushaDeva = purushaFromFeats(feats);
     if (purushaDeva && PURUSHA_TO_KEY[purushaDeva]) parsing.purusha = PURUSHA_TO_KEY[purushaDeva];
   } else if (token.upos === 'VERB' && feats.VerbForm === 'Part') {
-    parsing.kind = 'past-passive-participle';  // approximation; DCS doesn't distinguish PPP from other participles in FEATS reliably
+    // DCS tags every participle with `Tense=Past | Pres | Fut | Perf`.
+    // Active vs middle/passive isn't always in DCS, but surface morphology
+    // is decisive: present/future participles ending in -मान- are middle
+    // (शानच्), those ending in -अन्त्/-अत् are active (शतृ).
+    // Past participles default to PPP (-त/-न passive) since that's the
+    // overwhelming majority in Sanskrit; the rare past active in -तवत्/
+    // -वान् could be distinguished by suffix but is uncommon in the Gītā.
+    // -मान- middle-participle suffix can be followed by any nominal
+    // case ending (-ः, -म्, -ान्, -ानाम्, -ेन, -आय, -आत्, -ात्, etc.).
+    // Anchor: form contains मान within the last 6 chars before end.
+    const isMana = /मान[ं-ॏ॑-॔]{0,5}$/.test(formDeva);
+    if (feats.Tense === 'Past') {
+      parsing.kind = 'past-passive-participle';
+    } else if (feats.Tense === 'Pres') {
+      parsing.kind = isMana ? 'present-middle-participle' : 'present-active-participle';
+    } else if (feats.Tense === 'Fut') {
+      parsing.kind = isMana ? 'future-middle-participle' : 'future-active-participle';
+    } else if (feats.Tense === 'Perf') {
+      parsing.kind = 'perfect-participle';
+    } else {
+      // DCS sometimes omits Tense for participles. Keep the prior
+      // default (PPP) — most unmarked participles in Sanskrit ARE past-
+      // passive, so this preserves the old behavior. Strict improvement:
+      // we only override when DCS gives us better information.
+      parsing.kind = 'past-passive-participle';
+    }
   } else if (token.upos === 'VERB' && feats.VerbForm === 'Conv') {
     parsing.kind = 'absolutive';
   } else if (token.upos === 'VERB' && feats.VerbForm === 'Inf') {
     parsing.kind = 'infinitive';
+  } else if (token.upos === 'VERB' && feats.VerbForm === 'Gdv') {
+    parsing.kind = 'gerundive';
   }
   if (feats.Case === 'Cpd') parsing.isCompoundMember = true;
   // Keep Devanāgarī labels alongside (for the verse-detail page's pre-existing renderers)

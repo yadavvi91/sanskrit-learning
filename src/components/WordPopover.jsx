@@ -44,6 +44,19 @@ const LAKARA_LABELS = {
   vidhilin: 'विधिलिङ् (optative)',
 };
 
+const KIND_LABELS = {
+  'past-passive-participle':    'past-passive participle (कृदन्त, -त/-न)',
+  'present-active-participle':  'present-active participle (शतृ, -अन्त्/-अत्)',
+  'present-middle-participle':  'present-middle participle (शानच्, -मान)',
+  'future-active-participle':   'future-active participle (-स्यन्त्)',
+  'future-middle-participle':   'future-middle participle (-स्यमान)',
+  'perfect-participle':         'perfect participle (-वस्/-इवस्)',
+  'gerundive':                  'gerundive (कृत्य — "ought to be X-ed")',
+  'absolutive':                 'absolutive (-त्वा / -य — "having X-ed")',
+  'infinitive':                 'infinitive (-तुम् — "to X")',
+  'participle':                 'participle (कृदन्त — tense unspecified)',
+};
+
 const CATEGORY_LABEL = {
   noun: 'noun',
   adjective: 'adjective',
@@ -306,7 +319,7 @@ function Popover({ word, parsing, fromSharedDict, samasNote }) {
             }).join(' + ')}
           />
         )}
-        {parsing.kind && <Row label="kind" value={parsing.kind} />}
+        {parsing.kind && <Row label="kind" value={KIND_LABELS[parsing.kind] ?? parsing.kind} />}
         {parsing.gana != null && <Row label="गण" value={parsing.gana} />}
         {parsing.pada && (
           <Row
