@@ -141,8 +141,11 @@ async function main() {
     if (fv) candidates.push(fv);
     const kr = krdantaLayer(verseLike, dcs.wordParsings);
     if (kr) candidates.push(kr);
-    const cd = caseDistribution(verseLike, dcs.wordParsings);
-    if (cd) candidates.push(cd);
+    // Case-role distribution removed (user complaint): the histogram was
+    // redundant with the vibhakti section, and the trailing instructional
+    // sentence ("The dominant case usually tells you…") repeated verbatim
+    // on every verse. The caseDistribution() function is kept above in
+    // case we want a smarter "stacked-case" variant later.
 
     // Dedup against existing titles
     const existingTitles = new Set((v.vyakhya || []).map((e) => (e?.title || '').trim()));
