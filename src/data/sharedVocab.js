@@ -480,15 +480,15 @@ function inferFromSuffix(word) {
     const stem = word.slice(0, -suffix.length);
     return synth({ category: 'krdanta', kind: 'gerundive', root: stem, gloss: `gerundive of "${stem}"-stem — "to be ${stem}-ed" (verb stem not in dictionary)`, gender: 'n', number: 'eka', case: 'pra' });
   }
-  if (word.endsWith('इतम्'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
-  if (word.endsWith('इतः'))   return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
-  if (word.endsWith('िताः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl)', gender: 'm', number: 'bahu', case: 'pra' });
-  if (word.endsWith('ितान्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl, object)', gender: 'm', number: 'bahu', case: 'dvi' });
+  if (word.endsWith('इतम्'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg) — stem not in dictionary', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('इतः'))   return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg) — stem not in dictionary', gender: 'm', number: 'eka', case: 'pra' });
+  if (word.endsWith('िताः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl) — stem not in dictionary', gender: 'm', number: 'bahu', case: 'pra' });
+  if (word.endsWith('ितान्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl, object) — stem not in dictionary', gender: 'm', number: 'bahu', case: 'dvi' });
   // -त-suffix PPP catches verbs whose stem already ends in vowel:
   // गत/जात/स्थित — caught above. But ष्ट (कृष्ट, हृष्ट) and ष्ट्र-class also count.
-  if (word.endsWith('ष्टाः')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl)', gender: 'm', number: 'bahu', case: 'pra' });
-  if (word.endsWith('ष्टम्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg)', gender: 'n', number: 'eka', case: 'pra' });
-  if (word.endsWith('ष्टः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg)', gender: 'm', number: 'eka', case: 'pra' });
+  if (word.endsWith('ष्टाः')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. pl) — stem not in dictionary', gender: 'm', number: 'bahu', case: 'pra' });
+  if (word.endsWith('ष्टम्')) return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (n. sg) — stem not in dictionary', gender: 'n', number: 'eka', case: 'pra' });
+  if (word.endsWith('ष्टः'))  return synth({ category: 'krdanta', kind: 'past-passive', gloss: 'past-passive participle (m. sg) — stem not in dictionary', gender: 'm', number: 'eka', case: 'pra' });
   // ── A-stem nominal endings (broad fallback) ──
   // Each pattern tries to strip the suffix and look up the stem to
   // produce a real gloss like "by horses" instead of the generic

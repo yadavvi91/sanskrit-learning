@@ -143,6 +143,31 @@ export const PRIMER_SECTIONS = [
       'he says "should one enjoy?" The mood encodes his horror grammatically.',
   },
   {
+    id: 'pada',
+    title: 'परस्मैपद vs आत्मनेपद — two flavours of endings',
+    body: [
+      'Every Sanskrit root carries a **pada** label that tells you which set of personal endings it takes. There are two complete sets, and they look totally different.',
+      '- **परस्मैपद** ("word for another") — the -ति / -सि / -मि family. भवति, गच्छति, इच्छामि.',
+      '- **आत्मनेपद** ("word for oneself") — the -ते / -से / -ए family. लभते, सेवते, **वन्दे**.',
+      '- **उभयपद** ("word for both") — some roots take either, sometimes with a meaning nuance: कृ → करोति (par.) / कुरुते (ātm.).',
+      'The "for another / for oneself" etymology comes from an old intuition (पच् "cook for others" vs "cook for self"). For **most** roots this semantic split is dead — it\'s just a grammatical fact you memorise per root. Dictionaries mark it: "√भू (par.)", "√लभ् (ātm.)", "√कृ (ubh.)".',
+    ],
+    table: {
+      headers: ['Person × Number', 'परस्मैपद (लट्)', 'आत्मनेपद (लट्)', 'Example'],
+      rows: [
+        ['उत्तम एकवचन (I)',      '-मि',      '-ए',      'इच्छामि (par.) / वन्दे (ātm.)'],
+        ['मध्यम एकवचन (you)',    '-सि',      '-से',      'पठसि / लभसे'],
+        ['प्रथम एकवचन (he/she)',  '-ति',      '-ते',      'भवति / लभते, उच्यते'],
+        ['उत्तम बहुवचन (we)',    '-मः',      '-महे',     'भवामः / लभामहे'],
+        ['प्रथम बहुवचन (they)',   '-अन्ति',   '-अन्ते',    'भवन्ति / लभन्ते'],
+      ],
+    },
+    aside:
+      'One rule that explains a *lot* of -ते forms: **all passives take आत्मनेपद endings**, regardless of the root\'s native pada. ' +
+      'उच्यते "is said" looks ātmanepada, but √वच् is actually parasmaipada (active वदति). The -ते comes from the *passive*, not from the root. ' +
+      'Same for गृह्यते (gṛh par. → passive ātm.), उच्यते, ज्ञायते, दृश्यते. If the verb looks passive (-य- before the ending), expect ātmanepada endings.',
+  },
+  {
     id: 'krdanta',
     title: 'कृदन्त — what\'s NOT the finite verb',
     body: [
