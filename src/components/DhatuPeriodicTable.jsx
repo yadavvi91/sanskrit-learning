@@ -113,30 +113,6 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
         ))}
       </div>
 
-      <div className="dhatu-tier-row dhatu-gana-row" aria-label="Filter by गण">
-        <button
-          type="button"
-          className={`tier-chip ${gana === 'all' ? 'is-active' : ''}`}
-          onClick={() => setGana('all')}
-          title="All gaṇas"
-        >
-          All गण
-        </button>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((g) => {
-          const meta = GANA_META[g];
-          return (
-            <button
-              key={g}
-              type="button"
-              className={`tier-chip gana-tier-chip gana-${g} ${gana === g ? 'is-active' : ''}`}
-              onClick={() => setGana(g)}
-              title={`${meta.devanagari} — ${meta.rule} (e.g. ${meta.ex})`}
-            >
-              {g}. {meta.devanagari}
-            </button>
-          );
-        })}
-      </div>
 
       <div className="dhatu-table-toolbar">
         <span className="dhatu-toolbar-label">Order</span>
@@ -185,13 +161,24 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
         </ol>
       )}
 
-      <div className="dhatu-legend">
-        {Object.entries(GANA_META).map(([n, meta]) => (
-          <span key={n} className={`gana-chip gana-${n}`} title={meta.rule}>
-            <span className="gana-chip-num">{n}</span>{' '}
-            <span className="gana-chip-name">{meta.devanagari}</span>
-          </span>
-        ))}
+      <div className="dhatu-legend" role="toolbar" aria-label="Filter by गण (click a chip to filter)">
+        {Object.entries(GANA_META).map(([n, meta]) => {
+          const num = Number(n);
+          const isActive = gana === num;
+          return (
+            <button
+              key={n}
+              type="button"
+              className={`gana-chip gana-${n} ${isActive ? 'is-active' : ''}`}
+              title={`${meta.devanagari} — ${meta.rule} (e.g. ${meta.ex}) — click to filter${isActive ? ' (active — click again for All)' : ''}`}
+              onClick={() => setGana(isActive ? 'all' : num)}
+              aria-pressed={isActive}
+            >
+              <span className="gana-chip-num">{n}</span>{' '}
+              <span className="gana-chip-name">{meta.devanagari}</span>
+            </button>
+          );
+        })}
       </div>
     </aside>
   );
