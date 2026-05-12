@@ -324,22 +324,76 @@ export function hydrateAutoStubVerses() {
       //     काम-भोग-अर्थे / काम-भोग-अर्थाय all match key काम-भोग-अर्थ).
       // (d) the dehyphenated stem (कामभोगार्थ) — for entries already
       //     keyed without hyphens.
+      // Parasvarna ↔ anusvāra normalisation. DCS produces parasvarna forms
+      // (मुक्त-सङ्गः, लोक-सङ्ग्रहम्); some hand-curated entries use
+      // anusvāra (मुक्त-संग, लोक-संग्रह). Normalise to the parasvarna form
+      // so a single lookup matches either spelling.
+      const VARGA_NASAL = {
+        'क':'ङ','ख':'ङ','ग':'ङ','घ':'ङ','ङ':'ङ',
+        'च':'ञ','छ':'ञ','ज':'ञ','झ':'ञ','ञ':'ञ',
+        'ट':'ण','ठ':'ण','ड':'ण','ढ':'ण','ण':'ण',
+        'त':'न','थ':'न','द':'न','ध':'न','न':'न',
+        'प':'म','फ':'म','ब':'म','भ':'म','म':'म',
+      };
+      const toParasvarna = (s) => s.replace(/ं([क-म])/g, (_, c) =>
+        VARGA_NASAL[c] ? VARGA_NASAL[c] + '्' + c : 'ं' + c
+      );
+      // Inverse: ङ्क → ंक, ञ्ज → ंज, etc. — collapses any varga-nasal +
+      // virama + same-varga-stop into ं + stop.
+      const NASAL_TO_VARGA = {
+        'ङ': ['क','ख','ग','घ','ङ'],
+        'ञ': ['च','छ','ज','झ','ञ'],
+        'ण': ['ट','ठ','ड','ढ','ण'],
+        'न': ['त','थ','द','ध','न'],
+        'म': ['प','फ','ब','भ','म'],
+      };
+      const toAnusvara = (s) => s.replace(/([ङञणनम])्([क-म])/g, (m, n, c) =>
+        (NASAL_TO_VARGA[n] || []).includes(c) ? 'ं' + c : m
+      );
+      const tryKey = (key) => {
+        if (KNOWN_SAMASAS[key]) return KNOWN_SAMASAS[key];
+        const para = toParasvarna(key);
+        if (para !== key && KNOWN_SAMASAS[para]) return KNOWN_SAMASAS[para];
+        const anus = toAnusvara(key);
+        if (anus !== key && KNOWN_SAMASAS[anus]) return KNOWN_SAMASAS[anus];
+        return null;
+      };
+
       function tryKnown(pada) {
-        // (a)
+        // (a) Vocab root
         const vocab = lookupSharedVocab(pada);
         const root = vocab?.root && typeof vocab.root === 'string' && !vocab.root.includes('+')
           ? vocab.root : null;
-        if (root && KNOWN_SAMASAS[root]) return KNOWN_SAMASAS[root];
-        // (b)
-        if (KNOWN_SAMASAS[pada]) return KNOWN_SAMASAS[pada];
-        // (c) — strip common case endings (multi-char first, then single
-        // matrās). Order matters: longest prefixes first so "ाम्" beats
-        // "्" alone.
-        const stem = pada.replace(/(आः|यः|ाम्|ान्|ौ|ेषु|येषु|ास्|ाः|ाणि|ानि|एषु|े$|्$|म्|ः|ा|ि|ी|ु|ू|ो|ै)$/, '');
-        if (stem !== pada && KNOWN_SAMASAS[stem]) return KNOWN_SAMASAS[stem];
-        // (d) — dehyphenated stem
+        if (root) { const hit = tryKey(root); if (hit) return hit; }
+        // (b) Raw pada
+        { const hit = tryKey(pada); if (hit) return hit; }
+        // (c) DCS-lemma-based stems: try every combination of {form,lemma}
+        // per member. DCS members sometimes differ between surface (मनः)
+        // and lemma (मनस्), participle (अर्पित) vs verb-root (अर्पय्), etc.
+        // 2^N combinations for N members — fine up to ~5 members.
+        const wp = v.wordParsings?.[pada];
+        if (Array.isArray(wp?.members) && wp.members.length >= 2 && wp.members.length <= 5) {
+          const m = wp.members;
+          const n = m.length;
+          const total = 1 << n;
+          for (let mask = 0; mask < total; mask++) {
+            const parts = m.map((mem, i) => {
+              const useLemma = (mask >> i) & 1;
+              return useLemma && mem.lemma ? mem.lemma : mem.form;
+            });
+            const candidate = parts.join('-');
+            const hit = tryKey(candidate);
+            if (hit) return hit;
+          }
+        }
+        // (d) Surface-form case-stripping. Comprehensive ending list:
+        // long-vowel + visarga/m, plural endings, dual endings, dative,
+        // ablative, locative, instrumental, vocative.
+        const stem = pada.replace(/(अभ्याम्|एभ्यः|एषु|येषु|आभ्यः|आसः|आनाम्|आणाम्|योः|आय|आत्|आः|यः|ाम्|ान्|एन|ेन|एण|ेण|आः|ौ|ेषु|ास्|ाः|ाणि|ानि|एः|ैः|े|्|म्|ः|ा|ि|ी|ु|ू|ो|ै)$/, '');
+        if (stem !== pada) { const hit = tryKey(stem); if (hit) return hit; }
+        // (e) Dehyphenated stem
         const dehyphenStem = stem.replace(/-/g, '');
-        if (dehyphenStem !== stem && KNOWN_SAMASAS[dehyphenStem]) return KNOWN_SAMASAS[dehyphenStem];
+        if (dehyphenStem !== stem) { const hit = tryKey(dehyphenStem); if (hit) return hit; }
         return null;
       }
       const seenCompounds = new Set();
