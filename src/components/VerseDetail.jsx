@@ -398,17 +398,23 @@ function Section({ label, labelEn, glossaryTerm, onOpenPrimer, children, collaps
   if (collapsible) {
     return (
       <section className="verse-section verse-section-collapsible">
-        <button
-          type="button"
-          className="section-label section-label-toggle"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-        >
-          <span className="section-label-chevron">{open ? '▾' : '▸'}</span>
+        <h3 className="section-label">
           {labelNode}
           {labelEn && <span className="section-label-en">{labelEn}</span>}
-        </button>
-        {open && <div className="section-body">{children}</div>}
+        </h3>
+        <div className="section-body-wrap">
+          <button
+            type="button"
+            className="section-collapse-toggle"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            aria-label={open ? 'Collapse section' : 'Expand section'}
+            title={open ? 'Collapse' : 'Expand'}
+          >
+            {open ? '▾' : '▸'}
+          </button>
+          {open && <div className="section-body">{children}</div>}
+        </div>
       </section>
     );
   }

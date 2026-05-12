@@ -529,44 +529,47 @@ button:disabled {
   color: var(--ink-faint);
 }
 
-/* Collapsible section header — styled as a button but keeps the
-   regular .section-label flex layout. The chevron sits at the top
-   left of the label column on wide screens, inline on mobile. */
-.section-label-toggle {
+/* Collapsible section — toggle button lives on the right edge of the
+   body column. The label stays plain (non-clickable), matching the
+   regular Section layout. */
+.section-body-wrap {
+  position: relative;
+}
+
+.section-collapse-toggle {
+  position: absolute;
+  top: -2px;
+  right: 0;
   appearance: none;
   background: none;
-  border: none;
-  border-right: 1px solid var(--rule);
-  padding: 0 16px 0 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  text-align: left;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--ink-faint);
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
-.section-label-toggle:hover .section-label-sa {
+.section-collapse-toggle:hover {
   color: var(--gold);
+  border-color: var(--gold);
 }
 
-.section-label-chevron {
-  font-size: 11px;
-  color: var(--ink-faint);
-  line-height: 1;
-  margin-bottom: 2px;
+.verse-section-collapsible .section-body {
+  padding-right: 36px;
 }
 
 @media (max-width: 720px) {
-  .section-label-toggle {
-    border-right: none;
-    padding-right: 0;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 10px;
+  .section-collapse-toggle {
+    top: 0;
+    right: 0;
   }
 }
 
