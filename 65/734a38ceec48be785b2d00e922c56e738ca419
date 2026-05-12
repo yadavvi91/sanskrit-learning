@@ -1,0 +1,30 @@
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_e63910f774d07b 633-666
+  s_d5e8c30b294ba2::t_b9686f2586e173 678-688,690-712
+  s_d5e8c30b294ba2::t_db7d1911c4c0b2 25
+scripts/enrich-vibhakti-keyfights.mjs
+  s_d5e8c30b294ba2::t_47f38d80cdab2e 1-86,89-123,125-127
+  s_d5e8c30b294ba2::t_20843808211775 124
+  s_d5e8c30b294ba2::t_852fb7485710fc 87-88
+scripts/_enriched_vibhakti.json
+  s_d5e8c30b294ba2::t_47f38d80cdab2e 1-372,7164,10047,10127-10129,10131,10245-10247,10249,10444-10446,10448,10471-10473,10475,10482-10483,10485-10486,10488,10497-10498,10500-10501,10503,10630,10762,10832-10833
+  s_d5e8c30b294ba2::t_65ebaed61d1354 373-7163,7165-10046,10048-10126,10130,10132-10244,10248,10250-10443,10447,10449-10470,10474,10476-10481,10484,10487,10489-10496,10499,10502,10504-10629,10631-10761,10763-10831
+src/data/_enriched_vibhakti.json
+  s_d5e8c30b294ba2::t_115928def8b906 1-10833
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "65734a38ceec48be785b2d00e922c56e738ca419",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
