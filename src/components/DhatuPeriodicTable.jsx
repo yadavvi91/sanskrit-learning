@@ -31,6 +31,7 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
   const [order, setOrder] = useState('frequency');
   const initialTier = defaultTierFor(dhatus.find((d) => d.id === selectedId));
   const [tier, setTier] = useState(initialTier);
+  const [gana, setGana] = useState('all');  // 'all' | 1..10 (number)
   const [query, setQuery] = useState('');
 
   // When the selected dhātu changes (deep-link navigation to a different
@@ -69,6 +70,9 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
         if (d.frequencyRank == null) return false;
         if (d.frequencyRank > tierOpt.maxRank) return false;
       }
+      // गण filter — composes with the tier filter. 'all' means no
+      // restriction; a number 1..10 keeps only that gaṇa.
+      if (gana !== 'all' && d.gana !== gana) return false;
       if (q) {
         const hay = `${d.devanagari} ${d.iast} ${d.meanings.join(' ')}`.toLowerCase();
         if (!hay.includes(q)) return false;
@@ -82,7 +86,7 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
       arr.sort((a, b) => a.frequencyRank - b.frequencyRank);
     }
     return arr;
-  }, [dhatus, order, tier, query]);
+  }, [dhatus, order, tier, gana, query]);
 
   return (
     <aside className="dhatu-table">
@@ -107,6 +111,31 @@ export default function DhatuPeriodicTable({ dhatus, selectedId, onSelect }) {
             {t.label}
           </button>
         ))}
+      </div>
+
+      <div className="dhatu-tier-row dhatu-gana-row" aria-label="Filter by गण">
+        <button
+          type="button"
+          className={`tier-chip ${gana === 'all' ? 'is-active' : ''}`}
+          onClick={() => setGana('all')}
+          title="All gaṇas"
+        >
+          All गण
+        </button>
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((g) => {
+          const meta = GANA_META[g];
+          return (
+            <button
+              key={g}
+              type="button"
+              className={`tier-chip gana-tier-chip gana-${g} ${gana === g ? 'is-active' : ''}`}
+              onClick={() => setGana(g)}
+              title={`${meta.devanagari} — ${meta.rule} (e.g. ${meta.ex})`}
+            >
+              {g}. {meta.devanagari}
+            </button>
+          );
+        })}
       </div>
 
       <div className="dhatu-table-toolbar">

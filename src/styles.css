@@ -1510,6 +1510,23 @@ button:disabled {
   border-color: var(--gold);
 }
 
+/* Gana filter chips — mixed Latin numeral + Devanāgarī gaṇa name.
+   Disable uppercase (which mangles Devanāgarī), keep the tier-chip
+   chip shape, and let the .gana-N background tint show through unless
+   the chip is active (gold takes precedence). */
+.dhatu-gana-row .tier-chip {
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-family: var(--font-deva);
+  font-size: 11px;
+  padding: 3px 7px;
+}
+.dhatu-gana-row .tier-chip.is-active {
+  background: var(--gold);
+  color: var(--parchment);
+  border-color: var(--gold);
+}
+
 .dhatu-result-count {
   margin-left: auto;
   font-family: var(--font-display);
