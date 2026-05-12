@@ -77,6 +77,22 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(arthas.source).toBe('known-samasa-lexicon');
   });
 
+  it('BG 3.20 — आस्थिताः gets a real gloss for आस्था, not the bogus "आ-stand / आ-remain" composition', () => {
+    // The upasarga-stripping fallback used to naively compose
+    // "to आ-stand / आ-remain (< आ + √स्था)" for आस्था. But आस्था ≠ "आ-stand";
+    // it means "resort to / abide in / be devoted to". A prefixed-dhātu
+    // lexicon now provides the real meaning; unknown combinations fall
+    // back to an etymology-only note that doesn't claim a meaning.
+    const v = find(3, 20);
+    const wp = v.wordParsings?.['आस्थिताः'];
+    if (wp?.gloss) {
+      expect(wp.gloss).not.toMatch(/आ-stand|आ-remain/);
+      // The real gloss should mention 'resort', 'abide', or 'devoted' — anything
+      // not derived from naive root composition.
+      expect(wp.gloss).toMatch(/resort|abide|devoted|established/i);
+    }
+  });
+
   it('BG 13.1 — एतद्वेदितुमिच्छामि splits into three independent words (NOT a समास)', () => {
     // The string एतद्वेदितुमिच्छामि is two sandhis stuck together:
     // एतत् + वेदितुम् (जश्त्व: त् → द्ʼ) + इच्छामि (silent म्+vowel).

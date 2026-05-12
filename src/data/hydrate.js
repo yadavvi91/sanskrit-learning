@@ -26,6 +26,7 @@ import ENRICHED_VIBHAKTI from './_enriched_vibhakti.json';
 import ENRICHED_VYAKHYA from './_enriched_vyakhya.json';
 import BG3_VYAKHYA from './_bg3_vyakhya.json';
 import BG12_VYAKHYA from './_bg12_vyakhya.json';
+import BG15_VYAKHYA from './_bg15_vyakhya.json';
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -219,6 +220,68 @@ export function hydrateAutoStubVerses() {
           }
           return null;
         };
+        // Sanskrit prefix-verb meanings are usually idiomatic, NOT a naive
+        // composition of upasarga + root meaning. आस्था ≠ "आ-stand"; it
+        // means "resort to / be devoted to / abide in". उपस्था is "attend
+        // / serve". When we know the real meaning we use it; otherwise we
+        // emit only the morphological etymology without inventing a gloss.
+        const PREFIXED_DHATU_MEANINGS = {
+          // √स्था ("stand") prefixed
+          'आ_स्था':    'resort to / abide in / be devoted to',
+          'उप_स्था':   'attend on / serve / be present',
+          'सम्_स्था':  'stand together / exist / be established',
+          'प्र_स्था':   'set out / depart',
+          'अव_स्था':  'remain / abide / be situated',
+          'उद्_स्था':  'rise up / stand up',
+          'उत्_स्था':  'rise up / stand up',
+          'अधि_स्था': 'stand over / preside / be established in',
+          'प्रति_स्था': 'stand firm / be established',
+          // √गम् ("go") prefixed
+          'अधि_गम्':  'attain / approach / study',
+          'अनु_गम्':  'follow / accompany',
+          'सम्_गम्':  'come together / meet / unite',
+          'आ_गम्':    'come / arrive',
+          'अप_गम्':  'go away / depart',
+          'नि_गम्':   'enter / arrive at',
+          'उद्_गम्':  'rise / go up / spring up',
+          'उप_गम्':   'approach / undergo',
+          'अव_गम्':  'understand / perceive',
+          'प्र_गम्':   'set out / advance',
+          // √पद् ("step / fall") prefixed
+          'सम्_पद्':   'succeed / arise / be brought about',
+          'आ_पद्':    'fall into / suffer (misfortune)',
+          'उप_पद्':   'happen / be suitable / be appropriate',
+          'नि_पद्':   'fall down',
+          'प्र_पद्':   'go forward / take refuge in / approach',
+          // √नश् ("perish") prefixed
+          'वि_नश्':   'perish utterly / be destroyed',
+          'प्र_नश्':   'perish / disappear',
+          // √कृ ("do") prefixed
+          'सम्_कृ':   'put together / prepare / consecrate',
+          'अधि_कृ':  'place over / authorise',
+          'वि_कृ':    'transform / change',
+          'अनु_कृ':   'imitate',
+          // √भू ("be") prefixed
+          'प्र_भू':    'arise / originate / be powerful',
+          'अनु_भू':  'experience / undergo',
+          'सम्_भू':   'arise / come into being',
+          'वि_भू':    'pervade / be diffused',
+          'अभि_भू':  'overpower / surpass',
+          // √दा ("give") prefixed
+          'आ_दा':    'take / receive',
+          'प्र_दा':   'bestow / give',
+          'सम्_प्र_दा': 'give over completely / hand on',
+          // √धा ("place") prefixed
+          'सम्_धा':  'join / unite / fix on',
+          'आ_धा':    'place / impose / receive',
+          'वि_धा':    'arrange / ordain / fix',
+          'अन्_तर्_धा': 'conceal / disappear',
+          // √ज्ञा ("know") prefixed
+          'वि_ज्ञा':  'discern / understand thoroughly',
+          'सम्_ज्ञा': 'be agreed / be known as',
+          'प्र_ज्ञा':  'know / perceive',
+          'अभि_ज्ञा': 'recognise',
+        };
         const dhatuGloss = (root) => {
           if (!root) return null;
           // DCS lemmas come bare (स्था) or with halant (स्था / गम्);
@@ -235,7 +298,14 @@ export function hydrateAutoStubVerses() {
               const inner = norm.slice(up.length);
               d = findDhatu(inner);
               if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
-                return `to ${up}-${d.meanings.slice(0, 2).join(' / ' + up + '-')} (< ${up} + √${d.devanagari})`;
+                const known = PREFIXED_DHATU_MEANINGS[`${up}_${d.devanagari}`];
+                if (known) {
+                  return `to ${known} (< ${up} + √${d.devanagari})`;
+                }
+                // Unknown prefix+root combination — DON'T invent a meaning
+                // by naive composition (the bug that produced "to आ-stand /
+                // आ-remain" for आस्था). Emit etymology only.
+                return `prefixed verb: < ${up} + √${d.devanagari} ("${d.meanings.slice(0, 2).join(' / ')}"). The prefixed form's actual meaning is usually idiomatic — consult a dictionary.`;
               }
               // Try stripping a second upasarga (samupa, abhyut, etc.)
               for (const up2 of UPASARGAS) {
@@ -243,7 +313,12 @@ export function hydrateAutoStubVerses() {
                   const inner2 = inner.slice(up2.length);
                   d = findDhatu(inner2);
                   if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
-                    return `to ${up}-${up2}-${d.meanings[0]} (< ${up} + ${up2} + √${d.devanagari})`;
+                    const key2 = `${up}_${up2}_${d.devanagari}`;
+                    const known2 = PREFIXED_DHATU_MEANINGS[key2];
+                    if (known2) {
+                      return `to ${known2} (< ${up} + ${up2} + √${d.devanagari})`;
+                    }
+                    return `doubly-prefixed verb: < ${up} + ${up2} + √${d.devanagari} ("${d.meanings[0]}"). Meaning is idiomatic — consult a dictionary.`;
                   }
                 }
               }
@@ -728,7 +803,7 @@ export function hydrateAutoStubVerses() {
     // Hand-curated interpretive vyakhya for BG 3 (Karma Yoga). Each
     // verse gets 2 substantive entries beyond the single INTERP_NOTES
     // entry that was already there. Append-only — same merge pattern.
-    for (const handCurated of [BG3_VYAKHYA, BG12_VYAKHYA]) {
+    for (const handCurated of [BG3_VYAKHYA, BG12_VYAKHYA, BG15_VYAKHYA]) {
       const entries = handCurated[key];
       if (Array.isArray(entries) && entries.length > 0) {
         const existing = new Set((v.vyakhya || [])
