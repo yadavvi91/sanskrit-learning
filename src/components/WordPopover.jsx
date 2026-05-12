@@ -61,20 +61,45 @@ const CATEGORY_LABEL = {
 //      decompose at hyphens and look up each component; render a compound
 //      popover listing per-component parsings + the case from the head.
 //   4. neither → render an EmptyPopover so the click isn't a silent no-op.
-function decomposeCompound(word) {
+function decomposeCompound(word, verseParsing) {
   if (!word.includes('-')) return null;
   const parts = word.split('-').filter(Boolean);
   if (parts.length < 2) return null;
-  const components = parts.map((p) => ({ form: p, parsing: lookupSharedVocab(p) }));
+  // Prefer verse-local (DCS) member data when available — it gives the
+  // real per-part lemma + pos, free of the suffix-inference noise that
+  // afflicts lookupSharedVocab for ordinary noun stems ending in -य,
+  // -ताम्, etc.
+  const dcsMembers = Array.isArray(verseParsing?.members) ? verseParsing.members : null;
+  const components = parts.map((p) => {
+    const dcsMember = dcsMembers?.find((m) => m.form === p) || null;
+    // For dictionary lookups, skip suffix-inferred entries — those
+    // produce "absolutive of प्रल-stem" for the noun प्रलय. Take the
+    // DCS-attached gloss + a real dict hit (non-inferred) only.
+    const dict = lookupSharedVocab(p);
+    const authoritativeDict = (dict && dict.source !== 'suffix-inferred') ? dict : null;
+    if (!dcsMember && !authoritativeDict) {
+      return { form: p, parsing: null };
+    }
+    // Compose a parsing: DCS member's gloss wins; fall back to dict's gloss.
+    // Use dict for case/number/gender/category since DCS member rows
+    // store only form+pos.
+    const parsing = {
+      ...(authoritativeDict || {}),
+      ...(dcsMember || {}),
+      // Prefer DCS member gloss when both are present
+      gloss: dcsMember?.gloss || authoritativeDict?.gloss || undefined,
+    };
+    return { form: p, parsing };
+  });
   // The head (final piece) carries the case ending — its parsing best
   // describes the whole compound's grammatical role.
   const head = components[components.length - 1];
   // Only treat as a useful compound if at least one component resolved.
-  if (!components.some((c) => c.parsing)) return null;
+  if (!components.some((c) => c.parsing && (c.parsing.gloss || c.parsing.category))) return null;
   return { components, head };
 }
 
-export default function WordPopover({ word, parsing, isFinite }) {
+export default function WordPopover({ word, parsing, isFinite, samasNote }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -94,7 +119,7 @@ export default function WordPopover({ word, parsing, isFinite }) {
     (effectiveParsing.source === 'dcs' && !effectiveParsing.gloss)
   );
   const compound = (!effectiveParsing || (isWeakParsing && word.includes('-')))
-    ? decomposeCompound(word)
+    ? decomposeCompound(word, effectiveParsing)
     : null;
   // If we found a usable compound decomposition, override the weak parsing.
   const finalParsing = compound ? null : effectiveParsing;
@@ -137,27 +162,42 @@ export default function WordPopover({ word, parsing, isFinite }) {
       </button>
       {open && (
         finalParsing
-          ? <Popover word={word} parsing={finalParsing} fromSharedDict={!parsing && !!finalParsing} />
+          ? <Popover word={word} parsing={finalParsing} fromSharedDict={!parsing && !!finalParsing} samasNote={samasNote} />
           : compound
-            ? <CompoundPopover word={word} compound={compound} />
+            ? <CompoundPopover word={word} compound={compound} samasNote={samasNote} />
             : <EmptyPopover word={word} />
       )}
     </span>
   );
 }
 
-function CompoundPopover({ word, compound }) {
+function CompoundPopover({ word, compound, samasNote }) {
   const { components, head } = compound;
   const headParsing = head.parsing;
+  // Prefer the verse-level samasNotes entry (hand-curated or hydration-
+  // derived from authoritative vocab + DCS members) over the generic
+  // boilerplate. When the user lands on a compound we already know
+  // something specific about, show that — vigraha, samas type, and the
+  // actual meaning string — instead of the same paragraph everywhere.
+  const hasRealGloss = samasNote?.gloss && samasNote.gloss.trim().length > 0;
   return (
     <div className="word-popover word-popover-compound" role="dialog">
       <div className="wp-header">
         <span className="wp-word">{word}</span>
-        <span className="wp-category">समास compound</span>
+        <span className="wp-category">
+          समास compound
+          {samasNote?.type ? <span className="wp-samas-type"> · {samasNote.type}</span> : null}
+        </span>
       </div>
-      <p className="wp-gloss">
-        Light समास compound from पदच्छेद. The head (final component) carries the case ending; the others modify it.
-      </p>
+      {hasRealGloss && <p className="wp-gloss">"{samasNote.gloss}"</p>}
+      {samasNote?.vigraha && (
+        <p className="wp-vigraha"><strong>विग्रह:</strong> {samasNote.vigraha}</p>
+      )}
+      {!hasRealGloss && !samasNote?.vigraha && (
+        <p className="wp-gloss wp-gloss-fallback">
+          समास compound. The head (final component) carries the case ending; the others modify it. See per-component meanings below.
+        </p>
+      )}
       <dl className="wp-fields">
         {components.map((c, i) => (
           <CompoundRow key={i} index={i} component={c} isHead={i === components.length - 1} />
@@ -219,12 +259,18 @@ function EmptyPopover({ word }) {
   );
 }
 
-function Popover({ word, parsing, fromSharedDict }) {
+function Popover({ word, parsing, fromSharedDict, samasNote }) {
   const navigate = useNavigate();
   const paradigmId = getDeclensionForParsing(parsing);
   const paradigm = paradigmId ? getDeclensionById(paradigmId) : null;
   // For pronouns, the link points to /atlas/pronouns#<section> instead.
   const pronounAnchor = !paradigm ? getPronounAnchor(parsing) : null;
+  // For hyphenated compounds with a samasNote entry, prefer the
+  // compound-level gloss (the bahuvrīhi paraphrase, the तत्पुरुष
+  // resolution, etc.) over the head's standalone meaning.
+  const compoundGloss = samasNote?.gloss && samasNote.gloss.trim().length > 0
+    ? samasNote.gloss
+    : null;
 
   return (
     <div className="word-popover" role="dialog">
@@ -232,11 +278,17 @@ function Popover({ word, parsing, fromSharedDict }) {
         <span className="wp-word">{word}</span>
         <span className="wp-category">
           {CATEGORY_LABEL[parsing.category] ?? parsing.category}
+          {samasNote?.type ? <span className="wp-samas-type"> · {samasNote.type}</span> : null}
           {fromSharedDict && <span className="wp-source-tag" title="Source: shared dictionary fallback (verse not hand-decoded)"> · dict</span>}
         </span>
       </div>
 
-      {parsing.gloss && <p className="wp-gloss">"{parsing.gloss}"</p>}
+      {compoundGloss
+        ? <p className="wp-gloss">"{compoundGloss}"</p>
+        : parsing.gloss && <p className="wp-gloss">"{parsing.gloss}"</p>}
+      {samasNote?.vigraha && (
+        <p className="wp-vigraha"><strong>विग्रह:</strong> {samasNote.vigraha}</p>
+      )}
 
       <dl className="wp-fields">
         {parsing.root && <Row label="root" value={parsing.root} />}

@@ -49,15 +49,21 @@ export default function VerseDetail({ verse, onOpenPrimer }) {
       <Section label="पदच्छेद" labelEn="Word-split" glossaryTerm="पदच्छेद" onOpenPrimer={onOpenPrimer}>
         {verse.padaccheda && verse.padaccheda.length > 0 ? (
           <ol className="padaccheda">
-            {verse.padaccheda.map((word, i) => (
-              <li key={`${word}-${i}`}>
-                <WordPopover
-                  word={word}
-                  parsing={verse.wordParsings?.[word] ?? null}
-                  isFinite={finiteForms.has(stripHyphens(word))}
-                />
-              </li>
-            ))}
+            {verse.padaccheda.map((word, i) => {
+              // Match by compound surface so WordPopover can show the
+              // real vigraha / type / gloss instead of the generic blurb.
+              const samasNote = verse.samasNotes?.find((s) => s.compound === word) ?? null;
+              return (
+                <li key={`${word}-${i}`}>
+                  <WordPopover
+                    word={word}
+                    parsing={verse.wordParsings?.[word] ?? null}
+                    isFinite={finiteForms.has(stripHyphens(word))}
+                    samasNote={samasNote}
+                  />
+                </li>
+              );
+            })}
           </ol>
         ) : (
           <p className="padaccheda-empty">

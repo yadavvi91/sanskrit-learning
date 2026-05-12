@@ -181,20 +181,29 @@ export function hydrateAutoStubVerses() {
       // alongside the case/number/gender row.
       if (dcsEntry.wordParsings && typeof dcsEntry.wordParsings === 'object') {
         if (!v.wordParsings) v.wordParsings = {};
+        // Skip suffix-inferred entries — they pattern-match endings
+        // (e.g., -य → "absolutive", -ताम् → "imperative 3pl") and produce
+        // wildly wrong glosses for ordinary noun stems. Use authoritative
+        // dictionary entries only.
+        const authoritativeGloss = (form) => {
+          const d = lookupSharedVocab(form);
+          if (!d || d.source === 'suffix-inferred') return null;
+          return d.gloss || null;
+        };
         for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
           if (v.wordParsings[w]) continue;
           const enriched = { ...p };
           if (!enriched.gloss && enriched.root) {
-            const dictEntry = lookupSharedVocab(enriched.root);
-            if (dictEntry?.gloss) enriched.gloss = dictEntry.gloss;
+            const g = authoritativeGloss(enriched.root);
+            if (g) enriched.gloss = g;
           }
           // For compound members, look up each part's gloss too so
           // CompoundPopover (the per-part rendering) has data to show.
           if (Array.isArray(enriched.members)) {
             enriched.members = enriched.members.map((m) => {
               if (m.gloss) return m;
-              const dict = lookupSharedVocab(m.form);
-              return dict?.gloss ? { ...m, gloss: dict.gloss } : m;
+              const g = authoritativeGloss(m.form);
+              return g ? { ...m, gloss: g } : m;
             });
           }
           v.wordParsings[w] = enriched;
@@ -304,6 +313,28 @@ export function hydrateAutoStubVerses() {
         }
       }
 
+      // Helper: look up a compound part's gloss using authoritative
+      // dictionary entries only — suffix-inferred matches return things
+      // like "absolutive of प्रल-stem" or "imperative ātmanepada 3pl of
+      // अन-stem" for ordinary noun stems (because -य and -ताम् pattern-
+      // match verb endings). Filter those out so the rendered samas
+      // gloss reflects real meanings, not parser noise.
+      function authoritativeVocab(part) {
+        const v = lookupSharedVocab(part);
+        if (!v || v.source === 'suffix-inferred') return null;
+        return v;
+      }
+      // Also try the DCS-provided per-member data attached to this verse's
+      // wordParsings — DCS marks each compound part with its actual lemma
+      // (e.g., 'प्रलय' → root 'प्रलय', 'अन्तम्' → root 'अन्त'), and our
+      // hydration enriches members with gloss from the shared dictionaries.
+      function dcsMemberGloss(pada, part) {
+        const wp = v.wordParsings?.[pada];
+        if (!wp || !Array.isArray(wp.members)) return null;
+        const m = wp.members.find((x) => x.form === part);
+        return m?.gloss || null;
+      }
+
       for (const pada of v.padaccheda) {
         if (typeof pada !== 'string' || !pada.includes('-')) continue;
         if (seenCompounds.has(pada)) continue;
@@ -312,31 +343,35 @@ export function hydrateAutoStubVerses() {
         const firstPart = parts[0];
         const match = vibhaktiSamasa.find((s) => s.compound.startsWith(firstPart));
         let derivedGloss = match ? match.gloss : '';
-        // Fallback: when no vibhakti type-tag is available, look up each
-        // component in the shared dictionary and synthesise a gloss like
-        // "twice-born (द्विज) + best (उत्तम)" so the user at least sees
-        // what each part means — this is samāsa-vigraha lite, until a
-        // human annotates the full type+gloss.
         let derivedType = match ? match.type : '';
         if (!match) {
-          const components = parts.map((part) => ({ part, vocab: lookupSharedVocab(part) }));
-          const componentGlosses = components.map(({ part, vocab }) =>
-            vocab?.gloss ? part + ' (' + vocab.gloss.split(/[—,;(]/)[0].trim() + ')' : part
-          );
-          derivedGloss = componentGlosses.join(' + ');
-          // Heuristic type detection: 3+ noun-category parts with the
-          // same gender → इतरेतर द्वंद्व (coordinated list).
-          // पणव-आनक-गोमुखाः, सुख-दुःख-समुद्भव style.
+          const components = parts.map((part) => ({
+            part,
+            vocab: authoritativeVocab(part),
+            dcsGloss: dcsMemberGloss(pada, part),
+          }));
+          // Build a "twice-born (द्विज) + best (उत्तम)" style gloss using
+          // ONLY real dictionary hits (DCS-member or non-inferred vocab).
+          // Parts without an authoritative gloss are listed bare — that's
+          // honest: "we know this is here, we don't have a gloss yet".
+          const componentGlosses = components.map(({ part, vocab, dcsGloss }) => {
+            const g = dcsGloss || vocab?.gloss;
+            if (!g) return part;
+            const trimmed = g.split(/[—,;(]/)[0].trim();
+            return trimmed ? part + ' (' + trimmed + ')' : part;
+          });
+          // Only include a derivedGloss if at least one part had a real
+          // dictionary hit. Otherwise leave it blank — the verse-detail
+          // UI falls back to showing just the vigraha + type.
+          const hadAnyGloss = components.some((c) => c.dcsGloss || c.vocab?.gloss);
+          derivedGloss = hadAnyGloss ? componentGlosses.join(' + ') : '';
           if (parts.length >= 3) {
-            const noun_like = components.filter(({ vocab }) =>
+            const nounLike = components.filter(({ vocab }) =>
               vocab && (vocab.category === 'noun' || vocab.category === 'adjective'));
-            if (noun_like.length >= 3) {
+            if (nounLike.length >= 3) {
               derivedType = 'इतरेतर द्वंद्व (inferred)';
             }
           }
-          // 2-part heuristic: if parts share same category (both nouns,
-          // both adjectives), and only the LAST has case ending, it's
-          // either तत्पुरुष or कर्मधारय. Mark as "तत्पुरुष? (inferred)".
           if (parts.length === 2 && !derivedType) {
             const [a, b] = components.map((c) => c.vocab);
             if (a && b && a.category === 'noun' && b.category === 'noun') {
