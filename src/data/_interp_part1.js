@@ -4100,20 +4100,32 @@ export const INTERP_PART_1 = {
     ]
   },
   '6.13': {
-    anvaya: "समं कायशिरोग्रीवं धारयन्, अचलं स्थिरः, स्वं नासिकाग्रं सम्प्रेक्ष्य, दिशः न अनवलोकयन्...",
+    // Verse 6.13 is grammatically incomplete on its own — all its
+    // verbals are participles/absolutive (धारयन्, सम्प्रेक्ष्य, अनवलोकयन्,
+    // स्थिरः). The finite verb आसीत ("let him sit," लिङ् ātmanepada)
+    // lands in 6.14. The anvaya/hindi/english below complete the
+    // sentence by spanning 6.13+6.14 — same pattern as 6.11+6.12.
+    anvaya: "समं काय-शिरः-ग्रीवं धारयन्, अचलं स्थिरः, स्वं नासिकाग्रं सम्प्रेक्ष्य, दिशः च अनवलोकयन्, [BG 6.14: युक्त आसीत — let him sit, disciplined, devoted to me].",
+    hindi: "शरीर, सिर और गर्दन को समान रूप से (एक रेखा में), अचल, स्थिर रखकर — अपनी नासिका के अग्र भाग को देखकर, इधर-उधर दिशाओं में न देखता हुआ — [आगे 6.14 में:] शान्त-आत्मा, निर्भय, ब्रह्मचारी के व्रत में स्थित, मन को संयमित करके, मुझमें चित्त लगाकर, युक्त होकर, मत्परायण होकर बैठे।",
+    english: "Holding body, head and neck level and motionless, (himself) steady, gazing at the tip of **his own** nose and **not letting the eyes wander to the directions around him** — [BG 6.14: serene of self, fearless, established in the vow of the brahmacāri, having restrained the mind, with mind on me, yoked, devoted to me — let him sit].",
     vibhaktiNotes: [
-      "कायशिरोग्रीवम्, समम्, अचलम् — द्वितीया एकवचन.",
-      "स्थिरः — प्रथमा.",
-      "नासिकाग्रम्, स्वम् — द्वितीया.",
-      "दिशः — द्वितीया बहुवचन."
+      "काय-शिरः-ग्रीवम्, समम्, अचलम् — द्वितीया एकवचन (object-group of धारयन्).",
+      "स्थिरः — प्रथमा (predicate of the implied meditator).",
+      "नासिकाग्रम्, स्वम् — द्वितीया एकवचन (object of सम्प्रेक्ष्य; स्वम् agrees with नासिकाग्रम्).",
+      "दिशः — द्वितीया बहुवचन (object of अनवलोकयन्)."
     ],
     keyFights: [
-      "धारयन्, अनवलोकयन् = present participles.",
-      "सम्प्रेक्ष्य = absolutive.",
-      "Verse continues into 6.14."
+      "धारयन्, अनवलोकयन् = present-active participles (शतृ).",
+      "अनवलोकयन् is नञ् + अव-लोकयन् — \"NOT looking at\" (the directions). Specific behavioural instruction, not a description of an unfocused gaze.",
+      "सम्प्रेक्ष्य = ल्यबन्त absolutive (सम् + प्र + √ईक्ष्).",
+      "स्थिरः = predicate-adjective of the implied subject.",
+      "Verse 6.13+6.14 form ONE sentence — 6.13 stages posture and gaze, 6.14 carries the finite verb आसीत."
     ],
     vyakhya: [
-      { title: "Posture in participles", body: "Three participles describe simultaneous postural acts: holding, gazing, not-looking. Sanskrit's manual-of-meditation grammar." }
+      { title: "Posture in participles", body: "Four verbals describe simultaneous postural acts: धारयन् (holding body+head+neck), सम्प्रेक्ष्य (having gazed at the nose-tip), अनवलोकयन् (not looking around), स्थिरः (steady). Sanskrit's manual-of-meditation grammar — every grammatical role except the finite verb is filled." },
+      { title: "स्वं नासिकाग्रम् — \"his OWN nose\"", body: "स्वम् (one's-own) is the bit most translations drop. The instruction is not just to look at A nose-tip but to look at one's OWN — the focal point of dṛṣṭi-yoga. The reflexive स्व- locates the gaze inside the meditator's own body, not on an external object." },
+      { title: "दिशः अनवलोकयन् — \"not glancing at the directions\"", body: "नञ् prefixed to the शतृ-participle of अव-√लोक् (\"to look down at\"). Read literally: \"not glancing around at the (cardinal) directions.\" This is a behavioural instruction (don't let your eyes drift), not the vague \"unseeing gaze\" you'll often find in older English translations." },
+      { title: "Sentence spans 6.13+6.14", body: "Same structural pattern as 6.11+6.12. 6.13 has no finite verb — all its verbals are participial (धारयन्, अनवलोकयन्) or absolutive (सम्प्रेक्ष्य) or predicate-adjective (स्थिरः). The main verb आसीत (\"let him sit,\" विधिलिङ् of √आस्) lives in 6.14. The bhāṣyakāra-s treat 6.13+14 as one प्रकरण, just as 6.11+12 are." }
     ]
   },
   '6.14': {
