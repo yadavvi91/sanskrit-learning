@@ -1,0 +1,30 @@
+src/components/Primer.jsx
+  s_77270f59c41566::t_0b6028df0becef 63-81
+src/styles.css
+  s_d5e8c30b294ba2::t_9f577dcdba31b6 1125-1137
+  s_77270f59c41566::t_4ddbd3fec1aba1 3054-3056,3059-3073
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "936439e3e6b3aab29759d84bfa1b5585d6e2a591",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    },
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
