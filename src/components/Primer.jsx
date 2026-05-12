@@ -44,6 +44,7 @@ export default function Primer() {
               className="primer-toc-item"
               onClick={(e) => {
                 e.preventDefault();
+                window.history.replaceState(null, '', `#primer-${sec.id}`);
                 sectionRefs.current[sec.id]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
             >
