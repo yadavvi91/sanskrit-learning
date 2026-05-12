@@ -1,0 +1,21 @@
+README.md
+  s_d5e8c30b294ba2::t_e0f301ec39aae0 48-52,57-68
+src/components/Origin.jsx
+  s_d5e8c30b294ba2::t_4607ba45c0eee7 90-91,96-193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "da49c138a546a8124b3ed87ac125afda02cfbd03",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
