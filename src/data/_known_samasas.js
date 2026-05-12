@@ -228,4 +228,110 @@ export const KNOWN_SAMASAS = {
   'अपहृत-चेतस्': { vigraha: 'अपहृतं चेतः येषां ते', type: 'बहुव्रीहि', gloss: 'those whose minds are stolen / carried away' },
   'युक्त-चेतस्':  { vigraha: 'युक्तं चेतः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is yoked / disciplined' },
   'प्रसन्न-चेतस्': { vigraha: 'प्रसन्नं चेतः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is clear / serene' },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // High-frequency hyphenated DCS-style compounds — added in response to
+  // user feedback that bare per-component listings ("desire + enjoyment +
+  // meaning") were unhelpful for compounds that have a settled semantic.
+  // Keys can be either the dehyphenated stem (कर्मयोग) or the hyphenated
+  // surface stem (काम-भोग-अर्थ) with the case ending stripped.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // -अर्थम् adverbial compounds — "for the sake of X"
+  'काम-भोग-अर्थ': { vigraha: 'काम-भोगस्य अर्थम्', type: 'तत्पुरुष (कृत्यर्थ)', gloss: 'for the sake of sensual enjoyment' },
+  'यज्ञ-अर्थ':    { vigraha: 'यज्ञस्य अर्थम्', type: 'तत्पुरुष (कृत्यर्थ)', gloss: 'for the sake of sacrifice (BG 3.9)' },
+  'लोक-संग्रह':   { vigraha: 'लोकानां संग्रहः', type: 'षष्ठी तत्पुरुष', gloss: 'the holding-together of the world (BG 3.20, 3.25)' },
+
+  // काम-* compounds
+  'काम-भोग':     { vigraha: 'कामस्य भोगः', type: 'षष्ठी तत्पुरुष', gloss: 'enjoyment of sensual desire' },
+  'काम-उपभोग':  { vigraha: 'कामस्य उपभोगः', type: 'षष्ठी तत्पुरुष', gloss: 'sensual enjoyment / indulgence in desire' },
+  'काम-उपभोग-परम':  { vigraha: 'कामोपभोगः परमः यस्य सः', type: 'बहुव्रीहि (nested with षष्ठी तत्पुरुष)', gloss: 'whose supreme aim is the enjoyment of desire (BG 16.11)' },
+  'काम-रूप':      { vigraha: 'कामस्य रूपम्', type: 'षष्ठी तत्पुरुष', gloss: 'in the form of desire (BG 3.43)' },
+  'काम-क्रोध-उद्भव': { vigraha: 'काम-क्रोधाभ्यां उद्भवः यस्य', type: 'बहुव्रीहि', gloss: 'arising from desire and anger' },
+  'काम-क्रोध-वियुक्त': { vigraha: 'काम-क्रोधाभ्यां वियुक्तः', type: 'तृतीया तत्पुरुष', gloss: 'free from desire and anger (BG 5.26)' },
+  'काम-क्रोध-परायण': { vigraha: 'काम-क्रोधयोः परायणाः', type: 'बहुव्रीहि', gloss: 'devoted to desire and anger (BG 16.12)' },
+
+  // मद्-* compounds (DCS uses मद् for "me/my" — first-person compound prefix)
+  'मद्-भक्त':    { vigraha: 'मम भक्तः', type: 'षष्ठी तत्पुरुष', gloss: 'my devotee' },
+  'मद्-भाव':     { vigraha: 'मम भावः', type: 'षष्ठी तत्पुरुष', gloss: 'my state of being / my nature' },
+  'मद्-चित्त':    { vigraha: 'मयि चित्तं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose mind is on me' },
+  'मद्-पर':      { vigraha: 'अहम् परः यस्य सः', type: 'बहुव्रीहि', gloss: 'one for whom I am the supreme [aim]' },
+  'मद्-परम':    { vigraha: 'अहम् परमः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose supreme [aim] is me' },
+  'मद्-स्थ':      { vigraha: 'मयि स्थितः', type: 'सप्तमी तत्पुरुष', gloss: 'situated in me' },
+  'मद्-स्थान':   { vigraha: 'मम स्थानम्', type: 'षष्ठी तत्पुरुष', gloss: 'my abode' },
+  'मद्-योग':     { vigraha: 'मया योगः', type: 'तृतीया तत्पुरुष', gloss: 'union with me' },
+  'मद्-कर्म':    { vigraha: 'मम कर्म', type: 'षष्ठी तत्पुरुष', gloss: 'my work / action for my sake' },
+  'मद्-कर्म-परम': { vigraha: 'मद्-कर्म परमं यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose supreme [pursuit] is work for me (BG 12.10)' },
+  'मद्-अर्थ':    { vigraha: 'मम अर्थम्', type: 'तत्पुरुष (कृत्यर्थ)', gloss: 'for my sake' },
+
+  // सर्व-* compounds
+  'सर्व-कर्माण':  { vigraha: 'सर्वाणि कर्माणि', type: 'कर्मधारय', gloss: 'all actions' },
+  'सर्व-भूत':     { vigraha: 'सर्वाणि भूतानि', type: 'कर्मधारय', gloss: 'all beings' },
+  'सर्व-भूत-हित':{ vigraha: 'सर्व-भूतानां हितम्', type: 'षष्ठी तत्पुरुष', gloss: 'the welfare of all beings' },
+  'सर्व-भूत-स्थित':{ vigraha: 'सर्व-भूतेषु स्थितः', type: 'सप्तमी तत्पुरुष', gloss: 'situated in all beings' },
+  'सर्व-भाव':    { vigraha: 'सर्वैः भावैः', type: 'तृतीया तत्पुरुष', gloss: 'with one\'s whole being / wholeheartedly' },
+  'सर्व-धर्म':   { vigraha: 'सर्वान् धर्मान्', type: 'कर्मधारय', gloss: 'all dharmas (BG 18.66)' },
+  'सर्व-पाप':    { vigraha: 'सर्वाणि पापानि', type: 'कर्मधारय', gloss: 'all sins' },
+  'सर्व-योग':    { vigraha: 'सर्वैः योगैः', type: 'तृतीया तत्पुरुष', gloss: 'by all yogas' },
+
+  // ज्ञान-* compounds
+  'ज्ञान-चक्षुस्': { vigraha: 'ज्ञानम् एव चक्षुः', type: 'कर्मधारय', gloss: 'the eye of knowledge / knowledge as an eye' },
+  'ज्ञान-यज्ञ':  { vigraha: 'ज्ञानेन यज्ञः', type: 'तृतीया तत्पुरुष', gloss: 'the sacrifice of knowledge (BG 4.33)' },
+  'ज्ञान-अग्नि': { vigraha: 'ज्ञानम् एव अग्निः', type: 'कर्मधारय', gloss: 'the fire of knowledge (BG 4.37)' },
+  'ज्ञान-दीप':   { vigraha: 'ज्ञानम् एव दीपः', type: 'कर्मधारय', gloss: 'the lamp of knowledge' },
+  'ज्ञान-विज्ञान-तृप्त-आत्म': { vigraha: 'ज्ञान-विज्ञानाभ्यां तृप्तः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is satisfied by knowledge and realization (BG 6.8)' },
+
+  // ब्रह्म-* compounds
+  'ब्रह्म-निर्वाण': { vigraha: 'ब्रह्मणि निर्वाणम्', type: 'सप्तमी तत्पुरुष', gloss: 'extinction-in-Brahman / liberation' },
+  'ब्रह्म-योग':    { vigraha: 'ब्रह्मणा योगः', type: 'तृतीया तत्पुरुष', gloss: 'union with Brahman' },
+  'ब्रह्म-भूत':    { vigraha: 'ब्रह्म भूतः', type: 'गति समास', gloss: 'become Brahman / one with Brahman (BG 5.24)' },
+  'ब्रह्म-कर्म-समाधि': { vigraha: 'ब्रह्म-कर्मणि समाधिः यस्य', type: 'बहुव्रीहि', gloss: 'absorbed in the work-that-is-Brahman (BG 4.24)' },
+
+  // योग-* compounds
+  'योग-युक्त':    { vigraha: 'योगेन युक्तः', type: 'तृतीया तत्पुरुष', gloss: 'yoked in yoga' },
+  'योग-क्षेम':    { vigraha: 'योगः च क्षेमश्च', type: 'इतरेतर द्वंद्व', gloss: 'acquisition and preservation' },
+  'योग-संन्यस्त-कर्मन्': { vigraha: 'योगेन संन्यस्तानि कर्माणि येन', type: 'बहुव्रीहि', gloss: 'one who has renounced actions through yoga (BG 4.41)' },
+
+  // वेद-/शास्त्र-* compounds
+  'वेद-विद्':    { vigraha: 'वेदं वेद', type: 'उपपद तत्पुरुष', gloss: 'knower of the Veda' },
+  'वेद-वाद-रत': { vigraha: 'वेद-वादे रताः', type: 'सप्तमी तत्पुरुष', gloss: 'attached to the disputations of the Veda (BG 2.42)' },
+  'वेदान्त-कृत्': { vigraha: 'वेदान्तं करोति', type: 'उपपद तत्पुरुष', gloss: 'the author/cause of Vedānta (BG 15.15)' },
+  'शास्त्र-विधि': { vigraha: 'शास्त्रस्य विधिः', type: 'षष्ठी तत्पुरुष', gloss: 'the injunction of scripture' },
+
+  // -चेतस्/-मनस् बहुव्रीहि (mind-state compounds)
+  'सम-दुःख-सुख': { vigraha: 'समे दुःख-सुखे यस्य सः', type: 'बहुव्रीहि', gloss: 'one to whom sorrow and joy are alike (BG 12.13)' },
+  'सम-लोष्ट-अश्म-काञ्चन': { vigraha: 'समाः लोष्ट-अश्म-काञ्चनानि यस्य सः', type: 'बहुव्रीहि (chain)', gloss: 'one to whom a clod, a stone, and gold are equal (BG 6.8)' },
+  'समबुद्धि':     { vigraha: 'समा बुद्धिः यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose intellect is balanced' },
+  'विशुद्ध-आत्म': { vigraha: 'विशुद्धः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is purified' },
+  'विजित-आत्म':  { vigraha: 'विजितः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is conquered (self-mastered)' },
+  'यत-आत्म':     { vigraha: 'यतः आत्मा यस्य सः', type: 'बहुव्रीहि', gloss: 'one whose self is restrained' },
+
+  // Vocatives / epithets of Arjuna and Kṛṣṇa
+  'महा-बाहु':   { vigraha: 'महान्तौ बाहू यस्य सः', type: 'बहुव्रीहि', gloss: 'O mighty-armed one (Arjuna epithet)' },
+  'भरत-ऋषभ':   { vigraha: 'भरतानाम् ऋषभः', type: 'षष्ठी तत्पुरुष', gloss: 'O bull among the Bhāratas (Arjuna)' },
+  'कुरु-नन्दन':  { vigraha: 'कुरूणां नन्दनः', type: 'षष्ठी तत्पुरुष', gloss: 'O delight of the Kurus (Arjuna)' },
+  'भरत-श्रेष्ठ':  { vigraha: 'भरतेषु श्रेष्ठः', type: 'सप्तमी तत्पुरुष', gloss: 'O best of the Bhāratas' },
+  'कुरु-श्रेष्ठ': { vigraha: 'कुरुषु श्रेष्ठः', type: 'सप्तमी तत्पुरुष', gloss: 'O best of the Kurus' },
+  'पुरुष-व्याघ्र': { vigraha: 'पुरुषेषु व्याघ्रः', type: 'सप्तमी तत्पुरुष', gloss: 'O tiger among men' },
+  'पुरुष-ऋषभ':  { vigraha: 'पुरुषेषु ऋषभः', type: 'सप्तमी तत्पुरुष', gloss: 'O bull among men' },
+  'मधुसूदन':    { vigraha: 'मधुं सूदितवान्', type: 'उपपद तत्पुरुष', gloss: 'slayer of Madhu (Kṛṣṇa epithet)' },
+  'अरि-सूदन':   { vigraha: 'अरीन् सूदितवान्', type: 'उपपद तत्पुरुष', gloss: 'slayer of foes (Kṛṣṇa epithet)' },
+
+  // Specific contextual compounds
+  'इन्द्रिय-अर्थ': { vigraha: 'इन्द्रियाणाम् अर्थाः', type: 'षष्ठी तत्पुरुष', gloss: 'sense-objects' },
+  'इन्द्रिय-ग्राम': { vigraha: 'इन्द्रियाणां ग्रामः', type: 'षष्ठी तत्पुरुष', gloss: 'the collection of senses' },
+  'मान-अवमान':  { vigraha: 'मानः च अवमानः च', type: 'इतरेतर द्वंद्व', gloss: 'honour and dishonour' },
+  'प्रयाण-काल':  { vigraha: 'प्रयाणस्य कालः', type: 'षष्ठी तत्पुरुष', gloss: 'the time of departure (death)' },
+  'स्वभाव-ज':   { vigraha: 'स्वभावेन जातः', type: 'तृतीया तत्पुरुष', gloss: 'born of one\'s own nature' },
+  'जीव-भूत':    { vigraha: 'जीव-भूतः अंशः', type: 'कर्मधारय', gloss: 'the living portion / the soul-form (BG 15.7)' },
+  'ज्ञान-चक्षुष्':{ vigraha: 'ज्ञानम् एव चक्षुः येषाम्', type: 'बहुव्रीहि', gloss: 'those whose eye is knowledge (BG 13.35)' },
+  'दुःख-संयोग-वियोग': { vigraha: 'दुःख-संयोगस्य वियोगः', type: 'षष्ठी तत्पुरुष', gloss: 'disjoining from the conjunction with sorrow (BG 6.23)' },
+  'सिद्धि-असिद्धि': { vigraha: 'सिद्धिः च असिद्धिः च', type: 'इतरेतर द्वंद्व', gloss: 'success and failure' },
+  'पर-धर्म':    { vigraha: 'परस्य धर्मः', type: 'षष्ठी तत्पुरुष', gloss: 'another\'s dharma' },
+  'स्व-धर्म':    { vigraha: 'स्वस्य धर्मः', type: 'षष्ठी तत्पुरुष', gloss: 'one\'s own dharma' },
+  'स्व-जन':     { vigraha: 'स्वस्य जनाः', type: 'षष्ठी तत्पुरुष', gloss: 'one\'s own people / kinsmen' },
+  'आश्चर्य-वत्': { vigraha: 'आश्चर्येण तुल्यम्', type: 'तत्पुरुष (वतिः)', gloss: 'as if a marvel (BG 2.29)' },
+  'नित्य-युक्त': { vigraha: 'नित्यं युक्तः', type: 'गति समास', gloss: 'always united / always yoked' },
+  'युक्त-स्वप्न-अवबोध': { vigraha: 'युक्तौ स्वप्न-अवबोधौ यस्य', type: 'बहुव्रीहि', gloss: 'one whose sleep and waking are disciplined (BG 6.17)' },
+  'युक्त-आहार-विहार': { vigraha: 'युक्तौ आहार-विहारौ यस्य', type: 'बहुव्रीहि', gloss: 'one whose food and recreation are disciplined (BG 6.17)' },
 };

@@ -313,18 +313,39 @@ export function hydrateAutoStubVerses() {
       const vibhaktiSamasa = parseSamasaFromVibhakti(v.vibhaktiNotes);
       const derived = [];
 
-      // First pass: hand-curated KNOWN_SAMASAS table. Match the pada's
-      // vocab `root` field against the dictionary, regardless of whether
-      // the surface form has a hyphen. Catches unhyphenated compounds
-      // like कर्मयोग, आत्मशुद्धि, स्थितप्रज्ञ.
+      // First pass: hand-curated KNOWN_SAMASAS table. Try several keys:
+      // (a) the pada's vocab `root` field — catches unhyphenated compounds
+      //     where lookupSharedVocab found a dict entry (कर्मयोग,
+      //     स्थितप्रज्ञ).
+      // (b) the hyphenated pada itself — for DCS-style hyphenated
+      //     compounds with case ending (काम-भोग-अर्थम्).
+      // (c) the hyphenated pada with the case ending stripped — so a
+      //     single entry covers every case-form (काम-भोग-अर्थम् /
+      //     काम-भोग-अर्थे / काम-भोग-अर्थाय all match key काम-भोग-अर्थ).
+      // (d) the dehyphenated stem (कामभोगार्थ) — for entries already
+      //     keyed without hyphens.
+      function tryKnown(pada) {
+        // (a)
+        const vocab = lookupSharedVocab(pada);
+        const root = vocab?.root && typeof vocab.root === 'string' && !vocab.root.includes('+')
+          ? vocab.root : null;
+        if (root && KNOWN_SAMASAS[root]) return KNOWN_SAMASAS[root];
+        // (b)
+        if (KNOWN_SAMASAS[pada]) return KNOWN_SAMASAS[pada];
+        // (c) — strip common case endings (multi-char first, then single
+        // matrās). Order matters: longest prefixes first so "ाम्" beats
+        // "्" alone.
+        const stem = pada.replace(/(आः|यः|ाम्|ान्|ौ|ेषु|येषु|ास्|ाः|ाणि|ानि|एषु|े$|्$|म्|ः|ा|ि|ी|ु|ू|ो|ै)$/, '');
+        if (stem !== pada && KNOWN_SAMASAS[stem]) return KNOWN_SAMASAS[stem];
+        // (d) — dehyphenated stem
+        const dehyphenStem = stem.replace(/-/g, '');
+        if (dehyphenStem !== stem && KNOWN_SAMASAS[dehyphenStem]) return KNOWN_SAMASAS[dehyphenStem];
+        return null;
+      }
       const seenCompounds = new Set();
       for (const pada of v.padaccheda) {
         if (typeof pada !== 'string') continue;
-        const vocab = lookupSharedVocab(pada);
-        const rootForLookup = vocab?.root && typeof vocab.root === 'string' && !vocab.root.includes('+')
-          ? vocab.root
-          : null;
-        const known = rootForLookup ? KNOWN_SAMASAS[rootForLookup] : null;
+        const known = tryKnown(pada);
         if (known && !seenCompounds.has(pada)) {
           seenCompounds.add(pada);
           derived.push({
@@ -438,6 +459,23 @@ export function hydrateAutoStubVerses() {
             'आत्म': 'whose self is',
             'आत्मन्': 'whose self is',
           };
+          // Adverbial compounds: X-अर्थम् / X-अर्थे / X-अर्थाय → "for the
+          // sake of X". These are NOT bahuvrīhi — they're a distinct
+          // तत्पुरुष subtype (कृत्यर्थ). Handle them BEFORE the bahuvrīhi
+          // check so "X-अर्थम्" doesn't get mis-tagged.
+          const ARTHA_SUFFIXES = ['अर्थम्', 'अर्थाय', 'अर्थे'];
+          const arthaMatch = ARTHA_SUFFIXES.find((s) => lastPart === s);
+          if (!derivedType && arthaMatch) {
+            const innerParts = components.slice(0, -1).map(({ part, dcsGloss, vocab }) => {
+              const g = dcsGloss || vocab?.gloss;
+              if (!g) return part;
+              return g.split(/[—,;(]/)[0].trim();
+            });
+            derivedType = 'तत्पुरुष (कृत्यर्थ — adverbial "for the sake of")';
+            if (innerParts.length > 0) {
+              derivedGloss = `for the sake of ${innerParts.join(' ')}`;
+            }
+          }
           if (!derivedType && BAHUVRIHI_HEADS[lastStem]) {
             // For each inner part, prefer its gloss but fall back to the
             // form itself so we don't silently drop unknowns. Example:
