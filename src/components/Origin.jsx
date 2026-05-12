@@ -4,10 +4,13 @@ import remarkGfm from 'remark-gfm';
 import articleMarkdown from '../../article.md?raw';
 
 // The article uses relative image paths (article-images/foo.jpg) that work
-// when GitHub renders the .md file. In the deployed app we serve images
-// from /article-images/ — this rewrites the src on the way through.
+// when GitHub renders the .md file. In the deployed app we serve them
+// under Vite's BASE_URL — '/' in dev, '/sanskrit-learning/' on Pages.
+// Prefixing with a bare '/' would 404 on Pages, so use BASE_URL.
 function ArticleImage({ src, alt, ...rest }) {
-  const fixed = src && src.startsWith('article-images/') ? `/${src}` : src;
+  const fixed = src && src.startsWith('article-images/')
+    ? `${import.meta.env.BASE_URL}${src}`
+    : src;
   return <img src={fixed} alt={alt || ''} loading="lazy" {...rest} />;
 }
 
