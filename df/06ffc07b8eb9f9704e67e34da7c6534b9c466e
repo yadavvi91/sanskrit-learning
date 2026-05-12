@@ -1,0 +1,19 @@
+src/components/Primer.jsx
+  s_77270f59c41566::t_43a67187e70db8 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "df06ffc07b8eb9f9704e67e34da7c6534b9c466e",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
