@@ -1,0 +1,22 @@
+src/data/sharedVocab.js
+  s_d5e8c30b294ba2::t_83f4b03a95fc8a 635-642
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_0a72a0db43940f 197-202,220-223,247-251,264-267
+  s_d5e8c30b294ba2::t_3b9b8802e535be 203-219,224-246
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "d5094c5618a3aec29cdcc69502a652cfd749636d",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
