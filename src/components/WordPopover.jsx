@@ -193,11 +193,6 @@ function CompoundPopover({ word, compound, samasNote }) {
       {samasNote?.vigraha && (
         <p className="wp-vigraha"><strong>विग्रह:</strong> {samasNote.vigraha}</p>
       )}
-      {!hasRealGloss && !samasNote?.vigraha && (
-        <p className="wp-gloss wp-gloss-fallback">
-          समास compound. The head (final component) carries the case ending; the others modify it. See per-component meanings below.
-        </p>
-      )}
       <dl className="wp-fields">
         {components.map((c, i) => (
           <CompoundRow key={i} index={i} component={c} isHead={i === components.length - 1} />
