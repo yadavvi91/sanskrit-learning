@@ -393,11 +393,11 @@ function buildVerseEntry(verseData) {
     const composed = {
       ...finalParsing,
       form: joined,
-      members: compoundParsingBuffer.map((p) => ({
-        form: p.form,
-        lemma: p.lemma,
-        pos: p.pos,
-      })),
+      members: compoundParsingBuffer.map((p) => {
+        const m = { form: p.form, pos: p.pos };
+        if (p.root && p.root !== p.form) m.lemma = p.root;
+        return m;
+      }),
     };
     if (!wordParsings[joined]) wordParsings[joined] = composed;
     compoundBuffer = [];
@@ -422,11 +422,11 @@ function buildVerseEntry(verseData) {
     if (!wordParsings[joined]) {
       wordParsings[joined] = {
         form: joined,
-        members: compoundParsingBuffer.map((p) => ({
-          form: p.form,
-          lemma: p.lemma,
-          pos: p.pos,
-        })),
+        members: compoundParsingBuffer.map((p) => {
+          const m = { form: p.form, pos: p.pos };
+          if (p.root && p.root !== p.form) m.lemma = p.root;
+          return m;
+        }),
       };
     }
   }

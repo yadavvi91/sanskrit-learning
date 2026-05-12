@@ -339,6 +339,34 @@ export const SHARED_VOCAB = {
 import { VOCAB_EXTENDED } from './vocabulary-extended.js';
 import { CORE_VOCAB } from './coreVocab.js';
 
+// Reverse index: lemma/root → vocab entry. DCS lemmatises to forms like
+// आत्मन्, कर्मन्, अस्मद्, युष्मद् — whereas our vocab is keyed by the
+// citation form (आत्मा, कर्म, अहम्, त्वम्). When a DCS lookup misses
+// because the lemma isn't a vocab key, this index lets us find the
+// vocab entry whose `root` field matches the DCS lemma.
+let _rootIndex = null;
+function buildRootIndex() {
+  if (_rootIndex) return _rootIndex;
+  _rootIndex = new Map();
+  const add = (entry) => {
+    if (!entry || !entry.root || !entry.gloss) return;
+    const r = entry.root;
+    if (typeof r !== 'string' || r.includes('+')) return;
+    // First-write-wins so the most-specific (typically SHARED_VOCAB)
+    // entry isn't overwritten by extended/coreVocab duplicates.
+    if (!_rootIndex.has(r)) _rootIndex.set(r, entry);
+  };
+  for (const e of Object.values(SHARED_VOCAB)) add(e);
+  for (const e of Object.values(CORE_VOCAB)) add(e);
+  for (const e of Object.values(VOCAB_EXTENDED)) add(e);
+  return _rootIndex;
+}
+
+export function lookupByRoot(rootLemma) {
+  if (!rootLemma) return null;
+  return buildRootIndex().get(rootLemma) || null;
+}
+
 // Suffix-pattern fallback: when a form isn't in any dictionary, try to
 // infer its category + grammatical signal from its ending. Best-effort,
 // not authoritative — but better than "no grammar data yet" on every

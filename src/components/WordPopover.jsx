@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getDeclensionForParsing, getDeclensionById } from '../data/declensions.js';
 import { getPronounAnchor } from '../data/pronouns.js';
-import { lookupSharedVocab } from '../data/sharedVocab.js';
+import { lookupSharedVocab, lookupByRoot } from '../data/sharedVocab.js';
 import { getReferenceLink } from '../data/referenceLinks.js';
 import { lookupUpasarga } from '../data/upasargas.js';
 
@@ -70,24 +70,34 @@ function decomposeCompound(word, verseParsing) {
   // afflicts lookupSharedVocab for ordinary noun stems ending in -य,
   // -ताम्, etc.
   const dcsMembers = Array.isArray(verseParsing?.members) ? verseParsing.members : null;
+  // suffix-inferred entries are speculative only when the stem isn't
+  // in the dictionary (gloss tagged "stem not in dictionary"). When the
+  // stem IS in the dictionary, the gloss is a real meaning + regular
+  // declension tag — keep those, they're often the only gloss available.
+  const isSpeculative = (dict) =>
+    dict?.source === 'suffix-inferred' && /stem not in dictionary/i.test(dict.gloss || '');
   const components = parts.map((p) => {
     const dcsMember = dcsMembers?.find((m) => m.form === p) || null;
-    // For dictionary lookups, skip suffix-inferred entries — those
-    // produce "absolutive of प्रल-stem" for the noun प्रलय. Take the
-    // DCS-attached gloss + a real dict hit (non-inferred) only.
     const dict = lookupSharedVocab(p);
-    const authoritativeDict = (dict && dict.source !== 'suffix-inferred') ? dict : null;
-    if (!dcsMember && !authoritativeDict) {
+    let usableDict = (dict && !isSpeculative(dict)) ? dict : null;
+    // Fallback: if the form itself has no usable dict entry, try the
+    // DCS-provided lemma. अन्ताम् → no surface entry; lemma अन्त → "end".
+    if (!usableDict && dcsMember?.lemma) {
+      const lemmaDict = lookupSharedVocab(dcsMember.lemma);
+      if (lemmaDict && !isSpeculative(lemmaDict)) usableDict = lemmaDict;
+      // Also try the reverse-index: DCS lemma आत्मन् → vocab entry आत्मा.
+      if (!usableDict) {
+        const byRoot = lookupByRoot(dcsMember.lemma);
+        if (byRoot) usableDict = byRoot;
+      }
+    }
+    if (!dcsMember && !usableDict) {
       return { form: p, parsing: null };
     }
-    // Compose a parsing: DCS member's gloss wins; fall back to dict's gloss.
-    // Use dict for case/number/gender/category since DCS member rows
-    // store only form+pos.
     const parsing = {
-      ...(authoritativeDict || {}),
+      ...(usableDict || {}),
       ...(dcsMember || {}),
-      // Prefer DCS member gloss when both are present
-      gloss: dcsMember?.gloss || authoritativeDict?.gloss || undefined,
+      gloss: dcsMember?.gloss || usableDict?.gloss || undefined,
     };
     return { form: p, parsing };
   });

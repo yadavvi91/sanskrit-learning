@@ -19,7 +19,7 @@ import { FINITE_OVERRIDES } from './finite-overrides.js';
 import { DHATUS_EXTENDED } from './dhatus-extended.js';
 import { FUTURE_STEMS } from './_dhatu_future_stems.js';
 import { VERSE_OVERRIDES } from './verse-overrides.js';
-import { lookupSharedVocab } from './sharedVocab.js';
+import { lookupSharedVocab, lookupByRoot } from './sharedVocab.js';
 import { KNOWN_SAMASAS } from './_known_samasas.js';
 import DCS_PADACCHEDA from './dcs-padaccheda.json';
 
@@ -181,14 +181,30 @@ export function hydrateAutoStubVerses() {
       // alongside the case/number/gender row.
       if (dcsEntry.wordParsings && typeof dcsEntry.wordParsings === 'object') {
         if (!v.wordParsings) v.wordParsings = {};
-        // Skip suffix-inferred entries — they pattern-match endings
-        // (e.g., -य → "absolutive", -ताम् → "imperative 3pl") and produce
-        // wildly wrong glosses for ordinary noun stems. Use authoritative
-        // dictionary entries only.
+        // suffix-inferred glosses fall into two groups:
+        //   - confident: the stem WAS found in a dictionary, so the gloss
+        //     is a real meaning + a regular declension tag (e.g.,
+        //     परमाः → "supreme / highest (m. nom. pl.)"). Keep these.
+        //   - speculative: the stem was NOT found, so the gloss is just
+        //     a pattern-match guess that tags itself "stem not in
+        //     dictionary" or "verb stem not in dictionary" (e.g.,
+        //     प्रलय → "absolutive of प्रल-stem (verb stem not in
+        //     dictionary)"). Drop these — they're the bogus content.
+        const isSpeculative = (g) =>
+          !g || /stem not in dictionary/i.test(g);
         const authoritativeGloss = (form) => {
           const d = lookupSharedVocab(form);
-          if (!d || d.source === 'suffix-inferred') return null;
-          return d.gloss || null;
+          if (d) {
+            if (!(d.source === 'suffix-inferred' && isSpeculative(d.gloss))) {
+              return d.gloss || null;
+            }
+          }
+          // Form not found as a vocab key. Try matching as a `root`
+          // field on an existing vocab entry — handles DCS lemmas
+          // (आत्मन्, कर्मन्, अस्मद्) whose citation form (आत्मा, कर्म,
+          // अहम्) is the actual vocab key.
+          const byRoot = lookupByRoot(form);
+          return byRoot?.gloss || null;
         };
         for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
           if (v.wordParsings[w]) continue;
@@ -199,10 +215,13 @@ export function hydrateAutoStubVerses() {
           }
           // For compound members, look up each part's gloss too so
           // CompoundPopover (the per-part rendering) has data to show.
+          // Try the surface form first, then fall back to the DCS lemma
+          // (e.g., अन्ताम् → no entry; lemma अन्त → "end").
           if (Array.isArray(enriched.members)) {
             enriched.members = enriched.members.map((m) => {
               if (m.gloss) return m;
-              const g = authoritativeGloss(m.form);
+              let g = authoritativeGloss(m.form);
+              if (!g && m.lemma) g = authoritativeGloss(m.lemma);
               return g ? { ...m, gloss: g } : m;
             });
           }
@@ -313,16 +332,20 @@ export function hydrateAutoStubVerses() {
         }
       }
 
-      // Helper: look up a compound part's gloss using authoritative
-      // dictionary entries only — suffix-inferred matches return things
-      // like "absolutive of प्रल-stem" or "imperative ātmanepada 3pl of
-      // अन-stem" for ordinary noun stems (because -य and -ताम् pattern-
-      // match verb endings). Filter those out so the rendered samas
-      // gloss reflects real meanings, not parser noise.
+      // Helper: look up a compound part's gloss. Suffix-inferred entries
+      // come in two flavours: confident (stem found in dict, gloss is a
+      // real meaning) and speculative (stem not found, gloss is a
+      // pattern-match guess marked "stem not in dictionary"). Drop only
+      // the speculative ones so we keep accurate noun declensions like
+      // परमाः → "supreme / highest (m. nom. pl.)" but reject bogus verb
+      // misidentifications like प्रलय → "absolutive of प्रल-stem".
       function authoritativeVocab(part) {
         const v = lookupSharedVocab(part);
-        if (!v || v.source === 'suffix-inferred') return null;
-        return v;
+        if (v && !(v.source === 'suffix-inferred' && /stem not in dictionary/i.test(v.gloss || ''))) {
+          return v;
+        }
+        // Reverse-index fallback: try `part` as a `root` field.
+        return lookupByRoot(part) || null;
       }
       // Also try the DCS-provided per-member data attached to this verse's
       // wordParsings — DCS marks each compound part with its actual lemma
@@ -332,7 +355,17 @@ export function hydrateAutoStubVerses() {
         const wp = v.wordParsings?.[pada];
         if (!wp || !Array.isArray(wp.members)) return null;
         const m = wp.members.find((x) => x.form === part);
-        return m?.gloss || null;
+        if (!m) return null;
+        if (m.gloss) return m.gloss;
+        if (m.lemma) {
+          const direct = lookupSharedVocab(m.lemma);
+          if (direct && direct.gloss && !(direct.source === 'suffix-inferred' && /stem not in dictionary/i.test(direct.gloss))) {
+            return direct.gloss;
+          }
+          const byRoot = lookupByRoot(m.lemma);
+          if (byRoot?.gloss) return byRoot.gloss;
+        }
+        return null;
       }
 
       for (const pada of v.padaccheda) {
