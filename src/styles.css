@@ -1122,6 +1122,19 @@ button:disabled {
   padding-left: 22px;
 }
 .origin-summary li { margin-bottom: 6px; }
+
+.origin-sources { font-size: 14px; }
+.origin-sources li { margin-bottom: 12px; line-height: 1.55; }
+.origin-sources a { font-weight: 500; }
+.origin-sources em { color: var(--ink-faint); font-style: normal; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+.origin-sources-note {
+  font-size: 12px;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+}
 .origin-summary img {
   max-width: 100%;
   height: auto;
@@ -3038,7 +3051,26 @@ td.cell.is-suppletive {
   font-size: 22px;
   margin: 0 0 8px;
   color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
 }
+
+.primer-section-anchor {
+  font-family: var(--font-prose);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gold);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+  user-select: none;
+}
+
+.primer-section-title:hover .primer-section-anchor,
+.primer-section-anchor:focus { opacity: 0.75; }
+
+.primer-section-anchor:hover { opacity: 1; text-decoration: underline; }
 
 .primer-section p { margin: 0 0 6px; line-height: 1.6; }
 

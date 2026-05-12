@@ -60,7 +60,25 @@ export default function Primer() {
               ref={(el) => { sectionRefs.current[sec.id] = el; }}
               className="primer-section"
             >
-              <h3 className="primer-section-title">{sec.title}</h3>
+              <h3 className="primer-section-title">
+                {sec.title}
+                <a
+                  href={`#primer-${sec.id}`}
+                  className="primer-section-anchor"
+                  aria-label={`Link to "${sec.title}"`}
+                  title="Copy link to this section"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.history.replaceState(null, '', `#primer-${sec.id}`);
+                    sectionRefs.current[sec.id]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (navigator.clipboard) {
+                      navigator.clipboard.writeText(window.location.href).catch(() => {});
+                    }
+                  }}
+                >
+                  #
+                </a>
+              </h3>
 
               {Array.isArray(sec.body)
                 ? sec.body.map((p, i) => <p key={i}>{renderInline(p)}</p>)
