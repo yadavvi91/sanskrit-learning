@@ -363,21 +363,67 @@ export function hydrateAutoStubVerses() {
           'सम्_उद्_भू': 'arise / spring forth',
           'सम्_प्र_भू': 'arise abundantly / be the source of',
         };
+        // Common participle / kṛdanta suffixes — for when DCS gives us the
+        // participle stem (अविनश्यत्) instead of the bare root (नश्).
+        // Longer-first so "यन्त्" matches before "त्".
+        const PARTICIPLE_SUFFIXES = [
+          'इष्यमान', 'स्यमान', 'इष्यन्त्', 'स्यन्त्', 'इष्यत्', 'स्यत्',
+          'यन्त्', 'मान', 'वान्', 'वत्', 'यत्', 'न्त्', 'इत्', 'ित',
+        ];
+        const stripParticipleSuffix = (s) => {
+          for (const suf of PARTICIPLE_SUFFIXES) {
+            if (s.endsWith(suf) && s.length > suf.length + 1) {
+              return s.slice(0, -suf.length);
+            }
+          }
+          return null;
+        };
         const dhatuGloss = (root) => {
           if (!root) return null;
           // DCS lemmas come bare (स्था) or with halant (स्था / गम्);
           // DHATUS_EXTENDED entries have devanagari with the canonical form.
-          const norm = root.replace(/^√/, '').replace(/^अ(?=[^ािीुूेैोौृ])/, '');  // strip negation a-
+          const stripped = root.replace(/^√/, '');
+          const negStripped = stripped.replace(/^अ(?=[^ािीुूेैोौृ])/, '');
+          const hadNeg = negStripped !== stripped;
+          const norm = negStripped;
+          // Wrap the verbal meaning with negation when the lemma started
+          // with नञ् अ- (अविनश्यत् = "non-perishing", not "perishing"!).
+          const wrapNeg = (s) => hadNeg ? `(negated) NOT ${s}` : s;
           // Direct hit
           let d = findDhatu(norm);
           if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
-            return `to ${d.meanings.slice(0, 2).join(' / to ')} (< √${d.devanagari})`;
+            return wrapNeg(`to ${d.meanings.slice(0, 2).join(' / to ')} (< √${d.devanagari})`);
           }
-          // Try stripping upasargas (vi + nash → nash; sam + upa + stha → stha)
+          // Direct hit after participle-suffix strip (नश्यत् → नश्)
+          {
+            const noPart = stripParticipleSuffix(norm);
+            if (noPart) {
+              const dd = findDhatu(noPart);
+              if (dd && Array.isArray(dd.meanings) && dd.meanings.length > 0) {
+                return wrapNeg(`to ${dd.meanings.slice(0, 2).join(' / to ')} (< √${dd.devanagari}, participle stem)`);
+              }
+            }
+          }
+          // Try stripping upasargas (vi + nash → nash; sam + upa + stha → stha).
+          // After each upasarga strip, also try participle-suffix strip
+          // (वि + नश्यत् → नश्यत् → नश्).
           for (const up of UPASARGAS) {
             if (norm.startsWith(up) && norm.length > up.length + 1) {
               const inner = norm.slice(up.length);
+              // First try the bare inner stem
               d = findDhatu(inner);
+              if (!d) {
+                // Then strip participle suffix off the inner stem
+                const innerNoPart = stripParticipleSuffix(inner);
+                if (innerNoPart) {
+                  const dd = findDhatu(innerNoPart);
+                  if (dd && Array.isArray(dd.meanings) && dd.meanings.length > 0) {
+                    const known = PREFIXED_DHATU_MEANINGS[`${up}_${dd.devanagari}`];
+                    if (known) return wrapNeg(`to ${known} (< ${up} + √${dd.devanagari}, participle stem)`);
+                    return wrapNeg(`prefixed verb: < ${up} + √${dd.devanagari} ("${dd.meanings.slice(0, 2).join(' / ')}"). Participle stem; the prefixed form's actual meaning is usually idiomatic.`);
+                  }
+                }
+              }
               if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
                 const known = PREFIXED_DHATU_MEANINGS[`${up}_${d.devanagari}`];
                 if (known) {

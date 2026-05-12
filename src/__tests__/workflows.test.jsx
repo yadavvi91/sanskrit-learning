@@ -185,7 +185,7 @@ describe('workflows — cross-tab learning journeys', () => {
     const { container } = mount('/journey');
 
     // 1. Default theme on mount.
-    expect(document.documentElement.dataset.theme).toBe('parchment');
+    expect(document.documentElement.dataset.theme).toBe('newsprint');
 
     // 2. Open ThemePicker and switch to "Ink & Vermillion".
     fireEvent.click(container.querySelector('.theme-trigger'));

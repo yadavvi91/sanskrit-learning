@@ -473,7 +473,7 @@ export const PALETTES = [
 ];
 
 export const STORAGE_KEY = 'theme_v1';
-export const DEFAULT_PALETTE = 'parchment';
+export const DEFAULT_PALETTE = 'newsprint';
 
 export function applyPalette(id) {
   const palette = PALETTES.find((p) => p.id === id) ?? PALETTES[0];

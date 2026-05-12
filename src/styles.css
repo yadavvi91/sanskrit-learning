@@ -300,14 +300,28 @@ button:disabled {
 }
 
 .chapter-summary {
+  /* Some browsers (Safari ≤16, certain WebView versions) don't honor
+     display:flex on <summary> and fall back to list-item — which makes
+     the three child spans stack vertically. Set display explicitly and
+     redundantly via the older list-item override too. */
   display: flex;
-  align-items: baseline;
+  flex-flow: row nowrap;
+  align-items: center;
   gap: 8px;
   padding: 8px 10px;
   cursor: pointer;
   list-style: none;
   font-size: 14px;
   color: var(--ink-soft);
+}
+
+/* Defensive: on browsers that fall back to block, treat the children
+   as inline so they don't each take their own line. */
+.chapter-summary > .chapter-num,
+.chapter-summary > .chapter-name,
+.chapter-summary > .chapter-count {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .chapter-summary::-webkit-details-marker {
