@@ -356,6 +356,25 @@ export function hydrateAutoStubVerses() {
         if (para !== key && KNOWN_SAMASAS[para]) return KNOWN_SAMASAS[para];
         const anus = toAnusvara(key);
         if (anus !== key && KNOWN_SAMASAS[anus]) return KNOWN_SAMASAS[anus];
+        // Halant variants: consonant-stem entries often have a trailing
+        // halant ('आगम-अपायिन्' in dict vs 'आगम-अपायिन' from case-strip).
+        const lastCh = key.charAt(key.length - 1);
+        if (lastCh && lastCh !== '्' && /[क-हय-व]/.test(lastCh)) {
+          if (KNOWN_SAMASAS[key + '्']) return KNOWN_SAMASAS[key + '्'];
+        }
+        if (lastCh === '्' && key.length > 1 && KNOWN_SAMASAS[key.slice(0, -1)]) {
+          return KNOWN_SAMASAS[key.slice(0, -1)];
+        }
+        // Visarga ↔ स्/र् normalization: compounds with non-final stems
+        // ending in -स्/-र् surface with visarga (आयुस् ↔ आयुः, मनस् ↔ मनः).
+        // Toggle both directions and retry.
+        const v1 = key.replace(/ः-/g, 'स्-').replace(/ः$/, 'स्');
+        if (v1 !== key && KNOWN_SAMASAS[v1]) return KNOWN_SAMASAS[v1];
+        const v2 = key.replace(/स्-/g, 'ः-').replace(/स्$/, 'ः');
+        if (v2 !== key && KNOWN_SAMASAS[v2]) return KNOWN_SAMASAS[v2];
+        // द्/त्: मद्/मत् alternation
+        const d1 = key.replace(/त्-/g, 'द्-').replace(/त्$/, 'द्');
+        if (d1 !== key && KNOWN_SAMASAS[d1]) return KNOWN_SAMASAS[d1];
         return null;
       };
 

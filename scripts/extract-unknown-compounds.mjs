@@ -48,7 +48,16 @@ async function main() {
   const NASAL_TO_VARGA = {'ङ':['क','ख','ग','घ','ङ'],'ञ':['च','छ','ज','झ','ञ'],'ण':['ट','ठ','ड','ढ','ण'],'न':['त','थ','द','ध','न'],'म':['प','फ','ब','भ','म']};
   const toParasvarna = (s) => s.replace(/ं([क-म])/g, (_, c) => VARGA_NASAL[c] ? VARGA_NASAL[c] + '्' + c : 'ं' + c);
   const toAnusvara = (s) => s.replace(/([ङञणनम])्([क-म])/g, (m, n, c) => (NASAL_TO_VARGA[n] || []).includes(c) ? 'ं' + c : m);
-  const has = (k) => known.has(k) || known.has(toParasvarna(k)) || known.has(toAnusvara(k));
+  const has = (k) => {
+    if (known.has(k) || known.has(toParasvarna(k)) || known.has(toAnusvara(k))) return true;
+    // Halant variants
+    const lastCh = k.charAt(k.length - 1);
+    if (lastCh && lastCh !== '्' && /[क-हय-व]/.test(lastCh)) {
+      if (known.has(k + '्')) return true;
+    }
+    if (lastCh === '्' && k.length > 1 && known.has(k.slice(0, -1))) return true;
+    return false;
+  };
   const isKnown = (pada, parsing) => {
     if (has(pada)) return true;
     const m = parsing?.members;
