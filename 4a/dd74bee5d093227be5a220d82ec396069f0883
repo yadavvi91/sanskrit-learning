@@ -1,0 +1,22 @@
+scripts/shift-bg13-interp.mjs
+  s_d5e8c30b294ba2::t_a245ad3543a52e 1-47
+src/data/_interp_part3.js
+  s_d5e8c30b294ba2::t_bcd5db1ea9a4df 6-8,10-31
+  s_d5e8c30b294ba2::t_386b8fb8e525fc 32,38,44,50,56,62,68,74,80,86,92,98,104,110,116,122,128,134,140,146,152,158,164,170,176,182,188,194,200,206,212,218,224,230
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "4add74bee5d093227be5a220d82ec396069f0883",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "unknown"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
