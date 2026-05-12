@@ -699,4 +699,211 @@ export const KNOWN_SAMASAS = {
   'धर्म-काम-अर्थ': { vigraha: 'धर्मः कामः अर्थश्च', type: 'इतरेतर द्वंद्व', gloss: 'dharma, pleasure, and wealth (three goals)' },
   'धर्म-सम्मूढ-चेतस्': { vigraha: 'धर्मे सम्मूढं चेतः यस्य', type: 'बहुव्रीहि', gloss: 'one whose mind is confused about dharma (BG 2.7)' },
   'धर्म-संस्थापन-अर्थ': { vigraha: 'धर्मस्य संस्थापनस्य अर्थम्', type: 'षष्ठी तत्पुरुष (कृत्यर्थ)', gloss: 'for the sake of establishing dharma (BG 4.8)' },
+
+  // ─────────────────────────────────────────────────────────────────────
+  // Batch 4: remaining stem families + high-occurrence singletons.
+  // ─────────────────────────────────────────────────────────────────────
+
+  // सर्व- (additional)
+  'सर्व-कर्मन्': { vigraha: 'सर्वाणि कर्माणि', type: 'कर्मधारय', gloss: 'all actions' },
+  'सर्व-काम': { vigraha: 'सर्वे कामाः', type: 'कर्मधारय', gloss: 'all desires' },
+  'सर्व-किल्बिष': { vigraha: 'सर्वैः किल्बिषैः', type: 'तृतीया तत्पुरुष', gloss: 'by all sins' },
+  'सर्व-क्षेत्र': { vigraha: 'सर्वेषु क्षेत्रेषु', type: 'सप्तमी तत्पुरुष', gloss: 'in all fields/bodies (BG 13.2)' },
+  'सर्व-गुण': { vigraha: 'सर्वे गुणाः', type: 'कर्मधारय', gloss: 'all qualities' },
+  'सर्व-धर्म': { vigraha: 'सर्वान् धर्मान्', type: 'कर्मधारय', gloss: 'all dharmas (BG 18.66)' },
+  'सर्व-पाप': { vigraha: 'सर्वेभ्यः पापेभ्यः', type: 'पञ्चमी तत्पुरुष', gloss: 'from all sins (BG 18.66)' },
+  'सर्व-योग': { vigraha: 'सर्वैः योगैः', type: 'तृतीया तत्पुरुष', gloss: 'by all yogas' },
+  'सर्व-यज्ञ': { vigraha: 'सर्वे यज्ञाः', type: 'कर्मधारय', gloss: 'all sacrifices' },
+  'सर्व-दुःख': { vigraha: 'सर्वाणि दुःखानि', type: 'कर्मधारय', gloss: 'all sorrows' },
+  'सर्व-तपस्': { vigraha: 'सर्वाणि तपांसि', type: 'कर्मधारय', gloss: 'all austerities' },
+  'सर्व-शास्त्र': { vigraha: 'सर्वाणि शास्त्राणि', type: 'कर्मधारय', gloss: 'all scriptures' },
+  'सर्व-स्व': { vigraha: 'सर्वम् एव स्वम्', type: 'कर्मधारय', gloss: 'one\'s whole property' },
+  'सर्व-यन्त्र': { vigraha: 'सर्वाणि यन्त्राणि', type: 'कर्मधारय', gloss: 'all instruments' },
+  'सर्व-त्रग': { vigraha: 'सर्वत्र गच्छति यः', type: 'उपपद तत्पुरुष', gloss: 'all-pervading' },
+
+  // कर्म- (additional)
+  'कर्म-फल-आसङ्ग': { vigraha: 'कर्म-फले आसङ्गः', type: 'सप्तमी तत्पुरुष', gloss: 'attachment to the fruits of action (BG 4.20)' },
+  'कर्म-फल-प्रेप्सु': { vigraha: 'कर्म-फलं प्रेप्सति यः', type: 'उपपद तत्पुरुष', gloss: 'one who desires the fruits of action' },
+  'कर्म-बन्धन': { vigraha: 'कर्मणा बन्धनम्', type: 'तृतीया तत्पुरुष', gloss: 'bondage by action' },
+  'कर्म-बन्ध': { vigraha: 'कर्मणः बन्धः', type: 'षष्ठी तत्पुरुष', gloss: 'bondage of action (BG 2.39)' },
+  'कर्म-संग्रह': { vigraha: 'कर्मणः संग्रहः', type: 'षष्ठी तत्पुरुष', gloss: 'the basis of action (BG 18.18)' },
+
+  // महा- (additional)
+  'महा-अनुभाव': { vigraha: 'महान्तः अनुभावाः येषाम्', type: 'बहुव्रीहि', gloss: 'of great dignity/influence (BG 2.5)' },
+  'महा-अशन': { vigraha: 'महान् अशनः', type: 'कर्मधारय', gloss: 'great-eating / voracious (BG 3.37)' },
+  'महा-इष्वास': { vigraha: 'महान्तः इष्वासाः', type: 'कर्मधारय', gloss: 'great archers (BG 1.4)' },
+  'महा-ऋषि-सिद्ध-सङ्घ': { vigraha: 'महा-ऋषीणां सिद्धानां च सङ्घाः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'hosts of great sages and perfected ones (BG 11.21)' },
+  'महा-पाप्मन्': { vigraha: 'महान् पाप्मा', type: 'कर्मधारय', gloss: 'great sin (BG 3.37)' },
+  'महा-योग-ईश्वर': { vigraha: 'महान् योग-ईश्वरः', type: 'कर्मधारय', gloss: 'the great lord of yoga' },
+
+  // मद्- (additional)
+  'मद्-कर्म-कृत्': { vigraha: 'मम कर्म करोति यः', type: 'उपपद तत्पुरुष', gloss: 'one who does my work (BG 11.55)' },
+  'मद्-गत-प्राण': { vigraha: 'मद्-गताः प्राणाः येषाम्', type: 'बहुव्रीहि', gloss: 'those whose life-breaths are merged in me (BG 10.9)' },
+  'मद्-परायण': { vigraha: 'अहम् परायणं यस्य', type: 'बहुव्रीहि', gloss: 'one who has me as supreme refuge' },
+  'मद्-भक्ति': { vigraha: 'मयि भक्तिः', type: 'सप्तमी तत्पुरुष', gloss: 'devotion to me' },
+  'मद्-मय': { vigraha: 'मया एव निर्मितम्', type: 'तत्पुरुष (मयट्)', gloss: 'consisting of me / one with me' },
+  'मद्-आश्रित': { vigraha: 'मद्-आश्रितः', type: 'द्वितीया तत्पुरुष', gloss: 'taking refuge in me' },
+
+  // ज्ञान- (additional)
+  'ज्ञान-निर्धूत-कल्मष': { vigraha: 'ज्ञानेन निर्धूतानि कल्मषानि येषाम्', type: 'बहुव्रीहि (chain)', gloss: 'those whose sins are dispelled by knowledge (BG 5.17)' },
+  'ज्ञान-योग-व्यवस्थिति': { vigraha: 'ज्ञान-योगे व्यवस्थितिः', type: 'सप्तमी तत्पुरुष', gloss: 'establishment in the yoga of knowledge (BG 16.1)' },
+  'ज्ञान-विज्ञान-नाशन': { vigraha: 'ज्ञान-विज्ञानयोः नाशनम्', type: 'षष्ठी तत्पुरुष', gloss: 'destroyer of knowledge and realization (BG 3.41)' },
+  'ज्ञान-सङ्ग': { vigraha: 'ज्ञाने सङ्गः', type: 'सप्तमी तत्पुरुष', gloss: 'attachment to knowledge (BG 14.6)' },
+  'ज्ञान-विज्ञान-तृप्त-आत्मन्': { vigraha: 'ज्ञान-विज्ञानाभ्यां तृप्तः आत्मा यस्य', type: 'बहुव्रीहि (chain)', gloss: 'one whose self is satisfied by knowledge and realization (BG 6.8)' },
+
+  // नित्य- (additional)
+  'नित्य-अभियुक्त': { vigraha: 'नित्यम् अभियुक्तः', type: 'गति समास', gloss: 'always engaged (BG 9.22)' },
+  'नित्य-जात': { vigraha: 'नित्यं जातः', type: 'गति समास', gloss: 'eternally born' },
+  'नित्य-युक्त': { vigraha: 'नित्यं युक्तः', type: 'गति समास', gloss: 'ever-yoked' },
+  'नित्य-वैरिन्': { vigraha: 'नित्यः वैरी', type: 'कर्मधारय', gloss: 'perpetual enemy (BG 3.39)' },
+  'नित्य-सन्न्यासिन्': { vigraha: 'नित्यं सन्न्यासी', type: 'गति समास', gloss: 'the perpetual renunciate (BG 5.3)' },
+
+  // योग- (additional)
+  'योग-माया-समावृत': { vigraha: 'योग-मायया समावृतः', type: 'तृतीया तत्पुरुष', gloss: 'veiled by yoga-māyā (BG 7.25)' },
+  'योग-यज्ञ': { vigraha: 'योगः एव यज्ञः', type: 'कर्मधारय', gloss: 'yoga-as-sacrifice (BG 4.28)' },
+  'योग-संसिद्ध': { vigraha: 'योगेन संसिद्धः', type: 'तृतीया तत्पुरुष', gloss: 'perfected through yoga' },
+  'योग-संन्यस्त-कर्मन्': { vigraha: 'योगेन संन्यस्तानि कर्माणि येन', type: 'बहुव्रीहि', gloss: 'one who has renounced actions through yoga (BG 4.41)' },
+
+  // आत्म- (additional)
+  'आत्म-माया': { vigraha: 'आत्मनः मायया', type: 'षष्ठी तत्पुरुष', gloss: 'by my own māyā (BG 4.6)' },
+  'आत्म-विशुद्धि': { vigraha: 'आत्मनः विशुद्धिः', type: 'षष्ठी तत्पुरुष', gloss: 'self-purification (BG 6.12)' },
+  'आत्म-संयम-योग-अग्नि': { vigraha: 'आत्म-संयम-योगः एव अग्निः', type: 'कर्मधारय (chain)', gloss: 'the fire of the yoga of self-restraint (BG 4.27)' },
+  'आत्म-सम्भाविता': { vigraha: 'आत्मना सम्भाविताः', type: 'तृतीया तत्पुरुष', gloss: 'self-conceited (BG 16.17)' },
+
+  // इन्द्रिय-
+  'इन्द्रिय-अग्नि': { vigraha: 'इन्द्रियाणि एव अग्नयः', type: 'कर्मधारय', gloss: 'the senses as fires (BG 4.26)' },
+  'इन्द्रिय-आराम': { vigraha: 'इन्द्रियेषु आरामः', type: 'सप्तमी तत्पुरुष', gloss: 'one who delights in the senses (BG 3.16)' },
+  'इन्द्रिय-कर्मन्': { vigraha: 'इन्द्रियाणां कर्माणि', type: 'षष्ठी तत्पुरुष', gloss: 'the actions of the senses' },
+  'इन्द्रिय-गोचर': { vigraha: 'इन्द्रियाणां गोचराः', type: 'षष्ठी तत्पुरुष', gloss: 'the range of the senses (BG 13.5)' },
+  'इन्द्रिय-संयम': { vigraha: 'इन्द्रियाणां संयमः', type: 'षष्ठी तत्पुरुष', gloss: 'restraint of the senses' },
+  'इन्द्रिय-गोग्राम': { vigraha: 'इन्द्रिय-गणस्य ग्रामः', type: 'षष्ठी तत्पुरुष', gloss: 'the collection of senses' },
+
+  // गत- (departed-X / state-of-X)
+  'गत-आगत': { vigraha: 'गतं च आगतं च', type: 'इतरेतर द्वंद्व', gloss: 'going and coming (BG 9.21)' },
+  'गत-रस': { vigraha: 'गताः रसाः यस्य', type: 'बहुव्रीहि', gloss: 'one whose taste/desire has departed (BG 2.59)' },
+  'गत-सङ्ग': { vigraha: 'गतः सङ्गः यस्य', type: 'बहुव्रीहि', gloss: 'one whose attachment has gone (BG 4.23)' },
+  'गत-सन्देह': { vigraha: 'गतः सन्देहः यस्य', type: 'बहुव्रीहि', gloss: 'one whose doubts have gone (BG 18.73)' },
+
+  // जित- (conquered-X)
+  'जित-आत्मन्': { vigraha: 'जितः आत्मा यस्य', type: 'बहुव्रीहि', gloss: 'one whose self is conquered (self-mastered)' },
+  'जित-इन्द्रिय': { vigraha: 'जितानि इन्द्रियाणि येन', type: 'बहुव्रीहि', gloss: 'one whose senses are conquered' },
+  'जित-सङ्ग-दोष': { vigraha: 'जिताः सङ्ग-दोषाः येन', type: 'बहुव्रीहि (chain)', gloss: 'one who has conquered the defects of attachment (BG 15.5)' },
+
+  // तत्त्व-
+  'तत्त्व-अर्थवत्': { vigraha: 'तत्त्व-अर्थवत् यथार्थम्', type: 'मतुप्', gloss: 'as the true reality / truthfully' },
+  'तत्त्व-ज्ञान-अर्थ-दर्शन': { vigraha: 'तत्त्व-ज्ञानस्य अर्थस्य दर्शनम्', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the vision of the truth of knowledge (BG 13.11)' },
+  'तत्त्व-दर्शिन्': { vigraha: 'तत्त्वं पश्यति यः', type: 'उपपद तत्पुरुष', gloss: 'the seer of truth' },
+  'तत्त्व-वित्': { vigraha: 'तत्त्वं वेद यः', type: 'उपपद तत्पुरुष', gloss: 'knower of truth' },
+
+  // दुःख-
+  'दुःख-अन्त': { vigraha: 'दुःखस्य अन्तः', type: 'षष्ठी तत्पुरुष', gloss: 'the end of sorrow' },
+  'दुःख-आलय': { vigraha: 'दुःखानाम् आलयः', type: 'षष्ठी तत्पुरुष', gloss: 'abode of sorrow (BG 8.15)' },
+  'दुःख-शोक-आमय-प्रद': { vigraha: 'दुःख-शोक-आमयान् प्रददाति यः', type: 'उपपद तत्पुरुष (chain)', gloss: 'giver of pain, grief, and disease (BG 17.9)' },
+  'दुःख-हा': { vigraha: 'दुःखं हन्ति यः', type: 'उपपद तत्पुरुष', gloss: 'destroyer of sorrow' },
+  'दुःख-संयोग-वियोग': { vigraha: 'दुःख-संयोगस्य वियोगः', type: 'षष्ठी तत्पुरुष', gloss: 'disjoining from the conjunction with sorrow (BG 6.23)' },
+
+  // प्राण-
+  'प्राण-अपान': { vigraha: 'प्राणः च अपानः च', type: 'इतरेतर द्वंद्व', gloss: 'inhalation and exhalation' },
+  'प्राण-अपान-गति': { vigraha: 'प्राण-अपानयोः गती', type: 'षष्ठी तत्पुरुष', gloss: 'the movements of prāṇa and apāna (BG 4.29)' },
+  'प्राण-अपान-समायुक्त': { vigraha: 'प्राण-अपानाभ्यां समायुक्तः', type: 'तृतीया तत्पुरुष', gloss: 'joined with prāṇa and apāna (BG 15.14)' },
+  'प्राण-कर्मन्': { vigraha: 'प्राणानां कर्माणि', type: 'षष्ठी तत्पुरुष', gloss: 'the activities of the vital airs (BG 4.27)' },
+
+  // भूत- (additional)
+  'भूत-भाव-उद्भव-कर': { vigraha: 'भूत-भावस्य उद्भवं करोति', type: 'उपपद तत्पुरुष (chain)', gloss: 'creator of the becoming of beings (BG 8.3)' },
+  'भूत-महेश्वर': { vigraha: 'भूतानां महेश्वरः', type: 'षष्ठी तत्पुरुष', gloss: 'great lord of beings (BG 9.11)' },
+  'भूत-स्थ': { vigraha: 'भूतेषु स्थितः', type: 'सप्तमी तत्पुरुष', gloss: 'situated in beings' },
+
+  // मनः- (mind-) — DCS uses मनः where vocab uses मनस्
+  'मनः-गत': { vigraha: 'मनसि गताः', type: 'सप्तमी तत्पुरुष', gloss: 'present in the mind' },
+  'मनः-प्रसाद': { vigraha: 'मनसः प्रसादः', type: 'षष्ठी तत्पुरुष', gloss: 'serenity of the mind (BG 17.16)' },
+  'मनः-प्राण-इन्द्रिय-क्रिया': { vigraha: 'मनः-प्राण-इन्द्रियाणां क्रियाः', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the activities of the mind, vital airs, and senses (BG 18.33)' },
+  'मनः-षष्ठ': { vigraha: 'मनः षष्ठं येषाम्', type: 'बहुव्रीहि', gloss: '(senses) with the mind as the sixth (BG 15.7)' },
+
+  // यत- (additional)
+  'यत-चित्त-इन्द्रिय': { vigraha: 'यतानि चित्त-इन्द्रियाणि येन', type: 'बहुव्रीहि (chain)', gloss: 'one whose mind and senses are restrained' },
+  'यत-चेतस्': { vigraha: 'यतं चेतः येषाम्', type: 'बहुव्रीहि', gloss: 'those whose minds are restrained' },
+  'यत-वाच्-काय-मानस': { vigraha: 'यताः वाक्-काय-मानसाः यस्य', type: 'बहुव्रीहि (chain)', gloss: 'one whose speech, body, and mind are restrained (BG 17.16)' },
+
+  // स्व- (own-)
+  'स्व-कर्मन्': { vigraha: 'स्वस्य कर्म', type: 'षष्ठी तत्पुरुष', gloss: 'one\'s own work' },
+  'स्व-कर्म-निरत': { vigraha: 'स्व-कर्मणि निरतः', type: 'सप्तमी तत्पुरुष', gloss: 'devoted to one\'s own work (BG 18.45)' },
+  'स्व-चक्षुस्': { vigraha: 'स्वैः चक्षुर्भिः', type: 'तृतीया तत्पुरुष', gloss: 'with one\'s own eyes (BG 11.8)' },
+  'स्व-तेजस्': { vigraha: 'स्वेन तेजसा', type: 'तृतीया तत्पुरुष', gloss: 'with one\'s own splendour' },
+
+  // आदित्य-
+  'आदित्य-गत': { vigraha: 'आदित्ये गतम्', type: 'सप्तमी तत्पुरुष', gloss: 'present in the sun (BG 15.12)' },
+  'आदित्य-वत्': { vigraha: 'आदित्येन तुल्यम्', type: 'तत्पुरुष (वतिः)', gloss: 'sun-like' },
+  'आदित्य-वर्ण': { vigraha: 'आदित्यस्य वर्णः इव यस्य', type: 'बहुव्रीहि', gloss: 'sun-coloured (BG 8.9)' },
+
+  // काम- (additional)
+  'काम-क्रोध-वियुक्त': { vigraha: 'काम-क्रोधाभ्यां वियुक्तः', type: 'तृतीया तत्पुरुष', gloss: 'free from desire and anger (BG 5.26)' },
+  'काम-सङ्कल्प-वर्जित': { vigraha: 'काम-सङ्कल्पाभ्यां वर्जितः', type: 'तृतीया तत्पुरुष', gloss: 'free from desire and resolve (BG 4.19)' },
+  'काम-हैतुक': { vigraha: 'कामः हेतुः यस्य', type: 'बहुव्रीहि', gloss: 'motivated by desire (BG 16.8)' },
+
+  // कार्य-
+  'कार्य-अकार्य-व्यवस्थिति': { vigraha: 'कार्य-अकार्ययोः व्यवस्थितिः', type: 'षष्ठी तत्पुरुष', gloss: 'distinguishing between what to do and what not to do (BG 16.24)' },
+  'कार्य-अकार्य': { vigraha: 'कार्यं च अकार्यं च', type: 'इतरेतर द्वंद्व', gloss: 'duty and what is not duty' },
+  'कार्य-कारण-कर्तृ-त्व': { vigraha: 'कार्य-कारण-कर्तृत्वम्', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'the agency in cause and effect (BG 13.20)' },
+
+  // कृत्स्न- (whole)
+  'कृत्स्न-कर्म-कृत्': { vigraha: 'कृत्स्नं कर्म करोति यः', type: 'उपपद तत्पुरुष', gloss: 'the doer of all action (BG 4.18)' },
+  'कृत्स्न-वत्': { vigraha: 'कृत्स्नेन तुल्यम्', type: 'तत्पुरुष (वतिः)', gloss: 'as if complete' },
+  'कृत्स्न-विद्': { vigraha: 'कृत्स्नं वेद यः', type: 'उपपद तत्पुरुष', gloss: 'knower of the whole' },
+
+  // जन्म-
+  'जन्म-बन्ध-विनिर्मुक्त': { vigraha: 'जन्म-बन्धात् विनिर्मुक्तः', type: 'पञ्चमी तत्पुरुष', gloss: 'liberated from the bondage of birth (BG 2.51)' },
+  'जन्म-मृत्यु-जरा-दुःख': { vigraha: 'जन्म-मृत्यु-जरा-दुःखानि', type: 'इतरेतर द्वंद्व (chain)', gloss: 'birth, death, old age, and sorrow (BG 14.20)' },
+  'जन्म-मृत्यु-जरा-व्याधि-दुःख-दोष-अनुदर्शन': { vigraha: 'जन्म-मृत्यु-जरा-व्याधि-दुःख-दोषाणाम् अनुदर्शनम्', type: 'षष्ठी तत्पुरुष (chain)', gloss: 'reflecting on the evil of birth, death, old age, disease, and pain (BG 13.8)' },
+
+  // तुल्य-
+  'तुल्य-निन्दा-आत्म-संस्तुति': { vigraha: 'तुल्ये निन्दा-आत्म-संस्तुती यस्य', type: 'बहुव्रीहि (chain)', gloss: 'one to whom blame and self-praise are alike (BG 14.24)' },
+  'तुल्य-निन्दा-स्तुति': { vigraha: 'तुल्ये निन्दा-स्तुती यस्य', type: 'बहुव्रीहि', gloss: 'one to whom blame and praise are alike (BG 12.19)' },
+  'तुल्य-प्रिय-अप्रिय': { vigraha: 'तुल्ये प्रिय-अप्रिये यस्य', type: 'बहुव्रीहि', gloss: 'one to whom the pleasant and unpleasant are alike (BG 14.24)' },
+
+  // तेजः- (splendour-)
+  'तेजः-अंश-सम्भव': { vigraha: 'तेजसः अंशात् सम्भवम्', type: 'पञ्चमी तत्पुरुष (chain)', gloss: 'arising from a fragment of splendour (BG 10.41)' },
+  'तेजः-मय': { vigraha: 'तेजसा निर्मितम्', type: 'तत्पुरुष (मयट्)', gloss: 'made of light/splendour' },
+  'तेजः-राशि': { vigraha: 'तेजसः राशिः', type: 'षष्ठी तत्पुरुष', gloss: 'mass of splendour (BG 11.17)' },
+
+  // दम्भ- (pride-)
+  'दम्भ-अर्थ': { vigraha: 'दम्भस्य अर्थम्', type: 'तत्पुरुष (कृत्यर्थ)', gloss: 'for the sake of ostentation (BG 17.18)' },
+  'दम्भ-अहङ्कार-संयुक्त': { vigraha: 'दम्भ-अहङ्काराभ्यां संयुक्तः', type: 'तृतीया तत्पुरुष', gloss: 'joined with pride and ego (BG 17.5)' },
+  'दम्भ-मान-मद-अन्वित': { vigraha: 'दम्भ-मान-मदैः अन्विताः', type: 'तृतीया तत्पुरुष (chain)', gloss: 'possessed of pride, conceit, and intoxication (BG 16.10)' },
+
+  // दिव्य- (divine-)
+  'दिव्य-अनेक-उद्यत-आयुध': { vigraha: 'दिव्यानि अनेकानि उद्यतानि आयुधानि यस्य', type: 'बहुव्रीहि (chain)', gloss: 'with many divine raised weapons (BG 11.10)' },
+  'दिव्य-गन्ध-अनुलेपन': { vigraha: 'दिव्यैः गन्ध-अनुलेपनैः', type: 'तृतीया तत्पुरुष (chain)', gloss: 'with divine fragrances and ointments (BG 11.11)' },
+  'दिव्य-माल्य-अम्बर-धर': { vigraha: 'दिव्यानि माल्यानि अम्बराणि च धरति यः', type: 'उपपद तत्पुरुष (chain)', gloss: 'wearing divine garlands and garments (BG 11.11)' },
+
+  // दीप्त- (blazing-)
+  'दीप्त-अनल-अर्क-द्युति': { vigraha: 'दीप्त-अनल-अर्क-द्युतिः', type: 'कर्मधारय (chain)', gloss: 'with the radiance of blazing fire and sun (BG 11.17)' },
+  'दीप्त-विशाल-नेत्र': { vigraha: 'दीप्तानि विशालानि नेत्राणि यस्य', type: 'बहुव्रीहि (chain)', gloss: 'with blazing wide eyes (BG 11.24)' },
+  'दीप्त-हुताश-वक्त्र': { vigraha: 'दीप्तं हुताश-वक्त्रम्', type: 'कर्मधारय', gloss: 'with a blazing fire-eating mouth (BG 11.28)' },
+
+  // नर- (man-)
+  'नर-अधम': { vigraha: 'नराणाम् अधमाः', type: 'षष्ठी तत्पुरुष', gloss: 'lowest of men (BG 16.19)' },
+  'नर-लोक-वीर': { vigraha: 'नर-लोकस्य वीराः', type: 'षष्ठी तत्पुरुष', gloss: 'heroes of the human world (BG 11.28)' },
+  'नर-पुङ्गव': { vigraha: 'नरेषु पुङ्गवः', type: 'सप्तमी तत्पुरुष', gloss: 'bull among men' },
+
+  // Misc high-occurrence singletons
+  'अकृत्स्न-विद्': { vigraha: 'अकृत्स्नं वेद यः', type: 'उपपद तत्पुरुष', gloss: 'one who knows only partially (BG 3.29)' },
+  'अक्षर-समुद्भव': { vigraha: 'अक्षरात् समुद्भवः', type: 'पञ्चमी तत्पुरुष', gloss: 'arising from the imperishable (BG 3.15)' },
+  'अक्षि-शिरस्-मुख': { vigraha: 'अक्षि-शिरः-मुखानि यस्य', type: 'बहुव्रीहि (chain)', gloss: 'with eyes, heads, and mouths (everywhere) (BG 13.14)' },
+  'अचल-प्रतिष्ठ': { vigraha: 'अचला प्रतिष्ठा यस्य', type: 'बहुव्रीहि', gloss: 'unshakeable in its standing (BG 2.70)' },
+  'अचिन्त्य-रूप': { vigraha: 'अचिन्त्यं रूपं यस्य', type: 'बहुव्रीहि', gloss: 'of inconceivable form (BG 8.9)' },
+  'अज्ञान-विमोहित': { vigraha: 'अज्ञानेन विमोहिताः', type: 'तृतीया तत्पुरुष', gloss: 'deluded by ignorance (BG 16.15)' },
+  'अज्ञान-सम्भूत': { vigraha: 'अज्ञानात् सम्भूतम्', type: 'पञ्चमी तत्पुरुष', gloss: 'arising from ignorance (BG 4.42)' },
+  'अज्ञान-सम्मोह': { vigraha: 'अज्ञानेन सम्मोहः', type: 'तृतीया तत्पुरुष', gloss: 'delusion due to ignorance (BG 18.72)' },
+  'अतिमानि-त्व': { vigraha: 'अतिमानिनः भावः', type: 'त्व-affix', gloss: 'arrogance (BG 16.3)' },
+  'अदृष्ट-पूर्व': { vigraha: 'अदृष्टं पूर्वम्', type: 'कर्मधारय', gloss: 'never seen before (BG 11.45)' },
+  'अनासक्त-बुद्धि': { vigraha: 'अनासक्ता बुद्धिः यस्य', type: 'बहुव्रीहि', gloss: 'one whose intellect is unattached (BG 18.49)' },
+  'अनासक्त-मनस्': { vigraha: 'अनासक्तं मनः यस्य', type: 'बहुव्रीहि', gloss: 'one whose mind is unattached (BG 18.49)' },
+  'अनिकेत-स्थिर-मति': { vigraha: 'अनिकेतः स्थिर-मतिः', type: 'कर्मधारय (chain)', gloss: 'homeless and steady-minded (BG 12.19)' },
+  'अनिष्ट-इष्ट-मिश्र': { vigraha: 'अनिष्टं इष्टं च मिश्रम्', type: 'इतरेतर द्वंद्व (chain)', gloss: 'unwanted, wanted, and mixed (BG 18.12)' },
+  'अनुदर्शन': { vigraha: 'अनुदर्शनम्', type: 'simple noun', gloss: 'observation / reflection' },
+  'अपान-वायु': { vigraha: 'अपानः एव वायुः', type: 'कर्मधारय', gloss: 'the apāna wind' },
+  'अबुद्धि-त्व': { vigraha: 'अबुद्धेः भावः', type: 'त्व-affix', gloss: 'foolishness' },
+  'अभय-सत्त्व-संशुद्धि': { vigraha: 'अभयं सत्त्व-संशुद्धिश्च', type: 'इतरेतर द्वंद्व (chain)', gloss: 'fearlessness and inner purity (BG 16.1)' },
+  'अभि-संधाय': { vigraha: 'अभि-संधाय', type: 'absolutive', gloss: 'having decided/aimed at' },
+  'अभिजात-दैव-सम्पद्': { vigraha: 'अभिजाताः दैव्या सम्पदा युक्ताः', type: 'तृतीया तत्पुरुष (chain)', gloss: 'born to divine endowment (BG 16.3)' },
 };
