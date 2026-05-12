@@ -24,9 +24,35 @@ import { KNOWN_SAMASAS } from './_known_samasas.js';
 import DCS_PADACCHEDA from './dcs-padaccheda.json';
 import ENRICHED_VIBHAKTI from './_enriched_vibhakti.json';
 import ENRICHED_VYAKHYA from './_enriched_vyakhya.json';
+import BG1_VYAKHYA from './_bg1_vyakhya.json';
+import BG2_VYAKHYA from './_bg2_vyakhya.json';
 import BG3_VYAKHYA from './_bg3_vyakhya.json';
+import BG4_VYAKHYA from './_bg4_vyakhya.json';
+import BG5_VYAKHYA from './_bg5_vyakhya.json';
+import BG6_VYAKHYA from './_bg6_vyakhya.json';
+import BG7_VYAKHYA from './_bg7_vyakhya.json';
+import BG8_VYAKHYA from './_bg8_vyakhya.json';
+import BG9_VYAKHYA from './_bg9_vyakhya.json';
+import BG10_VYAKHYA from './_bg10_vyakhya.json';
+import BG11_VYAKHYA from './_bg11_vyakhya.json';
 import BG12_VYAKHYA from './_bg12_vyakhya.json';
+import BG13_VYAKHYA from './_bg13_vyakhya.json';
+import BG14_VYAKHYA from './_bg14_vyakhya.json';
 import BG15_VYAKHYA from './_bg15_vyakhya.json';
+import BG16_VYAKHYA from './_bg16_vyakhya.json';
+import BG17_VYAKHYA from './_bg17_vyakhya.json';
+import BG18_VYAKHYA from './_bg18_vyakhya.json';
+
+// Hand-curated interpretive vyakhya for every Gītā verse. Each chapter
+// is a separate JSON file (~80-160 entries) and they're merged here so
+// the hydration loop has a single lookup table.
+const HAND_VYAKHYA = {
+  ...BG1_VYAKHYA, ...BG2_VYAKHYA, ...BG3_VYAKHYA, ...BG4_VYAKHYA,
+  ...BG5_VYAKHYA, ...BG6_VYAKHYA, ...BG7_VYAKHYA, ...BG8_VYAKHYA,
+  ...BG9_VYAKHYA, ...BG10_VYAKHYA, ...BG11_VYAKHYA, ...BG12_VYAKHYA,
+  ...BG13_VYAKHYA, ...BG14_VYAKHYA, ...BG15_VYAKHYA, ...BG16_VYAKHYA,
+  ...BG17_VYAKHYA, ...BG18_VYAKHYA,
+};
 
 // Compound-type names recognised in vibhaktiNotes. Longest-first so
 // "षष्ठी तत्पुरुष" beats the bare "तत्पुरुष" when both match.
@@ -855,18 +881,16 @@ export function hydrateAutoStubVerses() {
         }
       }
     }
-    // Hand-curated interpretive vyakhya for BG 3 (Karma Yoga). Each
-    // verse gets 2 substantive entries beyond the single INTERP_NOTES
-    // entry that was already there. Append-only — same merge pattern.
-    for (const handCurated of [BG3_VYAKHYA, BG12_VYAKHYA, BG15_VYAKHYA]) {
-      const entries = handCurated[key];
-      if (Array.isArray(entries) && entries.length > 0) {
-        const existing = new Set((v.vyakhya || [])
-          .filter((e) => e && typeof e === 'object')
-          .map((e) => (e.title || '').trim()));
-        const toAdd = entries.filter((e) => !existing.has((e.title || '').trim()));
-        if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
-      }
+    // Hand-curated interpretive vyakhya: 2 substantive entries per verse
+    // across all 18 chapters (1,402 entries total). Append-only — the
+    // existing INTERP_NOTES vyakhya stays as well.
+    const handEntries = HAND_VYAKHYA[key];
+    if (Array.isArray(handEntries) && handEntries.length > 0) {
+      const existing = new Set((v.vyakhya || [])
+        .filter((e) => e && typeof e === 'object')
+        .map((e) => (e.title || '').trim()));
+      const toAdd = handEntries.filter((e) => !existing.has((e.title || '').trim()));
+      if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
     }
     // Structural vyakhya: finite-verb anchor, kṛdanta layer, case
     // distribution. Generated from DCS by scripts/enrich-vyakhya.mjs.

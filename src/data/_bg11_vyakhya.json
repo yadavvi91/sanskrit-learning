@@ -1,0 +1,552 @@
+{
+  "11.1": [
+    {
+      "title": "मोहोऽयं विगतः — delusion lifted by speech",
+      "body": "मदनुग्रहाय is चतुर्थी एकवचन (\"for my sake\"), framing chapters 7–10 as a personal favour. विगतः is past passive participle agreeing with मोहः (both प्रथमा एकवचन पुल्लिंग) — the finite verb is suppressed, the state itself is the report."
+    },
+    {
+      "title": "गुह्यम् + अध्यात्म-संज्ञितम् — the secret named",
+      "body": "गुह्यम् is a neuter substantive (\"the secret\"), and अध्यात्म-संज्ञितम् glosses it: that-which-is-named ‘अध्यात्म’. यत् ... तेन is the relative–correlative skeleton: the discourse is the instrumental cause, मोह the patient, विगतः the verbal adjective."
+    }
+  ],
+  "11.2": [
+    {
+      "title": "भव-अप्ययौ — द्विवचन pair of origin and dissolution",
+      "body": "भव-अप्ययौ is a द्वन्द्व compound in द्विवचन (\"arising-and-perishing\"), the two book-ends of every भूत. श्रुतौ is past passive participle, द्विवचन agreeing with भवाप्ययौ, with मया as the तृतीया agent (\"heard by me\")."
+    },
+    {
+      "title": "कमल-पत्र-अक्ष — vocative as breath-pause",
+      "body": "कमल-पत्र-अक्ष is सम्बोधन — a बहुव्रीहि (\"he-whose-eyes-are-lotus-petals\") inserted mid-verse. माहात्म्यम् ... अव्ययम् pairs noun and adjective in नपुंसकलिंग प्रथमा, both governed by श्रुतम् understood from श्रुतौ."
+    }
+  ],
+  "11.3": [
+    {
+      "title": "यथा आत्थ — quoting Krishna back at himself",
+      "body": "आत्थ is लट् मध्यम पुरुष एकवचन of √ब्रू (\"thou sayest\"), one of Sanskrit's archaic conjugated forms. यथा आत्थ त्वम् आत्मानम् — \"in the manner thou describest thyself\" — closes the loop: Krishna's words become Arjuna's premise."
+    },
+    {
+      "title": "द्रष्टुम् इच्छामि — infinitive of desire",
+      "body": "द्रष्टुम् is the infinitive (तुमुन्) of √दृश्, governed by इच्छामि (लट् उत्तम एकवचन of √इष्). The infinitive does not anchor the sentence; इच्छामि does. ऐश्वरम् रूपम् is the द्वितीया object, vocative पुरुषोत्तम stands apart."
+    }
+  ],
+  "11.4": [
+    {
+      "title": "मन्यसे यदि — conditional courtesy",
+      "body": "मन्यसे is लट् मध्यम पुरुष एकवचन आत्मनेपद of √मन् (\"if you think\"). शक्यम् is the predicative adjective with implicit अस्ति. Arjuna is grammatically deferential: only after Krishna's permission may the seeing happen."
+    },
+    {
+      "title": "दर्शय आत्मानम् — imperative + reflexive object",
+      "body": "दर्शय is the causative imperative (\"cause to be seen\") of √दृश्. आत्मानम् is द्वितीया एकवचन — Krishna is asked to show his own self. अव्ययम् agrees with आत्मानम् in case, number, and gender (पुल्लिंग द्वितीया एकवचन)."
+    }
+  ],
+  "11.5": [
+    {
+      "title": "पश्य — the imperative that starts the vision",
+      "body": "पश्य is लोट् मध्यम पुरुष एकवचन of √दृश् — the single command that opens the cosmic chapter. शतशः and सहस्रशः are distributive adverbs in -शस् suffix, modifying रूपाणि (नपुंसकलिंग द्वितीया बहुवचन)."
+    },
+    {
+      "title": "नाना-विध / नाना-वर्ण-आकृति — manifold modifiers",
+      "body": "Both are बहुव्रीहि / तत्पुरुष compounds qualifying रूपाणि, all नपुंसकलिंग द्वितीया बहुवचन — perfect सामानाधिकरण्य chain. दिव्यानि (\"divine\") is the load-bearing adjective: these are not the rūpas of the नरलोक."
+    }
+  ],
+  "11.6": [
+    {
+      "title": "पश्य आदित्यान् वसून् रुद्रान् — four-fold catalogue",
+      "body": "Each accusative — आदित्यान्, वसून्, रुद्रान्, अश्विनौ, मरुतः — is governed by the single imperative पश्य, the verb absorbing the whole pantheon. अश्विनौ stands out as द्विवचन, the twin gods grammatically refusing the plural."
+    },
+    {
+      "title": "अदृष्ट-पूर्वाणि — the never-before-seen",
+      "body": "अदृष्ट-पूर्वाणि is a बहुव्रीहि (\"those-whose-prior-sight-is-not\") agreeing with आश्चर्याणि in नपुंसकलिंग द्वितीया बहुवचन. भारत is सम्बोधन — it stands outside the action, a name to anchor the listener."
+    }
+  ],
+  "11.7": [
+    {
+      "title": "एकस्थम् — the whole cosmos in one place",
+      "body": "एकस्थम् is a बहुव्रीहि (\"that-which-stands-in-one-place\") qualifying जगत् in नपुंसकलिंग द्वितीया एकवचन. कृत्स्नम् and स-चर-अचरम् are co-modifiers, the three adjectives forcing totality on a single noun."
+    },
+    {
+      "title": "मम देहे — सप्तमी as cosmic locus",
+      "body": "देहे is सप्तमी एकवचन — locative not of place but of container. यत् च अन्यत् द्रष्टुम् इच्छसि is a relative clause: द्रष्टुम् is तुमुन्, इच्छसि लट् मध्यम एकवचन, यत् the नपुंसकलिंग द्वितीया pronoun standing for any further object of desire."
+    }
+  ],
+  "11.8": [
+    {
+      "title": "न शक्यसे द्रष्टुम् — passive of capability",
+      "body": "शक्यसे is लट् मध्यम पुरुष एकवचन passive of √शक्, with द्रष्टुम् as the dependent infinitive. The construction is grammatically passive (\"thou-art-not-able-to-be-seen\" reframed as \"thou canst not see\"), the human eye named स्वचक्षुषा in तृतीया."
+    },
+    {
+      "title": "दिव्यं चक्षुः ददामि — the gifted organ",
+      "body": "ददामि is लट् उत्तम एकवचन of √दा. चक्षुः is नपुंसकलिंग द्वितीया एकवचन; दिव्यम् agrees. The grammar makes the divine eye a gift in the present tense, not a metaphor — and योगम् ऐश्वरम् is the द्वितीया object of the second पश्य."
+    }
+  ],
+  "11.9": [
+    {
+      "title": "एवम् उक्त्वा — absolutive shifting the speaker",
+      "body": "उक्त्वा is the absolutive (क्त्वा) of √वच् — \"having spoken thus\" — and signals Sañjaya now takes the narrative reins. The finite verb दर्शयामास is लिट् (perfect periphrastic) उत्तम पुरुष एकवचन of causative √दृश्: \"he caused to be seen.\""
+    },
+    {
+      "title": "महायोगेश्वरः हरिः — title before name",
+      "body": "महा-योग-ईश्वरः is a कर्मधारय piling onto तत्पुरुष: \"the great-lord-of-yoga,\" appositive to हरिः. राजन् is सम्बोधन addressed to Dhṛtarāṣṭra — the blind king is the listener for whom the whole cosmic vision is narrated."
+    }
+  ],
+  "11.10": [
+    {
+      "title": "अनेक-वक्त्र-नयनम् — the multiplicity prefix",
+      "body": "अनेक- is the recurring prefix that defines this chapter: \"many-mouths-and-eyes,\" a बहुव्रीहि agreeing with रूपम् understood from the previous verse. The whole verse is a string of accusative adjectives — no finite verb, only attribution."
+    },
+    {
+      "title": "उद्यत-आयुधम् — weapons raised, participle as adjective",
+      "body": "उद्यत is past passive participle of उद् + √यम् (\"raised up\"), compounded with आयुध (\"weapon\") and दिव्य-अनेक- in a layered बहुव्रीहि. The participle never anchors — it stacks attributes on the rūpa Arjuna is being made to see."
+    }
+  ],
+  "11.11": [
+    {
+      "title": "दिव्य-माल्य-अम्बर-धरम् — wearer of garlands",
+      "body": "धरम् is the agent-noun suffix (\"bearer\") in तत्पुरुष — \"wearer-of-divine-garlands-and-garments.\" The compound is नपुंसकलिंग द्वितीया एकवचन agreeing with देवम्, continuing the verseless string of attributes."
+    },
+    {
+      "title": "विश्वतो-मुखम् — face on every side",
+      "body": "विश्वतस् is the ablative-style adverb (\"from all sides\"), compounded with मुखम् in a बहुव्रीहि: \"that-whose-face-is-everywhere.\" अनन्तम् and सर्वाश्चर्यमयम् close the catalogue, the mayaṭ suffix marking \"made-of-all-wonder.\""
+    }
+  ],
+  "11.12": [
+    {
+      "title": "सूर्य-सहस्रस्य — the thousand-sun thought experiment",
+      "body": "सूर्य-सहस्रस्य is षष्ठी एकवचन (\"of a thousand suns\"), the genitive of comparison. भवेत् is विधिलिङ् प्रथम एकवचन of √भू — the optative mood is essential: even the hypothesis is conditional, the simile cannot land on the indicative."
+    },
+    {
+      "title": "सदृशी स्यात् — the conditional simile",
+      "body": "सदृशी is स्त्रीलिंग प्रथमा (agreeing with भाः, the f. noun \"radiance\"). स्यात् is again विधिलिङ् — \"would-be similar.\" The whole verse is a contrafactual: even a thousand simultaneous sunrises would only approximate the महात्मा's light."
+    }
+  ],
+  "11.13": [
+    {
+      "title": "प्रविभक्तम् अनेकधा — divided manifold",
+      "body": "प्रविभक्तम् is past passive participle of प्र + वि + √भज् (\"divided apart\"), qualifying जगत्. अनेकधा is the adverb-suffix (\"in many ways\"). The cosmos is simultaneously एकस्थम् (one-placed) and प्रविभक्तम् (many-divided) — the paradox the participle holds."
+    },
+    {
+      "title": "अपश्यत् — the verb that finally arrives",
+      "body": "अपश्यत् is लङ् प्रथम पुरुष एकवचन of √दृश् — the imperfect with अ-augment and -त् ending. After three verses of stacked accusatives, the finite verb finally lands: Pāṇḍava saw. देव-देवस्य शरीरे is सप्तमी locative — within the body of the god-of-gods."
+    }
+  ],
+  "11.14": [
+    {
+      "title": "विस्मय-आविष्टः — possessed by wonder",
+      "body": "आविष्टः is past passive participle of आ + √विश् (\"entered into, possessed\"), with विस्मय in compositional तृतीया sense. हृष्ट-रोमा is a बहुव्रीहि (\"he-whose-body-hair-is-bristling\") — the somatic register of awe in grammar."
+    },
+    {
+      "title": "प्रणम्य ... कृताञ्जलिः ... अभाषत — three actions, one finite",
+      "body": "प्रणम्य is absolutive of प्र + √नम् (\"having bowed\"), कृताञ्जलिः a बहुव्रीहि (\"he-with-folded-palms\"), and अभाषत is लङ् आत्मनेपद प्रथम एकवचन of √भाष् — the single anchoring verb. Everything else orbits this \"he spoke.\""
+    }
+  ],
+  "11.15": [
+    {
+      "title": "पश्यामि — Arjuna's refrain begins",
+      "body": "पश्यामि is लट् उत्तम एकवचन of √दृश् (\"I see\"), the verb that will repeat through the hymn. Five accusatives follow: देवान्, भूत-विशेष-सङ्घान्, ब्रह्माणम्, ईशम्, ऋषीन्, उरगान् — the visible pantheon piled onto one finite verb."
+    },
+    {
+      "title": "कमल-आसन-स्थम् — locating Brahmā by posture",
+      "body": "A tatpuruṣa-cum-बहुव्रीहि (\"he-who-is-seated-on-the-lotus-seat\") agreeing with ब्रह्माणम् in पुल्लिंग द्वितीया एकवचन. The cosmic vision is iconographically specific — Brahmā gets his lotus, Śiva his ईश, the ऋषिs and उरगs their dignity."
+    }
+  ],
+  "11.16": [
+    {
+      "title": "अनेक-बाहु-उदर-वक्त्र-नेत्रम् — fourfold multiplicity",
+      "body": "A single बहुव्रीहि stringing four body-parts under one अनेक- prefix, agreeing with त्वाम् in पुल्लिंग द्वितीया एकवचन. Arms, bellies, mouths, eyes — the multiplicity is anatomical, not metaphorical."
+    },
+    {
+      "title": "न अन्तं न मध्यं न आदिम् — the triple negation",
+      "body": "Three direct objects of पश्यामि, all पुल्लिंग द्वितीया एकवचन: end, middle, beginning. The grammar performs the limitlessness — every spatial coordinate denied in turn. विश्वेश्वर and विश्व-रूप are vocatives bracketing the negation."
+    }
+  ],
+  "11.17": [
+    {
+      "title": "किरीटिनम् गदिनम् चक्रिणम् — possessor suffix -इन्",
+      "body": "Each adjective uses the -इन् (मतुप्-style) possessive: \"crown-having, mace-having, discus-having,\" all पुल्लिंग द्वितीया एकवचन agreeing with त्वाम्. The familiar Viṣṇu iconography is fused into the कालानल form."
+    },
+    {
+      "title": "दुर्निरीक्ष्यम् — gerundive of impossibility",
+      "body": "दुर्निरीक्ष्यम् is a कृत्य (gerundive) of दुस् + निर् + √ईक्ष् (\"hard-to-look-at\"), agreeing with त्वाम्. The grammar locks the impossibility into the form itself: not \"I cannot see,\" but \"thou-art-not-to-be-looked-at.\""
+    }
+  ],
+  "11.18": [
+    {
+      "title": "वेदितव्यम् — gerundive of obligation",
+      "body": "वेदितव्यम् is कृत्य (तव्य-suffix) of √विद् (\"that-which-is-to-be-known\"), the supreme epistemic object. अक्षरम् परमम् agree with it in नपुंसकलिंग प्रथमा एकवचन — three predicate-nouns telescoped onto त्वम्."
+    },
+    {
+      "title": "शाश्वत-धर्म-गोप्ता — agent noun in -तृ",
+      "body": "गोप्ता is the agent suffix (तृच्) on √गुप् (\"protector\"), compounded with शाश्वत-धर्म in तत्पुरुष: \"protector-of-eternal-धर्म.\" सनातनः, पुरुषः, अव्ययः stack as predicates, all पुल्लिंग प्रथमा एकवचन agreeing with त्वम्."
+    }
+  ],
+  "11.19": [
+    {
+      "title": "अनादि-मध्य-अन्तम् — beginningless-middle-endless",
+      "body": "A triple negative बहुव्रीहि (\"that-whose-beginning-middle-end-is-not\"), agreeing with त्वाम्. The same negation as 11.16, now compacted into a single compound. अनन्त-वीर्यम् and अनन्त-बाहुम् continue the अनन्त- chain."
+    },
+    {
+      "title": "विश्वम् तपन्तम् — present participle as adjective",
+      "body": "तपन्तम् is the शतृ present participle of √तप् (\"scorching\"), agreeing with त्वाम् in पुल्लिंग द्वितीया एकवचन. स्व-तेजसा is तृतीया एकवचन — the instrument of scorching is the form's own light, not an external sun."
+    }
+  ],
+  "11.20": [
+    {
+      "title": "द्यावा-पृथिव्योः — Vedic dual genitive",
+      "body": "द्यावा-पृथिव्योः is षष्ठी द्विवचन of the द्वन्द्व \"heaven-and-earth,\" archaic and Vedic. व्याप्तम् is past passive participle of वि + √आप्, agreeing with अन्तरम् in नपुंसकलिंग प्रथमा एकवचन — the space between is pervaded."
+    },
+    {
+      "title": "लोक-त्रयम् प्रव्यथितम् — the three worlds shaken",
+      "body": "लोक-त्रयम् is नपुंसकलिंग प्रथमा एकवचन (\"the triad-of-worlds\"), with प्रव्यथितम् past passive participle of प्र + वि + √व्यथ् as predicate. दृष्ट्वा is absolutive of √दृश् — having-seen, the three worlds shudder."
+    }
+  ],
+  "11.21": [
+    {
+      "title": "विशन्ति — present plural entering the form",
+      "body": "विशन्ति is लट् प्रथम बहुवचन of √विश् (\"they enter\"), the verb that will return in 11.27, 11.28, 11.29 with grimmer cargo. Here the entrants are सुर-सङ्घाः — divine companies. भीताः is past passive participle modifying केचित् (\"some, terrified\")."
+    },
+    {
+      "title": "स्वस्ति इति उक्त्वा — quoting the cry",
+      "body": "उक्त्वा is absolutive of √वच्, with the literal cry स्वस्ति (\"hail!\") inside the इति-marker. महर्षि-सिद्ध-सङ्घाः is the subject of स्तुवन्ति (लट् प्रथम बहुवचन of √स्तु), with पुष्कलाभिः स्तुतिभिः in तृतीया बहुवचन — the instrument of praise."
+    }
+  ],
+  "11.22": [
+    {
+      "title": "वीक्षन्ते — आत्मनेपद of beholding",
+      "body": "वीक्षन्ते is लट् प्रथम बहुवचन आत्मनेपद of वि + √ईक्ष् (\"they behold\"). The catalogued subject is a great द्वन्द्व: रुद्र-आदित्याः, वसवः, साध्याः, विश्वे, अश्विनौ, मरुतः, ऊष्मपाः, gandharva-yakṣa-asura-siddha-saṅghāḥ — every divine class staring."
+    },
+    {
+      "title": "विस्मिताः — past participle of wonder",
+      "body": "विस्मिताः is past passive participle of वि + √स्मि (\"astonished\"), पुल्लिंग प्रथमा बहुवचन, agreeing with सर्वे. The participle is predicative: not the doers of action but the bearers of a state — even the gods are reduced to spectators."
+    }
+  ],
+  "11.23": [
+    {
+      "title": "बहु- prefix replaces अनेक-",
+      "body": "Where 11.16 used अनेक-, this verse switches to बहु- in बहु-वक्त्र-नेत्रम्, बहु-बाहु-ऊरु-पादम्, बहु-उदरम्, बहु-दंष्ट्रा-करालम् — four parallel बहुव्रीहि compounds qualifying रूपम् in नपुंसकलिंग द्वितीया एकवचन."
+    },
+    {
+      "title": "प्रव्यथिताः तथा अहम् — community of fear",
+      "body": "प्रव्यथिताः is past passive participle of प्र + वि + √व्यथ् in पुल्लिंग प्रथमा बहुवचन, agreeing with लोकाः. The तथा अहम् at the end collapses Arjuna into the same predicate — he too is shaken, no different from the worlds he sees being shaken."
+    }
+  ],
+  "11.24": [
+    {
+      "title": "नभः-स्पृशम् — touching-the-sky compound",
+      "body": "नभः-स्पृशम् is उपपद तत्पुरुष: स्पृश् (\"touching\") with नभः as its object, fused as an adjective. व्यात्त-आननम् uses past passive participle व्यात्त (\"opened wide\") of वि + √आ-दा. Both qualify the form."
+    },
+    {
+      "title": "धृतिं न विन्दामि — losing composure",
+      "body": "विन्दामि is लट् उत्तम एकवचन of √विद् (Gaṇa 6, \"to find\"). धृतिम् and शमम् are द्वितीया एकवचन objects — fortitude and peace, neither found. प्रव्यथित-अन्तर-आत्मा is a बहुव्रीहि (\"he-whose-inner-self-is-shaken\") describing Arjuna himself."
+    }
+  ],
+  "11.25": [
+    {
+      "title": "काल-अनल-सन्निभानि — fire-of-time simile",
+      "body": "सन्निभानि is नपुंसकलिंग द्वितीया बहुवचन (\"resembling\"), with काल-अनल in तत्पुरुष (\"fire-of-time\"). The simile prefigures Krishna's own self-declaration in 11.32. दंष्ट्रा-करालानि is a बहुव्रीहि (\"fang-frightful\") qualifying मुखानि."
+    },
+    {
+      "title": "दिशो न जाने — losing the directions",
+      "body": "जाने is लट् उत्तम एकवचन आत्मनेपद of √ज्ञा (irregular, \"I know\"). दिशः is स्त्रीलिंग द्वितीया बहुवचन — the cardinal points themselves are lost. प्रसीद is लोट् मध्यम एकवचन of प्र + √सद्: the chapter's recurring imperative \"be gracious.\""
+    }
+  ],
+  "11.26": [
+    {
+      "title": "अमी ... पुत्राः — the demonstrative recognition",
+      "body": "अमी is पुल्लिंग प्रथमा बहुवचन of the deictic अदस् (\"those-yonder\") — Arjuna sees his cousins enter the mouths. No finite verb in this pāda; the verb विशन्ति arrives only in 11.27, making 11.26–27 a single grammatical breath."
+    },
+    {
+      "title": "अवनिपाल-सङ्घैः — kings as instrumental",
+      "body": "सहैव अवनिपाल-सङ्घैः is सह + तृतीया बहुवचन — \"together with the king-protector-companies.\" The compound अस्मदीयैः योध-मुख्यैः balances on \"our side\" too: Bhīṣma, Droṇa, Karṇa, all funneling into the same maw."
+    }
+  ],
+  "11.27": [
+    {
+      "title": "विशन्ति — the finite verb 11.26 was waiting for",
+      "body": "विशन्ति is लट् प्रथम बहुवचन of √विश्. वक्त्राणि is नपुंसकलिंग द्वितीया बहुवचन — direct object, \"into the mouths.\" त्वरमाणाः is present आत्मनेपद participle (शानच्) of √त्वर्ः \"hurrying.\""
+    },
+    {
+      "title": "चूर्णितैः उत्तम-अङ्गैः — instrumental of crushed heads",
+      "body": "चूर्णितैः is past passive participle of √चूर्ण in तृतीया बहुवचन, agreeing with उत्तम-अङ्गैः (\"highest-limbs\" = heads). सन्दृश्यन्ते is लट् प्रथम बहुवचन passive of सम् + √दृश् — \"they are seen,\" the warriors visible only as fragments."
+    }
+  ],
+  "11.28": [
+    {
+      "title": "यथा ... तथा — the river simile",
+      "body": "यथा-तथा is the canonical similitude pair. The vehicle: नदीनां बहवः अम्बु-वेगाः (षष्ठी + प्रथमा बहुवचन, \"the many water-currents of rivers\") rushing समुद्रम् एव अभिमुखाः (पुल्लिंग प्रथमा बहुवचन)."
+    },
+    {
+      "title": "द्रवन्ति → विशन्ति — current to mouth",
+      "body": "द्रवन्ति (लट् प्रथम बहुवचन of √द्रु, \"they run\") in the simile becomes विशन्ति in the tenor. नर-लोक-वीराः (पुल्लिंग प्रथमा बहुवचन) are the human-world-heroes; अभिविज्वलन्ति is present participle (शतृ) of अभि + वि + √ज्वल्, agreeing with वक्त्राणि — \"the blazing mouths.\""
+    }
+  ],
+  "11.29": [
+    {
+      "title": "पतङ्ग-simile — moths into the flame",
+      "body": "Second simile-pair: पतङ्गाः (पुल्लिंग प्रथमा बहुवचन, \"moths\") with समृद्ध-वेगाः (\"with-full-speed,\" बहुव्रीहि) rush ज्वलनम् (पुल्लिंग द्वितीया एकवचन, \"the blaze\") for नाशाय (चतुर्थी एकवचन of purpose, \"unto destruction\")."
+    },
+    {
+      "title": "नाशाय — चतुर्थी of telos",
+      "body": "नाशाय is the dative-of-purpose used twice — once for moths, once for लोकाः. The grammar fuses cause and direction: they enter not into but for destruction. लोकाः and पतङ्गाः share the same case, number, fate."
+    }
+  ],
+  "11.30": [
+    {
+      "title": "लेलिह्यसे — frequentative of licking",
+      "body": "लेलिह्यसे is the यङ् (intensive/frequentative) of √लिह्, लट् मध्यम एकवचन आत्मनेपद — \"thou keepest licking again and again.\" The reduplicated stem लेलिह्य- enacts the repeated motion grammatically."
+    },
+    {
+      "title": "ग्रसमानः — present participle as predicate",
+      "body": "ग्रसमानः is शानच् present participle of √ग्रस् (\"devouring\"), पुल्लिंग प्रथमा एकवचन agreeing with the subject त्वम् of लेलिह्यसे. The finite verb is intensive-frequentative; the participle is durative — both stack continuous violence."
+    }
+  ],
+  "11.31": [
+    {
+      "title": "आख्याहि — imperative of disclosure",
+      "body": "आख्याहि is लोट् मध्यम एकवचन of आ + √ख्या (\"declare\"). कः भवान् is the polite interrogative: \"who-are-you?\" — भवान् is the honorific pronoun, पुल्लिंग प्रथमा एकवचन. उग्र-रूपः is a बहुव्रीहि predicate (\"of-terrible-form\")."
+    },
+    {
+      "title": "तव प्रवृत्तिम् न प्रजानामि — not knowing the intent",
+      "body": "प्रजानामि is लट् उत्तम एकवचन of प्र + √ज्ञा. प्रवृत्तिम् is स्त्रीलिंग द्वितीया एकवचन (\"engagement, intent, motion-forth\"). The question is not who but why — the form is visible, the purpose hidden."
+    }
+  ],
+  "11.32": [
+    {
+      "title": "कालः अस्मि — the self-definition",
+      "body": "कालः is पुल्लिंग प्रथमा एकवचन, अस्मि लट् उत्तम एकवचन of √अस् — the bluntest copula in the Gītā. लोक-क्षय-कृत् is उपपद तत्पुरुष (\"world-destruction-doer\"), प्रवृद्धः past passive participle of प्र + √वृध् (\"swollen, grown forth\")."
+    },
+    {
+      "title": "ऋते अपि त्वाम् — even-without-you",
+      "body": "ऋते governs पञ्चमी-like accusative त्वाम् (\"even without thee\"). भविष्यन्ति is लृट् प्रथम बहुवचन of √भू, spotted by the -ष्य- infix — \"they will not be.\" अवस्थिताः is past passive participle of अव + √स्था, agreeing with योधाः."
+    }
+  ],
+  "11.33": [
+    {
+      "title": "उत्तिष्ठ — the imperative echoing 2.3",
+      "body": "उत्तिष्ठ is लोट् मध्यम एकवचन of उद् + √स्था — the same command Krishna gave in 2.3 (त्यक्त्वोत्तिष्ठ). The chapter's metaphysical climax circles back to the original ethical command: rise. यशः लभस्व is लोट् आत्मनेपद of √लभ्."
+    },
+    {
+      "title": "निमित्त-मात्रं भव — the instrument doctrine",
+      "body": "भव is लोट् मध्यम एकवचन of √भू (\"become\"). निमित्त-मात्रम् is नपुंसकलिंग प्रथमा एकवचन (\"merely-an-instrument\"), the predicate nominative. मया एव एते निहताः पूर्वम् एव — निहताः past passive participle, the killing already accomplished in tense."
+    }
+  ],
+  "11.34": [
+    {
+      "title": "मया हतान् त्वं जहि — kill the already-killed",
+      "body": "हतान् is past passive participle of √हन् in पुल्लिंग द्वितीया बहुवचन, agreeing with the named warriors. जहि is लोट् मध्यम एकवचन of √हन्. The grammar fuses past and future: \"slay (now) those-slain (by me already).\""
+    },
+    {
+      "title": "जेतासि — periphrastic future tense",
+      "body": "जेतासि is लुट् (periphrastic future, distinct from लृट्) मध्यम एकवचन of √जि — \"thou shalt be victor.\" मा व्यथिष्ठाः is लुङ् (aorist) with मा-prohibition, मध्यम एकवचन आत्मनेपद of √व्यथ् — \"do not tremble.\" Two future-domain forms bracket the command."
+    }
+  ],
+  "11.35": [
+    {
+      "title": "एतत् श्रुत्वा — absolutive of hearing",
+      "body": "श्रुत्वा is absolutive of √श्रु (\"having heard\"), with एतत् वचनम् as its accusative object. वेपमानः is शानच् present participle of √वेप् (\"trembling\"), agreeing with किरीटी — Arjuna identified by his crown alone."
+    },
+    {
+      "title": "स-गद्गदम् ... भीत-भीतः — adverbial doubling of fear",
+      "body": "स-गद्गदम् is an adverb (\"with-stammering\") of आह — the finite verb, लिट् प्रथम एकवचन of √अह् (\"he said\"). भीत-भीतः is reduplicated past passive participle (\"frightened-frightened\") — the doubling is intensive: utterly afraid."
+    }
+  ],
+  "11.36": [
+    {
+      "title": "स्थाने — adverbial \"fittingly\"",
+      "body": "स्थाने is सप्तमी एकवचन of स्थान used adverbially: \"it is appropriate that...\" The whole verse hangs from this opening word. प्रहृष्यति and अनुरज्यते are लट् प्रथम एकवचन — the world rejoices and is enamoured."
+    },
+    {
+      "title": "द्रवन्ति — Rakṣasas fleeing",
+      "body": "द्रवन्ति is लट् प्रथम बहुवचन of √द्रु — the same verb used for rivers in 11.28, now for rākṣasas. रक्षांसि is नपुंसकलिंग प्रथमा बहुवचन subject, भीतानि past passive participle predicate — they-are-frightened, they run."
+    }
+  ],
+  "11.37": [
+    {
+      "title": "कस्मात् न नमेरन् — विधिलिङ् of obligation",
+      "body": "नमेरन् is विधिलिङ् प्रथम बहुवचन आत्मनेपद of √नम् — \"why-should-they-not-bow.\" कस्मात् is पञ्चमी एकवचन interrogative (\"for-what-reason\"). The mood encodes the rhetorical \"of course they should.\""
+    },
+    {
+      "title": "ब्रह्मणः अपि आदि-कर्त्रे — even Brahmā's first cause",
+      "body": "गरीयसे and आदि-कर्त्रे are चतुर्थी एकवचन (datives governed by नमेरन्). ब्रह्मणः is पञ्चमी एकवचन (\"than Brahmā\") with comparative गरीयसे — \"weightier even than Brahmā.\" सत् असत् तत् परम् stacks predicates of अक्षरम्."
+    }
+  ],
+  "11.38": [
+    {
+      "title": "त्वम् आदि-देवः — string of predicates",
+      "body": "Five predicates apposed to त्वम् in पुल्लिंग प्रथमा एकवचन: आदि-देवः, पुरुषः, पुराणः, परं निधानम्, परम् धाम. वेत्ता and वेद्यम् are paired agent-noun (तृच्) and gerundive — knower and known both."
+    },
+    {
+      "title": "त्वया ततं विश्वम् — pervaded by thee",
+      "body": "ततम् is past passive participle of √तन् (\"stretched, pervaded\"), agreeing with विश्वम् in नपुंसकलिंग प्रथमा एकवचन. त्वया is तृतीया एकवचन (the agent). अनन्त-रूप is सम्बोधन — the form whose limits the participle has just denied."
+    }
+  ],
+  "11.39": [
+    {
+      "title": "Vedic-deity catalogue — predicates of त्वम्",
+      "body": "वायुः, यमः, अग्निः, वरुणः, शशाङ्कः, प्रजापतिः, प्रपितामहः — seven nominatives apposed to त्वम्. No finite verb; अस्ति is implicit. The Vedic pantheon collapses into one referent through bare apposition."
+    },
+    {
+      "title": "सहस्र-कृत्वः — adverb of frequency",
+      "body": "सहस्र-कृत्वः is the -कृत्वस् adverbial suffix (\"a thousand times\"). नमः नमः ते अस्तु — नमः is नपुंसकलिंग प्रथमा एकवचन, अस्तु लोट् प्रथम एकवचन of √अस् — \"let there be salutation.\" The repetition is grammatically encoded, not merely rhetorical."
+    }
+  ],
+  "11.40": [
+    {
+      "title": "नमः पुरस्तात् अथ पृष्ठतः — bowing in all directions",
+      "body": "पुरस्तात्, पृष्ठतः, सर्वतः — three -तस् ablative-style adverbs of direction. The salutation is spatial as well as repeated. सर्व is सम्बोधन (\"O All-one\") — the addressee literally is every direction at once."
+    },
+    {
+      "title": "ततः असि सर्वः — therefore thou art all",
+      "body": "असि is लट् मध्यम एकवचन of √अस्. समाप्नोषि is लट् मध्यम एकवचन of सम् + √आप् — \"thou fully obtainest/pervadest.\" ततः (\"therefore\") makes the apposition deductive: pervading-everything implies being-everything."
+    }
+  ],
+  "11.41": [
+    {
+      "title": "सख इति मत्वा — taking-for-friend",
+      "body": "मत्वा is absolutive of √मन् (\"having-thought\"), with the predicative सखा inside the इति-quote — \"having considered (you) a friend.\" प्रसभम् is adverbial (\"impetuously\"). उक्तम् is past passive participle as predicate of the implicit relative."
+    },
+    {
+      "title": "अजानता — present participle in तृतीया",
+      "body": "अजानता is शतृ negative present participle of √ज्ञा, in तृतीया एकवचन — \"by (me) not-knowing.\" The participle absorbs the agent's ignorance into a single instrumental form. प्रमादात् and प्रणयेन (पञ्चमी and तृतीया) name the two causes: heedlessness and affection."
+    }
+  ],
+  "11.42": [
+    {
+      "title": "अवहास-अर्थम् — purpose-compound",
+      "body": "अवहास-अर्थम् is a तत्पुरुष used adverbially (\"for-the-sake-of-jest\"). असत्-कृतः is पुल्लिंग प्रथमा एकवचन past passive participle (\"treated-badly\"), agreeing with the implicit त्वम्. The grammar names the disrespect and the apology in one breath."
+    },
+    {
+      "title": "क्षामये त्वाम् — causative request for forgiveness",
+      "body": "क्षामये is लट् उत्तम एकवचन of the causative of √क्षम् — \"I beg-you-to-forgive.\" त्वाम् is द्वितीया एकवचन direct object. The whole catalogue (विहार-शय्या-आसन-भोजनेषु — सप्तमी बहुवचन of contexts) is folded under one apology."
+    }
+  ],
+  "11.43": [
+    {
+      "title": "पिता असि लोकस्य — predicative भू-substitute",
+      "body": "पिता is पुल्लिंग प्रथमा एकवचन — predicate nominative with असि (√अस्). चर-अचरस्य is षष्ठी एकवचन (\"of moving-and-unmoving\") — the totality of beings folded under a single father-noun."
+    },
+    {
+      "title": "त्वत्-समः ... अभ्यधिकः कुतः अन्यः — comparative escalation",
+      "body": "त्वत्-समः is a तत्पुरुष (\"equal-to-thee\") in पुल्लिंग प्रथमा एकवचन. अभ्यधिकः is comparative-style adjective (\"greater\"). कुतः अन्यः is ablative-adverb plus pronoun — \"how-from-elsewhere?\" The grammar performs incomparability."
+    }
+  ],
+  "11.44": [
+    {
+      "title": "प्रणम्य प्रणिधाय कायम् — chained absolutives",
+      "body": "प्रणम्य (\"having-bowed\") and प्रणिधाय (\"having-laid-down\") are absolutives of प्र + √नम् and प्र + नि + √धा. कायम् is पुल्लिंग द्वितीया एकवचन — body laid prostrate. Both absolutives govern the finite प्रसादये."
+    },
+    {
+      "title": "पिता इव सखा इव प्रियः प्रियायाः — three relational similes",
+      "body": "Three इव similes piled: father-son, friend-friend, lover-beloved. प्रसादये is लट् उत्तम एकवचन आत्मनेपद of the causative of प्र + √सद् — \"I propitiate.\" अर्हसि सोढुम् — अर्हसि लट् मध्यम एकवचन with तुमुन् infinitive सोढुम् of √सह् (\"to-bear\")."
+    }
+  ],
+  "11.45": [
+    {
+      "title": "अदृष्ट-पूर्वम् — \"never-seen-before\"",
+      "body": "अदृष्ट-पूर्वम् is a बहुव्रीहि (\"that-whose-prior-sight-is-not\") used adverbially-ish here as नपुंसकलिंग द्वितीया एकवचन. हृषितः अस्मि is past passive participle (\"I-am-thrilled\") of √हृष् — passive perfect with auxiliary."
+    },
+    {
+      "title": "तत् एव मे रूपं दर्शय — show that-very form",
+      "body": "दर्शय is causative लोट् मध्यम एकवचन of √दृश् — \"cause-to-be-shown.\" तत् एव is emphatic — \"that very (former) form,\" not this terrifying one. The vocatives देवेश and जगन्निवास mark formal address."
+    }
+  ],
+  "11.46": [
+    {
+      "title": "किरीटिनम् गदिनम् चक्र-हस्तम् — the four-armed form requested",
+      "body": "Three accusatives in पुल्लिंग द्वितीया एकवचन, all qualifying त्वाम् — crown-having, mace-having, discus-in-hand. चक्र-हस्तम् is a बहुव्रीहि (\"discus-hand\"). इच्छामि द्रष्टुम् is लट् + तुमुन् — \"I-wish-to-see.\"."
+    },
+    {
+      "title": "भव — return-to-form imperative",
+      "body": "भव is लोट् मध्यम एकवचन of √भू — \"become.\" चतुर्भुजेन रूपेण is तृतीया एकवचन (instrumental of manner). सहस्र-बाहो and विश्व-मूर्ते are vocatives — even the request acknowledges the cosmic form just witnessed."
+    }
+  ],
+  "11.47": [
+    {
+      "title": "मया प्रसन्नेन — grace as तृतीया",
+      "body": "मया is तृतीया एकवचन of the agent, with प्रसन्नेन (past passive participle of प्र + √सद्) agreeing — \"by-me-being-graced.\" दर्शितम् is past passive participle of causative √दृश् — \"shown,\" agreeing with रूपम् (नपुंसकलिंग प्रथमा एकवचन)."
+    },
+    {
+      "title": "त्वत्-अन्येन न दृष्ट-पूर्वम् — none other has seen",
+      "body": "त्वत्-अन्येन is तृतीया एकवचन (\"by-other-than-thee\"). दृष्ट-पूर्वम् is the past-passive-participle-plus-पूर्व बहुव्रीहि (\"of-which-prior-sight-is-not\"). The grammar elevates Arjuna by absolute exclusion: not negation in general, but negation of every alternative seer."
+    }
+  ],
+  "11.48": [
+    {
+      "title": "न ... न ... न — fivefold negation of means",
+      "body": "वेद-यज्ञ-अध्ययनैः, दानैः, क्रियाभिः, तपोभिः उग्रैः — four तृतीया बहुवचन nouns of religious means, each negated. The grammar bars every conventional path. शक्यः is the gerundive predicate (\"capable-of-being-seen\")."
+    },
+    {
+      "title": "द्रष्टुम् त्वत्-अन्येन — none-but-thee",
+      "body": "द्रष्टुम् is तुमुन् of √दृश्. त्वत्-अन्येन repeats from 11.47 — \"by-other-than-thee.\" कुरु-प्रवीर is सम्बोधन. The exclusivity is sealed across two verses: not means, not other seers — only this revealed vision."
+    }
+  ],
+  "11.49": [
+    {
+      "title": "मा ते व्यथा — niṣedha without finite verb",
+      "body": "मा is the prohibitive particle. व्यथा (स्त्रीलिंग प्रथमा एकवचन, \"trembling\") and विमूढ-भावः (पुल्लिंग प्रथमा एकवचन, \"deluded-state\") are nominatives — the verbal भू understood: \"let-there-not-be (for) thee.\""
+    },
+    {
+      "title": "व्यपेत-भीः प्रीत-मनाः — paired बहुव्रीहि compounds",
+      "body": "व्यपेत-भीः is \"he-whose-fear-has-departed,\" with past passive participle व्यपेत of वि + अप + √इ. प्रीत-मनाः is \"he-whose-mind-is-pleased\" (past passive participle of √प्री). Both पुल्लिंग प्रथमा एकवचन, predicates of त्वम्. प्रपश्य is लोट् मध्यम एकवचन of प्र + √दृश्."
+    }
+  ],
+  "11.50": [
+    {
+      "title": "इति ... उक्त्वा — Sañjaya returns",
+      "body": "उक्त्वा is absolutive of √वच् — Sañjaya's narrative frame reasserts. वासुदेवः ... दर्शयामास भूयः — दर्शयामास is लिट् (periphrastic perfect) of causative √दृश्, प्रथम एकवचन: \"he-caused-to-be-shown again.\""
+    },
+    {
+      "title": "सौम्य-वपुः — beautiful-bodied",
+      "body": "सौम्य-वपुः is a बहुव्रीहि (\"he-whose-form-is-gentle\"), पुल्लिंग प्रथमा एकवचन agreeing with महात्मा. भूत्वा is absolutive of √भू (\"having-become\"). आश्वासयामास is लिट् of causative आ + √श्वस् (\"caused to be reassured\") — Krishna twice consoles, in form and in word."
+    }
+  ],
+  "11.51": [
+    {
+      "title": "दृष्ट्वा इदम् मानुषं रूपम् — back to the human form",
+      "body": "दृष्ट्वा is absolutive of √दृश्. इदम् मानुषम् रूपम् is नपुंसकलिंग द्वितीया एकवचन — \"this human form,\" finally restored. सौम्यम् agrees as adjective. जनार्दन is सम्बोधन."
+    },
+    {
+      "title": "संवृत्तः सचेताः प्रकृतिं गतः — three predicates of recovery",
+      "body": "संवृत्तः is past passive participle of सम् + √वृत् — \"become / settled.\" सचेताः is a बहुव्रीहि (\"he-with-his-wits\"). प्रकृतिं गतः is \"gone-to-(his)-own-nature\" — गतः past passive participle of √गम्. The grammar reassembles Arjuna's composure piece by piece."
+    }
+  ],
+  "11.52": [
+    {
+      "title": "सु-दुर्-दर्शम् — doubly-hard-to-see",
+      "body": "सु-दुर्-दर्शम् stacks two intensifying prefixes onto the gerundive दर्शम् (\"to-be-seen\") of √दृश् — \"very-hard-to-see.\" The form is नपुंसकलिंग प्रथमा एकवचन predicate of रूपम्. दृष्टवान् असि is the periphrastic perfect with क्तवतु: \"thou-hast-seen.\""
+    },
+    {
+      "title": "देवाः अपि ... दर्शन-काङ्क्षिणः — even gods crave",
+      "body": "दर्शन-काङ्क्षिणः is पुल्लिंग प्रथमा बहुवचन — \"sight-cravers,\" with -इन् possessive suffix. The compound is उपपद तत्पुरुष. नित्यम् is adverbial. Arjuna's privilege is calibrated against the gods' eternal longing — even they only क्षाङ्क्षन्ति."
+    }
+  ],
+  "11.53": [
+    {
+      "title": "न वेदैः न तपसा न दानेन न इज्यया — exhaustive negation",
+      "body": "Four तृतीया (instrumental) nouns of religious means, each blocked by न: Vedas, austerity, gift, sacrifice. शक्यः ... द्रष्टुम् pairs gerundive शक्यः (पुल्लिंग प्रथमा एकवचन) with तुमुन् द्रष्टुम् — capable-of-being-seen."
+    },
+    {
+      "title": "दृष्टवान् असि ... यथा — comparative clause",
+      "body": "दृष्टवान् is the क्तवतु past active participle of √दृश्, with auxiliary असि — \"thou-hast-seen.\" यथा here is correlative — \"in the manner (thou hast seen).\" The verse sets up the contrast that 11.54 will resolve: not by these, but by bhakti."
+    }
+  ],
+  "11.54": [
+    {
+      "title": "भक्त्या तु अनन्यया — instrumental of exclusive devotion",
+      "body": "भक्त्या is तृतीया एकवचन of भक्ति; अनन्यया agrees (\"by-undeflecting\"). तु contrasts with the negated instrumentals of 11.53. शक्यः अहम् ... एवंविधः is the predicate frame: I-of-this-kind am capable-(of-being)."
+    },
+    {
+      "title": "ज्ञातुम् द्रष्टुम् प्रवेष्टुम् — triple infinitive ladder",
+      "body": "Three तुमुन् infinitives of √ज्ञा, √दृश्, प्र + √विश् — \"to-know, to-see, to-enter.\" The order is pedagogical: cognition, vision, union. तत्त्वेन is तृतीया एकवचन (\"in-truth, really\") — qualifying all three. Only bhakti makes the entire ladder climbable."
+    }
+  ],
+  "11.55": [
+    {
+      "title": "मत्-कर्म-कृत् मत्-परमः मद्-भक्तः — three bahuvrīhis on \"me\"",
+      "body": "Three compounds with मद्/मत् as initial member: \"my-work-doer, me-supreme-having, my-devotee.\" All पुल्लिंग प्रथमा एकवचन, qualifying यः. The grammar concentrates everything on a single pronoun-stem."
+    },
+    {
+      "title": "सः माम् एति — the final formula",
+      "body": "एति is लट् प्रथम एकवचन of √इ (\"goes/comes\"). माम् is द्वितीया एकवचन direct object. सङ्ग-वर्जितः is past passive participle (\"attachment-shunned\"); निर्वैरः a बहुव्रीहि (\"he-without-enmity\"). पाण्डव is सम्बोधन. The chapter that began with कालः अस्मि ends with माम् एति: time devours, but the bhakta reaches."
+    }
+  ]
+}
