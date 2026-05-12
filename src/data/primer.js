@@ -147,10 +147,14 @@ export const PRIMER_SECTIONS = [
     title: 'परस्मैपद vs आत्मनेपद — two flavours of endings',
     body: [
       'Every Sanskrit root carries a **pada** label that tells you which set of personal endings it takes. There are two complete sets, and they look totally different.',
-      '- **परस्मैपद** ("word for another") — the -ति / -सि / -मि family. भवति, गच्छति, इच्छामि.',
-      '- **आत्मनेपद** ("word for oneself") — the -ते / -से / -ए family. लभते, सेवते, **वन्दे**.',
-      '- **उभयपद** ("word for both") — some roots take either, sometimes with a meaning nuance: कृ → करोति (par.) / कुरुते (ātm.).',
-      'The "for another / for oneself" etymology comes from an old intuition (पच् "cook for others" vs "cook for self"). For **most** roots this semantic split is dead — it\'s just a grammatical fact you memorise per root. Dictionaries mark it: "√भू (par.)", "√लभ् (ātm.)", "√कृ (ubh.)".',
+      '- **परस्मैपद** — literally "word **for another** (पर-स्मै पद, dat. sg. of पर "the other")". The -ति / -सि / -मि family. भवति, गच्छति, इच्छामि.',
+      '- **आत्मनेपद** — literally "word **for oneself** (आत्मने पद, dat. sg. of आत्मन् "the self")". The -ते / -से / -ए family. लभते, सेवते, **वन्दे**.',
+      '- **उभयपद** — "word for **both**" (उभय "both"). Some roots take either set: कृ → करोति (par.) / कुरुते (ātm.).',
+      '**The original Pāṇinian intuition** — Sanskrit grammarians asked: *where does the fruit of the action land?* If the fruit goes **outward** (to someone else), use परस्मैपद. If the fruit goes **inward** (back to the doer), use आत्मनेपद. Two classic ubhayapada roots still preserve this live distinction — these are the textbook examples worth memorising:',
+      '- **√यज् "sacrifice"** — the priest sacrificing *for a patron* uses parasmaipada: **यजति** ("he sacrifices [for someone]"). The same priest sacrificing *for himself* uses ātmanepada: **यजते** ("he sacrifices for-self"). Same root, same action; the pada encodes who-the-fruit-is-for.',
+      '- **√पच् "cook"** — **पचति** = "cooks for others" (fruit goes outward); **पचते** = "cooks for oneself" (fruit stays in). The most-cited example in grammar textbooks precisely because it\'s so tangible.',
+      'For **most other roots**, this semantic logic is dead — the pada has frozen into a memorised grammatical fact. √भू is always par., √लभ् is always ātm., and asking "why" doesn\'t help. Dictionaries mark it: "√भू (par.)", "√लभ् (ātm.)", "√कृ (ubh.)".',
+      '**Use the etymology as a memory hook.** When you can\'t recall a root\'s pada, the *meaning* sometimes whispers it: √लभ् "obtain" is ātmanepada (you obtain *for yourself*); √सेव् "serve" is ātmanepada (the service reflects on the server); √वन्द् "salute" is ātmanepada (the act of bowing returns dignity to the bow-er). The semantic logic is dead but its **fossil** is still legible.',
     ],
     table: {
       headers: ['Person × Number', 'परस्मैपद (लट्)', 'आत्मनेपद (लट्)', 'Example'],
