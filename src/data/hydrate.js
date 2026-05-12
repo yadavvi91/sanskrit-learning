@@ -174,10 +174,30 @@ export function hydrateAutoStubVerses() {
       // so WordPopover and the empty-popover audit pick them up as
       // proper coverage. Existing wordParsings from VERSE_OVERRIDES win
       // (so any hand-curated entry stays authoritative).
+      //
+      // DCS provides morphology + lemma but NOT glosses (English/Hindi
+      // meaning). Enrich each parsing by looking up the lemma (root) in
+      // sharedVocab — that gives the popover something to render
+      // alongside the case/number/gender row.
       if (dcsEntry.wordParsings && typeof dcsEntry.wordParsings === 'object') {
         if (!v.wordParsings) v.wordParsings = {};
         for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
-          if (!v.wordParsings[w]) v.wordParsings[w] = p;
+          if (v.wordParsings[w]) continue;
+          const enriched = { ...p };
+          if (!enriched.gloss && enriched.root) {
+            const dictEntry = lookupSharedVocab(enriched.root);
+            if (dictEntry?.gloss) enriched.gloss = dictEntry.gloss;
+          }
+          // For compound members, look up each part's gloss too so
+          // CompoundPopover (the per-part rendering) has data to show.
+          if (Array.isArray(enriched.members)) {
+            enriched.members = enriched.members.map((m) => {
+              if (m.gloss) return m;
+              const dict = lookupSharedVocab(m.form);
+              return dict?.gloss ? { ...m, gloss: dict.gloss } : m;
+            });
+          }
+          v.wordParsings[w] = enriched;
         }
       }
       // DCS finite verbs — fill only if not already populated by a

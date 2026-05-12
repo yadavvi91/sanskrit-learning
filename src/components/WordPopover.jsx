@@ -84,9 +84,15 @@ export default function WordPopover({ word, parsing, isFinite }) {
   // over a generic suffix-inferred entry — the latter would say
   // "a-stem nom sg" with no real meaning, while CompoundPopover shows
   // each part's actual gloss (परम-इष्वासः → परम "supreme" + इष्वासः
-  // "archer"). Authoritative parsings (verse-local or hand-curated
+  // "archer"). Same applies to DCS-sourced parsings on long compounds
+  // (काम-उपभोग-परमाः): DCS gives morphology but no compound-level
+  // gloss, so decomposition is the only way to surface meaning.
+  // Authoritative parsings (verse-local with a gloss, hand-curated
   // dict) still win over decomposition.
-  const isWeakParsing = effectiveParsing && effectiveParsing.source === 'suffix-inferred';
+  const isWeakParsing = effectiveParsing && (
+    effectiveParsing.source === 'suffix-inferred' ||
+    (effectiveParsing.source === 'dcs' && !effectiveParsing.gloss)
+  );
   const compound = (!effectiveParsing || (isWeakParsing && word.includes('-')))
     ? decomposeCompound(word)
     : null;
