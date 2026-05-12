@@ -1,0 +1,22 @@
+src/data/hydrate.test.js
+  s_77270f59c41566::t_4e60188c505849 59-77
+  s_77270f59c41566::t_ca0b47ecbafef6 46-48,55-56
+src/data/_known_samasas.js
+  s_77270f59c41566::t_13c2767cedb2de 253-257
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "e6ce4493190461d0918d107d0e1b11eb648c0280",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
