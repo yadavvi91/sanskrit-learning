@@ -1,0 +1,33 @@
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_131207f715a1a9 29
+  s_77270f59c41566::t_ec635dfa0eb071 223-284,301-308,316-321
+  s_d5e8c30b294ba2::t_782b39b95afa6d 806
+src/data/_bg15_vyakhya.json
+  s_d5e8c30b294ba2::t_a3ae9f7148ada5 1-82
+src/data/hydrate.test.js
+  s_77270f59c41566::t_e23b8ae1a56ebc 80-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "2aee136a864704601924ae97baccc7b381878481",
+  "prompts": {},
+  "sessions": {
+    "s_77270f59c41566": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1dc597e-2e89-45ce-91ee-e3f8788cc053",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    },
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
