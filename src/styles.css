@@ -5343,6 +5343,22 @@ td.cell.is-suppletive {
   font-weight: 600;
 }
 
+.vyakhya-source {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-style: italic;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0 4px;
+  vertical-align: middle;
+  cursor: help;
+}
+
 .vyakhya-body {
   margin: 0;
   font-family: var(--font-prose);

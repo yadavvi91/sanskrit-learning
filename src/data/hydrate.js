@@ -889,20 +889,24 @@ export function hydrateAutoStubVerses() {
       const existing = new Set((v.vyakhya || [])
         .filter((e) => e && typeof e === 'object')
         .map((e) => (e.title || '').trim()));
-      const toAdd = handEntries.filter((e) => !existing.has((e.title || '').trim()));
+      // Tag agent/batch-written vyakhya with source='agent-batch' so the
+      // UI can show provenance (per-verse trust-table visibility).
+      // 93% sharp on a 30-random audit, but not your own hand-fights.
+      const toAdd = handEntries
+        .filter((e) => !existing.has((e.title || '').trim()))
+        .map((e) => ({ source: 'agent-batch', ...e }));
       if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
     }
-    // Structural vyakhya: finite-verb anchor, kṛdanta layer, case
-    // distribution. Generated from DCS by scripts/enrich-vyakhya.mjs.
-    // Brings auto-stub verses from ~1 vyakhya entry to ~3-4 each — still
-    // less interpretive than hand-curated full-tier, but covers the
-    // structural skeleton for every verse.
+    // Structural vyakhya: finite-verb anchor, kṛdanta layer.
+    // Generated from DCS by scripts/enrich-vyakhya.mjs.
     const enrichedVy = ENRICHED_VYAKHYA[key];
     if (Array.isArray(enrichedVy) && enrichedVy.length > 0) {
       const existing = new Set((v.vyakhya || [])
         .filter((e) => e && typeof e === 'object')
         .map((e) => (e.title || '').trim()));
-      const toAdd = enrichedVy.filter((e) => !existing.has((e.title || '').trim()));
+      const toAdd = enrichedVy
+        .filter((e) => !existing.has((e.title || '').trim()))
+        .map((e) => ({ source: 'auto-derived', ...e }));
       if (toAdd.length > 0) v.vyakhya = [...(v.vyakhya || []), ...toAdd];
     }
     // Inline compound-architecture vyakhya — needs samasNotes which are

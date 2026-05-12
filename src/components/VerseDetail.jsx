@@ -356,15 +356,28 @@ function NotesPanel({ chapter, verse }) {
   );
 }
 
+const VYAKHYA_SOURCE_LABEL = {
+  'agent-batch': { text: 'AI batch · spot-audited', title: 'Written in a batch agent pass; 30-entry random sample was 28/30 sharp. Verify before citing as authoritative.' },
+  'auto-derived': { text: 'auto-derived from DCS', title: 'Structural summary generated mechanically from DCS data (finite-verb anchor, kṛdanta layer, etc.). Accurate but not interpretive.' },
+};
+
 function Vyakhya({ entries }) {
   return (
     <ol className="vyakhya-list">
-      {entries.map((e, i) => (
-        <li key={i} className="vyakhya-card">
-          {e.title && <h4 className="vyakhya-title">{e.title}</h4>}
-          <p className="vyakhya-body">{e.body}</p>
-        </li>
-      ))}
+      {entries.map((e, i) => {
+        const meta = e && e.source ? VYAKHYA_SOURCE_LABEL[e.source] : null;
+        return (
+          <li key={i} className="vyakhya-card">
+            {e.title && (
+              <h4 className="vyakhya-title">
+                {e.title}
+                {meta && <span className="vyakhya-source" title={meta.title}>{meta.text}</span>}
+              </h4>
+            )}
+            <p className="vyakhya-body">{e.body}</p>
+          </li>
+        );
+      })}
     </ol>
   );
 }
