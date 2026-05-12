@@ -87,7 +87,110 @@ function OriginSummary() {
         <li><strong>Practice</strong> — SRS-style review of patterns and forms.</li>
       </ul>
 
+      <Sources />
+
     </div>
+  );
+}
+
+function Sources() {
+  return (
+    <>
+      <h3>Sources & external Sanskrit corpora</h3>
+      <p>
+        The padaccheda + morphology shown in this app is not original work — it's looked up
+        from the <strong>Digital Corpus of Sanskrit</strong>, whose human annotators have been
+        tagging Sanskrit texts for two decades. Listed here are the academic resources I've
+        drawn on or that future Sanskrit work should consult. Bookmark them.
+      </p>
+
+      <ul className="origin-sources">
+        <li>
+          <a href="https://github.com/OliverHellwig/sanskrit"
+             target="_blank" rel="noopener noreferrer"><strong>Digital Corpus of Sanskrit (DCS)</strong></a>
+          {' — '}Oliver Hellwig, Heidelberg. CoNLL-U files with surface form, lemma, and
+          Universal Dependencies morphology for every token. <em>Covers:</em> Ṛgveda,
+          Atharvaveda, Mahābhārata (incl. the Gītā), Rāmāyaṇa, the Aṣṭādhyāyī, dozens of
+          Purāṇas and Upaniṣads, kāvya, śāstra works. <em>License:</em> CC BY-SA 4.0.
+          The Gītā subset of this corpus is what powers the padaccheda on every verse here.
+        </li>
+        <li>
+          <a href="http://www.sanskrit-linguistics.org/dcs/"
+             target="_blank" rel="noopener noreferrer"><strong>DCS web interface</strong></a>
+          {' — '}Browse the same data in a searchable web UI: text lookup, lemma index,
+          KWIC concordance.
+        </li>
+        <li>
+          <a href="https://github.com/ambuda-org/vidyut"
+             target="_blank" rel="noopener noreferrer"><strong>vidyut</strong> (ambuda-org)</a>
+          {' — '}Rust + WASM Sanskrit toolkit. Sandhi engine, conjugator, lemmatizer.
+          What Rohan Pandey (Khoomeik) used to derive the dhātu coverage curve. Open-source
+          alternative to the Heritage Reader for runtime computation.
+        </li>
+        <li>
+          <a href="https://sanskrit.inria.fr/" target="_blank" rel="noopener noreferrer">
+          <strong>Sanskrit Heritage Site</strong> (INRIA — Gérard Huet)</a>
+          {' — '}The pioneering computational Sanskrit project (since ~2000). Web segmenter,
+          declension tables for every standard pattern, conjugator, padapāṭha generator.
+          Heritage Dictionary integrated. French/English.
+        </li>
+        <li>
+          <a href="https://sanskrit.uohyd.ac.in/" target="_blank" rel="noopener noreferrer">
+          <strong>Sanskrit Computational Linguistics</strong> (Univ. of Hyderabad / IIT-H)</a>
+          {' — '}Amba Kulkarni's group. Tools for sandhi-vicchedaka, samāsa-vigraha,
+          kāraka analyser, anvaya generator. Also hosts the Sanskrit Wordnet.
+        </li>
+        <li>
+          <a href="http://sanskritlibrary.org/" target="_blank" rel="noopener noreferrer">
+          <strong>The Sanskrit Library</strong> (Brown University — Peter Scharf)</a>
+          {' — '}Annotated digital corpus with segmentation tools, Pāṇini's
+          Aṣṭādhyāyī interlinear, multiple dictionaries (Monier-Williams, Apte, Macdonell).
+        </li>
+        <li>
+          <a href="https://ambuda.org/" target="_blank" rel="noopener noreferrer">
+          <strong>Ambuda</strong></a>
+          {' — '}Sanskrit text library with parsed editions of the Mahābhārata, Rāmāyaṇa,
+          Purāṇas. Sister project to vidyut. Built for read-along.
+        </li>
+        <li>
+          <a href="https://bvsiitm.github.io/sanskrit-gita-learn/"
+             target="_blank" rel="noopener noreferrer"><strong>bvsiitm.github.io/sanskrit-gita-learn</strong></a>
+          {' — '}BV Srinivasan's Gītā course (IITM). Pedagogy that influenced this app:
+          <em>known → +1 → drill → SRS</em>, sandhi-last, frequency-first dhātus.
+        </li>
+        <li>
+          <a href="https://twitter.com/khoomeik" target="_blank" rel="noopener noreferrer">
+          <strong>@khoomeik / Rohan Pandey</strong></a>
+          {' — '}Top-192 dhātu frequency chart (derived from DCS via vidyut). The
+          basis for the Verbs sub-app's periodic table. Also organises a Sanskrit
+          reading circle.
+        </li>
+        <li>
+          <a href="https://www.holy-bhagavad-gita.org/" target="_blank" rel="noopener noreferrer">
+          <strong>holy-bhagavad-gita.org</strong></a>
+          {' — '}The chapter/verse grid that triggered this project. Per-verse word-by-word
+          glosses, multiple translations, Śaṅkara/Rāmānuja commentaries.
+        </li>
+        <li>
+          <a href="https://www.sacred-texts.com/hin/index.htm"
+             target="_blank" rel="noopener noreferrer"><strong>Internet Sacred Text Archive</strong></a>
+          {' — '}Public-domain editions of Vedic and classical Sanskrit texts in roman
+          transliteration. Edwin Arnold's <em>Song Celestial</em> (used here as one of the
+          three parallel English translations) is hosted here.
+        </li>
+        <li>
+          <a href="https://sanskritdocuments.org/" target="_blank" rel="noopener noreferrer">
+          <strong>sanskritdocuments.org</strong></a>
+          {' — '}Vast Sanskrit text repository (ITRANS/Devanagari) — Vedas, Upaniṣads,
+          Bhāgavatam, Yogasūtra, stotras, classical literature. Community-maintained.
+        </li>
+      </ul>
+
+      <p className="origin-sources-note">
+        License attribution: the DCS-derived <code>src/data/dcs-padaccheda.json</code> in this
+        repo is CC BY-SA 4.0 per the upstream. Anyone reusing it should credit Oliver Hellwig.
+      </p>
+    </>
   );
 }
 

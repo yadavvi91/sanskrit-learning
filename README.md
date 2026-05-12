@@ -45,10 +45,27 @@ CI handles this automatically: pushes to `main` trigger [`.github/workflows/page
 
 ## Data sources
 
-- **Padaccheda + morphology** — [Digital Corpus of Sanskrit](https://github.com/OliverHellwig/sanskrit) (Oliver Hellwig, Heidelberg). The 700 Gītā verses are pre-processed into `src/data/dcs-padaccheda.json` by `scripts/import-dcs-gita.mjs`. DCS provides the word-segmentation (पदच्छेद), lemma, and Universal Dependencies morphology for every token. **License:** CC BY-SA 4.0 — derivative work (the JSON file) inherits this license. The home-rolled splitter in `src/utils/decodeHelper.js` is kept as a fallback for the one interpolated verse (BG 13.1) DCS doesn't include.
+The padaccheda + morphology in this app is looked up from external scholarly corpora — not computed from scratch. The list of resources used or worth knowing about:
+
+### Primary data we ship
+
+- **[Digital Corpus of Sanskrit (DCS)](https://github.com/OliverHellwig/sanskrit)** — Oliver Hellwig, Heidelberg. CoNLL-U files with surface form, lemma, and Universal Dependencies morphology for every token. **Covers:** Ṛgveda, Atharvaveda, Mahābhārata (incl. the Gītā), Rāmāyaṇa, the Aṣṭādhyāyī, dozens of Purāṇas and Upaniṣads, kāvya, śāstra works. **License:** CC BY-SA 4.0 — derivative work (the JSON file) inherits this license. The 700 Gītā verses are pre-processed into `src/data/dcs-padaccheda.json` by `scripts/import-dcs-gita.mjs`.
 - **Translations** — Annie Besant (1905, public domain), Edwin Arnold (*The Song Celestial*, 1885, public domain). Hindi translation set is the author's hand work.
 - **Commentaries** — Śaṅkara summaries are paraphrases of the standard Advaita reading, the author's own writing.
 - **Dhātu frequency data** — [Rohan Pandey's @khoomeik thread](https://twitter.com/khoomeik) on the top-192 Sanskrit dhātus by frequency, derived from DCS via vidyut.
+
+### Worth knowing about (not used here, but cite if you build something Sanskrit-related)
+
+- **[DCS web interface](http://www.sanskrit-linguistics.org/dcs/)** — searchable browser UI for the same data: text lookup, lemma index, KWIC concordance.
+- **[vidyut](https://github.com/ambuda-org/vidyut)** (ambuda-org) — Rust + WASM Sanskrit toolkit. Sandhi engine, conjugator, lemmatizer. What Khoomeik used to derive the dhātu coverage curve.
+- **[Sanskrit Heritage Site](https://sanskrit.inria.fr/)** (INRIA — Gérard Huet) — pioneering computational Sanskrit project (since ~2000). Web segmenter, declension tables, conjugator. Heritage Dictionary integrated.
+- **[Sanskrit Computational Linguistics](https://sanskrit.uohyd.ac.in/)** (Univ. of Hyderabad / IIT-H) — Amba Kulkarni's group. Tools for sandhi-vicchedaka, samāsa-vigraha, kāraka analyser, anvaya generator. Also hosts the Sanskrit Wordnet.
+- **[The Sanskrit Library](http://sanskritlibrary.org/)** (Brown University — Peter Scharf) — annotated digital corpus with segmentation tools, Aṣṭādhyāyī interlinear, multiple dictionaries (Monier-Williams, Apte, Macdonell).
+- **[Ambuda](https://ambuda.org/)** — Sanskrit text library with parsed editions of the Mahābhārata, Rāmāyaṇa, Purāṇas. Sister project to vidyut. Built for read-along.
+- **[bvsiitm.github.io/sanskrit-gita-learn](https://bvsiitm.github.io/sanskrit-gita-learn/)** — BV Srinivasan's Gītā course (IITM). Pedagogy that influenced this app: *known → +1 → drill → SRS*, sandhi-last, frequency-first dhātus.
+- **[holy-bhagavad-gita.org](https://www.holy-bhagavad-gita.org/)** — the chapter/verse grid that triggered this project. Per-verse word-by-word glosses, multiple translations, Śaṅkara/Rāmānuja commentaries.
+- **[Internet Sacred Text Archive](https://www.sacred-texts.com/hin/index.htm)** — public-domain editions of Vedic and classical Sanskrit texts. Arnold's *Song Celestial* (used here) is hosted there.
+- **[sanskritdocuments.org](https://sanskritdocuments.org/)** — vast Sanskrit text repository (ITRANS/Devanagari): Vedas, Upaniṣads, Bhāgavatam, Yogasūtra, stotras, classical literature. Community-maintained.
 
 ## License
 
