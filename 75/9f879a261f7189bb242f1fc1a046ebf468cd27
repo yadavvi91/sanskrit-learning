@@ -1,0 +1,22 @@
+src/data/_bg3_vyakhya.json
+  s_d5e8c30b294ba2::t_02794ebd2d0b43 1-174
+src/data/hydrate.js
+  s_d5e8c30b294ba2::t_f8ddfd6d52c030 27
+  s_d5e8c30b294ba2::t_3711aeddb8b9cb 727-737
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "759f879a261f7189bb242f1fc1a046ebf468cd27",
+  "prompts": {},
+  "sessions": {
+    "s_d5e8c30b294ba2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b0064592-2478-493d-bcda-1c26906fbebb",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Vishal Yadav <yadavvi91@gmail.com>"
+    }
+  }
+}
