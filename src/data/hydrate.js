@@ -209,8 +209,13 @@ export function hydrateAutoStubVerses() {
         for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
           if (v.wordParsings[w]) continue;
           const enriched = { ...p };
-          if (!enriched.gloss && enriched.root) {
-            const g = authoritativeGloss(enriched.root);
+          if (!enriched.gloss) {
+            // Try the surface form first (अहम् → "I"), then the DCS
+            // lemma (DCS often uses the compound-prefix form मद् where
+            // our vocab keys are अहम्). Both go through authoritativeGloss
+            // which strips speculative suffix-inferred matches.
+            let g = authoritativeGloss(w);
+            if (!g && enriched.root) g = authoritativeGloss(enriched.root);
             if (g) enriched.gloss = g;
           }
           // For compound members, look up each part's gloss too so
@@ -409,6 +414,43 @@ export function hydrateAutoStubVerses() {
             const [a, b] = components.map((c) => c.vocab);
             if (a && b && a.category === 'noun' && b.category === 'noun') {
               derivedType = 'तत्पुरुष? (inferred — best guess)';
+            }
+          }
+          // बहुव्रीहि pattern recognisers. Compounds ending in these
+          // stems are almost always bahuvrīhi (describing a person/thing
+          // by what they possess or hold as supreme). Add a paraphrase so
+          // X-परम / X-निष्ठ / X-तत्पर etc. surface as more than just
+          // "(supreme)" — e.g., काम-उपभोग-परम = "those whose highest aim
+          // is enjoyment of desire".
+          const lastPart = parts[parts.length - 1];
+          // Strip case ending to get the stem (परमाः → परम, परायणाः → परायण).
+          const lastStem = lastPart.replace(/[ःाेिीुूोौैंम्]$|आः$|ौ$/, '');
+          const BAHUVRIHI_HEADS = {
+            'परम': 'whose supreme [aim] is',
+            'परमा': 'whose supreme [aim] is',
+            'परायण': 'devoted to / holding supreme',
+            'परायणा': 'devoted to / holding supreme',
+            'निष्ठ': 'firmly established in',
+            'तत्पर': 'intent upon / devoted to',
+            'पर': 'holding as highest',
+            'चेतस्': 'whose mind is on',
+            'मनस्': 'whose mind is on',
+            'आत्म': 'whose self is',
+            'आत्मन्': 'whose self is',
+          };
+          if (!derivedType && BAHUVRIHI_HEADS[lastStem]) {
+            // For each inner part, prefer its gloss but fall back to the
+            // form itself so we don't silently drop unknowns. Example:
+            // काम-उपभोग-परम → "whose supreme [aim] is desire उपभोग"
+            // — clearer than dropping उपभोग entirely.
+            const innerParts = components.slice(0, -1).map(({ part, dcsGloss, vocab }) => {
+              const g = dcsGloss || vocab?.gloss;
+              if (!g) return part;
+              return g.split(/[—,;(]/)[0].trim();
+            });
+            derivedType = 'बहुव्रीहि (inferred)';
+            if (innerParts.length > 0) {
+              derivedGloss = `${BAHUVRIHI_HEADS[lastStem]} ${innerParts.join(' ')}`;
             }
           }
         }
