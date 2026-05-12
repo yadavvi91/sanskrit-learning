@@ -218,6 +218,16 @@ export function hydrateAutoStubVerses() {
               return d;
             }
           }
+          // Suppletive-stem fallback: DCS lemmas often arrive as the present
+          // stem (पश् for √दृश्, तिष्ठ for √स्था). Match on presentStem so
+          // sandhi-fused lemmas like सम्पश् resolve to √दृश् correctly.
+          for (const d of DHATUS_EXTENDED) {
+            if (!d.presentStem) continue;
+            const ps = d.presentStem;
+            if (ps === stem || ps === stem + '्' || ps.replace(/्$/, '') === stem) {
+              return d;
+            }
+          }
           return null;
         };
         // Sanskrit prefix-verb meanings are usually idiomatic, NOT a naive
@@ -281,6 +291,51 @@ export function hydrateAutoStubVerses() {
           'सम्_ज्ञा': 'be agreed / be known as',
           'प्र_ज्ञा':  'know / perceive',
           'अभि_ज्ञा': 'recognise',
+          // √दृश् ("see") prefixed — surfaces via presentStem पश्
+          'सम्_दृश्':  'behold / consider / contemplate',
+          'अनु_दृश्':  'look upon / observe',
+          'वि_दृश्':   'behold / discern',
+          'अव_दृश्':  'look down at',
+          'प्रति_दृश्': 'see / look at / regard',
+          'उप_दृश्':   'look on / witness',
+          'परि_दृश्':  'survey / look around',
+          // √वच् ("speak") prefixed
+          'प्र_वच्':   'declare / proclaim',
+          'अनु_वच्':  'recite after / repeat',
+          'अभि_वच्': 'address / speak to',
+          'वि_वच्':   'declare / speak forth',
+          // √हृ ("take / carry") prefixed
+          'सम्_हृ':   'gather / draw together / contract',
+          'आ_हृ':    'bring / take',
+          'प्र_हृ':   'strike / cast / attack',
+          'अप_हृ':  'carry off / steal',
+          'वि_हृ':   'sport / wander',
+          'उप_हृ':  'offer / present',
+          'परि_हृ':  'avoid / shun',
+          // √याज् → √यज् already covered. √युज् ("yoke / join") prefixed
+          'सम्_युज्':  'unite / join',
+          'वि_युज्':   'separate / disjoin',
+          'प्र_युज्':   'employ / apply',
+          'नि_युज्':   'appoint / enjoin',
+          // √सृज् ("emit / create") prefixed
+          'वि_सृज्':   'send forth / dismiss / let go',
+          'सम्_सृज्': 'mingle / unite',
+          'उद्_सृज्':  'send up / abandon',
+          // √क्षिप् ("throw") prefixed
+          'सम्_क्षिप्': 'throw together / abridge',
+          'आ_क्षिप्':  'cast at / reproach',
+          'उद्_क्षिप्': 'throw up',
+          // misc high-frequency Gītā prefix combos
+          'अभि_धा':  'name / call',
+          'सम्_चित्': 'consider / reflect upon',
+          'प्र_चित्':  'be aware / observe',
+          'अनु_स्मृ': 'remember / call to mind',
+          'वि_स्मृ':   'forget',
+          'अधि_इ':   'study / learn / approach',
+          'सम्_इ':    'go together / unite',
+          'उद्_भू':   'arise / be born / spring up',
+          'सम्_उद्_भू': 'arise / spring forth',
+          'सम्_प्र_भू': 'arise abundantly / be the source of',
         };
         const dhatuGloss = (root) => {
           if (!root) return null;

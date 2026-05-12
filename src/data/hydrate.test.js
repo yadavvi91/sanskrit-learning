@@ -77,19 +77,26 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(arthas.source).toBe('known-samasa-lexicon');
   });
 
-  it('BG 3.20 — आस्थिताः gets a real gloss for आस्था, not the bogus "आ-stand / आ-remain" composition', () => {
+  it('BG 3.20 — आस्थिताः and सम्पश्यन् get real glosses, not naive prefix-composition', () => {
     // The upasarga-stripping fallback used to naively compose
-    // "to आ-stand / आ-remain (< आ + √स्था)" for आस्था. But आस्था ≠ "आ-stand";
-    // it means "resort to / abide in / be devoted to". A prefixed-dhātu
-    // lexicon now provides the real meaning; unknown combinations fall
-    // back to an etymology-only note that doesn't claim a meaning.
+    // "to आ-stand / आ-remain (< आ + √स्था)" for आस्था and would have done
+    // the same for सम्पश्यन् (सम् + √दृश्). PREFIXED_DHATU_MEANINGS now
+    // provides the real meanings; findDhatu also matches presentStem so
+    // suppletive lemmas like सम्पश् (pres-stem पश् of √दृश्) resolve.
     const v = find(3, 20);
-    const wp = v.wordParsings?.['आस्थिताः'];
-    if (wp?.gloss) {
-      expect(wp.gloss).not.toMatch(/आ-stand|आ-remain/);
-      // The real gloss should mention 'resort', 'abide', or 'devoted' — anything
-      // not derived from naive root composition.
-      expect(wp.gloss).toMatch(/resort|abide|devoted|established/i);
+    for (const form of ['आस्थिताः', 'आस्थिता', 'सम्पश्यन्']) {
+      const wp = v.wordParsings?.[form];
+      if (!wp?.gloss) continue;
+      expect(wp.gloss, `${form} gloss: ${wp.gloss}`)
+        .not.toMatch(/आ-stand|आ-remain|सम्-see|सम्-look/);
+    }
+    const aas = v.wordParsings?.['आस्थिताः'] ?? v.wordParsings?.['आस्थिता'];
+    if (aas?.gloss) {
+      expect(aas.gloss).toMatch(/resort|abide|devoted|established/i);
+    }
+    const sam = v.wordParsings?.['सम्पश्यन्'];
+    if (sam?.gloss) {
+      expect(sam.gloss).toMatch(/behold|consider|contemplate/i);
     }
   });
 
