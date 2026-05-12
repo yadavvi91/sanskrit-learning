@@ -194,6 +194,61 @@ export function hydrateAutoStubVerses() {
         //     dictionary)"). Drop these — they're the bogus content.
         const isSpeculative = (g) =>
           !g || /stem not in dictionary/i.test(g);
+        // Build dhatu lookup once per verse — DHATUS_EXTENDED has
+        // English `meanings` for every dhātu (e.g., स्था → ["stand",
+        // "remain"]). Use this for verb-derived words (krdantas like
+        // तिष्ठन्तम् "standing", विनश्यन्तम् "perishing") whose surface
+        // form has no dict entry but whose DCS-assigned root is a known
+        // dhātu.
+        // Common upasargas that prefix verb roots in DCS lemmas
+        // (विनश् → नश्, अवगम् → गम्, समुपस्था → स्था, etc.). Try
+        // stripping each in turn so DHATUS_EXTENDED lookups still hit.
+        const UPASARGAS = ['उपसम्', 'समुप', 'प्रति', 'अनु', 'अधि', 'अति',
+          'अव', 'आप्', 'उप', 'निस्', 'निर्', 'दुर्', 'दुस्', 'सम्', 'सम',
+          'प्र', 'परा', 'परि', 'अप', 'अभि', 'अव', 'उत्', 'उद्', 'नि',
+          'वि', 'सु', 'आ'];
+        const findDhatu = (stem) => {
+          for (const d of DHATUS_EXTENDED) {
+            if (d.devanagari === stem
+                || d.devanagari === stem + '्'
+                || d.devanagari.replace(/्$/, '') === stem) {
+              return d;
+            }
+          }
+          return null;
+        };
+        const dhatuGloss = (root) => {
+          if (!root) return null;
+          // DCS lemmas come bare (स्था) or with halant (स्था / गम्);
+          // DHATUS_EXTENDED entries have devanagari with the canonical form.
+          const norm = root.replace(/^√/, '').replace(/^अ(?=[^ािीुूेैोौृ])/, '');  // strip negation a-
+          // Direct hit
+          let d = findDhatu(norm);
+          if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
+            return `to ${d.meanings.slice(0, 2).join(' / to ')} (< √${d.devanagari})`;
+          }
+          // Try stripping upasargas (vi + nash → nash; sam + upa + stha → stha)
+          for (const up of UPASARGAS) {
+            if (norm.startsWith(up) && norm.length > up.length + 1) {
+              const inner = norm.slice(up.length);
+              d = findDhatu(inner);
+              if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
+                return `to ${up}-${d.meanings.slice(0, 2).join(' / ' + up + '-')} (< ${up} + √${d.devanagari})`;
+              }
+              // Try stripping a second upasarga (samupa, abhyut, etc.)
+              for (const up2 of UPASARGAS) {
+                if (inner.startsWith(up2) && inner.length > up2.length + 1) {
+                  const inner2 = inner.slice(up2.length);
+                  d = findDhatu(inner2);
+                  if (d && Array.isArray(d.meanings) && d.meanings.length > 0) {
+                    return `to ${up}-${up2}-${d.meanings[0]} (< ${up} + ${up2} + √${d.devanagari})`;
+                  }
+                }
+              }
+            }
+          }
+          return null;
+        };
         const authoritativeGloss = (form) => {
           const d = lookupSharedVocab(form);
           if (d) {
@@ -206,7 +261,10 @@ export function hydrateAutoStubVerses() {
           // (आत्मन्, कर्मन्, अस्मद्) whose citation form (आत्मा, कर्म,
           // अहम्) is the actual vocab key.
           const byRoot = lookupByRoot(form);
-          return byRoot?.gloss || null;
+          if (byRoot?.gloss) return byRoot.gloss;
+          // Last resort: dhātu meaning. Catches verb roots (स्था, नश्,
+          // कृ, etc.) that don't have nominal vocab entries.
+          return dhatuGloss(form);
         };
         for (const [w, p] of Object.entries(dcsEntry.wordParsings)) {
           if (v.wordParsings[w]) continue;

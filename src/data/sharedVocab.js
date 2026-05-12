@@ -632,8 +632,14 @@ function inferFromSuffix(word) {
     const stem = word.slice(0, -4);
     return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. dual) of "${stem}"-stem — "two ${stem}-ing" (verb stem not in dictionary)` });
   }
-  if (word.endsWith('न्तः') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. pl, nom)' });
-  if (word.endsWith('न्तम्') && word.length >= 5) return synth({ category: 'krdanta', kind: 'present-active', gloss: 'present active participle (शतृ, m. sg, acc)' });
+  if (word.endsWith('न्तः') && word.length >= 5) {
+    const stem = word.slice(0, -4);
+    return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. pl, nom) of "${stem}"-stem (verb stem not in dictionary)` });
+  }
+  if (word.endsWith('न्तम्') && word.length >= 5) {
+    const stem = word.slice(0, -5);
+    return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. sg, acc) of "${stem}"-stem (verb stem not in dictionary)` });
+  }
   if (word.endsWith('न्') && word.length >= 4) {
     const stem = word.slice(0, -2);
     return synth({ category: 'krdanta', kind: 'present-active', root: stem, gloss: `present active participle (शतृ, m. sg. nom.) of "${stem}"-stem — "the one who ${stem}-s" (verb stem not in dictionary)` });
