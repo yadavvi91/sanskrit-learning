@@ -77,6 +77,31 @@ describe('hydrateAutoStubVerses — auto-stub enrichment', () => {
     expect(arthas.source).toBe('known-samasa-lexicon');
   });
 
+  it('BG 6.36 — pure nominal predication, finite-verb-warning is silenced via null override', () => {
+    // Both halves drop अस्ति: "योगो दुष्प्रापः (अस्ति) इति मे मतिः" and
+    // "(योगः) अवाप्तुं शक्यः (अस्ति)". No surface finite verb anywhere —
+    // the warning the user saw came from the engine's regex-based detector
+    // not finding -ति/-ते/-मि. Override marks the verse as legitimately
+    // verb-less so the warning is silenced.
+    const v = find(6, 36);
+    expect(Array.isArray(v.finiteVerbs)).toBe(true);
+    expect(v.finiteVerbs.length).toBe(0);
+    expect(v.noFiniteVerb).toBe(true);
+  });
+
+  it('BG 13.18 — उच्यते is recovered from the sandhi-fused परमुच्यते via override', () => {
+    // The engine missed उच्यते because परम् + उच्यते joins as परमुच्यते
+    // (orthographic, no sandhi transformation) and the DCS padaccheda
+    // covers only the second half. Override surfaces उच्यते as passive
+    // 3sg of √वच्.
+    const v = find(13, 18);
+    expect(Array.isArray(v.finiteVerbs)).toBe(true);
+    const uchyate = v.finiteVerbs.find((f) => f.form === 'उच्यते');
+    expect(uchyate).toBeDefined();
+    expect(uchyate.root).toBe('√वच्');
+    expect(uchyate.lakara).toBe('लट्');
+  });
+
   it('samasNotes pick up type + gloss from vibhaktiNotes (samāsa-vigraha, not just sandhi-split)', () => {
     // 2.46's vibhakti note tags सम्प्लुतोदके as a बहुव्रीहि with the
     // gloss "(in that) whose-water-is-flooded-(everywhere)". The

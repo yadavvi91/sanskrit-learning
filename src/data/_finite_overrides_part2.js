@@ -115,6 +115,14 @@ export const FINITE_OVERRIDES_PART_2 = {
   '6.46': [
     { form: 'भव', root: '√भू', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: '"be (a yogi)!"' },
   ],
+  // 6.36 — pure nominal predication, no surface verb at all. Both halves
+  // drop अस्ति: (a) "योगः दुष्प्रापः (अस्ति) इति मे मतिः" — "yoga is hard
+  // to attain, such is my view"; (b) "(योगः) यतता वश्यात्मना उपायतः
+  // अवाप्तुं शक्यः (अस्ति)" — "[it] is attainable by one of controlled
+  // self, striving, through proper means". शक्यः + अवाप्तुम् is the
+  // gerundive-adjective + infinitive idiom; both halves are nominal,
+  // copula implicit. (BG 6.36)
+  '6.36': null,
   '1.3': [
     { form: 'पश्य', root: '√दृश्', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: '"behold!" (पश्य + एताम् → पश्यैताम्)' },
   ],

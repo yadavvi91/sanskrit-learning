@@ -72,6 +72,16 @@ export const FINITE_OVERRIDES_PART_1 = {
   '13.15': null,  // nominal — description of jñeya brahman, all participial/adjectival, no finite verb
   '13.16': null,  // nominal — description of brahman (अचरम्, चरम्, दूरस्थम्, अन्तिके), no finite verb
   '13.17': null,  // nominal — स्थितम् (PPP), ज्ञेयम् (gerundive), descriptive, no finite verb
+  // 13.18 — उच्यते IS the finite verb of the first half, but it is
+  // sandhi-fused with the preceding परम् into परमुच्यते (orthographic
+  // join, m̥+u write as one akṣara — no actual sandhi transformation).
+  // Cut: परम् + उच्यते. The form is passive (कर्मणि) 3sg present of √वच्
+  // — "is called". Second half (ज्ञानं ज्ञेयं ज्ञानगम्यं हृदि सर्वस्य
+  // विष्ठितम्) is a separate nominal predication with implicit अस्ति
+  // and तत् from the first half as the implicit subject.
+  '13.18': [
+    { form: 'उच्यते', root: '√वच्', lakara: 'लट्', purusha: 'प्रथम', vachana: 'एकवचन', gloss: '"is called / is said to be (the Light of lights, beyond darkness)" — passive (कर्मणि) 3sg; hidden inside the sandhi-fused परमुच्यते (= परम् + उच्यते)' },
+  ],
   '13.20': [
     { form: 'विद्धि', root: 'विद्', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: '"know (prakṛti and puruṣa as both beginningless)!"' },
     { form: 'विद्धि', root: 'विद्', lakara: 'लोट्', purusha: 'मध्यम', vachana: 'एकवचन', gloss: '"know (the modifications and guṇas as prakṛti-born)!"' }
