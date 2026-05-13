@@ -81,6 +81,32 @@ describe('conjugate — overrides win over rule engine', () => {
     expect(conjugate(kr, 'lan', 'P', 'prathama', 'bahu')).toBe('अकुर्वन्');
   });
 
+  it('√कृ लङ् A प्रथम बहु → अकुर्वत (the Gītā 1.1 form — not the अकुर्वत that the thematic generator coincidentally produced for प्रथम एक)', () => {
+    const kr = getDhatuById('kr');
+    expect(conjugate(kr, 'lan', 'A', 'prathama', 'bahu')).toBe('अकुर्वत');
+  });
+
+  it('√कृ लङ् A प्रथम एक → अकुरुत (NOT अकुर्वत — that was the bug)', () => {
+    const kr = getDhatuById('kr');
+    expect(conjugate(kr, 'lan', 'A', 'prathama', 'eka')).toBe('अकुरुत');
+  });
+
+  it('√कृ लट् A full row matches Whitney/Kale', () => {
+    const kr = getDhatuById('kr');
+    expect(conjugateGrid(kr, 'lat', 'A')).toEqual({
+      prathama: { eka: 'कुरुते',  dvi: 'कुर्वाते',  bahu: 'कुर्वते' },
+      madhyama: { eka: 'कुरुषे',  dvi: 'कुर्वाथे',  bahu: 'कुरुध्वे' },
+      uttama:   { eka: 'कुर्वे',   dvi: 'कुर्वहे',   bahu: 'कुर्महे' },
+    });
+  });
+
+  it('√कृ लोट् A उत्तम row uses the strong stem करव-', () => {
+    const kr = getDhatuById('kr');
+    expect(conjugate(kr, 'lot', 'A', 'uttama', 'eka')).toBe('करवै');
+    expect(conjugate(kr, 'lot', 'A', 'uttama', 'dvi')).toBe('करवावहै');
+    expect(conjugate(kr, 'lot', 'A', 'uttama', 'bahu')).toBe('करवामहै');
+  });
+
   it('√अस् लट् P prathama eka → अस्ति (irregular athematic)', () => {
     const as_ = getDhatuById('as');
     expect(conjugate(as_, 'lat', 'P', 'prathama', 'eka')).toBe('अस्ति');
@@ -140,12 +166,14 @@ describe('decompose — layered breakdown for "Why this form?"', () => {
 });
 
 describe('decompose_reverse — Stack Builder reverse mode', () => {
-  it('finds अकुर्वत as a √कृ form across the corpus', () => {
-    // अकुर्वत is आत्मनेपद लङ् प्रथम बहु of √कृ. We don't currently override
-    // आत्मनेपद for √कृ, so this asserts that *something* matches what we have.
-    const matches = decompose_reverse('अस्ति', DHATUS_TOP25);
-    expect(matches.length).toBeGreaterThanOrEqual(1);
-    expect(matches.find((m) => m.dhatu.id === 'as')).toBeDefined();
+  it('finds अकुर्वत as √कृ लङ् A प्रथम बहु — the Gītā 1.1 form', () => {
+    const matches = decompose_reverse('अकुर्वत', DHATUS_TOP25);
+    const m = matches.find((x) => x.dhatu.id === 'kr');
+    expect(m).toBeDefined();
+    expect(m.lakara).toBe('lan');
+    expect(m.pada).toBe('A');
+    expect(m.purusha).toBe('prathama');
+    expect(m.vachana).toBe('bahu');
   });
 
   it('finds भवति as √भू लट् P प्रथम एक', () => {
@@ -159,5 +187,27 @@ describe('decompose_reverse — Stack Builder reverse mode', () => {
   it('returns empty for nonsense input', () => {
     const matches = decompose_reverse('xyz', DHATUS_TOP25);
     expect(matches).toEqual([]);
+  });
+});
+
+describe('engine guard — athematic cells without override must return null, not garbage', () => {
+  // Before this guard the thematic-stem generator produced wrong forms for
+  // athematic roots (e.g., कृ लङ् A प्रथम एक → "अकुर्वत" instead of "अकुरुत",
+  // putting the correct plural form in the singular cell). Verify that
+  // unmodelled athematic cells now return null so the UI renders "—".
+  it('√भुज् लट् P uttama eka has an override → returns it', () => {
+    const bhuj = getDhatuById('bhuj');
+    expect(conjugate(bhuj, 'lat', 'P', 'uttama', 'eka')).toBe('भुनज्मि');
+  });
+
+  it('√भुज् लृट् A always uses futureStem (thematic) → engine fills it without an override', () => {
+    const bhuj = getDhatuById('bhuj');
+    expect(conjugate(bhuj, 'lrt', 'A', 'prathama', 'eka')).toBe('भोक्ष्यते');
+  });
+
+  it('thematic गण १ roots still generate A cells from the engine — √लभ् लट् A प्रथम एक → लभते', () => {
+    // Sanity check that the guard does not over-fire on thematic roots.
+    const labh = getDhatuById('labh');
+    expect(conjugate(labh, 'lat', 'A', 'prathama', 'eka')).toBe('लभते');
   });
 });

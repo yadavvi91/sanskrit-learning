@@ -5,3 +5,9 @@ dist
 .vite
 .claude/
 coverage
+
+# Claude.ai "Save Page As" sibling-asset dirs.
+# Keep the .html exports; drop the bundled site chrome + trackers
+# (those triggered a Google/Firebase API-key secret-scan hit on
+# Claude.ai's own public Firebase web key inside index-*.js).
+conversation/*_files/

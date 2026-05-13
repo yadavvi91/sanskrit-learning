@@ -12,9 +12,21 @@
 import { ENDINGS, AUGMENT_LAN } from './endings.js';
 import { stripUpasargas } from '../data/upasargas.js';
 
+// गण १, ४, ६, १० are thematic — their present stems end in inherent अ and
+// the single ENDINGS table concatenates cleanly. Every other गण is athematic:
+// the paradigm depends on strong/weak stem-grade and class-specific sandhi
+// at the seam, which the simple thematic engine cannot do. For athematic
+// roots we require an explicit override; if none exists we return null so
+// the UI shows "—" rather than a fabricated form. लृट् is the exception —
+// its futureStem (root + -इष्य- / -स्य-) is thematic regardless of गण.
+const THEMATIC_GANAS = new Set([1, 4, 6, 10]);
+
 export function conjugate(dhatu, lakara, pada, purusha, vachana) {
   const override = dhatu?.forms?.[lakara]?.[pada]?.[purusha]?.[vachana];
   if (override) return override;
+
+  const isAthematicLakara = lakara !== 'lrt' && !THEMATIC_GANAS.has(dhatu?.gana);
+  if (isAthematicLakara) return null;
 
   let stem;
   if (lakara === 'lrt') {
@@ -27,8 +39,6 @@ export function conjugate(dhatu, lakara, pada, purusha, vachana) {
   const ending = ENDINGS[lakara]?.[pada]?.[purusha]?.[vachana];
   if (ending == null) return null;
 
-  // For thematic stems, simple concat works because ending tables already
-  // bake in the necessary vowel-merging at the seam.
   let prefix = '';
   if (lakara === 'lan') prefix = AUGMENT_LAN;
 

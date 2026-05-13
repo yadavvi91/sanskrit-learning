@@ -60,12 +60,23 @@ const DHATUS = [
           madhyama: { eka: 'करोषि', dvi: 'कुरुथः', bahu: 'कुरुथ' },
           uttama:   { eka: 'करोमि', dvi: 'कुर्वः', bahu: 'कुर्मः' },
         },
+        A: {
+          prathama: { eka: 'कुरुते', dvi: 'कुर्वाते', bahu: 'कुर्वते' },
+          madhyama: { eka: 'कुरुषे', dvi: 'कुर्वाथे', bahu: 'कुरुध्वे' },
+          uttama:   { eka: 'कुर्वे', dvi: 'कुर्वहे', bahu: 'कुर्महे' },
+        },
       },
       lan: {
         P: {
           prathama: { eka: 'अकरोत्', dvi: 'अकुरुताम्', bahu: 'अकुर्वन्' },
           madhyama: { eka: 'अकरोः', dvi: 'अकुरुतम्', bahu: 'अकुरुत' },
           uttama:   { eka: 'अकरवम्', dvi: 'अकुर्व', bahu: 'अकुर्म' },
+        },
+        A: {
+          // The form that triggered this audit: किमकुर्वत (Gītā 1.1) — प्रथम बहु, not एक.
+          prathama: { eka: 'अकुरुत', dvi: 'अकुर्वाताम्', bahu: 'अकुर्वत' },
+          madhyama: { eka: 'अकुरुथाः', dvi: 'अकुर्वाथाम्', bahu: 'अकुरुध्वम्' },
+          uttama:   { eka: 'अकुर्वि', dvi: 'अकुर्वहि', bahu: 'अकुर्महि' },
         },
       },
       lot: {
@@ -74,6 +85,11 @@ const DHATUS = [
           madhyama: { eka: 'कुरु', dvi: 'कुरुतम्', bahu: 'कुरुत' },
           uttama:   { eka: 'करवाणि', dvi: 'करवाव', bahu: 'करवाम' },
         },
+        A: {
+          prathama: { eka: 'कुरुताम्', dvi: 'कुर्वाताम्', bahu: 'कुर्वताम्' },
+          madhyama: { eka: 'कुरुष्व', dvi: 'कुर्वाथाम्', bahu: 'कुरुध्वम्' },
+          uttama:   { eka: 'करवै', dvi: 'करवावहै', bahu: 'करवामहै' },
+        },
       },
       vidhilin: {
         P: {
@@ -81,12 +97,22 @@ const DHATUS = [
           madhyama: { eka: 'कुर्याः', dvi: 'कुर्यातम्', bahu: 'कुर्यात' },
           uttama:   { eka: 'कुर्याम्', dvi: 'कुर्याव', bahu: 'कुर्याम' },
         },
+        A: {
+          prathama: { eka: 'कुर्वीत', dvi: 'कुर्वीयाताम्', bahu: 'कुर्वीरन्' },
+          madhyama: { eka: 'कुर्वीथाः', dvi: 'कुर्वीयाथाम्', bahu: 'कुर्वीध्वम्' },
+          uttama:   { eka: 'कुर्वीय', dvi: 'कुर्वीवहि', bahu: 'कुर्वीमहि' },
+        },
       },
       lrt: {
         P: {
           prathama: { eka: 'करिष्यति', dvi: 'करिष्यतः', bahu: 'करिष्यन्ति' },
           madhyama: { eka: 'करिष्यसि', dvi: 'करिष्यथः', bahu: 'करिष्यथ' },
           uttama:   { eka: 'करिष्यामि', dvi: 'करिष्यावः', bahu: 'करिष्यामः' },
+        },
+        A: {
+          prathama: { eka: 'करिष्यते', dvi: 'करिष्येते', bahu: 'करिष्यन्ते' },
+          madhyama: { eka: 'करिष्यसे', dvi: 'करिष्येथे', bahu: 'करिष्यध्वे' },
+          uttama:   { eka: 'करिष्ये', dvi: 'करिष्यावहे', bahu: 'करिष्यामहे' },
         },
       },
     },
@@ -460,6 +486,20 @@ const DHATUS = [
           uttama:   { eka: 'भुञ्जे', dvi: 'भुञ्ज्वहे', bahu: 'भुञ्ज्महे' },
         },
       },
+      lan: {
+        A: {
+          prathama: { eka: 'अभुङ्क्त', dvi: 'अभुञ्जाताम्', bahu: 'अभुञ्जत' },
+          madhyama: { eka: 'अभुङ्क्थाः', dvi: 'अभुञ्जाथाम्', bahu: 'अभुङ्ग्ध्वम्' },
+          uttama:   { eka: 'अभुञ्जि', dvi: 'अभुञ्ज्वहि', bahu: 'अभुञ्ज्महि' },
+        },
+      },
+      lot: {
+        A: {
+          prathama: { eka: 'भुङ्क्ताम्', dvi: 'भुञ्जाताम्', bahu: 'भुञ्जताम्' },
+          madhyama: { eka: 'भुङ्क्ष्व', dvi: 'भुञ्जाथाम्', bahu: 'भुङ्ग्ध्वम्' },
+          uttama:   { eka: 'भुनजै', dvi: 'भुनजावहै', bahu: 'भुनजामहै' },
+        },
+      },
       vidhilin: {
         A: {
           prathama: { eka: 'भुञ्जीत', dvi: 'भुञ्जीयाताम्', bahu: 'भुञ्जीरन्' },
@@ -626,7 +666,7 @@ const DHATUS = [
     forms: {
       lat: {
         P: {
-          prathama: { eka: 'ददाति', dvi: 'दत्तः', bahu: 'दति' },
+          prathama: { eka: 'ददाति', dvi: 'दत्तः', bahu: 'ददति' },
           madhyama: { eka: 'ददासि', dvi: 'दत्थः', bahu: 'दत्थ' },
           uttama:   { eka: 'ददामि', dvi: 'दद्वः', bahu: 'दद्मः' },
         },
