@@ -98,8 +98,18 @@ export function getReferenceLink(parsing) {
       // Verbs page list. Otherwise the link silently falls back to
       // DHATUS[0] (= √भू) and surprises the user.
       if (bareRoot && dhatuExists(bareRoot)) {
+        // Carry the parsed cell coordinates as search params so the
+        // Verbs page lands on the right लकार × पद tab with the right
+        // पुरुष × वचन cell pre-selected. parsing.number is the popover's
+        // term for vachana ('eka' | 'dvi' | 'bahu').
+        const params = new URLSearchParams();
+        if (parsing.lakara) params.set('lakara', parsing.lakara);
+        if (parsing.pada && parsing.pada !== 'U') params.set('pada', parsing.pada);
+        if (parsing.purusha) params.set('purusha', parsing.purusha);
+        if (parsing.number) params.set('vachana', parsing.number);
+        const qs = params.toString();
         return {
-          url: `/verbs/${bareRoot}`,
+          url: `/verbs/${bareRoot}${qs ? '?' + qs : ''}`,
           label: `open √${bareRoot} in Verbs page`,
         };
       }

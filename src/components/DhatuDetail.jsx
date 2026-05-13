@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { conjugate, decompose } from '../utils/conjugator.js';
 import {
   LAKARAS, LAKARA_META, GANA_META, PADAS, PURUSHAS, VACHANAS,
@@ -7,9 +8,35 @@ import {
 const PADA_LABEL = { P: 'परस्मैपद', A: 'आत्मनेपद', U: 'उभयपदी' };
 
 export default function DhatuDetail({ dhatu, onOpenVerse }) {
-  const [lakara, setLakara] = useState('lat');
-  const [pada, setPada] = useState(dhatu.pada === 'A' ? 'A' : 'P');
-  const [picked, setPicked] = useState(null);
+  const [searchParams] = useSearchParams();
+  const urlLakara  = searchParams.get('lakara');
+  const urlPada    = searchParams.get('pada');
+  const urlPurusha = searchParams.get('purusha');
+  const urlVachana = searchParams.get('vachana');
+
+  const [lakara, setLakara] = useState(urlLakara || 'lat');
+  const [pada, setPada] = useState(urlPada || (dhatu.pada === 'A' ? 'A' : 'P'));
+  const [picked, setPicked] = useState(
+    urlPurusha && urlVachana ? { purusha: urlPurusha, vachana: urlVachana } : null,
+  );
+
+  // When the popover hands us a fresh cell via search params (e.g. clicking
+  // अकुर्वत jumps to /verbs/कृ?lakara=lan&pada=A&purusha=prathama&vachana=bahu),
+  // sync the tabs + breakdown to match — even if the same DhatuDetail is
+  // still mounted from a previous visit.
+  useEffect(() => {
+    if (urlLakara) setLakara(urlLakara);
+    if (urlPada) setPada(urlPada);
+    if (urlPurusha && urlVachana) setPicked({ purusha: urlPurusha, vachana: urlVachana });
+  }, [urlLakara, urlPada, urlPurusha, urlVachana, dhatu.id]);
+
+  // Scroll the breakdown into view when arrival is via a popover deep-link.
+  const breakdownRef = useRef(null);
+  useEffect(() => {
+    if (urlPurusha && urlVachana && breakdownRef.current) {
+      breakdownRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [urlPurusha, urlVachana, dhatu.id]);
 
   if (!dhatu) {
     return <section className="dhatu-detail empty-state">Pick a dhātu to see its full conjugation.</section>;
@@ -79,13 +106,15 @@ export default function DhatuDetail({ dhatu, onOpenVerse }) {
       />
 
       {picked && (
-        <Breakdown
-          dhatu={dhatu}
-          lakara={lakara}
-          pada={pada}
-          purusha={picked.purusha}
-          vachana={picked.vachana}
-        />
+        <div ref={breakdownRef}>
+          <Breakdown
+            dhatu={dhatu}
+            lakara={lakara}
+            pada={pada}
+            purusha={picked.purusha}
+            vachana={picked.vachana}
+          />
+        </div>
       )}
 
       {dhatu.gitaOccurrences && dhatu.gitaOccurrences.length > 0 && (
